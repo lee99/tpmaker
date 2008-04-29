@@ -1,0 +1,73 @@
+<tagLib name="cx,html,myhtml" />
+<include file="../Public/header" />
+<!-- 主体内容  -->
+<script LANGUAGE="JavaScript">
+function viewtable(id){
+ location.href  ="__APP__/Sys_tables/index/pid/"+id;
+}
+function buidepro(id){
+ location.href  ="__URL__/buidepro/id/"+id;
+}
+</script>
+<fieldset >
+	<legend>项目整体管理</legend>
+
+<!--  功能操作区域  -->
+
+<table width="100%"   cellpadding=0 cellspacing=0 >
+	<tr>
+		<td width="60%">
+	<input type="button" name="delete" onclick="location.href='__URL__/index/'" class="button1" value="清空条件">
+	<input type="button"  onclick="upbtn();" class="button1" value="更新本页数据">
+		</td>
+		<FORM METHOD="GET" ACTION="{$searchurl}">
+		<td align="right">
+			<table cellpadding=0 cellspacing=0>
+				<tr>
+					<td >
+						<INPUT id="searchkey" TYPE="text"  NAME="searchkey"  value="{$searchkey}">
+					</td>
+					<td>
+					<input type="submit"   class="button1" value="search">
+					</td>
+				</tr>
+			</table>
+		</td>
+		</FORM>
+	</tr>
+</table>
+
+<!-- 功能操作区域结束 -->
+</fieldset>
+<fieldset>
+
+<!-- 列表显示区域  -->
+		<myhtml:editlist id="checkList" name="list"  checkbox="true"  datasource="list" style="list"
+		show="
+			id|1:ID,
+			caption|8:项目名称,
+			proname|8:名称[英],
+			dbname|6:数据库名,
+			dbuser|4:用户名,
+			dbpassword|6:密码,
+			tbpre|2:前辍,
+			think_pach|8:TP路径,
+			seqNo|1:排序
+		"
+		action="false"
+		actionlist="viewtable:查看结构,del:删除,copy:COPY项目,buidepro:生成项目,importdb:导入数据,exportdb:导出数据,"
+		createform="true"
+		quickadd="true"
+		/>
+
+<!--  分页显示区域 -->
+<div class="page">
+
+<table width="100%">
+<tr >
+<td align="right">{$page}</td>
+</tr>
+</table>
+</div>
+</fieldset>
+<include file="../Public/footer" />

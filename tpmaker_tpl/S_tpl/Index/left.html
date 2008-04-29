@@ -1,0 +1,32 @@
+<tagLib name="html" />
+<include file="../Public/header" />
+<div class="dtree">
+
+<script type="text/javascript">
+<!--
+
+	d = new dTree('d');
+//Node(id, pid, name, url, title, target, icon, iconOpen, open)
+
+
+
+	//生成project的树形菜单
+
+	d.add('project',-1,'查看数据表',null,null,'mainFrame',IMG_PATH+'b_import.png',IMG_PATH+'b_import.png');
+
+
+	//生成model的树形菜单
+	<volist name="left" id="left_vo">
+	
+	d.add('config{$left_vo.id}','project','{$left_vo.caption}','__APP__/{$left_vo.name}/index',null,'mainFrame');
+	
+	</volist>
+
+
+		document.write(d);
+		//-->
+</script>
+
+</div>
+
+<include file="../Public/footer" />

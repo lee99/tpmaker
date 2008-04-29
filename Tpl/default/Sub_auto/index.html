@@ -1,0 +1,82 @@
+<tagLib name="cx,html,myhtml" />
+<include file="../Public/header" />
+<!-- 主体内容  -->
+
+<fieldset >
+	<legend>自动填充设定</legend>
+
+<!--  功能操作区域  -->
+<table width="100%"   cellpadding=0 cellspacing=0 >
+	<tr>
+		<td width="60%">
+	<input type="button" name="add" onclick="add()" class="button1" value="增加数据">
+	<input type="button" name="delete" onclick="del()" class="button1" value="删除数据">
+	<input type="button" name="delete" onclick="location.href='__URL__/index/'" class="button1" value="清空条件">
+		</td>
+		<FORM METHOD="GET" ACTION="{$searchurl}">
+		<td align="right">
+			<table cellpadding=0 cellspacing=0>
+				<tr>
+					<td >
+						<INPUT id="searchkey" TYPE="text"  NAME="searchkey"  value="{$searchkey}">
+					</td>
+					<td>
+					<input type="submit"   class="button1" value="search">
+					</td>
+				</tr>
+			</table>
+		</td>
+		</FORM>
+	</tr>
+</table>
+
+<!-- 功能操作区域结束 -->
+</fieldset>
+<fieldset>
+
+<!-- 列表显示区域  -->
+		<myhtml:editlist id="checkList" name="list"  checkbox="true"  datasource="list" style="list"
+		show="
+			id|1:ID,
+			title|30:标题,
+			content|20:填充内容[默认],
+			condition|select|makeselect('condition[]'#'sub_auto_con'#$list['condition']#null#null#'title'):填充条件,
+			regular|select|makeselect('regular[]'#'sub_auto_reg'#$list['regular']#null#null#'title'):附加规则,
+			seqNo|1:排序,
+			color|select|makeselect('color[]'#'Sub_color'#$list['color']):颜色
+		"
+		action="false"
+		createform="true"
+		quickadd="true"
+		actionlist="edit:"
+		/>
+
+<!--  分页显示区域 -->
+<div class="page">
+
+<table width="100%">
+<tr >
+<td align="left"><input type="button"  onclick="upbtn();" class="button1" value="更新本页数据"></td>
+<td align="right">{$page}</td>
+</tr>
+</table>
+</div>
+</fieldset>
+<fieldset>
+<legend>说明</legend>
+在 Model 类定义 $_auto 属性，可以完成数据自动处理功能，用来处理默认值和其他系统写入字段。 <br>
+$_auto 属性是由多个填充因子组成的数组，填充因子定义格式： <br>
+array(填充字段,填充内容,填充条件,附加规则) <br>
+<br>
+示例：<br>
+var$_auto=array(<br>
+array('status','1','ADD'),  // 默认把 status 字段设置为1<br>
+array('password','md5','ADD','function') // 对 password 字段在新增的时候使用 md5 函数处理<br>
+array('name','getName','ADD','callback') // 对 name 字段在新增的时候回调getName 方法<br>
+array('mTime','time','UPDATE','function'), // 对 mTime字段在编辑的时候写入当前时间戳<br>
+);<br>
+PS：该自动填充可能会覆盖表单提交项目。其目的是为了防止表单非法提交字段。<br>
+使用 Model类的 create 方法创建数据对象的时候会自动进行表单数据处理<br>
+
+</fieldset>
+<include file="../Public/footer" />
