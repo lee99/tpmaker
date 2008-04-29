@@ -1,0 +1,43 @@
+<tagLib name="html" />
+<include file="../Public/header" />
+<div class="dtree">
+
+<script type="text/javascript">
+<!--
+
+	d = new dTree('d');
+//Node(id, pid, name, url, title, target, icon, iconOpen, open)
+
+
+	
+	//生成project的树形菜单
+	<volist name="project" id="project_vo">
+	d.add('project{$project_vo.id}',-1,'{$project_vo.caption}[查看数据表]','__APP__/Sys_tables/index/pid/{$project_vo.id}',null,'mainFrame',IMG_PATH+'b_import.png',IMG_PATH+'b_import.png');
+	</volist>	
+	
+	//生成model的树形菜单
+	<volist name="project" id="project_vo">
+	d.add('sharemodel{$project_vo.id}','dbbase{$project_vo.id}','公共数据模型',null,null,null);
+	d.add('config{$project_vo.id}','project{$project_vo.id}','项目配置设定',null,null,IMG_PATH+'b_import.png',IMG_PATH+'b_import.png');
+	d.add('dbbase{$project_vo.id}','project{$project_vo.id}','基本数据结构',null,null,IMG_PATH+'b_import.png',IMG_PATH+'b_import.png');
+	d.add('creat{$project_vo.id}','project{$project_vo.id}','项目生成',null,null,null,IMG_PATH+'b_import.png',IMG_PATH+'b_import.png');
+	d.add('creat01{$project_vo.id}','creat{$project_vo.id}','生成本项目','__APP__/Sys_projects/buidepro/id/{$project_vo.id}',null,'mainFrame');
+	d.add('creat02{$project_vo.id}','creat{$project_vo.id}','浏览生成的项目','__ROOT__/{$project_vo.proname}',null,'blank');
+	</volist>
+	
+	//生成table的树形菜单
+	<volist name="table" id="table_vo">
+	<if condition="$table_vo[ismodel] eq 1">
+	d.add('table{$table_vo.id}','sharemodel{$table_vo.pid}','{$table_vo.caption}','__APP__/sys_fields/index/pid/{$table_vo.id}',null,'mainFrame');	
+	<else/>
+	d.add('table{$table_vo.id}','dbbase{$table_vo.pid}','{$table_vo.caption}','__APP__/sys_fields/index/pid/{$table_vo.id}',null,'mainFrame',IMG_PATH+'imgfolder{$table_vo.isaction}.gif',IMG_PATH+'imgfolder{$table_vo.isaction}.gif');	
+	</if>
+	</volist>
+	
+		document.write(d);
+		//-->
+</script>
+
+</div>
+
+<include file="../Public/footer" />

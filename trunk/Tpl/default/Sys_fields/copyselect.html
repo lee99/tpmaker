@@ -1,0 +1,50 @@
+<tagLib name="cx,html,myhtml" />
+<include file="../Public/header" />
+<!-- 主体内容  -->
+
+<fieldset >
+	<legend>现在系统所有的数据表</legend>
+
+<!--  功能操作区域  -->
+<table width="100%"   cellpadding=0 cellspacing=0 >
+	<tr>
+		<td width="60%">
+
+	<input type="button" name="delete" onclick="del()" class="button1" value="删除数据">
+	<input type="button" name="delete" onclick="location.href='__URL__/index/pid/{$_GET['pid']}'" class="button1" value="清空条件">
+	<input type="button" name="delete" onclick="location.href='__URL__/copyselect/pid/{$_GET['pid']}'" class="button1" value="COPY本数据表">
+		</td>
+		<FORM METHOD="GET" ACTION="{$searchurl}">
+		<td align="right">
+			<table cellpadding=0 cellspacing=0>
+				<tr>
+					<td >
+						<INPUT id="searchkey" TYPE="text"  NAME="searchkey"  value="{$searchkey}">
+					</td>
+					<td>
+					<input type="submit"   class="button1" value="search">
+					</td>
+				</tr>
+			</table>
+		</td>
+		</FORM>
+	</tr>
+</table>
+
+<!-- 功能操作区域结束 -->
+</fieldset>
+<fieldset>
+
+<form method="POST" action="__URL__/copy/">
+<table>
+<tr>
+<myhtml:labelinput  name="newpid" label="目标项目" action="makeselect('newpid'#'sys_projects'#$_GET['id']#''#'caption')"  />
+<myhtml:labelinput  name="newtitle" label="新的数据表名" value="" type="text" />
+</tr>
+</table>
+<input type="submit"  class="button1" value="确定生成新的数据表">
+<input type="hidden" name="oldid" value="{$_REQUEST['pid']}">
+</form>
+</fieldset>
+
+<include file="../Public/footer" />

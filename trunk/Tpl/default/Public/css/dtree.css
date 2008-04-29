@@ -1,0 +1,214 @@
+
+.dtree {
+	font-family: Verdana, Geneva, Arial, Helvetica, sans-serif;
+	font-size: 11px;
+	color: #666;
+	white-space: nowrap;
+}
+.dtree img {
+	border: 0px;
+	vertical-align: middle;
+}
+.dtree a {
+	color: #333;
+	text-decoration: none;
+}
+.dtree a.node, .dtree a.nodeSel {
+	white-space: nowrap;
+	padding: 1px 2px 1px 2px;
+}
+.dtree a.node:hover, .dtree a.nodeSel:hover {
+	color: #333;
+	text-decoration: underline;
+}
+.dtree a.nodeSel {
+	background-color: #c0d2ec;
+}
+.dtree .clip {
+	overflow: hidden;
+}
+
+.button 
+{ 
+	border:1px solid #D4D0C8; 
+	cursor:default;
+}
+
+
+
+form {
+	margin: 0px;
+	padding: 0px;
+}
+
+
+select
+{
+    font-family: "Arial", "Helvetica", "sans-serif";
+    font-size: 12px;
+    border: 1px #cccccc solid;
+}
+
+table
+{
+    font-size: 12px;
+    border: 0px #cccccc solid;
+    margin: 0px;
+	padding: 0px;
+
+}
+
+input
+{
+    font-family: "Arial", "Helvetica", "sans-serif";
+    font-size: 12px;
+    background-color: #DAE7FD;
+	border: 1px #cccccc solid;
+}
+/*****************************************************
+Menu Controls
+*****************************************************/
+
+a:link {
+	color: #000000;
+	text-decoration: none;
+}
+a:hover {
+	color: #FF0000;
+	text-decoration: none;
+}
+a:visited {
+	color: #000000;
+	text-decoration: none;
+}
+a:hover {
+	color: #FF0000;
+	text-decoration: none;
+}
+a.red:link {
+	color: #FF0000;
+	text-decoration: none;
+}
+a.red:visited {
+	color: #FF0000;
+	text-decoration: none;
+}
+a.red:hover {
+	color: #0000FF;
+	text-decoration: none;
+}
+
+
+a.blue:link {
+	color: #0000FF;
+	text-decoration: none;
+}
+a.blue:visited {
+	color: #0000FF;
+	text-decoration: none;
+}
+a.blue:hover {
+	color: #FF0000;
+	text-decoration: none;
+}
+
+th
+{
+	background-color: #83C326;
+	font-size: 12px;
+	height: 20px;
+	color:#ffffff;
+}
+tr
+{
+	height: 20px;
+	color:#blue;
+}
+body 
+{   
+
+    FONT-SIZE: 12px;
+	margin-top: 0px;
+	margin-right: 0px;
+	margin-bottom: 0px;
+	margin-left: 0px;
+	padding-top: 0px;
+	padding-right: 0px;
+	padding-bottom: 0px;
+	padding-left: 0px;
+
+}
+
+fieldset 
+{   
+
+    FONT-SIZE: 12px;
+	margin-top: 2px;
+	margin-right: 4px;
+	margin-bottom: 2px;
+	margin-left: 4px;
+	padding-top: 2px;
+	padding-right: 4px;
+	padding-bottom: 4px;
+	padding-left: 2px;
+
+}
+
+.button1
+{
+	BORDER-BOTTOM: #666666 1px solid;
+	BORDER-LEFT: #666666 1px solid;
+	BORDER-RIGHT: #666666 1px solid;
+	BORDER-TOP: #666666 1px solid;
+	FONT-SIZE: 12px;
+	HEIGHT: 18px;
+	margin: 0px;
+	background-image: url('../images/buttonbg.gif');
+	padding: 0px;
+}
+
+/*  文字?色 */
+.red{color:red}
+.green{color:green}
+.blue{color:blue}
+.white{color:white}
+.gray{color:gray}
+.orange{color:orange}
+.yellow{color:yellow}
+
+/*下划?*/
+.line1{border-bottom:1px solid #4A7B26;}
+.line2{border-bottom:1px solid #4A7B26; border-top:1px solid #4A7B26;}
+input.focus{
+	filter:blur(strength=50) ;
+	border:1pt solid green;
+}
+div.list {
+	/*width:100%;*/
+}
+div.page {
+	float:left;
+	background: #FBFAF8;
+	border: 0px solid #d4d4d4;
+	padding: 0px;
+	width:100%;
+	margin:0px;
+	line-height:180%;
+	text-align:right;
+}
+
+table.list {
+	padding:1px;
+	/*width:100%;*/
+	float:left;
+}
+table.list td{
+	padding:0px;
+	text-align: left;
+	height:20px;
+}
+table.list th{
+	padding:0px;
+	text-align: center;
+	height:18px;
+}
