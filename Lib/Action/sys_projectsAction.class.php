@@ -37,8 +37,22 @@ class sys_projectsAction extends AdminAction{
 
 	public function delete(){
 		$list=D('sys_projects');
-		delbypid(sys_tables,$_REQUEST['id'],$pidf='pid');
-		$list->delete($_REQUEST['id']);
+		require COMMON_PATH."tp_common.php";//引入自定义的类
+		require COMMON_PATH."tpmaker.class.php";//引入自定义的类
+		$buideid=$_REQUEST['id'];
+		$t=new tpmaker();
+		$t->projectid=$buideid;
+		$app_path=$t->getapppath();
+		if(deldir($app_path)){
+			echo "成功!";
+			delbypid(sys_tables,$_REQUEST['id'],$pidf='pid');
+			$list->delete($_REQUEST['id']);
+		}else {
+			echo "失败!";
+		}
+
+		sleep(3);
+		
 		redirect(__URL__."/index");
 	}
 
