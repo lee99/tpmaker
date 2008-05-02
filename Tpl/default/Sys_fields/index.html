@@ -43,42 +43,56 @@
 tp1 = new WebFXTabPane( document.getElementById( "tabPane1" ) );
 </script>
 
-  <div class="tab-page" id="tabPage1">
+  <div class="tab-page" id="tabPage10">
 		<h2 class="tab">系统自定义数据表</h2>
-		<script type="text/javascript">tp1.addTabPage( document.getElementById( "tabPage1" ) );</script>
+		<script type="text/javascript">tp1.addTabPage( document.getElementById( "tabPage10" ) );</script>
 		<myhtml:editlist id="checkList" name="list"  checkbox="true"  datasource="list" style="list"
 		show="
 			id|1:ID,
 			caption|12:标题,
 			name|8:表名[英文],
 			fieldtype|select|makeselect('fieldtype[]'#'sub_fieldtype'#$list['fieldtype']):字段属性,
-			viewtype|select|makeselect('viewtype[]'#'sub_viewtype'#$list['viewtype']):查看类型,
-			edittype|select|makeselect('edittype[]'#'sub_edittype'#$list['edittype']):编辑类型,
-			addtype|select|makeselect('addtype[]'#'sub_addtype'#$list['addtype']):增加类型,
-			issystem|select|makeselect('issystem[]'#'sub_issystem'#$list['issystem']):系统保留,
+			fieldlenght|4:字段长度,
+			
+
 			seqNo|1:排序
 		"
 		/>
 </div>
+  <div class="tab-page" id="tabPage3" >
+		<h2 class="tab">基本操作和默认值设定</h2>
+		<script type="text/javascript">tp1.addTabPage( document.getElementById( "tabPage3" ) );</script>
+		<myhtml:editlist id="checkList2" name="list"  checkbox="true"  datasource="list_val" style="list"
+		show="
+			caption|text:标题,
+			name|text:表名[英文],
+			viewtype|select|makeselect('viewtype[]'#'sub_viewtype'#$list['viewtype']):查看类型,
+			edittype|select|makeselect('edittype[]'#'sub_edittype'#$list['edittype']):编辑类型,
+			addtype|select|makeselect('addtype[]'#'sub_addtype'#$list['addtype']):增加类型,
+			issystem|select|makeselect('issystem[]'#'sub_issystem'#$list['issystem']):系统保留,
+			indexvar|20:默认值[支持函数],
+			autotype|select|makeselect('autotype[]'#'Sub_auto'#$list['autotype']):默认值或自动填充
+		"
+		/>
+</div>
 
-
-  <div class="tab-page" id="tabPage2">
+  <div class="tab-page" id="tabPage1">
 		<h2 class="tab">LIST列表项及一般设定</h2>
-		<script type="text/javascript">tp1.addTabPage( document.getElementById( "tabPage2" ) );</script>
+		<script type="text/javascript">tp1.addTabPage( document.getElementById( "tabPage1" ) );</script>
 		<myhtml:editlist id="checkList2" name="list"  checkbox="true"  datasource="list_genneral" style="list"
 		show="
 			caption|text:标题,
 			name|text:表名[英文],
 			islist|select|makeselect('islist[]'#'sub_yesno'#$list['islist']):是否列表,
-			iswrap|select|makeselect('iswrap[]'#'sub_yesno'#$list['iswrap']):是否排序,
-			indexvar|20:默认值[支持函数],
-			autotype|select|makeselect('autotype[]'#'Sub_auto'#$list['autotype']):自动填充形式
+			islistwidth|4:列表长度,
+			iswrap|select|makeselect('iswrap[]'#'sub_yesno'#$list['iswrap']):是否排序
+
 		"
 		/>
 </div>
-  <div class="tab-page" id="tabPage3" >
+  <div class="tab-page" id="tabPage2" >
 		<h2 class="tab">系统验证设定</h2>
-		<script type="text/javascript">tp1.addTabPage( document.getElementById( "tabPage3" ) );</script>
+		<script type="text/javascript">tp1.addTabPage( document.getElementById( "tabPage2" ) );</script>
 		<myhtml:editlist id="checkList2" name="list"  checkbox="true"  datasource="list_val" style="list"
 		show="
 			caption|text:标题,
@@ -90,6 +104,7 @@ tp1 = new WebFXTabPane( document.getElementById( "tabPane1" ) );
 		"
 		/>
 </div>
+
 <div class="tab-page" id="tabPage4">
 		<h2 class="tab">搜索设定</h2>
 		<script type="text/javascript">tp1.addTabPage( document.getElementById( "tabPage4" ) );</script>
@@ -98,7 +113,8 @@ tp1 = new WebFXTabPane( document.getElementById( "tabPane1" ) );
 			caption|text:标题,
 			name|text:表名[英文],
 			issearch|select|makeselect('issearch[]'#'sub_yesno'#$list['issearch']):是否搜索,
-			searchtype|select|makeselect('searchtype[]'#'sub_searchtype'#$list['searchtype']):搜索形式
+			searchtype|select|makeselect('searchtype[]'#'sub_searchtype'#$list['searchtype']):一般搜索形式,
+			advsearchtype|select|makeselect('advsearchtype[]'#'sub_searchtype'#$list['advsearchtype']):高级搜索形式
 		"
 		/>
 </div>
