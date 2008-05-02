@@ -16,7 +16,8 @@ class dbbackupAction extends AdminAction{
 	}
 
 	public function export_db(){
-		D();
+		require COMMON_PATH."tp_common.php";//引入自定义的类
+		import("Think.Db.Db");	//D('');也可以
 	   	$db	=	DB::getInstance();
 		$tables = $db->getTables();
 		foreach ($tables as $tbname){
@@ -34,16 +35,13 @@ class dbbackupAction extends AdminAction{
 		    	}
 		    	$sql=substr($sql,0,-1);
 		    	$sql .= ");\n";
-		    echo $sql;
+		    $tempsql.= $sql;
 		    $sql='';
 		    }
-		    
-
+		   
 		}
-		//dump($tables);
-		//$db->switchConnect(0);
-	
-		
+		 writefile('./Backup/SQL/'.date('ymd-His').'.sql',$tempsql);
+
 	}
 
 
