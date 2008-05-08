@@ -1,4 +1,4 @@
-<tagLib name="html" />
+<tagLib name="cx,html,myhtml" />
 <include file="../Public/header" />
 
 <div id="main" class="main" >
@@ -12,54 +12,175 @@ sendForm('form1','__URL__/saveSort/','result');
 }
 //-->
 </SCRIPT>
-<html:import type="js" file="Js.Form.SortSelect" />
-<FORM METHOD=POST name = 'form1' >
-<html:sort source="sortList" title="模块排序" size="15" show="title" />
-<div align="center">
-<TABLE class="order" cellpadding=0 cellspacing=0 width="350">
-<tr><td height="5" colspan="2" class="topTd" ></td></tr>
-<TR>
-	<Th colspan=2 align="right"><div class="fLeft"><input name="search" type="text"></div>
-<input type="button" value="查 询" onclick="sl.Search()" class="submit hMargin small " /></Th>
-</TR>
-<TR >
-	<TD width="75%" align="right">
-	<div class="solid">
-	<SELECT class="multiSelect" name="sort" size="15">
-	<?php $i=1; ?>
+
+<fieldset >
+
+
+<form name=frm>
+
+<table cellpadding="0">
+<tr >
+	<th align="center">原本排序</th>
+	<th width="30px" align="center">操作</th>
+	<th align="center">排序结果</th>
+	<th width="30px" align="center">操作</th>
+	
+</tr>
+<tr >
+    <td>
+        <select name=SrcSelect   style="height:140px;" multiple ondblclick="moveLeftOrRight(document.frm.SrcSelect,document.frm.ObjSelect)">
+        
 <voList name="sortList" id="module" >
-<option value="{$module.id}"><?php echo $i++; ?>.{$module.caption}</option>
+<option value="{$module.seqNo}">{$module.caption}.[{$module.seqNo}]</option>
 </voList>
-</SELECT></div></TD>
-	<TD width="20" valign="top">
-	<div style="margin-top:20px">
-	<input type="button" value="第 一" onclick="sl.fnFirst()" class="submit vMargin small " />
-<input type="button" value="上 移" onclick="sl.sortUp()" class="submit vMargin small " />
-<input type="button" value="下 移" onclick="sl.sortDown()" class="submit vMargin small " />
-<input type="button" value="最 后" onclick="sl.fnEnd()" class="submit vMargin small " />
-<div class="fLeft vMargin"><INPUT TYPE="text" NAME="jumpNum" size="4"></div>
-<input type="button" value="跳 转" onclick="sl.jump()" class="submit vMargin small " />
-</div>
-</TD>
-</TR>
-<TR>
-	<TD colspan=2 align="center">
-	<div style="width:85%"><INPUT TYPE="hidden" name="seqNoList">
-	<INPUT TYPE="hidden" name="_AJAX_SUBMIT_" VALUE="1">
-<input type="button" value="确 定" onclick="saveSort()" class="submit hMargin small " />
-<input type="reset" value="取 消" onclick="history.back()" class="submit hMargin small " />
-</div>
-</TD>
-</TR>
-<tr><td height="5" colspan="2" class="topTd" ></td></tr>
-</TABLE>
-</div>
-</FORM>
-<SCRIPT LANGUAGE="JavaScript">
-<!--
-var sl = new SortSelect('form1','sort','search','jumpNum');
-//-->
-</SCRIPT>
+
+        </select>
+
+    </td>
+    <td width="30px">   
+        <input align="left" disabled type=button value=">>" onclick="moveLeftOrRightAll(document.frm.SrcSelect,document.frm.ObjSelect)" ><br><br>
+        <input align="left" disabled type=button value=">" onclick="moveLeftOrRight(document.frm.SrcSelect,document.frm.ObjSelect)" ><br><br>
+        <input align="left" disabled type=button value="<" onclick="moveLeftOrRight(document.frm.ObjSelect,document.frm.SrcSelect)" ><br><br>
+        <input align="left" disabled type=button value="<<" onclick="moveLeftOrRightAll(document.frm.ObjSelect,document.frm.SrcSelect)" >
+    </td>
+    <td>
+        <select name=ObjSelect  class="ecv_autoSizeDropDown" style="height:140px;" multiple ondblclick="moveLeftOrRight(document.frm.ObjSelect,document.frm.SrcSelect)">
+	
+<voList name="sortList" id="module" >
+<option value="{$module.id}">{$module.caption}.[{$module.seqNo}]</option>
+</voList>
+        </select>
+
+    </td>
+    <td width="30px">
+        <input type=button value="顶层" onclick="moveToTop(document.frm.ObjSelect)" ><br><br>
+        <input type=button value="向上" onclick="moveUp(document.frm.ObjSelect)" ><br><br>
+        <input type=button value="向下" onclick="moveDown(document.frm.ObjSelect)" ><br><br>
+        <input type=button value="底层" onclick="moveToBottom(document.frm.ObjSelect)" >
+
+    </td>
+
+</tr>
+<tr>
+<th  align="center">确认操作</th>
+    <td colspan="2" >
+        <input type=button value="确认排序" class="button1" onclick="moveToTop(document.frm.ObjSelect)" >
+        <input type=button value="重新载入" class="button1" onclick="moveToTop(document.frm.ObjSelect)" >
 
 
+    </td>
+</tr>
+</table>
+
+</form>
+</fieldset>
+<script language=javascript>
+
+function moveLeftOrRight(fromObj,toObj)
+{
+    var fromObjOptions=fromObj.options;
+    for(var i=0;i<fromObjOptions.length;i++){
+        if(fromObjOptions[i].selected){
+            toObj.appendChild(fromObjOptions[i]);
+            i--;
+        }
+    }
+    resetAutoWidth(fromObj);
+    resetAutoWidth(toObj);
+}
+
+function moveLeftOrRightAll(fromObj,toObj)
+{
+    var fromObjOptions=fromObj.options;
+    if(fromObjOptions.length>1000) {
+        //if(!confirm("Are you sure to move options?")) return false;
+    }
+    for(var i=0;i<fromObjOptions.length;i++){
+        fromObjOptions[0].selected=true;
+        toObj.appendChild(fromObjOptions[i]);
+        i--;
+    }
+    resetAutoWidth(fromObj);
+    resetAutoWidth(toObj);
+}
+
+function moveUp(selectObj)
+{
+    var theObjOptions=selectObj.options;
+    for(var i=1;i<theObjOptions.length;i++) {
+        if( theObjOptions[i].selected && !theObjOptions[i-1].selected ) {
+            swapOptionProperties(theObjOptions[i],theObjOptions[i-1]);
+        }
+    }
+}
+
+function moveDown(selectObj)
+{
+    var theObjOptions=selectObj.options;
+    for(var i=theObjOptions.length-2;i>-1;i--) {
+        if( theObjOptions[i].selected && !theObjOptions[i+1].selected ) {
+            swapOptionProperties(theObjOptions[i],theObjOptions[i+1]);
+        }
+    }
+}
+
+function moveToTop(selectObj){
+    var theObjOptions=selectObj.options;
+    var oOption=null;
+    for(var i=0;i<theObjOptions.length;i++) {
+        if( theObjOptions[i].selected && oOption) {
+            selectObj.insertBefore(theObjOptions[i],oOption);
+        }
+        else if(!oOption && !theObjOptions[i].selected) {
+            oOption=theObjOptions[i];
+        }
+    }
+}
+
+function moveToBottom(selectObj){
+    var theObjOptions=selectObj.options;
+    var oOption=null;
+    for(var i=theObjOptions.length-1;i>-1;i--) {
+        if( theObjOptions[i].selected ) {
+            if(oOption) {
+                oOption=selectObj.insertBefore(theObjOptions[i],oOption);
+            }
+            else oOption=selectObj.appendChild(theObjOptions[i]);
+        }
+    }
+
+}
+
+function selectAllOption(selectObj){
+    var theObjOptions=selectObj.options;
+    for(var i=0;i<theObjOptions.length;i++){
+        theObjOptions[0].selected=true;
+    }
+}
+
+/* private function */
+function swapOptionProperties(option1,option2){
+    //option1.swapNode(option2);
+    var tempStr=option1.value;
+    option1.value=option2.value;
+    option2.value=tempStr;
+    tempStr=option1.text;
+    option1.text=option2.text;
+    option2.text=tempStr;
+    tempStr=option1.selected;
+    option1.selected=option2.selected;
+    option2.selected=tempStr;
+}
+
+function resetAutoWidth(obj){
+    var tempWidth=obj.style.getExpression("width");
+    if(tempWidth!=null) {
+        obj.style.width="auto";
+        obj.style.setExpression("width",tempWidth);
+        obj.style.width=null;
+    }
+}
+
+</script> 
+</div>
 <include file="../Public/footer" />
