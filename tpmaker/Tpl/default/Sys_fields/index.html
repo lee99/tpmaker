@@ -67,9 +67,9 @@ tp1 = new WebFXTabPane( document.getElementById( "tabPane1" ) );
 		show="
 			caption|text:标题,
 			
-			viewtype|select|makeselect('viewtype[]'#'sub_viewtype'#$list['viewtype']):查看类型,
-			edittype|select|makeselect('edittype[]'#'sub_edittype'#$list['edittype']):编辑类型,
-			addtype|select|makeselect('addtype[]'#'sub_addtype'#$list['addtype']):增加类型,
+			viewtype|select|makeselect('viewtype[]'#'sub_viewtype'#$list['viewtype']):详细信息类型,
+			edittype|select|makeselect('edittype[]'#'sub_edittype'#$list['edittype']):编辑形式,
+			addtype|select|makeselect('addtype[]'#'sub_addtype'#$list['addtype']):增加形式,
 			issystem|select|makeselect('issystem[]'#'sub_issystem'#$list['issystem']):系统保留,
 			indexvar|20:默认值[支持函数],
 			autotype|select|makeselect('autotype[]'#'Sub_auto'#$list['autotype']):自动填充
@@ -85,6 +85,7 @@ tp1 = new WebFXTabPane( document.getElementById( "tabPane1" ) );
 			caption|text:标题,
 			
 			islist|select|makeselect('islist[]'#'sub_yesno'#$list['islist']):是否列表,
+			islistviewtype|select|makeselect('islistviewtype[]'#'sub_viewtype'#$list['islistviewtype']):列表查看类型,
 			islistwidth|4:列表长度,
 			iswrap|select|makeselect('iswrap[]'#'sub_yesno'#$list['iswrap']):是否排序
 
