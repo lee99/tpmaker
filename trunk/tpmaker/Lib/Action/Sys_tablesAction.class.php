@@ -40,6 +40,13 @@ class sys_tablesAction extends AdminAction{
 	}
 
 
+	public function Adv(){
+		
+	$this->Index();
+
+	}
+
+	
 
 	public function delete(){
 		$list=D('sys_tables');
