@@ -56,7 +56,7 @@ class IndexAction extends AdminAction{
 		C('SHOW_CACHE_TIMES',false);		// 显示缓存操作次数
 		C('SHOW_USE_MEM',false);			// 显示内存开销
 		$projects=D('Sys_projects');
-		$plist=$projects->findAll();
+		$plist=$projects->findAll('isaction = 1');
 		$this->assign('project',$plist);
 		$this->display();
 	}	

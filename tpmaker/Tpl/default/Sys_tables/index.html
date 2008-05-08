@@ -31,10 +31,10 @@ function viewfields(id){
 <!-- 列表显示区域  -->
 		<myhtml:editlist id="checkList" name="list"  checkbox="true"  datasource="list" style="list"
 		show="
-			id|1:ID,
+			id|hidden|1:ID,
 			caption|20:标题,
 			title|20:表名[英名],
-			
+
 			edittype|select|makeselect('edittype[]'#'tab_edittype'#$list['edittype']):操作模式,
 			ismodel|select|makeselect('ismodel[]'#'sub_yesno'#$list['ismodel']):模板,
 			datemodelid|select|makeselect('datemodelid[]'#'sys_tables'#$list['datemodelid']#'ismodel<>0 and pid='.$_GET['pid']):公用数据模板,

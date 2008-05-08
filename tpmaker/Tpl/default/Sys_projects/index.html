@@ -44,7 +44,7 @@ function buidepro(id){
 <!-- 列表显示区域  -->
 		<myhtml:editlist id="checkList" name="list"  checkbox="true"  datasource="list" style="list"
 		show="
-			id|1:ID,
+			id|hidden|1:ID,
 			caption|8:项目名称,
 			proname|8:名称[英],
 			dbname|6:数据库名,
@@ -52,6 +52,7 @@ function buidepro(id){
 			dbpassword|6:密码,
 			tbpre|2:前辍,
 			think_pach|8:TP路径,
+			isaction|select|makeselect('isaction[]'#'sub_yesno'#$list['isaction']):是否活动,
 			seqNo|1:排序
 		"
 		action="false"

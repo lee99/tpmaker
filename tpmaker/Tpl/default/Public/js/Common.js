@@ -1,16 +1,49 @@
 
-function showTip(info){
-	$('tips').innerHTML	=	info;
+function hideW(){
+	var myFx = new Fx.Style('msg_tip', 'height',{duration:600}).custom(200,0);
+	var myFx = new Fx.Style('msg_tip', 'opacity',{duration:600}).custom(1,0);
+	//$('msg_tip').style.display = 'none';	
 }
+function openMsg(id){
+	hideW();
+	readMsg(id);
+}
+
+function showTip(data,status){
+	if (status==1)
+	{
+		showMsgTip(data);
+	}
+}
+
 function sendForm(formId,action,response,target,effect){
 	// Ajax方式提交表单
-	if (CheckForm($(formId)))//表单数据验证
+	if (CheckForm($(formId),target))//表单数据验证
 	{
-		ThinkAjax.sendForm(formId,action);
+		ThinkAjax.sendForm(formId,action,response,target);
 	}
 	//Form.reset(formId);
 }
 rowIndex = 0;
+
+function prepareIE(height, overflow){
+	bod = document.getElementsByTagName('body')[0];
+	bod.style.height = height;
+	//bod.style.overflow = overflow;
+
+	htm = document.getElementsByTagName('html')[0];
+	htm.style.height = height;
+	//htm.style.overflow = overflow; 
+}
+
+function hideSelects(visibility){
+   selects = document.getElementsByTagName('select');
+   for(i = 0; i < selects.length; i++) {
+		   selects[i].style.visibility = visibility;
+	}
+}
+document.write('<div id="overlay" class="none"></div><div id="lightbox" class="none"></div>');
+
 
 
 function allSelect(){
@@ -50,26 +83,7 @@ function WriteTo(id){
 function build(id){
 	window.location = APP+'/Card/batch/type/'+id;
 }
-function shortcut(){
-	var name	=	 window.prompt("输入该快捷方式的显示名称","");
-	if (name !=null)
-	{
-	var url	=	location.href;
-	ThinkAjax.send(location.protocol+'//'+location.hostname+APP+'/Shortcut/ajaxInsert/','name='+name+'&url='+url);
-	}
 
-}
-
-function show(){
-	if (document.getElementById('menu').style.display!='none')
-	{
-	document.getElementById('menu').style.display='none';
-	document.getElementById('main').className = 'full';
-	}else {
-	document.getElementById('menu').style.display='inline';
-	document.getElementById('main').className = 'main';
-	}
-}
 
 function CheckAll(strSection)
 	{

@@ -23,7 +23,7 @@
 	<!-- 列表显示区域  -->
 			<myhtml:editlist id="checkList" name="list"  checkbox="true"  datasource="list" style="list"
 			show="
-				id|1:ID,
+				id|hidden|1:ID,
 				pid|select|makeselect('pid[]'#'sys_configtype'#$list['pid']):所属分类,
 				type|select|makeselect('type[]'#'sys_datatype'#$list['type']):类型,
 				title|20:标题,
