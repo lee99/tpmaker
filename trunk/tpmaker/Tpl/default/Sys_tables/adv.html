@@ -20,7 +20,7 @@ function viewfields(id){
 	<input type="button"  onclick="location.href='__APP__/Sys_projects/buidepro/id/{$_GET['pid']}'" class="button1" value="生成本项目">
 	<input type="button"  onclick="window.open('__ROOT__/{$projecturl}');" class="button1" value="查看效果">
 	<input type="button"  onclick="location.href='__URL__/buide/pid/{$_GET['pid']}'" class="button1" value="生成字典">
-	<input type="button"  onclick="location.href='__URL__/adv/pid/{$_GET['pid']}'" class="button1" value="+高级视图模式">
+	<input type="button"  onclick="location.href='__URL__/index/pid/{$_GET['pid']}'" class="button1" value="-简单视图模式">
 		</td>
 	</tr>
 </table>
@@ -34,8 +34,11 @@ function viewfields(id){
 		show="
 			id|hidden|1:ID,
 			caption|20:标题,
-			title|8:表名[英名],
+			title|20:表名[英名],
 
+			edittype|select|makeselect('edittype[]'#'tab_edittype'#$list['edittype']):操作模式,
+			ismodel|select|makeselect('ismodel[]'#'sub_yesno'#$list['ismodel']):模板,
+			datemodelid|select|makeselect('datemodelid[]'#'sys_tables'#$list['datemodelid']#'ismodel<>0 and pid='.$_GET['pid']):公用数据模板,
 			list|select|makeselect('list[]'#'sub_yesno'#$list['list']):列表,
 			view|select|makeselect('view[]'#'sub_yesno'#$list['view']):详细,
 			add|select|makeselect('add[]'#'sub_yesno'#$list['add']):增加,
@@ -43,8 +46,8 @@ function viewfields(id){
 			edit|select|makeselect('edit[]'#'sub_yesno'#$list['edit']):编辑,
 			search|select|makeselect('search[]'#'sub_yesno'#$list['search']):搜索,
 			searchtype|select|makeselect('searchtype[]'#'tab_searchtype'#$list['searchtype']):搜索形式,
-			isaction|select|makeselect('isaction[]'#'sub_yesno'#$list['isaction']):活动
-
+			isaction|select|makeselect('isaction[]'#'sub_yesno'#$list['isaction']):活动,
+			seqNo|1:排序
 		"
 		action="false"
 		createform="true"
