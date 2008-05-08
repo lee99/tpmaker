@@ -25,7 +25,11 @@ class AdminAction extends Action{
     {
     	$thismodel=$this->name;
         $list      =   D($thismodel);
+        if(!$_REQUEST['pid']){
         $sortList  =   $list->findAll('','*','seqNo asc');
+        }else{
+         $sortList  =   $list->findAll('pid='.$_REQUEST['pid'],'*','seqNo asc');
+        }
         //dump($sortList);
         $this->assign("sortList",$sortList);
         $this->display('Public:sort');
