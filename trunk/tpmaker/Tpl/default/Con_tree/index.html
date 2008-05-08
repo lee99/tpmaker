@@ -37,7 +37,7 @@
 <!-- 列表显示区域  -->
 		<myhtml:editlist id="checkList" name="list"  checkbox="true"  datasource="list" style="list"
 		show="
-			id|1:ID,
+			id|hidden|1:ID,
 			pid|select|makeselect('pid[]'#'Con_tree'#$list['pid']):上级,
 			title|20:项目标题,
 			model:所属模块,

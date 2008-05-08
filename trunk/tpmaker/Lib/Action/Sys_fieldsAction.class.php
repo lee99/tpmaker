@@ -59,6 +59,16 @@ class sys_fieldsAction extends AdminAction{
 
 	}
 
+	public function Table(){
+		
+		$list=D('sys_tables');
+		$list=$list->findAll('id='.$_REQUEST[id],'*');
+		$list2=$list;
+		$this->assign('list',$list);
+		$this->assign('list2',$list2);
+		$this->display();
+
+	}
 
 	public function updateform(){
 		$list=D('sys_fields');

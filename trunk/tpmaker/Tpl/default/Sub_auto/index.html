@@ -37,7 +37,7 @@
 <!-- 列表显示区域  -->
 		<myhtml:editlist id="checkList" name="list"  checkbox="true"  datasource="list" style="list"
 		show="
-			id|1:ID,
+			id|hidden|1:ID,
 			title|30:标题,
 			content|20:填充内容[默认],
 			condition|select|makeselect('condition[]'#'sub_auto_con'#$list['condition']#null#null#'title'):填充条件,
