@@ -7,16 +7,21 @@
 <SCRIPT LANGUAGE="JavaScript">
 <!--
 function saveSort(){
-sl.ok();
-sendForm('form1','__URL__/saveSort/','result');
+selectAllOption(document.frm.ObjSelect);
+getS(document.frm.ObjSelect);
+sendForm('frm','__URL__/saveSort/',complete,'result');
 }
+function reload(){
+location.href=REQUEST_URI;
+}
+
 //-->
 </SCRIPT>
 
 <fieldset >
 
 
-<form name=frm>
+<form name="frm" id="frm" method="POST">
 
 <table cellpadding="0">
 <tr >
@@ -64,8 +69,9 @@ sendForm('form1','__URL__/saveSort/','result');
 <tr>
 <th  align="center">确认操作</th>
     <td colspan="2" >
-        <input type=button value="确认排序" class="button1" onclick="moveToTop(document.frm.ObjSelect)" >
-        <input type=button value="重新载入" class="button1" onclick="moveToTop(document.frm.ObjSelect)" >
+    <input type="hidden" name="sortvaue" value="">
+        <input type=button value="确认排序" class="button1" onclick="saveSort()" >
+        <input type=button value="重新载入" class="button1" onclick="reload()" >
 
 
     </td>
@@ -153,10 +159,21 @@ function moveToBottom(selectObj){
 
 function selectAllOption(selectObj){
     var theObjOptions=selectObj.options;
-    for(var i=0;i<theObjOptions.length;i++){
-        theObjOptions[0].selected=true;
+    for(var i=0; i<theObjOptions.length; i++){
+        theObjOptions[i].selected=true;
+        
     }
+
 }
+
+
+  function   getS(os)  
+  {  
+  var   so   =   [];  
+  for(var   i=0;i<os.length;i++)  
+  if(os[i].selected)so[so.length]=os[i].value  
+  document.frm.sortvaue.value= so.join(",")  
+  }
 
 /* private function */
 function swapOptionProperties(option1,option2){

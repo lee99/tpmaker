@@ -69,6 +69,29 @@ class sys_fieldsAction extends AdminAction{
 		$this->display();
 
 	}
+	
+	public function outkeyseting(){
+		
+		$list=D('sys_fields');
+		$list=$list->findAll('id='.$_REQUEST[id],'*');
+		$this->assign("list",$list);
+		//dump($list);
+		$this->display();
+
+	}	
+	
+	public function outkeysave(){
+		
+		$list=D('sys_fields');
+		$date['id']=$_REQUEST['id'];
+		$date['outkeyis']=$_REQUEST['outkeyis'];
+		$date['outkey']=$_REQUEST['outkey'];
+		$date['outkeyid']=$_REQUEST['outkeyid'];
+		$date['outkeyf']=$_REQUEST['outkeyf'];
+		$date['outkeywhere']=$_REQUEST['outkeywhere'];
+		$list->save($date);
+
+	}
 
 	public function updateform(){
 		$list=D('sys_fields');

@@ -1,0 +1,61 @@
+<tagLib name="cx,html,myhtml,mkrtags" />
+<include file="../Public/header" />
+<!-- 主体内容  -->
+<SCRIPT LANGUAGE="JavaScript">
+ <!--
+
+
+	function upbtnthis(){
+		ThinkAjax.sendForm('form_update','__APP__/Sys_tables/updateform/',complete,'result');
+	}
+
+	function complete(data,status){
+		if (status==1)
+		{
+		location.href=REQUEST_URI;
+		//parent.location.reload();
+		}
+	}
+
+ //-->
+ </SCRIPT>
+<fieldset >
+	<legend>设定本字段的外键信息</legend>
+<form  id="form_update" method="POST" name='form_update'>
+<!-- 列表显示区域  -->
+<input type="button"  onclick="upoutkey();" class="button1" value="更新本页数据">
+<table>
+<tr>
+<th>
+是否启用外键
+</th>
+<td>
+<mkrtags:radio id="outkeyis" name="outkeyis"  outtable="array" value="{$list[0]['outkeyis']}" outfield="是,否" outkey="1,0" />
+</td>
+<th>
+外键表
+</th>
+<td>
+<mkrtags:input id="outkey" name="outkey"  />
+
+<input type="button" class="button1" value="获取表相关信息">
+</td>
+</tr>
+<tr>
+<td>
+</td>
+<td>
+
+</td>
+</tr>
+</table>
+
+
+</form>
+</fieldset>
+<fieldset>
+<legend>说明</legend>
+如果本表的活动状态为否的话,则本表不生成相应的代码!<br>
+
+</fieldset>
+<include file="../Public/footer" />
