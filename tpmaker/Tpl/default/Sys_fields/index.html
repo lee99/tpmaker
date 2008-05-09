@@ -1,5 +1,16 @@
 <tagLib name="cx,html,myhtml" />
 <include file="../Public/header" />
+<SCRIPT LANGUAGE="JavaScript">
+ <!--
+
+
+function outkeyseting(id){
+ //location.href  = URL+"/outkeyseting/id/"+id;
+ window.open(URL+"/outkeyseting/id/"+id, 'mini');
+}
+
+ //-->
+ </SCRIPT>
 <!-- 主体内容  -->
 
 <fieldset >
@@ -64,7 +75,7 @@ tp1 = new WebFXTabPane( document.getElementById( "tabPane1" ) );
   <div class="tab-page" id="tabPage3" >
 		<h2 class="tab">基本操作和默认值设定</h2>
 		<script type="text/javascript">tp1.addTabPage( document.getElementById( "tabPage3" ) );</script>
-		<myhtml:editlist id="checkList2" name="list"  checkbox="true"  datasource="list_val" style="list"
+		<myhtml:editlist id="checkList2" name="list"   datasource="list_val" style="list"
 		show="
 			caption|text:标题,
 			
@@ -81,7 +92,7 @@ tp1 = new WebFXTabPane( document.getElementById( "tabPane1" ) );
   <div class="tab-page" id="tabPage1">
 		<h2 class="tab">LIST列表项设定</h2>
 		<script type="text/javascript">tp1.addTabPage( document.getElementById( "tabPage1" ) );</script>
-		<myhtml:editlist id="checkList2" name="list"  checkbox="true"  datasource="list_genneral" style="list"
+		<myhtml:editlist id="checkList2" name="list"    datasource="list_genneral" style="list"
 		show="
 			caption|text:标题,
 			
@@ -96,7 +107,7 @@ tp1 = new WebFXTabPane( document.getElementById( "tabPane1" ) );
   <div class="tab-page" id="tabPage2" >
 		<h2 class="tab">系统验证设定</h2>
 		<script type="text/javascript">tp1.addTabPage( document.getElementById( "tabPage2" ) );</script>
-		<myhtml:editlist id="checkList2" name="list"  checkbox="true"  datasource="list_val" style="list"
+		<myhtml:editlist id="checkList2" name="list"  datasource="list_val" style="list"
 		show="
 			caption|text:标题,
 			
@@ -111,7 +122,7 @@ tp1 = new WebFXTabPane( document.getElementById( "tabPane1" ) );
 <div class="tab-page" id="tabPage4">
 		<h2 class="tab">搜索设定</h2>
 		<script type="text/javascript">tp1.addTabPage( document.getElementById( "tabPage4" ) );</script>
-		<myhtml:editlist id="checkList2" name="list"  checkbox="true"  datasource="list_search" style="list"
+		<myhtml:editlist id="checkList2" name="list"   datasource="list_search" style="list"
 		show="
 			caption|text:标题,
 			
@@ -124,16 +135,18 @@ tp1 = new WebFXTabPane( document.getElementById( "tabPane1" ) );
 <div class="tab-page" id="tabPage5">
 		<h2 class="tab">当前外键属性</h2>
 		<script type="text/javascript">tp1.addTabPage( document.getElementById( "tabPage5" ) );</script>
-		<myhtml:editlist id="checkList2" name="list"  checkbox="true"  datasource="list_outkey" style="list"
+		<myhtml:editlist id="checkList2" name="list"   datasource="list_outkey" style="list"
 		show="
 			caption|text:标题,
 			
 			outkeyis|select|makeselect('outkeyis[]'#'sub_yesno'#$list['outkeyis']):是否,
-			outkey|20:外键表,
+			outkey|8:外键表,
 			outkeyid|6:外键表ID,
 			outkeyf|40:外键表栏目,
-			outkeywhere|40:外键表过滤条件
+			outkeywhere|20:外键表过滤条件
 		"
+		action="false"
+		actionlist="outkeyseting:快速设定"
 		/>
 </div>
 
