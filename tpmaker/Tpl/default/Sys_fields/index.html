@@ -14,12 +14,12 @@ function outkeyseting(id){
 <!-- 主体内容  -->
 
 <fieldset >
-	<legend>现在系统所有的数据表</legend>
+	<legend>当前数据表的数据结构</legend>
 
 <!--  功能操作区域  -->
 <table width="100%"   cellpadding=0 cellspacing=0 >
 	<tr>
-		<td width="60%">
+		<td width="70%">
 
 	<input type="button" onclick="window.open('__URL__/table/id/{$_GET['pid']}', 'mini');" class="button1" value="查看表信息">
 	<input type="button" onclick="location.href='__URL__/index/pid/{$_GET['pid']}'" class="button1" value="刷新">
@@ -29,8 +29,22 @@ function outkeyseting(id){
 	<input type="button" class="button1" onclick="upbtn();" value="更新数据">
 	<input type="button" onclick="window.open('__URL__/sort/pid/{$_GET['pid']}', 'mini');" class="button1" value="排序数据">
 		</td>
-		<FORM METHOD="GET" ACTION="{$searchurl}">
-		<td align="right">
+		<td align="left">
+		<DIV  id="myMenuID"></DIV>
+      <script language="JavaScript" type="text/javascript">
+		var myMenu =
+		[
+			['▲','高级操作列表',null,null,'高级操作列表',
+				['+', '套用默认选项于本数据表', '', null,'套用默认选项于本数据表'],
+				['+', '拷贝本表生成新数据表', '', null, '拷贝本表生成新数据表'],
+				['+', '基于本数据表生成视图', '', null, '基于本数据表生成视图'],
+				['+', '检查本数据表合理性', '', null, '检查本数据表合理性'],
+			],
+		];
+		cmDraw ('myMenuID', myMenu, 'hbr', cmThemeOffice, 'ThemeOffice');
+		</script> 
+		</td>
+		<td align="right" >
 
 
 			<table width="100%" cellpadding=0 cellspacing=0>
@@ -40,7 +54,6 @@ function outkeyseting(id){
 			</table>
 
 		</td>
-		</FORM>
 	</tr>
 </table>
 
