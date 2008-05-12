@@ -132,6 +132,27 @@ class sys_fieldsAction extends AdminAction{
     $this->display();
 	}
 
+
+	function ajaxauto(){
+		$dao=D('sys_fields');
+		$tagname=$_POST['tagname'];
+		$r=$dao->findAll("name = '$tagname'");
+		$this->assign('list',$r);
+		$this->display();
+				
+	}
+	
+	function showresult(){
+		
+		$dao=D('sys_fields');
+		$tagname=$_POST['tagname'];
+		$r=$dao->findAll("name = '$tagname'");
+		$this->assign('list',$r);
+		$this->display();	
+		
+		
+	}
+
 	public function add(){
     $this->display();
 	}
