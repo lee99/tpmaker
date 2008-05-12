@@ -4,7 +4,7 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
 <title>{$Think.config.WEB_TITLE}</title>
-<link rel="stylesheet" type="text/css" href="../public/css/dtree.css" />
+<link rel="stylesheet" type="text/css" href="../public/css/tpmaker.css" />
 
 <script type="text/javascript">
 var JS_PATH ="../public/js/";
@@ -14,9 +14,9 @@ var APP	 =	 '__APP__';
 var PUBLIC = '__PUBLIC__';
 var REQUEST_URI = '{$_SERVER.REQUEST_URI}';
 </script>
-<html:import type="js" file="Js.Base" /> 
-<html:import type="js" file="Js.prototype" /> 
-<html:import type="js" file="Js.Ajax.ThinkAjax" /> 
+<html:import type="js" file="Js.Base" />
+<html:import type="js" file="Js.prototype" />
+<html:import type="js" file="Js.Ajax.ThinkAjax" />
 <html:import type="js" file="Js.Form.CheckForm" />
 	<script type="text/javascript" src="../public/js/Common.js"></script>
 	<script type="text/javascript" src="../public/js/dtree.js"></script>
@@ -78,10 +78,10 @@ var cmThemeOfficeMainVSplit = [_cmNoAction, '&nbsp;'];
 <SCRIPT LANGUAGE="JavaScript">
  <!--
  	ThinkAjax.updateTip = '<IMG SRC="../Public/images/loading2.gif" WIDTH="16" HEIGHT="16" BORDER="0" ALT="loading..." align="absmiddle"> 数据处理中...';
- 	
+
 	function upbtn(){
 		ThinkAjax.sendForm('form_update','__URL__/updateform/',complete,'result');
-	}	
+	}
 	function addbtn(){
 		ThinkAjax.sendForm('form_add','__URL__/addform/',complete,'result');
 	}
