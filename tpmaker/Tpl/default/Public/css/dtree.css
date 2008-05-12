@@ -386,3 +386,62 @@ TR.ThemeOfficeMainItem TD.ThemeOfficeMainFolderRight {
 .ThemeOfficeMenuItemActive .seq1 {
 	DISPLAY: none
 }
+
+/*
+关于autocomplete的样式定义
+*/
+
+#description {
+	background:#F8FCFE;
+	border: 1px solid #EAEAEA;
+	padding: 10px;
+	margin-top: 10px;
+	width:500px;
+	margin:0 auto;
+	display:block;
+}
+
+#description ul {
+	margin: 0;
+	padding: 0;
+	list-style:none!important;
+	list-style-image: none!important;
+}
+
+#description ul li {
+	margin-bottom: 10px;
+}
+
+
+
+
+
+
+div.autocomplete {
+      position:absolute;
+      width:247px;
+      background-color:white;
+      border:1px solid #888;
+      margin:0px;
+      padding:0px;
+}
+	
+div.autocomplete ul {
+	list-style:none!important;
+	list-style-image:none!important;
+	margin:0px;
+	padding:0px;
+}
+
+div.autocomplete ul li.selected {
+	background-color: #f4faff;
+}
+
+div.autocomplete ul li {
+	font-size: small;
+	list-style-type:none;
+	display:block;
+	margin:0;
+	padding:2px;
+	cursor:pointer;
+}
