@@ -9,7 +9,7 @@ return array(
 	'DB_PORT'=>'3306',
 	'DB_PREFIX'=>'tp_',
 
-	'WEB_TITLE'=>'PHP_MAKER',
+	'WEB_TITLE'=>'THINK-MAKER',
 	'DEBUG_MODE'=>false,
 	'WEB_LOG_RECORD'=>false,
 	'WEB_LOG_ERROR'=>false,
