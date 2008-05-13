@@ -1,7 +1,31 @@
 <tagLib name='cx,html' />
-<ul>
-<volist name='list' id='vo' empty='no data'>
-<li>{$vo.caption}</li>
-</volist>
-</ul>
-
+<table >
+<tr>
+	<th width="60px">
+		外键表
+	</th>
+	<td>
+		{$tablecaption}:{$tabletitle}
+	</td>
+	<th width="60px">
+		外键ID
+	</th>
+	<td>
+	<select name="outkeyid" >
+		<volist name='list' id='vo' empty='no data'>
+		<option value="{$vo.name}">{$vo.name}</option>
+		</volist>
+	</select>
+	</td>
+</tr>
+<tr>
+	<th>
+		外键栏目
+	</th>
+	<td colspan="3">
+			<volist name='list' id='vo' empty='no data'>
+			<label><input type="checkbox" name="outkeyf" value="{$vo.name}">{$vo.caption}:{$vo.name}</label>
+			</volist>
+	</td>
+</tr>
+</table>

@@ -134,20 +134,27 @@ class sys_fieldsAction extends AdminAction{
 
 
 	function ajaxauto(){
-		$dao=D('sys_fields');
-		$tagname=$_POST['tagname'];
-		$r=$dao->findAll("name = '$tagname'");
+		$dao=D('sys_tables');
+		$tagname=$_POST['out'];
+		$r=$dao->findAll("title like '%$tagname%'","*",'seqNo','0,15');
 		$this->assign('list',$r);
 		$this->display();
 				
 	}
 	
 	function showresult(){
+		$tagname=$_POST['tag'];
+		$f=D('sys_fields');
+		$t=D('sys_tables');
+		$model=$t->getbyid($tagname);
+		$modid=$model['datemodelid'];
+		//dump($modid);
+		$list=$f->findAll('pid='.$tagname.' or pid='.$modid,'*','seqNo');
 		
-		$dao=D('sys_fields');
-		$tagname=$_POST['tagname'];
-		$r=$dao->findAll("name = '$tagname'");
-		$this->assign('list',$r);
+		//dump($list);
+		$this->assign('tablecaption',$model['caption']);
+		$this->assign('tabletitle',$model['title']);
+		$this->assign('list',$list);
 		$this->display();	
 		
 		
