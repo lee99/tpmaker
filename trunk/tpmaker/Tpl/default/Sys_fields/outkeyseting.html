@@ -22,11 +22,11 @@
  </SCRIPT>
  <script language="javascript">
 	window.onload=function(){
-		new Ajax.Autocompleter('tagname','autocomplete','__URL__/ajaxauto',{});
+		new Ajax.Autocompleter('out','autocomplete','__URL__/ajaxauto',{});
 	}
 	function showresult(){
 		
-		new Ajax.Updater('description','__URL__/showresult',{method:'post',	postBody:'tagname='+$F('tagname')});
+		new Ajax.Updater('description','__URL__/showresult',{method:'post',	postBody:'tag='+$F('outkeyid')});
 		new Effect.Appear('description');
 		}
 
@@ -45,38 +45,22 @@
 <mkrtags:radio id="outkeyis" name="outkeyis"  outtable="array" value="{$list[0]['outkeyis']}" outfield="是,否" outkey="1,0" />
 </td>
 <th>
-外键表
+查找表
 </th>
 <td>
-<mkrtags:input id="outkey" name="outkey"  />
-
-<input type="button" class="button1" value="获取表相关信息">
-	
-
+<input name="out" type="text" id="out" size="40" value="{$list[0]['outkey']}" /> <input type="hidden" id="outkeyid" ><input type="hidden" id="outkey">
+<input type="button" name="do" value="获取表相关信息" class="button1" onclick="showresult()" />
+<div id='autocomplete' class='autocomplete'></div>
 </td>
 </tr>
-			<tr>
-				<td> ID: </td>
-				<td> <input name="consumerID" id="consumerID" size="4"/> </td>
-
-				<td> Name: </td>						
-				<td> <input type="text" name="my_ac" id="my_ac" size="18"/> </td>
-			</tr>
 </table>
-
-
+<div id='description' style="display:none" ></div>
 </form>
 </fieldset>
 <fieldset>
 <legend>说明</legend>
-<div id="main" class="search_form" ><h1>thinkphp 自动完成 ajax demo</h1>
-<form id="form1" name="form1" method="post" action="">
- 请输入要查找的内容(如html): <input name="tagname" type="text" id="tagname" /> 
-  <input type="button" name="do" value="查询" class="button" onclick="showresult()" />
-  <div id='autocomplete' class='autocomplete'></div>
-</form>
-</div>
-<div id='description' style="display:none"></div>
+
+
 如果本表的活动状态为否的话,则本表不生成相应的代码!<br>
 
 </fieldset>
