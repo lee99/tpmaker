@@ -17,13 +17,8 @@ class sys_fieldsAction extends AdminAction{
 		if(!empty($_REQUEST['order'])) { $order = $_REQUEST['order']; }else{ $order='seqNo'; } //排序表单
 		if(empty($_REQUEST['sort']) ) { $sortd = 'asc'; }else{ $sortd=$_REQUEST['sort']; } //排序方向
 		$orderBy=$order.' '.$sortd;//排序
-		//$this->assign('url',$url);
-		$searchkey=$_REQUEST['searchkey'];
-		$searchurl=$_SERVER['REQUEST_URI'];
-		$this->assign('searchkey',$searchkey);
-		$this->assign('searchurl',$searchurl);
+
 		$p= new Page($count,$listRows);
-		//$list->Cache(true);
 		$list=$list->findAll('pid='.$_REQUEST[pid],'*',$orderBy,$p->firstRow.','.$p->listRows);
 		$list_val=$list;//验证的设定
 		$list_genneral=$list;//一般属性设定
@@ -60,7 +55,7 @@ class sys_fieldsAction extends AdminAction{
 	}
 
 	public function Table(){
-		
+
 		$list=D('sys_tables');
 		$list=$list->findAll('id='.$_REQUEST[id],'*');
 		$list2=$list;
@@ -69,19 +64,19 @@ class sys_fieldsAction extends AdminAction{
 		$this->display();
 
 	}
-	
+
 	public function outkeyseting(){
-		
+
 		$list=D('sys_fields');
 		$list=$list->findAll('id='.$_REQUEST[id],'*');
 		$this->assign("list",$list);
 		//dump($list);
 		$this->display();
 
-	}	
-	
+	}
+
 	public function outkeysave(){
-		
+
 		$list=D('sys_fields');
 		$date['id']=$_REQUEST['id'];
 		$date['outkeyis']=$_REQUEST['outkeyis'];
@@ -139,9 +134,9 @@ class sys_fieldsAction extends AdminAction{
 		$r=$dao->findAll("title like '%$tagname%'","*",'seqNo','0,15');
 		$this->assign('list',$r);
 		$this->display();
-				
+
 	}
-	
+
 	function showresult(){
 		$tagname=$_POST['tag'];
 		$f=D('sys_fields');
@@ -150,14 +145,14 @@ class sys_fieldsAction extends AdminAction{
 		$modid=$model['datemodelid'];
 		//dump($modid);
 		$list=$f->findAll('pid='.$tagname.' or pid='.$modid,'*','seqNo');
-		
+
 		//dump($list);
 		$this->assign('tablecaption',$model['caption']);
 		$this->assign('tabletitle',$model['title']);
 		$this->assign('list',$list);
-		$this->display();	
-		
-		
+		$this->display();
+
+
 	}
 
 	public function add(){

@@ -9,23 +9,19 @@
 class sys_tablesAction extends AdminAction{
 
 	public function Index(){
-		
+
 		$pro=D('sys_projects');
 		$pro=$pro->getByid($_REQUEST[pid]);
 		$projecturl=$pro['proname'];
 		$this->assign('projecturl',$projecturl);
-		
+
 		$list=D('sys_tables');
 		$count= $list->count('pid='.$_REQUEST[pid]);
 		import("ORG.Util.Page");
 		if(!empty($_REQUEST['order'])) { $order = $_REQUEST['order']; }else{ $order='seqNo'; } //排序表单
 		if(empty($_REQUEST['sort']) ) { $sortd = 'asc'; }else{ $sortd=$_REQUEST['sort']; } //排序方向
 		$orderBy=$order.' '.$sortd;//排序
-		//$this->assign('url',$url);
-		$searchkey=$_REQUEST['searchkey'];
-		$searchurl=$_SERVER['REQUEST_URI'];
-		$this->assign('searchkey',$searchkey);
-		$this->assign('searchurl',$searchurl);
+
 		$p= new Page($count,$listRows);
 
 		//$list->Cache(true);
@@ -41,12 +37,12 @@ class sys_tablesAction extends AdminAction{
 
 
 	public function Adv(){
-		
+
 	$this->Index();
 
 	}
 
-	
+
 
 	public function delete(){
 		$list=D('sys_tables');

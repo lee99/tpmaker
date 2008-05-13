@@ -16,13 +16,8 @@ class sys_projectsAction extends AdminAction{
 		if(!empty($_REQUEST['order'])) { $order = $_REQUEST['order']; }else{ $order='seqNo'; } //排序表单
 		if(empty($_REQUEST['sort']) ) { $sortd = 'asc'; }else{ $sortd=$_REQUEST['sort']; } //排序方向
 		$orderBy=$order.' '.$sortd;//排序
-		//$this->assign('url',$url);
-		$searchkey=$_REQUEST['searchkey'];
-		$searchurl=$_SERVER['REQUEST_URI'];
-		$this->assign('searchkey',$searchkey);
-		$this->assign('searchurl',$searchurl);
+
 		$p= new Page($count,$listRows);
-		//$list->Cache(true);
 		$list=$list->findAll('','*',$orderBy,$p->firstRow.','.$p->listRows);
 
 		//dump($list);
@@ -52,7 +47,7 @@ class sys_projectsAction extends AdminAction{
 		}
 
 		sleep(3);
-		
+
 		redirect(__URL__."/index");
 	}
 
@@ -106,8 +101,8 @@ class sys_projectsAction extends AdminAction{
 		dump($tables);
 		$db->switchConnect(0);
 	}
-	
-	
+
+
 	public function buidepro(){//导入数据库
 		require COMMON_PATH."tp_common.php";//引入自定义的类
 		require COMMON_PATH."tpmaker.class.php";//引入自定义的类

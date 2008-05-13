@@ -33,7 +33,7 @@ location.href=REQUEST_URI;
 </tr>
 <tr >
     <td>
-        <select name=SrcSelect   style="height:140px;" multiple ondblclick="moveLeftOrRight(document.frm.SrcSelect,document.frm.ObjSelect)">
+        <select name=SrcSelect  disabled  style="height:140px;" multiple ondblclick="moveLeftOrRight(document.frm.SrcSelect,document.frm.ObjSelect)">
         
 <voList name="sortList" id="module" >
 <option value="{$module.seqNo}">{$module.caption}.[{$module.seqNo}]</option>
@@ -43,10 +43,10 @@ location.href=REQUEST_URI;
 
     </td>
     <td width="30px">   
-        <input align="left" disabled type=button value=">>" onclick="moveLeftOrRightAll(document.frm.SrcSelect,document.frm.ObjSelect)" ><br><br>
-        <input align="left" disabled type=button value=">" onclick="moveLeftOrRight(document.frm.SrcSelect,document.frm.ObjSelect)" ><br><br>
-        <input align="left" disabled type=button value="<" onclick="moveLeftOrRight(document.frm.ObjSelect,document.frm.SrcSelect)" ><br><br>
-        <input align="left" disabled type=button value="<<" onclick="moveLeftOrRightAll(document.frm.ObjSelect,document.frm.SrcSelect)" >
+        <input align="left" style="width:30px" disabled type=button value=">>" onclick="moveLeftOrRightAll(document.frm.SrcSelect,document.frm.ObjSelect)" ><br><br>
+        <input align="left" style="width:30px" disabled type=button value=" > " onclick="moveLeftOrRight(document.frm.SrcSelect,document.frm.ObjSelect)" ><br><br>
+        <input align="left" style="width:30px" disabled type=button value=" < " onclick="moveLeftOrRight(document.frm.ObjSelect,document.frm.SrcSelect)" ><br><br>
+        <input align="left" style="width:30px" disabled type=button value="<<" onclick="moveLeftOrRightAll(document.frm.ObjSelect,document.frm.SrcSelect)" >
     </td>
     <td>
         <select name=ObjSelect  class="ecv_autoSizeDropDown" style="height:140px;" multiple ondblclick="moveLeftOrRight(document.frm.ObjSelect,document.frm.SrcSelect)">

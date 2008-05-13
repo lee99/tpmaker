@@ -6,7 +6,21 @@ function viewtable(id){
  location.href  ="__APP__/Sys_tables/index/pid/"+id;
 }
 function buidepro(id){
- location.href  ="__URL__/buidepro/id/"+id;
+		var keyValue;
+	if (id)
+	{
+		keyValue = id;
+	}else {
+		keyValue = getSelectCheckboxValues();
+	}
+	if (!keyValue)
+	{
+		alert('请选择项目！');
+		return false;
+	}
+
+ location.href  ="__URL__/buidepro/id/"+keyValue;
+ 
 }
 </script>
 <fieldset >
@@ -17,23 +31,14 @@ function buidepro(id){
 <table width="100%"   cellpadding=0 cellspacing=0 >
 	<tr>
 		<td width="60%">
-	<input type="button" name="delete" onclick="location.href='__URL__/index/'" class="button1" value="清空条件">
+	<input type="button" name="delete" onclick="location.href='__URL__/index/'" class="button1" value="刷新">
 	<input type="button"  onclick="upbtn();" class="button1" value="更新本页数据">
+	<input type="button" onclick="del()" class="button1" value="删除数据">
+	<input type="button"  onclick="viewtable();" class="button1" value="查看结构">
 		</td>
-		<FORM METHOD="GET" ACTION="{$searchurl}">
 		<td align="right">
-			<table cellpadding=0 cellspacing=0>
-				<tr>
-					<td >
-						<INPUT id="searchkey" TYPE="text"  NAME="searchkey"  value="{$searchkey}">
-					</td>
-					<td>
-					<input type="submit"   class="button1" value="search">
-					</td>
-				</tr>
-			</table>
+
 		</td>
-		</FORM>
 	</tr>
 </table>
 
@@ -56,7 +61,7 @@ function buidepro(id){
 			seqNo|1:排序
 		"
 		action="false"
-		actionlist="viewtable:查看结构,del:删除,copy:COPY项目,buidepro:生成项目,importdb:导入数据,exportdb:导出数据,"
+		actionlist="copy:COPY项目,buidepro:生成项目,importdb:导入数据,exportdb:导出数据,"
 		createform="true"
 		quickadd="true"
 		/>

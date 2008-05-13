@@ -16,11 +16,7 @@ class Con_treeAction extends AdminAction{
 		if(!empty($_REQUEST['order'])) { $order = $_REQUEST['order']; }else{ $order='id'; } //排序表单
 		if(empty($_REQUEST['sort']) ) { $sortd = 'asc'; }else{ $sortd=$_REQUEST['sort']; } //排序方向
 		$orderBy=$order.' '.$sortd;//排序
-		//$this->assign('url',$url);
-		$searchkey=$_REQUEST['searchkey'];
-		$searchurl=$_SERVER['REQUEST_URI'];
-		$this->assign('searchkey',$searchkey);
-		$this->assign('searchurl',$searchurl);
+
 		$p= new Page($count,$listRows);
 		//$con_tree->Cache(true);
 		$list=$con_tree->findAll('id <> 0','*',$orderBy,$p->firstRow.','.$p->listRows);
