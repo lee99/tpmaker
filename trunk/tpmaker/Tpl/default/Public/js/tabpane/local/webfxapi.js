@@ -5,7 +5,7 @@
  */
 
 
-document.write( "<link type='text/css' rel='stylesheet' href='local/webfxapi.css' />" );
+//document.write( "<link type='text/css' rel='stylesheet' href='local/webfxapi.css' />" );
 
 function toggleMethodArguments( e, a ) {
 	if ( a && a.nextSibling &&
