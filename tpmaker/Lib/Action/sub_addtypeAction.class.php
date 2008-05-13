@@ -16,13 +16,8 @@ class sub_addtypeAction extends AdminAction{
 		if(!empty($_REQUEST['order'])) { $order = $_REQUEST['order']; }else{ $order='seqNo'; } //排序表单
 		if(empty($_REQUEST['sort']) ) { $sortd = 'asc'; }else{ $sortd=$_REQUEST['sort']; } //排序方向
 		$orderBy=$order.' '.$sortd;//排序
-		//$this->assign('url',$url);
-		$searchkey=$_REQUEST['searchkey'];
-		$searchurl=$_SERVER['REQUEST_URI'];
-		$this->assign('searchkey',$searchkey);
-		$this->assign('searchurl',$searchurl);
+
 		$p= new Page($count,$listRows);
-		//$list->Cache(true);
 		$list=$list->findAll('','*',$orderBy,$p->firstRow.','.$p->listRows);
 
 		//dump($list);
@@ -32,8 +27,8 @@ class sub_addtypeAction extends AdminAction{
 		$this->display();
 
 	}
-	
-	
+
+
 	public function adv(){
 
 		$list=D('sub_addtype');
@@ -42,13 +37,8 @@ class sub_addtypeAction extends AdminAction{
 		if(!empty($_REQUEST['order'])) { $order = $_REQUEST['order']; }else{ $order='seqNo'; } //排序表单
 		if(empty($_REQUEST['sort']) ) { $sortd = 'asc'; }else{ $sortd=$_REQUEST['sort']; } //排序方向
 		$orderBy=$order.' '.$sortd;//排序
-		//$this->assign('url',$url);
-		$searchkey=$_REQUEST['searchkey'];
-		$searchurl=$_SERVER['REQUEST_URI'];
-		$this->assign('searchkey',$searchkey);
-		$this->assign('searchurl',$searchurl);
+
 		$p= new Page($count,$listRows);
-		//$list->Cache(true);
 		$list=$list->findAll('','*',$orderBy,$p->firstRow.','.$p->listRows);
 
 		//dump($list);
