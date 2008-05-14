@@ -207,6 +207,10 @@ Class TagLibMyhtml extends TagLib
         foreach($fields as $field) {//显示指定的字段
             $property = explode('|',$field[0]);
             $showname = explode('|',$field[1]);
+            
+            $property = explode('|',$field[0]);
+			//生成表单
+
             if(isset($showname[1])) {
                 $parseStr .= '
 			<Th width="'.$showname[1].'">';
@@ -219,11 +223,12 @@ Class TagLibMyhtml extends TagLib
 
             $trimtalbename=trim($property[0]);
            // dump($property);
-
-            $parseStr .= '<A HREF="javascript:sortBy(\''.$trimtalbename.'\',\'{:getsorttype(\''.$trimtalbename.'\')}\',\''.ACTION_NAME.'\')" title="按照'.$showname[2].'排序">'.$showname[0].'{:getsorttype(\''.$trimtalbename.'\',1)}</A>
-
-			</Th>
-			';
+			if(trim($property[1])=="hidden"){
+			$parseStr .='';
+			}else{
+            $parseStr .= '<A HREF="javascript:sortBy(\''.$trimtalbename.'\',\'{:getsorttype(\''.$trimtalbename.'\')}\',\''.ACTION_NAME.'\')" title="按照'.$showname[2].'排序">'.$showname[0].'{:getsorttype(\''.$trimtalbename.'\',1)}</A>';				
+			}
+			$parseStr .= '</Th>';
 
         }
         if(!empty($action)) {//如果指定显示操作功能列
@@ -253,7 +258,9 @@ Class TagLibMyhtml extends TagLib
 			$thispro=str_replace('#',',',trim($property[2]));
 			$parseStr .='{:'.$thispro.'}';
 			}elseif(trim($property[1])=="text"){
-			$parseStr .='{$'.trim($name).'.'.trim($property[0]).'}';
+			$parseStr .='{$'.trim($name).'.'.trim($property[0]).'}';			
+			}elseif(trim($property[1])=="hidden"){
+			$parseStr .='<input name="'.trim($property[0]).'[]" type="hidden" value="{$'.trim($name).'.'.trim($property[0]).'}">';
 			}else{
 			$parseStr .='<input name="'.trim($property[0]).'[]" value="{$'.trim($name).'.'.trim($property[0]).'}" size="'.$property[1].'">';
 			}
@@ -296,7 +303,7 @@ Class TagLibMyhtml extends TagLib
         }
 		$parseStr	.='
 		<!--form_update完成 -->
-		<br>';
+		';
         if(!empty($quickadd)) {///是否显示快速增加
         	if(!empty($createform)) {///是否显示form
 		        $parseStr	.= '
@@ -320,6 +327,8 @@ Class TagLibMyhtml extends TagLib
 			$thispro=str_replace('#',',',trim($property[2]));
 			$thispro=str_replace('[]','',$thispro);
 			$parseStr .='{:'.$thispro.'}';
+			}elseif(trim($property[1])=="hidden"){
+			$parseStr .='';
 			}else{
 			$parseStr .='<input name="'.trim($property[0]).'" value="" size="'.$property[1].'">';
 			}
