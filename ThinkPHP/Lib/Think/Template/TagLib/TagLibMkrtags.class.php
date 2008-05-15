@@ -44,7 +44,7 @@ Class TagLibMkrtags extends TagLib
     	$tag        = $this->parseXmlAttr($attr,'select');
         $name       = $tag['name']; 									//表单名称[name]
         $id       	= !empty($tag['id'])?$tag['id']:$tag['name']; 		//表单ID[id]//没值则用NAME为值
-        $value      = $tag['value'];									//表单[value]//没值则
+        $value      = substr($tag['value'],1,-1);						//表单[value]//没值则
         $class      = empty($tag['class'])?$tag['class']:''; 			//表单class//没值则用NAME为值
         $style      = empty($tag['style'])?$tag['style']:''; 			//表单[style]//没值则
         $disabled   = $tag['disabled']==1?'disabled':'';                //表单[disabled]//没值则
@@ -83,7 +83,15 @@ Class TagLibMkrtags extends TagLib
         if(!empty($options)) {
             $parseStr   .= '<?php  foreach($options as $key=>$val) { ?>';
             if(!empty($value)) {
-                $parseStr   .='<?php if("'.$value.'"== $key) { ?>';
+            	if(substr($value,0,1)=="$"){//如果是变量
+            		$tempvalue=explode('.',$value);
+            		if(count($tempvalue)>1){//如果是数组
+            			$value=$tempvalue[0].'["'.$tempvalue[1].'"]';
+            		}
+            	}else{
+            		$value='"'.$value.'"';
+            	}
+                $parseStr   .='<?php if('.$value.'== $key) { ?>';
                 $parseStr   .= '<option selected="selected" value="<?php echo $key ?>"><?php echo $val ?></option>';
                 $parseStr   .= '<?php }else { ?><option value="<?php echo $key ?>"><?php echo $val ?></option>';
                 $parseStr   .= '<?php } ?>';
@@ -101,7 +109,7 @@ Class TagLibMkrtags extends TagLib
     	$tag        = $this->parseXmlAttr($attr,'outtable');
         $name       = $tag['name']; 									//表单名称[name]
         $id       	= !empty($tag['id'])?$tag['id']:$tag['name']; 		//表单ID[id]//没值则用NAME为值
-        $value      = substr($tag['value'],2,-1);									//表单[value]//没值则
+        $value      = substr($tag['value'],1,-1);									//表单[value]//没值则
         $class      = empty($tag['class'])?$tag['class']:''; 			//表单class//没值则用NAME为值
         $style      = empty($tag['style'])?$tag['style']:''; 			//表单[style]//没值则
         $disabled   = $tag['disabled']==1?'disabled':'';                //表单[disabled]//没值则
@@ -138,7 +146,15 @@ Class TagLibMkrtags extends TagLib
         if(!empty($options)) {
             $parseStr   .= '<?php  foreach($options as $key=>$val) { ?>';
             if(!empty($value)) {
-                $parseStr   .='<?php if("$'.$value.'"== $key) { ?>';
+            	if(substr($value,0,1)=="$"){//如果是变量
+            		$tempvalue=explode('.',$value);
+            		if(count($tempvalue)>1){//如果是数组
+            			$value=$tempvalue[0].'["'.$tempvalue[1].'"]';
+            		}
+            	}else{
+            		$value='"'.$value.'"';
+            	}
+                $parseStr   .='<?php if('.$value.'== $key) { ?>';
                 $parseStr   .= '<?php echo $val ?>';
                 $parseStr   .= '<?php } ?>';
             }else {
@@ -147,7 +163,9 @@ Class TagLibMkrtags extends TagLib
             $parseStr   .= '<?php } ?>';
         }
         return $parseStr;
-    }
+    }		
+		
+
       
     public function _selectmultiple($attr)
     {
