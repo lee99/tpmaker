@@ -18,7 +18,8 @@
 
 				'DB_PREFIX'=>'web_',
 
-				'PROject_NAME'=>'web',//本项目的名字
+				'PROject_NAME'=>'Nstarts Consultants',//本项目的名字
+				'WEB_TITLE'=>'Nstarts Consultants网上服务应用平台',//本项目的名字
 
 			);
 			?>
