@@ -92,28 +92,32 @@ function copydir($source, $destination)
 
 
 function deldir($sdir){
-if (!is_dir($sdir)){
-   echo "<p align=center>无此目录,或未建立此目录!请检查！";exit;
-}
-$handle=opendir($sdir);
-while($file=readdir($handle)){
-   if (($file!='.')&&($file!='..')){
-    $sdir2=$sdir."/".$file;
-    if (is_dir($sdir2)){
-     deldir($sdir2);
-    }else{
-     unlink($sdir."/".$file);
-    }
-   }
-}
-closedir($handle);
-if (!$file){
-rmdir($sdir);
-return true;
-}else{
-   echo "<p align=center>无法删除目录，请检查权限";
-   return false;
-}
+	$lockdir=array('../','../tpmaker','../Public','../Thinkphp');
+	if(in_array($sdir,$lockdir)){
+		echo "<p >将要删除的目录涉及敏感目录!请检查！</p>";exit;
+	}
+	if (!is_dir($sdir)){
+	   echo "<p >无此目录,或未建立此目录!请检查！</p>";exit;
+	}
+	$handle=opendir($sdir);
+	while($file=readdir($handle)){
+	   if (($file!='.')&&($file!='..')){
+	    $sdir2=$sdir."/".$file;
+		    if (is_dir($sdir2)){
+		     deldir($sdir2);
+		    }else{
+		     unlink($sdir."/".$file);
+		    }
+	   }
+	}
+	closedir($handle);
+		if (!$file){
+			rmdir($sdir);
+			return true;
+		}else{
+		   echo "<p align=center>无法删除目录，请检查权限";
+		   return false;
+		}
 }
 
 ?>
