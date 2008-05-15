@@ -328,9 +328,12 @@ function makeprotpl($id) {
 	$filename=$app_path.'/Tpl/default/'.$name.'/Index.html';//生成的模板文件名
 	$filecontent=file_get_contents('tpmaker_tpl/Html_tpl/index.html');//源模板文件名
 	$fields=$this->getfieldsbytbid($id);
-	$listshow=$this->makerowslist($fields,'islist');
+	$listshowsort=$this->makerowslistsort($fields,'islist');
+	$listshowtd=$this->makerowslisttd($fields,'islist');
+	$filecontent=str_replace("[listshowsort]",$listshowsort,$filecontent);
+	$filecontent=str_replace("[listshowtd]",$listshowtd,$filecontent);
 	$filecontent=str_replace("[tablecaption]",$caption,$filecontent);
-	$filecontent=str_replace("[listshow]",$listshow,$filecontent);
+	
 	writefile($filename,$filecontent);	
 	
 	//生成Add.HMTL
@@ -426,7 +429,7 @@ function maketags($typeid,$actiontype,$name,$value,$outtable,$outkey,$outfield,$
         if($tag['usetype']==2){
         	 if(empty($value)){	$htmltages.=' value="'.$name.'"';}//查看形式的标签是不同的
 		}else{
-			 if(empty($value)){	$htmltages.=' value="{$'.$name.'}"';}
+			 if(empty($value)){	$htmltages.=' value="{$list.'.$name.'}"';}
 		}
        
         if(!empty($readonly)){	$htmltages.=' readonly="'.$readonly.'"';}
@@ -458,28 +461,47 @@ function makerows($datas,$field,$varc) {
 				
 			}
 		}
-	$list_fields=substr($list_fields,0,-1);
+	$list_fields=substr($list_fields,0,-1);//去掉最后一个的","
 	}else{
 	$list_fields="*";
 	}
 		return $list_fields;
 }
 
-function makerowslist($datas,$datefield) {
+function makerowslistsort($datas,$datefield) {
 	//$datas传过来的数据
 	//通过传过来的数据生成LIST相应的项
-	if(count($datas)>0){
+	//$datefield为相应的对应的项目
+	$tplcontent=file_get_contents('tpmaker_tpl/Html_tpl/index_sort.html');//源模板文件名
+
 		foreach ($datas as $data){
 			if($data[$datefield]==1){
-			//$list_fields.=uplower($data['name']).':'.$data['caption'].",";
-			$list_fields.=$data['name'].':'.$data['caption'].",";
+			$filecontent=str_replace("[name]",$data['name'],$tplcontent);
+			$filecontent=str_replace("[caption]",$data['caption'],$filecontent);
+			$content.=$filecontent;
 			}
 		}
-	$list_fields=substr($list_fields,0,-1);
-	}else{
-	$list_fields="*";
-	}
-		return $list_fields;
+
+		return $content;
+}
+
+function makerowslisttd($datas,$datefield) {
+	//$datas传过来的数据
+	//通过传过来的数据生成LIST相应的项
+	//$datefield为相应的对应的项目
+	$tplcontent=file_get_contents('tpmaker_tpl/Html_tpl/index_td.html');//源模板文件名
+
+		foreach ($datas as $data){
+			if($data[$datefield]==1){
+			$viewtags=$this->maketags($data['viewtype'],'viewtype',$data['name'],$data['indexvar'],$data['outkey'],$data['outkeyid'],$data['outkeyf'],$data['outkeywhere']);
+			$filecontent=str_replace("[name]",$data['name'],$tplcontent);
+			$filecontent=str_replace("[caption]",$data['caption'],$filecontent);
+			$filecontent=str_replace("[viewtags]",$viewtags,$filecontent);
+			$content.=$filecontent;
+			}
+		}
+
+		return $content;
 }
 
 function makeassignlist($datas) {
@@ -487,7 +509,7 @@ function makeassignlist($datas) {
 	//通过传过来的数据生成LIST相应的项
 	if(count($datas)>0){
 		foreach ($datas as $data){
-			$list_fields.="\t\t".'$this->assign("'.$data['name'].'",$result["'.$data['name'].'"]);'."\n";
+			$list_fields.="\t\t".'$this->assign("'.$data['name'].'",$list["'.$data['name'].'"]);'."\n";
 			//$list_fields.=$data['name'].':'.$data['caption'].",";
 		}
 	}

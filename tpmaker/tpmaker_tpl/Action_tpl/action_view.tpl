@@ -1,10 +1,12 @@
 
 	
 	public function View(){
-		$list=D("/*modelname*/");
-		$result=$list->getById($_GET['id']);
-		//$this->assign('muser',$result->muser)
+		$result=D("/*modelname*/");
+		$list=$result->getById($_GET['id']);
+		$this->assign('list',$list);
+		/*
 /*assignlist*/
+		*/
 		$this->display(); 
 	}
 	
