@@ -22,6 +22,24 @@ function buidepro(id){
  location.href  ="__URL__/buidepro/id/"+keyValue;
  
 }
+
+function buidedb(id){
+		var keyValue;
+	if (id)
+	{
+		keyValue = id;
+	}else {
+		keyValue = getSelectCheckboxValues();
+	}
+	if (!keyValue)
+	{
+		alert('请选择项目！');
+		return false;
+	}
+
+ location.href  ="__URL__/buidedb/id/"+keyValue;
+ 
+}
 </script>
 <fieldset >
 	<legend>项目整体管理</legend>
@@ -61,7 +79,7 @@ function buidepro(id){
 			seqNo|1:排序
 		"
 		action="false"
-		actionlist="copy:COPY项目,buidepro:生成项目,importdb:导入数据,exportdb:导出数据,"
+		actionlist="copy:COPY项目,buidepro:生成项目,importdb:导入数据,exportdb:导出数据,buidedb:创建数据,"
 		createform="true"
 		quickadd="true"
 		/>

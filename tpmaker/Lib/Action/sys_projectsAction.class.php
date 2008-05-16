@@ -102,7 +102,24 @@ class sys_projectsAction extends AdminAction{
 		$db->switchConnect(0);
 	}
 
+	public function buidedb(){//导入数据库
+		require COMMON_PATH."tpmakerdb.class.php";//引入自定义的类
+	   $list=D('sys_projects');
+	   $data=$list->getByid($_REQUEST['id']);
+	   if($data['dbname']!=''){
+		   $t=new tpmakerdb();
+		   $t->projectid=$data['id'];
+		   $t->dropcheck=false;
+		   $t->buideall();
 
+		   	   	
+	   }
+
+	   
+		//dump($data);
+
+	}
+	
 	public function buidepro(){//导入数据库
 		require COMMON_PATH."tp_common.php";//引入自定义的类
 		require COMMON_PATH."tpmaker.class.php";//引入自定义的类
