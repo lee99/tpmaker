@@ -189,7 +189,7 @@ Class TagLibMyhtml extends TagLib
           }
         $parseStr  .= '
 
-		<TABLE id="'.$id.'" class="'.$style.'" >
+		<TABLE id="'.$id.'" class="'.$style.'"  cellpadding="0" cellspacing="1">
 		';
         $parseStr  .= '<TR class="row" >
 		';
