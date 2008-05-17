@@ -10,6 +10,11 @@ class sys_fieldsAction extends AdminAction{
 
 	public function Index(){
 
+		$pro=D('sys_tables');
+		$pro=$pro->getByid($_REQUEST[pid]);
+		$this->assign('tablename',$pro['caption']);//当前操作的数据表
+		
+		
 		$list=D('sys_fields');
 		$count= $list->count('pid='.$_REQUEST[pid]);
 		import("ORG.Util.Page");

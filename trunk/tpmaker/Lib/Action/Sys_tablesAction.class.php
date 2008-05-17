@@ -13,7 +13,8 @@ class sys_tablesAction extends AdminAction{
 		$pro=D('sys_projects');
 		$pro=$pro->getByid($_REQUEST[pid]);
 		$projecturl=$pro['proname'];
-		$this->assign('projecturl',$projecturl);
+		$this->assign('projecturl',$projecturl);//当前操作的项目路径
+		$this->assign('projectname',$pro['caption']);//当前操作的数据库
 
 		$list=D('sys_tables');
 		$count= $list->count('pid='.$_REQUEST[pid]);

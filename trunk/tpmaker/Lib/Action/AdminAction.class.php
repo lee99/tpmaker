@@ -31,6 +31,7 @@ class AdminAction extends Action{
          $sortList  =   $list->findAll('pid='.$_REQUEST['pid'],'*','seqNo asc');
         }
         //dump($sortList);
+        $this->assign("thismodel",$thismodel);
         $this->assign("sortList",$sortList);
         $this->display('Public:sort');
         return ;

@@ -9,7 +9,7 @@
 function saveSort(){
 selectAllOption(document.frm.ObjSelect);
 getS(document.frm.ObjSelect);
-sendForm('frm','__URL__/saveSort/',complete,'result');
+sendForm('frm','__APP__/{$thismodel}/saveSort/',complete,'result');
 }
 function reload(){
 location.href=REQUEST_URI;
