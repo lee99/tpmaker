@@ -80,10 +80,6 @@ function WriteTo(id){
 	return ;
 }
 
-function build(id){
-	window.location = APP+'/Card/batch/type/'+id;
-}
-
 
 function CheckAll(strSection)
 	{
@@ -97,15 +93,29 @@ function CheckAll(strSection)
 function add(){
  location.href  = URL+"/add/";
 }
-function copy(id){
- location.href  = URL+"/copy/id/"+id;
+
+function gourlbyaction(action,id){//通用的URL中转
+	var keyValue;
+	var pass=1;
+	if (!action){
+		alert('没有指定相应动作,请检查！');
+		pass=0;
+	}
+	if (id){
+		keyValue = id;
+	}else {
+		keyValue = getSelectCheckboxValues();
+	}
+	if (!keyValue){
+		alert('请选择项目！');
+		pass=0;
+	}
+	if (pass==1){
+ 	location.href  =URL+"/"+action+"/id/"+keyValue;
+	}
+
 }
-function importdb(id){//导入数据库
- location.href  = URL+"/importdb/id/"+id;
-}
-function exportdb(id){//导出数据库
- location.href  = URL+"/exportdb/id/"+id;
-}
+
 function showHideSearch(){
 	if (document.getElementById('searchM').style.display=='inline')
 	{

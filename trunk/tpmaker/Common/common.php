@@ -109,7 +109,8 @@ function makeoption($table,$id='id',$where='',$option='title',$order,$outadd){
  		 $inoldid;//原来的上级的值
  		 
 		$table=D($daoname);//引入MODEL
-		$tabledata=$table->findall($pidf.'='.$inoldid);//找出相应的数据
+		
+
 		foreach ($tabledata as $creatdb){
 			$creatdb[$pidf]=$inpid;
 			$oldid=$creatdb['id'];
@@ -119,6 +120,8 @@ function makeoption($table,$id='id',$where='',$option='title',$order,$outadd){
 			copytable('sys_fields',$newid,'pid',$oldid);
 		}
 }
+
+
 function delbypid($daoname,$inpid,$pidf='pid'){
 	$table=D($daoname);//引入MODEL
 	$tabledata=$table->findall($pidf.'='.$inpid);//找出相应的数据

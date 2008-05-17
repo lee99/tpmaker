@@ -5,41 +5,8 @@
 function viewtable(id){
  location.href  ="__APP__/Sys_tables/index/pid/"+id;
 }
-function buidepro(id){
-		var keyValue;
-	if (id)
-	{
-		keyValue = id;
-	}else {
-		keyValue = getSelectCheckboxValues();
-	}
-	if (!keyValue)
-	{
-		alert('请选择项目！');
-		return false;
-	}
 
- location.href  ="__URL__/buidepro/id/"+keyValue;
- 
-}
 
-function buidedb(id){
-		var keyValue;
-	if (id)
-	{
-		keyValue = id;
-	}else {
-		keyValue = getSelectCheckboxValues();
-	}
-	if (!keyValue)
-	{
-		alert('请选择项目！');
-		return false;
-	}
-
- location.href  ="__URL__/buidedb/id/"+keyValue;
- 
-}
 </script>
 <fieldset >
 	<legend>项目整体管理</legend>
@@ -60,12 +27,12 @@ function buidedb(id){
 		var myMenu =
 		[
 			['▲','项目列表高级操作',null,null,'选中项目高级操作列表',
-				['+', 'COPY选中项目生成新项目', 'javascript:copy();', null,'COPY选中项目生成新项目'],
-				['+', '生成选中项目程序文件', 'javascript:buidepro();', null, '生成选中项目程序文件'],
+				['+', 'COPY选中项目生成新项目', 'javascript:gourlbyaction("copy");', null,'COPY选中项目生成新项目'],
+				['+', '生成选中项目程序文件', 'javascript:gourlbyaction("buidepro");', null, '生成选中项目程序文件'],
 				['+', '数据库相关操作', null, null, '数据库相关操作',
-					['+', '选中项目导入数据', 'javascript:importdb();', null,'选中项目导入数据'],
-					['+', '选中项目导出数据', 'javascript:exportdb();', null,'选中项目导出数据'],
-					['+', '选中项目创建数据', 'javascript:buidedb();', null,'选中项目创建数据'],
+					['+', '选中项目导入数据', 'javascript:gourlbyaction("importdb");', null,'选中项目导入数据'],
+					['+', '选中项目导出数据', 'javascript:gourlbyaction("exportdb");', null,'选中项目导出数据'],
+					['+', '选中项目创建数据', 'javascript:gourlbyaction("buidedb");', null,'选中项目创建数据'],
 				],
 
 			],
