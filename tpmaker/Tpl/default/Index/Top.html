@@ -4,10 +4,10 @@
 <table border="0" cellpadding="0" cellspacing="0" width="100%" bgcolor="#c0d2ec">
 <tr>
 	<td align="left">
-	<strong>{$Think.config.WEB_TITLE}</strong>
+	   <strong>{$Think.config.WEB_TITLE}</strong>
 	</td>
 	<td align="left">
-	所有项目列表<a href="__APP__/Sys_projects/index" target="mainFrame">[查看所有]</a>:
+	活动的项目列表<a href="__APP__/Sys_projects/index" target="mainFrame">[<img border="0" src="{*APP_PUBLIC_URL}/images/b_plus.png">查看所有]</a>:
 	<volist name="project" id="project_vo">
 	<a href="__URL__/left/id/{$project_vo.id}" target="leftFrame">[<img border="0" src="{*APP_PUBLIC_URL}/images/b_plus.png">{$project_vo.caption}管理]</a>
 	</volist>	
