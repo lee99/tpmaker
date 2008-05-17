@@ -45,6 +45,13 @@ class IndexAction extends AdminAction{
 	}
 
 	public function Main(){
+		//前台说明
+		$this->display();
+	}
+	
+
+	public function Sysinfo(){
+		//后台管理及参数设定说明
 		$this->display();
 	}
 	
