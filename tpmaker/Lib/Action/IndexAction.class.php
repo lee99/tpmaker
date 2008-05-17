@@ -25,7 +25,7 @@ class IndexAction extends AdminAction{
 			$passid=$_REQUEST['id'];
 		}else {
 			$pass=D('Sys_projects');
-			$pass=$pass->first();
+			$pass=$pass->first('isaction=1');
 			$passid=$pass['id'];
 		}
 		
@@ -37,7 +37,7 @@ class IndexAction extends AdminAction{
 
 		//生成table的树
 		$ptables=D('Sys_tables');
-		$tlist=$ptables->findAll('pid='.$passid);
+		$tlist=$ptables->findAll('pid='.$passid,'*','seqNo');
 		$this->assign('table',$tlist);
 		//dump($tlist);
 

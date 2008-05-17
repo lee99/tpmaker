@@ -54,8 +54,24 @@ function buidedb(id){
 	<input type="button" onclick="del()" class="button1" value="删除数据">
 	<input type="button"  onclick="viewtable();" class="button1" value="查看结构">
 		</td>
-		<td align="right">
+		<td align="left">
+		<DIV  id="myMenuID"></DIV>
+      <script language="JavaScript" type="text/javascript">
+		var myMenu =
+		[
+			['▲','项目列表高级操作',null,null,'选中项目高级操作列表',
+				['+', 'COPY选中项目生成新项目', 'javascript:copy();', null,'COPY选中项目生成新项目'],
+				['+', '生成选中项目程序文件', 'javascript:buidepro();', null, '生成选中项目程序文件'],
+				['+', '数据库相关操作', null, null, '数据库相关操作',
+					['+', '选中项目导入数据', 'javascript:importdb();', null,'选中项目导入数据'],
+					['+', '选中项目导出数据', 'javascript:exportdb();', null,'选中项目导出数据'],
+					['+', '选中项目创建数据', 'javascript:buidedb();', null,'选中项目创建数据'],
+				],
 
+			],
+		];
+		cmDraw ('myMenuID', myMenu, 'hbr', cmThemeOffice, 'ThemeOffice');
+		</script> 
 		</td>
 	</tr>
 </table>

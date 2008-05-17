@@ -55,8 +55,6 @@ table
     border: 0px #cccccc solid;
     margin: 0px;
 	padding: 0px;
-	
-
 }
 
 input
@@ -200,11 +198,13 @@ div.page {
 
 table.list {
 	padding:0px;
+	margin:0px;
 	/*width:100%;*/
 	/*float:left;*/
 }
 table.list td{
 	padding:0px;
+	margin:0px;
 	text-align: left;
 	height:20px;
 }
