@@ -75,15 +75,39 @@ class sys_projectsAction extends AdminAction{
 
 
 	public function copy(){
-		$project=D('sys_projects');
-		$projectdate=$project->getByid($_REQUEST['id']);
-			$projectdate['caption'].='[new]';
+		if(!empty($_REQUEST['id'])){
+			$project=D('sys_projects');
+			$projectdate=$project->getByid($_REQUEST['id']);
+			if($projectdate['caption']==''){$this->error('请检查参数是否正确!');exit;}
+			$projectdate['caption'].='_new';//默认的新的项目会加上_new加以区分
 			$project->create($projectdate);
 			$project->add();
-		$projectid=$project->getLastInsID();
-		copytable('sys_tables',$projectid,'pid',$_REQUEST['id']);
-		redirect(__URL__."/index");
-
+			
+			$projectid=$project->getLastInsID();//取得最新的ID
+			copytable('sys_tables',$projectid,'pid',$_REQUEST['id']);
+			
+			//防止新生成的公共数据模型不配对
+			$tables=D('sys_tables');
+			$tabledate=$tables->findall('pid='.$_REQUEST['id'].' and ismodel=1');//找出旧的公共模型
+			foreach ($tabledate as $old_table){
+				$new_caption=$old_table['caption'];
+				$new_title=$old_table['title'];
+				$old_id=$old_table['id'];
+				$new_tables=$tables->findall("caption='$new_caption' and title='$new_title' and pid=$projectid and ismodel=1");//找出新的公共MODEL//前提是这两个参数的组合是唯一的
+				$new_id=$new_tables['id'];//找出了新公共模型的ID
+				$updatetables=$tables->findall("datemodelid=$old_id and pid=$projectid");
+				$updatetables['datemodelid']=$new_id;
+				$updatevar=$tables->create($updatetables);
+				dump($updatevar);
+				$tables->save();
+				
+				
+			}
+			
+			//redirect(__URL__."/index");
+		}else{
+			$this->error('请检查参数是否正确!');
+		}
 	}
 
 	public function importdb(){//导入数据库
