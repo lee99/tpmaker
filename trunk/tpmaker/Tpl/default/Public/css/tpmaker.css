@@ -219,7 +219,7 @@ table.list th{
 关于菜单的样式定义
 */
 .ThemeOfficeMenu {
-	PADDING-RIGHT: 0px; PADDING-LEFT: 0px; FONT-SIZE: 12px; PADDING-BOTTOM: 0px; CURSOR: default; PADDING-TOP: 0px; FONT-FAMILY: arial, verdana, sans-serif; WHITE-SPACE: nowrap; HEIGHT: 20px
+	PADDING-RIGHT: 0px; PADDING-LEFT: 0px; FONT-SIZE: 12px; PADDING-BOTTOM: 0px; CURSOR: default; PADDING-TOP: 0px; FONT-FAMILY: arial, verdana, sans-serif; WHITE-SPACE: nowrap; HEIGHT: 18px
 }
 .ThemeOfficeSubMenuTable {
 	PADDING-RIGHT: 0px; PADDING-LEFT: 0px; FONT-SIZE: 12px; PADDING-BOTTOM: 0px; CURSOR: default; PADDING-TOP: 0px; FONT-FAMILY: arial, verdana, sans-serif; WHITE-SPACE: nowrap; HEIGHT: 22px
