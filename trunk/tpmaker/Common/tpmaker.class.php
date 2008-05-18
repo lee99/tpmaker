@@ -186,6 +186,7 @@ function getfieldsbytbid($id){
 	function makeproindexaction() {
 	
 	   $app_path=$this->getapppath();//获取生成程序的根目录
+	   $tpl_path=$this->gettplpath();//获取程序模板的根目录
 	   $filename=$app_path.'/Index.php';
 		$table=D($this->tables);
 	   $tabledata=$table->findAll('pid='.$this->projectid.' and ismodel <>1 and isaction =1','*','seqNo ASC');
