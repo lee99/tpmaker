@@ -49,11 +49,11 @@ function copydir($source, $destination)
 {
      $result = true;
 
-     if(! is_dir($source))
+     if(! is_dir($source))//读取源目录
      {
          trigger_error("源目录名称错误", E_USER_ERROR);
      }
-     if(! is_dir($destination))
+     if(! is_dir($destination))//读取目标目录
      {
          if(! mkdir($destination, 0700))
          {
@@ -61,13 +61,13 @@ function copydir($source, $destination)
          }
      }
 
-     $handle = opendir($source);
+     $handle = opendir($source);//取得目录的句柄
      while(($file = readdir($handle)) !== false)
      {
          if($file != '.' && $file != '..')//DIRECTORY_SEPARATOR
          {
-             $src = $source . "/" . $file;
-             $dtn = $destination . "/" . $file;
+             $src = $source . "/" . $file;		//源文件路径
+             $dtn = $destination . "/" . $file;	//目标文件路径
              if(is_dir($src))
              {
                  copyDir($src, $dtn);
