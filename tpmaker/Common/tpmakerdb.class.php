@@ -134,7 +134,11 @@ function sqlbytpye($id,$caption,$name,$fieldlenght){
 	$thiscaption=$caption;//注释
 	$thisname=$name;//名称
 	$thistype      = $date['thistype'];//类型 
-	$thisleng      = !empty($fieldlenght)?$fieldlenght:$date['leng']; 
+	if(!empty($fieldlenght) or $fieldlenght!=0){
+		$thisleng=$fieldlenght;
+	}else {
+		$thisleng=$date['leng']; 
+	}
 	
 	if($date['notnull']==1){
 		$thisnotnull="NOT NULL ";
