@@ -3,7 +3,10 @@
 <!-- 主体内容  -->
 <script LANGUAGE="JavaScript">
 function viewtable(id){
- location.href  ="__APP__/Sys_tables/index/pid/"+id;
+ window.open("__APP__/Index/Left/id/"+id,'leftFrame');
+}
+function buidepro(id){
+ location.href  ="__APP__/Sys_tables/buidepro/id/"+id;
 }
 
 
@@ -62,7 +65,7 @@ function viewtable(id){
 			seqNo|1:排序
 		"
 		action="false"
-		actionlist="copy:COPY项目,buidepro:生成项目,importdb:导入数据,exportdb:导出数据,buidedb:创建数据,"
+		actionlist="buidepro:生成项目,viewtable:查看项目"
 		createform="true"
 		quickadd="true"
 		/>

@@ -24,15 +24,16 @@ function viewfields(id){
 		var myMenu =
 		[
 			['▲','高级操作列表',null,null,'本项目高级操作列表',
-				['+', 'COPY本项目生成新项目', '__APP__/sys_projects/copyselect/id/{$_GET['pid']}', null,'COPY本项目生成新项目'],
-				['+', '生成本项目程序文件', '__APP__/Sys_projects/buidepro/id/{$_GET['pid']}', null, '生成本项目程序文件'],
+				['+', 'COPY本项目生成新项目', 'javascript:gourlbyaction("copy,{$_GET['pid']}");', null,'COPY本项目生成新项目'],
+				['+', '生成本项目程序文件', 'javascript:gourlbyaction("buidepro,{$_GET['pid']}");', null, '生成本项目程序文件'],
 				['+', '查看本项目效果[需先生成]', '__ROOT__/{$projecturl}', 'blank', '查看本项目效果[需先生成]'],
-				['+', '生成本项目数据字典', '__URL__/buide/pid/{$_GET['pid']}', null, '生成本项目数据字典'],
+				['+', '生成本项目数据字典', 'javascript:gourlbyaction("buide,{$_GET['pid']}");', null, '生成本项目数据字典'],
 			],
 		];
 		cmDraw ('myMenuID', myMenu, 'hbr', cmThemeOffice, 'ThemeOffice');
 		</script> 
 		</td>
+		<td align="right">{$page}</td>
 	</tr>
 </table>
 
@@ -66,15 +67,6 @@ function viewfields(id){
 		actionlist="viewfields:查看"
 		/>
 <input type="hidden" name="pid" value="{$_REQUEST['pid']}">
-<!--  分页显示区域 -->
-<div class="page">
 
-<table width="100%">
-<tr >
-<td align="left"><input type="button"  onclick="upbtn();" class="button1" value="更新本页数据"></td>
-<td align="right">{$page}</td>
-</tr>
-</table>
-</div>
 </fieldset>
 <include file="../Public/footer" />
