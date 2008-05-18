@@ -41,7 +41,15 @@ class tpmaker extends Action
     var $tablesid = '';
 
     
-    
+    /**   
+    +----------------------------------------------------------
+     * 模块的位置,默认'tpmaker_default'
+     +----------------------------------------------------------
+     * @var string
+     * @access protected
+     +----------------------------------------------------------
+     */
+    var $tpmaker_template = 'tpmaker_default';  
 
     
     /**   
@@ -57,6 +65,21 @@ function getapppath(){
 		   $data=$list->getByid($this->projectid);
 		   $app_path='../'.$data['proname'];
 		   return $app_path;
+}    
+
+
+    /**   
+    +----------------------------------------------------------
+     * 取得程序模板TPL的位置
+     +----------------------------------------------------------
+     * @var string
+     * @access protected
+     +----------------------------------------------------------
+     */
+function gettplpath(){
+
+		   $tpl_path='tpmaker_tpl/'.$this->tpmaker_template;
+		   return $tpl_path;
 }    
 
 	/**   
@@ -110,7 +133,8 @@ function getfieldsbytbid($id){
      +----------------------------------------------------------
      */
 	function makeprodir() {
-		   $app_path=$this->getapppath();
+		   $app_path=$this->getapppath();//获取生成程序的根目录
+		   $tpl_path=$this->gettplpath();//获取程序模板的根目录
 		    //deldir($app_path);////common.php文件
 			mk_dir($app_path.'/Lib/Model/');
 			mk_dir($app_path.'/Lib/Action/');
@@ -122,8 +146,8 @@ function getfieldsbytbid($id){
 			mk_dir($app_path.'/Logs/');//生成Logs目录
 			mk_dir($app_path.'/Temp/');//生成Temp目录
 			mk_dir($app_path.'/Tpl/default/Public/');//生成Tpl目录
-			copyfile('tpmaker_tpl/common.php',$app_path.'/Common/common.php');////common.php文件
-			copydir('tpmaker_tpl/S_tpl',$app_path.'/Tpl/default');////common.php文件
+			copyfile($tpl_path.'/common.php',$app_path.'/Common/common.php');////common.php文件
+			copydir($tpl_path.'/Static_tpl',$app_path.'/Tpl/default');////common.php文件
 	}
 
     
@@ -137,7 +161,7 @@ function getfieldsbytbid($id){
      */
 	function makeproindex($id) {
 	
-			   $app_path=$this->getapppath();
+			   $app_path=$this->getapppath();//获取生成程序的根目录
 			   $filename=$app_path.'/Index.php';
 			   $data=$this->getprojects();
 		$filecontent="<?php\n
@@ -161,14 +185,14 @@ function getfieldsbytbid($id){
      */
 	function makeproindexaction() {
 	
-	   $app_path=$this->getapppath();
+	   $app_path=$this->getapppath();//获取生成程序的根目录
 	   $filename=$app_path.'/Index.php';
 		$table=D($this->tables);
 	   $tabledata=$table->findAll('pid='.$this->projectid.' and ismodel <>1 and isaction =1','*','seqNo ASC');
 	   foreach ($tabledata as $tb){
 	   $left.="array( 'id' =>'".$tb['id']."','caption' =>'".$tb['caption']."','name' =>'".$tb['title']."'),";
 	   }
-	   $leftcontent=file_get_contents('tpmaker_tpl/Action_tpl/indexAction.class.php');
+	   $leftcontent=file_get_contents($tpl_path.'/Action_tpl/indexAction.class.php');
 	   $leftcontent=str_replace("/*left*/",$left,$leftcontent);
 	   $filename=$app_path.'/Lib/Action/IndexAction.class.php';
 	   writefile($filename,$leftcontent);
@@ -183,7 +207,7 @@ function getfieldsbytbid($id){
      +----------------------------------------------------------
      */
 	function makeproconf($id) {
-		   $app_path=$this->getapppath();
+		   $app_path=$this->getapppath();//获取生成程序的根目录
 		   $data=$this->getprojects();
 		   $filename=$app_path.'/Conf/config.php';
 			$filecontent="<?php\n
@@ -207,7 +231,8 @@ function makepromodel($id) {
 	//生成基本MODEL
 	
 	   $data=$this->gettables($id);
-	   $app_path=$this->getapppath();
+	   $app_path=$this->getapppath();//获取生成程序的根目录
+	   $tpl_path=$this->gettplpath();//获取程序模板的根目录
 		$name=uplower($data['title']);//第一个字母变成大写,其它变成小写
 		if($data['datemodelid']!=0){$datemodelid=$data['datemodelid'];}//取出公用的数据模型
 		$fields=D('sys_fields');
@@ -257,14 +282,15 @@ $filecontent.="\n}\n?>";
 function makeproaction($id) {
 	//生成基本Action
 	   $data=$this->gettables($id);
-	   $app_path=$this->getapppath();
+	   $app_path=$this->getapppath();//获取生成程序的根目录
+	   $tpl_path=$this->gettplpath();//获取程序模板的根目录
 	   $name=uplower($data['title']);//第一个字母变成大写,其它变成小写
 	   $filename=$app_path.'/Lib/Action/'.$name.'Action.class.php';
 	$filecontent.="<?php\nclass ".$name."Action extends Action {\n\n";
 	
 	
 	//index()的ACTION生成
-	$indexaction=file_get_contents('tpmaker_tpl/Action_tpl/action_index.tpl');
+	$indexaction=file_get_contents($tpl_path.'/Action_tpl/action_index.tpl');
 	$indexaction=str_replace("/*modelname*/",$name,$indexaction);
 	$fields=$this->getfieldsbytbid($id);
 	$list_fields=$this->makerows($fields,'islist');
@@ -277,23 +303,23 @@ function makeproaction($id) {
 	
 	
 	//delete()的ACTION生成
-	$deleteaction=file_get_contents('tpmaker_tpl/Action_tpl/action_delete.tpl');
+	$deleteaction=file_get_contents($tpl_path.'/Action_tpl/action_delete.tpl');
 	$deleteaction=str_replace("/*modelname*/",$name,$deleteaction);
 	$filecontent.=$deleteaction;		
 	
 	//insert()的ACTION生成
-	$insertaction=file_get_contents('tpmaker_tpl/Action_tpl/action_insert.tpl');
+	$insertaction=file_get_contents($tpl_path.'/Action_tpl/action_insert.tpl');
 	$insertaction=str_replace("/*modelname*/",$name,$insertaction);
 	$filecontent.=$insertaction;	
 	
 	//uptate()的ACTION生成
-	$saveaction=file_get_contents('tpmaker_tpl/Action_tpl/action_update.tpl');
+	$saveaction=file_get_contents($tpl_path.'/Action_tpl/action_update.tpl');
 	$saveaction=str_replace("/*modelname*/",$name,$saveaction);
 	$filecontent.=$saveaction;	
 
 	
 	//edit()的ACTION生成
-	$editaction=file_get_contents('tpmaker_tpl/Action_tpl/action_edit.tpl');
+	$editaction=file_get_contents($tpl_path.'/Action_tpl/action_edit.tpl');
 	$editaction=str_replace("/*modelname*/",$name,$editaction);
 	$assignlist=$this->makeassignlist($fields);
 	$editaction=str_replace("/*assignlist*/",$assignlist,$editaction);
@@ -301,14 +327,14 @@ function makeproaction($id) {
 	
 	
 	//view()的ACTION生成
-	$viewaction=file_get_contents('tpmaker_tpl/Action_tpl/action_view.tpl');
+	$viewaction=file_get_contents($tpl_path.'/Action_tpl/action_view.tpl');
 	$viewaction=str_replace("/*modelname*/",$name,$viewaction);
 	$assignlist=$this->makeassignlist($fields);
 	$viewaction=str_replace("/*assignlist*/",$assignlist,$viewaction);
 	$filecontent.=$viewaction;	
 
 	//add()的ACTION生成
-	$addaction=file_get_contents('tpmaker_tpl/Action_tpl/action_add.tpl');
+	$addaction=file_get_contents($tpl_path.'/Action_tpl/action_add.tpl');
 	$filecontent.=$addaction;	
 	
 
@@ -319,14 +345,15 @@ function makeproaction($id) {
 function makeprotpl($id) {
 	//生成基本Action
 	$data=$this->gettables($id);
-	$app_path=$this->getapppath();
+	$app_path=$this->getapppath();//获取生成程序的根目录
+	$tpl_path=$this->gettplpath();//获取程序模板的根目录
 	$name=uplower($data['title']);//第一个字母变成大写,其它变成小写
 	$caption=$data['caption'];
 	mk_dir($app_path.'/Tpl/default/'.$name.'/');//生成目录	  
 	
 	//生成INDEX.HMTL包括LIST及SEARCH的
 	$filename=$app_path.'/Tpl/default/'.$name.'/Index.html';//生成的模板文件名
-	$filecontent=file_get_contents('tpmaker_tpl/Html_tpl/index.html');//源模板文件名
+	$filecontent=file_get_contents($tpl_path.'/Html_tpl/index.html');//源模板文件名
 	$fields=$this->getfieldsbytbid($id);
 	$listshowsort=$this->makerowslistsort($fields,'islist');
 	$listshowtd=$this->makerowslisttd($fields,'islist');
@@ -338,7 +365,7 @@ function makeprotpl($id) {
 	
 	//生成Add.HMTL
 	$filename=$app_path.'/Tpl/default/'.$name.'/Add.html';//生成的模板文件名
-	$filecontent=file_get_contents('tpmaker_tpl/Html_tpl/add.html');//源模板文件名
+	$filecontent=file_get_contents($tpl_path.'/Html_tpl/add.html');//源模板文件名
 	$fields=$this->getfieldsbytbid($id);
 	$rowscontent=$this->makerowscontent($fields,'addtype','rows.tpl');
 	$filecontent=str_replace("[tablecaption]",$caption,$filecontent);
@@ -347,7 +374,7 @@ function makeprotpl($id) {
 
 	//生成Edit.HMTL
 	$filename=$app_path.'/Tpl/default/'.$name.'/Edit.html';//生成的模板文件名
-	$filecontent=file_get_contents('tpmaker_tpl/Html_tpl/edit.html');//源模板文件名
+	$filecontent=file_get_contents($tpl_path.'/Html_tpl/edit.html');//源模板文件名
 	$fields=$this->getfieldsbytbid($id);
 	$rowscontent=$this->makerowscontent($fields,'edittype','rows.tpl');
 	$filecontent=str_replace("[tablecaption]",$caption,$filecontent);
@@ -357,7 +384,7 @@ function makeprotpl($id) {
 
 	//生成Veiw.HMTL
 	$filename=$app_path.'/Tpl/default/'.$name.'/View.html';//生成的模板文件名
-	$filecontent=file_get_contents('tpmaker_tpl/Html_tpl/view.html');//源模板文件名
+	$filecontent=file_get_contents($tpl_path.'/Html_tpl/view.html');//源模板文件名
 	$fields=$this->getfieldsbytbid($id);
 	$rowscontent=$this->makerowscontent($fields,'viewtype','rows.tpl');
 	$filecontent=str_replace("[tablecaption]",$caption,$filecontent);
@@ -370,7 +397,7 @@ function makerowscontent($datas,$actiontype,$tpl) {
 	//$datas传过来的数据
 	//类型的
 	//相应判定的模板文件
-	$rowcontent=file_get_contents('tpmaker_tpl/Html_tpl/'.$tpl);//源模板文件名
+	$rowcontent=file_get_contents($tpl_path.'/Html_tpl/'.$tpl);//源模板文件名
 	if(count($datas)>0){
 		foreach ($datas as $data){
 			$vartype=$data[$actiontype];
@@ -472,7 +499,7 @@ function makerowslistsort($datas,$datefield) {
 	//$datas传过来的数据
 	//通过传过来的数据生成LIST相应的项
 	//$datefield为相应的对应的项目
-	$tplcontent=file_get_contents('tpmaker_tpl/Html_tpl/index_sort.html');//源模板文件名
+	$tplcontent=file_get_contents($tpl_path.'/Html_tpl/index_sort.html');//源模板文件名
 
 		foreach ($datas as $data){
 			if($data[$datefield]==1){
@@ -489,7 +516,7 @@ function makerowslisttd($datas,$datefield) {
 	//$datas传过来的数据
 	//通过传过来的数据生成LIST相应的项
 	//$datefield为相应的对应的项目
-	$tplcontent=file_get_contents('tpmaker_tpl/Html_tpl/index_td.html');//源模板文件名
+	$tplcontent=file_get_contents($tpl_path.'/Html_tpl/index_td.html');//源模板文件名
 
 		foreach ($datas as $data){
 			if($data[$datefield]==1){

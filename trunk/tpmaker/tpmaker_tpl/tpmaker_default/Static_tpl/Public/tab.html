@@ -1,0 +1,23 @@
+<div id="myMenuID" class="header">
+
+		
+
+
+</div>
+
+      <script language="JavaScript" type="text/javascript">
+		var myMenu =
+		[
+			['>','首页','__APP__/Index/index/',null,'控制面板'],
+{$tabmenu}
+  			['>','个人系统管理',null,null,'个人系统管理',
+				['<img src="../Public/images/checkin.png" />', '修改密码', '__APP__/Public/password/', null,'修改密码'],
+				['<img src="../Public/images/sysinfo.png" />', '修改资料', '__APP__/Public/password/', null, '修改资料信息'],
+				 
+
+							],
+			['>','退出','__APP__/Public/logout/',null,null],
+		];
+		cmDraw ('myMenuID', myMenu, 'hbr', cmThemeOffice, 'ThemeOffice');
+		</script> 
+		
