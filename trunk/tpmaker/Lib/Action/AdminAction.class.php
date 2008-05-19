@@ -6,6 +6,7 @@
 //+----------------------------------------------------------
 //* D:\xampp\htdocs\sample_verson\mytp\Lib\Action\sub_searchtypeAction.class.php
 /////////////////////////////////////////////////////////////////////////////
+
 class AdminAction extends Action{
 
 
@@ -21,6 +22,8 @@ class AdminAction extends Action{
      * @throws FcsException
      +----------------------------------------------------------
      */
+	
+
     function sort()
     {
     	$thismodel=$this->name;

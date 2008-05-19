@@ -395,6 +395,7 @@ function makeprotpl($id) {
 
 
 function makerowscontent($datas,$actiontype,$tpl) {
+	$tpl_path=$this->gettplpath();//获取程序模板的根目录
 	//$datas传过来的数据
 	//类型的
 	//相应判定的模板文件
@@ -489,7 +490,8 @@ function makerows($datas,$field,$varc) {
 				
 			}
 		}
-	$list_fields=substr($list_fields,0,-1);//去掉最后一个的","
+	//$list_fields=substr($list_fields,0,-1);//去掉最后一个的","
+	$list_fields.='id';//默认加上id作为主键
 	}else{
 	$list_fields="*";
 	}
@@ -500,6 +502,7 @@ function makerowslistsort($datas,$datefield) {
 	//$datas传过来的数据
 	//通过传过来的数据生成LIST相应的项
 	//$datefield为相应的对应的项目
+	$tpl_path=$this->gettplpath();//获取程序模板的根目录
 	$tplcontent=file_get_contents($tpl_path.'/Html_tpl/index_sort.html');//源模板文件名
 
 		foreach ($datas as $data){
@@ -517,6 +520,7 @@ function makerowslisttd($datas,$datefield) {
 	//$datas传过来的数据
 	//通过传过来的数据生成LIST相应的项
 	//$datefield为相应的对应的项目
+	$tpl_path=$this->gettplpath();//获取程序模板的根目录
 	$tplcontent=file_get_contents($tpl_path.'/Html_tpl/index_td.html');//源模板文件名
 
 		foreach ($datas as $data){
