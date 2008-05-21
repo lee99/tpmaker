@@ -573,7 +573,8 @@ function Start_table_new()
 
 function Start_tab_upd(table)
 {
-    window.location.href = 'tbl_structure.php?server=' + server + '&db=' + db + '&token=' + token + '&table=' + table;
+    window.open(APP+'/sys_fields/index/pid/' + table); 
+    //window.location.href = 'tbl_structure.php?server=' + server + '&db=' + db + '&token=' + token + '&table=' + table;
 }
 //--------------------------- hide tables --------------------------------------
 
@@ -827,9 +828,9 @@ function Help()
 
 function PDF_save()
 {
-    // var WinPDF =
-    // window.open("pmd_pdf.php?token="+token+"&db="+db,"wind1", "top=200,left=200,width=200,height=100,resizable=yes,scrollbars=yes,menubar=no");
-    Save('pmd_pdf.php?server=' + server + '&token=' + token + '&db=' + db);
+
+    //Save('pmd_pdf.php?server=' + server + '&token=' + token + '&db=' + db);
+    alert('本功能未实现');
 }
 
 function General_scroll()
