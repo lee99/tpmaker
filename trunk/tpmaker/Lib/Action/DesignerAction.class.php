@@ -66,6 +66,8 @@ class DesignerAction extends AdminAction{
 			$tab_pos[$date['table_name']]["V"]=$date['v'];
 			
 		}
+		$this->assign('tab_pos',$tab_pos);
+		//dump($tab_pos);
 
 		$this->display();
 
