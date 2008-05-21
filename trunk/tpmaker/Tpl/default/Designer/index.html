@@ -39,17 +39,11 @@
             // <![CDATA[
             var j_tabs = new Array();
  	 <volist name="tables" id="table">
-            j_tabs['{$table.title}'] = 'MYISAM';    
+            j_tabs['{$_REQUEST['id']}.{$table.title}'] = 'MYISAM';    
       </volist>      
             // ]]>
         </script>
-        <script type="text/javascript">
-            // <![CDATA[
-            var contr = new Array();
-            contr[0] = new Array();
-            contr[0][''] = new Array();
-            // ]]>
-        </script>
+        {$script_contr}
         <script type="text/javascript">
             // <![CDATA[
             var display_field = new Array();
@@ -76,9 +70,9 @@
                        <volist name="tables" id="table">  
                             <tr>
                                 <td width="1">
-                                    <input onclick="VisibleTab(this,'{$table.title}')" title="Hide" id="check_vis_{$table.title}" style="margin: 0px;" value="{$table.title}" checked="checked" type="checkbox">
+                                    <input onclick="VisibleTab(this,'{$_REQUEST['id']}.{$table.title}')" title="Hide" id="check_vis_{$_REQUEST['id']}.{$table.title}" style="margin: 0px;" value="{$table.title}" checked="checked" type="checkbox">
                                 </td>
-                                <td class="Tabs" onmouseover="this.className='Tabs2'" onmouseout="this.className='Tabs'" onclick="Select_tab('{$table.title}');" title="{$table.caption}:{$table.title}">
+                                <td class="Tabs" onmouseover="this.className='Tabs2'" onmouseout="this.className='Tabs'" onclick="Select_tab('{$_REQUEST['id']}.{$table.title}');" title="{$table.caption}:{$table.title}">
                                     {$table.caption}
                                 </td>
                             </tr>
@@ -92,24 +86,30 @@
                 </div>
             </div>
  		<volist name="tables" id="table">
-            <input name="t_x[{$table.title}]" id="t_x_{$table.title}_" type="hidden"><input name="t_y[{$table.title}]" id="t_y_{$table.title}_" type="hidden"><input name="t_v[{$table.title}]" id="t_v_{$table.title}_" type="hidden"><input name="t_h[{$table.title}]" id="t_h_{$table.title}_" type="hidden">
-            <table id="{$table.title}" class="tab" style="position: absolute; left: <php> echo rand(180,1024);</php>px; top: <php> echo rand(30,500);</php>px; visibility: visible; z-index: 1;" cellpadding="0" cellspacing="0">
+            <input name="t_x[{$_REQUEST['id']}.{$table.title}]" id="t_x_{$_REQUEST['id']}.{$table.title}_" type="hidden"><input name="t_y[{$_REQUEST['id']}.{$table.title}]" id="t_y_{$_REQUEST['id']}.{$table.title}_" type="hidden"><input name="t_v[{$_REQUEST['id']}.{$table.title}]" id="t_v_{$_REQUEST['id']}.{$table.title}_" type="hidden"><input name="t_h[{$_REQUEST['id']}.{$table.title}]" id="t_h_{$_REQUEST['id']}.{$table.title}_" type="hidden">
+            <php> $t_n=$table['title'];</php>
+            <table id="{$_REQUEST['id']}.{$table.title}" class="tab" style="
+        position: absolute;
+		left: <php> if (!empty($tab_pos[$t_n]["X"])) echo $tab_pos[$t_n]["X"]; else echo rand(180, 1024); </php>px;
+		top: <php> if (!empty($tab_pos[$t_n]["Y"])) echo $tab_pos[$t_n]["Y"]; else echo rand(30, 500); </php>px;
+		visibility: <php> if (!empty($tab_pos[$t_n]["H"])) echo $tab_pos[$t_n]["H"] ? "visible" : "hidden"; </php>;
+		z-index: 1;" cellpadding="0" cellspacing="0">
                 <thead>
                     <tr>
-                        <td class="small_tab" onmouseover="this.className='small_tab2';" onmouseout="this.className='small_tab';" id="id_hide_tbody_{$table.title}" onclick="Small_tab('{$table.title}', 1)">
+                        <td class="small_tab" onmouseover="this.className='small_tab2';" onmouseout="this.className='small_tab';" id="id_hide_tbody_{$_REQUEST['id']}.{$table.title}" onclick="Small_tab('{$_REQUEST['id']}.{$table.title}', 1)">
                             v
                         </td>
                         <td class="small_tab_pref" onmouseover="this.className='small_tab_pref2';" onmouseout="this.className='small_tab_pref';" onclick="Start_tab_upd('{$table.title}');">
                             <img src="../Public/pmd/images/exec_small.png" alt="">
                         </td>
-                        <td id="id_zag_{$table.title}" class="tab_zag" onmousedown="cur_click=document.getElementById('{$table.title}');" onmouseover="this.className = 'tab_zag_2'" onmouseout="this.className = 'tab_zag'" nowrap="nowrap">
+                        <td id="id_zag_{$_REQUEST['id']}.{$table.title}" class="tab_zag" onmousedown="cur_click=document.getElementById('{$_REQUEST['id']}.{$table.title}');" onmouseover="this.className = 'tab_zag_2'" onmouseout="this.className = 'tab_zag'" nowrap="nowrap">
                             <span class="owner"></span>{$table.caption}:{$table.title}
                         </td>
                     </tr>
                 </thead>
-                <tbody id="id_tbody_{$table.title}">
+                <tbody id="id_tbody_{$_REQUEST['id']}.{$table.title}">
                     <tr id="id_tr_{$table.title}.id" class="tab_field" onmouseover="old_class = this.className; this.className = 'tab_field_2';" onmouseout="this.className = old_class;" onmousedown="Click_field('{$table.title}','id',1)">
-                        <td colspan="3" id="{$table.title}.id" width="10">
+                        <td colspan="3" id="{$_REQUEST['id']}.{$table.title}.id" width="10">
                             <div style="white-space: nowrap;">
                                 <img src="../Public/pmd/images/FieldKey_small.png" alt="*">id : int(11)
                             </div>
@@ -117,7 +117,7 @@
                     </tr>
                     <sublist name="subtables[$table['title']]" id="subtable" > 
                     <tr id="id_tr_{$table.title}.{$subtable.name}" class="tab_field" onmouseover="old_class = this.className; this.className = 'tab_field_2';" onmouseout="this.className = old_class;" onmousedown="Click_field('{$table.title}','{$subtable.name}',0)">
-                        <td colspan="3" id="{$table.title}.{$subtable.name}" width="10">
+                        <td colspan="3" id="{$_REQUEST['id']}.{$table.title}.{$subtable.name}" width="10">
                             <div style="white-space: nowrap;">
                                 <img src="../Public/pmd/images/Field_small_char.png" alt="*">{$subtable.caption}:{$subtable.name} varchar(20)
                             </div>
@@ -267,4 +267,5 @@
     </body>
     <ddg_frameTip>
     </ddg_frameTip>
+    
 </html>
