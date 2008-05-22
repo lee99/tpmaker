@@ -11,6 +11,11 @@ class DesignerAction extends AdminAction{
 	public function Index(){
 
 		require COMMON_PATH."tpmaker.class.php";//引入自定义的类
+	
+
+	
+	
+	//获取表
 	   $list=D('sys_tables');
 	   $tabledata=$list->findall('ismodel=0 and pid='.$_REQUEST['id']);
 	   $this->assign('tables',$tabledata);
@@ -19,6 +24,18 @@ class DesignerAction extends AdminAction{
 		$t->projectid=$_REQUEST['id'];
 		foreach ($tabledata as $subtables){
 			$subtable[$subtables['title']]=$t->getfieldsbytbid($subtables['id']);
+			for ($i = 0; $i <count($subtable[$subtables['title']]); $i++) {//重新加入数组的新元素
+			$field=getfielddetail($subtable[$subtables['title']][$i]['fieldtype']);
+			//
+			$subtable[$subtables['title']][$i]['img']=$field['img'];
+			$subtable[$subtables['title']][$i]['type']=$field['type'];
+			$subtable[$subtables['title']][$i]['leng']=$field['leng'];
+			$subtable[$subtables['title']][$i]['iskey']=$field['iskey'];
+			
+			}
+
+
+			//dump($subtable[$subtables['title']]);exit;
 		}
 		$this->assign('subtables',$subtable);
 

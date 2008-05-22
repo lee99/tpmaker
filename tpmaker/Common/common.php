@@ -48,6 +48,49 @@ function getcolor($id)
 			return S('color'.$id);
 		}	
 	}
+
+function getfielddetail($datetype)
+	{
+	$field=D('sub_fieldtype');
+	$fielddate=$field->getbyid($datetype);
+
+		if($fielddate['primary']==1){
+			$date['img']='FieldKey_small.png';
+			$date['iskey']=1;
+		}else{
+			switch ($fielddate['type']){
+			case 'VARCHAR':
+				$date['img']='Field_small_char.png';
+				$date['iskey']=0;
+				break;
+			case 'TEXT':
+				$date['img']='Field_small_char.png';
+				$date['iskey']=0;
+				break;
+			case 'CHAR':
+				$date['img']='Field_small_char.png';
+				$date['iskey']=0;
+				break;
+			case 'INT':
+				$date['img']='Field_small_int.png';
+				$date['iskey']=0;
+				break;
+			case 'SMALLINT':
+				$date['img']='Field_small_int.png';
+				$date['iskey']=0;
+				break;
+			default:
+				$date['img']='Field_small_char.png';
+				$date['iskey']=0;
+				break;
+			}	
+		}
+		$date['type']=$fielddate['type'];
+		$date['leng']=$fielddate['leng'];
+		//dump($date);
+		return $date;
+
+}	
 	
 function makeselect($name,$table,$idt='',$where='',$option='title',$f_idvalue='id'){
 	//$option外键的说明

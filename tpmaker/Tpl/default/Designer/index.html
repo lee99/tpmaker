@@ -109,18 +109,11 @@
                     </tr>
                 </thead>
                 <tbody id="id_tbody_{$_REQUEST['id']}.{$table.title}">
-                    <tr id="id_tr_{$table.title}.id" class="tab_field" onmouseover="old_class = this.className; this.className = 'tab_field_2';" onmouseout="this.className = old_class;" onmousedown="Click_field('{$table.title}','id',1)">
-                        <td colspan="3" id="{$_REQUEST['id']}.{$table.title}.id" width="10">
-                            <div style="white-space: nowrap;">
-                                <img src="../Public/pmd/images/FieldKey_small.png" alt="*">id : int(11)
-                            </div>
-                        </td>
-                    </tr>
                     <sublist name="subtables[$table['title']]" id="subtable" > 
-                    <tr id="id_tr_{$table.title}.{$subtable.name}" class="tab_field" onmouseover="old_class = this.className; this.className = 'tab_field_2';" onmouseout="this.className = old_class;" onmousedown="Click_field('{$table.title}','{$subtable.name}',0)">
+                    <tr id="id_tr_{$table.title}.{$subtable.name}" class="tab_field" onmouseover="old_class = this.className; this.className = 'tab_field_2';" onmouseout="this.className = old_class;" onmousedown="Click_field('{$table.title}','{$subtable.name}',{$subtable.iskey})">
                         <td colspan="3" id="{$_REQUEST['id']}.{$table.title}.{$subtable.name}" width="10">
                             <div style="white-space: nowrap;">
-                                <img src="../Public/pmd/images/Field_small_char.png" alt="*">{$subtable.caption}:{$subtable.name} varchar(20)
+                                <img src="../Public/pmd/images/{$subtable.img}" alt="*">{$subtable.caption}:{$subtable.name} {$subtable.type}({$subtable.leng})
                             </div>
                         </td>
                     </tr>
