@@ -4,9 +4,15 @@
  <!--
 
 
-function outkeyseting(id){
+function outkeyseting(id){ //设定外键
  //location.href  = URL+"/outkeyseting/id/"+id;
  window.open(URL+"/outkeyseting/id/"+id, 'mini');
+}
+
+
+function setissystem(id){ //系统保留的参数
+ //location.href  = URL+"/outkeyseting/id/"+id;
+ window.open(URL+"/setissystem/id/"+id, 'mini');
 }
 
  //-->
@@ -94,10 +100,13 @@ tp1 = new WebFXTabPane( document.getElementById( "tabPane1" ) );
 			viewtype|select|makeselect('viewtype[]'#'sub_viewtype'#$list['viewtype']):详细信息类型,
 			edittype|select|makeselect('edittype[]'#'sub_edittype'#$list['edittype']):编辑形式,
 			addtype|select|makeselect('addtype[]'#'sub_addtype'#$list['addtype']):增加形式,
-			issystem|select|makeselect('issystem[]'#'sub_issystem'#$list['issystem']):系统保留,
 			indexvar|20:默认值[支持函数],
-			autotype|select|makeselect('autotype[]'#'Sub_auto'#$list['autotype']):自动填充
+			autotype|select|makeselect('autotype[]'#'Sub_auto'#$list['autotype']):自动填充,
+			issystem|select|makeselect('issystem[]'#'sub_issystem'#$list['issystem']):系统保留
+			
 		"
+		action="false"
+		actionlist="setissystem:设定保留信息"
 		/>
 </div>
 

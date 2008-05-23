@@ -151,6 +151,7 @@ class DesignerAction extends AdminAction{
 		}else{
 			echo $condition;
 		}
+
 	//dump($Designer);
 	}
 

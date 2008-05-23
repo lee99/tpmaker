@@ -132,6 +132,15 @@ class sys_fieldsAction extends AdminAction{
     $this->display();
 	}
 
+	public function setissystem(){//系统保留信息
+
+		$list=D('sys_fields');
+		$list=$list->findAll('id='.$_REQUEST[id],'*');
+		$this->assign("list",$list);
+		//dump($list);
+		$this->display();
+	}
+
 
 	function ajaxauto(){
 		$dao=D('sys_tables');
