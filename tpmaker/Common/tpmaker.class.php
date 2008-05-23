@@ -147,6 +147,8 @@ function getfieldsbytbid($id){
 			mk_dir($app_path.'/Temp/');//生成Temp目录
 			mk_dir($app_path.'/Tpl/default/Public/');//生成Tpl目录
 			copyfile($tpl_path.'/common.php',$app_path.'/Common/common.php');////common.php文件
+			copyfile($tpl_path.'/TpmakerAction.class.php',$app_path.'/Lib/Action/TpmakerAction.class.php');
+				////TpmakerAction.class.php文件
 			copydir($tpl_path.'/Static_tpl',$app_path.'/Tpl/default');////common.php文件
 	}
 
@@ -287,7 +289,7 @@ function makeproaction($id) {
 	   $tpl_path=$this->gettplpath();//获取程序模板的根目录
 	   $name=uplower($data['title']);//第一个字母变成大写,其它变成小写
 	   $filename=$app_path.'/Lib/Action/'.$name.'Action.class.php';
-	$filecontent.="<?php\nclass ".$name."Action extends Action {\n\n";
+	$filecontent.="<?php\nclass ".$name."Action extends TpmakerAction {\n\n";
 	
 	
 	//index()的ACTION生成
