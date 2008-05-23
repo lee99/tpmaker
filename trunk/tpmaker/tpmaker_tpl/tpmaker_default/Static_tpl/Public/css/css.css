@@ -193,6 +193,10 @@ div.page {
 div.tips{border:1px solid #d4d4d4; background:#FBFAF8 url(../Images/use.gif) no-repeat; background-position:5px 8px; padding:8px 25px; overflow:auto; max-height:250px; margin:8px; line-height:185%; color:#393939; font-weight:bold; float:left; width:250px !important; width:25%; height:85px}
 div.result{border:1px solid #d4d4d4; background:#FFC; padding:8px 12px; margin:2px 15px; line-height:185%; color:#393939; font-weight:bold; float:auto; width:85%;}
 .none{display:none}
+div.message{width:75%; padding:5pt; float:none; margin:15% auto 0% auto; clear:both; text-align:center}
+div.logo{margin:auto; width:85%; font:bold 10pt Tahoma; color:orange}
+div.errorMessage{line-height:150%; padding:5px; margin:3pt; font-weight:bold; font-size:15px; font-family:Tahoma,Verdana; border:1pt dashed gray; color:#F30; background:#CFC}
+table tr.row{background-color:#FFF}
 
 
 
