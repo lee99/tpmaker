@@ -177,11 +177,45 @@ class sys_projectsAction extends AdminAction{
 		$t->projectid=$buideid;
 		$zippath=$t->getapppath();
 		$projects=$t->getprojects();
-		//echo $zippath;
 		$filename='./Backup/ZIP/'.$projects['proname'].".zip";
 		
 		$z = new PHPZip(); 
-		$z -> Zip('D:\\xampp\\htdocs\\sample_verson\\temp\\', $filename); //添加指定目录
+		$filesize=@filesize($filename); 
+		   $path = opendir($zippath);
+		   while (false !== ($file = readdir($path))) {
+		       if($file!="." && $file!="..") {
+		           if(is_file($dir."/".$file)){
+		               $files[]=$file;
+		           } else {
+		               $dirs[]=$dir."/".$file;  
+		           }          
+		       }
+		   }
+		   if($dirs) {
+		       natcasesort($dirs);
+		       foreach($dirs as $dir) {
+		       	$dirname=substr($dir,1);
+		       	$z ->add_dir($dirname); //添加指定目录
+		           echo $dir;
+		           //read_dir($dir);
+		       }
+		   }
+		   if($files) {
+		       natcasesort($files);
+		       foreach ($files as $file) 
+				$fp=@fopen($file,rb); 
+				$zipfilecontent=Array($filename,@fread($fp,$filesize));  
+				@fclose($fp);
+				$zip->Add($zipfilecontent,1);  //可以多次执行 $zip->Add 来添加多个文件
+		           echo $file;
+		   }
+		   closedir($path);
+		
+		if(@fputs(@fopen($filename,"wb"),$z->get_file())) //写入文件
+		echo "文件压缩成功!!";
+		else
+		echo "文件压缩失败!!";
+		//$z -> Zip($zippath, './Backup/ZIP/'.$zipname['proname'].".zip"); //添加指定目录
 		
 
 	}
