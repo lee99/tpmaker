@@ -148,7 +148,7 @@ class sys_projectsAction extends AdminAction{
 
 	}
 	
-	public function buidepro(){//导入数据库
+	public function buidepro(){//生成项目
 		require COMMON_PATH."tp_common.php";//引入自定义的类
 		require COMMON_PATH."tpmaker.class.php";//引入自定义的类
 		$buideid=$_REQUEST['id'];
@@ -168,7 +168,23 @@ class sys_projectsAction extends AdminAction{
 
 	}
 
+	public function zippro(){//打包项目
+		require COMMON_PATH."tp_common.php";//引入自定义的类
+		require COMMON_PATH."tpmaker.class.php";//引入自定义的类
+		require COMMON_PATH."zip.class.php";//引入自定义的类
+		$buideid=$_REQUEST['id'];
+		$t=new tpmaker();
+		$t->projectid=$buideid;
+		$zippath=$t->getapppath();
+		$projects=$t->getprojects();
+		//echo $zippath;
+		$filename='./Backup/ZIP/'.$projects['proname'].".zip";
+		
+		$z = new PHPZip(); 
+		$z -> Zip('D:\\xampp\\htdocs\\sample_verson\\temp\\', $filename); //添加指定目录
+		
 
+	}
 
 }
 
