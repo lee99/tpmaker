@@ -40,8 +40,16 @@ class IndexAction extends AdminAction{
 
 		//生成table的树
 		$ptables=D('Sys_tables');
-		$tlist=$ptables->findAll('pid='.$passid,'*','seqNo');
+		$wherevalue='issystem=0 and pid='.$passid;//过滤条件
+		$tlist=$ptables->findAll($wherevalue,'*','seqNo');
 		$this->assign('table',$tlist);
+		//dump($tlist);		
+
+		//生成系统table的树
+		$ptables=D('Sys_tables');
+		$wherevalue='issystem=1 and pid='.$passid;//过滤条件
+		$tlist=$ptables->findAll($wherevalue,'*','seqNo');
+		$this->assign('systable',$tlist);
 		//dump($tlist);
 
 		$this->display();
