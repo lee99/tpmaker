@@ -65,6 +65,19 @@ class IndexAction extends AdminAction{
 		//后台管理及参数设定说明
 		$this->display();
 	}
+
+	public function Buide(){
+		//生成猎取第一条记录或取得ID
+		if($_REQUEST['id']){
+			$passid=$_REQUEST['id'];
+		}
+		
+		//生成project的树
+		$projects=D('Sys_projects');
+		$plist=$projects->getbyid($passid);
+		$this->assign('proname',$plist['proname']);
+		$this->display();
+	}
 	
 	public function Top(){
 		C('SHOW_PAGE_TRACE',false); 		//本页不显示TRACE
