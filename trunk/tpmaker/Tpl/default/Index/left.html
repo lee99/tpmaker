@@ -21,13 +21,10 @@
 	d.add('config{$project_vo.id}','project{$project_vo.id}','项目配置设定',null,null,null,IMG_PATH+'b_import.png',IMG_PATH+'b_import.png');
 	d.add('systemdb{$project_vo.id}','dbmodel{$project_vo.id}','系统保留数据结构',null,null,null,IMG_PATH+'b_import.png',IMG_PATH+'b_import.png');
 	d.add('dbbase{$project_vo.id}','dbmodel{$project_vo.id}','基本数据结构','__APP__/Sys_tables/index/pid/{$project_vo.id}',null,'mainFrame',IMG_PATH+'b_import.png',IMG_PATH+'b_import.png');
-	d.add('dbdesign{$project_vo.id}','dbmodel{$project_vo.id}','扩展数据结构',null,null,'mainFrame',IMG_PATH+'b_relations.png',IMG_PATH+'b_relations.png');
+	d.add('dbdesign{$project_vo.id}','dbmodel{$project_vo.id}','扩展数据结构',null,null,null,IMG_PATH+'b_relations.png',IMG_PATH+'b_relations.png');
 	d.add('dbdesign01{$project_vo.id}','dbdesign{$project_vo.id}','基本数据模型关系图','__APP__/designer/index/id/{$project_vo.id}',null,'mainFrame');
-	d.add('creat{$project_vo.id}','config{$project_vo.id}','项目生成',null,null,null,IMG_PATH+'b_import.png',IMG_PATH+'b_import.png');
 	d.add('dbmodel{$project_vo.id}','project{$project_vo.id}','数据模型',null,null,null,IMG_PATH+'b_import.png',IMG_PATH+'b_import.png');
-	d.add('creat01{$project_vo.id}','creat{$project_vo.id}','生成本项目','__APP__/Sys_projects/buidepro/id/{$project_vo.id}',null,'mainFrame');
-	d.add('creat02{$project_vo.id}','creat{$project_vo.id}','浏览项目[需预生成]','__ROOT__/{$project_vo.proname}',null,'blank');
-	d.add('creat03{$project_vo.id}','creat{$project_vo.id}','生成项目打包','__APP__/Sys_projects/zippro/id/{$project_vo.id}',null,'blank');
+	d.add('creat{$project_vo.id}','config{$project_vo.id}','项目生成','__APP__/index/buide/id/{$project_vo.id}',null,'mainFrame');
 	</volist>
 	
 	//生成table的树形菜单
