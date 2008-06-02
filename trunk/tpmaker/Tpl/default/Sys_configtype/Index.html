@@ -1,0 +1,33 @@
+<tagLib name="cx,html,myhtml" />
+<include file="../Public/header" />
+<!-- 主体内容  -->
+
+<fieldset >
+	<legend>配置分类设定</legend>
+
+
+<!-- 列表显示区域  -->
+		<myhtml:editlist id="checkList" name="list"  checkbox="true"  datasource="list" style="list"
+		show="
+			id|hidden|1:ID,
+			title|20:标题,
+			note|60:标注,
+			seqNo|1:排序
+		"
+		action="false"
+		createform="true"
+		quickadd="true"
+		actionlist="edit:"
+		/>
+
+<!--  分页显示区域 -->
+<div class="page">
+
+<table width="100%">
+<tr >
+<td align="right">{$page}</td>
+</tr>
+</table>
+</div>
+</fieldset>
+<include file="../Public/footer" />
