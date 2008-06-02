@@ -1,0 +1,51 @@
+<tagLib name="cx,html,myhtml" />
+<include file="../Public/header" />
+<!-- 主体内容  -->
+
+<fieldset><legend>增加数据</legend>
+<form method="POST" action="__URL__/insert/" target="_self">
+<table  bgcolor="White">
+<tr >
+<myhtml:labelinput  name="caption" label="标题" value="" type="text" />
+<myhtml:labelinput  name="name" label="表名" value="" type="text" />
+<myhtml:labelinput  name="seqNo" label="排序" value="" type="text" />
+</tr>
+<tr >
+<myhtml:labelinput  name="fieldtype" label="字段属性" action="makeselect('fieldtype'#'sub_fieldtype'#1)"  />
+<myhtml:labelinput  name="viewtype" label="查看类型" action="makeselect('viewtype'#'sub_viewtype'#1)"  />
+<myhtml:labelinput  name="edittype" label="编辑类型" action="makeselect('edittype'#'sub_edittype'#1)"  />
+<myhtml:labelinput  name="issystem" label="系统保留" action="makeselect('issystem'#'sub_issystem'#1)"  />
+
+</tr>
+<tr >
+<myhtml:labelinput  name="islist" label="是否列表" action="makeselect('islist'#'sub_yesno'#1)"  />
+<myhtml:labelinput  name="iswrap" label="是否排序" action="makeselect('iswrap'#'sub_yesno'#1)"  />
+<myhtml:labelinput  name="indexvar" label="默认值" value="" type="text" />
+<myhtml:labelinput  name="autotype" label="填充形式" action="makeselect('autotype'#'sub_auto'#'0')"  />
+
+</tr>
+<tr>
+<myhtml:labelinput  name="validate" label="验证形式" action="makeselect('validate'#'sub_validate'#1)"  />
+<myhtml:labelinput  name="request" label="必填" action="makeselect('request'#'sub_yesno'#1)"  />
+<myhtml:labelinput  name="validate_tex" label="错误提示" value="" type="text" />
+<myhtml:labelinput  name="validate_reg" label="正则验证" value="" type="text" />
+
+</tr>
+<tr >
+<myhtml:labelinput  name="issearch" label="搜索形式" action="makeselect('searchtype'#'sub_searchtype'#1)"  />
+<myhtml:labelinput  name="issearch" label="是否搜索" action="makeselect('issearch'#'sub_yesno'#1)"  />
+</tr>
+<tr >
+<myhtml:labelinput  name="outkeyis" label="是否外键" action="makeselect('outkeyis'#'sub_yesno'#1)"  />
+<myhtml:labelinput  name="outkey" label="外键表" value="" type="text" />
+<myhtml:labelinput  name="outkeyid" label="外键表ID" value="id" type="text" />
+<myhtml:labelinput  name="outkeyf" label="外键表栏目" value="" type="text" />
+<myhtml:labelinput  name="outkeywhere" label="过滤条件" value="" type="text" />
+
+</tr>
+</table>
+<input type="submit"  class="button1" value="确定增加数据">
+<input type="hidden" name="pid" value="{$_REQUEST['pid']}">
+</form>
+</fieldset>
+<include file="../Public/footer" />

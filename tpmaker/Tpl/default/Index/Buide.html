@@ -1,0 +1,39 @@
+<tagLib name="html" />
+<include file="../Public/header" />
+<!-- 主体内容  -->
+<script LANGUAGE="JavaScript">
+function buidthis(id){ //生成本项目
+ window.open("__APP__/Sys_projects/buidepro/id/"+id, 'mini');
+}
+function viewthis(id){ //浏览项目
+ window.open("__ROOT__/{$proname}", 'blank');
+}
+
+function packthis(id){ //生成项目打包
+ window.open("__APP__/Sys_projects/zippro/id/"+id, 'mini');
+}
+
+</script>
+<fieldset >
+	<legend>请选择操作</legend>
+
+<!--  功能操作区域  -->
+<table width="100%"   cellpadding=0 cellspacing=0 >
+	<tr>
+		<td width="60%">
+	<input type="button"  onclick="buidthis({$_GET['id']});" class="button1" value="生成本项目">	
+	<input type="button"  onclick="viewthis({$_GET['id']});" class="button1" value="浏览项目[需预生成]">
+	<input type="button"  onclick="packthis({$_GET['id']});" class="button1" value="生成项目打包[需预生成]">
+		</td>
+	</tr>
+</table>
+
+<!-- 功能操作区域结束 -->
+</fieldset>
+<fieldset >
+<legend>操作内容显示</legend>
+<iframe scrolling="auto"  width="100%" height="400px" name="mini" src=""  frameborder="0"></iframe>
+</fieldset>
+
+
+<include file="../Public/footer" />
