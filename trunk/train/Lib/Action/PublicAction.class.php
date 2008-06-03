@@ -38,6 +38,8 @@ class PublicAction extends Action {
             	$this->error('密码错误！');
             }
             $_SESSION[C('USER_AUTH_KEY')]	=	$authInfo['id'];
+            $_SESSION['loginuser']	=	$authInfo['account'];
+           
 			$this->success('登录成功！');
 		}
 	}
@@ -47,6 +49,7 @@ class PublicAction extends Action {
 			$user=D('user');
 			$list=$user->findall();
 			$this->assign('user',$list);
+			
 			//dump($list);
 			$this->display();
 		}else{
