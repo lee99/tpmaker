@@ -1,0 +1,489 @@
+
+[ 08-06-04 08:40:10 ]
+ RunTime:0.002191s SQL = SHOW COLUMNS FROM lee99_user
+[ 08-06-04 08:40:10 ]
+ RunTime:0.000884s SQL = SELECT * FROM lee99_user WHERE id='4'
+[ 08-06-04 08:40:29 ]
+ RunTime:0.000414s SQL = SELECT count(*) as count FROM lee99_user
+[ 08-06-04 08:40:29 ]
+ RunTime:0.000631s SQL = SELECT * FROM lee99_user ORDER BY id asc LIMIT 0,20 
+[ 08-06-04 17:35:40 ]
+ RunTime:0.002404s SQL = SHOW COLUMNS FROM lee99_user
+[ 08-06-04 17:35:40 ]
+ RunTime:0.008191s SQL = SELECT * FROM lee99_user
+[ 08-06-04 17:35:50 ]
+ RunTime:0.000967s SQL = SELECT * FROM lee99_user WHERE ( `account` = 'admin' ) AND ( `status` > 0 ) LIMIT 1 
+[ 08-06-04 17:35:53 ]
+ RunTime:0.002145s SQL = SHOW COLUMNS FROM lee99_usertmp
+[ 08-06-04 17:35:53 ]
+ RunTime:0.048878s SQL = SELECT `id` FROM lee99_usertmp WHERE iskeep >0 and user='admin' ORDER BY hit ASC
+[ 08-06-04 17:36:29 ]
+ RunTime:0.012959s SQL = SELECT `id` FROM lee99_usertmp WHERE iskeep >0 and user='admin' ORDER BY hit ASC
+[ 08-06-04 17:36:30 ]
+ RunTime:0.012621s SQL = SELECT `id` FROM lee99_usertmp WHERE iskeep >0 and user='admin' ORDER BY hit ASC
+[ 08-06-04 17:36:31 ]
+ RunTime:0.012986s SQL = SELECT `id` FROM lee99_usertmp WHERE iskeep >0 and user='admin' ORDER BY hit ASC
+[ 08-06-04 17:38:19 ]
+ RunTime:0.013225s SQL = SELECT `id` FROM lee99_usertmp WHERE iskeep >0 and user='admin' ORDER BY hit ASC
+[ 08-06-04 17:42:21 ]
+ RunTime:0.012782s SQL = SELECT `id` FROM lee99_usertmp WHERE iskeep >0 and user='admin' ORDER BY hit ASC
+[ 08-06-04 17:42:45 ]
+ RunTime:0.013325s SQL = SELECT `id` FROM lee99_usertmp WHERE iskeep >0 and user='admin' ORDER BY hit ASC
+[ 08-06-04 17:43:10 ]
+ RunTime:0.013210s SQL = SELECT `id` FROM lee99_usertmp WHERE iskeep >0 and user='admin' ORDER BY hit ASC
+[ 08-06-04 17:43:38 ]
+ RunTime:0.012658s SQL = SELECT `id` FROM lee99_usertmp WHERE iskeep >0 and user='admin' ORDER BY hit ASC
+[ 08-06-04 17:44:55 ]
+ RunTime:0.014785s SQL = SELECT `id` FROM lee99_usertmp WHERE iskeep >0 and user='admin' ORDER BY hit ASC
+[ 08-06-04 17:45:49 ]
+ RunTime:0.012273s SQL = SELECT `id` FROM lee99_usertmp WHERE iskeep >0 and user='admin' ORDER BY hit ASC
+[ 08-06-04 17:47:18 ]
+ RunTime:0.013839s SQL = SELECT `id` FROM lee99_usertmp WHERE iskeep >0 and user='admin' ORDER BY hit ASC
+[ 08-06-04 17:47:20 ]
+ RunTime:0.012330s SQL = SELECT `id` FROM lee99_usertmp WHERE iskeep >0 and user='admin' ORDER BY hit ASC
+[ 08-06-04 17:48:04 ]
+ RunTime:0.015089s SQL = SELECT `id` FROM lee99_usertmp WHERE iskeep >0 and user='admin' ORDER BY hit ASC
+[ 08-06-04 17:48:28 ]
+ RunTime:0.013387s SQL = SELECT `id` FROM lee99_usertmp WHERE iskeep >0 and user='admin' ORDER BY hit ASC
+[ 08-06-04 17:48:38 ]
+ RunTime:0.013588s SQL = SELECT `id` FROM lee99_usertmp WHERE iskeep >0 and user='admin' ORDER BY hit ASC
+[ 08-06-04 17:49:22 ]
+ RunTime:0.012713s SQL = SELECT `id` FROM lee99_usertmp WHERE iskeep >0 and user='admin' ORDER BY hit ASC
+[ 08-06-04 17:51:06 ]
+ RunTime:0.012963s SQL = SELECT `id` FROM lee99_usertmp WHERE iskeep >0 and user='admin' ORDER BY hit ASC
+[ 08-06-04 17:52:28 ]
+ RunTime:0.016686s SQL = SELECT `id` FROM lee99_usertmp WHERE iskeep >0 and user='admin' ORDER BY hit ASC
+[ 08-06-04 17:52:31 ]
+ RunTime:0.013359s SQL = SELECT `id` FROM lee99_usertmp WHERE iskeep >0 and user='admin' ORDER BY hit ASC
+[ 08-06-04 17:54:55 ]
+ RunTime:0.015520s SQL = SELECT `id` FROM lee99_usertmp WHERE iskeep >0 and user='admin' ORDER BY hit ASC
+[ 08-06-04 17:55:48 ]
+ RunTime:0.015056s SQL = SELECT `id` FROM lee99_usertmp WHERE iskeep >0 and user='admin' ORDER BY hit ASC
+[ 08-06-04 17:56:18 ]
+ RunTime:0.013874s SQL = SELECT `id` FROM lee99_usertmp WHERE iskeep >0 and user='admin' ORDER BY hit ASC
+[ 08-06-04 17:57:13 ]
+ RunTime:0.033369s SQL = SELECT `id` FROM lee99_usertmp WHERE iskeep >0 and user='admin' ORDER BY hit ASC
+[ 08-06-04 17:57:36 ]
+ RunTime:0.028258s SQL = SELECT `id` FROM lee99_usertmp WHERE iskeep >0 and user='admin' ORDER BY hit ASC
+[ 08-06-04 17:57:53 ]
+ RunTime:0.013588s SQL = SELECT `id` FROM lee99_usertmp WHERE iskeep >0 and user='admin' ORDER BY hit ASC
+[ 08-06-04 17:58:48 ]
+ RunTime:0.013740s SQL = SELECT `id` FROM lee99_usertmp WHERE iskeep >0 and user='admin' ORDER BY hit ASC
+[ 08-06-04 17:59:00 ]
+ RunTime:0.025884s SQL = SELECT `id` FROM lee99_usertmp WHERE iskeep >0 and user='admin' ORDER BY hit ASC
+[ 08-06-04 17:59:03 ]
+ RunTime:0.012747s SQL = SELECT `id` FROM lee99_usertmp WHERE iskeep >0 and user='admin' ORDER BY hit ASC
+[ 08-06-04 17:59:17 ]
+ RunTime:0.014065s SQL = SELECT `id` FROM lee99_usertmp WHERE iskeep >0 and user='admin' ORDER BY hit ASC
+[ 08-06-04 18:00:30 ]
+ RunTime:0.012775s SQL = SELECT `id` FROM lee99_usertmp WHERE iskeep >0 and user='admin' ORDER BY hit ASC
+[ 08-06-04 18:00:42 ]
+ RunTime:0.012673s SQL = SELECT `id` FROM lee99_usertmp WHERE iskeep >0 and user='admin' ORDER BY hit ASC
+[ 08-06-04 18:03:09 ]
+ RunTime:0.012892s SQL = SELECT `id` FROM lee99_usertmp WHERE iskeep >0 and user='admin' ORDER BY hit ASC
+[ 08-06-04 18:04:35 ]
+ RunTime:0.012145s SQL = SELECT `id` FROM lee99_usertmp WHERE iskeep >0 and user='admin' ORDER BY hit ASC
+[ 08-06-04 18:04:36 ]
+ RunTime:0.012839s SQL = SELECT `id` FROM lee99_usertmp WHERE iskeep >0 and user='admin' ORDER BY hit ASC
+[ 08-06-04 18:06:17 ]
+ RunTime:0.029050s SQL = SELECT `id` FROM lee99_usertmp WHERE iskeep >0 and user='admin' ORDER BY hit ASC
+[ 08-06-04 18:07:22 ]
+ RunTime:0.027509s SQL = SELECT `id` FROM lee99_usertmp WHERE iskeep >0 and user='admin' ORDER BY hit ASC
+[ 08-06-04 18:09:03 ]
+ RunTime:0.013395s SQL = SELECT `id` FROM lee99_usertmp WHERE iskeep >0 and user='admin' ORDER BY hit ASC
+[ 08-06-04 18:09:14 ]
+ RunTime:0.012842s SQL = SELECT `id` FROM lee99_usertmp WHERE iskeep >0 and user='admin' ORDER BY hit ASC
+[ 08-06-04 18:09:16 ]
+ RunTime:0.012208s SQL = SELECT `id` FROM lee99_usertmp WHERE iskeep >0 and user='admin' ORDER BY hit ASC
+[ 08-06-04 18:09:18 ]
+ RunTime:0.012295s SQL = SELECT `id` FROM lee99_usertmp WHERE iskeep >0 and user='admin' ORDER BY hit ASC
+[ 08-06-04 18:09:19 ]
+ RunTime:0.013166s SQL = SELECT `id` FROM lee99_usertmp WHERE iskeep >0 and user='admin' ORDER BY hit ASC
+[ 08-06-04 18:09:37 ]
+ RunTime:0.013131s SQL = SELECT `id` FROM lee99_usertmp WHERE iskeep >0 and user='admin' ORDER BY hit ASC
+[ 08-06-04 18:09:38 ]
+ RunTime:0.013016s SQL = SELECT `id` FROM lee99_usertmp WHERE iskeep >0 and user='admin' ORDER BY hit ASC
+[ 08-06-04 18:11:02 ]
+ RunTime:0.013726s SQL = SELECT `id` FROM lee99_usertmp WHERE iskeep >0 and user='admin' ORDER BY hit ASC
+[ 08-06-04 18:12:41 ]
+ RunTime:0.013887s SQL = SELECT `id` FROM lee99_usertmp WHERE iskeep >0 and user='admin' ORDER BY hit ASC
+[ 08-06-04 18:12:47 ]
+ RunTime:0.012832s SQL = SELECT `id` FROM lee99_usertmp WHERE iskeep >0 and user='admin' ORDER BY hit ASC
+[ 08-06-04 18:12:48 ]
+ RunTime:0.012250s SQL = SELECT `id` FROM lee99_usertmp WHERE iskeep >0 and user='admin' ORDER BY hit ASC
+[ 08-06-04 18:15:01 ]
+ RunTime:0.015041s SQL = SELECT `id` FROM lee99_usertmp WHERE iskeep >0 and user='admin' ORDER BY hit ASC
+[ 08-06-04 18:16:36 ]
+ RunTime:0.013523s SQL = SELECT `id` FROM lee99_usertmp WHERE iskeep >0 and user='admin' ORDER BY hit ASC
+[ 08-06-04 18:17:58 ]
+ RunTime:0.018999s SQL = SELECT `id` FROM lee99_usertmp WHERE iskeep >0 and user='admin' ORDER BY hit ASC
+[ 08-06-04 18:18:16 ]
+ RunTime:0.015352s SQL = SELECT `id` FROM lee99_usertmp WHERE iskeep >0 and user='admin' ORDER BY hit ASC
+[ 08-06-04 18:18:30 ]
+ RunTime:0.013982s SQL = SELECT `id` FROM lee99_usertmp WHERE iskeep >0 and user='admin' ORDER BY hit ASC
+[ 08-06-04 18:18:38 ]
+ RunTime:0.013348s SQL = SELECT `id` FROM lee99_usertmp WHERE iskeep >0 and user='admin' ORDER BY hit ASC
+[ 08-06-04 18:18:41 ]
+ RunTime:0.014564s SQL = SELECT `id` FROM lee99_usertmp WHERE iskeep >0 and user='admin' ORDER BY hit ASC
+[ 08-06-04 18:18:44 ]
+ RunTime:0.012886s SQL = SELECT `id` FROM lee99_usertmp WHERE iskeep >0 and user='admin' ORDER BY hit ASC
+[ 08-06-04 18:18:46 ]
+ RunTime:0.013299s SQL = SELECT `id` FROM lee99_usertmp WHERE iskeep >0 and user='admin' ORDER BY hit ASC
+[ 08-06-04 18:18:47 ]
+ RunTime:0.012235s SQL = SELECT `id` FROM lee99_usertmp WHERE iskeep >0 and user='admin' ORDER BY hit ASC
+[ 08-06-04 18:18:48 ]
+ RunTime:0.012781s SQL = SELECT `id` FROM lee99_usertmp WHERE iskeep >0 and user='admin' ORDER BY hit ASC
+[ 08-06-04 18:18:50 ]
+ RunTime:0.012602s SQL = SELECT `id` FROM lee99_usertmp WHERE iskeep >0 and user='admin' ORDER BY hit ASC
+[ 08-06-04 18:18:51 ]
+ RunTime:0.012851s SQL = SELECT `id` FROM lee99_usertmp WHERE iskeep >0 and user='admin' ORDER BY hit ASC
+[ 08-06-04 18:18:52 ]
+ RunTime:0.012788s SQL = SELECT `id` FROM lee99_usertmp WHERE iskeep >0 and user='admin' ORDER BY hit ASC
+[ 08-06-04 18:18:53 ]
+ RunTime:0.013290s SQL = SELECT `id` FROM lee99_usertmp WHERE iskeep >0 and user='admin' ORDER BY hit ASC
+[ 08-06-04 18:18:54 ]
+ RunTime:0.012736s SQL = SELECT `id` FROM lee99_usertmp WHERE iskeep >0 and user='admin' ORDER BY hit ASC
+[ 08-06-04 18:18:55 ]
+ RunTime:0.015096s SQL = SELECT `id` FROM lee99_usertmp WHERE iskeep >0 and user='admin' ORDER BY hit ASC
+[ 08-06-04 18:18:56 ]
+ RunTime:0.013298s SQL = SELECT `id` FROM lee99_usertmp WHERE iskeep >0 and user='admin' ORDER BY hit ASC
+[ 08-06-04 18:18:58 ]
+ RunTime:0.013712s SQL = SELECT `id` FROM lee99_usertmp WHERE iskeep >0 and user='admin' ORDER BY hit ASC
+[ 08-06-04 18:18:59 ]
+ RunTime:0.014547s SQL = SELECT `id` FROM lee99_usertmp WHERE iskeep >0 and user='admin' ORDER BY hit ASC
+[ 08-06-04 18:19:18 ]
+ RunTime:0.016309s SQL = SELECT `id` FROM lee99_usertmp WHERE iskeep >0 and user='admin' ORDER BY hit ASC
+[ 08-06-04 18:19:20 ]
+ RunTime:0.013224s SQL = SELECT `id` FROM lee99_usertmp WHERE iskeep >0 and user='admin' ORDER BY hit ASC
+[ 08-06-04 18:19:21 ]
+ RunTime:0.013977s SQL = SELECT `id` FROM lee99_usertmp WHERE iskeep >0 and user='admin' ORDER BY hit ASC
+[ 08-06-04 18:19:23 ]
+ RunTime:0.013437s SQL = SELECT `id` FROM lee99_usertmp WHERE iskeep >0 and user='admin' ORDER BY hit ASC
+[ 08-06-04 18:19:24 ]
+ RunTime:0.013118s SQL = SELECT `id` FROM lee99_usertmp WHERE iskeep >0 and user='admin' ORDER BY hit ASC
+[ 08-06-04 18:19:54 ]
+ RunTime:0.013219s SQL = SELECT `id` FROM lee99_usertmp WHERE iskeep >0 and user='admin' ORDER BY hit ASC
+[ 08-06-04 18:20:05 ]
+ RunTime:0.015801s SQL = SELECT `id` FROM lee99_usertmp WHERE iskeep >0 and user='admin' ORDER BY hit ASC
+[ 08-06-04 18:21:32 ]
+ RunTime:0.016422s SQL = SELECT `id` FROM lee99_usertmp WHERE iskeep >0 and user='admin' ORDER BY hit ASC
+[ 08-06-04 18:21:53 ]
+ RunTime:0.013404s SQL = SELECT `id` FROM lee99_usertmp WHERE iskeep >0 and user='admin' ORDER BY hit ASC
+[ 08-06-04 18:21:54 ]
+ RunTime:0.013021s SQL = SELECT `id` FROM lee99_usertmp WHERE iskeep >0 and user='admin' ORDER BY hit ASC
+[ 08-06-04 18:22:03 ]
+ RunTime:0.012895s SQL = SELECT `id` FROM lee99_usertmp WHERE iskeep >0 and user='admin' ORDER BY hit ASC
+[ 08-06-04 18:22:40 ]
+ RunTime:0.013259s SQL = SELECT `id` FROM lee99_usertmp WHERE iskeep >0 and user='admin' ORDER BY hit ASC
+[ 08-06-04 18:22:41 ]
+ RunTime:0.012075s SQL = SELECT `id` FROM lee99_usertmp WHERE iskeep >0 and user='admin' ORDER BY hit ASC
+[ 08-06-04 18:23:20 ]
+ RunTime:0.013087s SQL = SELECT `id` FROM lee99_usertmp WHERE iskeep >0 and user='admin' ORDER BY hit ASC
+[ 08-06-04 18:23:30 ]
+ RunTime:0.013798s SQL = SELECT `id` FROM lee99_usertmp WHERE iskeep >0 and user='admin' ORDER BY hit ASC
+[ 08-06-04 18:23:37 ]
+ RunTime:0.013570s SQL = SELECT `id` FROM lee99_usertmp WHERE iskeep >0 and user='admin' ORDER BY hit ASC
+[ 08-06-04 18:23:48 ]
+ RunTime:0.013485s SQL = SELECT `id` FROM lee99_usertmp WHERE iskeep >0 and user='admin' ORDER BY hit ASC
+[ 08-06-04 18:23:53 ]
+ RunTime:0.012859s SQL = SELECT `id` FROM lee99_usertmp WHERE iskeep >0 and user='admin' ORDER BY hit ASC
+[ 08-06-04 18:27:05 ]
+ RunTime:0.013319s SQL = SELECT `id` FROM lee99_usertmp WHERE iskeep >0 and user='admin' ORDER BY hit ASC
+[ 08-06-04 18:29:04 ]
+ RunTime:0.014932s SQL = SELECT `id` FROM lee99_usertmp WHERE iskeep >0 and user='admin' ORDER BY hit ASC
+[ 08-06-04 18:29:36 ]
+ RunTime:0.013859s SQL = SELECT `id` FROM lee99_usertmp WHERE iskeep >0 and user='admin' ORDER BY hit ASC
+[ 08-06-04 18:29:38 ]
+ RunTime:0.013832s SQL = SELECT `id` FROM lee99_usertmp WHERE iskeep >0 and user='admin' ORDER BY hit ASC
+[ 08-06-04 18:31:10 ]
+ RunTime:0.004355s SQL = SELECT `id` FROM lee99_usertmp WHERE iskeep >0 and user='' ORDER BY hit ASC
+[ 08-06-04 18:31:15 ]
+ RunTime:0.004625s SQL = SELECT `id` FROM lee99_usertmp WHERE iskeep >0 and user='' ORDER BY hit ASC
+[ 08-06-04 18:31:37 ]
+ RunTime:0.001512s SQL = SELECT * FROM lee99_user
+[ 08-06-04 18:31:49 ]
+ RunTime:0.000919s SQL = SELECT * FROM lee99_user WHERE ( `account` = 'admin' ) AND ( `status` > 0 ) LIMIT 1 
+[ 08-06-04 18:31:52 ]
+ RunTime:0.033355s SQL = SELECT `id` FROM lee99_usertmp WHERE iskeep >0 and user='admin' ORDER BY hit ASC
+[ 08-06-04 18:31:57 ]
+ RunTime:0.029114s SQL = SELECT `id` FROM lee99_usertmp WHERE iskeep >0 and user='admin' ORDER BY hit ASC
+[ 08-06-04 18:31:58 ]
+ RunTime:0.013045s SQL = SELECT `id` FROM lee99_usertmp WHERE iskeep >0 and user='admin' ORDER BY hit ASC
+[ 08-06-04 18:33:19 ]
+ RunTime:0.014943s SQL = SELECT `id` FROM lee99_usertmp WHERE iskeep >0 and user='admin' ORDER BY hit ASC
+[ 08-06-04 18:37:11 ]
+ RunTime:0.013041s SQL = SELECT `id` FROM lee99_usertmp WHERE iskeep >0 and user='admin' ORDER BY hit ASC
+[ 08-06-04 18:37:27 ]
+ RunTime:0.012864s SQL = SELECT `id` FROM lee99_usertmp WHERE iskeep >0 and user='admin' ORDER BY hit ASC
+[ 08-06-04 18:37:32 ]
+ RunTime:0.013540s SQL = SELECT `id` FROM lee99_usertmp WHERE iskeep >0 and user='admin' ORDER BY hit ASC
+[ 08-06-04 18:38:30 ]
+ RunTime:0.031200s SQL = SELECT `id` FROM lee99_usertmp WHERE iskeep >0 and user='admin' ORDER BY hit ASC
+[ 08-06-04 18:38:38 ]
+ RunTime:0.014647s SQL = SELECT `id` FROM lee99_usertmp WHERE iskeep >0 and user='admin' ORDER BY hit ASC
+[ 08-06-04 18:38:41 ]
+ RunTime:0.027538s SQL = SELECT `id` FROM lee99_usertmp WHERE iskeep >0 and user='admin' ORDER BY hit ASC
+[ 08-06-04 18:39:15 ]
+ RunTime:0.014707s SQL = SELECT `id` FROM lee99_usertmp WHERE iskeep >0 and user='admin' ORDER BY hit ASC
+[ 08-06-04 18:40:08 ]
+ RunTime:0.013211s SQL = SELECT `id` FROM lee99_usertmp WHERE iskeep >0 and user='admin' ORDER BY hit ASC
+[ 08-06-04 18:40:13 ]
+ RunTime:0.012688s SQL = SELECT `id` FROM lee99_usertmp WHERE iskeep >0 and user='admin' ORDER BY hit ASC
+[ 08-06-04 18:40:55 ]
+ RunTime:0.016458s SQL = SELECT `id` FROM lee99_usertmp WHERE iskeep >0 and user='admin' ORDER BY hit ASC
+[ 08-06-04 18:40:58 ]
+ RunTime:0.013127s SQL = SELECT `id` FROM lee99_usertmp WHERE iskeep >0 and user='admin' ORDER BY hit ASC
+[ 08-06-04 18:41:19 ]
+ RunTime:0.012849s SQL = SELECT `id` FROM lee99_usertmp WHERE iskeep >0 and user='admin' ORDER BY hit ASC
+[ 08-06-04 18:41:23 ]
+ RunTime:0.012639s SQL = SELECT `id` FROM lee99_usertmp WHERE iskeep >0 and user='admin' ORDER BY hit ASC
+[ 08-06-04 18:41:25 ]
+ RunTime:0.017015s SQL = SELECT `id` FROM lee99_usertmp WHERE iskeep >0 and user='admin' ORDER BY hit ASC
+[ 08-06-04 18:42:06 ]
+ RunTime:0.031210s SQL = SELECT `id` FROM lee99_usertmp WHERE iskeep >0 and user='admin' ORDER BY hit ASC
+[ 08-06-04 18:42:32 ]
+ RunTime:0.013119s SQL = SELECT `id` FROM lee99_usertmp WHERE iskeep >0 and user='admin' ORDER BY hit ASC
+[ 08-06-04 18:42:48 ]
+ RunTime:0.014435s SQL = SELECT `id` FROM lee99_usertmp WHERE iskeep >0 and user='admin' ORDER BY hit ASC
+[ 08-06-04 18:43:05 ]
+ RunTime:0.013474s SQL = SELECT `id` FROM lee99_usertmp WHERE iskeep >0 and user='admin' ORDER BY hit ASC
+[ 08-06-04 18:43:25 ]
+ RunTime:0.015199s SQL = SELECT `id` FROM lee99_usertmp WHERE iskeep >0 and user='admin' ORDER BY hit ASC
+[ 08-06-04 18:44:29 ]
+ RunTime:0.013307s SQL = SELECT `id` FROM lee99_usertmp WHERE iskeep >0 and user='admin' ORDER BY hit ASC
+[ 08-06-04 18:44:43 ]
+ RunTime:0.013744s SQL = SELECT `id` FROM lee99_usertmp WHERE iskeep >0 and user='admin' ORDER BY hit ASC
+[ 08-06-04 18:45:28 ]
+ RunTime:0.012348s SQL = SELECT `id` FROM lee99_usertmp WHERE iskeep >0 and user='admin' ORDER BY hit ASC
+[ 08-06-04 18:45:41 ]
+ RunTime:0.014831s SQL = SELECT `id` FROM lee99_usertmp WHERE iskeep >0 and user='admin' ORDER BY hit ASC
+[ 08-06-04 18:45:42 ]
+ RunTime:0.012745s SQL = SELECT `id` FROM lee99_usertmp WHERE iskeep >0 and user='admin' ORDER BY hit ASC
+[ 08-06-04 18:45:44 ]
+ RunTime:0.012439s SQL = SELECT `id` FROM lee99_usertmp WHERE iskeep >0 and user='admin' ORDER BY hit ASC
+[ 08-06-04 18:48:25 ]
+ RunTime:0.012994s SQL = SELECT `id` FROM lee99_usertmp WHERE iskeep >0 and user='admin' ORDER BY hit ASC
+[ 08-06-04 18:48:31 ]
+ RunTime:0.014237s SQL = SELECT `id` FROM lee99_usertmp WHERE iskeep >0 and user='admin' ORDER BY hit ASC
+[ 08-06-04 18:48:38 ]
+ RunTime:0.013913s SQL = SELECT `id` FROM lee99_usertmp WHERE iskeep >0 and user='admin' ORDER BY hit ASC
+[ 08-06-04 18:49:26 ]
+ RunTime:0.012837s SQL = SELECT `id` FROM lee99_usertmp WHERE iskeep >0 and user='admin' ORDER BY hit ASC
+[ 08-06-04 18:49:34 ]
+ RunTime:0.015205s SQL = SELECT `id` FROM lee99_usertmp WHERE iskeep >0 and user='admin' ORDER BY hit ASC
+[ 08-06-04 18:49:41 ]
+ RunTime:0.013539s SQL = SELECT `id` FROM lee99_usertmp WHERE iskeep >0 and user='admin' ORDER BY hit ASC
+[ 08-06-04 18:49:49 ]
+ RunTime:0.013803s SQL = SELECT `id` FROM lee99_usertmp WHERE iskeep >0 and user='admin' ORDER BY hit ASC
+[ 08-06-04 18:52:04 ]
+ RunTime:0.013297s SQL = SELECT `id` FROM lee99_usertmp WHERE iskeep >0 and user='admin' ORDER BY hit ASC
+[ 08-06-04 18:52:18 ]
+ RunTime:0.014566s SQL = SELECT `id` FROM lee99_usertmp WHERE iskeep >0 and user='admin' ORDER BY hit ASC
+[ 08-06-04 18:55:27 ]
+ RunTime:0.012797s SQL = SELECT `id` FROM lee99_usertmp WHERE iskeep >0 and user='admin' ORDER BY hit ASC
+[ 08-06-04 19:05:54 ]
+ RunTime:0.004543s SQL = SHOW COLUMNS FROM lee99_infos
+[ 08-06-04 19:05:54 ]
+ RunTime:0.025645s SQL = SELECT * FROM lee99_infos WHERE id='37'
+[ 08-06-04 19:06:00 ]
+ RunTime:0.000844s SQL = SELECT * FROM lee99_infos WHERE id='37'
+[ 08-06-04 19:06:07 ]
+ RunTime:0.000828s SQL = SELECT * FROM lee99_infos WHERE id='37'
+[ 08-06-04 19:06:13 ]
+ RunTime:0.000865s SQL = SELECT * FROM lee99_infos WHERE id='37'
+[ 08-06-04 19:06:15 ]
+ RunTime:0.000879s SQL = SELECT * FROM lee99_infos WHERE id='37'
+[ 08-06-04 19:06:16 ]
+ RunTime:0.000879s SQL = SELECT * FROM lee99_infos WHERE id='37'
+[ 08-06-04 19:06:17 ]
+ RunTime:0.000861s SQL = SELECT * FROM lee99_infos WHERE id='37'
+[ 08-06-04 19:06:18 ]
+ RunTime:0.000874s SQL = SELECT * FROM lee99_infos WHERE id='37'
+[ 08-06-04 19:06:19 ]
+ RunTime:0.000865s SQL = SELECT * FROM lee99_infos WHERE id='37'
+[ 08-06-04 19:06:20 ]
+ RunTime:0.001105s SQL = SELECT * FROM lee99_infos WHERE id='37'
+[ 08-06-04 19:06:21 ]
+ RunTime:0.000849s SQL = SELECT * FROM lee99_infos WHERE id='37'
+[ 08-06-04 19:08:19 ]
+ RunTime:0.000844s SQL = SELECT * FROM lee99_infos WHERE id='37'
+[ 08-06-04 19:08:37 ]
+ RunTime:0.001212s SQL = SELECT * FROM lee99_infos WHERE id='37'
+[ 08-06-04 19:09:37 ]
+ RunTime:0.000877s SQL = SELECT * FROM lee99_infos WHERE id='37'
+[ 08-06-04 19:09:59 ]
+ RunTime:0.003533s SQL = SELECT * FROM lee99_infos WHERE id='37'
+[ 08-06-04 19:10:55 ]
+ RunTime:0.000839s SQL = SELECT * FROM lee99_infos WHERE id='37'
+[ 08-06-04 19:11:51 ]
+ RunTime:0.000878s SQL = SELECT * FROM lee99_infos WHERE id='37'
+[ 08-06-04 20:26:42 ]
+ RunTime:0.015164s SQL = SELECT * FROM lee99_user
+[ 08-06-04 20:26:54 ]
+ RunTime:0.032537s SQL = SELECT * FROM lee99_user WHERE ( `account` = 'admin' ) AND ( `status` > 0 ) LIMIT 1 
+[ 08-06-04 20:26:56 ]
+ RunTime:0.001407s SQL = SHOW COLUMNS FROM lee99_infos
+[ 08-06-04 20:26:56 ]
+ RunTime:0.000411s SQL = SELECT * FROM lee99_infos WHERE id='21'
+[ 08-06-04 20:37:02 ]
+ RunTime:0.000616s SQL = SELECT * FROM lee99_infos WHERE id='21'
+[ 08-06-04 20:37:54 ]
+ RunTime:0.000383s SQL = SELECT * FROM lee99_infos WHERE id='21'
+[ 08-06-04 20:38:11 ]
+ RunTime:0.000379s SQL = SELECT * FROM lee99_infos WHERE id='3'
+[ 08-06-04 20:39:47 ]
+ RunTime:0.000633s SQL = SELECT * FROM lee99_infos WHERE id='3'
+[ 08-06-04 20:43:08 ]
+ RunTime:0.000669s SQL = SELECT * FROM lee99_infos WHERE id='3'
+[ 08-06-04 20:44:21 ]
+ RunTime:0.000620s SQL = SELECT * FROM lee99_infos WHERE id='3'
+[ 08-06-04 20:44:52 ]
+ RunTime:0.000861s SQL = SELECT * FROM lee99_infos WHERE id='3'
+[ 08-06-04 20:47:10 ]
+ RunTime:0.000616s SQL = SELECT * FROM lee99_infos WHERE id='3'
+[ 08-06-04 20:47:22 ]
+ RunTime:0.000620s SQL = SELECT * FROM lee99_infos WHERE id='3'
+[ 08-06-04 20:47:32 ]
+ RunTime:0.000624s SQL = SELECT * FROM lee99_infos WHERE id='3'
+[ 08-06-04 20:47:50 ]
+ RunTime:0.000620s SQL = SELECT * FROM lee99_infos WHERE id='3'
+[ 08-06-04 20:47:53 ]
+ RunTime:0.000675s SQL = SELECT * FROM lee99_infos WHERE id='20'
+[ 08-06-04 20:47:56 ]
+ RunTime:0.000768s SQL = SELECT * FROM lee99_infos WHERE id='26'
+[ 08-06-04 20:47:58 ]
+ RunTime:0.000819s SQL = SELECT * FROM lee99_infos WHERE id='36'
+[ 08-06-04 20:48:01 ]
+ RunTime:0.000633s SQL = SELECT * FROM lee99_infos WHERE id='614'
+[ 08-06-04 20:48:39 ]
+ RunTime:0.000608s SQL = SELECT * FROM lee99_infos WHERE id='614'
+[ 08-06-04 20:48:48 ]
+ RunTime:0.000615s SQL = SELECT * FROM lee99_infos WHERE id='614'
+[ 08-06-04 20:48:55 ]
+ RunTime:0.000618s SQL = SELECT * FROM lee99_infos WHERE id='20'
+[ 08-06-04 20:48:57 ]
+ RunTime:0.000610s SQL = SELECT * FROM lee99_infos WHERE id='28'
+[ 08-06-04 20:48:58 ]
+ RunTime:0.000673s SQL = SELECT * FROM lee99_infos WHERE id='557'
+[ 08-06-04 20:48:59 ]
+ RunTime:0.000613s SQL = SELECT * FROM lee99_infos WHERE id='573'
+[ 08-06-04 20:49:01 ]
+ RunTime:0.001890s SQL = SELECT * FROM lee99_infos WHERE id='596'
+[ 08-06-04 20:49:05 ]
+ RunTime:0.000606s SQL = SELECT * FROM lee99_infos WHERE id='614'
+[ 08-06-04 20:49:07 ]
+ RunTime:0.000608s SQL = SELECT * FROM lee99_infos WHERE id='696'
+[ 08-06-04 20:49:09 ]
+ RunTime:0.000623s SQL = SELECT * FROM lee99_infos WHERE id='220'
+[ 08-06-04 20:49:11 ]
+ RunTime:0.000611s SQL = SELECT * FROM lee99_infos WHERE id='260'
+[ 08-06-04 20:51:04 ]
+ RunTime:0.000620s SQL = SELECT * FROM lee99_infos WHERE id='260'
+[ 08-06-04 20:51:08 ]
+ RunTime:0.000613s SQL = SELECT * FROM lee99_infos WHERE id='40'
+[ 08-06-04 20:51:10 ]
+ RunTime:0.000610s SQL = SELECT * FROM lee99_infos WHERE id='596'
+[ 08-06-04 20:51:11 ]
+ RunTime:0.000657s SQL = SELECT * FROM lee99_infos WHERE id='600'
+[ 08-06-04 20:51:12 ]
+ RunTime:0.000602s SQL = SELECT * FROM lee99_infos WHERE id='602'
+[ 08-06-04 20:51:13 ]
+ RunTime:0.000664s SQL = SELECT * FROM lee99_infos WHERE id='696'
+[ 08-06-04 20:51:16 ]
+ RunTime:0.000645s SQL = SELECT * FROM lee99_infos WHERE id='214'
+[ 08-06-04 20:51:17 ]
+ RunTime:0.000620s SQL = SELECT * FROM lee99_infos WHERE id='802'
+[ 08-06-04 20:51:18 ]
+ RunTime:0.000889s SQL = SELECT * FROM lee99_infos WHERE id='260'
+[ 08-06-04 20:51:20 ]
+ RunTime:0.000643s SQL = SELECT * FROM lee99_infos WHERE id='1224'
+[ 08-06-04 20:51:22 ]
+ RunTime:0.000762s SQL = SELECT * FROM lee99_infos WHERE id='929'
+[ 08-06-04 20:51:22 ]
+ RunTime:0.000658s SQL = SELECT * FROM lee99_infos WHERE id='935'
+[ 08-06-04 20:51:25 ]
+ RunTime:0.000618s SQL = SELECT * FROM lee99_infos WHERE id='324'
+[ 08-06-04 20:51:26 ]
+ RunTime:0.000743s SQL = SELECT * FROM lee99_infos WHERE id='953'
+[ 08-06-04 20:51:28 ]
+ RunTime:0.000676s SQL = SELECT * FROM lee99_infos WHERE id='972'
+[ 08-06-04 20:51:29 ]
+ RunTime:0.000608s SQL = SELECT * FROM lee99_infos WHERE id='1250'
+[ 08-06-04 20:51:30 ]
+ RunTime:0.000743s SQL = SELECT * FROM lee99_infos WHERE id='1009'
+[ 08-06-04 20:51:31 ]
+ RunTime:0.000617s SQL = SELECT * FROM lee99_infos WHERE id='399'
+[ 08-06-04 20:51:33 ]
+ RunTime:0.000646s SQL = SELECT * FROM lee99_infos WHERE id='1051'
+[ 08-06-04 20:51:35 ]
+ RunTime:0.000612s SQL = SELECT * FROM lee99_infos WHERE id='1068'
+[ 08-06-04 20:51:37 ]
+ RunTime:0.000621s SQL = SELECT * FROM lee99_infos WHERE id='508'
+[ 08-06-04 20:51:39 ]
+ RunTime:0.000614s SQL = SELECT * FROM lee99_infos WHERE id='557'
+[ 08-06-04 20:51:40 ]
+ RunTime:0.000632s SQL = SELECT * FROM lee99_infos WHERE id='573'
+[ 08-06-04 20:52:23 ]
+ RunTime:0.000629s SQL = SELECT * FROM lee99_infos WHERE id='65'
+[ 08-06-04 20:52:24 ]
+ RunTime:0.000617s SQL = SELECT * FROM lee99_infos WHERE id='70'
+[ 08-06-04 20:55:33 ]
+ RunTime:0.000622s SQL = SELECT * FROM lee99_infos WHERE id='70'
+[ 08-06-04 20:55:35 ]
+ RunTime:0.000621s SQL = SELECT * FROM lee99_infos WHERE id='28'
+[ 08-06-04 20:55:36 ]
+ RunTime:0.000621s SQL = SELECT * FROM lee99_infos WHERE id='36'
+[ 08-06-04 20:55:37 ]
+ RunTime:0.000373s SQL = SELECT * FROM lee99_infos WHERE id='40'
+[ 08-06-04 20:55:38 ]
+ RunTime:0.000628s SQL = SELECT * FROM lee99_infos WHERE id='52'
+[ 08-06-04 20:55:39 ]
+ RunTime:0.000764s SQL = SELECT * FROM lee99_infos WHERE id='65'
+[ 08-06-04 20:55:39 ]
+ RunTime:0.000390s SQL = SELECT * FROM lee99_infos WHERE id='83'
+[ 08-06-04 20:55:40 ]
+ RunTime:0.000619s SQL = SELECT * FROM lee99_infos WHERE id='1144'
+[ 08-06-04 20:55:40 ]
+ RunTime:0.000399s SQL = SELECT * FROM lee99_infos WHERE id='1542'
+[ 08-06-04 20:55:41 ]
+ RunTime:0.000615s SQL = SELECT * FROM lee99_infos WHERE id='789'
+[ 08-06-04 20:55:42 ]
+ RunTime:0.000629s SQL = SELECT * FROM lee99_infos WHERE id='893'
+[ 08-06-04 20:55:43 ]
+ RunTime:0.000373s SQL = SELECT * FROM lee99_infos WHERE id='929'
+[ 08-06-04 20:55:43 ]
+ RunTime:0.000623s SQL = SELECT * FROM lee99_infos WHERE id='280'
+[ 08-06-04 20:56:05 ]
+ RunTime:0.000739s SQL = SELECT * FROM lee99_infos WHERE id='28'
+[ 08-06-04 20:58:53 ]
+ RunTime:0.001473s SQL = SELECT * FROM lee99_infos WHERE id='28'
+[ 08-06-04 20:59:19 ]
+ RunTime:0.000752s SQL = SELECT * FROM lee99_infos WHERE id='28'
+[ 08-06-04 20:59:29 ]
+ RunTime:0.000643s SQL = SELECT * FROM lee99_infos WHERE id='26'
+[ 08-06-04 20:59:30 ]
+ RunTime:0.000691s SQL = SELECT * FROM lee99_infos WHERE id='36'
+[ 08-06-04 20:59:30 ]
+ RunTime:0.000424s SQL = SELECT * FROM lee99_infos WHERE id='40'
+[ 08-06-04 20:59:31 ]
+ RunTime:0.000693s SQL = SELECT * FROM lee99_infos WHERE id='65'
+[ 08-06-04 20:59:32 ]
+ RunTime:0.000508s SQL = SELECT * FROM lee99_infos WHERE id='83'
+[ 08-06-04 20:59:32 ]
+ RunTime:0.000451s SQL = SELECT * FROM lee99_infos WHERE id='205'
+[ 08-06-04 20:59:33 ]
+ RunTime:0.000531s SQL = SELECT * FROM lee99_infos WHERE id='1130'
+[ 08-06-04 20:59:35 ]
+ RunTime:0.000695s SQL = SELECT * FROM lee99_infos WHERE id='1091'
+[ 08-06-04 20:59:36 ]
+ RunTime:0.001144s SQL = SELECT * FROM lee99_infos WHERE id='40'
+[ 08-06-04 20:59:37 ]
+ RunTime:0.000424s SQL = SELECT * FROM lee99_infos WHERE id='65'
+[ 08-06-04 20:59:44 ]
+ RunTime:0.000444s SQL = SELECT * FROM lee99_infos WHERE id='24'
+[ 08-06-04 21:00:13 ]
+ RunTime:0.000738s SQL = SELECT * FROM lee99_infos WHERE id='1070'
+[ 08-06-04 21:00:13 ]
+ RunTime:0.000422s SQL = SELECT * FROM lee99_infos WHERE id='713'
+[ 08-06-04 21:00:14 ]
+ RunTime:0.000433s SQL = SELECT * FROM lee99_infos WHERE id='1402'

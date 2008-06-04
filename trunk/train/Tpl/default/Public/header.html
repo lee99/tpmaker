@@ -2,12 +2,10 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
 <HEAD>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-<TITLE>『后台管理平台』By ThinkPHP {$Think.version}</TITLE>
+<TITLE>{$Think.config.WEB_TITLE}</TITLE>
 <html:link type="css" href ="../Public/Css/style.css" />
 <html:link type="js" href ="../Public/Js/Common.js" />
 <html:import type="js" file="Js.Base" /> 
-<html:import type="js" file="Js.prototype" /> 
-<html:import type="js" file="Js.mootools" /> 
 <html:import type="js" file="Js.Ajax.ThinkAjax" /> 
 <html:import type="js" file="Js.Form.CheckForm" /> 
 <html:import type="js" file="Js.Util.ImageLoader" /> 
@@ -29,7 +27,7 @@ ImageLoader.startLoad();
 <div id="loader" >页面加载中...</div>
 <!-- 头部区域 -->
 <div id="header" class="header">
-<div class="headTitle" style="margin:8pt 10pt"> ThinkPHP 后台管理示例
+<div class="headTitle" style="margin:8pt 10pt"> {$Think.config.WEB_TITLE}
 </div>
 	<!-- 功能导航区 -->
 	<div class="nav">
