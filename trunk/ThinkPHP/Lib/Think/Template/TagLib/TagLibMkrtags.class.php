@@ -466,9 +466,13 @@ button : "'.$id.'_select" // ID of the button
         $othervar   = $tag['othervar'];               					//表单[othervar]//没值则
         $width		=	'100%';    
         $height     =	'160px';
+        $ajax     =	false;
 
 
- 		$parseStr   =	'<!-- 编辑器调用开始 --><script type="text/javascript" src="__ROOT__/Public/Js/FCKeditor/fckeditor.js"></script><textarea  id="'.$id.'" name="'.$name.'"  '.$othervar.' class="'.$class.'"  style="'.$style.'" '.$othervar.' '. $disabled.' '. $readonly. '>'.$value.'</textarea><script type="text/javascript"> var oFCKeditor = new FCKeditor( "'.$id.'","'.$width.'","'.$height.'" ) ; oFCKeditor.BasePath = "__ROOT__/Public/Js/FCKeditor/" ; oFCKeditor.ReplaceTextarea() ;</script><input type="button" value="保存编辑器" onclick="document.getElementById(\''.$id.'\').value = getContents(\''.$id.'\');"> <input type="button" value="重设编辑器" onclick="setContents(\''.$id.'\',document.getElementById(\''.$id.'\').value);"><!-- 编辑器调用结束 -->';
+ 		$parseStr   =	'<!-- 编辑器调用开始 --><script type="text/javascript" src="__ROOT__/Public/Js/FCKeditor/fckeditor.js"></script><textarea  id="'.$id.'" name="'.$name.'"  '.$othervar.' class="'.$class.'"  style="'.$style.'" '.$othervar.' '. $disabled.' '. $readonly. '>'.$value.'</textarea><script type="text/javascript"> var oFCKeditor = new FCKeditor( "'.$id.'","'.$width.'","'.$height.'" ) ; oFCKeditor.BasePath = "__ROOT__/Public/Js/FCKeditor/" ; oFCKeditor.ReplaceTextarea() ;</script><!-- 编辑器调用结束 -->'; 		
+ 		if($ajax){
+ 		$parseStr   .=	'<input type="button" value="保存编辑器" onclick="document.getElementById(\''.$id.'\').value = getContents(\''.$id.'\');"> <input type="button" value="重设编辑器" onclick="setContents(\''.$id.'\',document.getElementById(\''.$id.'\').value);">';
+ 		}
             
  		return $parseStr;
     }
@@ -728,6 +732,23 @@ var tablename = "'.$id.'"; // table name
     }
     
     
+      
+    public function _image($attr)
+    {
+		$tag        = $this->parseXmlAttr($attr,'time');
+        $name       = $tag['name']; 									//表单名称[name]
+        $id       	= !empty($tag['id'])?$tag['id']:$tag['name']; 		//表单ID[id]//没值则用NAME为值
+        $value      = substr($tag['value'],2,-1);									//表单[value]//没值则
+        $class      = empty($tag['class'])?$tag['class']:''; 			//表单class//没值则用NAME为值
+        $style      = empty($tag['style'])?$tag['style']:''; 			//表单[style]//没值则
+        $othervar   = $tag['othervar'];               					//表单[othervar]//没值则
+
+ 		$parseStr   = '<span    class="'.$class.'"  style="'.$style.'" ><a href="__ROOT__/Public/Uploads/{$'.$value.'}" target="_blank"  ><img height=100px src="__ROOT__/Public/Uploads/{$'.$value.'}" border="0" title="查看原图大小"></a></span>';
+ 		return $parseStr;
+ 		
+    }
+    
+        
     
     public function _temp($attr)
     {
