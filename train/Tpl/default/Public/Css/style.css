@@ -147,7 +147,7 @@ span.require{margin:0px 5px; color:#F30; font-weight:bold; font-family:Verdana,a
 div.wait{    line-height:155%; border:1px solid #d4d4d4; background:#FBFAF8; padding:3px; overflow:auto; width:65%; color:gray; max-height:250px; margin:8px}
 div.header{width:100%; font:normal normal normal 14px Tahoma,Verdana,Helvetica,Arial,sans-serif; padding:0px 0px; background:url(../Images/titlebg.gif) repeat-x; color:white; height:56px}
 div.main{	float: right;
-	width: 75%;
+	width: 80%;
 	margin-left:5pt;
 	padding:5px 5px;
 	border-right-color: #999;}
@@ -160,7 +160,7 @@ div.nav A{color:white; font:normal normal normal 14px Tahoma,Verdana,Helvetica,A
 div.nav A:hover{border-bottom:1px dotted; text-decoration:none; color:silver}
 .effect{background:#F1F1FA; width:300px; height:25px; border:1pt solid silver; text-align:center; font:normal normal normal 14px Tahoma}
 div.menu{	float: left;
-	width: 18%;	
+	width: 15%;	
 	padding:5px 5px;
 	margin:3px 5px;
 	text-align:left;}
@@ -209,6 +209,7 @@ table thead th{border-left:1px solid #cdd; background-color:#dee; background-ima
  table.login td, 
  table.list th, 
  table.list td{border-left:1px solid silver; border-bottom:1px solid silver; vertical-align:top; padding:3px}
+ table.list2 td{border-left:1px solid silver; border-bottom:1px solid silver; vertical-align:top; padding:0px;line-height:100%}
 
 table th.active, td.active{background-color:#CFC}
 table tr.row{background-color:#FFF}
@@ -218,6 +219,8 @@ table th.head{background:url(../Images/titlebg.gif) repeat-x; background-positio
 .Calendar{font-family:verdana; text-decoration:none; width:160; background-color:#C0D0E8; font-size:9pt; border:0px dotted #1C6FA5}
 
 .Day{font-family:verdana; font-size:7pt; color:#243F65; background-color:#E5E9F2; height:20px; width:11%; text-align:center; cursor:hand}
+.font{font-family:verdana; font-size:7pt; color:#fff; background-color:#000; height:14px; width:14px;}
+.font2{font-family:verdana; font-size:7pt; color:#fff; background-color:red; height:14px; width:14px;}
 
 .weeks{font-family:verdana; font-size:7pt; color:#243F65; background-color:#C0D0E8; height:20px; width:11%; text-align:center}
 

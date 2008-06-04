@@ -18,9 +18,8 @@
 
 				'DB_PREFIX'=>'lee99_',
 
-				'PROject_NAME'=>'汽车培训',//本项目的名字
-				'DEBUG_MODE'=>true,
-				'SQL_DEBUG_LOG'=>true,			// 记录SQL语句到日志文件
+				'WEB_TITLE'=>'汽车培训[模拟教程,实时题库]',//本项目的名字
+
 
 
 			);

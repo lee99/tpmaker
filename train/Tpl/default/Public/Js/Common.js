@@ -49,6 +49,8 @@ var timenow = new Date().getTime();
 $('verifyImg').src= APP+'/Public/verify/'+timenow;
 }
 
+
+
 function allSelect(){
 	var	colInputs = document.getElementsByTagName("input");
 	for	(var i=0; i < colInputs.length; i++)
@@ -81,6 +83,15 @@ function show(){
 	document.getElementById('menu').style.display='inline';
 	document.getElementById('main').className = 'main';
 	}
+}
+
+
+function gotest(id,go){
+	location.href = URL+"/index/id/"+id+"/go/"+go;
+}
+
+function selecta(id,go,ans){
+	location.href = URL+"/index/id/"+id+"/go/"+go+"/ans/"+ans;
 }
 
 function CheckAll(strSection)

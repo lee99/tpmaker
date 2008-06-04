@@ -7,16 +7,19 @@
 	<th class="tCenter space">当前用户：{$_SESSION['loginuser']}</th>
 </TR>
 <TR class="row " >
-	<TD><IMG SRC="../Public/images/comment.gif" WIDTH="9" HEIGHT="9" BORDER="0" align="absmiddle" ALT=""> <A HREF="__APP__/starttest">开始测试</A></TD>
+	<TD><IMG SRC="../Public/images/comment.gif" WIDTH="9" HEIGHT="9" BORDER="0" align="absmiddle" ALT=""> <A HREF="__APP__/starttest/creat1">新的习题[无序,随机]</A></TD>
 </TR>
 <TR class="row " >
-	<TD><IMG SRC="../Public/images/comment.gif" WIDTH="9" HEIGHT="9" BORDER="0" align="absmiddle" ALT=""> <A HREF="__APP__/starttrain">开始做习题</A></TD>
+	<TD><IMG SRC="../Public/images/comment.gif" WIDTH="9" HEIGHT="9" BORDER="0" align="absmiddle" ALT=""> <A HREF="__APP__/starttest/creat2">错误习题[无序,随机]</A></TD>
+</TR>
+<TR class="row " >
+	<TD><IMG SRC="../Public/images/comment.gif" WIDTH="9" HEIGHT="9" BORDER="0" align="absmiddle" ALT=""> <A HREF="__APP__/starttest/creat3">重点记录的习题[以个人记录为准]</A></TD>
 </TR>
 <tr>
 	<td height='5' colspan=7 class="bottomTd"></td>
 </tr>
 </TABLE>
-
+<php> if($_SESSION['loginuser']=='admin'){ </php>
 <TABLE class="list shadow" cellpadding=0 cellspacing=0 >
 
 <tr>
@@ -33,3 +36,4 @@
 	<td height='5' colspan=7 class="bottomTd"></td>
 </tr>
 </TABLE>
+<php> }</php>
