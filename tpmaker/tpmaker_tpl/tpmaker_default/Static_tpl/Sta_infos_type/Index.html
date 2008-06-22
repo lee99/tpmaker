@@ -1,0 +1,101 @@
+<tagLib name="cx,html,mkrtags" />
+<include file="../Public/header" />
+<!-- 主体内容  -->
+
+<fieldset >
+	<legend>操作区域:网站静态信息分类</legend>
+<!--  功能操作区域  -->
+
+<table width="100%"   cellpadding=0 cellspacing=0 >
+	<tr>
+		<td width="60%">
+	<input type="button"  onclick="add()" class="button1" value="增加数据">
+	<input type="button"  onclick="edit()" class="button1" value="编辑数据">
+	<input type="button"  onclick="view()" class="button1" value="查看详细数据">
+	<input type="button"  onclick="del()" class="button1" value="删除数据">
+		</td>
+		<FORM METHOD="GET" ACTION="{$searchurl}">
+		<td align="right">
+			<table cellpadding=0 cellspacing=1>
+				<tr>
+					<td><INPUT id="searchkey" TYPE="text"  NAME="searchkey"  value="{$searchkey}"></td>
+					<td><input type="submit"   class="button1" value="搜索"></td>
+					<td><input type="button" name="delete" onclick="location.href='__URL__/index/'" class="button1" value="清空"></td><td><mkrtags:radio id="searchtype" name="searchtype"  outtable="array" value="$searchtype" outfield="AND,OR" outkey="AND,OR" /></td>
+				</tr>
+			</table>
+		</td>
+		</FORM>
+	</tr>
+</table>
+
+<!-- 功能操作区域结束 -->
+</fieldset>
+
+<fieldset>
+
+<!-- 列表显示区域  -->
+
+<!-- Myhtml 系统列表组件开始 -->
+
+<script type="text/javascript">
+<!--
+var firstrowoffset = 1; // first data row start at
+var tablename = "checkList"; // table name
+//-->
+</script>
+		<TABLE id="checkList" class="list" >
+		<TR class="row" >
+		
+			<th width="8">
+				<input type="checkbox" id="check" onclick="CheckAll('checkList')">
+			</th>
+						<Th>
+				<A class="titleth" HREF="javascript:sortBy('id','<php> echo getsorttype('id');</php>','index')" title="按照ID排序">ID<php> echo getsorttype('id',1);</php></A>
+			</Th>			<Th>
+				<A class="titleth" HREF="javascript:sortBy('title','<php> echo getsorttype('title');</php>','index')" title="按照标题排序">标题<php> echo getsorttype('title',1);</php></A>
+			</Th>
+			<th >操作区域</th>
+			</TR>
+		<php> if(isset($list)): </php>
+		<php> $i = 0; </php>
+		<php> if( count($list)==0 ) echo "" </php>
+		<php> foreach($list as $key=>$list): </php>
+		<php> ++$i;</php>
+		<php> $mod = (($i % 2 )==0)</php>
+		<php> if(($key%2)==0){ $tablesclass="ewTableAltRow";} else { $tablesclass="ewTableRow";} </php>
+		<TR class="<php> echo $tablesclass </php>" onmouseover="ew_mouseover(this);" onmouseout="ew_mouseout(this);" onclick="ew_click(this);"  >
+			<td><input type="checkbox" name="key"	value="<php> echo is_array($list)?$list["id"]:$list->id </php>"> </td>
+			
+			<TD title="ID">
+				<mkrtags:text id="id" name="id"  value="{$list.id}"/>
+			</TD>
+			<TD title="标题">
+				<mkrtags:text id="title" name="title"  value="{$list.title}"/>
+			</TD>
+			
+			<TD><A HREF="javascript:edit('<php> echo is_array($list)?$list["id"]:$list->id </php>')">编辑</A> <A HREF="javascript:del('<php> echo is_array($list)?$list["id"]:$list->id </php>')">删除</A> <A HREF="javascript:view('<php> echo is_array($list)?$list["id"]:$list->id </php>')">详细</A> 
+				</TD>
+		</TR>
+		<php> endforeach; </php>
+		<php> endif; </php>
+		
+
+		</TABLE>
+<!--Myhtml系统列表组件结束 -->
+
+<!--  分页显示区域 -->
+
+<div class="page">
+	<table width="100%"><tr ><td align="left"></td><td align="right">{$page}</td></tr></table>
+</div>
+<!--  分页显示区域结束 -->
+
+</fieldset>
+
+<fieldset>
+<legend >帮助说明</legend>
+
+
+</fieldset>
+
+<include file="../Public/footer" />

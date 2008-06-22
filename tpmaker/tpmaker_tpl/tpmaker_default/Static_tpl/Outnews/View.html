@@ -1,0 +1,39 @@
+<tagLib name="cx,html,mkrtags" />
+<include file="../Public/header" />
+<fieldset >
+	<legend>增加信息:对外信息管理</legend>
+<!--  功能操作区域  -->
+<table width="100%"   cellpadding=0 cellspacing=0 >
+	<tr>
+	<td width="60%">
+	<input type="button"  onclick="location.href='__URL__/index/'" class="button1" value="返回列表">
+	<INPUT TYPE="button" value="编辑数据" onclick="location.href='__URL__/edit/id/{$id}';" class="button1">
+	</td>
+
+	</tr>
+</table>
+
+<!-- 功能操作区域结束 -->
+</fieldset>
+<FORM METHOD=POST id="form_update" >
+<fieldset >
+<div id="result" class="result none"></div>
+<!--  功能操作区域  -->
+<table width="100%"  class="ewTable">
+
+	<TR><TD class="ewTableHeader" >标题</TD><TD class="ewTableAltRow" ><mkrtags:text id="title" name="title"  value="{$list.title}"/></TD></TR>
+	<TR><TD class="ewTableHeader" >内容</TD><TD class="ewTableAltRow" ><mkrtags:text id="content" name="content"  value="{$list.content}"/></TD></TR>
+	<TR><TD class="ewTableHeader" >内容分类</TD><TD class="ewTableAltRow" ><mkrtags:outtable id="outnewstypeId" name="outnewstypeId"  value="{$list.outnewstypeId}" outtable="outnewstype"  outfield="title_cn"  outkey="id"  outcondition=""  outorder=""  outadd="" /></TD></TR>
+	<TR><TD class="ewTableHeader" >发布语言</TD><TD class="ewTableAltRow" ><mkrtags:outtable id="langId" name="langId"  value="{$list.langId}" outtable="lang"  outfield="title"  outkey="id"  outcondition=""  outorder=""  outadd="" /></TD></TR>
+
+
+
+</TABLE>
+
+<!-- 功能操作区域结束 -->
+
+
+</fieldset>
+
+</FORM>
+<include file="../Public/footer" />
