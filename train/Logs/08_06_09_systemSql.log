@@ -1,0 +1,319 @@
+
+[ 08-06-09 16:26:09 ]
+ RunTime:0.018647s SQL = SHOW COLUMNS FROM lee99_user
+[ 08-06-09 16:26:09 ]
+ RunTime:0.000654s SQL = SELECT * FROM lee99_user
+[ 08-06-09 16:26:18 ]
+ RunTime:0.000763s SQL = SELECT * FROM lee99_user WHERE ( `account` = 'admin' ) AND ( `status` > 0 ) LIMIT 1 
+[ 08-06-09 16:26:20 ]
+ RunTime:0.019513s SQL = SHOW COLUMNS FROM lee99_infos
+[ 08-06-09 16:26:20 ]
+ RunTime:0.001616s SQL = SELECT * FROM lee99_usertmp WHERE infoid=24 and user='admin' LIMIT 1 
+[ 08-06-09 16:26:20 ]
+ RunTime:0.013712s SQL = SELECT * FROM lee99_infos WHERE id='24'
+[ 08-06-09 16:27:13 ]
+ RunTime:0.002644s SQL = SELECT * FROM lee99_usertmp WHERE infoid=24 and user='admin' LIMIT 1 
+[ 08-06-09 16:27:13 ]
+ RunTime:0.000574s SQL = SELECT * FROM lee99_infos WHERE id='24'
+[ 08-06-09 16:27:18 ]
+ RunTime:0.002675s SQL = SELECT * FROM lee99_usertmp WHERE infoid=56 and user='admin' LIMIT 1 
+[ 08-06-09 16:27:18 ]
+ RunTime:0.007531s SQL = SELECT * FROM lee99_infos WHERE id='56'
+[ 08-06-09 16:27:19 ]
+ RunTime:0.002671s SQL = SELECT * FROM lee99_usertmp WHERE infoid=68 and user='admin' LIMIT 1 
+[ 08-06-09 16:27:19 ]
+ RunTime:0.000832s SQL = SELECT * FROM lee99_infos WHERE id='68'
+[ 08-06-09 16:27:20 ]
+ RunTime:0.002707s SQL = SELECT * FROM lee99_usertmp WHERE infoid=91 and user='admin' LIMIT 1 
+[ 08-06-09 16:27:20 ]
+ RunTime:0.000763s SQL = SELECT * FROM lee99_infos WHERE id='91'
+[ 08-06-09 17:15:18 ]
+ RunTime:0.001372s SQL = SHOW COLUMNS FROM lee99_infos
+[ 08-06-09 17:15:18 ]
+ RunTime:0.001380s SQL = SELECT * FROM lee99_usertmp WHERE infoid=3 and user='admin' LIMIT 1 
+[ 08-06-09 17:15:18 ]
+ RunTime:0.015157s SQL = SELECT * FROM lee99_infos WHERE id='3'
+[ 08-06-09 17:15:31 ]
+ RunTime:0.004433s SQL = SELECT `id` FROM lee99_usertmp WHERE iskeep =2  and user='admin' ORDER BY hit ASC
+[ 08-06-09 17:15:34 ]
+ RunTime:0.001387s SQL = SELECT * FROM lee99_usertmp WHERE infoid=15 and user='admin' LIMIT 1 
+[ 08-06-09 17:15:34 ]
+ RunTime:0.000670s SQL = SELECT * FROM lee99_infos WHERE id='15'
+[ 08-06-09 17:15:37 ]
+ RunTime:0.002520s SQL = SELECT * FROM lee99_usertmp WHERE infoid=15 and user='admin' LIMIT 1 
+[ 08-06-09 17:15:37 ]
+ RunTime:0.000580s SQL = SELECT * FROM lee99_infos WHERE id='15'
+[ 08-06-09 17:15:40 ]
+ RunTime:0.001361s SQL = SELECT * FROM lee99_usertmp WHERE infoid=32 and user='admin' LIMIT 1 
+[ 08-06-09 17:15:40 ]
+ RunTime:0.000307s SQL = SELECT * FROM lee99_infos WHERE id='32'
+[ 08-06-09 17:15:41 ]
+ RunTime:0.002618s SQL = SELECT * FROM lee99_usertmp WHERE infoid=39 and user='admin' LIMIT 1 
+[ 08-06-09 17:15:41 ]
+ RunTime:0.000771s SQL = SELECT * FROM lee99_infos WHERE id='39'
+[ 08-06-09 17:15:41 ]
+ RunTime:0.001391s SQL = SELECT * FROM lee99_usertmp WHERE infoid=56 and user='admin' LIMIT 1 
+[ 08-06-09 17:15:41 ]
+ RunTime:0.000309s SQL = SELECT * FROM lee99_infos WHERE id='56'
+[ 08-06-09 17:15:42 ]
+ RunTime:0.001979s SQL = SELECT * FROM lee99_usertmp WHERE infoid=77 and user='admin' LIMIT 1 
+[ 08-06-09 17:15:42 ]
+ RunTime:0.000799s SQL = SELECT * FROM lee99_infos WHERE id='77'
+[ 08-06-09 17:16:08 ]
+ RunTime:0.002699s SQL = SELECT * FROM lee99_usertmp WHERE infoid=15 and user='admin' LIMIT 1 
+[ 08-06-09 17:16:08 ]
+ RunTime:0.000533s SQL = SELECT * FROM lee99_infos WHERE id='15'
+[ 08-06-09 17:16:22 ]
+ RunTime:0.002548s SQL = SELECT * FROM lee99_usertmp WHERE infoid=32 and user='admin' LIMIT 1 
+[ 08-06-09 17:16:22 ]
+ RunTime:0.000534s SQL = SELECT * FROM lee99_infos WHERE id='32'
+[ 08-06-09 17:16:23 ]
+ RunTime:0.002700s SQL = SELECT * FROM lee99_usertmp WHERE infoid=15 and user='admin' LIMIT 1 
+[ 08-06-09 17:16:23 ]
+ RunTime:0.000554s SQL = SELECT * FROM lee99_infos WHERE id='15'
+[ 08-06-09 17:16:24 ]
+ RunTime:0.002722s SQL = SELECT * FROM lee99_usertmp WHERE infoid=32 and user='admin' LIMIT 1 
+[ 08-06-09 17:16:24 ]
+ RunTime:0.000532s SQL = SELECT * FROM lee99_infos WHERE id='32'
+[ 08-06-09 17:16:31 ]
+ RunTime:0.002532s SQL = SELECT * FROM lee99_usertmp WHERE infoid=39 and user='admin' LIMIT 1 
+[ 08-06-09 17:16:31 ]
+ RunTime:0.000563s SQL = SELECT * FROM lee99_infos WHERE id='39'
+[ 08-06-09 17:16:42 ]
+ RunTime:0.001378s SQL = SELECT * FROM lee99_usertmp WHERE infoid=56 and user='admin' LIMIT 1 
+[ 08-06-09 17:16:42 ]
+ RunTime:0.000304s SQL = SELECT * FROM lee99_infos WHERE id='56'
+[ 08-06-09 17:16:44 ]
+ RunTime:0.002522s SQL = SELECT * FROM lee99_usertmp WHERE infoid=39 and user='admin' LIMIT 1 
+[ 08-06-09 17:16:44 ]
+ RunTime:0.000547s SQL = SELECT * FROM lee99_infos WHERE id='39'
+[ 08-06-09 17:16:48 ]
+ RunTime:0.001393s SQL = SELECT * FROM lee99_usertmp WHERE infoid=56 and user='admin' LIMIT 1 
+[ 08-06-09 17:16:48 ]
+ RunTime:0.000306s SQL = SELECT * FROM lee99_infos WHERE id='56'
+[ 08-06-09 17:16:49 ]
+ RunTime:0.002534s SQL = SELECT * FROM lee99_usertmp WHERE infoid=39 and user='admin' LIMIT 1 
+[ 08-06-09 17:16:49 ]
+ RunTime:0.000530s SQL = SELECT * FROM lee99_infos WHERE id='39'
+[ 08-06-09 17:16:52 ]
+ RunTime:0.001389s SQL = SELECT * FROM lee99_usertmp WHERE infoid=56 and user='admin' LIMIT 1 
+[ 08-06-09 17:16:52 ]
+ RunTime:0.000311s SQL = SELECT * FROM lee99_infos WHERE id='56'
+[ 08-06-09 17:16:54 ]
+ RunTime:0.002847s SQL = SELECT * FROM lee99_usertmp WHERE infoid=39 and user='admin' LIMIT 1 
+[ 08-06-09 17:16:54 ]
+ RunTime:0.000604s SQL = SELECT * FROM lee99_infos WHERE id='39'
+[ 08-06-09 17:17:23 ]
+ RunTime:0.001393s SQL = SELECT * FROM lee99_usertmp WHERE infoid=56 and user='admin' LIMIT 1 
+[ 08-06-09 17:17:23 ]
+ RunTime:0.000327s SQL = SELECT * FROM lee99_infos WHERE id='56'
+[ 08-06-09 17:17:51 ]
+ RunTime:0.001385s SQL = SELECT * FROM lee99_usertmp WHERE infoid=71 and user='admin' LIMIT 1 
+[ 08-06-09 17:17:51 ]
+ RunTime:0.000423s SQL = SELECT * FROM lee99_infos WHERE id='71'
+[ 08-06-09 17:19:11 ]
+ RunTime:0.001391s SQL = SELECT * FROM lee99_usertmp WHERE infoid=77 and user='admin' LIMIT 1 
+[ 08-06-09 17:19:11 ]
+ RunTime:0.000469s SQL = SELECT * FROM lee99_infos WHERE id='77'
+[ 08-06-09 17:19:13 ]
+ RunTime:0.002570s SQL = SELECT * FROM lee99_usertmp WHERE infoid=71 and user='admin' LIMIT 1 
+[ 08-06-09 17:19:13 ]
+ RunTime:0.000528s SQL = SELECT * FROM lee99_infos WHERE id='71'
+[ 08-06-09 17:19:16 ]
+ RunTime:0.001404s SQL = SELECT * FROM lee99_usertmp WHERE infoid=77 and user='admin' LIMIT 1 
+[ 08-06-09 17:19:16 ]
+ RunTime:0.000311s SQL = SELECT * FROM lee99_infos WHERE id='77'
+[ 08-06-09 17:19:17 ]
+ RunTime:0.002568s SQL = SELECT * FROM lee99_usertmp WHERE infoid=71 and user='admin' LIMIT 1 
+[ 08-06-09 17:19:17 ]
+ RunTime:0.000534s SQL = SELECT * FROM lee99_infos WHERE id='71'
+[ 08-06-09 17:19:26 ]
+ RunTime:0.002585s SQL = SELECT * FROM lee99_usertmp WHERE infoid=77 and user='admin' LIMIT 1 
+[ 08-06-09 17:19:26 ]
+ RunTime:0.000530s SQL = SELECT * FROM lee99_infos WHERE id='77'
+[ 08-06-09 17:27:27 ]
+ RunTime:0.002721s SQL = SELECT * FROM lee99_usertmp WHERE infoid=77 and user='admin' LIMIT 1 
+[ 08-06-09 17:27:27 ]
+ RunTime:0.000547s SQL = SELECT * FROM lee99_infos WHERE id='77'
+[ 08-06-09 17:27:41 ]
+ RunTime:0.001414s SQL = SELECT * FROM lee99_usertmp WHERE infoid=88 and user='admin' LIMIT 1 
+[ 08-06-09 17:27:41 ]
+ RunTime:0.000337s SQL = SELECT * FROM lee99_infos WHERE id='88'
+[ 08-06-09 17:27:43 ]
+ RunTime:0.002556s SQL = SELECT * FROM lee99_usertmp WHERE infoid=77 and user='admin' LIMIT 1 
+[ 08-06-09 17:27:43 ]
+ RunTime:0.000533s SQL = SELECT * FROM lee99_infos WHERE id='77'
+[ 08-06-09 17:27:44 ]
+ RunTime:0.001601s SQL = SELECT * FROM lee99_usertmp WHERE infoid=88 and user='admin' LIMIT 1 
+[ 08-06-09 17:27:44 ]
+ RunTime:0.000645s SQL = SELECT * FROM lee99_infos WHERE id='88'
+[ 08-06-09 17:27:46 ]
+ RunTime:0.002656s SQL = SELECT * FROM lee99_usertmp WHERE infoid=77 and user='admin' LIMIT 1 
+[ 08-06-09 17:27:46 ]
+ RunTime:0.000569s SQL = SELECT * FROM lee99_infos WHERE id='77'
+[ 08-06-09 17:27:47 ]
+ RunTime:0.001400s SQL = SELECT * FROM lee99_usertmp WHERE infoid=88 and user='admin' LIMIT 1 
+[ 08-06-09 17:27:47 ]
+ RunTime:0.000312s SQL = SELECT * FROM lee99_infos WHERE id='88'
+[ 08-06-09 17:27:49 ]
+ RunTime:0.002562s SQL = SELECT * FROM lee99_usertmp WHERE infoid=77 and user='admin' LIMIT 1 
+[ 08-06-09 17:27:49 ]
+ RunTime:0.000544s SQL = SELECT * FROM lee99_infos WHERE id='77'
+[ 08-06-09 17:27:51 ]
+ RunTime:0.001468s SQL = SELECT * FROM lee99_usertmp WHERE infoid=88 and user='admin' LIMIT 1 
+[ 08-06-09 17:27:51 ]
+ RunTime:0.000335s SQL = SELECT * FROM lee99_infos WHERE id='88'
+[ 08-06-09 17:27:52 ]
+ RunTime:0.002578s SQL = SELECT * FROM lee99_usertmp WHERE infoid=77 and user='admin' LIMIT 1 
+[ 08-06-09 17:27:52 ]
+ RunTime:0.000687s SQL = SELECT * FROM lee99_infos WHERE id='77'
+[ 08-06-09 17:29:29 ]
+ RunTime:0.002648s SQL = SELECT * FROM lee99_usertmp WHERE infoid=77 and user='admin' LIMIT 1 
+[ 08-06-09 17:29:29 ]
+ RunTime:0.000516s SQL = UPDATE lee99_usertmp SET `infoid` = '77',`user` = 'admin',`hit` = '5',`isright` = '1',`iskeep` = '0' WHERE id=1806
+[ 08-06-09 17:31:39 ]
+ RunTime:0.002575s SQL = SELECT * FROM lee99_usertmp WHERE infoid=77 and user='admin' LIMIT 1 
+[ 08-06-09 17:31:39 ]
+ RunTime:0.000526s SQL = SELECT * FROM lee99_infos WHERE id='77'
+[ 08-06-09 17:31:42 ]
+ RunTime:0.002579s SQL = SELECT * FROM lee99_usertmp WHERE infoid=77 and user='admin' LIMIT 1 
+[ 08-06-09 17:31:42 ]
+ RunTime:0.000424s SQL = UPDATE lee99_usertmp SET `infoid` = '77',`user` = 'admin',`hit` = '5',`isright` = '1',`iskeep` = '0' WHERE id=1806
+[ 08-06-09 17:31:44 ]
+ RunTime:0.002625s SQL = SELECT * FROM lee99_usertmp WHERE infoid=77 and user='admin' LIMIT 1 
+[ 08-06-09 17:31:44 ]
+ RunTime:0.000502s SQL = UPDATE lee99_usertmp SET `infoid` = '77',`user` = 'admin',`hit` = '5',`isright` = '1',`iskeep` = '2' WHERE id=1806
+[ 08-06-09 17:31:46 ]
+ RunTime:0.002571s SQL = SELECT * FROM lee99_usertmp WHERE infoid=77 and user='admin' LIMIT 1 
+[ 08-06-09 17:31:46 ]
+ RunTime:0.000506s SQL = UPDATE lee99_usertmp SET `infoid` = '77',`user` = 'admin',`hit` = '5',`isright` = '1',`iskeep` = '0' WHERE id=1806
+[ 08-06-09 17:31:48 ]
+ RunTime:0.002760s SQL = SELECT * FROM lee99_usertmp WHERE infoid=77 and user='admin' LIMIT 1 
+[ 08-06-09 17:31:48 ]
+ RunTime:0.000477s SQL = UPDATE lee99_usertmp SET `infoid` = '77',`user` = 'admin',`hit` = '5',`isright` = '1',`iskeep` = '2' WHERE id=1806
+[ 08-06-09 17:35:26 ]
+ RunTime:0.002578s SQL = SELECT * FROM lee99_usertmp WHERE infoid=77 and user='admin' LIMIT 1 
+[ 08-06-09 17:35:26 ]
+ RunTime:0.000533s SQL = SELECT * FROM lee99_infos WHERE id='77'
+[ 08-06-09 17:35:52 ]
+ RunTime:0.001402s SQL = SELECT * FROM lee99_usertmp WHERE infoid=77 and user='admin' LIMIT 1 
+[ 08-06-09 17:35:52 ]
+ RunTime:0.000289s SQL = UPDATE lee99_usertmp SET `infoid` = '77',`user` = 'admin',`hit` = '5',`isright` = '1',`iskeep` = '0' WHERE id=1806
+[ 08-06-09 17:36:30 ]
+ RunTime:0.001387s SQL = SELECT * FROM lee99_usertmp WHERE infoid=88 and user='admin' LIMIT 1 
+[ 08-06-09 17:36:30 ]
+ RunTime:0.000299s SQL = SELECT * FROM lee99_infos WHERE id='88'
+[ 08-06-09 17:36:32 ]
+ RunTime:0.002836s SQL = SELECT * FROM lee99_usertmp WHERE infoid=88 and user='admin' LIMIT 1 
+[ 08-06-09 17:36:32 ]
+ RunTime:0.000540s SQL = SELECT * FROM lee99_infos WHERE id='88'
+[ 08-06-09 17:36:37 ]
+ RunTime:0.002025s SQL = SHOW COLUMNS FROM lee99_infos
+[ 08-06-09 17:36:37 ]
+ RunTime:0.001590s SQL = SHOW COLUMNS FROM lee99_usertmp
+[ 08-06-09 17:36:37 ]
+ RunTime:0.002599s SQL = SELECT * FROM lee99_usertmp WHERE infoid=88 and user='admin' LIMIT 1 
+[ 08-06-09 17:36:37 ]
+ RunTime:0.000534s SQL = SELECT * FROM lee99_infos WHERE id='88'
+[ 08-06-09 17:36:42 ]
+ RunTime:0.001412s SQL = SELECT * FROM lee99_usertmp WHERE infoid=88 and user='admin' LIMIT 1 
+[ 08-06-09 17:36:42 ]
+ RunTime:0.000305s SQL = SELECT * FROM lee99_infos WHERE id='88'
+[ 08-06-09 17:36:43 ]
+ RunTime:0.001405s SQL = SELECT * FROM lee99_usertmp WHERE infoid=90 and user='admin' LIMIT 1 
+[ 08-06-09 17:36:43 ]
+ RunTime:0.000308s SQL = SELECT * FROM lee99_infos WHERE id='90'
+[ 08-06-09 17:36:44 ]
+ RunTime:0.002581s SQL = SELECT * FROM lee99_usertmp WHERE infoid=90 and user='admin' LIMIT 1 
+[ 08-06-09 17:36:44 ]
+ RunTime:0.000498s SQL = UPDATE lee99_usertmp SET `infoid` = '90',`user` = 'admin',`hit` = '1',`isright` = '1',`iskeep` = '0' WHERE id=1819
+[ 08-06-09 17:36:47 ]
+ RunTime:0.002590s SQL = SELECT * FROM lee99_usertmp WHERE infoid=90 and user='admin' LIMIT 1 
+[ 08-06-09 17:36:47 ]
+ RunTime:0.000458s SQL = UPDATE lee99_usertmp SET `infoid` = '90',`user` = 'admin',`hit` = '1',`isright` = '1',`iskeep` = '2' WHERE id=1819
+[ 08-06-09 20:53:55 ]
+ RunTime:0.003213s SQL = SELECT * FROM lee99_usertmp WHERE infoid=90 and user='admin' LIMIT 1 
+[ 08-06-09 20:53:55 ]
+ RunTime:0.000500s SQL = UPDATE lee99_usertmp SET `infoid` = '90',`user` = 'admin',`hit` = '1',`isright` = '1',`iskeep` = '0' WHERE id=1819
+[ 08-06-09 20:53:58 ]
+ RunTime:0.002581s SQL = SELECT * FROM lee99_usertmp WHERE infoid=90 and user='admin' LIMIT 1 
+[ 08-06-09 20:53:58 ]
+ RunTime:0.000462s SQL = UPDATE lee99_usertmp SET `infoid` = '90',`user` = 'admin',`hit` = '1',`isright` = '1',`iskeep` = '2' WHERE id=1819
+[ 08-06-09 20:54:01 ]
+ RunTime:0.001378s SQL = SELECT * FROM lee99_usertmp WHERE infoid=2 and user='admin' LIMIT 1 
+[ 08-06-09 20:54:01 ]
+ RunTime:0.000667s SQL = SELECT * FROM lee99_infos WHERE id='2'
+[ 08-06-09 20:54:03 ]
+ RunTime:0.004402s SQL = SELECT `id` FROM lee99_usertmp WHERE iskeep =2  and user='admin' ORDER BY hit ASC
+[ 08-06-09 20:54:19 ]
+ RunTime:0.002279s SQL = SELECT * FROM lee99_usertmp WHERE infoid=1788 and user='admin' LIMIT 1 
+[ 08-06-09 20:54:19 ]
+ RunTime:0.000287s SQL = SELECT * FROM lee99_infos WHERE id='1788'
+[ 08-06-09 20:54:29 ]
+ RunTime:0.001388s SQL = SELECT * FROM lee99_usertmp WHERE infoid=20 and user='admin' LIMIT 1 
+[ 08-06-09 20:54:29 ]
+ RunTime:0.000317s SQL = SELECT * FROM lee99_infos WHERE id='20'
+[ 08-06-09 20:54:30 ]
+ RunTime:0.001359s SQL = SELECT * FROM lee99_usertmp WHERE infoid=31 and user='admin' LIMIT 1 
+[ 08-06-09 20:54:30 ]
+ RunTime:0.000301s SQL = SELECT * FROM lee99_infos WHERE id='31'
+[ 08-06-09 20:54:31 ]
+ RunTime:0.001382s SQL = SELECT * FROM lee99_usertmp WHERE infoid=41 and user='admin' LIMIT 1 
+[ 08-06-09 20:54:31 ]
+ RunTime:0.000306s SQL = SELECT * FROM lee99_infos WHERE id='41'
+[ 08-06-09 20:54:32 ]
+ RunTime:0.002528s SQL = SELECT * FROM lee99_usertmp WHERE infoid=43 and user='admin' LIMIT 1 
+[ 08-06-09 20:54:32 ]
+ RunTime:0.000751s SQL = SELECT * FROM lee99_infos WHERE id='43'
+[ 08-06-09 20:54:33 ]
+ RunTime:0.001380s SQL = SELECT * FROM lee99_usertmp WHERE infoid=45 and user='admin' LIMIT 1 
+[ 08-06-09 20:54:33 ]
+ RunTime:0.000305s SQL = SELECT * FROM lee99_infos WHERE id='45'
+[ 08-06-09 20:54:34 ]
+ RunTime:0.002562s SQL = SELECT * FROM lee99_usertmp WHERE infoid=59 and user='admin' LIMIT 1 
+[ 08-06-09 20:54:34 ]
+ RunTime:0.000545s SQL = SELECT * FROM lee99_infos WHERE id='59'
+[ 08-06-09 20:54:35 ]
+ RunTime:0.002662s SQL = SELECT * FROM lee99_usertmp WHERE infoid=149 and user='admin' LIMIT 1 
+[ 08-06-09 20:54:35 ]
+ RunTime:0.020145s SQL = SELECT * FROM lee99_infos WHERE id='149'
+[ 08-06-09 20:54:35 ]
+ RunTime:0.001501s SQL = SELECT * FROM lee99_usertmp WHERE infoid=164 and user='admin' LIMIT 1 
+[ 08-06-09 20:54:35 ]
+ RunTime:0.000588s SQL = SELECT * FROM lee99_infos WHERE id='164'
+[ 08-06-09 20:54:36 ]
+ RunTime:0.001458s SQL = SELECT * FROM lee99_usertmp WHERE infoid=188 and user='admin' LIMIT 1 
+[ 08-06-09 20:54:36 ]
+ RunTime:0.000666s SQL = SELECT * FROM lee99_infos WHERE id='188'
+[ 08-06-09 20:54:41 ]
+ RunTime:0.002720s SQL = SELECT * FROM lee99_usertmp WHERE infoid=188 and user='admin' LIMIT 1 
+[ 08-06-09 20:54:41 ]
+ RunTime:0.000465s SQL = UPDATE lee99_usertmp SET `infoid` = '188',`user` = 'admin',`hit` = '1',`isright` = '1',`iskeep` = '0' WHERE id=1917
+[ 08-06-09 20:54:44 ]
+ RunTime:0.002701s SQL = SELECT * FROM lee99_usertmp WHERE infoid=188 and user='admin' LIMIT 1 
+[ 08-06-09 20:54:44 ]
+ RunTime:0.000456s SQL = UPDATE lee99_usertmp SET `infoid` = '188',`user` = 'admin',`hit` = '1',`isright` = '1',`iskeep` = '2' WHERE id=1917
+[ 08-06-09 20:54:54 ]
+ RunTime:0.002721s SQL = SELECT * FROM lee99_usertmp WHERE infoid=188 and user='admin' LIMIT 1 
+[ 08-06-09 20:54:54 ]
+ RunTime:0.000547s SQL = SELECT * FROM lee99_infos WHERE id='188'
+[ 08-06-09 20:54:56 ]
+ RunTime:0.001681s SQL = SELECT * FROM lee99_usertmp WHERE infoid=234 and user='admin' LIMIT 1 
+[ 08-06-09 20:54:56 ]
+ RunTime:0.016319s SQL = SELECT * FROM lee99_infos WHERE id='234'
+[ 08-06-09 20:54:57 ]
+ RunTime:0.002872s SQL = SELECT * FROM lee99_usertmp WHERE infoid=241 and user='admin' LIMIT 1 
+[ 08-06-09 20:54:57 ]
+ RunTime:0.000782s SQL = SELECT * FROM lee99_infos WHERE id='241'
+[ 08-06-09 20:54:57 ]
+ RunTime:0.002774s SQL = SELECT * FROM lee99_usertmp WHERE infoid=246 and user='admin' LIMIT 1 
+[ 08-06-09 20:54:57 ]
+ RunTime:0.000529s SQL = SELECT * FROM lee99_infos WHERE id='246'
+[ 08-06-09 20:54:59 ]
+ RunTime:0.001524s SQL = SELECT * FROM lee99_usertmp WHERE infoid=279 and user='admin' LIMIT 1 
+[ 08-06-09 20:54:59 ]
+ RunTime:0.000554s SQL = SELECT * FROM lee99_infos WHERE id='279'
+[ 08-06-09 20:55:00 ]
+ RunTime:0.001382s SQL = SELECT * FROM lee99_usertmp WHERE infoid=31 and user='admin' LIMIT 1 
+[ 08-06-09 20:55:00 ]
+ RunTime:0.000307s SQL = SELECT * FROM lee99_infos WHERE id='31'
