@@ -2,7 +2,7 @@
 
 			define('THINK_PATH', '../ThinkPHP');
 
-			define('APP_NAME', 'web');//定义项目名称，如果不定义，默认为入口文件名称
+			define('APP_NAME', 'website');//定义项目名称，如果不定义，默认为入口文件名称
 
 			define('APP_PATH', '.');
 
