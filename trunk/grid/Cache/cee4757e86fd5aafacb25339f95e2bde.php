@@ -1,4 +1,40 @@
-<include file="../Public/header" />
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<title><?php echo (C("PROject_NAME")) ?></title>
+
+
+<script type="text/javascript">
+var JS_PATH ="/grid/Tpl/default/Public/js/";
+var IMG_PATH ="/grid/Tpl/default/Public/images/";
+var URL = '/grid/index.php/index';
+var APP	 =	 '/grid/index.php';
+var PUBLIC = '/Public';
+var REQUEST_URI = '<?php echo (is_array($_SERVER)?$_SERVER["REQUEST_URI"]:$_SERVER->REQUEST_URI) ?>';
+
+//编辑grid设置
+var gridimgpath = '/grid/Tpl/default/Public/themes/ns/images';
+var griddatatype = 'json';
+
+
+</script>
+<link rel="stylesheet" type="text/css" media="screen" href="/grid/Tpl/default/Public/css/css.css" />
+<link rel="stylesheet" type="text/css" media="screen" href="/grid/Tpl/default/Public/themes/tree.css" />
+<link rel="stylesheet" type="text/css" media="screen" href="/grid/Tpl/default/Public/themes/tabs.css" />
+<link rel="stylesheet" type="text/css" media="screen" href="/grid/Tpl/default/Public/themes/ns/grid.css" />
+<link rel="stylesheet" type="text/css" media="screen" href="/grid/Tpl/default/Public/themes/jqModal.css" />
+<link rel="stylesheet" type="text/css" media="screen" href="/grid/Tpl/default/Public/themes/ui.datepicker.css" />
+
+<script src="/grid/Tpl/default/Public/js/jquery.js" type="text/javascript"></script>
+<script src="/grid/Tpl/default/Public/js/jquery.splitter.js" type="text/javascript"></script>
+<script src="/grid/Tpl/default/Public/js/jquery.jqTree.js" type="text/javascript"></script>
+<script src="/grid/Tpl/default/Public/js/jquery.jqDynTabs.js" type="text/javascript"></script>
+<script src="/grid/Tpl/default/Public/js/ui.datepicker.js" type="text/javascript"></script>
+<script src="/grid/Tpl/default/Public/js/jquery.jqGrid.js" type="text/javascript"></script>
+<script src="/grid/Tpl/default/Public/js/jqModal.js" type="text/javascript"></script>
+<script src="/grid/Tpl/default/Public/js/jqDnR.js" type="text/javascript"></script>
+<script type="text/javascript" src="/grid/Tpl/default/Public/js/styleswitch.js"></script>
 <script type="text/javascript">
 jQuery(document).ready(function(){
 jQuery("#list2").jqGrid({
@@ -34,8 +70,7 @@ jQuery("#list2").jqGrid({
 {height:'100%',reloadAfterSubmit:false}, // add options
 {reloadAfterSubmit:false}, // del options
 {} // search options
-);
-});
+);});
 </script>
 </head>
 <body>
