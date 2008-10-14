@@ -1,0 +1,114 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<HTML><HEAD><TITLE>协同办公系统</TITLE>
+<META http-equiv=Content-Type content="text/html; charset=utf-8"><LINK 
+href="img/saas.css" type=text/css rel=stylesheet>
+<SCRIPT src="img/jquery.js"></SCRIPT>
+
+<SCRIPT src="img/jquery.tab.js"></SCRIPT>
+
+<META content="MSHTML 6.00.2900.3395" name=GENERATOR></HEAD>
+<BODY>功能描述： 1、支持自定义html内容 2、支持ajax加载内容 3、回调函数 <BR>下载地址：<A 
+href="http://code.google.com/p/jquerylab/downloads/list">http://code.google.com/p/jquerylab/downloads/list</A> 
+<BR>如果下载有问题，请加群：58875561 或者发邮件luwenpan@gmail.com <BR>滑动demo 
+<DIV id=tab_list></DIV>普通demo 
+
+<DIV id=tab_list_n></DIV>Ajax demo 
+
+<DIV id=tab_list_a></DIV>动态添加自动显示滑动 demo 
+
+<INPUT id=addTab type=button value=add> 
+
+<DIV id=tab_list_add></DIV>
+
+动态添加不显示滑动 demo 
+<INPUT id=addTabN type=button value=add> 
+
+<DIV id=tab_list_addn></DIV>
+<SCRIPT>
+$(function(){
+	$("#tab_list").Tab({items:[
+	 {title:'tab1',closed:true,icon:'',html:'test1',load:'',callback:function(){}},
+	 {title:'tab2',closed:true,icon:'',html:'test2',load:'',callback:function(){alert('click tab2');}},
+	 {title:'tab3',closed:true,icon:'',html:'test3',load:'',callback:function(){}},
+	 {title:'tab4',closed:true,icon:'',html:'test4',load:'',callback:function(){}},
+	 {title:'tab5',closed:true,icon:'',html:'test5',load:'',callback:function(){}},
+	 {title:'tab6',closed:true,icon:'',html:'test6',load:'',callback:function(){}},
+	 {title:'tab7',closed:true,icon:'',html:'test7',load:'',callback:function(){}},
+	 {title:'tab8',closed:true,icon:'',html:'test8',load:'',callback:function(){}},
+	 {title:'tab9',closed:true,icon:'',html:'test9',load:'',callback:function(){}},
+	 {title:'tab10',closed:true,icon:'',html:'test10',load:'',callback:function(){}},
+	 {title:'tab11',closed:true,icon:'',html:'test11',load:'',callback:function(){}},
+	 {title:'tab12',closed:true,icon:'',html:'test12',load:'',callback:function(){}},
+	 {title:'tab13',closed:true,icon:'',html:'test13',load:'',callback:function(){}},
+	 {title:'tab14',closed:true,icon:'',html:'test14',load:'',callback:function(){}},
+	 {title:'tab15',closed:true,icon:'',html:'test15',load:'',callback:function(){}},
+	 {title:'tab16',closed:true,icon:'',html:'test16',load:'',callback:function(){}}
+	],
+	width:500,
+	height:100,
+	tabcontentWidth:498,
+	tabWidth:66,
+	tabHeight:25
+	});
+	$("#tab_list_n").Tab({items:[
+	 {title:'tab1',closed:true,icon:'',html:'test1',load:'',callback:function(){}},
+	 {title:'tab2',closed:true,icon:'',html:'test2',load:'',callback:function(){}},
+	 {title:'tab3',closed:true,icon:'',html:'test3',load:'',callback:function(){}},
+	 {title:'tab13',closed:true,icon:'',html:'test13',load:'',callback:function(){}},
+	 {title:'tab14',closed:true,icon:'',html:'test14',load:'',callback:function(){}},
+	 {title:'tab15',closed:true,icon:'',html:'test15',load:'',callback:function(){}},
+	 {title:'tab16',closed:true,icon:'',html:'test16',load:'',callback:function(){}}
+	],
+	tabScroll:false,
+	width:500,
+	height:100,
+	tabcontentWidth:498,
+	tabWidth:66,
+	tabHeight:25
+	});
+	$("#tab_list_a").Tab({items:[
+	 {title:'tab1',closed:true,icon:'',html:'',load:'1.html',callback:function(){}},
+	 {title:'tab2',closed:true,icon:'',html:'',load:'http://www.google.cn',callback:function(){}},
+	 {title:'tab3',closed:true,icon:'',html:'tesfffffffffffffffffffffffffffft3',load:'',callback:function(){}},
+	 {title:'tab13',closed:true,icon:'',html:'test13',load:'',callback:function(){}},
+	 {title:'tab14',closed:true,icon:'',html:'test14',load:'',callback:function(){}},
+	 {title:'tab15',closed:true,icon:'',html:'test15',load:'',callback:function(){}},
+	 {title:'tab16',closed:true,icon:'',html:'test16',load:'',callback:function(){}}
+	],
+	tabScroll:false,
+	width:500,
+	height:100,
+	tabcontentWidth:498,
+	tabWidth:66,
+	tabHeight:25
+	});
+	var o=$("#tab_list_add").Tab({items:[
+	 {title:'tab1',closed:true,icon:'',html:'',load:'1.html',callback:function(){}}
+	],
+	tabScroll:false,
+	width:500,
+	height:100,
+	tabcontentWidth:498,
+	tabWidth:66,
+	tabHeight:25
+	});
+	$('#addTab').click(function(){
+		o.newTab({title:'tab1',closed:true,icon:'',html:'',load:'1.html',callback:function(){}});
+	});
+	var oo=$("#tab_list_addn").Tab({items:[
+	 {title:'tab1',closed:true,icon:'',html:'',load:'1.html',callback:function(){}}
+	],
+	tabScroll:false,
+	width:500,
+	height:100,
+	tabcontentWidth:498,
+	tabWidth:66,
+	tabHeight:25
+	});
+	$('#addTabN').click(function(){
+		oo.addTab({title:'tab1',closed:true,icon:'',html:'',load:'1.html',callback:function(){}});
+	});
+});
+</SCRIPT>
+</BODY>
+</HTML>

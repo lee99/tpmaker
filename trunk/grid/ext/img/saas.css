@@ -1,0 +1,42 @@
+BODY {
+	PADDING-RIGHT: 0px; PADDING-LEFT: 0px; FONT-SIZE: 12px; PADDING-BOTTOM: 0px; MARGIN: 0px; COLOR: #1248ac; PADDING-TOP: 0px; HEIGHT: 100%
+}
+IMG {
+	BORDER-TOP-WIDTH: 0px; BORDER-LEFT-WIDTH: 0px; BORDER-BOTTOM-WIDTH: 0px; BORDER-RIGHT-WIDTH: 0px
+}
+.tab {
+	LEFT: 0px; FLOAT: left; WIDTH: 5000px; POSITION: relative; HEIGHT: 21px
+}
+.tab .on {
+	DISPLAY: block; BACKGROUND: url(tag_house_on.gif); OVERFLOW: hidden; COLOR: #000000; PADDING-TOP: 4px; HEIGHT: 17px; TEXT-ALIGN: center
+}
+.tab .off {
+	DISPLAY: block; BACKGROUND: url(tag_house_off.gif); OVERFLOW: hidden; COLOR: #000000; PADDING-TOP: 4px; HEIGHT: 16px; TEXT-ALIGN: center
+}
+.tab A:hover {
+	COLOR: #000000
+}
+.tab .close {
+	MARGIN-TOP: 0px; DISPLAY: block; BACKGROUND: url(tab-close.gif) no-repeat; FLOAT: right; WIDTH: 11px; MARGIN-RIGHT: 3px; HEIGHT: 11px
+}
+.tab UL {
+	PADDING-RIGHT: 0px; DISPLAY: block; PADDING-LEFT: 0px; PADDING-BOTTOM: 0px; MARGIN: 0px; PADDING-TOP: 0px; LIST-STYLE-TYPE: none
+}
+.tab LI {
+	PADDING-RIGHT: 0px; PADDING-LEFT: 0px; FLOAT: left; PADDING-BOTTOM: 0px; MARGIN: 0px 0px 0px 1px; WIDTH: 65px; CURSOR: pointer; PADDING-TOP: 0px; LIST-STYLE-TYPE: none; HEIGHT: 21px
+}
+.tab .inner {
+	
+}
+.scroll-left {
+	Z-INDEX: 5; BACKGROUND: url(tab-left.gif) no-repeat; FLOAT: left; WIDTH: 19px; CURSOR: pointer; POSITION: relative; HEIGHT: 20px
+}
+.scroll-right {
+	Z-INDEX: 5; BACKGROUND: url(tab-right.gif) no-repeat; FLOAT: right; WIDTH: 19px; CURSOR: pointer; POSITION: relative; HEIGHT: 20px
+}
+.tab-div {
+	MARGIN-TOP: 7px; BACKGROUND: url(tag_house_bg.gif)
+}
+.tab-div-content {
+	BORDER-RIGHT: #ccc 1px solid; BORDER-LEFT: #ccc 1px solid; BORDER-BOTTOM: #ccc 1px solid
+}
