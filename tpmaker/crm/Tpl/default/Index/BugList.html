@@ -1,0 +1,272 @@
+<include file="../Public/header" />
+<SCRIPT language=JavaScript1.1>
+  /* Create the text arrays and value arrays used to create the select */
+  var DefaultFieldsText  = new Array("Bug 编号","严重程度","Bug 标题","Bug 状态","创建者","指派给","解决者","解决方案");
+  var DefaultFieldsValue = new Array("BugID","BugSeverity","BugTitle","BugStatus","OpenedBy","AssignedTo","ResolvedBy","Resolution");
+
+
+  /**
+   * Set to the default fields to show .
+   *
+   * @author leeyupeng <leeyupeng@gmail.com>
+   */
+  function setDefaultFields(ItemList)
+  {
+      for(var x=ItemList.length-1; x>=0; x--)
+      {
+          var opt = ItemList.options[x];
+          ItemList.options[x] = null;
+      }
+
+      for(var x=0; x<= DefaultFieldsText.length-1; x++)
+      {
+          ItemList.options[x]  = new Option(DefaultFieldsText[x], DefaultFieldsValue[x], 0, 0);
+      }
+  }
+  function submitForm()
+  {
+      $("FieldsToShow").value = joinItem($("FieldsToShowList"));
+      if($("FieldsToShow").value == '')
+      {
+          alert('Must select one field!');
+          return false;
+      }
+      else
+      {
+          return true;
+      }
+  }
+function dingwei(ContainerDiv,xPoint,yPoint)
+{
+        var widthReg = /px/ig;
+        var heightReg = /px/ig;
+        inputObj=$(ContainerDiv);
+        inputObjWidth = 600;
+        if(widthReg.test(inputObj.style.width))
+        {
+            inputObjWidth = inputObj.style.width.replace(widthReg,'');
+        }
+        $(ContainerDiv).style.width = inputObjWidth+"px";
+        $(ContainerDiv).style.left = xPoint-430+"px";
+        $(ContainerDiv).style.top  = yPoint+10+"px";
+}
+function hiddenDivCustomSetTable()
+{
+    if($('CustomDivIsFocus').value == '0')
+    {
+        hiddenObj("DivCustomSetTable");
+    }
+}
+function showDivCustomSetTable(xPoint,yPoint)
+{
+if($('DivCustomSetTable').style.display == 'block')
+{
+    $('CustomDivIsFocus').value = '0';
+    hiddenDivCustomSetTable();
+    return;
+}
+if($('CustomDivIsFocus').value == "")
+{
+    $('CustomDivIsFocus').value = '0';
+    setTimeout("displayObj('"+"DivCustomSetTable"+"')",200);
+}
+else if($('CustomDivIsFocus').value=='0')
+{
+    if($('CustomDivIsFocus').style.display != 'block')
+    {
+        $('CustomDivIsFocus').value = '0';
+        setTimeout("displayObj('"+"DivCustomSetTable"+"')",200);
+    }
+    else
+    {
+        hiddenDivCustomSetTable();
+    }
+}
+else
+{
+        $('CustomDivIsFocus').value = '0';
+        setTimeout("displayObj('"+"DivCustomSetTable"+"')",200);
+}
+dingwei('DivCustomSetTable',xPoint,yPoint);
+}
+
+</SCRIPT>
+
+<FORM onSubmit="return submitForm();" action="" method=post target=_self>
+<DIV id=DivCustomSetTable onMouseOver="$('CustomDivIsFocus').value=1;"
+style="BORDER-RIGHT: #808080 1px solid; BORDER-TOP: #808080 1px solid; DISPLAY: none; BORDER-LEFT: #808080 1px solid; WIDTH: 450px; BORDER-BOTTOM: #808080 1px solid; POSITION: absolute; BACKGROUND-COLOR: #ffffff"
+onmouseout="$('CustomDivIsFocus').value=0;">
+<TABLE class=BgTable id=CustomSetTable cellSpacing=0 cellPadding=0 width="100%"
+align=center border=0>
+  <TBODY>
+  <TR>
+    <TD align=middle colSpan=4></TD>
+    <TD align=middle><A title=Close
+      style="DISPLAY: block; FONT-WEIGHT: bold; FONT-SIZE: 12px; WIDTH: 100%; TEXT-DECORATION: none"
+      onclick="hiddenDivCustomSetTable();"
+      >x</A> </TD></TR>
+  <TR class=BgRow vAlign=center align=middle>
+    <TD align=left width="5%">&nbsp;</TD>
+    <TD width="20%">
+      <FIELDSET
+      style="BORDER-RIGHT: 0px; BORDER-TOP: 0px; FONT-SIZE: 12px; BORDER-LEFT: 0px; BORDER-BOTTOM: 0px"><LEGEND>可选字段</LEGEND><SELECT
+      class=MultiSelect id=FieldsToSelectList style="WIDTH: 150px" multiple
+      size=10 name=FieldsToSelectList> <OPTION value=BugID>Bug 编号</OPTION>
+        <OPTION value=BugTitle>Bug 标题</OPTION> <OPTION
+        value=ProjectName>项目名</OPTION> <OPTION value=ModulePath>模块路径</OPTION>
+        <OPTION value=BugStatus>Bug 状态</OPTION> <OPTION
+        value=AssignedTo>指派给</OPTION> <OPTION value=MailTo>抄送给</OPTION> <OPTION
+        value=BugSeverity>严重程度</OPTION> <OPTION value=BugPriority>优先级</OPTION>
+        <OPTION value=BugType>Bug 类型</OPTION> <OPTION
+        value=HowFound>如何发现</OPTION> <OPTION value=BugOS>操作系统</OPTION> <OPTION
+        value=BugBrowser>浏览器</OPTION> <OPTION value=LastEditedBy>最后修改者</OPTION>
+        <OPTION value=LastEditedDate>最后修改日期</OPTION> <OPTION
+        value=OpenedBy>创建者</OPTION> <OPTION value=OpenedDate>创建日期</OPTION>
+        <OPTION value=OpenedBuild>创建 Build</OPTION> <OPTION
+        value=ResolvedBy>解决者</OPTION> <OPTION value=ResolvedDate>解决日期</OPTION>
+        <OPTION value=ResolvedBuild>解决 Build</OPTION> <OPTION
+        value=Resolution>解决方案</OPTION> <OPTION value=DuplicateID>重复 Bug</OPTION>
+        <OPTION value=ClosedBy>关闭者</OPTION> <OPTION
+        value=ClosedDate>关闭日期</OPTION> <OPTION value=BugMachine>机器配置</OPTION>
+        <OPTION value=BugKeyword>关键词</OPTION> <OPTION value=LinkID>相关
+        Bug</OPTION> <OPTION value=ResultID>相关 Result</OPTION> <OPTION
+        value=ModifiedBy>曾经修改者</OPTION></SELECT> </FIELDSET> </TD>
+    <TD width="10%"><INPUT class=ActionButton style="WIDTH: 1.7cm" onClick="addItem($('FieldsToSelectList'),$('FieldsToShowList'))" type=button value=">>"><BR><INPUT class=ActionButton style="WIDTH: 1.7cm" onClick="delItem($('FieldsToShowList'))" type=button value="<<">
+    </TD>
+    <TD width="20%">
+      <FIELDSET
+      style="BORDER-RIGHT: 0px; BORDER-TOP: 0px; FONT-SIZE: 12px; BORDER-LEFT: 0px; BORDER-BOTTOM: 0px"><LEGEND>要显示的字段</LEGEND><SELECT
+      class=MultiSelect id=FieldsToShowList style="WIDTH: 150px" multiple
+      size=10 name=FieldsToShowList> <OPTION value=BugID>Bug 编号</OPTION>
+        <OPTION value=BugSeverity>严重程度</OPTION> <OPTION value=BugTitle>Bug
+        标题</OPTION> <OPTION value=BugStatus>Bug 状态</OPTION> <OPTION
+        value=OpenedBy>创建者</OPTION> <OPTION value=AssignedTo>指派给</OPTION>
+        <OPTION value=ResolvedBy>解决者</OPTION> <OPTION
+        value=Resolution>解决方案</OPTION></SELECT> </FIELDSET> </TD>
+    <TD align=left width="8%"><INPUT style="WIDTH: 0.6cm" onClick="JavaScript:upItem($('FieldsToShowList'))" type=button value=↑><BR><INPUT style="WIDTH: 0.6cm" onClick="JavaScript:downItem($('FieldsToShowList'))" type=button value=↓>
+    </TD></TR>
+  <TR>
+    <TD
+    style="PADDING-RIGHT: 0px; PADDING-LEFT: 0px; PADDING-BOTTOM: 6px; PADDING-TOP: 10px"
+    align=middle colSpan=5><INPUT class=ActionButton accessKey=O type=submit value=确定(O)> <INPUT class=ActionButton accessKey=D onClick="setDefaultFields($('FieldsToShowList'))" type=button value=默认字段(D)><BR></TD></TR></TBODY></TABLE></DIV><INPUT
+id=CustomDivIsFocus type=hidden name=CustomDivIsFocus> <INPUT id=FieldsToShow
+type=hidden name=FieldsToShow> </FORM>
+<TABLE class="CommonTable ListTable BugMode outline">
+  <TBODY>
+  <TR>
+    <TD class=TdCaption>
+      <TABLE style="FONT-SIZE: 12px; WIDTH: 100%">
+        <TBODY>
+        <TR>
+          <TD
+          style="BORDER-RIGHT: 0px; BORDER-TOP: 0px; BORDER-LEFT: 0px; WIDTH: 30%; BORDER-BOTTOM: 0px; TEXT-ALIGN: left">结果
+            1-1/1
+            <SCRIPT language=Javascript>
+        function submitPage(mode)
+        {
+            PageTotal     = parseInt(document.getElementById('_PageTotal').value);
+            if(mode == 'changePageID')
+            {
+                PageID        =  document.getElementById('_PageID').value;
+                if(PageID > PageTotal)
+                {
+                    PageID = PageTotal;
+                }
+                else if(PageID < 1)
+                {
+                    PageID = 1;
+                }
+            }
+            else if(mode == 'changeRecPerPage')
+            {
+                PageID = 0;
+            }
+            RecPerPage    = document.getElementById('_RecPerPage').value;
+            location.href = '?&RecTotal=1&PageID=' + PageID + '&RecPerPage=' + RecPerPage;
+        }
+        </SCRIPT>
+             <INPUT id=_PageTotal type=hidden value=1> <SELECT id=_RecPerPage
+            onchange='submitPage("changeRecPerPage");' name=_RecPerPage>
+              <OPTION value=10>10</OPTION> <OPTION value=20 selected>20</OPTION>
+              <OPTION value=35>35</OPTION> <OPTION value=50>50</OPTION> <OPTION
+              value=100>100</OPTION></SELECT> </TD>
+          <TD
+          style="BORDER-RIGHT: 0px; BORDER-TOP: 0px; BORDER-LEFT: 0px; WIDTH: 40%; BORDER-BOTTOM: 0px; TEXT-ALIGN: center"><IMG
+            src="../public/images/arrow_left_disabled.gif">&nbsp;&nbsp; 下一页&nbsp;
+            <IMG src="../public/images/arrow_right_disabled.gif"> </TD>
+          <TD
+          style="BORDER-RIGHT: 0px; BORDER-TOP: 0px; BORDER-LEFT: 0px; WIDTH: 30%; BORDER-BOTTOM: 0px; TEXT-ALIGN: right"><A
+            id=CustomSetLink
+            onclick=x=event.clientX+document.body.scrollLeft;y=event.clientY;showDivCustomSetTable(x,y);
+            href="javascript:void(0);">自定义显示</A>| <A
+            href="http://127.0.0.1/bugfree/BugList.php?Export=HtmlTable"
+            target=_blank><IMG src="../public/images/export.gif">&nbsp;全部导出</A>| <A
+            onclick="openWindow('Report.php?ReportMode=Bug','BugReport');"
+            href="http://127.0.0.1/bugfree/BugList.php#"><IMG
+            src="../public/images/report.gif">&nbsp;统计报表</A>
+  </TD></TR></TBODY></TABLE></TD></TR>
+  <TR>
+    <TD>
+      <DIV id=ListSubTable
+      style="OVERFLOW-Y: auto; OVERFLOW-X: auto">
+      <TABLE class="CommonTable CommonSubTable BugMode">
+        <TBODY>
+        <TR>
+          <TH align=middle><NOBR><A
+            href="http://127.0.0.1/bugfree/BugList.php?OrderBy=BugID|ASC&amp;QueryMode=">Bug
+            编号</A>↓</NOBR> </TH>
+          <TH align=middle><NOBR><A
+            href="http://127.0.0.1/bugfree/BugList.php?OrderBy=BugSeverity|DESC&amp;QueryMode=">&nbsp;!&nbsp;</A></NOBR>
+          </TH>
+          <TH align=left><NOBR><A
+            href="http://127.0.0.1/bugfree/BugList.php?OrderBy=BugTitle|DESC&amp;QueryMode=">Bug
+            标题</A></NOBR> </TH>
+          <TH align=left><NOBR><A
+            href="http://127.0.0.1/bugfree/BugList.php?OrderBy=BugStatus|DESC&amp;QueryMode=">Bug
+            状态</A></NOBR> </TH>
+          <TH align=left><NOBR><A
+            href="http://127.0.0.1/bugfree/BugList.php?OrderBy=OpenedBy|DESC&amp;QueryMode=">创建者</A></NOBR>
+          </TH>
+          <TH align=left><NOBR><A
+            href="http://127.0.0.1/bugfree/BugList.php?OrderBy=AssignedTo|DESC&amp;QueryMode=">指派给</A></NOBR>
+          </TH>
+          <TH align=left><NOBR><A
+            href="http://127.0.0.1/bugfree/BugList.php?OrderBy=ResolvedBy|DESC&amp;QueryMode=">解决者</A></NOBR>
+          </TH>
+          <TH align=left><NOBR><A
+            href="http://127.0.0.1/bugfree/BugList.php?OrderBy=Resolution|DESC&amp;QueryMode=">解决方案</A></NOBR>
+          </TH></TR>
+        <TR class=BugStatusActive>
+          <TD align=middle><NOBR>1</NOBR> </TD>
+          <TD align=middle><NOBR>4</NOBR> </TD>
+          <TD align=left><A class=FullLink title=Sample：欢迎使用BugFree！
+            href="http://127.0.0.1/bugfree/Bug.php?BugID=1"
+            target=_blank><NOBR>Sample：欢迎使用BugFree！</NOBR></A> </TD>
+          <TD align=left><A
+            href="http://127.0.0.1/bugfree/BugList.php?QueryMode=BugStatus|Active"><NOBR>Active</NOBR></A>
+          </TD>
+          <TD align=left><A
+            href="http://127.0.0.1/bugfree/BugList.php?QueryMode=OpenedBy|admin"><NOBR>admin</NOBR></A>
+          </TD>
+          <TD align=left><A
+            href="http://127.0.0.1/bugfree/BugList.php?QueryMode=AssignedTo|admin"><NOBR>admin</NOBR></A>
+          </TD>
+          <TD align=left><A
+            href="http://127.0.0.1/bugfree/BugList.php?QueryMode=ResolvedBy|"><NOBR></NOBR></A></TD>
+      <TD align=left><A
+            href="http://127.0.0.1/bugfree/BugList.php?QueryMode=Resolution|"><NOBR></NOBR></A></TD></TR></TBODY></TABLE></DIV></TD></TR></TBODY></TABLE>
+<SCRIPT>
+function resizeList()
+{
+var h1 = document.body.clientHeight;
+var h2 = document.documentElement.clientHeight;
+var h3 = (h2>h1)?h2:h1;
+var hsub = 51;
+(h2>h1&&h2!=0)?hsub=49:"";
+(h2<h1&&h2!=0)?hsub=45:"";
+$('ListSubTable').style.height = h3-hsub + 'px';
+}
+resizeList();
+</SCRIPT>
+</SCRIPT>
+<include file="../Public/footer" />
