@@ -1,28 +1,48 @@
 <include file="../Public/header" />
-  <div id="TopNavMain">
-
+<div id="TopNavMain">
     <a id="TopNavLogo" href="Index.html" target="_top">{$Think.config.Project_NAME}</a>
-    <span id="TopNavAbout">
-      <a name="UserNameLink">[欢迎admin]</a>
-      <a href="EditMyInfo.php" target="_blank">[编辑我的信息]</a>      <a href="Admin/" target="_blank">[后台管理]</a>      <a href="Logout.php?Logout=Yes">[退出]</a></span>  </div>
+    <span id="TopNavAbout"><a name="UserNameLink">[欢迎admin]</a><a href="EditMyInfo.php" target="_blank">[编辑我的信息]</a><a href="Admin/" target="_blank">[后台管理]</a><a href="Logout.php?Logout=Yes">[退出]</a></span>
+</div>
 <div id="TopBCR" class="BaseTab">
     <ul>
-      <li id="TopNavProjectListLi">
-	<select name='TopNavProjectList' id='TopNavProjectList'>
-		<option value='1' selected='selected'>admin</option>
-	</select>
-	</li>
-       <li class="SpaceTab">&nbsp;</li>
-      <li id="TopNavBugLi" class="Cram Active"><a href="index.php?TestMode=Bug" id="TopNavBug" target="_top">个人首页</a></li>
-      <li class="SpaceTab">&nbsp;</li>
-      <li id="TopNavCaseLi" class="Cram"><a href="index.php?TestMode=Case" id="TopNavCase" target="_top">职位信息库</a></li>
-      <li class="SpaceTab">&nbsp;</li>
-      <li id="TopNavResultLi" class="Cram"><a href="index.php?TestMode=Result" id="TopNavResult" target="_top">客户信息库</a></li>
-      <li class="SpaceTab">&nbsp;</li>
-      <li id="TopNavResultLi" class="Cram"><a href="index.php?TestMode=Result" id="TopNavResult" target="_top">人才信息库</a></li>
-      <li class="SpaceTab">&nbsp;</li>
-      <li id="TopNavResultLi" class="Cram"><a href="index.php?TestMode=Result" id="TopNavResult" target="_top">行政办公平台</a></li>
-      <li class="EndTab">&nbsp;</li>
+        <li id="TopNavProjectListLi">
+            <select name='TopNavProjectList' id='TopNavProjectList'>
+                <option value='1' selected='selected'>admin</option>
+            </select>
+        </li>
+        <li class="SpaceTab">
+            &nbsp;
+        </li>
+        <li id="TopNavBugLi" class="Cram Active">
+            <a href="index.php?TestMode=Bug" id="TopNavBug" target="_top">个人首页</a>
+        </li>
+        <li class="SpaceTab">
+            &nbsp;
+        </li>
+        <li id="TopNavCaseLi" class="Cram">
+            <a href="index.php?TestMode=Case" id="TopNavCase" target="_top">职位信息库</a>
+        </li>
+        <li class="SpaceTab">
+            &nbsp;
+        </li>
+        <li id="TopNavResultLi" class="Cram">
+            <a href="index.php?TestMode=Result" id="TopNavResult" target="_top">客户信息库</a>
+        </li>
+        <li class="SpaceTab">
+            &nbsp;
+        </li>
+        <li id="TopNavResultLi" class="Cram">
+            <a href="index.php?TestMode=Result" id="TopNavResult" target="_top">人才信息库</a>
+        </li>
+        <li class="SpaceTab">
+            &nbsp;
+        </li>
+        <li id="TopNavResultLi" class="Cram">
+            <a href="index.php?TestMode=Result" id="TopNavResult" target="_top">行政办公平台</a>
+        </li>
+        <li class="EndTab">
+            &nbsp;
+        </li>
     </ul>
-  </div>
+</div>
 <include file="../Public/footer" />

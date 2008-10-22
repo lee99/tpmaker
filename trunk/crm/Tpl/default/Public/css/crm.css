@@ -1,10 +1,11 @@
+@charset "utf-8";
 BODY,HTML {
 	FONT-SIZE: 12px;
 	MARGIN: 0px;
 	height:auto;
 	FONT-FAMILY: Arial, Helvetica, sans-serif;
 	padding: 0px;
-	height:99%;
+	height:100%;
 }
 #TopNavLogo {
 	FONT-SIZE: 18px;

@@ -1,87 +1,70 @@
 <include file="../Public/header" />
 <SCRIPT type=text/javascript>
-//<![CDATA[
-function dispayUserControlDiv(I)
-{
-    var display=false;
-    for(j=0;j<4;j++)
-    {
-        if($('UCTitle'+j))
-        {
-            if(j == I)
-            {
-                if(j != 3)
-                {
-                    $('UCTitle'+j).className = 'TabSelect';
+    //<![CDATA[
+    function dispayUserControlDiv(I){
+        var display = false;
+        for (j = 0; j < 4; j++) {
+            if ($id('UCTitle' + j)) {
+                if (j == I) {
+                    if (j != 3) {
+                        $id('UCTitle' + j).className = 'TabSelect';
+                    }
+                    displayObj('UCDiv' + j);
+                    display = true;
                 }
-                displayObj('UCDiv'+j);
-                display=true;
-            }
-            else
-            {
-                if(j != 3)
-                {
-                    $('UCTitle'+j).className = 'Tab';
+                else {
+                    if (j != 3) {
+                        $id('UCTitle' + j).className = 'Tab';
+                    }
+                    hiddenObj('UCDiv' + j);
                 }
-                hiddenObj('UCDiv'+j);
             }
         }
+        if (!display) {
+            $id('UCTitle' + 1).className = 'TabSelect';
+            displayObj('UCDiv' + 1);
+        }
     }
-    if(!display)
-    {
-        $('UCTitle'+1).className = 'TabSelect';
-        displayObj('UCDiv'+1);
-    }
-}
-/*==============================loading function==============================*/
-
-//]]
+    
+    /*==============================loading function==============================*/
+    //]]
 </SCRIPT>
-
-<DIV class=TabContainer id=LeftUserControl
-style="MARGIN: 1px">
-<H2 class=Tab id=UCTitle0><A
-onclick="dispayUserControlDiv(0);TestCookie.write('TabSelectNum',0);"
-href="javascript:void(0);">指派给我</A></H2>
-<H2 class=TabSelect id=UCTitle1><A
-onclick="dispayUserControlDiv(1);TestCookie.write('TabSelectNum',1);"
-href="javascript:void(0);">由我创建</A></H2>
-<H2 class=Tab id=UCTitle2><A
-onclick="dispayUserControlDiv(2);TestCookie.write('TabSelectNum',2);"
-href="javascript:void(0);">我的查询</A></H2>
-<H2 class="Tab BugMode" id=UCTitle3
-style="BORDER-TOP-WIDTH: 0px; PADDING-RIGHT: 2px; PADDING-LEFT: 2px; BORDER-LEFT-WIDTH: 0px; BORDER-BOTTOM-WIDTH: 0px; PADDING-BOTTOM: 0px; PADDING-TOP: 0px; BORDER-RIGHT-WIDTH: 0px"><A
-onclick="xajax_xUpdateUserControl('Bug');return false;"
-href="javascript:void(0);"><IMG
-src="../public/images/icon_refresh.gif"></A></H2>
-<DIV class=TabPage id=UCDiv0 style="DISPLAY: none">1&nbsp;<A
-title=Sample：欢迎使用BugFree！ href="http://127.0.0.1/bugfree/Bug.php?BugID=1"
-target=_blank>Sample：欢迎使用BugFre...</A><BR></DIV>
-<DIV class=TabPage id=UCDiv1 style="DISPLAY: block">1&nbsp;<A
-title=Sample：欢迎使用BugFree！ href="http://127.0.0.1/bugfree/Bug.php?BugID=1"
-target=_blank>Sample：欢迎使用BugFre...</A><BR></DIV>
-<DIV class=TabPage id=UCDiv2 style="DISPLAY: none"></DIV>
-<DIV class=TabPage id=UCDiv3
-style="DISPLAY: none"><STRONG>Loading...</STRONG><IMG
-src="../public/images/Loading.gif"> </DIV>
+<DIV class=TabContainer id=LeftUserControl style="MARGIN: 1px">
+    <H2 class=Tab id=UCTitle0><A onclick="dispayUserControlDiv(0);TestCookie.write('TabSelectNum',0);" href="javascript:void(0);">指派给我</A></H2>
+    <H2 class=TabSelect id=UCTitle1><A onclick="dispayUserControlDiv(1);TestCookie.write('TabSelectNum',1);" href="javascript:void(0);">由我创建</A></H2>
+    <H2 class=Tab id=UCTitle2><A onclick="dispayUserControlDiv(2);TestCookie.write('TabSelectNum',2);" href="javascript:void(0);">我的查询</A></H2>
+    <H2 class="Tab BugMode" id=UCTitle3 style="BORDER-TOP-WIDTH: 0px; PADDING-RIGHT: 2px; PADDING-LEFT: 2px; BORDER-LEFT-WIDTH: 0px; BORDER-BOTTOM-WIDTH: 0px; PADDING-BOTTOM: 0px; PADDING-TOP: 0px; BORDER-RIGHT-WIDTH: 0px"><A onclick="xajax_xUpdateUserControl('Bug');return false;" href="javascript:void(0);"><IMG src="../public/images/icon_refresh.gif"></A></H2>
+    <DIV class=TabPage id=UCDiv0 style="DISPLAY: none">
+        1&nbsp;<A title=Sample：欢迎使用BugFree！ href="http://127.0.0.1/bugfree/Bug.php?BugID=1" target=_blank>Sample：欢迎使用BugFre...</A>
+        <BR>
+    </DIV>
+    <DIV class=TabPage id=UCDiv1 style="DISPLAY: block">
+        1&nbsp;<A title=Sample：欢迎使用BugFree！ href="http://127.0.0.1/bugfree/Bug.php?BugID=1" target=_blank>Sample：欢迎使用BugFre...</A>
+        <BR>
+    </DIV>
+    <DIV class=TabPage id=UCDiv2 style="DISPLAY: none">
+    </DIV>
+    <DIV class=TabPage id=UCDiv3 style="DISPLAY: none">
+        <STRONG>Loading...</STRONG>
+        <IMG src="../public/images/Loading.gif">
+    </DIV>
 </DIV>
 <SCRIPT type=text/javascript>
-//<![CDATA[
-dispayUserControlDiv(TestCookie.read('TabSelectNum'));
-if(typeof(xajax) != "undefined")
-{
-    var LoadingMessage = $('UCDiv3');
-    if(LoadingMessage)
-    {
-        loadingFunction = function(){dispayUserControlDiv(3);};
-        function hideLoadingMessage()
-        {
-          dispayUserControlDiv(TestCookie.read('TabSelectNum'));
+    //<![CDATA[
+    dispayUserControlDiv(TestCookie.read('TabSelectNum'));
+    if (typeof(xajax) != "undefined") {
+        var LoadingMessage = $id('UCDiv3');
+        if (LoadingMessage) {
+            loadingFunction = function(){
+                dispayUserControlDiv(3);
+            };
+            function hideLoadingMessage(){
+                dispayUserControlDiv(TestCookie.read('TabSelectNum'));
+            }
+            doneLoadingFunction = hideLoadingMessage;
         }
-        doneLoadingFunction = hideLoadingMessage;
     }
-}
-setInterval("xajax_xUpdateUserControl('Bug')",300000);
-//]]
+    setInterval("xajax_xUpdateUserControl('Bug')", 300000);
+    //]]
 </SCRIPT>
 <include file="../Public/footer" />
