@@ -25,6 +25,10 @@ class IndexAction extends Action{
 		$this->display();
 	}
 
+	public function Alll(){
+		$this->display();
+	}
+	
 }
 
 
