@@ -1,0 +1,172 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<link rel="stylesheet" href="css/style.css" type="text/css" />
+<title>左侧导航栏</title>
+</head>
+<script type="text/javascript">
+
+    var preClassName = "";
+    function list_sub_detail(Id, item){
+        if (preClassName != "") {
+            getbyId(preClassName).className = "left_back"
+        }
+        if (getbyId(Id).className == "left_back") {
+            getbyId(Id).className = "left_back_onclick";
+            outlookbar.getbyitem(item);
+            preClassName = Id
+        }
+    }
+
+    function getbyId(objectId){
+        if (document.getElementById && document.getElementById(objectId)) {
+            return document.getElementById(objectId)
+        }
+        else
+            if (document.all && document.all(objectId)) {
+                return document.all(objectId)
+            }
+            else
+                if (document.layers && document.layers[objectId]) {
+                    return document.layers[objectId]
+                }
+                else {
+                    return false
+                }
+    }
+
+    function outlook(){
+        this.titlelist = new Array();
+        this.itemlist = new Array();
+        this.addtitle = addtitle;
+        this.additem = additem;
+        this.getbytitle = getbytitle;
+        this.getbyitem = getbyitem;
+        this.getdefaultnav = getdefaultnav
+    }
+
+    function theitem(intitle, insort, inkey, inisdefault){
+        this.sortname = insort;
+        this.key = inkey;
+        this.title = intitle;
+        this.isdefault = inisdefault
+    }
+
+    function addtitle(intitle, sortname, inisdefault){
+        outlookbar.itemlist[outlookbar.titlelist.length] = new Array();
+        outlookbar.titlelist[outlookbar.titlelist.length] = new theitem(intitle, sortname, 0, inisdefault);
+        return (outlookbar.titlelist.length - 1)
+    }
+
+    function additem(intitle, parentid, inkey){
+        if (parentid >= 0 && parentid <= outlookbar.titlelist.length) {
+            insort = "item_" + parentid;
+            outlookbar.itemlist[parentid][outlookbar.itemlist[parentid].length] = new theitem(intitle, insort, inkey, 0);
+            return (outlookbar.itemlist[parentid].length - 1)
+        }
+        else
+            additem = -1
+    }
+
+    function getdefaultnav(sortname){
+        var output = "";
+	var idvalue='';
+	var titlevalue='';
+	var showdefault = true;//lee99加上默认第一组数据
+        for (i = 0; i < outlookbar.titlelist.length; i++) {
+            if (outlookbar.titlelist[i].isdefault == 1 && outlookbar.titlelist[i].sortname == sortname) {
+		if(idvalue=='' && showdefault==true){
+		 idvalue="left_nav_" + i;
+		 titlevalue=outlookbar.titlelist[i].title;
+		}
+                output += "<div class=list_tilte id=sub_sort_" + i + " onclick=\"hideorshow('sub_detail_" + i + "')\">";
+                output += "<span>" + outlookbar.titlelist[i].title + "</span>";
+                output += "</div>";
+                output += "<div class=list_detail id=sub_detail_" + i + "><ul>";
+                for (j = 0; j < outlookbar.itemlist[i].length; j++) {
+                    output += "<li id=" + outlookbar.itemlist[i][j].sortname + j + " onclick=\"changeframe('" + outlookbar.itemlist[i][j].title + "','" + outlookbar.titlelist[i].title + "','" + outlookbar.itemlist[i][j].key + "')\"><a href=#>" + outlookbar.itemlist[i][j].title + "</a></li>"
+                }
+                output += "</ul></div>"
+            }
+        }
+        getbyId('left_nav_right').innerHTML = output
+
+		if(idvalue!=''  && showdefault==true){
+			list_sub_detail(idvalue,titlevalue);//lee99加上默认第一组数据
+		}
+    }
+
+    function getbytitle(sortname){
+        var output = "<ul>";
+        for (i = 0; i < outlookbar.titlelist.length; i++) {
+            if (outlookbar.titlelist[i].sortname == sortname) {
+                output += "<li id=left_nav_" + i + " onclick=\"list_sub_detail(id,'" + outlookbar.titlelist[i].title + "')\" class=left_back>" + outlookbar.titlelist[i].title + "</li>"
+            }
+        }
+        output += "</ul>";
+        getbyId('left_nav_left').innerHTML = output
+
+    }
+
+    function getbyitem(item){
+        var output = "";
+        for (i = 0; i < outlookbar.titlelist.length; i++) {
+            if (outlookbar.titlelist[i].title == item) {
+                output = "<div class=list_tilte id=sub_sort_" + i + " onclick=\"hideorshow('sub_detail_" + i + "')\">";
+                output += "<span>" + outlookbar.titlelist[i].title + "</span>";
+                output += "</div>";
+                output += "<div class=list_detail id=sub_detail_" + i + " style='display:block;'><ul>";
+                for (j = 0; j < outlookbar.itemlist[i].length; j++) {
+                    output += "<li id=" + outlookbar.itemlist[i][j].sortname + "_" + j + " onclick=\"changeframe('" + outlookbar.itemlist[i][j].title + "','" + outlookbar.titlelist[i].title + "','" + outlookbar.itemlist[i][j].key + "')\"><a href=#>" + outlookbar.itemlist[i][j].title + "</a></li>"
+                }
+                output += "</ul></div>"
+            }
+        }
+        getbyId('left_nav_right').innerHTML = output
+    }
+
+    function changeframe(item, sortname, src){
+        if (item != "" && sortname != "") {
+            window.top.frames['mainFrame'].getbyId('show_text').innerHTML = sortname + "&nbsp;&nbsp;<img src=images/slide.gif broder=0 />&nbsp;&nbsp;" + item
+        }
+        if (src != "") {
+            window.top.frames['manFrame'].location = src
+        }
+    }
+
+    function hideorshow(divid){
+        subsortid = "sub_sort_" + divid.substring(11);
+        if (getbyId(divid).style.display == "none") {
+            getbyId(divid).style.display = "block";
+            getbyId(subsortid).className = "list_tilte"
+        }
+        else {
+            getbyId(divid).style.display = "none";
+            getbyId(subsortid).className = "list_tilte_onclick"
+        }
+    }
+
+    function initinav(sortname){
+        outlookbar.getdefaultnav(sortname);
+        outlookbar.getbytitle(sortname);
+        window.top.frames['manFrame'].location = "manFrame.html"
+	//alert(window.screen.availHeight);
+	var thisheight=window.screen.availHeight-236;
+	getbyId("left_nav_right").style.height=thisheight+'px';
+
+    }
+
+    document.write("<script src=js/nav.js></" + "script>");
+
+</script>
+<body onload="initinav('管理首页')">
+<div id="left_info">
+     <div id="user_info">欢迎您，<strong>pobear</strong><br />[<a href="#">系统管理员</a>，<a href="#">退出</a>]</div>
+	 <div id="left_nav">
+	     <div id="left_nav_left"></div>
+		 <div id="left_nav_right"></div>
+	 </div>
+</div>
+</body>
+</html>
