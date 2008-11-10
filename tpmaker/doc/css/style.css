@@ -215,12 +215,19 @@ div{
 }
 .page_nav ul {
 	margin:0;
-	padding:0px 10px 0;
+	padding:0px;
 	list-style:none;
 }
 .page_nav li { display:inline; margin-left:0; padding:0;cursor:pointer}
 .page_nav a { float:left; background:url(../images/tableftF.gif) no-repeat; margin:0 10px 0 0; padding:0 0 0 4px; text-decoration:none;}
-.page_nav a span { float:left; display:block; background:url(../images/tabrightF.gif) no-repeat right top; padding:5px 15px 4px 6px; color:#fff; font-weight:bold;}
+.page_nav a span {
+	float:left;
+	display:block;
+	background:url(../images/tabrightF.gif) no-repeat right top;
+	padding:5px 12px 4px 6px;
+	color:#fff;
+	font-weight:bold;
+}
 .page_nav a:hover { background-position:0% -42px; text-decoration:none; cursor:pointer; font-weight:bold;}
 .page_nav a:hover span { color:#99CC00; background-position:100% -42px; text-decoration:none;cursor:pointer;font-weight:bold;}
 .page_nav ul li.bg_image_onclick a { background-position:0% -42px;}
