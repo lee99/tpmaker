@@ -69,6 +69,38 @@ class sub_htmltagsAction extends AdminAction{
 //redirect(__URL__."/index");
 	}
 
+
+	public function json(){
+
+$page = $_REQUEST['page'];
+// get how many rows we want to have into the grid
+// rowNum parameter in the grid
+$limit = $_REQUEST['rows'];
+// get index row - i.e. user click to sort
+// at first time sortname parameter - after that the index from colModel
+$sidx = $_REQUEST['sidx'];
+// sorting order - at first time sortorder
+$sord = $_REQUEST['sord']; 
+
+		$list=D('sub_htmltags');
+		$count= $list->count();
+		import("ORG.Util.Page");
+		if(!empty($_REQUEST['order'])) { $order = $_REQUEST['order']; }else{ $order='seqNo'; } //排序表单
+		if(empty($_REQUEST['sort']) ) { $sortd = 'asc'; }else{ $sortd=$_REQUEST['sort']; } //排序方向
+		$orderBy=$order.' '.$sortd;//排序
+
+		$p= new Page($count,$listRows);
+		$list=$list->findAll('','*',$orderBy,$p->firstRow.','.$p->listRows);
+		$r[page]=1;
+		$r[total]=2;
+		$r[records]=$count;
+		$r[rows]=$list;
+		
+
+		//$this->ajaxReturn($r,'操作成功！',1);
+		echo json_encode($r);
+
+	}
 }
 
 

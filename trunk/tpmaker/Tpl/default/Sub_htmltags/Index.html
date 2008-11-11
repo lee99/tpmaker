@@ -21,31 +21,48 @@
 </fieldset>
 <fieldset>
 
-<!-- 列表显示区域  -->
-		<myhtml:editlist id="checkList" name="list"  checkbox="true"  datasource="list" style="list"
-		show="
-			id|hidden|1:ID,
-			title|20:标题,
-			othervar|60:标签属性参考,
-			seqNo|1:排序,
-			usetype|select|makeselect('usetype[]'#'Sub_htmlusetype'#$list['usetype']):使用范围,
-			color|select|makeselect('color[]'#'Sub_color'#$list['color']):颜色
-		"
-		action="false"
-		createform="true"
-		quickadd="true"
-		actionlist="edit:"
-		/>
+<script type="text/javascript">
+// We use a document ready jquery function.
+jQuery(document).ready(function(){
+jQuery("#list2").jqGrid({
+    // the url parameter tells from where to get the data from server
+    // adding ?nd='+new Date().getTime() prevent IE caching
+    url:URL+'/json/',
+    // datatype parameter defines the format of data returned from the server
+    // in this case we use a JSON data
+    datatype: "json",
+    // colNames parameter is a array in which we describe the names
+    // in the columns. This is the text that apper in the head of the grid.
+    colNames:['Inv No','Date', 'Client', 'Amount','Tax','Total','Notes'],
+    colModel:[
+        {name:'id',index:'id', width:55},
+        {name:'title',index:'title', width:90},
+    	{name:'othervar',index:'othervar', width:100},
+        {name:'seqNo',index:'seqNo', width:80, align:"right"},
+        {name:'usetype',index:'usetype', width:80, align:"right"},		
+        {name:'color',index:'color', width:80,align:"right"},		
+        {name:'note',index:'note', width:150, sortable:false}		
+    ],
+    // pager parameter define that we want to use a pager bar
+    // in this case this must be a valid html element.
+    // note that the pager can have a position where you want
+    pager: jQuery('#pager2'),
+    rowNum:10,
+    rowList:[10,20,30],
+    imgpath: PUBLIC+'themes/basic/images',
+    sortname: 'id',
+    viewrecords: true,
+    //sets the sorting order. Default is asc. This parameter is added to the url
+    sortorder: "desc",
+    caption: "Demo"
+});
+});
+</script>
+<!-- the grid definition in html is a table tag with class 'scroll' -->
+<table id="list2" class="scroll" cellpadding="0" cellspacing="0"></table>
 
-<!--  分页显示区域 -->
-<div class="page">
-
-<table width="100%">
-<tr >
-<td align="left"><input type="button"  onclick="upbtn();" class="button1" value="更新本页数据"></td>
-<td align="right">{$page}</td>
-</tr>
-</table>
-</div>
+<!-- pager definition. class scroll tels that we want to use the same theme as grid -->
+<div id="pager2" class="scroll" style="text-align:center;"></div>
 </fieldset>
+
 <include file="../Public/footer" />
