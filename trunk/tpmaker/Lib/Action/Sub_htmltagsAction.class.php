@@ -72,34 +72,38 @@ class sub_htmltagsAction extends AdminAction{
 
 	public function json(){
 
-$page = $_REQUEST['page'];
-// get how many rows we want to have into the grid
-// rowNum parameter in the grid
-$limit = $_REQUEST['rows'];
-// get index row - i.e. user click to sort
-// at first time sortname parameter - after that the index from colModel
-$sidx = $_REQUEST['sidx'];
-// sorting order - at first time sortorder
-$sord = $_REQUEST['sord']; 
+		$page = $_REQUEST['page'];//当前页
+		$limit = $_REQUEST['rows'];//分页
+		$sidx = $_REQUEST['sidx'];//排序表单
+		$sord = $_REQUEST['sord'];//排序方向
 
+
+		$condition=Array();//搜索的条件
+		
 		$list=D('sub_htmltags');
 		$count= $list->count();
 		import("ORG.Util.Page");
-		if(!empty($_REQUEST['order'])) { $order = $_REQUEST['order']; }else{ $order='seqNo'; } //排序表单
-		if(empty($_REQUEST['sort']) ) { $sortd = 'asc'; }else{ $sortd=$_REQUEST['sort']; } //排序方向
-		$orderBy=$order.' '.$sortd;//排序
+		$feilds='*';//字段
+		$sidx=(!empty($sidx))?$sidx:'seqNo';//排序表单
+		$sord=(!empty($sord))?$sord:'sort';//排序方向
+		$orderBy=$sidx.' '.$sord;//排序
 
 		$p= new Page($count,$listRows);
-		$list=$list->findAll('','*',$orderBy,$p->firstRow.','.$p->listRows);
-		$r[page]=1;
-		$r[total]=2;
-		$r[records]=$count;
+		$list=$list
+			->where($condition)
+			->field($feilds)
+			->order($orderBy)
+			->limit($limit)
+			->findAll();
+			
+		
+		$r[total]=$p->nowPage;
+		$r[page]=$p->totalPages;
+		$r[records]=$p->totalRows;
 		for ($i = 0; $i < count($list); $i++) {
 			$r[rows][$i][id]=$list[$i]['id'];
-			$r[rows][$i][cell]=$list[$i];
+			$r[rows][$i][cell]=array($list[$i]['id'],$list[$i]['title'],$list[$i]['othervar'],$list[$i]['seqNo'],$list[$i]['usetype'],$list[$i]['color'],$list[$i]['color']);
 		}
-		
-		
 
 		//$this->ajaxReturn($r,'操作成功！',1);
 		echo json_encode($r);
