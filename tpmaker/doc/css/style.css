@@ -19,13 +19,15 @@ body {
 	font-size:12px;
 	color:#666;
 }
+
 a {
-	color: #555;
+color: #555;
 	text-decoration:none;
 }
 a:hover {
 	color: #0099CC;
 }
+
 
 img {
 	border-top-width: 0px;
@@ -54,7 +56,7 @@ div{
 	width: 100%;
 }
 .header_content .logo {
-	width: 200px;
+	width: 20%;
 	float: left;
 	padding-top: 4px;
 	padding-right: 0;
@@ -66,7 +68,7 @@ div{
 }
 .header_content .right_nav {
 	float: right;
-	width: 80%;
+	width: 79%;
 }
 
 .right_nav .text_left {
@@ -92,6 +94,9 @@ div{
 .nav_return a {
 	display: inline;
 	color:#3399CC;
+}
+.nav_return a:hover {
+	color:#FF9900;
 }
 .nav_return li {
 	display: inline;
@@ -246,7 +251,7 @@ div{
 	border-right-color: #B4C9C6;
 	border-bottom-color: #B4C9C6;
 	border-left-color: #B4C9C6;
-	height: 30px;
+	height: 29px;
 	border-top-style: none;
 	padding-top: 5px;
 	padding-right: 0;
@@ -282,3 +287,4 @@ div{
 	line-height:30px;
 	text-align:right;
 }
+
