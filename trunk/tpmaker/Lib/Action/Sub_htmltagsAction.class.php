@@ -94,7 +94,11 @@ $sord = $_REQUEST['sord'];
 		$r[page]=1;
 		$r[total]=2;
 		$r[records]=$count;
-		$r[rows]=$list;
+		for ($i = 0; $i < count($list); $i++) {
+			$r[rows][$i][id]=$list[$i]['id'];
+			$r[rows][$i][cell]=$list[$i];
+		}
+		
 		
 
 		//$this->ajaxReturn($r,'操作成功！',1);
