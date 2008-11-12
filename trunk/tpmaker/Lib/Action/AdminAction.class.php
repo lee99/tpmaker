@@ -89,7 +89,7 @@ class AdminAction extends Action{
 		
 
 		$page = $_REQUEST['page'];//当前页
-		$limit = $_REQUEST['rows'];//分页
+		$limit= $_REQUEST['rows'];//分页
 		$sidx = $_REQUEST['sidx'];//排序表单
 		$sord = $_REQUEST['sord'];//排序方向
 
