@@ -98,7 +98,6 @@ class AdminAction extends Action{
 		
 		$glist=D($thismodel);
 		$count= $glist->count();
-		import("ORG.Util.Page");
 		$feilds='*';//字段
 		$sidx=(!empty($sidx))?$sidx:'seqNo';//排序表单
 		$sord=(!empty($sord))?$sord:'sort';//排序方向
