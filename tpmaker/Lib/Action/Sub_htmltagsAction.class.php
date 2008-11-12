@@ -50,11 +50,6 @@ class sub_htmltagsAction extends AdminAction{
 		$glist->save();
 		}
 		$this->ajaxReturn('','操作成功！',1);
-
-
-
-//redirect(__URL__."/index");
-		//dump($_REQUEST);
 	}
 
 	public function addform(){
@@ -63,10 +58,6 @@ class sub_htmltagsAction extends AdminAction{
 		$glist->create($add_date);
 		$glist->add($add_date);
 		$this->ajaxReturn('','操作成功！',1);
-
-
-
-//redirect(__URL__."/index");
 	}
 
 	public function json(){
