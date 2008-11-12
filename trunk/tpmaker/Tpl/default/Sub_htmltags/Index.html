@@ -22,20 +22,14 @@
 <fieldset>
 
 <script type="text/javascript">
+
+
 jQuery(document).ready(function(){
-jQuery("#list2").jqGrid({
+jQuery(listid).jqGrid({
     url:URL+'/json/',
     datatype: "json",
-    colNames:['ID号','标题', '其它属性', '排序','类型','着色','标记'],
-    colModel:[
-        {name:'id',index:'id', width:55},
-        {name:'title',index:'title', width:90},
-    	{name:'othervar',index:'othervar', width:100},
-        {name:'seqNo',index:'seqNo', width:80, align:"right"},
-        {name:'usetype',index:'usetype', width:80, align:"right"},		
-        {name:'color',index:'color', width:80,align:"right"},		
-        {name:'note',index:'note', width:150, sortable:false}		
-    ],
+    colNames:colvar,
+    colModel:colmod,
     pager: jQuery('#pager2'),
     rowNum:10,
     rowList:[10,20,30],
@@ -46,6 +40,21 @@ jQuery("#list2").jqGrid({
     caption: "Demo"
 });
 });
+</script>
+<script type="text/javascript">
+
+var listid="#list2";
+var colvar=['ID号','标题', '其它属性', '排序','类型','着色','标记'];
+var colmod=[
+        {name:'id',index:'id', width:55},
+        {name:'title',index:'title', width:90},
+    	{name:'othervar',index:'othervar', width:100},
+        {name:'seqNo',index:'seqNo', width:80, align:"right"},
+        {name:'usetype',index:'usetype', width:80, align:"right"},		
+        {name:'color',index:'color', width:80,align:"right"},		
+        {name:'note',index:'note', width:150, sortable:false}
+		];
+
 </script>
 <!-- the grid definition in html is a table tag with class 'scroll' -->
 <table id="list2" class="scroll" cellpadding="0" cellspacing="0"></table>
