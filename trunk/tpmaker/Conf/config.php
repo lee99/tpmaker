@@ -5,7 +5,7 @@ return array(
 	'DB_HOST'=>'localhost',
 	'DB_NAME'=>'tp_maker',
 	'DB_USER'=>'root',
-	'DB_PWD'=>'hbadmin',
+	'DB_PWD'=>'123456',
 	'DB_PORT'=>'3306',
 	'DB_PREFIX'=>'tp_',
 
@@ -27,6 +27,7 @@ return array(
 	'DATA_CACHE_SUBDIR'=>false,		// 使用子目录缓存 （自动根据缓存标识的哈希创建子目录）
 	'SHARE_MEM_SIZE'=>1048576,		// 共享内存分配大小
 	//'DEFAULT_TEMPLATE'=>'newui',		// 默认模板
+	// 'URL_MODEL'=>0,
 
 );
 
