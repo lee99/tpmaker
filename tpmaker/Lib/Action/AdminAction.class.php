@@ -92,9 +92,20 @@ class AdminAction extends Action{
 		$limit= $_REQUEST['rows'];//分页
 		$sidx = $_REQUEST['sidx'];//排序表单
 		$sord = $_REQUEST['sord'];//排序方向
-
-
+		$issearch= $_REQUEST['_search'];//是否搜索
+		
+		
 		$condition=Array();//搜索的条件
+		
+		if($issearch=='true'){
+		$searchField=$_REQUEST['searchField'];//搜索字段
+		$searchOper=$_REQUEST['searchOper'];//搜索条件
+		$searchString=$_REQUEST['searchString'];//搜索内容
+		$condition=makecontion($searchField,$searchOper,$searchString);//高级搜索过滤
+		//$condition[$searchField]=array('like',$searchString);
+		}
+
+		
 		
 		$glist=D($thismodel);
 		$count= $glist->count();

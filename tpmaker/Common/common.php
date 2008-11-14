@@ -92,6 +92,42 @@ function getfielddetail($datetype)
 
 }	
 	
+function makecontion($searchField,$searchOper,$searchString){
+			switch ($searchOper){
+			case 'bw'://介于
+				$date[$searchField]=array('BETWEEN',$searchString);
+				break;
+			case 'eq'://等于
+				$date[$searchField]=array('EQ',$searchString);
+				break;
+			case 'ne'://不等
+				$date[$searchField]=array('NEQ',$searchString);
+				break;
+			case 'lt'://少于
+				$date[$searchField]=array('LT',$searchString);
+				break;
+			case 'le'://小于或等于
+				$date[$searchField]=array(array('LT',$searchString),array('EQ',$searchString),'or');
+				break;
+			case 'gt'://大于
+				$date[$searchField]=array('GT',$searchString);
+				break;
+			case 'ge'://大于或等于
+				$date[$searchField]=array(array('GT',$searchString),array('EQ',$searchString),'or');;
+				break;
+			case 'ew'://结束
+				$date[$searchField]=array('LIKE',"%".$searchString);
+				break;
+			case 'cn'://包含
+				$date[$searchField]=array('LIKE',"%".$searchString."%");
+				break;
+			default:
+				$date[$searchField]=array('EQ',$searchString);
+				break;
+			}	
+			return $date;
+}	
+	
 function makeselect($name,$table,$idt='',$where='',$option='title',$f_idvalue='id'){
 	//$option外键的说明
 	//$where外键的过滤
