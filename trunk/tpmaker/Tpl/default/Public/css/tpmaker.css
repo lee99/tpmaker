@@ -118,7 +118,6 @@ th
 }
 tr
 {
-	height: 20px;
 	color:#blue;
 }
 body 
@@ -199,7 +198,6 @@ div.result{border:1px solid #d4d4d4; background:#FFC; padding:8px 12px; margin:2
 div.message{width:75%; padding:5pt; float:none; margin:15% auto 0% auto; clear:both; text-align:center}
 div.logo{margin:auto; width:85%; font:bold 10pt Tahoma; color:orange}
 div.errorMessage{line-height:150%; padding:5px; margin:3pt; font-weight:bold; font-size:15px; font-family:Tahoma,Verdana; border:1pt dashed gray; color:#F30; background:#CFC}
-table tr.row{background-color:#FFF}
 wrapper{height:100%;width:100%;overflow:hidden;position:relative} 
 wrapper[id]{display:table;} 
 mid{position: absolute;top:50%;left:50%} 
@@ -208,23 +206,7 @@ box{position:relative;top:-50%;left:-50%;z-index:9999;width:300px}
 box[id]{left:0;margin:0 auto;} 
 div.boxstyle{border:2px solid #000;text-align:center;padding:5px;} 
 
-table.list {
-	padding:0px;
-	margin:0px;
-	/*width:100%;*/
-	/*float:left;*/
-}
-table.list td{
-	padding:0px;
-	margin:0px;
-	text-align: left;
-	height:20px;
-}
-table.list th{
-	padding:0px;
-	text-align: center;
-	height:18px;
-}
+
 
 
 /*
