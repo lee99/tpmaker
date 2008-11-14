@@ -42,24 +42,21 @@ jQuery(listid).jqGrid({
 	
 })
 .navGrid('#pager2',
-{}, //options
-{reloadAfterSubmit:false}, // edit options
-{reloadAfterSubmit:false}, // add options
-{reloadAfterSubmit:false}, // del options
-{} // search options
+{edit:true,add:true,del:true,search:true,refresh:true}
 );
 });
 </script>
 <script type="text/javascript">
 
 var listid="#list2";
+var editconf="0:没有;1:有;2:不知道;3:天知道";//下拉的一个选项
 var colvar=['ID号','标题', '其它属性', '排序','类型','着色','标记'];
 var colmod=[
         {name:'id',index:'id', width:55,editable:false,editoptions:{readonly:true,size:10}},
         {name:'title',index:'title', width:90,editable:true,editoptions:{size:10}},
     	{name:'othervar',index:'othervar', width:100,editable: true,edittype:"textarea", editoptions:{rows:"2",cols:"20"}},
         {name:'seqNo',index:'seqNo', width:80, align:"right"},
-        {name:'usetype',index:'usetype', width:80, align:"right", editable: true,edittype:"select",editoptions:{value:"0:没有;1:有;2:不知道;3:天知道"}},
+        {name:'usetype',index:'usetype', width:80, align:"right", editable: true,edittype:"select",editoptions:{value:editconf}},
         {name:'color',index:'color', width:80,align:"right"},
         {name:'note',index:'note', width:150, sortable:false}
 		];
