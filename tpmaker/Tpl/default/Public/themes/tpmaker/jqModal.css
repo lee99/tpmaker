@@ -9,6 +9,7 @@
 	
 .jqmWindow {
     display: none;
+    
     position: fixed; 
     width: 600px;
 }
