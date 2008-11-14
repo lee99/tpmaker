@@ -26,7 +26,7 @@
 
 jQuery(document).ready(function(){
 jQuery(listid).jqGrid({
-    url:URL+'/json/',
+    url:URL+'/jq_json/',
     datatype: "json",
     colNames:colvar,
     colModel:colmod,
@@ -38,7 +38,9 @@ jQuery(listid).jqGrid({
     viewrecords: true,
     sortorder: "desc",
     caption: "Demo",
-	editurl:"someurl.php"
+	multiselect: true,
+	editurl:URL+'/jq_do/',
+	
 	
 })
 .navGrid('#pager2',

@@ -92,7 +92,7 @@ function getfielddetail($datetype)
 
 }	
 	
-function makecontion($searchField,$searchOper,$searchString){
+function makecontion($searchField,$searchOper,$searchString){//jqgrid的参数与TP的参数相对
 			switch ($searchOper){
 			case 'bw'://介于
 				$date[$searchField]=array('BETWEEN',$searchString);
