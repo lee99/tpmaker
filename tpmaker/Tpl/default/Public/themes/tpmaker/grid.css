@@ -280,19 +280,19 @@ select.editable {
 input.search {
 	margin: 2px;
 	width: 70px;
-	font-size: 12px;
+	font-size: 10px;
 	color: #15428B;	
 }
 
 select.search {
 	margin: 2px;
 	width: 70px;
-	font-size: 12px;
+	font-size: 10px;
 	color: #15428B;		
 }
 .buttonsearch {
 	width : 50px;
-	font-size: 12px;
+	font-size: 10px;
 	color: #15428B;		
 }
 /*End search */
@@ -338,7 +338,7 @@ select.search {
 	width:17px;
 }
 input.EditButton { /* buttons are at footer tr */
-	font-size: 12px;
+	font-size: 10px;
 	color: #15428B;
 }
 td.EditButton {
@@ -351,7 +351,7 @@ td.EditButton {
 	
 }
 .FormElement {
-	font-size: 12px;	
+	font-size: 10px;	
 }
 input[type="text"].FormElement{
 	color: #15428B;		
@@ -364,14 +364,14 @@ input[type="textarea"].FormElement{
 	color: #15428B;		
 }
 select.FormElement {
-	font-size: 12px;
+	font-size: 10px;
 	color: #15428B;		
 }
-/* End Eorm edit */ 
+/* End Eorm edit */
 
 /* Delete Dialog */
 .DelButton > input { /* buttons are at footer tr */
-	font-size: 12px;
+	font-size: 10px;
 	color: #15428B;
 }
 .DelButton {
