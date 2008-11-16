@@ -12,6 +12,10 @@ class testAction extends AdminAction{
 		$this->display();
 	}
 	
+	public function Index2(){
+		$this->display();
+	}
+
 	public function delete(){
 		$glist=D('test');
 		$glist->delete($_REQUEST['id']);
@@ -28,7 +32,7 @@ class testAction extends AdminAction{
 		}
 		//dump($_REQUEST);
 	}
-	
+
 	public function update(){
 		$glist=D('test');
         if($vo = $glist->create()) {
@@ -39,7 +43,7 @@ class testAction extends AdminAction{
             }
         }else{
             $this->error($glist->getError());
-        } 
+        }
 	}
 
 	public function addform(){
@@ -51,24 +55,32 @@ class testAction extends AdminAction{
 
 	public function jq_json(){
 		$col=array('id','title','othervar','seqNo','usetype','color','color');
-		$this->jqjson('id',$col);	
+		$this->jqjson('id',$col);
 	}
-	
+
 	public function jq_do(){
-	
+
 		$jq_do=$_POST['oper'];
 		switch ($jq_do){
 			case 'del'://del
-				$this->delete();	
+				$this->delete();
 				break;
 			case 'add'://del
-				$this->addform();	
+				$this->addform();
 				break;
 			case 'edit'://del
-				$this->update();	
+				$this->update();
 				break;
 		}
-	
+
+	}
+
+
+	public function jq_celledit(){
+
+		if($_POST['id']){
+				$this->update();
+		}
 	}
 
 }

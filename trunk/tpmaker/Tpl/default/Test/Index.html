@@ -38,10 +38,12 @@ jQuery(listid).jqGrid({
     viewrecords: true,
     sortorder: "desc",
     caption: "Demo",
-	multiselect: true,
-	editurl:URL+'/jq_do/',
-	
-	
+    cellEdit: true,
+    cellurl:URL+'/jq_celledit/',
+    multiselect: true,
+    editurl:URL+'/jq_do/'
+
+
 })
 .navGrid('#pager2',
 {edit:true,add:true,del:true,search:true,refresh:true}
