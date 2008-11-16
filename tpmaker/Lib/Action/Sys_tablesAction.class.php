@@ -15,36 +15,33 @@ class sys_tablesAction extends AdminAction{
 		$projecturl=$pro['proname'];
 		$this->assign('projecturl',$projecturl);//当前操作的项目路径
 		$this->assign('projectname',$pro['caption']);//当前操作的数据库
-		$wherevalue='issystem=0 and pid='.$_REQUEST[pid];//过滤条件
-		$list=D('sys_tables');
-		$count= $list->count($wherevalue);
-		import("ORG.Util.Page");
-		if(!empty($_REQUEST['order'])) { $order = $_REQUEST['order']; }else{ $order='seqNo'; } //排序表单
-		if(empty($_REQUEST['sort']) ) { $sortd = 'asc'; }else{ $sortd=$_REQUEST['sort']; } //排序方向
-		$orderBy=$order.' '.$sortd;//排序
-
-		$p= new Page($count,$listRows);
-
-		$list=$list->findAll($wherevalue,'*',$orderBy,$p->firstRow.','.$p->listRows);
-
-		//dump($list);
-		$page=$p->show();
-		$this->assign('list',$list);
-		$this->assign('page',$page);
 		$this->display();
 
 	}
 
 
 	public function Adv(){
+		//和index的一样只不过查看到的模板不同而已
 
-	$this->Index();
+		$this->Index();
 
 	}
 
+	public function json(){
+		//一般的返回jS的操作,但是是选择所有的
+		$this->simjson();
+	}
+	
+	
+	public function condition(){
+		//设立公共的条件
+		$condition['pid']=array('EQ',$_REQUEST[pid]);
+		$condition['issystem']=array('EQ',0);
+		return $condition;
+	}
+	
 
-
-	public function delete(){
+	public function del(){
 		$list=D('sys_tables');
 		//$sys_tables->find($_REQUEST['id']);
 		$listd=$list->findall('id in ('.$_REQUEST[id].')');
@@ -61,43 +58,25 @@ class sys_tablesAction extends AdminAction{
 		}
 
 
-	 redirect(__URL__."/index/pid/".$pid);
-
-
-
-//
-
 	}
 
 
-	public function updateform(){
+	public function update(){
 		$list=D('sys_tables');
-		$allcout=count($_REQUEST['id']);
-		for ($i = 0; $i <$allcout; $i++) {
-
-			$data['id'] =$_REQUEST['id'][$i];
-			$data['caption'] =$_REQUEST['caption'][$i];
-			$data['title'] =$_REQUEST['title'][$i];
-			$data['searchtype'] =$_REQUEST['searchtype'][$i];
-			$data['edittype'] =$_REQUEST['edittype'][$i];
-			$data['ismodel'] =$_REQUEST['ismodel'][$i];
-			$data['datemodelid'] =$_REQUEST['datemodelid'][$i];
-			$data['add'] =$_REQUEST['add'][$i];
-			$data['del'] =$_REQUEST['del'][$i];
-			$data['search'] =$_REQUEST['search'][$i];
-			$data['edit'] =$_REQUEST['edit'][$i];
-			$data['seqNo'] =$_REQUEST['seqNo'][$i];
-			$data['isaction'] =$_REQUEST['isaction'][$i];
-			$list->save($data);
-		}
-		//如果不为空白的就加上
-
-		$this->ajaxReturn('','操作成功！',1);
+        if($vo = $list->create()) {
+            if($list->save()){
+                $this->success('数据更新成功！');
+            }else{
+                $this->error('数据写入错误！');
+            }
+        }else{
+            $this->error($list->getError());
+        }
 
 	}
 
 
-	public function addform(){
+	public function add(){
 		$list=D('sys_tables');
 		$date=$_REQUEST;
 		$date['pid']=$_SESSION['workingproject']['id'];

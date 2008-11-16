@@ -29,10 +29,10 @@ function id_To_EValue($tb,$col,$o_col,$id)
 		else
 		{
 			$thisdao=D($tb);
-			$thisdao->Cache(true); 
+			$thisdao->Cache(true);
 			$list=$thisdao->find($o_col.'='.$id,$col);
 		return $list[$col];
-		}	
+		}
 	}
 
 function getcolor($id)
@@ -42,11 +42,11 @@ function getcolor($id)
 			$list=$thisdao->find('id='.$id,'title');
 			S('color'.$id,$list['title']);
 			return $list['title'];
-		}		
+		}
 		else
 		{
 			return S('color'.$id);
-		}	
+		}
 	}
 
 function getfielddetail($datetype)
@@ -83,20 +83,17 @@ function getfielddetail($datetype)
 				$date['img']='Field_small_char.png';
 				$date['iskey']=0;
 				break;
-			}	
+			}
 		}
 		$date['type']=$fielddate['type'];
 		$date['leng']=$fielddate['leng'];
 		//dump($date);
 		return $date;
 
-}	
-	
+}
+
 function makecontion($searchField,$searchOper,$searchString){//jqgrid的参数与TP的参数相对
 			switch ($searchOper){
-			case 'bw'://介于
-				$date[$searchField]=array('BETWEEN',$searchString);
-				break;
 			case 'eq'://等于
 				$date[$searchField]=array('EQ',$searchString);
 				break;
@@ -115,7 +112,10 @@ function makecontion($searchField,$searchOper,$searchString){//jqgrid的参数�
 			case 'ge'://大于或等于
 				$date[$searchField]=array(array('GT',$searchString),array('EQ',$searchString),'or');;
 				break;
-			case 'ew'://结束
+			case 'bw'://开始于
+				$date[$searchField]=array('LIKE',$searchString."%");
+				break;
+			case 'ew'://结束于
 				$date[$searchField]=array('LIKE',"%".$searchString);
 				break;
 			case 'cn'://包含
@@ -124,10 +124,10 @@ function makecontion($searchField,$searchOper,$searchString){//jqgrid的参数�
 			default:
 				$date[$searchField]=array('EQ',$searchString);
 				break;
-			}	
+			}
 			return $date;
-}	
-	
+}
+
 function makeselect($name,$table,$idt='',$where='',$option='title',$f_idvalue='id'){
 	//$option外键的说明
 	//$where外键的过滤
@@ -139,12 +139,12 @@ function makeselect($name,$table,$idt='',$where='',$option='title',$f_idvalue='i
 	if($f_idvalue==''){$f_idvalue='id';}
 	$tmp= "	<select name=".$name.">";
 		$thisdao=D($table);
-		$thisdao->Cache(true); 
+		$thisdao->Cache(true);
 		$list=$thisdao->findAll($where);
 		foreach ($list as $row) {
 			if ($idt==$row[$f_idvalue] ){$var="selected";}
 			$thiscolor=getcolor($row['id']);
-			$tmp.="<option value='".$row[$f_idvalue]."'  ".$var."  style='background:".$thiscolor.";' title='参数:".$row[$f_idvalue]."标题:".$row[$option]."'>".$row[$option]."</option>";	
+			$tmp.="<option value='".$row[$f_idvalue]."'  ".$var."  style='background:".$thiscolor.";' title='参数:".$row[$f_idvalue]."标题:".$row[$option]."'>".$row[$option]."</option>";
 			$var='';
 			$thiscolor='';
 		}
@@ -165,7 +165,7 @@ function makeoption($table,$id='id',$where='',$option='title',$order,$outadd){
 	if($order==''){$order='id desc';}
 	if($outadd==''){$outadd='>';}
 		$thisdao=D($table);
-		//$thisdao->Cache(true); 
+		//$thisdao->Cache(true);
 		$options=explode(',',$option);
 		$list=$thisdao->findAll($where,$option.','.$id,$order);
 		for ($i = 0; $i < count($list); $i++) {
@@ -186,9 +186,9 @@ function makeoption($table,$id='id',$where='',$option='title',$order,$outadd){
  		 $inpid;//新的上级参数值
  		 $pidf;//上级参数的字[PID]
  		 $inoldid;//原来的上级的值
- 		 
+
 		$table=D($daoname);//引入MODEL
-		
+
 
 		foreach ($tabledata as $creatdb){
 			$creatdb[$pidf]=$inpid;
@@ -231,7 +231,7 @@ function un_clean_html($value){
 }
 
 
-function toDate($time,$format='Y年m月d日 H:i:s') 
+function toDate($time,$format='Y年m月d日 H:i:s')
 {
 	if( empty($time)) {
 		return '';
