@@ -71,7 +71,9 @@ input.button {
         overflow: visible;
     }
 
-
+a img {
+border:0 none;
+}
 /*****************************************************
 Menu Controls
 *****************************************************/
@@ -143,7 +145,7 @@ body
 	padding-right: 0px;
 	padding-bottom: 0px;
 	padding-left: 0px;
-
+	height:100%; 
 }
 
 fieldset 
