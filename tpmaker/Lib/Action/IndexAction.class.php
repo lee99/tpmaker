@@ -24,7 +24,7 @@ class IndexAction extends AdminAction{
 
 
 		//生成猎取第一条记录或取得ID
-		if($_REQUEST['id']){
+		if($_REQUEST['id']!=''){
 			$passid=$_REQUEST['id'];
 		}else {
 			$pass=D('Sys_projects');
@@ -63,6 +63,11 @@ class IndexAction extends AdminAction{
 
 	public function Main(){
 		//前台说明
+		$this->display();
+	}
+	
+	public function Mid(){
+		//中间
 		$this->display();
 	}
 
