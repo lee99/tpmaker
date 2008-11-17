@@ -9,6 +9,7 @@ function $(obj){
 	}*/
 }
 
+
 function hideW(){
 	var myFx = new Fx.Style('msg_tip', 'height',{duration:600}).custom(200,0);
 	var myFx = new Fx.Style('msg_tip', 'opacity',{duration:600}).custom(1,0);

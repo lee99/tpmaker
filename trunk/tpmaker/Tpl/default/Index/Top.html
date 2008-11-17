@@ -7,16 +7,18 @@
 	   <strong>{$Think.config.WEB_TITLE}</strong>
 	</td>
 	<form action="__URL__/left/" target="leftFrame" method="GET" id="topnav" >
-	<td align="left">
-	项目列表:
-	<volist name="project" id="project_vo">
-	<a href="__URL__/left/id/{$project_vo.id}" target="leftFrame">[<img border="0" src="{*APP_PUBLIC_URL}/images/b_plus.png">{$project_vo.caption}]</a> 
-	</volist>	
+	<td align="left">所有项目列表:
 	<select name="id" onchange="javascript:$('topnav').submit();">
-		<option value="" selected >非活动项目</option>
-		<volist name="project0" id="project_vo0">
-		<option value="{$project_vo0.id}">{$project_vo0.caption}</option>
+		<optgroup label="活动项目" title="活动项目">
+		<volist name="project" id="project_vo">
+			<option value="{$project_vo.id}">{$project_vo.caption}</option>
 		</volist>
+		</optgroup>	
+		<optgroup label="非活动项目" title="非活动项目">
+		<volist name="project0" id="project_vo0">
+			<option value="{$project_vo0.id}">{$project_vo0.caption}</option>
+		</volist>
+		</optgroup>
 	</select>
 	<a href="__APP__/Sys_projects/index" target="mainFrame">[<img border="0" src="{*APP_PUBLIC_URL}/images/b_plus.png">查看所有项目列表]</a>
 	<a href="__URL__/sys" target="leftFrame">[系统总体属性管理]</a>
