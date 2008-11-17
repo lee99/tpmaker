@@ -5,27 +5,25 @@
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
 <title>{$Think.config.WEB_TITLE}</title>
 <link rel="stylesheet" type="text/css" href="../public/css/tpmaker.css" />
-<link rel="stylesheet" type="text/css" media="screen" href="../public/themes/tpmaker/grid.css" />
-<link rel="stylesheet" type="text/css" media="screen" href="../public/themes/jqModal.css" />
+
 <script type="text/javascript">
 var JS_PATH ="../public/js/";
 var IMG_PATH ="../public/images/";
 var URL = '__URL__';
 var APP	 =	 '__APP__';
-var PUBLIC = '../public/';
+var PUBLIC = '__PUBLIC__';
 var REQUEST_URI = '{$_SERVER.REQUEST_URI}';
 </script>
-
-<script type="text/javascript" src="../public/js/jquery.js"></script>
-<script type="text/javascript" src="../public/js/jquery.jqGrid.js"></script>
-<script type="text/javascript" src="../public/js/jqModal.js"></script>
-<script type="text/javascript" src="../public/js/jqDnR.js"></script>
-<script type="text/javascript" src="../public/js/ui.datepicker.js"></script>
-<script type="text/javascript" src="../public/js/dtree.js"></script>
-<script type="text/javascript" src="../public/js/JSCookMenu.js"></script>
-<script type="text/javascript" src="../public/js/tabpane/local/webfxlayout.js"></script>
-<script type="text/javascript" src="../public/js/tabpane/local/webfxapi.js"></script>
-<script type="text/javascript" src="../public/js/tabpane/js/tabpane.js"></script>
+<html:import type="js" file="Js.Base" />
+<html:import type="js" file="Js.prototype" />
+<html:import type="js" file="Js.Ajax.ThinkAjax" />
+<html:import type="js" file="Js.Form.CheckForm" />
+	<script type="text/javascript" src="../public/js/Common.js"></script>
+	<script type="text/javascript" src="../public/js/dtree.js"></script>
+	<script type="text/javascript" src="../public/js/JSCookMenu.js"></script>
+	<script type="text/javascript" src="../public/js/tabpane/local/webfxlayout.js"></script>
+	<script type="text/javascript" src="../public/js/tabpane/local/webfxapi.js"></script>
+	<script type="text/javascript" src="../public/js/tabpane/js/tabpane.js"></script>
 <link type="text/css" rel="StyleSheet" href="../public/js/tabpane/css/tab.webfx.css" />
 <style type="text/css">
 
@@ -77,6 +75,24 @@ var cmThemeOfficeMainVSplit = [_cmNoAction, '&nbsp;'];
 //-->
 </SCRIPT>
 
+<SCRIPT LANGUAGE="JavaScript">
+ <!--
+ 	ThinkAjax.updateTip = '<IMG SRC="../Public/images/loading2.gif" WIDTH="16" HEIGHT="16" BORDER="0" ALT="loading..." align="absmiddle"> 数据处理中...';
 
+	function upbtn(){
+		ThinkAjax.sendForm('form_update','__URL__/updateform/',complete,'result');
+	}
+	function addbtn(){
+		ThinkAjax.sendForm('form_add','__URL__/addform/',complete,'result');
+	}
+	function complete(data,status){
+		if (status==1)
+		{
+		location.href=REQUEST_URI;
+		}
+	}
+
+ //-->
+ </SCRIPT>
 </head>
 <body>

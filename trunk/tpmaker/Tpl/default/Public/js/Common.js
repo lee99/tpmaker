@@ -1,3 +1,13 @@
+function $(obj){
+    return reobj=(typeof(obj)=="object") ? obj : document.getElementById(obj);
+	/*var reobj=(typeof(obj)=="object") ? obj : document.getElementById(obj);
+	reobj=(reobj==null) ? document.getElementByName(obj) : reobj;
+	if (reobj==null) {
+		return null;
+	} else {
+	    return reobj;	
+	}*/
+}
 
 function hideW(){
 	var myFx = new Fx.Style('msg_tip', 'height',{duration:600}).custom(200,0);
@@ -116,75 +126,9 @@ function gourlbyaction(action,id){//通用的URL中转
 
 }
 
-function showHideSearch(){
-	if (document.getElementById('searchM').style.display=='inline')
-	{
-		document.getElementById('searchM').style.display='none';
-		document.getElementById('showText').value ='高级';
-		document.getElementById('key').style.display='inline';
-	}else {
-		document.getElementById('searchM').style.display='inline';
-		document.getElementById('showText').value ='隐藏';
-		document.getElementById('key').style.display='none';
 
-	}
-}
 
-function top(id){
-	var keyValue;
-	if (id)
-	{
-		keyValue = id;
-	}else {
-		keyValue = getSelectCheckboxValues();
-	}
-	if (!keyValue)
-	{
-		alert('请选择置顶项！');
-		return false;
-	}
 
-	location.href = URL+"/top/id/"+keyValue;
-
-}
-
-function recommend(id){
-	var keyValue;
-	if (id)
-	{
-		keyValue = id;
-	}else {
-		keyValue = getSelectCheckboxValues();
-	}
-	if (!keyValue)
-	{
-		alert('请选择推荐项！');
-		return false;
-	}
-
-	location.href = URL+"/recommend/id/"+keyValue;
-
-}
-
-function checkPass(id){
-	var keyValue;
-	if (id)
-	{
-		keyValue = id;
-	}else {
-		keyValue = getSelectCheckboxValues();
-	}
-	if (!keyValue)
-	{
-		alert('请选择要审核的主持人！');
-		return false;
-	}
-
-	if (window.confirm('确实审核通过吗？'))
-	{
-		ThinkAjax.send(URL+"/checkPass/","id="+keyValue+'&_AJAX_SUBMIT_=1',doDelete,'result');
-	}
-}
 function sortBy (field,sort){
 	location.href = REQUEST_URI+"?order="+field+"&sort="+sort;
 }
