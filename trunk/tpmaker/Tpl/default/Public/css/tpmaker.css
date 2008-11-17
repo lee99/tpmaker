@@ -71,6 +71,8 @@ input.button {
         overflow: visible;
     }
 
+
+
 a img {
 border:0 none;
 }
@@ -239,6 +241,16 @@ table.list th{
 	padding:0px;
 	text-align: center;
 	height:18px;
+}
+
+table.list td a{
+
+	BORDER: #666666 1px solid;
+	background-image: url('../images/buttonbg.gif');
+    padding: 1px 1px 0 1px;
+    width: auto;
+    _width: 0;
+    overflow:visible !ie;
 }
 
 
