@@ -5,11 +5,11 @@ return array(
 	'DB_HOST'=>'localhost',
 	'DB_NAME'=>'tp_maker',
 	'DB_USER'=>'root',
-	'DB_PWD'=>'123456',
+	'DB_PWD'=>'hbadmin',
 	'DB_PORT'=>'3306',
 	'DB_PREFIX'=>'tp_',
 
-	'WEB_TITLE'=>'HBSS CMS V2.0',
+	'WEB_TITLE'=>'THINK-MAKER',
 	'DEBUG_MODE'=>false,
 	'WEB_LOG_RECORD'=>false,
 	'WEB_LOG_ERROR'=>false,
@@ -26,8 +26,6 @@ return array(
 	'DATA_CACHE_TYPE'=>'File',		// 数据缓存类型 支持 File Db Apc Memcache Shmop Sqlite Xcache Apachenote Eaccelerator
 	'DATA_CACHE_SUBDIR'=>false,		// 使用子目录缓存 （自动根据缓存标识的哈希创建子目录）
 	'SHARE_MEM_SIZE'=>1048576,		// 共享内存分配大小
-	//'DEFAULT_TEMPLATE'=>'newui',		// 默认模板
-	// 'URL_MODEL'=>0,
 
 );
 

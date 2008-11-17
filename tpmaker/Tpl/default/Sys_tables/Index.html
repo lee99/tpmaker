@@ -34,7 +34,7 @@ function viewfields(id){
 		cmDraw ('myMenuID', myMenu, 'hbr', cmThemeOffice, 'ThemeOffice');
 		</script> 
 		</td>
-		
+		<td align="right">{$page}</td>
 	</tr>
 </table>
 
@@ -43,96 +43,28 @@ function viewfields(id){
 <fieldset>
 
 <!-- 列表显示区域  -->
+		<myhtml:editlist id="checkList" name="list"  checkbox="true"  datasource="list" style="list"
+		show="
+			id|hidden|1:ID,
+			caption|20:标题,
+			title|8:表名[英名],
 
+			list|select|makeselect('list[]'#'sub_yesno'#$list['list']):列表,
+			view|select|makeselect('view[]'#'sub_yesno'#$list['view']):详细,
+			add|select|makeselect('add[]'#'sub_yesno'#$list['add']):增加,
+			del|select|makeselect('del[]'#'sub_yesno'#$list['del']):删除,
+			edit|select|makeselect('edit[]'#'sub_yesno'#$list['edit']):编辑,
+			search|select|makeselect('search[]'#'sub_yesno'#$list['search']):搜索,
+			searchtype|select|makeselect('searchtype[]'#'tab_searchtype'#$list['searchtype']):搜索形式,
+			isaction|select|makeselect('isaction[]'#'sub_yesno'#$list['isaction']):活动
 
-<script type="text/javascript">
-
-jQuery(document).ready(function(){
-jQuery("#grid_list").jqGrid({
-    url:URL+'/json/pid/{$_GET['pid']}/',
-    datatype: "json",
-    colNames:['ID号','标题', '表名[英名]', '列表','详细','增加','删除','编辑','搜索','搜索形式','活动'],
-    colModel:[
-        {name:'id',index:'id', width:40,editable:false},
-        {name:'caption',index:'caption', width:200,editable:true,editoptions:{size:30}},
-        {name:'title',index:'title', width:200,editable:true,editoptions:{size:30}},
-        {name:'list',index:'list', width:40,editable:true,edittype:"select",editoptions:{value:"1:是;0:否"}},
-    	{name:'view',index:'view', width:40,editable: true,edittype:"select",editoptions:{value:"1:是;0:否"}},
-        {name:'add',index:'add', width:40,editable: true,edittype:"select",editoptions:{value:"1:是;0:否"}},
-        {name:'del',index:'del',  width:40,editable: true,edittype:"select",editoptions:{value:"1:是;0:否"}},
-        {name:'edit',index:'edit', width:40,editable: true,edittype:"select",editoptions:{value:"1:是;0:否"}},
-        {name:'search',index:'search', width:40,editable: true,edittype:"select",editoptions:{value:"1:是;0:否"}},
-        {name:'searchtype',index:'searchtype', width:80, sortable:false},
-        {name:'isaction',index:'isaction',  width:40,editable: true,edittype:"checkbox", editoptions:{value:"1:是;0:否"}}
-		],
-    pager: jQuery("#grid_pager"),
-    rowNum:10,
-    rowList:[10,20,30,50],
-    imgpath: PUBLIC+'themes/tpmaker/images',
-    sortname: "id",
-    viewrecords: true,
-    sortorder: "asc",
-    caption: "当前数据表:{$projectname}",
-    cellEdit: true,
-    height: '100%',
-    cellurl:URL+'/jq_celledit/',
-    multiselect: true,
-    editurl:URL+'/jq_do/',
-	jsonReader: {
-		repeatitems : false,
-		id:"id"
-	},
-    afterInsertRow: function(rowid,aData){
-    	if(aData.list=='1') {
-    		jQuery("#grid_list").setCell(rowid,'list','是',{color:'green'});
-    	}else{
-    		jQuery("#grid_list").setCell(rowid,'list','否',{color:'red'});
-    	}
-    	if(aData.view=='1') {
-    		jQuery("#grid_list").setCell(rowid,'view','是',{color:'green'});
-    	}else{
-    		jQuery("#grid_list").setCell(rowid,'view','否',{color:'red'});
-    	}
-    	if(aData.add=='1') {
-    		jQuery("#grid_list").setCell(rowid,'add','是',{color:'green'});
-    	}else{
-    		jQuery("#grid_list").setCell(rowid,'add','否',{color:'red'});
-    	}
-    	if(aData.del=='1') {
-    		jQuery("#grid_list").setCell(rowid,'del','是',{color:'green'});
-    	}else{
-    		jQuery("#grid_list").setCell(rowid,'del','否',{color:'red'});
-    	}
-    	if(aData.edit=='1') {
-    		jQuery("#grid_list").setCell(rowid,'edit','是',{color:'green'});
-    	}else{
-    		jQuery("#grid_list").setCell(rowid,'edit','否',{color:'red'});
-    	}
-    	if(aData.search=='1') {
-    		jQuery("#grid_list").setCell(rowid,'search','是',{color:'green'});
-    	}else{
-    		jQuery("#grid_list").setCell(rowid,'search','否',{color:'red'});
-    	}
-    	if(aData.isaction=='1') {
-    		jQuery("#grid_list").setCell(rowid,'isaction','是',{color:'green'});
-    	}else{
-    		jQuery("#grid_list").setCell(rowid,'isaction','否',{color:'red'});
-    	}
-    	
-    	
-    	
-    }
-	
-	
-})
-.navGrid('#grid_pager',
-{edit:true,add:true,del:true,search:true,refresh:true}
-);
-});
-</script>
-
-<table id="grid_list" class="scroll" cellpadding="0" cellspacing="0" ></table>
-<div id="grid_pager" class="scroll" style="text-align:right;"></div>
+		"
+		action="false"
+		createform="true"
+		quickadd="true"
+		actionlist="viewfields:查看"
+		/>
+<input type="hidden" name="pid" value="{$_REQUEST['pid']}">
 <!--  分页显示区域 -->
 </fieldset>
 <include file="../Public/footer" />

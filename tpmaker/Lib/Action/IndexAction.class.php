@@ -31,7 +31,7 @@ class IndexAction extends AdminAction{
 			$pass=$pass->first('isaction=1');
 			$passid=$pass['id'];
 		}
-		
+
 		//生成project的树
 		$projects=D('Sys_projects');
 		$plist=$projects->findAll('id='.$passid);
@@ -41,15 +41,15 @@ class IndexAction extends AdminAction{
 		Session::set('workingproject',$workingproject);
 		//dump($_SESSION['workingproject']);
 
-		
-		
+
+
 
 		//生成table的树
 		$ptables=D('Sys_tables');
 		$wherevalue='issystem=0 and pid='.$passid;//过滤条件
 		$tlist=$ptables->findAll($wherevalue,'*','seqNo');
 		$this->assign('table',$tlist);
-		//dump($tlist);		
+		//dump($tlist);
 
 		//生成系统table的树
 		$ptables=D('Sys_tables');
@@ -65,7 +65,7 @@ class IndexAction extends AdminAction{
 		//前台说明
 		$this->display();
 	}
-	
+
 
 	public function Sysinfo(){
 		//后台管理及参数设定说明
@@ -77,14 +77,14 @@ class IndexAction extends AdminAction{
 		if($_REQUEST['id']){
 			$passid=$_REQUEST['id'];
 		}
-		
+
 		//生成project的树
 		$projects=D('Sys_projects');
 		$plist=$projects->getbyid($passid);
 		$this->assign('proname',$plist['proname']);
 		$this->display();
 	}
-	
+
 	public function Top(){
 		C('SHOW_PAGE_TRACE',false); 		//本页不显示TRACE
 		C('SHOW_RUN_TIME',false);			// 运行时间显示
@@ -94,9 +94,11 @@ class IndexAction extends AdminAction{
 		C('SHOW_USE_MEM',false);			// 显示内存开销
 		$projects=D('Sys_projects');
 		$plist=$projects->findAll('isaction = 1');
+		$plist0=$projects->findAll('isaction = 0');
 		$this->assign('project',$plist);
+		$this->assign('project0',$plist0);
 		$this->display();
-	}	
+	}
 	public function Sys(){
 		C('SHOW_PAGE_TRACE',false); 		//本页不显示TRACE
 		C('SHOW_RUN_TIME',false);			// 运行时间显示
