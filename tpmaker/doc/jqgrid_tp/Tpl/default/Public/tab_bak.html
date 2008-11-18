@@ -1,0 +1,88 @@
+<div id="myMenuID" class="header">
+
+		
+
+
+</div>
+
+      <script language="JavaScript" type="text/javascript">
+		var myMenu =
+		[
+			['>','首页','__APP__/Index/index/',null,'控制面板'],
+			_cmSplit,
+			['>','系统管理',null,null,'系统管理',
+
+<iterate id="item" name="menu" >
+<notequal name="item['name']" function="strtolower" value="public" >
+<notequal name="item['name']" function="strtolower" value="index" >
+<notequal name="item['name']" function="strtolower" value="attach" >
+<equal name="item['access']" value="1" >
+<equal name="item['type']" value="0" >
+
+				['<img src="../Public/images/menus.png" />','{$item['title']}','__APP__/{$item['name']}/index/',null,''],
+			
+</equal>
+</equal>
+</notequal>
+</notequal>
+</notequal>
+</iterate>
+
+			],
+
+			_cmSplit,
+			['>','业务管理',null,null,'业务管理',
+
+<iterate id="item" name="menu" >
+<notequal name="item['name']" function="strtolower" value="public" >
+<notequal name="item['name']" function="strtolower" value="index" >
+<notequal name="item['name']" function="strtolower" value="attach" >
+<equal name="item['access']" value="1" >
+<equal name="item['type']" value="1" >
+
+				['<img src="../Public/images/menus.png" />','{$item['title']}','__APP__/{$item['name']}/index/',null,''],
+			
+</equal>
+</equal>
+</notequal>
+</notequal>
+</notequal>
+</iterate>
+
+			],
+
+
+			_cmSplit,
+			['>','系统设定',null,null,'系统设定',
+
+<iterate id="item" name="menu" >
+<notequal name="item['name']" function="strtolower" value="public" >
+<notequal name="item['name']" function="strtolower" value="index" >
+<notequal name="item['name']" function="strtolower" value="attach" >
+<equal name="item['access']" value="1" >
+<equal name="item['type']" value="2" >
+
+				['<img src="../Public/images/menus.png" />','{$item['title']}','__APP__/{$item['name']}/index/',null,''],
+			
+</equal>
+</equal>
+</notequal>
+</notequal>
+</notequal>
+</iterate>
+
+			],
+
+			_cmSplit,
+  			['>','个人系统管理',null,null,'个人系统管理',
+				['<img src="../Public/images/checkin.png" />', '修改密码', '__APP__/Public/password/', null,'修改密码'],
+				['<img src="../Public/images/sysinfo.png" />', '修改资料', '__APP__/Public/password/', null, '修改资料信息'],
+				 
+
+							],
+			_cmSplit,
+			['>','退出','__APP__/Public/logout/',null,null]
+		];
+		cmDraw ('myMenuID', myMenu, 'hbr', cmThemeOffice, 'ThemeOffice');
+		</script> 
+		
