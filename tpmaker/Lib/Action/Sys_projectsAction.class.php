@@ -111,7 +111,7 @@ class sys_projectsAction extends AdminAction{
 				
 			}
 			
-			//redirect(__URL__."/index");
+			redirect(__URL__."/index");
 			
 		}else{
 			$this->error('请检查参数是否正确!');
@@ -142,9 +142,7 @@ class sys_projectsAction extends AdminAction{
 		   $t=new tpmakerdb();
 		   $t->projectid=$data['id'];
 		   $t->dropcheck=false;
-		   $t->buideall();
-
-		   	   	
+		   $t->buideall();	   	
 	   }
 
 	}
@@ -197,7 +195,7 @@ class sys_projectsAction extends AdminAction{
 		       foreach($dirs as $dir) {
 		       	$dirname=substr($dir,1);
 		       	$z ->add_dir($dirname); //添加指定目录
-		           echo $dir;
+		           echo $dir."...添加目录成功!<br>";
 		           //read_dir($dir);
 		       }
 		   }
@@ -208,14 +206,15 @@ class sys_projectsAction extends AdminAction{
 				$zipfilecontent=Array($filename,@fread($fp,$filesize));  
 				@fclose($fp);
 				$zip->Add($zipfilecontent,1);  //可以多次执行 $zip->Add 来添加多个文件
-		           echo $file;
+		           echo $file."...添加文件成功!<br>";
 		   }
 		   closedir($path);
 		
-		if(@fputs(@fopen($filename,"wb"),$z->get_file())) //写入文件
-		echo "文件压缩成功!!";
-		else
-		echo "文件压缩失败!!";
+		if(@fputs(@fopen($filename,"wb"),$z->get_file())){ //写入文件
+			echo "文件压缩成功!!";
+		}else{
+			echo "文件压缩失败!!";
+		}
 		//$z -> Zip($zippath, './Backup/ZIP/'.$zipname['proname'].".zip"); //添加指定目录
 		
 
