@@ -1,0 +1,58 @@
+<tagLib name="cx,html,mkrtags" />
+<include file="../Public/header" />
+<fieldset >
+	<legend>增加信息:附件管理</legend>
+<!--  功能操作区域  -->
+
+<table width="100%"   cellpadding=0 cellspacing=0 >
+	<tr>
+	<td width="60%">
+	<input type="button"  onclick="location.href='__URL__/index/'" class="button1" value="返回列表">
+	<INPUT TYPE="button" value="确认增加数据" onclick="window.form_add.submit();" class="button1">
+	<INPUT TYPE="reset" class="button1" value="清空数据" >
+	</td>
+
+	</tr>
+</table>
+
+<!-- 功能操作区域结束 -->
+</fieldset>
+<FORM METHOD=POST id="form_add" enctype="multipart/form-data" action="__URL__/insert/">
+<fieldset >
+<div id="result" class="result none"></div>
+<!--  功能操作区域  -->
+<table width="100%"  class="ewTable">
+
+	<TR><TD class="ewTableHeader" >ID</TD><TD class="ewTableAltRow" ><mkrtags:text id="id" name="id"  value="{$list.id}"/></TD></TR>
+	<TR><TD class="ewTableHeader" >名称</TD><TD class="ewTableAltRow" ><mkrtags:input id="name" name="name"  class="input" style="width:300px" value="{$list.name}"/></TD></TR>
+	<TR><TD class="ewTableHeader" >附件类型</TD><TD class="ewTableAltRow" ><mkrtags:input id="type" name="type"  class="input" style="width:300px" value="{$list.type}"/></TD></TR>
+	<TR><TD class="ewTableHeader" >上传时间</TD><TD class="ewTableAltRow" ><mkrtags:input id="uploadTime" name="uploadTime"  class="input" style="width:300px" value="{$list.uploadTime}"/></TD></TR>
+	<TR><TD class="ewTableHeader" >下载次数</TD><TD class="ewTableAltRow" ><mkrtags:input id="downCount" name="downCount"  class="input" style="width:300px" value="{$list.downCount}"/></TD></TR>
+	<TR><TD class="ewTableHeader" >附件大小</TD><TD class="ewTableAltRow" ><mkrtags:input id="size" name="size"  class="input" style="width:300px" value="{$list.size}"/></TD></TR>
+	<TR><TD class="ewTableHeader" >hash值</TD><TD class="ewTableAltRow" ><mkrtags:input id="hash" name="hash"  class="input" style="width:300px" value="{$list.hash}"/></TD></TR>
+	<TR><TD class="ewTableHeader" >文件后辍</TD><TD class="ewTableAltRow" ><mkrtags:input id="extension" name="extension"  class="input" style="width:300px" value="{$list.extension}"/></TD></TR>
+	<TR><TD class="ewTableHeader" >验证码</TD><TD class="ewTableAltRow" ><mkrtags:input id="verify" name="verify"  class="input" style="width:300px" value="{$list.verify}"/></TD></TR>
+	<TR><TD class="ewTableHeader" >说明</TD><TD class="ewTableAltRow" ><mkrtags:input id="remark" name="remark"  class="input" style="width:300px" value="{$list.remark}"/></TD></TR>
+	<TR><TD class="ewTableHeader" >下载次数</TD><TD class="ewTableAltRow" ><mkrtags:input id="downloadTime" name="downloadTime"  class="input" style="width:300px" value="{$list.downloadTime}"/></TD></TR>
+	<TR><TD class="ewTableHeader" >更新时间</TD><TD class="ewTableAltRow" ><mkrtags:input id="updateTime" name="updateTime"  class="input" style="width:300px" value="{$list.updateTime}"/></TD></TR>
+	<TR><TD class="ewTableHeader" >保存路径</TD><TD class="ewTableAltRow" ><mkrtags:input id="savepath" name="savepath"  class="input" style="width:300px" value="{$list.savepath}"/></TD></TR>
+	<TR><TD class="ewTableHeader" >保存名称</TD><TD class="ewTableAltRow" ><mkrtags:input id="savename" name="savename"  class="input" style="width:300px" value="{$list.savename}"/></TD></TR>
+	<TR><TD class="ewTableHeader" >模块</TD><TD class="ewTableAltRow" ><mkrtags:input id="module" name="module"  class="input" style="width:300px" value="{$list.module}"/></TD></TR>
+	<TR><TD class="ewTableHeader" >版本</TD><TD class="ewTableAltRow" ><mkrtags:input id="version" name="version"  class="input" style="width:300px" value="{$list.version}"/></TD></TR>
+	<TR><TD class="ewTableHeader" >记录ID</TD><TD class="ewTableAltRow" ><mkrtags:input id="recordId" name="recordId"  class="input" style="width:300px" value="{$list.recordId}"/></TD></TR>
+	<TR><TD class="ewTableHeader" >用户ID</TD><TD class="ewTableAltRow" ><mkrtags:input id="userId" name="userId"  class="input" style="width:300px" value="{$list.userId}"/></TD></TR>
+	<TR><TD class="ewTableHeader" >加入时间</TD><TD class="ewTableAltRow" ><mkrtags:time id="create_at" name="create_at"  value="{$list.create_at}"/></TD></TR>
+	<TR><TD class="ewTableHeader" >更新时间</TD><TD class="ewTableAltRow" ><mkrtags:time id="update_on" name="update_on"  value="{$list.update_on}"/></TD></TR>
+	<TR><TD class="ewTableHeader" >排序</TD><TD class="ewTableAltRow" ><mkrtags:input id="seqNo" name="seqNo"  class="input" style="width:300px" value="{$list.seqNo}"/></TD></TR>
+
+
+
+</TABLE>
+
+<!-- 功能操作区域结束 -->
+
+
+</fieldset>
+
+</FORM>
+<include file="../Public/footer" />

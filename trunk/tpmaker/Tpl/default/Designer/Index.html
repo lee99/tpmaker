@@ -1,0 +1,276 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns:v="urn:schemas-microsoft-com:vml" xmlns="http://www.w3.org/1999/xhtml" xml:lang="zh" dir="ltr" lang="zh">
+    <head>
+        <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+        <link rel="stylesheet" type="text/css" href="../Public/pmd/styles/default/style1.css">
+        <title>Designer</title>
+        <script type="text/javascript">
+            // <![CDATA[
+            var pubimg = "../Public";
+            var URL = "__URL__";
+            var APP = "__APP__";
+            var server = "1";
+            var db = "{$_REQUEST['id']}";
+            var token = "5d72970a68995ed33c8bb60ebf6e37fe";
+            var LangSelectReferencedKey = "请选择主键";
+            var LangSelectForeignKey = "请选择外键";
+            var LangPleaseSelectPrimaryOrUniqueKey = "请选择主键或唯一健";
+            var LangIEnotSupport = "Internet Explorer does not support this function.";
+            var LangChangeDisplay = "选择要显示的字段";
+            
+            var strLang = Array();
+            strLang["strModifications"] = "修改已经保存。";
+            strLang["strRelationDeleted"] = "关联关系已经保存";
+            strLang["strInnoDBRelationAdded"] = "InnoDB关联关系已经增加";
+            strLang["strGeneralRelationFeat:strDisabled"] = "一般关系特性 : 已禁用";
+            strLang["strInternalRelationAdded"] = "Internal关联关系已经增加";
+            strLang["strErrorRelationAdded"] = "Error: 关联关系没增加成功";
+            strLang["strErrorRelationExists"] = "Error: 关联关系已经存在";
+            strLang["strErrorSaveTable"] = "Error saving coordinates for Designer.";
+            // ]]>
+        </script>
+        <script src="../Public/pmd/scripts/ajax.js" type="text/javascript">
+        </script>
+        <script src="../Public/pmd/scripts/move.js" type="text/javascript">
+        </script>
+        <!--[if IE]>
+            <script src="../Public/pmd/scripts/iecanvas.js" type="text/javascript"></script>
+        <![endif]-->
+        <script type="text/javascript">
+                        // <![CDATA[
+                        var j_tabs = new Array();
+             	 <volist name="tables" id="table">
+                        j_tabs['{$_REQUEST['id']}.{$table.title}'] = 'MYISAM';    
+                  </volist>      
+                        // ]]>
+                    
+        </script>
+        {$script_contr}
+        <script type="text/javascript">
+            // <![CDATA[
+            var display_field = new Array();
+            // display_field['sys_user'] = 'pwd';
+            // ]]>
+        </script>
+    </head>
+    <body onload="Main()" class="general_body" id="../Public/pmd_body">
+        <div class="header" id="top_menu">
+            <a href="javascript:Show_left_menu(document.getElementById('key_Show_left_menu'));" onmousedown="return false;" class="M_butt first" target="_self"><img id="key_Show_left_menu" title="显示/隐藏 左边菜单" alt="&gt;" src="../Public/pmd/images/uparrow2_m.png"></a><a href="javascript:Save2();" onmousedown="return false;" class="M_butt" target="_self"><img title="保存现在的位置" src="../Public/pmd/images/save.png" alt=""></a><a href="javascript:Start_relation();" onmousedown="return false;" class="M_butt" id="rel_button" target="_self"><img title="创建表关联" src="../Public/pmd/images/relation.png" alt=""></a><a href="javascript:Start_display_field();" onmousedown="return false;" class="M_butt" id="display_field_button" target="_self"><img title="选择要显示的字段" src="../Public/pmd/images/display_field.png" alt=""></a><a href="javascript:location.reload();" onmousedown="return false;" class="M_butt" target="_self"><img title="重新载入" src="../Public/pmd/images/reload.png" alt=""></a><img class="M_bord" src="../Public/pmd/images/bord.png" alt=""><a href="javascript:Angular_direct();" onmousedown="return false;" class="M_butt" id="angular_direct_button" target="_self"><img title="弯角连接 /直角连接" src="../Public/pmd/images/ang_direct.png" alt=""></a><a href="javascript:Grid();" onmousedown="return false;" class="M_butt" id="grid_button" target="_self"><img title="对齐表格" src="../Public/pmd/images/grid.png" alt=""></a><img class="M_bord" src="../Public/pmd/images/bord.png" alt=""><a href="javascript:Small_tab_all(document.getElementById('key_SB_all'));" onmousedown="return false;" class="M_butt" target="_self"><img id="key_SB_all" title="简单/详细视图" alt="v" src="../Public/pmd/images/downarrow1.png"></a><a href="javascript:Small_tab_invert();" onmousedown="return false;" class="M_butt" target="_self"><img title="反向选择简单/详细视图" alt="key" src="../Public/pmd/images/bottom.png"></a><img class="M_bord" src="../Public/pmd/images/bord.png" alt=""><a href="javascript:PDF_save();" onmousedown="return false;" class="M_butt" target="_self"><img src="../Public/pmd/images/pdf.png" alt="key" title="导入/导出 PDF文件" height="20" width="20"></a><a href="javascript:Top_menu_right(document.getElementById('key_Left_Right'));" onmousedown="return false;" class="M_butt last" target="_self"><img src="../Public/pmd/images/2rightarrow_m.png" id="key_Left_Right" alt="&gt;" title="移动菜单"></a>
+        </div>
+        <div style="width: 765px; height: 415px;" id="osn_tab">
+            <canvas style="visibility: visible;" id="canvas" width="762" height="412" onclick="Canvas_click(this)">
+            </canvas>
+        </div>
+        <form action="" method="post" name="form1">
+            <div id="layer_menu" style="visibility: visible; top: 28px;">
+                <div style="padding-top: 5px;" align="center">
+                    <a href="javascript:Hide_tab_all(document.getElementById('key_HS_all'));" onmousedown="return false;" class="M_butt" target="_self"><img title="Hide/Show all" alt="v" src="../Public/pmd/images/downarrow1.png" id="key_HS_all"></a><a href="javascript:No_have_constr(document.getElementById('key_HS'));" onmousedown="return false;" class="M_butt" target="_self"><img title="Hide/Show Tables with no relation" alt="v" src="../Public/pmd/images/downarrow2.png" id="key_HS"></a>
+                </div>
+                <div id="id_scroll_tab" class="scroll_tab">
+                    <table style="padding-left: 3px;" width="100%">
+                        <tbody>
+                            <volist name="tables" id="table">
+                                <tr>
+                                    <td width="1">
+                                        <input onclick="VisibleTab(this,'{$_REQUEST['id']}.{$table.title}')" title="Hide" id="check_vis_{$_REQUEST['id']}.{$table.title}" style="margin: 0px;" value="{$table.title}" checked="checked" type="checkbox">
+                                    </td>
+                                    <td class="Tabs" onmouseover="this.className='Tabs2'" onmouseout="this.className='Tabs'" onclick="Select_tab('{$_REQUEST['id']}.{$table.title}');" title="{$table.caption}:{$table.title}">
+                                        {$table.caption}
+                                    </td>
+                                </tr>
+                            </volist>
+                        </tbody>
+                    </table>
+                </div>
+                <div align="right">
+                    <div id="layer_menu_sizer" onmousedown="layer_menu_cur_click=1">
+                    </div>
+                </div>
+            </div>
+            <volist name="tables" id="table">
+                <input name="t_x[{$_REQUEST['id']}.{$table.title}]" id="t_x_{$_REQUEST['id']}.{$table.title}_" type="hidden"><input name="t_y[{$_REQUEST['id']}.{$table.title}]" id="t_y_{$_REQUEST['id']}.{$table.title}_" type="hidden"><input name="t_v[{$_REQUEST['id']}.{$table.title}]" id="t_v_{$_REQUEST['id']}.{$table.title}_" type="hidden"><input name="t_h[{$_REQUEST['id']}.{$table.title}]" id="t_h_{$_REQUEST['id']}.{$table.title}_" type="hidden">
+                <php>
+                    $t_n=$table['title'];
+                </php>
+                <table id="{$_REQUEST['id']}.{$table.title}" class="tab" style="
+ position: absolute;
+ left:
+                    <php>
+                        if (!empty($tab_pos[$t_n]["X"])) echo $tab_pos[$t_n]["X"]; else echo rand(180, 1024); 
+                    </php>px; 
+                    top: 
+                    <php>
+                        if (!empty($tab_pos[$t_n]["Y"])) echo $tab_pos[$t_n]["Y"]; else echo rand(30, 500); 
+                    </php>px; 
+                    visibility: 
+                    <php>
+                        if (!empty($tab_pos[$t_n]["H"])) echo $tab_pos[$t_n]["H"] ? "visible" : "hidden"; 
+                    </php>;
+                    z-index: 1;" cellpadding="0" cellspacing="0">
+                    <thead>
+                        <tr>
+                            <td class="small_tab" onmouseover="this.className='small_tab2';" onmouseout="this.className='small_tab';" id="id_hide_tbody_{$_REQUEST['id']}.{$table.title}" onclick="Small_tab('{$_REQUEST['id']}.{$table.title}', 1)">
+                                v
+                            </td>
+                            <td class="small_tab_pref" onmouseover="this.className='small_tab_pref2';" onmouseout="this.className='small_tab_pref';" onclick="Start_tab_upd('{$table.id}');">
+                                <img src="../Public/pmd/images/exec_small.png" alt="">
+                            </td>
+                            <td id="id_zag_{$_REQUEST['id']}.{$table.title}" class="tab_zag" onmousedown="cur_click=document.getElementById('{$_REQUEST['id']}.{$table.title}');" onmouseover="this.className = 'tab_zag_2'" onmouseout="this.className = 'tab_zag'" nowrap="nowrap">
+                                <span class="owner"></span>{$table.caption}:{$table.title}
+                            </td>
+                        </tr>
+                    </thead>
+                    <tbody id="id_tbody_{$_REQUEST['id']}.{$table.title}">
+                        <sublist name="subtables[$table['title']]" id="subtable">
+                            <tr id="id_tr_{$table.title}.{$subtable.name}" class="tab_field" onmouseover="old_class = this.className; this.className = 'tab_field_2';" onmouseout="this.className = old_class;" onmousedown="Click_field('{$table.title}','{$subtable.name}',{$subtable.iskey})">
+                                <td colspan="3" id="{$_REQUEST['id']}.{$table.title}.{$subtable.name}" width="10">
+                                    <div style="white-space: nowrap;">
+                                        <img src="../Public/pmd/images/{$subtable.img}" alt="*">{$subtable.caption}:{$subtable.name} {$subtable.type}({$subtable.leng})
+                                    </div>
+                                </td>
+                            </tr>
+                        </sublist>
+                    </tbody>
+                </table>
+            </volist>
+        </form>
+        <div id="hint">
+        </div>
+        <div id="layer_action" style="visibility: hidden;">
+            Load...
+        </div>
+        <table id="layer_new_relation" style="visibility: hidden;" border="0" cellpadding="0" cellspacing="0" width="5%">
+            <tbody>
+                <tr>
+                    <td class="frams1" width="10">
+                    </td>
+                    <td class="frams5" width="99%">
+                    </td>
+                    <td class="frams2" width="10">
+                        <div class="bor">
+                        </div>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="frams8">
+                    </td>
+                    <td class="input_tab">
+                        <table align="center" border="0" cellpadding="2" cellspacing="0" width="168">
+                            <thead>
+                                <tr>
+                                    <td colspan="2" align="center" nowrap="nowrap">
+                                        <b>创建主从表关联</b>
+                                    </td>
+                                </tr>
+                            </thead>
+                            <tbody id="InnoDB_relation">
+                                <tr>
+                                    <td colspan="2" align="center" nowrap="nowrap">
+                                        <b>InnoDB</b>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td nowrap="nowrap" width="58">
+                                        on delete
+                                    </td>
+                                    <td width="102">
+                                        <select name="on_delete" id="on_delete">
+                                            <option value="nix" selected="selected">--</option>
+                                            <option value="CASCADE">CASCADE</option>
+                                            <option value="SET NULL">SET NULL</option>
+                                            <option value="NO ACTION">NO ACTION</option>
+                                            <option value="RESTRICT">RESTRICT</option>
+                                        </select>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td nowrap="nowrap">
+                                        on update
+                                    </td>
+                                    <td>
+                                        <select name="on_update" id="on_update">
+                                            <option value="nix" selected="selected">--</option>
+                                            <option value="CASCADE">CASCADE</option>
+                                            <option value="SET NULL">SET NULL</option>
+                                            <option value="NO ACTION">NO ACTION</option>
+                                            <option value="RESTRICT">RESTRICT</option>
+                                        </select>
+                                    </td>
+                                </tr>
+                            </tbody>
+                            <tbody>
+                                <tr>
+                                    <td colspan="2" align="center" nowrap="nowrap">
+                                        <input class="butt" name="Button" value="确定操作" onclick="New_relation()" type="button"><input class="butt" name="Button" value="放弃操作" onclick="document.getElementById('layer_new_relation').style.visibility = 'hidden';" type="button">
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </td>
+                    <td class="frams6">
+                    </td>
+                </tr>
+                <tr>
+                    <td class="frams4">
+                        <div class="bor">
+                        </div>
+                    </td>
+                    <td class="frams7">
+                    </td>
+                    <td class="frams3">
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+        <table id="layer_upd_relation" style="visibility: hidden;" border="0" cellpadding="0" cellspacing="0" width="5%">
+            <tbody>
+                <tr>
+                    <td class="frams1" width="10">
+                    </td>
+                    <td class="frams5" width="99%">
+                    </td>
+                    <td class="frams2" width="10">
+                        <div class="bor">
+                        </div>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="frams8">
+                    </td>
+                    <td class="input_tab">
+                        <table align="center" border="0" cellpadding="2" cellspacing="0" width="100%">
+                            <tbody>
+                                <tr>
+                                    <td colspan="3" align="center" nowrap="nowrap">
+                                        <b>删除关联关系</b>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td colspan="3" align="center" nowrap="nowrap">
+                                        <input name="Button" class="butt" onclick="Upd_relation()" value="确认删除" type="button"><input class="butt" name="Button" value="放弃操作" onclick="document.getElementById('layer_upd_relation').style.visibility = 'hidden'; Re_load();" type="button">
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </td>
+                    <td class="frams6">
+                    </td>
+                </tr>
+                <tr>
+                    <td class="frams4">
+                        <div class="bor">
+                        </div>
+                    </td>
+                    <td class="frams7">
+                    </td>
+                    <td class="frams3">
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+        <!-- cache images -->
+        <img src="../Public/pmd/images/2leftarrow_m.png" alt="" height="0" width="0"><img src="../Public/pmd/images/rightarrow1.png" alt="" height="0" width="0"><img src="../Public/pmd/images/rightarrow2.png" alt="" height="0" width="0"><img src="../Public/pmd/images/uparrow2_m.png" alt="" height="0" width="0">
+    </body>
+    <ddg_frameTip>
+    </ddg_frameTip>
+</html>

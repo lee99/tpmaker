@@ -1,0 +1,43 @@
+<tagLib name="cx,html,mkrtags" />
+<include file="../Public/header" />
+<fieldset >
+	<legend>增加信息:对外资料分类</legend>
+<!--  功能操作区域  -->
+
+<table width="100%"   cellpadding=0 cellspacing=0 >
+	<tr>
+	<td width="60%">
+	<input type="button"  onclick="location.href='__URL__/index/'" class="button1" value="返回列表">
+	<INPUT TYPE="button" value="确认增加数据" onclick="form_add.submit();" class="button1">
+	<INPUT TYPE="reset" class="button1" value="清空数据" >
+	</td>
+
+	</tr>
+</table>
+
+<!-- 功能操作区域结束 -->
+</fieldset>
+<FORM METHOD=POST id="form_add" enctype="multipart/form-data" action="__URL__/insert/">
+<fieldset >
+<div id="result" class="result none"></div>
+<!--  功能操作区域  -->
+<table width="100%"  class="ewTable">
+
+	<TR><TD class="ewTableHeader" >ID</TD><TD class="ewTableAltRow" ><mkrtags:text id="id" name="id"  value="{$list.id}"/></TD></TR>
+	<TR><TD class="ewTableHeader" >标题[中文]</TD><TD class="ewTableAltRow" ><mkrtags:input id="title_cn" name="title_cn"  class="input" style="width:300px" value="{$list.title_cn}"/></TD></TR>
+	<TR><TD class="ewTableHeader" >标题[英文]</TD><TD class="ewTableAltRow" ><mkrtags:input id="title_en" name="title_en"  class="input" style="width:300px" value="{$list.title_en}"/></TD></TR>
+	<TR><TD class="ewTableHeader" >加入时间</TD><TD class="ewTableAltRow" ><mkrtags:time id="create_at" name="create_at"  value="{$list.create_at}"/></TD></TR>
+	<TR><TD class="ewTableHeader" >更新时间</TD><TD class="ewTableAltRow" ><mkrtags:time id="update_on" name="update_on"  value="{$list.update_on}"/></TD></TR>
+	<TR><TD class="ewTableHeader" >排序</TD><TD class="ewTableAltRow" ><mkrtags:input id="seqNo" name="seqNo"  class="input" style="width:300px" value="{$list.seqNo}"/></TD></TR>
+
+
+
+</TABLE>
+
+<!-- 功能操作区域结束 -->
+
+
+</fieldset>
+
+</FORM>
+<include file="../Public/footer" />
