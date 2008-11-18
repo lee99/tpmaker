@@ -1,3 +1,0 @@
-<?php
-//-00000000001a:4:{i:0;a:5:{s:2:"id";s:1:"1";s:5:"title";s:20:"[默认]简单搜索";s:5:"seqNo";s:1:"0";s:5:"color";s:1:"1";s:8:"othervar";s:0:"";}i:1;a:5:{s:2:"id";s:1:"2";s:5:"title";s:19:"简单+高级搜索";s:5:"seqNo";s:1:"1";s:5:"color";s:1:"7";s:8:"othervar";s:0:"";}i:2;a:5:{s:2:"id";s:1:"3";s:5:"title";s:21:"不需要搜索功能";s:5:"seqNo";s:1:"0";s:5:"color";s:1:"2";s:8:"othervar";s:0:"";}i:3;a:5:{s:2:"id";s:1:"4";s:5:"title";s:15:"仅搜索功能";s:5:"seqNo";s:1:"0";s:5:"color";s:1:"9";s:8:"othervar";s:0:"";}}
-?>
