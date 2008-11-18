@@ -4,6 +4,10 @@
 <script LANGUAGE="JavaScript">
     function buidthis(id){ //生成本项目
         window.open("__APP__/Sys_projects/buidepro/id/" + id, 'mini');
+    }   
+
+    function buidedb(id){ //生成本项目
+        window.open("__APP__/Sys_projects/buidepro/id/" + id, 'mini');
     }
 
     function viewthis(id){ //浏览项目
@@ -23,9 +27,10 @@
     <table width="100%" cellpadding=0 cellspacing=0>
         <tr>
             <td width="60%">
-                <input type="button" onclick="buidthis({$_GET['id']});" class="button1" value="生成本项目">
-		<input type="button" onclick="viewthis({$_GET['id']});" class="button1" value="浏览项目[需预生成]">
-		<input type="button" onclick="packthis({$_GET['id']});" class="button1" value="生成项目打包[需预生成]">
+                <input type="button" onclick="buidedb({$_GET['id']});" class="button1" value="建立数据库" title="第一步:建立本项目数据库">
+                <input type="button" onclick="buidthis({$_GET['id']});" class="button1" value="生成本项目"  title="第二步:生成本项目的文件">
+		<input type="button" onclick="viewthis({$_GET['id']});" class="button1" value="浏览项目" title="第三步:浏览项目[需预生成]">
+		<input type="button" onclick="packthis({$_GET['id']});" class="button1" value="生成项目打包" title="第四步:生成项目打包[需预生成]">
             </td>
         </tr>
     </table><!-- 功能操作区域结束 -->
@@ -34,7 +39,20 @@
     <legend>
         操作内容显示
     </legend>
-    <iframe scrolling="auto" width="100%" height="400px" name="mini" src="" frameborder="0">
+    <iframe scrolling="auto" width="100%" height="300px" name="mini" src="" frameborder="0">
     </iframe>
 </fieldset>
+<fieldset>
+    <legend>
+        说明
+    </legend>
+<ul>
+<li>请按照上面的顺序操作.</li>
+<li>第一步:建立项目数据库,指根据你定义的设定,相应的会生成一个同样的数据库,原来的数据和数据表会删掉.请先做好保存的工作.</li>
+<li>第二步:生成项目文件,指要生成相应的可操作性的程序文件,操作步骤为先删除原来的文件后生成新的文件.</li>
+<li>第三步:浏览项目,浏览生成后的效果,如果没有预先生成文件或建立数据库则会产生错误.</li>
+<li>第四步:生成项目打包,功能尚未实现</li>
+</ul>
+</fieldset>
+
 <include file="../Public/footer" />
