@@ -41,17 +41,20 @@ function viewfields(id){
 <!-- 功能操作区域结束 -->
 </fieldset>
 <fieldset>
-
+<script type="text/javascript">
+window.onload = function() {
+var form = $("form_update");
+for(var i = 0; i < form.length; i++) {
+form[i].disabled = true;
+}
+}
+</script>
 <!-- 列表显示区域  -->
 		<myhtml:editlist id="checkList" name="list"  checkbox="true"  datasource="list" style="list"
 		show="
 			id|hidden|1:ID,
-			caption|20:标题,
-			title|20:表名[英名],
-
-			edittype|select|makeselect('edittype[]'#'tab_edittype'#$list['edittype']):操作模式,
-			ismodel|select|makeselect('ismodel[]'#'sub_yesno'#$list['ismodel']):模板,
-			datemodelid|select|makeselect('datemodelid[]'#'sys_tables'#$list['datemodelid']#'ismodel<>0 and pid='.$_GET['pid']):公用数据模板,
+			caption|25:标题,
+			title|10:表名[英名],
 			list|select|makeselect('list[]'#'sub_yesno'#$list['list']):列表,
 			view|select|makeselect('view[]'#'sub_yesno'#$list['view']):详细,
 			add|select|makeselect('add[]'#'sub_yesno'#$list['add']):增加,
@@ -63,8 +66,7 @@ function viewfields(id){
 			seqNo|1:排序
 		"
 		action="false"
-		createform="true"
-		quickadd="true"
+		createform="false"
 		actionlist="viewfields:查看"
 		/>
 <input type="hidden" name="pid" value="{$_REQUEST['pid']}">

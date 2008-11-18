@@ -18,6 +18,7 @@ function viewfields(id){
 	<input type="button"  onclick="upbtn()" class="button1" value="更新数据">
 	<input type="button"  onclick="location.href='__URL__/sort/pid/{$_GET['pid']}'" class="button1" value="排序">
 	<input type="button"  onclick="location.href='__URL__/adv/pid/{$_GET['pid']}'" class="button1" value="+高级视图模式">
+	<input type="button"  onclick="location.href='__URL__/system/pid/{$_GET['pid']}'" class="button1" value="系统保留数据结构">
 		</td>
 		<td >
 		<DIV  id="myMenuID"></DIV>
@@ -56,8 +57,8 @@ function viewfields(id){
 			edit|select|makeselect('edit[]'#'sub_yesno'#$list['edit']):编辑,
 			search|select|makeselect('search[]'#'sub_yesno'#$list['search']):搜索,
 			searchtype|select|makeselect('searchtype[]'#'tab_searchtype'#$list['searchtype']):搜索形式,
-			isaction|select|makeselect('isaction[]'#'sub_yesno'#$list['isaction']):活动
-
+			isaction|select|makeselect('isaction[]'#'sub_yesno'#$list['isaction']):活动,
+			seqNo|1:排序
 		"
 		action="false"
 		createform="true"
