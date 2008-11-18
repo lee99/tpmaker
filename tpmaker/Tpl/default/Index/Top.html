@@ -7,7 +7,7 @@
 	   <strong>{$Think.config.WEB_TITLE}</strong>
 	</td>
 	<form action="__URL__/left/" target="leftFrame" method="GET" id="topnav" >
-	<td align="left">所有项目列表:
+	<td align="right">所有项目列表:
 	<select name="id" onchange="javascript:$('topnav').submit();">
 		<optgroup label="活动项目" title="活动项目">
 		<volist name="project" id="project_vo">
@@ -24,10 +24,6 @@
 	<a href="__URL__/sys" target="leftFrame">[系统总体属性管理]</a>
 	</td>
 	</form>	
-	<td align="right">
-<a href="javascript:parent.leftFrame.d.openAll();" class="blue">全开</a>|<a class="blue" href="javascript:parent.leftFrame.d.closeAll();">全关</a>|<a class="blue" href="javascript:parent.leftFrame.location.reload();">刷左</a>|<a class="blue" href="javascript:parent.mainFrame.location.reload();">刷右</a>
-	</td>
-	
 </tr>
 </table>
 </center>
