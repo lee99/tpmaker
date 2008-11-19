@@ -299,64 +299,63 @@ foreach ($fields as $field){
 
 function makeproaction($id) {
 	//生成基本Action
-	   $data=$this->gettables($id);
-	   $app_path=$this->getapppath();//获取生成程序的根目录
-	   $tpl_path=$this->gettplpath();//获取程序模板的根目录
-	   $name=uplower($data['title']);//第一个字母变成大写,其它变成小写
-	   $filename=$app_path.'/Lib/Action/'.$name.'Action.class.php';
-	$filecontent.="<?php\nclass ".$name."Action extends PublicAction {\n\n";
+		require_once COMMON_PATH."tpl.class.php";//引入自定义的类
+		$app_path=$this->getapppath();//获取生成程序的根目录
+	    $tpl_path=$this->gettplpath();//获取程序模板的根目录
+	    $data=$this->gettables($id);
+	    $name=uplower($data['title']);//第一个字母变成大写,其它变成小写
+		$tpl=new tpl($tpl_path.'/Action_tpl/action.tpl');
+	    $filename=$app_path.'/Lib/Action/'.$name.'Action.class.php';
 
 
 	//index()的ACTION生成
-	$indexaction=file_get_contents($tpl_path.'/Action_tpl/action_index.tpl');
-	$indexaction=str_replace("/*modelname*/",$name,$indexaction);
+	$index_act[]=array();
+	$index_act[0]['modelname']=$name;
 	$fields=$this->getfieldsbytbid($id);
 	$list_fields=$this->makerows($fields,'islist');
-	$indexaction=str_replace("/*list_fields*/",$list_fields,$indexaction);
+	$index_act[0]['list_fields']=$list_fields;
 	$search_fields=$this->makerows($fields,'issearch');
-	$indexaction=str_replace("/*search_fields*/",$search_fields,$indexaction);
+	$index_act[0]['search_fields']=$search_fields;
 	$search_ser_c=$this->makerows($fields,'issearch','$ser_c');
-	$indexaction=str_replace("/*search_ser_c*/",$search_ser_c,$indexaction);
-	$filecontent.=$indexaction;
+	$index_act[0]['search_ser_c']=$search_ser_c;
 
 
 	//delete()的ACTION生成
-	$deleteaction=file_get_contents($tpl_path.'/Action_tpl/action_delete.tpl');
-	$deleteaction=str_replace("/*modelname*/",$name,$deleteaction);
-	$filecontent.=$deleteaction;
+	$del_act[]=array();
+	$del_act[0]['modelname']=$name;
 
 	//insert()的ACTION生成
-	$insertaction=file_get_contents($tpl_path.'/Action_tpl/action_insert.tpl');
-	$insertaction=str_replace("/*modelname*/",$name,$insertaction);
-	$filecontent.=$insertaction;
+	$insert_act[]=array();
+	$insert_act[0]['modelname']=$name;
 
 	//uptate()的ACTION生成
-	$saveaction=file_get_contents($tpl_path.'/Action_tpl/action_update.tpl');
-	$saveaction=str_replace("/*modelname*/",$name,$saveaction);
-	$filecontent.=$saveaction;
-
+	$update_act[]=array();
+	$update_act[0]['modelname']=$name;
 
 	//edit()的ACTION生成
-	$editaction=file_get_contents($tpl_path.'/Action_tpl/action_edit.tpl');
-	$editaction=str_replace("/*modelname*/",$name,$editaction);
+	$edit_act[]=array();
 	$assignlist=$this->makeassignlist($fields);
-	$editaction=str_replace("/*assignlist*/",$assignlist,$editaction);
-	$filecontent.=$editaction;
-
+	$edit_act[0]['modelname']=$name;
+	$edit_act[0]['assignlist']=$assignlist;
 
 	//view()的ACTION生成
-	$viewaction=file_get_contents($tpl_path.'/Action_tpl/action_view.tpl');
-	$viewaction=str_replace("/*modelname*/",$name,$viewaction);
+	$view_act[]=array();
 	$assignlist=$this->makeassignlist($fields);
-	$viewaction=str_replace("/*assignlist*/",$assignlist,$viewaction);
-	$filecontent.=$viewaction;
+	$view_act[0]['modelname']=$name;
+	$view_act[0]['assignlist']=$assignlist;
 
 	//add()的ACTION生成
-	$addaction=file_get_contents($tpl_path.'/Action_tpl/action_add.tpl');
-	$filecontent.=$addaction;
+	$add_act[]=array();
+	$add_act[0]['modelname']=$name;
 
-
-	$filecontent.="\n\n}\n?>";
+	$tpl->tplblocksign("index_act",$index_act); //替换	
+	$tpl->tplblocksign("del_act",$del_act); //替换	
+	$tpl->tplblocksign("insert_act",$insert_act); //替换	
+	$tpl->tplblocksign("update_act",$update_act); //替换	
+	$tpl->tplblocksign("edit_act",$edit_act); //替换	
+	$tpl->tplblocksign("view_act",$view_act); //替换	
+	$tpl->tplblocksign("add_act",$add_act); //替换	
+	$filecontent=$tpl->tplreturn();
 	writefile($filename,$filecontent);
 }
 
