@@ -127,6 +127,7 @@ class sys_projectsAction extends AdminAction{
 	}
 
 	public function importdb(){//导入数据库
+		//没完成
 		$list=D('sys_projects');
 		$data=$list->getByid($_REQUEST['id']);
 		$db_config = 'mysql://'.C('DB_USER').':'.C('DB_PWD').'@'.C('DB_HOST').':'.C('DB_PORT').'/'.$data['dbname'];
