@@ -1,19 +1,28 @@
 <?php
 	
 
-class HotjobViewModel extends Model {
+class {name}Model extends Model{
 
-    protected $viewModel = true;
-    protected $viewFields = array(
-        'Hotjob'=>array('id','title','jobcode','content','jobnote','callingId'),
-        'Lang'=>array('title'=>'category'),
-		'nsjob'=>array('title'=>'nsjobt'),
+    // 验证信息
+    protected $_validate     =     array(
+
+{val_var_req}
+        array('{v_name}','{v_rag}','{v_caption}','{v_time}'),	//{v_note}
+{/val_var_req}
+{val_var_val}
+        array('{v_name}','{v_rag}','{v_con}','{a_reg}','{v_caption}','{v_time}'), 	//{v_note}
+{/val_var_val}
+
         );
-    protected $viewCondition = array(
-		"Hotjob.langId" => array('eqf',"Lang.id"),
-		"Hotjob.callingId" => array('eqf',"nsjob.id"),
 
-	);
+
+    //自动填充信息
+    protected $_auto     =     array(
+
+{val_var_auto}        array('{a_name}','{a_text}','{a_condition}','{a_regular}'),	//{a_note}
+{/val_var_auto}
+
+        ); 
 
 }
 	
