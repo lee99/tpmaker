@@ -1,13 +1,13 @@
 <?php
 
-// tplÀà£¬ÓÃÓÚÄ£°å
+// tplç±»ï¼Œç”¨äºŽæ¨¡æ¿
 
  class tpl
  {
-  var $filename; //Ä£°åÎÄ¼þ
-  var $content; //·µ»ØÄÚÈÝ
+  var $filename; //æ¨¡æ¿æ–‡ä»¶
+  var $content; //è¿”å›žå†…å®¹
 
-  //³õÊ¼»¯Ä£°åÎÄ¼þ£¬½«ËùÓÐÄÚÈÝ¶ÁÈë
+  //åˆå§‹åŒ–æ¨¡æ¿æ–‡ä»¶ï¼Œå°†æ‰€æœ‰å†…å®¹è¯»å…¥
   function tpl($tplfilename)
   {
    $this->filename=$tplfilename;
@@ -16,16 +16,16 @@
    fclose( $fd );
   }
 
-  //Ìæ»»±êÖ¾Î»ÄÚÈÝ
+  //æ›¿æ¢æ ‡å¿—ä½å†…å®¹
   function tplsign($key,$value)
   {
    $this->content=str_replace("{".$key."}",$value,$this->content);
   }
 
-  //Ìæ»»±êÖ¾¿éÄÚÈÝ
+  //æ›¿æ¢æ ‡å¿—å—å†…å®¹
   function tplblocksign($block_name,$values)
   { 
-   //»ñµÃÌæ»»¿éµÄ×ÓÄ£°å
+   //èŽ·å¾—æ›¿æ¢å—çš„å­æ¨¡æ¿
    if(is_array($values))
    { 
     ereg("{".$block_name."}.*{/".$block_name."}",$this->content,$regs);
@@ -49,10 +49,17 @@
     $this->content=ereg_replace ("{".$block_name."}.*{/".$block_name."}","none",$this->content);
   }
 
-  //Êä³öÄ£°åÄÚÈÝ
+  //è¾“å‡ºæ¨¡æ¿å†…å®¹
   function tplshow()
   {
    echo $this->content;
   }
+  
+  //è¾“å‡ºæ¨¡æ¿å†…å®¹
+  function tplreturn()
+  {
+   return $this->content;
+  }
+  
  }
 ?>

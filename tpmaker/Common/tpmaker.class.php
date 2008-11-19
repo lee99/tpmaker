@@ -162,18 +162,15 @@ function getfieldsbytbid($id){
      +----------------------------------------------------------
      */
 	function makeproindex($id) {
-
+		require_once COMMON_PATH."tpl.class.php";//引入自定义的类
 			   $app_path=$this->getapppath();//获取生成程序的根目录
+			   $tpl_path=$this->gettplpath();//获取程序模板的根目录
 			   $filename=$app_path.'/index.php';
 			   $data=$this->getprojects();
-		$filecontent="<?php\n
-			define('THINK_PATH', '".$data['think_pach']."');\n
-			define('APP_NAME', '".$data['proname']."');//定义项目名称，如果不定义，默认为入口文件名称\n
-			define('APP_PATH', '.');\n
-			require(THINK_PATH.'/ThinkPHP.php');//加载ThinkPHP框架公共入口文件
-			\$App = new App();//实例化一个网站应用实例\n
-			\$App->run();//执行应用程序\n
-		?>";
+			   $tpl=new tpl($tpl_path.'/index.php');
+			   $tpl->tplsign("think_pach",$data['think_pach']); //替换
+			   $tpl->tplsign("proname",$data['proname']); //替换
+				$filecontent=$tpl->tplreturn();
 			writefile($filename,$filecontent);
 	}
 
@@ -210,22 +207,18 @@ function getfieldsbytbid($id){
      +----------------------------------------------------------
      */
 	function makeproconf($id) {
-		   $app_path=$this->getapppath();//获取生成程序的根目录
-		   $data=$this->getprojects();
-		   $filename=$app_path.'/Conf/config.php';
-			$filecontent="<?php\n
-			if (!defined('THINK_PATH')) exit();\n
-			return array(\n
-				'DB_TYPE'=>'mysql',\n
-				'DB_HOST'=>'localhost',\n
-				'DB_NAME'=>'".$data['dbname']."',\n
-				'DB_USER'=>'".$data['dbuser']."',\n
-				'DB_PWD'=>'".$data['dbpassword']."',\n
-				'DB_PORT'=>'3306',\n
-				'DB_PREFIX'=>'".$data['tbpre']."',\n
-				'PROject_NAME'=>'".$data['caption']."',//本项目的名字\n
-			);
-			?>";
+		require_once COMMON_PATH."tpl.class.php";//引入自定义的类
+		$app_path=$this->getapppath();//获取生成程序的根目录
+	    $tpl_path=$this->gettplpath();//获取程序模板的根目录
+		$data=$this->getprojects();
+		$filename=$app_path.'/Conf/config.php';
+		$tpl=new tpl($tpl_path.'/config.php');
+		$tpl->tplsign("dbname",$data['dbname']); //替换
+		$tpl->tplsign("dbuser",$data['dbuser']); //替换
+		$tpl->tplsign("dbpassword",$data['dbpassword']); //替换
+		$tpl->tplsign("tbpre",$data['tbpre']); //替换
+		$tpl->tplsign("caption",$data['caption']); //替换
+		$filecontent=$tpl->tplreturn();
 		writefile($filename,$filecontent);
 	}
 
@@ -247,8 +240,8 @@ class ".$name."Model extends Model {\n\n";
 ////////生成自动验证开始
 $filecontent.="\t protected \$_validate=array( ////自动验证设置 \n\n";
 foreach ($fields as $field){
-	if($field['request']==1){//require验证设置
-		$filecontent.="\t\t array('".$field['name']."','require','".$field['caption']."不能为空！',1),\t//".$field['caption'].",条件:必填\n";
+	if($field['request']==1){//require_once验证设置
+		$filecontent.="\t\t array('".$field['name']."','require_once','".$field['caption']."不能为空！',1),\t//".$field['caption'].",条件:必填\n";
 	}
 	if($field['validate']!=1){//其它验证设置
 		$validate=D('sub_validate');
@@ -482,7 +475,7 @@ function makerows($datas,$field,$varc) {
 	//$field相应判定的表
 	if(count($datas)>0){
 		foreach ($datas as $data){
-			if($data[$field]==1){//require验证设置
+			if($data[$field]==1){//require_once验证设置
 				if($varc==''){
 					//$list_fields.=uplower($data['name']).',';
 					$list_fields.=$data['name'].',';
