@@ -225,10 +225,10 @@ function getfieldsbytbid($id){
 
 function makepromodel($id) {
 	//生成基本MODEL
-
-	   $data=$this->gettables($id);
-	   $app_path=$this->getapppath();//获取生成程序的根目录
-	   $tpl_path=$this->gettplpath();//获取程序模板的根目录
+		require_once COMMON_PATH."tpl.class.php";//引入自定义的类
+		$app_path=$this->getapppath();//获取生成程序的根目录
+	    $tpl_path=$this->gettplpath();//获取程序模板的根目录
+	  	$data=$this->gettables($id);
 		$name=uplower($data['title']);//第一个字母变成大写,其它变成小写
 		if($data['datemodelid']!=0){$datemodelid=$data['datemodelid'];}//取出公用的数据模型
 		$fields=D('sys_fields');
