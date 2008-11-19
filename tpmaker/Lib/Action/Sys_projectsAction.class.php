@@ -169,7 +169,7 @@ class sys_projectsAction extends AdminAction{
 	   $tabledata=$table->findAll('pid='.$buideid.' and ismodel <>1 and isaction =1');
 	   foreach ($tabledata as $tb){
 	   	$t->makepromodel($tb['id']);//生成MODEL
-	   //	$t->makeproaction($tb['id']);//生成ACTION
+	   	$t->makeproaction($tb['id']);//生成ACTION
 	   // $t->makeprotpl($tb['id']);//生成模板HTML文件
 	   }
  
