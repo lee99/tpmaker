@@ -178,6 +178,7 @@ fieldset
     width: auto;
     _width: 0;
     overflow:visible !ie;
+    cursor: pointer;
 }
 
 /*  文字?色 */

@@ -3,7 +3,7 @@
 <!-- 主体内容  -->
 
 <fieldset >
-	<legend>操作区域:[tablecaption]</legend>
+	<legend>操作区域:{tablecaption}</legend>
 <!--  功能操作区域  -->
 
 <table width="100%"   cellpadding=0 cellspacing=0 >
@@ -49,7 +49,7 @@ var tablename = "checkList"; // table name
 			<th width="8">
 				<input type="checkbox" id="check" onclick="CheckAll('checkList')">
 			</th>
-			[listshowsort]
+			{listshowsort}
 			<th >操作区域</th>
 			</TR>
 		<php> if(isset($list)): </php>
@@ -61,7 +61,7 @@ var tablename = "checkList"; // table name
 		<php> if(($key%2)==0){ $tablesclass="ewTableAltRow";} else { $tablesclass="ewTableRow";} </php>
 		<TR class="<php> echo $tablesclass </php>" onmouseover="ew_mouseover(this);" onmouseout="ew_mouseout(this);" onclick="ew_click(this);"  >
 			<td><input type="checkbox" name="key"	value="<php> echo is_array($list)?$list["id"]:$list->id </php>"> </td>
-			[listshowtd]
+			{listshowtd}
 			
 			<TD><A HREF="javascript:edit('<php> echo is_array($list)?$list["id"]:$list->id </php>')">编辑</A> <A HREF="javascript:del('<php> echo is_array($list)?$list["id"]:$list->id </php>')">删除</A> <A HREF="javascript:view('<php> echo is_array($list)?$list["id"]:$list->id </php>')">详细</A> 
 				</TD>
