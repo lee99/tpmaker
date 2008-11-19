@@ -234,43 +234,65 @@ function makepromodel($id) {
 		$fields=D('sys_fields');
 		$fields=$fields->findAll('pid='.$id .' or pid='.$datemodelid ,'*','seqNo ASC');//取出所有表和数据模型表
 	   $filename=$app_path.'/Lib/Model/'.$name.'Model.class.php';
-$filecontent.="<?php\n
-class ".$name."Model extends Model {\n\n";
-
-////////生成自动验证开始
-$filecontent.="\t protected \$_validate=array( ////自动验证设置 \n\n";
+ 
 foreach ($fields as $field){
 	if($field['request']==1){//require_once验证设置
-		$filecontent.="\t\t array('".$field['name']."','require_once','".$field['caption']."不能为空！',1),\t//".$field['caption'].",条件:必填\n";
+		$val_var_req[]=array(
+			'v_name'=>$field['name'],
+			'v_rag'=>'require_once',
+			'v_caption'=>$field['caption'].'不能为空！',
+			'v_time'=>1,
+			'v_note'=>$field['caption'].",条件:必填\n",
+			);
 	}
 	if($field['validate']!=1){//其它验证设置
 		$validate=D('sub_validate');
 		$validate=$validate->getByid($field['validate']);
-		if($field['validate_tex']!=''){$v_text=$field['validate_tex'];}else{$v_text=$validate['v_note'];}
-		$filecontent.="\t\t array('".$field['name']."','".$validate['v_rag']."','".$field['caption'].":".$v_text."',".$validate['v_con'].",'".$validate['a_reg']."','".$validate['v_time']."'),\t//".$field['caption'].",条件:".$validate['title']."\n";
-		//
+		if($field['validate_tex']!=''){
+			$v_text=$field['validate_tex'];
+		}else{
+			$v_text=$validate['v_note'];
+		}
+		$val_var_val[]=array(
+			'v_name'=>$field['name'],
+			'v_rag'=>$validate['v_rag'],
+			'v_con'=>$validate['v_con'],
+			'a_reg'=>$validate['a_reg'],
+			'v_caption'=>$field['caption'].":".$v_text,
+			'v_time'=>$validate['v_time'],
+			'v_note'=>$field['caption'].",条件:".$validate['title'],
+			//array(验证字段,验证规则,错误提示,验证条件,附加规则,验证时间) //note
+			//array({v_name},{v_rag},{v_con},{a_reg},{v_caption},{v_time}) //{v_note}
+			);
 	}
 }
-$filecontent.="\n\t ); \n\n";
+
 ////////生成自动验证结束
 
 ////////生成自动填充开始
-$filecontent.="\t protected \$_auto=array( ////自动验证设置 \n\n";
 foreach ($fields as $field){
 	if($field['autotype']!=0){//其它填充设置
 		$auto=D('sub_auto');
 		$auto=$auto->getByid($field['autotype']);
 		if($field['indexvar']!=''){$a_text=$field['indexvar'];}else{$a_text=$auto['content'];}
-		$filecontent.="\t\t array('".$field['name']."','".$a_text."','".$auto['condition']."','".$auto['regular']."'),\t//".$field['caption'].",条件:".$auto['title']."\n";
+		$val_var_auto[]=array(
+			'a_name'=>$field['name'],
+			'a_text'=>$a_text,
+			'a_condition'=>$auto['condition'],
+			'a_regular'=>$auto['regular'],
+			'a_note'=>$field['caption'].",条件:".$auto['title'],
+			);
 		//
 	}
 }
-$filecontent.="\n\t ); \n";
 ////////生成自动填充结束
-
-
-$filecontent.="\n}\n?>";
-	writefile($filename,$filecontent);
+		$tpl=new tpl($tpl_path.'/Model_tpl/model.tpl');
+		$tpl->tplsign("name",$name); //替换	  
+		$tpl->tplblocksign("val_var_req",$val_var_req); //替换	  
+		$tpl->tplblocksign("val_var_val",$val_var_val); //替换	  
+		$tpl->tplblocksign("val_var_auto",$val_var_auto); //替换	  
+		$filecontent=$tpl->tplreturn();
+		writefile($filename,$filecontent);
 }
 
 

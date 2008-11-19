@@ -164,15 +164,15 @@ class sys_projectsAction extends AdminAction{
 		$t->makeprodir();
 		$t->makeproindex();//生成index.php
 		$t->makeproconf();//生成config.php
-/*		$t->makeproindexaction();//生成项面INDEX的面页和相应的列表数据
+		$t->makeproindexaction();//生成项面INDEX的面页和相应的列表数据
 	   $table=D('sys_tables');
 	   $tabledata=$table->findAll('pid='.$buideid.' and ismodel <>1 and isaction =1');
 	   foreach ($tabledata as $tb){
 	   	$t->makepromodel($tb['id']);//生成MODEL
-	   	$t->makeproaction($tb['id']);//生成ACTION
-	    $t->makeprotpl($tb['id']);//生成模板HTML文件
+	   //	$t->makeproaction($tb['id']);//生成ACTION
+	   // $t->makeprotpl($tb['id']);//生成模板HTML文件
 	   }
-*/	 
+ 
 	}
 
 	public function zippro(){//打包项目
