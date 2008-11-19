@@ -86,7 +86,10 @@ class sys_projectsAction extends AdminAction{
 		if(!empty($_REQUEST['id'])){
 			$project=D('sys_projects');
 			$projectdate=$project->getByid($_REQUEST['id']);
-			if($projectdate['caption']==''){$this->error('请检查参数是否正确!');exit;}
+			if($projectdate['caption']==''){
+				$this->error('请检查参数是否正确!');
+				exit;
+			}
 			$projectdate['caption'].='_new';//默认的新的项目会加上_new加以区分
 			$projectdate['id']='';//把ID清空
 			$project->create($projectdate);
