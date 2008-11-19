@@ -72,7 +72,15 @@ class sys_projectsAction extends AdminAction{
 		$this->ajaxReturn('','操作成功！',1);
 		//redirect(__URL__."/index");
 	}
-
+	
+	public function Percopy(){
+		$this->display();
+	}	
+	
+	
+	public function dic(){
+		$this->display();
+	}
 
 	public function copy(){
 		if(!empty($_REQUEST['id'])){
