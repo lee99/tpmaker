@@ -15,22 +15,22 @@ function uplower($name) {
 function writefile($name,$content,$cover=1) {
 	//生成文件
 		$filename=$name;
-		echo '正在生成'.$filename;
+		msg('正在生成'.$filename);
 		if(!file_exists($filename)) {
 			$content =$content;
 			if(file_put_contents($filename,$content)){
-				echo "...完成<br>";	
+				msg("...完成<br>");	
 			}else{
-				echo "...失败<br>";
+				msg("...失败<br>");
 			};
 		}else{
-			echo "...已存在";
+			msg("...已存在");
 			if($cover==1){
 				file_put_contents($filename,$content);
-				echo "...覆盖成功";
+				msg("...覆盖成功");
 				
 			}
-			echo "<br>";
+			msg("<br>");
 		}
 	
 }
@@ -38,11 +38,11 @@ function writefile($name,$content,$cover=1) {
 function copyfile($infilename,$outfilename) {
 
 		$content=file_get_contents($infilename);
-		echo '正在COPY生成'.$outfilename;
+		msg('正在COPY生成'.$outfilename);
 		if(file_put_contents($outfilename,$content)){
-				echo "...完成<br>";	
+				msg("...完成<br>");	
 		}else{
-				echo "...失败<br>";
+				msg("...失败<br>");
 		}
 }
 function copydir($source, $destination)
@@ -94,11 +94,11 @@ function copydir($source, $destination)
 function deldir($sdir){
 	$lockdir=array('../','../tpmaker','../Public','../Thinkphp');
 	if(in_array($sdir,$lockdir)){
-		echo "<p >将要删除的目录涉及敏感目录!请检查！</p>";
+		msg("<p >将要删除的目录涉及敏感目录!请检查！</p>");
 		exit;
 	}
 	if (!is_dir($sdir)){
-	   echo "<p >无此目录:$sdir,或未建立此目录!请检查！</p>";
+	   msg("<p >无此目录:$sdir,或未建立此目录!请检查！</p>");
 	   //exit;
 	}
 	$handle=opendir($sdir);
@@ -117,27 +117,11 @@ function deldir($sdir){
 			@rmdir($sdir);
 			return true;
 		}else{
-		   echo "<p align=center>无法删除目录，请检查权限";
+		   msg("<p align=center>无法删除目录，请检查权限</p>");
 		   return false;
 		}
 }
 
-function mk_dir($dir, $mode = 0755)
-{
-	//原来tp的工具里有这个命令但由于有时有改变所以单独提出来
-  if (is_dir($dir) || @mkdir($dir,$mode)) return true;
-  if (!mk_dir(dirname($dir),$mode)) return false;
-  return @mkdir($dir,$mode);
-}
 
-function mkdirs($dirs,$mode=0777) {
-	//原来tp的工具里有这个命令但由于有时有改变所以单独提出来
-    if(is_string($dirs)) {
-        $dirs  = explode(',',$dirs);
-    }
-    foreach ($dirs as $dir){
-        if(!is_dir($dir))  mkdir($dir,$mode);
-    }
-}
 
 ?>

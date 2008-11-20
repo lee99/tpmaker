@@ -151,7 +151,7 @@ function makeselect($name,$table,$idt='',$where='',$option='title',$f_idvalue='i
 		$tmp.= "</select>";
 
 
-	echo $tmp;
+	msg($tmp);
 }
 
 function makeoption($table,$id='id',$where='',$option='title',$order,$outadd){
@@ -243,4 +243,12 @@ function toDate($time,$format='Y年m月d日 H:i:s')
     $format = str_replace('#',':',$format);
 	return date(auto_charset($format),$time);
 }
+
+
+function msg($info)
+{
+	echo "<font style='font-size:12px'>".$info."</font>";
+}
+
+
 ?>

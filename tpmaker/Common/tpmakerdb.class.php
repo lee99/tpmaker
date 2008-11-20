@@ -105,7 +105,7 @@ function creattable($tableid){
 	$thiscaption=$tables['caption'];
 	if(!$this->dropcheck){
 		$sql_infoherd="DROP TABLE IF EXISTS `".$treutablename."`;";
-		echo "正在删除数据表:".$thiscaption."<br>";
+		msg("正在删除数据表:".$thiscaption."<br>");
 		$this->dosql($sql_infoherd);
 	}	
 
@@ -116,7 +116,7 @@ function creattable($tableid){
 	ENGINE=MyISAM  DEFAULT CHARSET=utf8 COMMENT='$thiscaption' AUTO_INCREMENT=1 ;";
 	$sql_infoherd=$sql_head.$sql_body.$sql_foot;
 	
-	echo "<br>正在生成数据表:".$thiscaption."<br>";
+	msg("<br>正在生成数据表:".$thiscaption."<br>");
 	$this->dosql($sql_infoherd,'生成数据表:'.$treutablename);
 	
 }
@@ -210,13 +210,13 @@ function dosql($sql,$info){
 
 			$sql=trim($sql);
 			@mysql_query($sql)or die($this->ErrorInfo($sql));
-			//echo $dosql."<hr>";
+			//msg($dosql."<hr>");
 		@mysql_close($link);
 		if(!empty($info)){
-			echo "正在操作数据库...操作:".$info."....完成<br>";
+			msg("正在操作数据库...操作:".$info."....完成<br>");
 		}
 	}else{
-		echo "数据库连接不成功,请检查!";
+		msg("数据库连接不成功,请检查!");
 	}
 }
 

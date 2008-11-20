@@ -12,7 +12,7 @@ class export_db {
 	}
 	fclose($fp);
 	mysql_close();
-	echo "done.\n";
+	msg("done.\n");
 	exit;
 	
 	

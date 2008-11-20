@@ -39,11 +39,11 @@ class sys_projectsAction extends AdminAction{
 		$t->projectid=$buideid;
 		$app_path=$t->getapppath();
 		if(deldir($app_path)){
-			echo "成功!";
+			msg("成功!");
 			delbypid(sys_tables,$_REQUEST['id'],$pidf='pid');
 			$list->delete($_REQUEST['id']);
 		}else {
-			echo "失败!";
+			msg("失败!");
 		}
 
 		sleep(3);
@@ -207,7 +207,7 @@ class sys_projectsAction extends AdminAction{
 			foreach($dirs as $dir) {
 				$dirname=substr($dir,1);
 				$z ->add_dir($dirname); //添加指定目录
-				echo $dir."...添加目录成功!<br>";
+				msg($dir."...添加目录成功!<br>");
 				//read_dir($dir);
 			}
 		}
@@ -218,14 +218,14 @@ class sys_projectsAction extends AdminAction{
 			$zipfilecontent=Array($filename,@fread($fp,$filesize));
 			@fclose($fp);
 			$zip->Add($zipfilecontent,1);  //可以多次执行 $zip->Add 来添加多个文件
-			echo $file."...添加文件成功!<br>";
+			msg($file."...添加文件成功!<br>");
 		}
 		closedir($path);
 
 		if(@fputs(@fopen($filename,"wb"),$z->get_file())){ //写入文件
-			echo "文件压缩成功!!";
+			msg("文件压缩成功!!");
 		}else{
-			echo "文件压缩失败!!";
+			msg("文件压缩失败!!");
 		}
 		//$z -> Zip($zippath, './Backup/ZIP/'.$zipname['proname'].".zip"); //添加指定目录
 

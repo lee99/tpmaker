@@ -278,7 +278,7 @@ $path="filesinzip";  //zip文件解压到的目录
 include("zip.class.php");
 $zip = new Zip;
 
-if ($zip->Extract($zipfile,$path,$i)) echo "ok"; else echo "error";
+if ($zip->Extract($zipfile,$path,$i)) msg("ok"); else msg("error");
 
 ?>
 压缩文件
@@ -299,9 +299,9 @@ $zipfilecontent=Array($filename,@fread($fp,$filesize));
 $zip->Add($zipfilecontent,1);  //可以多次执行 $zip->Add 来添加多个文件
 
 if(@fputs(@fopen($key,"wb"),$zip->get_file())) //写入文件
-echo "文件压缩成功!!";
+msg("文件压缩成功!!");
 else
-echo "文件压缩失败!!";
+msg("文件压缩失败!!"));
 ?>
 浏览zip文件
 

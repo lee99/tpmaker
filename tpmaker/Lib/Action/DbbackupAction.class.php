@@ -23,7 +23,7 @@ class dbbackupAction extends AdminAction{
 		foreach ($tables as $tbname){
 			$coumt=$db->getFields($tbname);
 			$modelname=str_replace(C('DB_PREFIX'),'',$tbname);
-			//echo $modelname;
+			//msg($modelname);
 			$row=D($modelname);
 			$row=$row->findAll();
 			
