@@ -135,7 +135,7 @@ class tpmaker extends Action
 	function makeprodir() {
 		$app_path=$this->getapppath();//获取生成程序的根目录
 		$tpl_path=$this->gettplpath();//获取程序模板的根目录
-		//deldir($app_path);////common.php文件
+		deldir($app_path);////common.php文件
 		mk_dir($app_path.'/Lib/Model/');
 		mk_dir($app_path.'/Lib/Action/');
 		mk_dir($app_path.'/Cache/');//生成Cache目录
@@ -239,7 +239,7 @@ class tpmaker extends Action
 			if($field['request']==1){//require_once验证设置
 				$val_var_req[]=array(
 				'v_name'=>$field['name'],
-				'v_rag'=>'require_once',
+				'v_rag'=>'require',
 				'v_caption'=>$field['caption'].'不能为空！',
 				'v_time'=>1,
 				'v_note'=>$field['caption'].",条件:必填\n",
@@ -348,6 +348,7 @@ class tpmaker extends Action
 		$add_act[]=array();
 		$add_act[0]['modelname']=$name;
 
+		$tpl->tplsign("name",$name); //替换
 		$tpl->tplblocksign("index_act",$index_act); //替换
 		$tpl->tplblocksign("del_act",$del_act); //替换
 		$tpl->tplblocksign("insert_act",$insert_act); //替换
@@ -416,25 +417,26 @@ class tpmaker extends Action
 
 
 	function makerowscontent($datas,$actiontype,$tpl) {
+		require_once COMMON_PATH."tpl.class.php";//引入自定义的类
+		$app_path=$this->getapppath();//获取生成程序的根目录
 		$tpl_path=$this->gettplpath();//获取程序模板的根目录
 		//$datas传过来的数据
 		//类型的
 		//相应判定的模板文件
-		$rowcontent=file_get_contents($tpl_path.'/Html_tpl/'.$tpl);//源模板文件名
+		$tpl=new tpl($tpl_path.'/Html_tpl/'.$tpl);//源模板文件名
 		if(count($datas)>0){
 			foreach ($datas as $data){
 				$vartype=$data[$actiontype];
 				//$varname=$data['name'];
 				$varname=$this->maketags($data[$actiontype],$actiontype,$data['name'],$data['indexvar'],$data['outkey'],$data['outkeyid'],$data['outkeyf'],$data['outkeywhere']);
 				$varcaption=$data['caption'];
+				$contents[]=array("vartype"=>$vartype,"varname"=>$vartype,"varcaption"=>$vartype);//替换方式
 
-				$contents=str_replace("[vartype]",$vartype,$rowcontent);//替换方式
-				$contents=str_replace("[varname]",$varname,$contents);//替换表名
-				$contents=str_replace("[varcaption]",$varcaption,$contents);//替换名称
-				$filecontent.=$contents;
 			}
 
 		}
+		$tpl->tplblocksign('contents',$contents);
+		$filecontent=$tpl->tplreturn();
 		return $filecontent;
 	}
 
