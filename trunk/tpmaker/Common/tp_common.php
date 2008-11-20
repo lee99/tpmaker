@@ -122,4 +122,22 @@ function deldir($sdir){
 		}
 }
 
+function mk_dir($dir, $mode = 0755)
+{
+	//原来tp的工具里有这个命令但由于有时有改变所以单独提出来
+  if (is_dir($dir) || @mkdir($dir,$mode)) return true;
+  if (!mk_dir(dirname($dir),$mode)) return false;
+  return @mkdir($dir,$mode);
+}
+
+function mkdirs($dirs,$mode=0777) {
+	//原来tp的工具里有这个命令但由于有时有改变所以单独提出来
+    if(is_string($dirs)) {
+        $dirs  = explode(',',$dirs);
+    }
+    foreach ($dirs as $dir){
+        if(!is_dir($dir))  mkdir($dir,$mode);
+    }
+}
+
 ?>
