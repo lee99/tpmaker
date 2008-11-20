@@ -76,4 +76,33 @@ function toDate($time,$format='Y年m月d日 H:i:s')
     $format = str_replace('#',':',$format);
 	return date(auto_charset($format),$time);
 }
+
+
+function substrGB($in,$num)
+    {
+      //$num=16;
+      $pos=0;
+      $byteNum=0;
+      $out="";
+      while($num){
+    
+    $c=mb_substr($in,$pos,1,"EUC-JP");
+    if($c=="n") break;
+    if(strlen($c)==1){
+      $pos++;
+      $byteNum++;
+      if($byteNum>$num) break;
+      $out.=$c;                        
+    }
+    else
+      {
+        $pos++;
+        $byteNum=$byteNum+2;
+        if($byteNum>$num) break;
+        $out.=$c;                   
+      }
+      }
+      return $out;
+} 
+
 ?>
