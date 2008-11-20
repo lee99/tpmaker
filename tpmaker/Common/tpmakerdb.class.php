@@ -105,6 +105,7 @@ function creattable($tableid){
 	$thiscaption=$tables['caption'];
 	if(!$this->dropcheck){
 		$sql_infoherd="DROP TABLE IF EXISTS `".$treutablename."`;";
+		echo "正在删除数据表:".$thiscaption."<br>";
 		$this->dosql($sql_infoherd);
 	}	
 
@@ -115,14 +116,21 @@ function creattable($tableid){
 	ENGINE=MyISAM  DEFAULT CHARSET=utf8 COMMENT='$thiscaption' AUTO_INCREMENT=1 ;";
 	$sql_infoherd=$sql_head.$sql_body.$sql_foot;
 	
-	//echo $sql_infoherd."<HR>";
+	echo "<br>正在生成数据表:".$thiscaption."<br>";
 	$this->dosql($sql_infoherd,'生成数据表:'.$treutablename);
 	
 }
 
 function makebodysql($id){
+	//生成instert sql
 	$dates=$this->getfieldsbytbid($id);
-	foreach ($dates as $date){
+	foreach ($dates as $date){//
+		if(!in_array($date['name'],$tmparray)){
+			$newdate[]=$date;
+		}
+			$tmparray[]=$date['name'];//累加以判断是否name有重复
+	}
+	foreach ($newdate as $date){
 		$sql.=$this->sqlbytpye($date['fieldtype'],$date['caption'],$date['name'],$date['fieldlenght']);
 	}
 	return $sql;
@@ -201,7 +209,7 @@ function dosql($sql,$info){
 		@mysql_query("SET NAMES 'utf8'");
 
 			$sql=trim($sql);
-			@mysql_query($sql)or die($this->ErrorInfo());
+			@mysql_query($sql)or die($this->ErrorInfo($sql));
 			//echo $dosql."<hr>";
 		@mysql_close($link);
 		if(!empty($info)){
@@ -214,9 +222,10 @@ function dosql($sql,$info){
 
 
 
-function ErrorInfo()
+function ErrorInfo($msg='')
 {
-	return "<ul style='font-family:Courier;font-size:11px;background:#FDF5E6;color:#696969;margin:3px;padding:10px;border:1px solid #696969;'>Notice!: System Error<li style='font-family:Courier;list-style-type:none'>ErrInfo: ".mysql_error()."</li><li style='font-family:Courier;list-style-type:none'>ErrCode: ".mysql_errno()."</li><li style='font-family:Courier;list-style-type:none'>ErrURIs: ".$_SERVER['REQUEST_URI']."</li></ul>";
+	return "<ul style='font-size:12px;color:#696969;border:1px solid #696969;'>注意!: 系统错误<li style='list-style-type:none'>错误提示: ".mysql_error()."</li><li style='list-style-type:none'>错误代码: ".mysql_errno()."</li><li style='list-style-type:none'>信息: ".$msg."</li>
+	</ul>";
 }
 
 }

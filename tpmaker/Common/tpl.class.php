@@ -13,6 +13,7 @@
    $this->filename=$tplfilename;
    $fd = fopen( $this->filename, "r" );
    $this->content = fread($fd, filesize($this->filename));
+   $this->contentnull = '';//如果为空则以这个变量的内容替换
    fclose( $fd );
   }
 
@@ -46,7 +47,7 @@
     $this->content=ereg_replace ("{".$block_name."}.*{/".$block_name."}",$block_replace,$this->content);
    }
    else
-    $this->content=ereg_replace ("{".$block_name."}.*{/".$block_name."}","none",$this->content);
+    $this->content=ereg_replace ("{".$block_name."}.*{/".$block_name."}",$this->contentnull,$this->content);
   }
 
   //输出模板内容

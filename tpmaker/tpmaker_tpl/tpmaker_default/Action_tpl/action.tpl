@@ -1,10 +1,10 @@
 <?php
 /////////////////////////////////////////////////////////////////////////////
-/{ @author lee99 <lee99.com@gmail.com> Sat Mar 15 11:32:05 GMT 2008
+// @author lee99 <lee99.com@gmail.com> Sat Mar 15 11:32:05 GMT 2008
 //+----------------------------------------------------------
-/{ 说明
+//说明
 //+----------------------------------------------------------
-/{ D:\xampp\htdocs\sample_verson\mytp\Lib\Action\sub_addtypeAction.class.php
+// D:\xampp\htdocs\sample_verson\mytp\Lib\Action\sub_addtypeAction.class.php
 /////////////////////////////////////////////////////////////////////////////
 
 
