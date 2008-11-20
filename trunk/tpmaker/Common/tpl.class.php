@@ -53,7 +53,7 @@
   //输出模板内容
   function tplshow()
   {
-   echo $this->content;
+   msg($this->content);
   }
   
   //输出模板内容

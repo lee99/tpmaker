@@ -443,7 +443,7 @@ class tpmaker extends Action
 
 	function maketags($typeid,$actiontype,$name,$value,$outtable,$outkey,$outfield,$outcondition,$outorder,$outadd,$id,$class,$style,$disabled,$readonly,$othervar) {
 		$tag=D('sub_'.$actiontype);//指定MODEL
-		//echo $actiontype.'<br>';
+		//msg($actiontype.'<br>');
 		$tag=$tag->getByid($typeid);//取得相应的值
 
 		$tagtype    = !empty($tagtype)?$tagtype:$tag['htmltype']; 		//表单[htmltype]//没值则

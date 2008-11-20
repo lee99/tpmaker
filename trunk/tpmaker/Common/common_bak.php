@@ -212,7 +212,7 @@ function makeselect($name,$table,$idt='',$where='',$option='title',$f_idvalue='i
 		$tmp.= "</select>";
 
 
-	echo $tmp;
+	msg($tmp);
 }
 
  function copytable($daoname,$inpid,$pidf='pid',$inoldid){

@@ -149,7 +149,7 @@ class DesignerAction extends AdminAction{
 		  header("Cache-Control: no-cache");
 			die('<root act="relation_upd" return="strRelationDeleted" b="1" K="'.$_REQUEST['K'].'"></root>');
 		}else{
-			echo $condition;
+			msg($condition);
 		}
 
 	//dump($Designer);

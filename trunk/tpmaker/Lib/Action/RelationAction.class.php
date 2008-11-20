@@ -28,9 +28,9 @@ class RelationAction extends AdminAction{
 		$list->master_table='master_table';
 		$list->master_field='master_field';
 		if($list->add()){
-			echo 'ok';
+			msg('ok');
 		}else {
-			echo 'fuck';
+			msg('fuck');
 		}
 		//redirect(__URL__."/index");
 	//dump($list);
@@ -46,9 +46,9 @@ class RelationAction extends AdminAction{
 		//$list->master_table='master_table';
 		//$list->master_field='master_field';
 		if($list->delete("master_db='master_db' and .........")){
-			echo 'ok';
+			msg('ok');
 		}else {
-			echo 'out';
+			msg('out');
 		}
 		//redirect(__URL__."/index");
 	//dump($list);
