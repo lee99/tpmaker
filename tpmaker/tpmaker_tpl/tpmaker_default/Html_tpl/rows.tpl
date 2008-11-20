@@ -1,2 +1,2 @@
-<contents>	<TR><TD class="ewTableHeader" >{varcaption}</TD><TD class="ewTableAltRow" >{varname}</TD></TR>
-</contents>
+{contents}	<TR><TD class="ewTableHeader" >{varcaption}</TD><TD class="ewTableAltRow" >{varname}</TD></TR>
+{/contents}

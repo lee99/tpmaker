@@ -12,7 +12,7 @@
 	
 	//生成project的树形菜单
 	<volist name="project" id="project_vo">
-	d.add('project{$project_vo.id}',-1,'{$project_vo.caption}[查看数据表]','__APP__/Sys_tables/index/pid/{$project_vo.id}',null,'mainFrame',IMG_PATH+'b_import.png',IMG_PATH+'b_import.png');
+	d.add('project{$project_vo.id}',-1,'{$project_vo.caption}<font color=red>[查看]</font>','__APP__/Sys_tables/index/pid/{$project_vo.id}',null,'mainFrame',IMG_PATH+'b_import.png',IMG_PATH+'b_import.png');
 	</volist>	
 	
 	//生成model的树形菜单

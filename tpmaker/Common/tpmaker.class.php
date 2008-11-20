@@ -430,7 +430,7 @@ class tpmaker extends Action
 				//$varname=$data['name'];
 				$varname=$this->maketags($data[$actiontype],$actiontype,$data['name'],$data['indexvar'],$data['outkey'],$data['outkeyid'],$data['outkeyf'],$data['outkeywhere']);
 				$varcaption=$data['caption'];
-				$contents[]=array("vartype"=>$vartype,"varname"=>$vartype,"varcaption"=>$vartype);//替换方式
+				$contents[]=array("vartype"=>$vartype,"varname"=>$varname,"varcaption"=>$varcaption);//替换方式
 
 			}
 
