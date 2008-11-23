@@ -30,7 +30,7 @@ class RelationAction extends AdminAction{
 		if($list->add()){
 			msg('ok');
 		}else {
-			msg('fuck');
+			msg('fuck',0);
 		}
 		//redirect(__URL__."/index");
 	//dump($list);

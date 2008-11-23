@@ -19,20 +19,20 @@ function writefile($name,$content,$cover=1) {
 		if(!file_exists($filename)) {
 			$content =$content;
 			if(file_put_contents($filename,$content)){
-				msg("...完成<br>");	
+				msg("...完成<br>");
 			}else{
-				msg("...失败<br>");
+				msg("...失败<br>",0);
 			};
 		}else{
 			msg("...已存在");
 			if($cover==1){
 				file_put_contents($filename,$content);
-				msg("...覆盖成功");
-				
+				msg("...覆盖成功",0);
+
 			}
 			msg("<br>");
 		}
-	
+
 }
 
 function copyfile($infilename,$outfilename) {
@@ -40,9 +40,9 @@ function copyfile($infilename,$outfilename) {
 		$content=file_get_contents($infilename);
 		msg('正在COPY生成'.$outfilename);
 		if(file_put_contents($outfilename,$content)){
-				msg("...完成<br>");	
+				msg("...完成<br>");
 		}else{
-				msg("...失败<br>");
+				msg("...失败<br>",0);
 		}
 }
 function copydir($source, $destination)
@@ -94,11 +94,11 @@ function copydir($source, $destination)
 function deldir($sdir){
 	$lockdir=array('../','../tpmaker','../Public','../Thinkphp');
 	if(in_array($sdir,$lockdir)){
-		msg("<p >将要删除的目录涉及敏感目录!请检查！</p>");
+		msg("<p >将要删除的目录涉及敏感目录!请检查！</p>",0);
 		exit;
 	}
 	if (!is_dir($sdir)){
-	   msg("<p >无此目录:$sdir,或未建立此目录!请检查！</p>");
+	   msg("<p >无此目录:$sdir,或未建立此目录!请检查！</p>",0);
 	   //exit;
 	}
 	$handle=opendir($sdir);
@@ -117,7 +117,7 @@ function deldir($sdir){
 			@rmdir($sdir);
 			return true;
 		}else{
-		   msg("<p align=center>无法删除目录，请检查权限</p>");
+		   msg("<p align=center>无法删除目录，请检查权限</p>",0);
 		   return false;
 		}
 }

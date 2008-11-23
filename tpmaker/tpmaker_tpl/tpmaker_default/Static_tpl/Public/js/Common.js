@@ -36,17 +36,6 @@ function InverSelect(){
 	}
 }
 
-function WriteTo(id){
-	var type = $F('outputType');
-	switch (type)
-	{
-	case 'EXCEL':WriteToExcel(id);break;
-	case 'WORD':WriteToWord(id);break;
-
-	}
-	return ;
-}
-
 
 
 function show(){
@@ -102,9 +91,9 @@ function sortBy (field,sort){
 
 function add(){
  location.href  = URL+"/add/";
-}	
-	
-	
+}
+
+
 function view(id){
 	var keyValue;
 	if (id)
