@@ -97,7 +97,7 @@ class PublicAction extends Action{
 		//$upload->thumbMaxHeight=400;					//最大的高
 		//$upload->thumbSuffix = '_thumb';				//后辍名
 			if (!$upload->upload()){
-				msg($upload->getErrorMsg());
+				echo $upload->getErrorMsg();
 			}else{
 				return $upload->getUploadFileInfo();
 			}

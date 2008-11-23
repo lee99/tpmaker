@@ -183,19 +183,21 @@ class tpmaker extends Action
      +----------------------------------------------------------
      */
 	function makeproindexaction() {
-
+		require_once COMMON_PATH."tpl.class.php";//引入自定义的类
 		$app_path=$this->getapppath();//获取生成程序的根目录
 		$tpl_path=$this->gettplpath();//获取程序模板的根目录
 		$filename=$app_path.'/Index.php';
 		$table=D($this->tables);
 		$tabledata=$table->findAll('pid='.$this->projectid.' and ismodel <>1 and isaction =1','*','seqNo ASC');
 		foreach ($tabledata as $tb){
-			$left.="array( 'id' =>'".$tb['id']."','caption' =>'".$tb['caption']."','name' =>'".uplower($tb['title'])."'),";
+			$leftdate[]=array( 'id' =>$tb['id'],'caption' =>$tb['caption'],'title' =>uplower($tb['title']));
 		}
-		$leftcontent=file_get_contents($tpl_path.'/Action_tpl/indexAction.class.php');
-		$leftcontent=str_replace("/*left*/",$left,$leftcontent);
+		$tpl=new tpl($tpl_path.'/Action_tpl/IndexAction.class.php');
+		//dump($leftdate);
+		$tpl->tplblocksign("leftdate",$leftdate); //替换
+		$filecontent=$tpl->tplreturn();
 		$filename=$app_path.'/Lib/Action/IndexAction.class.php';
-		writefile($filename,$leftcontent);
+		writefile($filename,$filecontent);
 	}
 
 	/**
@@ -242,7 +244,7 @@ class tpmaker extends Action
 				'v_rag'=>'require',
 				'v_caption'=>$field['caption'].'不能为空！',
 				'v_time'=>1,
-				'v_note'=>$field['caption'].",条件:必填\n",
+				'v_note'=>$field['caption'].",条件:必填",
 				);
 			}
 			if($field['validate']!=1){//其它验证设置

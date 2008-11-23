@@ -45,21 +45,21 @@ class PHPZip extends Action
     pack('v', sizeof($this -> ctrl_dir)).pack('v', sizeof($this -> ctrl_dir)).
     pack('V', strlen($ctrldir)) . pack('V', strlen($data)) . "\x00\x00";
  }
- function add_dir($name) 
- { 
-   $name = str_replace("\\", "/", $name); 
-   $fr = "\x50\x4b\x03\x04\x0a\x00\x00\x00\x00\x00\x00\x00\x00\x00"; 
-   $fr .= pack("V",0).pack("V",0).pack("V",0).pack("v", strlen($name) ); 
-   $fr .= pack("v", 0 ).$name.pack("V", 0).pack("V", 0).pack("V", 0); 
+ function add_dir($name)
+ {
+   $name = str_replace("\\", "/", $name);
+   $fr = "\x50\x4b\x03\x04\x0a\x00\x00\x00\x00\x00\x00\x00\x00\x00";
+   $fr .= pack("V",0).pack("V",0).pack("V",0).pack("v", strlen($name) );
+   $fr .= pack("v", 0 ).$name.pack("V", 0).pack("V", 0).pack("V", 0);
    $this -> datasec[] = $fr;
-   $new_offset = strlen(implode("", $this->datasec)); 
-   $cdrec = "\x50\x4b\x01\x02\x00\x00\x0a\x00\x00\x00\x00\x00\x00\x00\x00\x00"; 
-   $cdrec .= pack("V",0).pack("V",0).pack("V",0).pack("v", strlen($name) ); 
-   $cdrec .= pack("v", 0 ).pack("v", 0 ).pack("v", 0 ).pack("v", 0 ); 
-   $ext = "\xff\xff\xff\xff"; 
-   $cdrec .= pack("V", 16 ).pack("V", $this -> old_offset ).$name; 
-   $this -> ctrl_dir[] = $cdrec; 
-   $this -> old_offset = $new_offset; 
+   $new_offset = strlen(implode("", $this->datasec));
+   $cdrec = "\x50\x4b\x01\x02\x00\x00\x0a\x00\x00\x00\x00\x00\x00\x00\x00\x00";
+   $cdrec .= pack("V",0).pack("V",0).pack("V",0).pack("v", strlen($name) );
+   $cdrec .= pack("v", 0 ).pack("v", 0 ).pack("v", 0 ).pack("v", 0 );
+   $ext = "\xff\xff\xff\xff";
+   $cdrec .= pack("V", 16 ).pack("V", $this -> old_offset ).$name;
+   $this -> ctrl_dir[] = $cdrec;
+   $this -> old_offset = $new_offset;
    $this -> dirs[] = $name;
  }
  function add_File($data, $name, $compact = 1)
@@ -104,7 +104,7 @@ class PHPZip extends Action
      $timearray['mday'] = 1; $timearray['hours'] = 0;
      $timearray['minutes'] = 0; $timearray['seconds'] = 0;
    }
-   return (($timearray['year'] - 1980) << 25) | ($timearray['mon'] << 21) |     ($timearray['mday'] << 16) | ($timearray['hours'] << 11) | 
+   return (($timearray['year'] - 1980) << 25) | ($timearray['mon'] << 21) |     ($timearray['mday'] << 16) | ($timearray['hours'] << 11) |
     ($timearray['minutes'] << 5) | ($timearray['seconds'] >> 1);
  }
  function Extract ( $zn, $to, $index = Array(-1) )
@@ -131,7 +131,7 @@ class PHPZip extends Action
    return $stat;
  }
   function ReadFileHeader($zip)
-  { 
+  {
     $binary_data = fread($zip, 30);
     $data = unpack('vchk/vid/vversion/vflag/vcompression/vmtime/vmdate/Vcrc/Vcompressed_size/Vsize/vfilename_len/vextra_len', $binary_data);
     $header['filename'] = fread($zip, $data['filename_len']);
@@ -267,7 +267,7 @@ class PHPZip extends Action
   }}
   return true;
  }
-} 
+}
 
 /*
 [复制到剪切板]CODE:
@@ -294,14 +294,14 @@ $filename="me/me.php";    //zip文件中的文件名,可以和$zipfile不同
 $filesize=@filesize($zipfile);
 
 $fp=@fopen($zipfile,rb);
-$zipfilecontent=Array($filename,@fread($fp,$filesize));  
+$zipfilecontent=Array($filename,@fread($fp,$filesize));
 @fclose($fp);
 $zip->Add($zipfilecontent,1);  //可以多次执行 $zip->Add 来添加多个文件
 
 if(@fputs(@fopen($key,"wb"),$zip->get_file())) //写入文件
 msg("文件压缩成功!!");
 else
-msg("文件压缩失败!!"));
+msg("文件压缩失败!!",0));
 ?>
 浏览zip文件
 

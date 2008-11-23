@@ -245,9 +245,13 @@ function toDate($time,$format='Y年m月d日 H:i:s')
 }
 
 
-function msg($info)
-{
+function msg($info,$isok=1)
+{	
+	if($isok==1){
 	echo "<font style='font-size:12px'>".$info."</font>";
+	}else{
+	echo "<font style='font-size:12px;color:red'>".$info."</font>";		
+	}
 }
 
 

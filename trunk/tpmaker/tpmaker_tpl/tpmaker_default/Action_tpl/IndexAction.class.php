@@ -23,8 +23,9 @@ class IndexAction extends PublicAction{
 
 		//生成table的树
 		$leftdate=array(
-			/*left*/
-		);
+{leftdate}			array( 'id' =>'{id}','caption' =>'{caption}','name' =>'{title}'),
+{/leftdate}
+);
 		$this->assign('left',$leftdate);
 		//dump($leftdate);
 		$this->display();

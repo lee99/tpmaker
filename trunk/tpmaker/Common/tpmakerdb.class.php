@@ -1,7 +1,7 @@
 <?php
-class tpmakerdb extends Action  
+class tpmakerdb extends Action
 {//类定义开始
-	
+
 	 /**
      +----------------------------------------------------------
      * 标签库定义项目表
@@ -10,8 +10,8 @@ class tpmakerdb extends Action
      * @access protected
      +----------------------------------------------------------
      */
-    var $projecttable = 'sys_projects';  
-    /**   
+    var $projecttable = 'sys_projects';
+    /**
     +----------------------------------------------------------
      * 标签库定义项目ID
      +----------------------------------------------------------
@@ -19,8 +19,8 @@ class tpmakerdb extends Action
      * @access protected
      +----------------------------------------------------------
      */
-    var $projectid = '';	
-	
+    var $projectid = '';
+
 
     /**
      +----------------------------------------------------------
@@ -30,8 +30,8 @@ class tpmakerdb extends Action
      * @access protected
      +----------------------------------------------------------
      */
-    var $tables = 'sys_tables';  
-    /**   
+    var $tables = 'sys_tables';
+    /**
     +----------------------------------------------------------
      * 标签库定义项目ID
      +----------------------------------------------------------
@@ -41,7 +41,7 @@ class tpmakerdb extends Action
      */
     var $tablesid = '';
 
-    /**   
+    /**
     +----------------------------------------------------------
      * 定义是否先检查是否存在如果存在则不做
      +----------------------------------------------------------
@@ -51,7 +51,7 @@ class tpmakerdb extends Action
      */
     var $dropcheck = true;
 
-	/**   
+	/**
     +----------------------------------------------------------
      * 取得公共的项目的所有信息
      +----------------------------------------------------------
@@ -64,7 +64,7 @@ function getprojects(){
 		   $data=$list->getByid($this->projectid);
 		   return $data;
 }
-	/**   
+	/**
     +----------------------------------------------------------
      * 取得公共的表的所有信息
      +----------------------------------------------------------
@@ -78,7 +78,7 @@ function gettables($id){
 			$data=$list->getByid($id);
 		   return $data;
 }
-  	/**   
+  	/**
     +----------------------------------------------------------
      * 取得公共的表的所有信息
      +----------------------------------------------------------
@@ -91,7 +91,17 @@ function getfieldsbytbid($id){
 		if($data['datemodelid']!=0){$datemodelid=$data['datemodelid'];}//取出公用的数据模型
 		$fields=D('sys_fields');
 		$fields=$fields->findAll('pid='.$id .' or pid='.$datemodelid ,'*','seqNo ASC');//取出所有表和数据模型表
-		return $fields;
+		
+		//因为搜索出来的数据可能会因为有公共数据库而引起重复,所以有以下的操作过滤重重的项目.
+		//相同的数据以数据库自己的排序先后为取舍标准
+		
+		foreach ($fields as $date){//
+			if(!in_array($date['name'],$tmparray)){
+				$newdate[]=$date;
+			}
+				$tmparray[]=$date['name'];//累加以判断是否name有重复
+		}
+		return $newdate;
 }
 
 function creattable($tableid){
@@ -105,32 +115,41 @@ function creattable($tableid){
 	$thiscaption=$tables['caption'];
 	if(!$this->dropcheck){
 		$sql_infoherd="DROP TABLE IF EXISTS `".$treutablename."`;";
-		msg("正在删除数据表:".$thiscaption."<br>");
+		msg("正在删除数据表:".$thiscaption."<br>",0);
 		$this->dosql($sql_infoherd);
-	}	
+	}
+	$pkname=$this->getpkname($tables['id']);
 
-	
+
 	$sql_head="CREATE TABLE IF NOT EXISTS `$treutablename` (";
 	$sql_body=$this->makebodysql($tables['id']);
-	$sql_foot="  PRIMARY KEY  (`id`) ) 
+	$sql_foot="  PRIMARY KEY  (`$pkname`) )
 	ENGINE=MyISAM  DEFAULT CHARSET=utf8 COMMENT='$thiscaption' AUTO_INCREMENT=1 ;";
 	$sql_infoherd=$sql_head.$sql_body.$sql_foot;
-	
+
 	msg("<br>正在生成数据表:".$thiscaption."<br>");
 	$this->dosql($sql_infoherd,'生成数据表:'.$treutablename);
-	
+
 }
+
+function getpkname($id){
+	//获得主键的名字
+	$dates=$this->getfieldsbytbid($id);
+	$list=D('sub_fieldtype');
+	foreach ($dates as $date){
+		$r=$list->getbyid($date['fieldtype']);
+		if($r['primary']==1 && $pkname==''){
+			$pkname= $date['name'];
+		}
+	}
+	return $pkname;
+}
+
 
 function makebodysql($id){
 	//生成instert sql
 	$dates=$this->getfieldsbytbid($id);
-	foreach ($dates as $date){//
-		if(!in_array($date['name'],$tmparray)){
-			$newdate[]=$date;
-		}
-			$tmparray[]=$date['name'];//累加以判断是否name有重复
-	}
-	foreach ($newdate as $date){
+	foreach ($dates as $date){
 		$sql.=$this->sqlbytpye($date['fieldtype'],$date['caption'],$date['name'],$date['fieldlenght']);
 	}
 	return $sql;
@@ -139,27 +158,33 @@ function makebodysql($id){
 function sqlbytpye($id,$caption,$name,$fieldlenght){
 	$list=D('sub_fieldtype');
 	$date=$list->getbyid($id);
-	$thiscaption=$caption;//注释
-	$thisname=$name;//名称
-	$thistype      = $date['thistype'];//类型 
+	$thiscaption	=	$caption;//注释
+	$thisname		=	$name;//名称
+	$thistype		=	$date['thistype'];//类型
 	if(!empty($fieldlenght) or $fieldlenght!=0){
 		$thisleng=$fieldlenght;
 	}else {
-		$thisleng=$date['leng']; 
+		$thisleng=$date['leng'];//字段长度
 	}
-	
+
 	if($date['notnull']==1){
 		$thisnotnull="NOT NULL ";
 	}else{
 		$thisnotnull="NULL ";
 	}
-	$thistype=$date['type'];	
-	$thisdefault=$date['default'];
+	$thistype=$date['type'];
+	$thisdefault=$date['default'];//默认值
+	if($date['autoInc']==1){//自动增加
+		$thisautoInc='auto_increment';
+	}else{
+		$thisautoInc='';
+	}
 
-	$sql="  `$thisname` $thistype($thisleng) $thisnotnull COMMENT '$thiscaption',";
+	$sql="  `$thisname` $thistype($thisleng) $thisnotnull $thisautoInc COMMENT '$thiscaption',";
+	//`pid` int(11) NOT NULL default '0' COMMENT '说明',
 	return $sql;
-	
-	
+
+
 }
 
 function buideall(){
@@ -169,7 +194,7 @@ function buideall(){
 	foreach ($date as $gdate){
 		$this->creattable($gdate['id']);
 	}
-	
+
 }
 
 function creatdb(){
@@ -181,9 +206,9 @@ function creatdb(){
 	if(!$this->dropcheck){
 		$sql_infoherd="DROP DATABASE IF EXISTS `".$project_dbname."` ;";
 		$this->dosql($sql_infoherd);
-	}	
+	}
 
-	$sql_infoherd="CREATE DATABASE `".$project_dbname."` DEFAULT CHARACTER SET utf8 COLLATE utf8_general_ci;";	
+	$sql_infoherd="CREATE DATABASE `".$project_dbname."` DEFAULT CHARACTER SET utf8 COLLATE utf8_general_ci;";
 	$this->dosql($sql_infoherd,'生成数据库:'.$project_proname);
 }
 
@@ -200,11 +225,11 @@ function dosql($sql,$info){
 	$project_proname = $date['proname'];//名称[英]
 	$project_tbpre = $date['tbpre'];//数据库前辍
 	$project_dbname = $date['dbname'];//数据库名
-	
+
 	$link = mysql_connect($project_host,$project_dbuser,$project_dbpassword) or die($this->ErrorInfo());
 
 	if ($link){
-		
+
 		@mysql_query("USE `".$project_dbname."`;");
 		@mysql_query("SET NAMES 'utf8'");
 
@@ -216,7 +241,7 @@ function dosql($sql,$info){
 			msg("正在操作数据库...操作:".$info."....完成<br>");
 		}
 	}else{
-		msg("数据库连接不成功,请检查!");
+		msg("数据库连接不成功,请检查!",0);
 	}
 }
 

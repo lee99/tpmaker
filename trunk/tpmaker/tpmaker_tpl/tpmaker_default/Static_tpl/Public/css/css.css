@@ -47,6 +47,12 @@ input
     background-color: #DAE7FD;
 	border: 1px #cccccc solid;
 }
+
+input.button {
+        padding: 0 .25em;
+        width: 0; /* for IE only */
+        overflow: visible;
+    }
 /*****************************************************
 Menu Controls
 *****************************************************/
@@ -153,10 +159,13 @@ fieldset
 	BORDER-RIGHT: #666666 1px solid;
 	BORDER-TOP: #666666 1px solid;
 	FONT-SIZE: 12px;
-	HEIGHT: 18px;
 	margin: 0px;
 	background-image: url('../images/buttonbg.gif');
-	padding: 0px;
+    padding: 1px 1px 1px 1px;
+    width: auto;
+    _width: 0;
+    overflow:visible !ie;
+    cursor: pointer;
 }
 
 /*  文字?色 */

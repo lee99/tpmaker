@@ -96,9 +96,11 @@ tp1 = new WebFXTabPane( document.getElementById( "tabPane1" ) );
 		<myhtml:editlist id="checkList2" name="list"   datasource="list_val" style="list"
 		show="
 			caption|text:标题,
-			
+			isview|select|makeselect('isview[]'#'sub_yesno'#$list['isview']):详细[是否显示在详细信息],
 			viewtype|select|makeselect('viewtype[]'#'sub_viewtype'#$list['viewtype']):详细信息类型,
+			isedit|select|makeselect('isedit[]'#'sub_yesno'#$list['isedit']):编辑[是否显示在编辑信息],
 			edittype|select|makeselect('edittype[]'#'sub_edittype'#$list['edittype']):编辑形式,
+			isadd|select|makeselect('isadd[]'#'sub_yesno'#$list['isadd']):增加[是否显示在增加信息],
 			addtype|select|makeselect('addtype[]'#'sub_addtype'#$list['addtype']):增加形式,
 			indexvar|20:默认值[支持函数],
 			autotype|select|makeselect('autotype[]'#'Sub_auto'#$list['autotype']):自动填充,
@@ -116,11 +118,10 @@ tp1 = new WebFXTabPane( document.getElementById( "tabPane1" ) );
 		<myhtml:editlist id="checkList2" name="list"    datasource="list_genneral" style="list"
 		show="
 			caption|text:标题,
-			
-			islist|select|makeselect('islist[]'#'sub_yesno'#$list['islist']):是否列表,
+			islist|select|makeselect('islist[]'#'sub_yesno'#$list['islist']):列表[是否显示在列表],
 			islistviewtype|select|makeselect('islistviewtype[]'#'sub_viewtype'#$list['islistviewtype']):列表查看类型,
 			islistwidth|4:列表长度,
-			iswrap|select|makeselect('iswrap[]'#'sub_yesno'#$list['iswrap']):是否排序
+			iswrap|select|makeselect('iswrap[]'#'sub_yesno'#$list['iswrap']):排序[是否需要排序筛选]
 
 		"
 		/>
@@ -132,7 +133,7 @@ tp1 = new WebFXTabPane( document.getElementById( "tabPane1" ) );
 		show="
 			caption|text:标题,
 			
-			request|select|makeselect('request[]'#'sub_yesno'#$list['request']):必填,
+			request|select|makeselect('request[]'#'sub_yesno'#$list['request']):必填[是否为必填项],
 			validate|select|makeselect('validate[]'#'sub_validate'#$list['validate']):验证形式,
 			validate_tex|40:错误提示[不填为默认],
 			validate_reg|40:自定义正则验证
@@ -146,8 +147,7 @@ tp1 = new WebFXTabPane( document.getElementById( "tabPane1" ) );
 		<myhtml:editlist id="checkList2" name="list"   datasource="list_search" style="list"
 		show="
 			caption|text:标题,
-			
-			issearch|select|makeselect('issearch[]'#'sub_yesno'#$list['issearch']):是否搜索,
+			issearch|select|makeselect('issearch[]'#'sub_yesno'#$list['issearch']):搜索[是需地搜索功能],
 			searchtype|select|makeselect('searchtype[]'#'sub_searchtype'#$list['searchtype']):一般搜索形式,
 			advsearchtype|select|makeselect('advsearchtype[]'#'sub_searchtype'#$list['advsearchtype']):高级搜索形式
 		"

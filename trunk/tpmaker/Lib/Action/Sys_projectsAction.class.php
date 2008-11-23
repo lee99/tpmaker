@@ -43,7 +43,7 @@ class sys_projectsAction extends AdminAction{
 			delbypid(sys_tables,$_REQUEST['id'],$pidf='pid');
 			$list->delete($_REQUEST['id']);
 		}else {
-			msg("失败!");
+			msg("失败!",0);
 		}
 
 		sleep(3);
@@ -225,7 +225,7 @@ class sys_projectsAction extends AdminAction{
 		if(@fputs(@fopen($filename,"wb"),$z->get_file())){ //写入文件
 			msg("文件压缩成功!!");
 		}else{
-			msg("文件压缩失败!!");
+			msg("文件压缩失败!!",0);
 		}
 		//$z -> Zip($zippath, './Backup/ZIP/'.$zipname['proname'].".zip"); //添加指定目录
 
