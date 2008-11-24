@@ -136,22 +136,31 @@ class tpmaker extends Action
 		$app_path=$this->getapppath();//获取生成程序的根目录
 		$tpl_path=$this->gettplpath();//获取程序模板的根目录
 		deldir($app_path);////common.php文件
-		mk_dir($app_path.'/Lib/Model/');
-		mk_dir($app_path.'/Lib/Action/');
-		mk_dir($app_path.'/Cache/');//生成Cache目录
-		mk_dir($app_path.'/Common/');//生成Common目录
-		mk_dir($app_path.'/Conf/');//生成Conf目录
-		mk_dir($app_path.'/Data/');//生成Data目录
-		mk_dir($app_path.'/Lang/');//生成Lang目录
-		mk_dir($app_path.'/Logs/');//生成Logs目录
-		mk_dir($app_path.'/Temp/');//生成Temp目录
-		mk_dir($app_path.'/Tpl/default/Public/');//生成Tpl目录
+		tpmk_dir($app_path.'/Lib/Model/');
+		tpmk_dir($app_path.'/Lib/Action/');
+		tpmk_dir($app_path.'/Cache/');//生成Cache目录
+		tpmk_dir($app_path.'/Common/');//生成Common目录
+		tpmk_dir($app_path.'/Conf/');//生成Conf目录
+		tpmk_dir($app_path.'/Data/');//生成Data目录
+		tpmk_dir($app_path.'/Lang/');//生成Lang目录
+		tpmk_dir($app_path.'/Logs/');//生成Logs目录
+		tpmk_dir($app_path.'/Temp/');//生成Temp目录
+		tpmk_dir($app_path.'/Tpl/default/Public/');//生成Tpl目录
 		copyfile($tpl_path.'/common.php',$app_path.'/Common/common.php');////common.php文件
 		copyfile($tpl_path.'/PublicAction.class.php',$app_path.'/Lib/Action/PublicAction.class.php');
 		////PublicAction.class.php文件
 		copydir($tpl_path.'/Static_tpl',$app_path.'/Tpl/default');////common.php文件
+		$this->installtags();//安装标签
 	}
 
+	function installtags() {
+		//安装自己的标签
+		copyfile(APP_PATH.'/tpmaker_tpl/tphtmltags/TagLib/TagLibMkrtags.class.php',THINK_PATH.'/Lib/Think/Template/TagLib/TagLibMkrtags.class.php');//安装标签
+		copyfile(APP_PATH.'/tpmaker_tpl/tphtmltags/TagLib/TagLibMyhtml.class.php',THINK_PATH.'/Lib/Think/Template/TagLib/TagLibMyhtml.class.php');//安装标签
+		copyfile(APP_PATH.'/tpmaker_tpl/tphtmltags/Tags/mkrtags.xml',THINK_PATH.'/Lib/Think/Template/Tags/mkrtags.xml');//安装标签
+		copyfile(APP_PATH.'/tpmaker_tpl/tphtmltags/Tags/myhtml.xml',THINK_PATH.'/Lib/Think/Template/Tags/myhtml.xml');//安装标签
+		
+	}
 
 	/**
     +----------------------------------------------------------
@@ -311,7 +320,7 @@ class tpmaker extends Action
 
 
 		//index()的ACTION生成
-		$index_act[]=array();
+		if($data['list']==1 || $data['search']==1){
 		$index_act[0]['modelname']=$name;
 		$fields=$this->getfieldsbytbid($id);
 		$list_fields=$this->makerows($fields,'islist');
@@ -320,35 +329,42 @@ class tpmaker extends Action
 		$index_act[0]['search_fields']=$search_fields;
 		$search_ser_c=$this->makerows($fields,'issearch','$ser_c');
 		$index_act[0]['search_ser_c']=$search_ser_c;
+		}
 
 
 		//delete()的ACTION生成
-		$del_act[]=array();
-		$del_act[0]['modelname']=$name;
+		if($data['del']==1){
+			$del_act[0]['modelname']=$name;
+		}
 
 		//insert()的ACTION生成
-		$insert_act[]=array();
-		$insert_act[0]['modelname']=$name;
+		if($data['add']==1){
+			$insert_act[0]['modelname']=$name;
+		}
 
 		//uptate()的ACTION生成
-		$update_act[]=array();
-		$update_act[0]['modelname']=$name;
+		if($data['edit']==1){
+			$update_act[0]['modelname']=$name;
+		}
 
 		//edit()的ACTION生成
-		$edit_act[]=array();
-		$assignlist=$this->makeassignlist($fields);
-		$edit_act[0]['modelname']=$name;
-		$edit_act[0]['assignlist']=$assignlist;
+		if($data['edit']==1){
+			$assignlist=$this->makeassignlist($fields);
+			$edit_act[0]['modelname']=$name;
+			$edit_act[0]['assignlist']=$assignlist;
+		}
 
 		//view()的ACTION生成
-		$view_act[]=array();
-		$assignlist=$this->makeassignlist($fields);
-		$view_act[0]['modelname']=$name;
-		$view_act[0]['assignlist']=$assignlist;
+		if($data['view']==1){
+			$assignlist=$this->makeassignlist($fields);
+			$view_act[0]['modelname']=$name;
+			$view_act[0]['assignlist']=$assignlist;
+		}
 
 		//add()的ACTION生成
-		$add_act[]=array();
-		$add_act[0]['modelname']=$name;
+		if($data['add']==1){
+			$add_act[0]['modelname']=$name;
+		}
 
 		$tpl->tplsign("name",$name); //替换
 		$tpl->tplblocksign("index_act",$index_act); //替换
@@ -370,12 +386,14 @@ class tpmaker extends Action
 		$data=$this->gettables($id);
 		$name=uplower($data['title']);//第一个字母变成大写,其它变成小写
 		$caption=$data['caption'];
-		mk_dir($app_path.'/Tpl/default/'.$name.'/');//生成目录
+		tpmk_dir($app_path.'/Tpl/default/'.$name.'/');//生成目录
 
 		//生成INDEX.HMTL包括LIST及SEARCH的
+		if($data['list']==1 || $data['search']==1){
 		$filename=$app_path.'/Tpl/default/'.$name.'/index.html';//生成的模板文件名
 		$tpl=new tpl($tpl_path.'/Html_tpl/index.html');//源模板文件名
 		$fields=$this->getfieldsbytbid($id);
+		//$filename=$this->tplchecktable($data,$filename);
 		$listshowsort=$this->makerowslistsort($fields,'islist');
 		$listshowtd=$this->makerowslisttd($fields,'islist');
 		$tpl->tplsign('listshowsort',$listshowsort);//替换
@@ -383,9 +401,11 @@ class tpmaker extends Action
 		$tpl->tplsign('tablecaption',$caption);//替换
 		$filecontent=$tpl->tplreturn();
 		writefile($filename,$filecontent);
+		}
 		
 
 		//生成Add.HMTL
+		if($data['add']==1){
 		$filename=$app_path.'/Tpl/default/'.$name.'/add.html';//生成的模板文件名
 		$tpl=new tpl($tpl_path.'/Html_tpl/add.html');//源模板文件名
 		$fields=$this->getfieldsbytbid($id);
@@ -394,8 +414,10 @@ class tpmaker extends Action
 		$tpl->tplsign('rowscontent',$rowscontent);//替换
 		$filecontent=$tpl->tplreturn();
 		writefile($filename,$filecontent);
+		}
 
 		//生成Edit.HMTL
+		if($data['edit']==1){
 		$filename=$app_path.'/Tpl/default/'.$name.'/edit.html';//生成的模板文件名
 		$tpl=new tpl($tpl_path.'/Html_tpl/edit.html');//源模板文件名
 		$fields=$this->getfieldsbytbid($id);
@@ -404,9 +426,11 @@ class tpmaker extends Action
 		$tpl->tplsign('rowscontent',$rowscontent);//替换
 		$filecontent=$tpl->tplreturn();
 		writefile($filename,$filecontent);
+		}
 
 
 		//生成Veiw.HMTL
+		if($data['view']==1){
 		$filename=$app_path.'/Tpl/default/'.$name.'/view.html';//生成的模板文件名
 		$tpl=new tpl($tpl_path.'/Html_tpl/view.html');//源模板文件名
 		$fields=$this->getfieldsbytbid($id);
@@ -415,6 +439,7 @@ class tpmaker extends Action
 		$tpl->tplsign('rowscontent',$rowscontent);//替换
 		$filecontent=$tpl->tplreturn();
 		writefile($filename,$filecontent);
+		}
 	}
 
 

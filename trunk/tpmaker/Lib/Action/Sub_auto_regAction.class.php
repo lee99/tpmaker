@@ -41,9 +41,9 @@ class sub_auto_regAction extends AdminAction{
 
 	public function updateform(){
 		$list=D('sub_auto_reg');
-		for ($i = 0; $i < count($_REQUEST['id']); $i++) {
-			foreach (array_keys($_REQUEST) as $key){
-			$var[$key]=	$_REQUEST[$key][$i];//数组转换
+		for ($i = 0; $i < count($_POST['id']); $i++) {
+			foreach (array_keys($_POST) as $key){
+				$var[$key]=	$_POST[$key][$i];//数组转换
 			}
 		$dataall=$list->create($var);
 		$list->save();
