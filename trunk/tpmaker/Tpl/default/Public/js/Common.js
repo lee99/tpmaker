@@ -1,14 +1,15 @@
 function $(obj){
     return reobj=(typeof(obj)=="object") ? obj : document.getElementById(obj);
-	/*var reobj=(typeof(obj)=="object") ? obj : document.getElementById(obj);
-	reobj=(reobj==null) ? document.getElementByName(obj) : reobj;
-	if (reobj==null) {
-		return null;
-	} else {
-	    return reobj;	
-	}*/
 }
 
+function checkboxvalue(inid,outid){
+	if($(inid).checked==true){
+		$(outid).value=1;
+	}else{
+		$(outid).value=0;
+	}
+	//alert($(outid).value);
+}
 
 function hideW(){
 	var myFx = new Fx.Style('msg_tip', 'height',{duration:600}).custom(200,0);

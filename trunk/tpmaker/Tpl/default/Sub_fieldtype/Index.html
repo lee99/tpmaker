@@ -25,10 +25,10 @@
 			seqNo|1:排序,
 			type|select|makeselect('type[]'#'sys_fieldtypesub'#$list['type']#''#null#'title'):数据类型,
 			leng|1:长度,
-			notnull|select|makeselect('notnull[]'#'sub_yesno'#$list['notnull']):NULL,
+			notnull|checkbox:NULL,
 			default|8:默认值,
-			primary|select|makeselect('primary[]'#'sub_yesno'#$list['primary']):主键,
-			autoInc|select|makeselect('autoInc[]'#'sub_yesno'#$list['autoInc']):自动增长,
+			primary|checkbox:主键,
+			autoInc|checkbox:自动增长,
 			othervar|30:其它属性,
 			color|select|makeselect('color[]'#'Sub_color'#$list['color']):颜色
 		"

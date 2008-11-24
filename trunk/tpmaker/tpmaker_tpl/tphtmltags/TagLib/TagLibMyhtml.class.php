@@ -185,7 +185,7 @@ Class TagLibMyhtml extends TagLib
 
         //显示开始
         if(!empty($createform)) {///是否显示form
-			$parseStr_header	= '<!-- Myhtml 系统列表组件开始 --><form name="form_update" id="form_update" method="POST">';
+			$parseStr_header	= '<!-- Myhtml 系统列表组件开始 --><form name="form_update" id="form_update" method="POST" autocomplete="off">';
           }
         $parseStr  .= '
 
@@ -260,6 +260,17 @@ Class TagLibMyhtml extends TagLib
 			$parseStr .='{:'.$thispro.'}';
 			}elseif(trim($property[1])=="text"){
 			$parseStr .='{$'.trim($name).'.'.trim($property[0]).'}';
+			}elseif(trim($property[1])=="checkbox"){
+			$parseStr .='
+			<php>
+			if($'.trim($name).'[\''.trim($property[0]).'\']==1){
+				$checked="checked=checked";
+			}else{
+				$checked="";
+			}
+			</php>
+			<input  type="checkbox" onclick="checkboxvalue(\'cb_'.trim($property[0]).'{$'.$name.'.'.$pk.'}\',\'ch_'.trim($property[0]).'{$'.$name.'.'.$pk.'}\');" id="cb_'.trim($property[0]).'{$'.$name.'.'.$pk.'}" {$checked} />
+			<input id="ch_'.trim($property[0]).'{$'.$name.'.'.$pk.'}"  name="'.trim($property[0]).'[]" type="hidden" value="{$'.trim($name).'.'.trim($property[0]).'}">';
 			}elseif(trim($property[1])=="hidden"){
 			$parseStr .='<input name="'.trim($property[0]).'[]" type="hidden" value="{$'.trim($name).'.'.trim($property[0]).'}">';
 			}else{
