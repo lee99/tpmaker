@@ -341,6 +341,8 @@ Class TagLibMyhtml extends TagLib
 			$parseStr .='{:'.$thispro.'}';
 			}elseif(trim($property[1])=="hidden"){
 			$parseStr .='';
+			}elseif(trim($property[1])=="checkbox"){
+			$parseStr .='<input name="'.trim($property[0]).'" value="1" type="checkbox" checked="checked">';
 			}else{
 			$parseStr .='<input name="'.trim($property[0]).'" value="" size="'.$property[1].'">';
 			}
