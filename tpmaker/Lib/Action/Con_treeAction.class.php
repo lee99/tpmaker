@@ -38,27 +38,20 @@ class Con_treeAction extends AdminAction{
 	 $this->ajaxReturn('','操作成功！',1);
 
 
-
-//redirect(__URL__."/index");
-	//dump($con_tree);
 	}
 
 
 	public function updateform(){
 		$list=D('Con_tree');
-		for ($i = 0; $i < count($_REQUEST['id']); $i++) {
-			foreach (array_keys($_REQUEST) as $key){
-			$var[$key]=	$_REQUEST[$key][$i];//数组转换
+		for ($i = 0; $i < count($_POST['id']); $i++) {
+			foreach (array_keys($_POST) as $key){
+				$var[$key]=	$_POST[$key][$i];//数组转换
 			}
 		$dataall=$list->create($var);
 		$list->save();
 		}
 		$this->ajaxReturn('','操作成功！',1);
 
-
-
-//redirect(__URL__."/index");
-		//dump($_REQUEST);
 	}
 
 	public function addform(){
@@ -69,8 +62,6 @@ class Con_treeAction extends AdminAction{
 		$this->ajaxReturn('','操作成功！',1);
 
 
-
-//redirect(__URL__."/index");
 	}
 
 }

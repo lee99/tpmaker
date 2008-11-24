@@ -63,7 +63,10 @@ var tablename = "checkList"; // table name
 			<td><input type="checkbox" name="key"	value="<php> echo is_array($list)?$list["id"]:$list->id </php>"> </td>
 			{listshowtd}
 			
-			<TD><A HREF="javascript:edit('<php> echo is_array($list)?$list["id"]:$list->id </php>')">编辑</A> <A HREF="javascript:del('<php> echo is_array($list)?$list["id"]:$list->id </php>')">删除</A> <A HREF="javascript:view('<php> echo is_array($list)?$list["id"]:$list->id </php>')">详细</A> 
+			<TD>
+			<A HREF="javascript:edit('<php> echo is_array($list)?$list["id"]:$list->id </php>')">编辑</A> 
+			<A HREF="javascript:del('<php> echo is_array($list)?$list["id"]:$list->id </php>')">删除</A> 
+			<A HREF="javascript:view('<php> echo is_array($list)?$list["id"]:$list->id </php>')">详细</A> 
 				</TD>
 		</TR>
 		<php> endforeach; </php>
