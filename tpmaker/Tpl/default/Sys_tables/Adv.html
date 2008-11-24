@@ -36,16 +36,16 @@ function viewfields(id){
 			title|20:表名[英名],
 
 			edittype|select|makeselect('edittype[]'#'tab_edittype'#$list['edittype']):操作模式,
-			ismodel|select|makeselect('ismodel[]'#'sub_yesno'#$list['ismodel']):模板,
+			ismodel|checkbox:模板,
 			datemodelid|select|makeselect('datemodelid[]'#'sys_tables'#$list['datemodelid']#'ismodel<>0 and pid='.$_GET['pid']):公用数据模板,
-			list|select|makeselect('list[]'#'sub_yesno'#$list['list']):列表,
-			view|select|makeselect('view[]'#'sub_yesno'#$list['view']):详细,
-			add|select|makeselect('add[]'#'sub_yesno'#$list['add']):增加,
-			del|select|makeselect('del[]'#'sub_yesno'#$list['del']):删除,
-			edit|select|makeselect('edit[]'#'sub_yesno'#$list['edit']):编辑,
-			search|select|makeselect('search[]'#'sub_yesno'#$list['search']):搜索,
+			list|checkbox:列表,
+			view|checkbox:详细,
+			add|checkbox:增加,
+			del|checkbox:删除,
+			edit|checkbox:编辑,
+			search|checkbox:搜索,
 			searchtype|select|makeselect('searchtype[]'#'tab_searchtype'#$list['searchtype']):搜索形式,
-			isaction|select|makeselect('isaction[]'#'sub_yesno'#$list['isaction']):活动,
+			isaction|checkbox:活动,
 			seqNo|1:排序
 		"
 		action="false"
