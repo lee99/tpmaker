@@ -18,19 +18,17 @@ class sys_tablesAction extends AdminAction{
 		$wherevalue='issystem=0 and pid='.$_REQUEST[pid];//过滤条件
 		$list=D('sys_tables');
 		$count= $list->count($wherevalue);
-		import("ORG.Util.Page");
+		
 		if(!empty($_REQUEST['order'])) { $order = $_REQUEST['order']; }else{ $order='seqNo'; } //排序表单
 		if(empty($_REQUEST['sort']) ) { $sortd = 'asc'; }else{ $sortd=$_REQUEST['sort']; } //排序方向
 		$orderBy=$order.' '.$sortd;//排序
 
-		$p= new Page($count,$listRows);
+		$p=$this->tpPage($count,10,'page');
 
-		$list=$list->findAll($wherevalue,'*',$orderBy,$p->firstRow.','.$p->listRows);
+		$list=$list->findAll($wherevalue,'*',$orderBy,$p['firstRow'].','.$p['listRows']);
 
 		//dump($list);
-		$page=$p->show();
 		$this->assign('list',$list);
-		$this->assign('page',$page);
 		$this->display();
 
 	}
@@ -53,19 +51,19 @@ class sys_tablesAction extends AdminAction{
 		$wherevalue='issystem=1 and pid='.$_REQUEST[pid];//过滤条件
 		$list=D('sys_tables');
 		$count= $list->count($wherevalue);
-		import("ORG.Util.Page");
+		
 		if(!empty($_REQUEST['order'])) { $order = $_REQUEST['order']; }else{ $order='seqNo'; } //排序表单
 		if(empty($_REQUEST['sort']) ) { $sortd = 'asc'; }else{ $sortd=$_REQUEST['sort']; } //排序方向
 		$orderBy=$order.' '.$sortd;//排序
 
-		$p= new Page($count,$listRows);
+		$p=$this->tpPage($count,10,'page');
 
-		$list=$list->findAll($wherevalue,'*',$orderBy,$p->firstRow.','.$p->listRows);
+		$list=$list->findAll($wherevalue,'*',$orderBy,$p['firstRow'].','.$p['listRows']);
 
 		//dump($list);
-		$page=$p->show();
+		
 		$this->assign('list',$list);
-		$this->assign('page',$page);
+		
 		$this->display();
 
 	}

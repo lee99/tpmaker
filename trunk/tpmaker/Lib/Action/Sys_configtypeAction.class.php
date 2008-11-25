@@ -12,18 +12,17 @@ class Sys_configtypeAction extends AdminAction{
 
 		$list=D('Sys_configtype');
 		$count= $list->count();
-		import("ORG.Util.Page");
+		
 		if(!empty($_REQUEST['order'])) { $order = $_REQUEST['order']; }else{ $order='seqNo'; } //排序表单
 		if(empty($_REQUEST['sort']) ) { $sortd = 'asc'; }else{ $sortd=$_REQUEST['sort']; } //排序方向
 		$orderBy=$order.' '.$sortd;//排序
 
-		$p= new Page($count,$listRows);
-		$list=$list->findAll('','*',$orderBy,$p->firstRow.','.$p->listRows);
+		$p=$this->tpPage($count,10,'page');
+		$list=$list->findAll('','*',$orderBy,$p['firstRow'].','.$p['listRows']);
 
 		//dump($list);
-		$page=$p->show();
+		
 		$this->assign('list',$list);
-		$this->assign('page',$page);
 		$this->display();
 
 	}

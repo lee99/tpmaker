@@ -13,31 +13,25 @@ class sys_fieldsAction extends AdminAction{
 		$pro=D('sys_tables');
 		$pro=$pro->getByid($_REQUEST[pid]);
 		$this->assign('tablename',$pro['caption']);//当前操作的数据表
-		
-		
+
 		$list=D('sys_fields');
 		$count= $list->count('pid='.$_REQUEST[pid]);
-		import("ORG.Util.Page");
-		$listRows=10;
 		if(!empty($_REQUEST['order'])) { $order = $_REQUEST['order']; }else{ $order='seqNo'; } //排序表单
 		if(empty($_REQUEST['sort']) ) { $sortd = 'asc'; }else{ $sortd=$_REQUEST['sort']; } //排序方向
 		$orderBy=$order.' '.$sortd;//排序
-
-		$p= new Page($count,$listRows);
-		$list=$list->findAll('pid='.$_REQUEST[pid],'*',$orderBy,$p->firstRow.','.$p->listRows);
+		$p=$this->tpPage($count,10,'page');
+		$list=$list->findAll('pid='.$_REQUEST[pid],'*',$orderBy,$p['firstRow'].','.$p['listRows']);
 		$list_val=$list;//验证的设定
 		$list_genneral=$list;//一般属性设定
 		$list_search=$list;//搜索形式设定
 		$list_outkey=$list;//外键设定
 
-		//dump($list);
-		$page=$p->show();
+
 		$this->assign('list',$list);
 		$this->assign('list_val',$list_val);//验证的设定
 		$this->assign('list_genneral',$list_genneral);//一般属性设定
 		$this->assign('list_search',$list_search);//搜索形式设定
 		$this->assign('list_outkey',$list_outkey);//外键设定
-		$this->assign('page',$page);
 		$this->display();
 
 	}
