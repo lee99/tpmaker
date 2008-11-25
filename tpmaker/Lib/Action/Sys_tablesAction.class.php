@@ -23,7 +23,7 @@ class sys_tablesAction extends AdminAction{
 		if(empty($_REQUEST['sort']) ) { $sortd = 'asc'; }else{ $sortd=$_REQUEST['sort']; } //排序方向
 		$orderBy=$order.' '.$sortd;//排序
 
-		$p=$this->tpPage($count,10,'page');
+		$p=$this->tpPage($count,20,'page');
 
 		$list=$list->findAll($wherevalue,'*',$orderBy,$p['firstRow'].','.$p['listRows']);
 
