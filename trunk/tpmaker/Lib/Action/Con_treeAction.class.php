@@ -17,7 +17,7 @@ class Con_treeAction extends AdminAction{
 		if(empty($_REQUEST['sort']) ) { $sortd = 'asc'; }else{ $sortd=$_REQUEST['sort']; } //排序方向
 		$orderBy=$order.' '.$sortd;//排序
 
-		$p=$this->tpPage($count,10,'page');
+		$p=$this->tpPage($count,20,'page');
 		//$con_tree->Cache(true);
 		$list=$con_tree->findAll('id <> 0','*',$orderBy,$p['firstRow'].','.$p['listRows']);
 

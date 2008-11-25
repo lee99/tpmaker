@@ -22,7 +22,7 @@ class Sys_configAction extends AdminAction{
 		$count= $list->count($thiswhere);
 		
 
-		$p=$this->tpPage($count,10,'page');
+		$p=$this->tpPage($count,20,'page');
 		//$list->Cache(true);
 		$list=$list->findAll($thiswhere,'*',$orderBy,$p['firstRow'].','.$p['listRows']);
 
