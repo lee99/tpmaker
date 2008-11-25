@@ -167,20 +167,28 @@ fieldset
 
 .button1
 {
-	BORDER-BOTTOM: #666666 1px solid;
-	BORDER-LEFT: #666666 1px solid;
-	BORDER-RIGHT: #666666 1px solid;
-	BORDER-TOP: #666666 1px solid;
+	BORDER: #666666 1px solid;
 	FONT-SIZE: 12px;
 	margin: 0px;
 	background-image: url('../images/buttonbg.gif');
-    padding: 1px 1px 1px 1px;
+    padding: 0px;
     width: auto;
     _width: 0;
     overflow:visible !ie;
     cursor: pointer;
 }
 
+.btn_small
+{
+	BORDER: #666666 1px solid;
+	background-image: url('../images/buttonbg2.gif');
+	padding: 0px;
+	width: auto;
+	color: #000000;
+	text-decoration: none;
+	margin:0px;
+    cursor: pointer;
+}
 
 #linkpage a
 {
@@ -193,6 +201,7 @@ fieldset
 	margin:0px;
     cursor: pointer;
 }
+
 
 /*  文字?色 */
 .red{color:red}
