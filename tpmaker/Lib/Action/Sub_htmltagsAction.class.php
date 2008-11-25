@@ -12,18 +12,18 @@ class sub_htmltagsAction extends AdminAction{
 
 		$glist=D('sub_htmltags');
 		$count= $glist->count();
-		import("ORG.Util.Page");
+		
 		if(!empty($_REQUEST['order'])) { $order = $_REQUEST['order']; }else{ $order='seqNo'; } //排序表单
 		if(empty($_REQUEST['sort']) ) { $sortd = 'asc'; }else{ $sortd=$_REQUEST['sort']; } //排序方向
 		$orderBy=$order.' '.$sortd;//排序
 
 		$p= new Page($count,$glistRows);
-		$glist=$glist->findAll('','*',$orderBy,$p->firstRow.','.$p->listRows);
+		$glist=$glist->findAll('','*',$orderBy,$p['firstRow'].','.$p['listRows']);
 
 		//dump($glist);
-		$page=$p->show();
+		
 		$this->assign('list',$glist);
-		$this->assign('page',$page);
+		
 		$this->display();
 
 	}

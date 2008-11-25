@@ -72,6 +72,23 @@ class AdminAction extends Action{
     }
 
 
+    /**
+     +----------------------------------------------------------
+     * 自定分页
+     +----------------------------------------------------------
+     */
+    function tppage($count,$listRows=10,$pageid='page')
+    {
+        import("ORG.Util.Page");
+        $page    =    new Page($count,$listRows);
+        $r['firstRow']=$page->firstRow;
+        $r['listRows']=$page->listRows;
+        $page = $page->show(1);
+        //dump($page);
+        $this->assign($pageid,$page['linkPages']);
+        return $r;
+    }
+
 }
 
 

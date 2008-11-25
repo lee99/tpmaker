@@ -20,16 +20,15 @@ class Sys_configAction extends AdminAction{
 		if($_REQUEST['pid']!='') { $thiswhere = 'pid='.$_REQUEST['pid']; }else{ $thiswhere = ''; } //排序方向
 		$orderBy=$order.' '.$sortd;//排序
 		$count= $list->count($thiswhere);
-		import("ORG.Util.Page");
+		
 
-		$p= new Page($count,$listRows);
+		$p=$this->tpPage($count,10,'page');
 		//$list->Cache(true);
-		$list=$list->findAll($thiswhere,'*',$orderBy,$p->firstRow.','.$p->listRows);
+		$list=$list->findAll($thiswhere,'*',$orderBy,$p['firstRow'].','.$p['listRows']);
 
 		//dump($list);
-		$page=$p->show();
+		
 		$this->assign('list',$list);
-		$this->assign('page',$page);
 		$this->display();
 
 	}
