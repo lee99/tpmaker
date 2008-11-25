@@ -115,12 +115,12 @@ function creattable($tableid){
 	$thiscaption=$tables['caption'];
 	if(!$this->dropcheck){
 		$sql_infoherd="DROP TABLE IF EXISTS `".$treutablename."`;";
-		msg("正在删除数据表:".$thiscaption."<br>");
+		msg("正在删除数据表:[".$thiscaption."]<br>");
 		$this->dosql($sql_infoherd);
 	}
 	$pkname=$this->getpkname($tables['id']);
 	if(trim($pkname)==''){
-		msg("表:[".$thiscaption."]没有定义主键,请检查!",0);
+		msg("表:[".$thiscaption."]没有定义主键,请检查!<br>",0);
 		exit();
 	}
 
@@ -131,8 +131,8 @@ function creattable($tableid){
 	ENGINE=MyISAM  DEFAULT CHARSET=utf8 COMMENT='$thiscaption' AUTO_INCREMENT=1 ;";
 	$sql_infoherd=$sql_head.$sql_body.$sql_foot;
 
-	msg("<br>正在生成数据表:".$thiscaption."<br>");
-	$this->dosql($sql_infoherd,'生成数据表:'.$treutablename);
+	msg("正在生成数据表:[".$thiscaption."]<br>");
+	$this->dosql($sql_infoherd,'生成数据表:['.$treutablename.']');
 
 }
 
@@ -213,7 +213,7 @@ function creatdb(){
 	}
 
 	$sql_infoherd="CREATE DATABASE `".$project_dbname."` DEFAULT CHARACTER SET utf8 COLLATE utf8_general_ci;";
-	$this->dosql($sql_infoherd,'生成数据库:'.$project_proname);
+	$this->dosql($sql_infoherd,'生成数据库:['.$project_proname.']<br>');
 }
 
 
@@ -242,7 +242,7 @@ function dosql($sql,$info){
 			//msg($dosql."<hr>");
 		@mysql_close($link);
 		if(!empty($info)){
-			msg("正在操作数据库...操作:".$info."....完成<br>");
+			msg("正在操作数据库:[".$info."]<br>操作完成<br><br>");
 		}
 	}else{
 		msg("数据库连接不成功,请检查!",0);
