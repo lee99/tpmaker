@@ -263,6 +263,15 @@ table.list th{
 	padding:0px;
 	text-align: center;
 	height:18px;
+	text-decoration: none;
+}
+
+table.list th a{
+	color: #ffffff;
+	padding:2px;
+}
+table.list th a:hover {
+	color: #333;
 }
 
 table.list td a{

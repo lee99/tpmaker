@@ -115,10 +115,14 @@ function creattable($tableid){
 	$thiscaption=$tables['caption'];
 	if(!$this->dropcheck){
 		$sql_infoherd="DROP TABLE IF EXISTS `".$treutablename."`;";
-		msg("正在删除数据表:".$thiscaption."<br>",0);
+		msg("正在删除数据表:".$thiscaption."<br>");
 		$this->dosql($sql_infoherd);
 	}
 	$pkname=$this->getpkname($tables['id']);
+	if(trim($pkname)==''){
+		msg("表:[".$thiscaption."]没有定义主键,请检查!",0);
+		exit();
+	}
 
 
 	$sql_head="CREATE TABLE IF NOT EXISTS `$treutablename` (";
