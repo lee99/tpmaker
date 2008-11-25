@@ -167,7 +167,7 @@ fieldset
 
 .button1
 {
-	BORDER: #666666 1px solid;
+	BORDER: #999999 1px solid;
 	FONT-SIZE: 12px;
 	margin: 0px;
 	background-image: url('../images/buttonbg.gif');
@@ -180,11 +180,11 @@ fieldset
 
 .btn_small
 {
-	BORDER: #666666 1px solid;
+	BORDER: #999999 1px solid;
 	background-image: url('../images/buttonbg2.gif');
 	padding: 0px;
 	width: auto;
-	color: #000000;
+	color: #666666;
 	text-decoration: none;
 	margin:0px;
     cursor: pointer;
@@ -192,7 +192,7 @@ fieldset
 
 #linkpage a
 {
-	BORDER: #666666 1px solid;
+	BORDER: #999999 1px solid;
 	background-image: url('../images/buttonbg2.gif');
 	padding: 0px;
 	width: auto;
