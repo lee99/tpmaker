@@ -64,6 +64,9 @@ class tpmaker extends Action
 		$list=D($this->projecttable);
 		$data=$list->getByid($this->projectid);
 		$app_path='../'.$data['proname'];
+		$tpl=D('pro_templete');
+		$tpl=$tpl->getByid($data['tplid']);
+		$this->tpmaker_template=$tpl[tplname];
 		return $app_path;
 	}
 
