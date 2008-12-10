@@ -137,9 +137,9 @@ class sys_projectsAction extends AdminAction{
 		$tables = $db->getTables();
 		foreach ($tables as $tbname){
 			$fe=$db->getFields($tbname);
-			dump($fe);
+			dump($fe);//所有表的字段
 		}
-		dump($tables);
+		//dump($tables);//所有表
 		$db->switchConnect(0);
 	}
 
