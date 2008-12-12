@@ -225,6 +225,9 @@ function clean_html($value){
 }
 
 
+
+
+
 function un_clean_html($value){
   $value = htmlspecialchars_decode($value);
   $value = strtr($value, array(
@@ -234,6 +237,18 @@ function un_clean_html($value){
   return nl2br($value);
 }
 
+
+	
+function strbetween($str_in,$chr1,$chr2) {
+	//返加两个字符里面的值
+	$tween="";  // not needed but good practise when appending
+	//$chr1='[';
+	//$chr2=']';
+	for ($i=strpos($str_in, $chr1);$i<strpos($str_in, $chr2);$i++){
+		$tween=$tween+$str_in[$i];
+	}
+	return $tween;
+}
 
 function toDate($time,$format='Y年m月d日 H:i:s')
 {

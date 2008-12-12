@@ -136,11 +136,12 @@ class sys_projectsAction extends AdminAction{
 		$d=$list->getByid($_REQUEST['id']);
 		$dbi->importdb_name=$d['dbname'];
 		$tables=$dbi->getalltable();
-		//$import->table2project($tables);//导入所有表
-		foreach ($tables as $tbname){
+		$importrs=$dbi->table2project($tables);//导入所有表
+		foreach ($importrs as $tbname){
 			$tbname=$tbname['tablename'];//表名
+			$newid=$tbname['newid'];//表id名
 			$field=$dbi->getallField($tbname);//获得所有的字段
-			$dbi->field2table($field);//导入所有的字段
+			$dbi->field2table($field,$newid);//导入所有的字段
 			
 			//dump($fe);//所有表的字段
 			//exit;
