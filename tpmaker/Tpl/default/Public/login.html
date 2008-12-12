@@ -16,13 +16,13 @@
 var PUBLIC	 =	 '__PUBLIC__';
 ThinkAjax.updateTip	=	'<IMG SRC="../Public/images/ajaxloading.gif" WIDTH="16" HEIGHT="16" BORDER="0" ALT="" align="absmiddle"> Loading～';
 function loginHandle(data,status){
-if (status==1)
-{
-$('result').innerHTML	=	'<span style="color:blue"><IMG SRC="../Public/images/ok.gif" WIDTH="20" HEIGHT="20" BORDER="0" ALT="" align="absmiddle" > 登录成功！3 秒后跳转～</span>';
-$('form1').reset();
-window.location = '__URL__';
-}
-		
+	if (status==1)
+	{
+		$('result').innerHTML	=	'<span style="color:blue"><IMG SRC="../Public/images/ok.gif" WIDTH="20" HEIGHT="20" BORDER="0" ALT="" align="absmiddle" > 登录成功！3 秒后跳转～</span>';
+		$('form1').reset();
+		window.location = '__URL__';
+	}
+
 }
 function keydown(e){
 	if (event.keyCode==13)
@@ -30,9 +30,9 @@ function keydown(e){
 	}
 }
 function fleshVerify(){
-//重载验证码
-var timenow = new Date().getTime();
-$('verifyImg').src= '__URL__/verify/'+timenow;
+	//重载验证码
+	var timenow = new Date().getTime();
+	$('verifyImg').src= '__URL__/verify/'+timenow;
 }
 //-->
 </SCRIPT>

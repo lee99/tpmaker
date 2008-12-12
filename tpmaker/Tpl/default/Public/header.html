@@ -41,10 +41,10 @@ var cmThemeOfficeBase = IMG_PATH;
 var cmThemeOffice =
 {
 
-  	// HTML code to the left of the folder item
-  	mainFolderLeft: '&nbsp;',
-  	// HTML code to the right of the folder item
-  	mainFolderRight: '&nbsp;',
+	// HTML code to the left of the folder item
+	mainFolderLeft: '&nbsp;',
+	// HTML code to the right of the folder item
+	mainFolderRight: '&nbsp;',
 	// HTML code to the left of the regular item
 	mainItemLeft: '&nbsp;',
 	// HTML code to the right of the regular item
@@ -76,23 +76,23 @@ var cmThemeOfficeMainVSplit = [_cmNoAction, '&nbsp;'];
 </SCRIPT>
 
 <SCRIPT LANGUAGE="JavaScript">
- <!--
- 	ThinkAjax.updateTip = '<IMG SRC="../Public/images/loading2.gif" WIDTH="16" HEIGHT="16" BORDER="0" ALT="loading..." align="absmiddle"> 数据处理中...';
+<!--
+ThinkAjax.updateTip = '<IMG SRC="../Public/images/loading2.gif" WIDTH="16" HEIGHT="16" BORDER="0" ALT="loading..." align="absmiddle"> 数据处理中...';
 
-	function upbtn(){
-		ThinkAjax.sendForm('form_update','__URL__/updateform/',complete,'result');
-	}
-	function addbtn(){
-		ThinkAjax.sendForm('form_add','__URL__/addform/',complete,'result');
-	}
-	function complete(data,status){
-		if (status==1)
-		{
+function upbtn(){
+	ThinkAjax.sendForm('form_update','__URL__/updateform/',complete,'result');
+}
+function addbtn(){
+	ThinkAjax.sendForm('form_add','__URL__/addform/',complete,'result');
+}
+function complete(data,status){
+	if (status==1)
+	{
 		location.href=REQUEST_URI;
-		}
 	}
+}
 
- //-->
+//-->
  </SCRIPT>
 </head>
 <body  height="100%" topmargin="0" marginheight="0" leftmargin="0" marginwidth="0">
