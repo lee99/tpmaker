@@ -232,7 +232,7 @@ Class TagLibMyhtml extends TagLib
 			$parseStr .= '</Th>';
 
         }
-        if(!empty($action)) {//如果指定显示操作功能列
+        if(!empty($action)||!empty($actionlist[0])) {//如果指定显示操作功能列
             $parseStr .= '<th >操作</th>';
         }
 

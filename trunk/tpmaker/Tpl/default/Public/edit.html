@@ -6,10 +6,10 @@
 var curFileNum = 0;
 var rowsnum=0;  //记录行数
 var rindex="";       //列索引
-function addRow(){   
+function addRow(){
 	curFileNum++;
 	rowsnum++;
-    var arow=tbl.insertRow();
+	var arow=tbl.insertRow();
 	var td = arow.insertCell();
 	td.innerHTML='<div class="impBtn  fLeft" ><INPUT TYPE="file"  name="file'+ curFileNum +'" class="file bgcolor1 large"> </div><IMG SRC="../Public/images/limit.gif" WIDTH="20" HEIGHT="20" onclick="javascript:deleteRow()" align="absmiddle" onfocus="javascript:getObject(this)" style="cursor:hand" BORDER="0" ALT="删除"> ';
 	td.align="center"
@@ -18,21 +18,21 @@ function addRow(){
 function deleteRow(){
 	if(tbl.rows.length>0){
 		tbl.deleteRow(rindex); //删除当前行
-		rowsnum--;    
+		rowsnum--;
 	}else{
 		return;
 	}
 	rindex="";
 }
-function getObject(obj){ 
+function getObject(obj){
 	rindex=obj.parentElement.parentElement.rowIndex;/*当前行对象*/
 }
 function notice(name){
 	switch (name)
 	{
-	case 'nickname':	showTip('用户昵称');break;
-	case 'verify':		showTip('登录验证码');break;
-	case 'remark':		showTip('备注信息');break;
+		case 'nickname':	showTip('用户昵称');break;
+		case 'verify':		showTip('登录验证码');break;
+		case 'remark':		showTip('备注信息');break;
 	}
 }
 function uploadComplete(id,name){

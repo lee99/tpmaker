@@ -128,21 +128,27 @@ class sys_projectsAction extends AdminAction{
 
 	public function importdb(){//导入数据库
 		//没完成
+		require_once COMMON_PATH."import_db.php";//引入自定义的类
 		$list=D('sys_projects');
-		$data=$list->getByid($_REQUEST['id']);
-		$db_config = 'mysql://'.C('DB_USER').':'.C('DB_PWD').'@'.C('DB_HOST').':'.C('DB_PORT').'/'.$data['dbname'];
-		$db	=	DB::getInstance();
-		$db->addConnect($db_config,1);
-		$db->switchConnect(1);
-		$tables = $db->getTables();
+		$dbi=new importdb();
+		$dbi->projectid=$_GET['id'];
+		
+		$d=$list->getByid($_REQUEST['id']);
+		$dbi->importdb_name=$d['dbname'];
+		$tables=$dbi->getalltable();
+		//$import->table2project($tables);//导入所有表
 		foreach ($tables as $tbname){
-			$fe=$db->getFields($tbname);
-			dump($fe);//所有表的字段
+			$tbname=$tbname['tablename'];//表名
+			$field=$dbi->getallField($tbname);//获得所有的字段
+			$dbi->field2table($field);//导入所有的字段
+			
+			//dump($fe);//所有表的字段
+			//exit;
 		}
-		//dump($tables);//所有表
-		$db->switchConnect(0);
+		
 	}
 
+	
 	public function buidedb(){//导入数据库
 		require_once COMMON_PATH."tpmakerdb.class.php";//引入自定义的类
 		$list=D('sys_projects');
