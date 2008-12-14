@@ -116,7 +116,7 @@ class importdb extends Action
 		}
 	}
 
-	function checkdate($data){
+	function checkinputdata($data){
 		$a=strstr($data['Type'],'(');
 		$a=$a[0];
 		$b=strbetween($data['Type'],'(',')');
@@ -131,9 +131,22 @@ class importdb extends Action
 				$typeid=3;
 				break;
 			case 'varchar':
-				$typeid=3;
+				$typeid=1;
 				break;
+			case 'int':
+				$typeid=2;
+				break;
+			default:
+				$typeid=1;
+					
 		}
+		
+		if($data['Extra']=='auto_increment'){
+			$typeid=6;//是否自动加入
+			return $typeid;
+		}
+		
+		return $typeid;
 	}
 
 
@@ -147,7 +160,7 @@ class importdb extends Action
 			$d['caption'] =($dt['Comment']=='')?$dt['Field']:$dt['Comment'];//中文
 			$d['name'] =$dt['Field'];//英文
 			$d['islist'] =($dt['Extra']=='auto_increment')?0:1;//是否列表
-			$d['fieldtype'] =$this->checkdate($dt);//字属性
+			$d['fieldtype'] =$this->checkinputdata($dt);//字属性
 			//$d['fieldlenght'] =0;//字符长度
 			//$d['request'] =0;//必填
 			//$d['validate'] =0;//验证形式
