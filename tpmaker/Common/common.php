@@ -239,16 +239,17 @@ function un_clean_html($value){
 
 
 	
-function strbetween($str_in,$chr1,$chr2) {
+function remover($string, $sep1, $sep2)
+{
 	//获得两个字符串里的值
-	$len_sep1=strpos($str_in,$chr1);//sep1所在的位置
+	$len_sep1=strpos($string,$sep1);//sep1所在的位置
 	if($len_sep1===false){//看看有没有第一个字符
 		return false;
 	}else{
-		$leng1=strlen($chr1); //计算第一个字符占位数
-		$leng2=strlen($chr2); //计算第2个字符占位数
-		$len_sep2=strpos($string,$chr2);//$chr2所在的位置
-		$string = substr($string,$len_sep1+$leng1);//除去$chr2
+		$leng1=strlen($sep1); //计算第一个字符占位数
+		$leng2=strlen($sep2); //计算第2个字符占位数
+		$len_sep2=strpos($string,$sep2);//sep2所在的位置
+		$string = substr($string,$len_sep1+$leng1);//除去sep2
 		return $string;
 	}
 }

@@ -103,9 +103,13 @@ class importdb extends Action
 		$list=D('sys_tables');
 		for ($i = 0; $i <count($data); $i++) {
 		//for ($i = 0; $i <2; $i++) {
+			$title=ereg_replace("^".$this->perword,'',$data[$i]['tablename']);
+			//把去掉了前缀的表名提取出来
+			$true_title=$data[$i]['tablename'];
+			//真实的title
 			$d['pid'] =$this->projectid;
 			$d['caption'] =$data[$i]['conment'];
-			$d['title'] =$data[$i]['tablename'];
+			$d['title'] =$title;
 			$d['searchtype'] =1;
 			$d['edittype'] =1;
 			$d['ismodel'] =0;
@@ -119,11 +123,12 @@ class importdb extends Action
 			$d['issystem'] =0;
 			$list->create();
 			$insertId=$list->add($d);
+
 			$t[]=array(
-			'tablename'=>$d['title'],
+			'tablename'=>$true_title,
 			'newid'=>$insertId
 			);
-			msg("创建表:".$d['title'].",操作成功!<br>");
+			msg("创建表:".$title.",操作成功!<br>");
 		}
 		return $t;
 	}
@@ -132,7 +137,7 @@ class importdb extends Action
 		//本配置和"Sub_fieldtype"的配置是一致的,如有更改请同步更改
 		$a=explode('(',$data['Type']);
 		$a=$a[0];
-		$b=(int)strbetween($data['Type'],'(',')');
+		$b=intval(remover($data['Type'],'(',')'));
 		switch ($a){
 			case 'text':
 				$typeid=3;//[text][]
@@ -180,11 +185,12 @@ class importdb extends Action
 		$list=D('sys_fields');
 		for ($i = 0; $i <count($data); $i++) {
 			$dt=$data[$i];
+			$mytypeid=$this->checkinputdata($dt);//字属性
 			$d['pid'] =$newid;//所属的表
 			$d['caption'] =($dt['Comment']=='')?$dt['Field']:$dt['Comment'];//中文
 			$d['name'] =$dt['Field'];//英文
 			$d['islist'] =($dt['Extra']=='auto_increment')?0:1;//是否列表
-			$d['fieldtype'] =$this->checkinputdata($dt);//字属性
+			$d['fieldtype'] =$mytypeid;//字属性
 			//$d['fieldlenght'] =0;//字符长度
 			//$d['request'] =0;//必填
 			//$d['validate'] =0;//验证形式
@@ -193,12 +199,12 @@ class importdb extends Action
 			$d['viewtype'] =($dt['Extra']=='auto_increment')?0:1;//查看类型
 			$d['isview'] =($dt['Extra']=='auto_increment')?0:1;//是否列表
 			$d['edittype'] =($dt['Extra']=='auto_increment')?0:1;//编辑类型
-			$d['isedit'] =1;//是否编辑
+			$d['isedit'] =0;//是否编辑
 			$d['addtype'] =1;//增加类型
 			$d['isadd'] =($dt['Extra']=='auto_increment')?0:1;//是否增加
-			$d['islistwidth'] =0;//列表长度
+			$d['islistwidth'] ='';//列表长度
 			$d['islistviewtype'] =0;//列表查看类型
-			$d['iswrap'] =($dt['Type']!='text')?0:1;//是否排序
+			$d['iswrap'] =($mytypeid==3 || $mytypeid==4)?0:1;//是否排序
 			$d['indexvar'] =$dt['Default'];//默认值
 			$d['autotype'] =0;//自动填充类型
 			$d['issystem'] =0;//是否系统保留
