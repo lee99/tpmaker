@@ -9,6 +9,7 @@ class importdb extends Action
 	var $projectid;//项目id号
 	var $importdb_name;//项目id号
 	var $db_config;//项目id号
+	var $perword;//项目id号
 
 	function getconf(){
 		$this->db_config='mysql://'.C('DB_USER').':'.C('DB_PWD').'@'.C('DB_HOST').':'.C('DB_PORT').'/'.$this->importdb_name;
@@ -21,45 +22,52 @@ class importdb extends Action
 		$dbname=$this->importdb_name;
 		$db	=	DB::getInstance();
 		$db->addConnect($this->getconf(),1);
-		$db->switchConnect(1);
-		$ts = $db->query("SELECT * FROM INFORMATION_SCHEMA.TABLES where TABLE_SCHEMA='".$dbname."'");//所有表
-		//$tables = $db->getTables();
-		//tp的默认取得表的方法,但是取出的值不能满足应用
-		//dump($ts);//所有表
-		/*
-		[0] => array(21) {
-		["TABLE_CATALOG"] => NULL
-		["TABLE_SCHEMA"] => string(9) "ns_crm_v2"
-		["TABLE_NAME"] => string(8) "ad_label"
-		["TABLE_TYPE"] => string(10) "BASE TABLE"
-		["ENGINE"] => string(6) "MyISAM"
-		["VERSION"] => string(2) "10"
-		["ROW_FORMAT"] => string(5) "Fixed"
-		["TABLE_ROWS"] => string(3) "615"
-		["AVG_ROW_LENGTH"] => string(2) "13"
-		["DATA_LENGTH"] => string(4) "7995"
-		["MAX_DATA_LENGTH"] => string(16) "3659174697238527"
-		["INDEX_LENGTH"] => string(5) "10240"
-		["DATA_FREE"] => string(1) "0"
-		["AUTO_INCREMENT"] => string(4) "1119"
-		["CREATE_TIME"] => string(19) "2008-12-09 09:15:48"
-		["UPDATE_TIME"] => string(19) "2008-12-09 09:26:57"
-		["CHECK_TIME"] => NULL
-		["TABLE_COLLATION"] => string(15) "utf8_general_ci"
-		["CHECKSUM"] => NULL
-		["CREATE_OPTIONS"] => string(0) ""
-		["TABLE_COMMENT"] => string(0) ""
+		if($db->switchConnect(1))
+		{
+			$ts = $db->query("SELECT * FROM INFORMATION_SCHEMA.TABLES where TABLE_SCHEMA='".$dbname."'");//所有表
+			//$tables = $db->getTables();
+			//tp的默认取得表的方法,但是取出的值不能满足应用
+			//dump($ts);//所有表
+			/*
+			[0] => array(21) {
+			["TABLE_CATALOG"] => NULL
+			["TABLE_SCHEMA"] => string(9) "ns_crm_v2"
+			["TABLE_NAME"] => string(8) "ad_label"
+			["TABLE_TYPE"] => string(10) "BASE TABLE"
+			["ENGINE"] => string(6) "MyISAM"
+			["VERSION"] => string(2) "10"
+			["ROW_FORMAT"] => string(5) "Fixed"
+			["TABLE_ROWS"] => string(3) "615"
+			["AVG_ROW_LENGTH"] => string(2) "13"
+			["DATA_LENGTH"] => string(4) "7995"
+			["MAX_DATA_LENGTH"] => string(16) "3659174697238527"
+			["INDEX_LENGTH"] => string(5) "10240"
+			["DATA_FREE"] => string(1) "0"
+			["AUTO_INCREMENT"] => string(4) "1119"
+			["CREATE_TIME"] => string(19) "2008-12-09 09:15:48"
+			["UPDATE_TIME"] => string(19) "2008-12-09 09:26:57"
+			["CHECK_TIME"] => NULL
+			["TABLE_COLLATION"] => string(15) "utf8_general_ci"
+			["CHECKSUM"] => NULL
+			["CREATE_OPTIONS"] => string(0) ""
+			["TABLE_COMMENT"] => string(0) ""
+			}
+	
+			*/
+	
+			foreach ($ts as $v=>$t){
+				$tables[$v]['tablename']=$t['TABLE_NAME'];
+				$tables[$v]['conment']=($t['TABLE_COMMENT']=='')?$t['TABLE_NAME']:$t['TABLE_COMMENT'];
+			}
+	
+			$db->switchConnect(0);
+			return $tables;
+			
+		}else{
+			$db->switchConnect(0);
+			msg('数据连接错误!请查正再试!<br>',0);
+			exit;
 		}
-
-		*/
-
-		foreach ($ts as $v=>$t){
-			$tables[$v]['tablename']=$t['TABLE_NAME'];
-			$tables[$v]['conment']=($t['TABLE_COMMENT']=='')?$t['TABLE_NAME']:$t['TABLE_COMMENT'];
-		}
-
-		$db->switchConnect(0);
-		return $tables;
 	}
 
 	function getallField($data)
@@ -85,6 +93,7 @@ class importdb extends Action
 		*/
 		$field=$db->query("show full fields from $data");
 		$db->switchConnect(0);
+		//dump($field);// 列出所有的表属性
 		return $field;
 	}
 
@@ -93,6 +102,7 @@ class importdb extends Action
 		//所有表的信息写入tpmaker
 		$list=D('sys_tables');
 		for ($i = 0; $i <count($data); $i++) {
+		//for ($i = 0; $i <2; $i++) {
 			$d['pid'] =$this->projectid;
 			$d['caption'] =$data[$i]['conment'];
 			$d['title'] =$data[$i]['tablename'];
@@ -113,28 +123,39 @@ class importdb extends Action
 			'tablename'=>$d['title'],
 			'newid'=>$insertId
 			);
+			msg("创建表:".$d['title'].",操作成功!<br>");
 		}
+		return $t;
 	}
 
 	function checkinputdata($data){
-		$a=strstr($data['Type'],'(');
+		//本配置和"Sub_fieldtype"的配置是一致的,如有更改请同步更改
+		$a=explode('(',$data['Type']);
 		$a=$a[0];
-		$b=strbetween($data['Type'],'(',')');
+		$b=(int)strbetween($data['Type'],'(',')');
 		switch ($a){
 			case 'text':
-				$typeid=3;
+				$typeid=3;//[text][]
 				break;
 			case 'datetime':
-				$typeid=3;
+				$typeid=17;
 				break;
 			case 'date':
-				$typeid=3;
+				$typeid=17;
 				break;
 			case 'varchar':
-				$typeid=1;
+				if($b>40){
+					$typeid=4;	//[varchar][240]
+				}else{
+					$typeid=1;	//[varchar][40]
+				}
 				break;
 			case 'int':
-				$typeid=2;
+				if($b>4){
+					$typeid=2;	//[INI][11]
+				}else{
+					$typeid=5;	//[tinyint][4]
+				}
 				break;
 			default:
 				$typeid=1;
@@ -142,11 +163,14 @@ class importdb extends Action
 		}
 		
 		if($data['Extra']=='auto_increment'){
-			$typeid=6;//是否自动加入
+			$typeid=6;
+			//是否自动加入
+			//[autoid][11]
 			return $typeid;
 		}
 		
 		return $typeid;
+
 	}
 
 
@@ -187,8 +211,10 @@ class importdb extends Action
 			//$d['advsearchtype'] =0;//高级搜索形式
 			$d['seqNo'] =$i;//高级搜索形式
 			$d['modelid'] =0;//数据模版ID
-			$list->create();
+			$list->create($d);
 			$list->add($d);
+			//exit;
+			msg("&nbsp;&nbsp;&nbsp;&nbsp;导入数据表字段:".$d['caption'].",操作成功!<br>");
 		}
 	}
 

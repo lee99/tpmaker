@@ -316,7 +316,7 @@ Class TagLibMyhtml extends TagLib
 		$parseStr	.='
 		<!--form_update完成 -->
 		';
-        if(!empty($quickadd)) {///是否显示快速增加
+        if($quickadd) {///是否显示快速增加
         	if(!empty($createform)) {///是否显示form
 		        $parseStr	.= '
 		        <!--form_add开始 -->
@@ -350,7 +350,7 @@ Class TagLibMyhtml extends TagLib
             $parseStr .= '
 			</TD>';
         }
-        if(!empty($actionlist[0])) {//是否显示按钮
+        if($quickadd) {//是否显示按钮
         $parseStr	.= '<td><input type="button"  class="button1" onClick="addbtn();" value="增加"></td>';
         }
         $parseStr.='</TR><!--form_add完成 -->';

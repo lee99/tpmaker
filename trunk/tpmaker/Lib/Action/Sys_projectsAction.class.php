@@ -71,11 +71,18 @@ class sys_projectsAction extends AdminAction{
 	}
 
 	public function Percopy(){
+		//拷贝生成新项目的页面
 		$this->display();
 	}
 
 
 	public function dic(){
+		//生成数据词典的页面
+		$this->display();
+	}
+
+	public function perimport(){
+		//导入的页面
 		$this->display();
 	}
 
@@ -131,15 +138,25 @@ class sys_projectsAction extends AdminAction{
 		require_once COMMON_PATH."import_db.php";//引入自定义的类
 		$list=D('sys_projects');
 		$dbi=new importdb();
-		$dbi->projectid=$_GET['id'];
-		
-		$d=$list->getByid($_REQUEST['id']);
-		$dbi->importdb_name=$d['dbname'];
+		if($_GET['dbname']==''){
+			//如果没有传数据库名则以默认设置为参数
+			$dbi->projectid=$_GET['pid'];
+			$d=$list->getByid($_REQUEST['pid']);
+			$dbname=$d['dbname'];
+			$dbi->perword=$d['tbpre'];
+		}else{
+			//如果有传数据库名则以数据库名为参数
+			$dbi->projectid=$_GET['pid'];
+			$dbname=$_GET['dbname'];	
+			$dbi->perword=$_GET['perword'];	
+		}
+
+		$dbi->importdb_name=$dbname;
 		$tables=$dbi->getalltable();
 		$import_rs=$dbi->table2project($tables);//导入所有表
-		foreach ($import_rs as $tbname){
-			$tbname=$tbname['tablename'];//表名
-			$newid=$tbname['newid'];//表id名
+		foreach ($import_rs as $tb_name){
+			$tbname=$tb_name['tablename'];//表名
+			$newid=$tb_name['newid'];//表id名
 			$field=$dbi->getallField($tbname);//获得所有的字段
 			$dbi->field2table($field,$newid);//导入所有的字段
 			
