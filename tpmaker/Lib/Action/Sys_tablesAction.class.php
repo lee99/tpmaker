@@ -96,6 +96,8 @@ class sys_tablesAction extends AdminAction{
 	}
 
 
+
+
 	public function updateform(){
 		$list=D('sys_tables');
 		$allcout=count($_REQUEST['id']);

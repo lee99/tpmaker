@@ -11,6 +11,7 @@ class importdb extends Action
 	var $db_config;//项目id号
 	var $perword;//项目id号
 
+	
 	function getconf(){
 		$this->db_config='mysql://'.C('DB_USER').':'.C('DB_PWD').'@'.C('DB_HOST').':'.C('DB_PORT').'/'.$this->importdb_name;
 		return $this->db_config;
