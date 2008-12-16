@@ -17,16 +17,18 @@
     <!-- 功能操作区域结束 -->
 </fieldset>
 <fieldset>
-    <!-- 列表显示区域  --><myhtml:editlist id="checkList" name="list" checkbox="true" datasource="list" style="list" show="
- id|hidden|1:ID,
- pid|select|makeselect('pid[]'#'Con_tree'#$list['pid']):上级,
- title|20:项目标题,
- model:所属模块,
- action:具体操作方法,
- seqNo|1:排序,
- icon:图标
-"
- action="false" createform="true" quickadd="true" actionlist="" /><!--  分页显示区域 -->
+    <!-- 列表显示区域  -->
+    <myhtml:editlist id="checkList" name="list" checkbox="true" datasource="list" style="list" show="
+	 id|hidden|1:ID,
+	 pid|select|makeselect('pid[]'#'Con_tree'#$list['pid']#''#'title'#'tid'):上级,
+	 title|20:项目标题,
+	 model:所属模块,
+	 action:具体操作方法,
+	 seqNo|1:排序,
+	 icon:图标
+	"
+	 action="false" createform="true" quickadd="true" actionlist="" />
+ <!--  分页显示区域 -->
     <div class="page">
         <table width="100%">
             <tr>

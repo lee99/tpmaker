@@ -113,7 +113,8 @@ class IndexAction extends AdminAction{
 		C('SHOW_USE_MEM',false);			// 显示内存开销
 		//生成其它的树
 		$con_tree=D('con_tree');
-		$list=$con_tree->findAll('id <> 0');
+		$list=$con_tree->findAll('tid <> 0');
+		//dump($list);
 		$this->assign('tree',$list);
 		$this->display();
 	}

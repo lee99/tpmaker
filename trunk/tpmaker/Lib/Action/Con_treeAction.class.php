@@ -57,7 +57,11 @@ class Con_treeAction extends AdminAction{
 		$list=D('Con_tree');
 		$add_date=$_REQUEST;
 		$list->create($add_date);
-		$list->add($add_date);
+		$tid=$list->add($add_date);
+		$d['id']=$tid;
+		$d['tid']=$tid;
+		$list->create($d);
+		$list->save();
 		$this->ajaxReturn('','操作成功！',1);
 
 
