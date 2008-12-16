@@ -25,10 +25,10 @@
 			seqNo|1:排序,
 			type|select|makeselect('type[]'#'sys_fieldtypesub'#$list['type']#''#null#'title'):数据类型,
 			leng|1:长度,
-			notnull|checkbox:NULL,
+			notnull|checkbox:NULL[是否为空的字段],
 			default|8:默认值,
-			primary|checkbox:主键,
-			autoInc|checkbox:自动增长,
+			primary|checkbox:主键[是否为主键的字段],
+			autoInc|checkbox:自增[是否自动增长的字段],
 			othervar|30:其它属性,
 			color|select|makeselect('color[]'#'Sub_color'#$list['color']):颜色
 		"
