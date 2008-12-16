@@ -21,43 +21,32 @@
 </fieldset>
 <fieldset>
 
-<script type="text/javascript">
+<!-- 列表显示区域  -->
+		<myhtml:editlist id="checkList" name="list"  checkbox="true"  datasource="list" style="list"
+		show="
+			id|hidden|1:ID,
+			title|20:标题,
+			othervar|60:标签属性参考,
+			seqNo|1:排序,
+			usetype|select|makeselect('usetype[]'#'Sub_htmlusetype'#$list['usetype']):使用范围,
+			color|select|makeselect('color[]'#'Sub_color'#$list['color']):颜色
+		"
+		action="false"
+		createform="true"
+		quickadd="true"
+		actionlist=""
+		/>
 
+<!--  分页显示区域 -->
+<div class="page">
 
-jQuery(document).ready(function(){
-jQuery(listid).jqGrid({
-    url:URL+'/json/',
-    datatype: "json",
-    colNames:colvar,
-    colModel:colmod,
-    pager: jQuery('#pager2'),
-    rowNum:10,
-    rowList:[10,20,30,50],
-    imgpath: PUBLIC+'themes/tpmaker/images',
-    sortname: 'id',
-    viewrecords: true,
-    sortorder: "desc",
-    caption: "Demo"
-});
-});
-</script>
-<script type="text/javascript">
-
-var listid="#list2";
-var colvar=['ID号','标题', '其它属性', '排序','类型','着色','标记'];
-var colmod=[
-        {name:'id',index:'id', width:55},
-        {name:'title',index:'title', width:90},
-    	{name:'othervar',index:'othervar', width:100},
-        {name:'seqNo',index:'seqNo', width:80, align:"right"},
-        {name:'usetype',index:'usetype', width:80, align:"right"},
-        {name:'color',index:'color', width:80,align:"right"},
-        {name:'note',index:'note', width:150, sortable:false}
-		];
-
-</script>
-<table id="list2" class="scroll" cellpadding="0" cellspacing="0"></table>
-<div id="pager2" class="scroll" style="text-align:right;"></div>
+<table width="100%">
+<tr >
+<td align="left"><input type="button"  onclick="upbtn();" class="button1" value="更新本页数据"></td>
+<td align="right" id="linkpage">{$page}</td>
+</tr>
+</table>
+</div>
 </fieldset>
 
 <include file="../Public/footer" />
