@@ -5,29 +5,29 @@
         <link rel="stylesheet" type="text/css" href="../Public/pmd/styles/default/style1.css">
         <title>Designer</title>
         <script type="text/javascript">
-            // <![CDATA[
-            var pubimg = "../Public";
-            var URL = "__URL__";
-            var APP = "__APP__";
-            var server = "1";
-            var db = "{$_REQUEST['id']}";
-            var token = "5d72970a68995ed33c8bb60ebf6e37fe";
-            var LangSelectReferencedKey = "请选择主键";
-            var LangSelectForeignKey = "请选择外键";
-            var LangPleaseSelectPrimaryOrUniqueKey = "请选择主键或唯一健";
-            var LangIEnotSupport = "Internet Explorer 不支持这个方法";
-            var LangChangeDisplay = "选择要显示的字段";
-            
-            var strLang = Array();
-            strLang["strModifications"] = "修改已经保存。";
-            strLang["strRelationDeleted"] = "关联关系已经保存";
-            strLang["strInnoDBRelationAdded"] = "InnoDB关联关系已经增加";
-            strLang["strGeneralRelationFeat:strDisabled"] = "一般关系特性 : 已禁用";
-            strLang["strInternalRelationAdded"] = "Internal关联关系已经增加";
-            strLang["strErrorRelationAdded"] = "Error: 关联关系没增加成功";
-            strLang["strErrorRelationExists"] = "Error: 关联关系已经存在";
-            strLang["strErrorSaveTable"] = "Error: 对象的坐标不能保存!";
-            // ]]>
+        // <![CDATA[
+        var pubimg = "../Public";
+        var URL = "__URL__";
+        var APP = "__APP__";
+        var server = "1";
+        var db = "{$_REQUEST['id']}";
+        var token = "5d72970a68995ed33c8bb60ebf6e37fe";
+        var LangSelectReferencedKey = "请选择主键";
+        var LangSelectForeignKey = "请选择外键";
+        var LangPleaseSelectPrimaryOrUniqueKey = "请选择主键或唯一健";
+        var LangIEnotSupport = "Internet Explorer 不支持这个方法";
+        var LangChangeDisplay = "选择要显示的字段";
+
+        var strLang = Array();
+        strLang["strModifications"] = "修改已经保存。";
+        strLang["strRelationDeleted"] = "关联关系已经保存";
+        strLang["strInnoDBRelationAdded"] = "InnoDB关联关系已经增加";
+        strLang["strGeneralRelationFeat:strDisabled"] = "一般关系特性 : 已禁用";
+        strLang["strInternalRelationAdded"] = "Internal关联关系已经增加";
+        strLang["strErrorRelationAdded"] = "Error: 关联关系没增加成功";
+        strLang["strErrorRelationExists"] = "Error: 关联关系已经存在";
+        strLang["strErrorSaveTable"] = "Error: 对象的坐标不能保存!";
+        // ]]>
         </script>
         <script src="../Public/pmd/scripts/ajax.js" type="text/javascript">
         </script>
@@ -37,20 +37,20 @@
             <script src="../Public/pmd/scripts/iecanvas.js" type="text/javascript"></script>
         <![endif]-->
         <script type="text/javascript">
-                        // <![CDATA[
-                        var j_tabs = new Array();
-             	 <volist name="tables" id="table">
-                        j_tabs['{$_REQUEST['id']}.{$table.title}'] = 'MYISAM';    
-                  </volist>      
-                        // ]]>
-                    
+        // <![CDATA[
+        var j_tabs = new Array();
+        <volist name="tables" id="table">
+        j_tabs['{$_REQUEST['id']}.{$table.title}'] = 'MYISAM';
+        </volist>
+        // ]]>
+
         </script>
         {$script_contr}
         <script type="text/javascript">
-            // <![CDATA[
-            var display_field = new Array();
-            // display_field['sys_user'] = 'pwd';
-            // ]]>
+        // <![CDATA[
+        var display_field = new Array();
+        // display_field['sys_user'] = 'pwd';
+        // ]]>
         </script>
     </head>
     <body onload="Main()" class="general_body" id="../Public/pmd_body">
