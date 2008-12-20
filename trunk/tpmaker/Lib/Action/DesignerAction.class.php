@@ -147,9 +147,7 @@ class DesignerAction extends AdminAction{
 		if($list->delete($condition)){
 		  header("Content-Type: text/xml; charset=utf-8");
 		  header("Cache-Control: no-cache");
-			die('<root act="relation_upd" return="strRelationDeleted" b="1" K="'.$_REQUEST['K'].'"></root>');
-		}else{
-			msg($condition);
+			echo('<root act="relation_upd" return="strRelationDeleted" b="1" K="'.$_REQUEST['K'].'"></root>');
 		}
 
 	//dump($Designer);
