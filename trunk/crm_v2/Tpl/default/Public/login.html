@@ -49,14 +49,14 @@ function dologin(obj){
         </TR>
         <TR CLASS="row" >
           <TD CLASS="tRight">帐 号：</TD>
-          <TD CLASS="tRight"><INPUT TYPE="text" check="Require" warning="请输入帐号" NAME="account" /></TD>
+          <TD CLASS="tRight"><INPUT TYPE="text" check="Require" warning="请输入帐号" NAME="account" onclick="popHint(this,'请输入帐号。');"/></TD>
           <TD ROWSPAN="2" CLASS="tRight">验证码：<BR />
             对比表：</TD>
           <TD ROWSPAN="2" ><IMG ID="verifyImg" SRC="__URL__/verify/" ONCLICK="fleshVerify()" STYLE="cursor:pointer" BORDER="0" TITLE="点击刷新验证码" ALIGN="absmiddle" /></TD>
         </TR>
         <TR CLASS="row" >
           <TD CLASS="tRight">密 码：</TD>
-          <TD CLASS="tRight"><INPUT TYPE="password"  check="Require" warning="请输入密码" NAME="password" /></TD>
+          <TD CLASS="tRight"><INPUT TYPE="password"  check="Require" warning="请输入密码" NAME="password" onclick="popHint(this,'请输入密码。');"/></TD>
         </TR>
         <TR CLASS="row" >
           <TD CLASS="tRight">语 言：</TD>
@@ -69,7 +69,7 @@ function dologin(obj){
             </SELECT>
             </TD>
           <TD CLASS="tRight">验证码：</TD>
-          <TD ALIGN="left" ><INPUT TYPE="text" ONKEYDOWN="keydown(event)"  check="Require" warning="请输入验证码" NAME="verify" STYLE="width:180px" /></TD>
+          <TD ALIGN="left" ><INPUT TYPE="text" ONKEYDOWN="keydown(event)"  check="Require" warning="请输入验证码" NAME="verify" STYLE="width:180px" title="请对照上表输入验证码。"/></TD>
         </TR>
         <TR STYLE="height:5px" >
           <TD COLSPAN="4"></TD>
