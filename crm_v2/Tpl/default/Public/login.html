@@ -22,6 +22,13 @@ function fleshVerify(){
 	var timenow = new Date().getTime();
 	$('verifyImg').src= '__URL__/verify/'+timenow;
 }
+function dologin(obj){
+	var v=$(obj);
+	if(CheckForm(v,'result')==true){
+		ThinkAjax.sendForm(obj,'__URL__/checkLogin/',loginHandle,'result');
+	}
+}
+
 //-->
 </SCRIPT>
 <div id="result" class="result none"></div>
@@ -42,32 +49,34 @@ function fleshVerify(){
         </TR>
         <TR CLASS="row" >
           <TD CLASS="tRight">帐 号：</TD>
-          <TD CLASS="tRight"><INPUT TYPE="text" CHECK="Require" WARNING="请输入帐号" NAME="account" /></TD>
+          <TD CLASS="tRight"><INPUT TYPE="text" check="Require" warning="请输入帐号" NAME="account" /></TD>
           <TD ROWSPAN="2" CLASS="tRight">验证码：<BR />
             对比表：</TD>
           <TD ROWSPAN="2" ><IMG ID="verifyImg" SRC="__URL__/verify/" ONCLICK="fleshVerify()" STYLE="cursor:pointer" BORDER="0" TITLE="点击刷新验证码" ALIGN="absmiddle" /></TD>
         </TR>
         <TR CLASS="row" >
           <TD CLASS="tRight">密 码：</TD>
-          <TD CLASS="tRight"><INPUT TYPE="password"  CHECK="Require" WARNING="请输入密码" NAME="password" /></TD>
+          <TD CLASS="tRight"><INPUT TYPE="password"  check="Require" warning="请输入密码" NAME="password" /></TD>
         </TR>
         <TR CLASS="row" >
           <TD CLASS="tRight">语 言：</TD>
-          <TD CLASS="tRight"><SELECT NAME="L" CLASS="input" >
+          <TD CLASS="tRight">
+          <SELECT NAME="L" CLASS="input" >
               <OPTION VALUE="zh-cn" SELECTED>简体中文(默认)</OPTION>
               <OPTION VALUE="en-us" >英语(暂不开放)</OPTION>
               <OPTION VALUE="zh-cn" >简体中文(默认)</OPTION>
               <OPTION VALUE="zh-tw">繁体中文(暂不开放)</OPTION>
-            </SELECT></TD>
+            </SELECT>
+            </TD>
           <TD CLASS="tRight">验证码：</TD>
-          <TD ALIGN="left" ><INPUT TYPE="text" ONKEYDOWN="keydown(event)"  CHECK="Require" WARNING="请输入验证码" NAME="verify" STYLE="width:180px" /></TD>
+          <TD ALIGN="left" ><INPUT TYPE="text" ONKEYDOWN="keydown(event)"  check="Require" warning="请输入验证码" NAME="verify" STYLE="width:180px" /></TD>
         </TR>
         <TR STYLE="height:5px" >
           <TD COLSPAN="4"></TD>
         </TR>
         <TR CLASS="row" >
           <TD CLASS="tCenter" ALIGN="justify" COLSPAN="4"><INPUT TYPE="hidden" NAME="ajax" VALUE="1">
-            <INPUT TYPE="button" CLASS="button1" VALUE="确定登录进入CRM系统" ONCLICK="ThinkAjax.sendForm('form1','__URL__/checkLogin/',loginHandle,'result')">
+            <INPUT TYPE="button" CLASS="button1" VALUE="确定登录进入CRM系统" ONCLICK="dologin('form1');">
             &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
             <INPUT TYPE="reset" CLASS="button1"  VALUE="重置当前表单" ></TD>
         </TR>
