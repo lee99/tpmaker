@@ -6,11 +6,10 @@ ThinkAjax.updateTip	=	'<IMG SRC="../Public/images/ajaxloading.gif" WIDTH="16" HE
 function loginHandle(data,status){
 	if (status==1)
 	{
-		$('result').innerHTML	=	'<SPAN STYLE="color:blue"><IMG SRC="../Public/images/ok.gif" WIDTH="20" HEIGHT="20" BORDER="0" ALT="" ALIGN="absmiddle" > 登录成功！3 秒后跳转～</SPAN>';
+		$('result').innerHTML	='<SPAN STYLE="color:blue"><IMG SRC="../Public/images/ok.gif" WIDTH="20" HEIGHT="20" BORDER="0" ALT="" ALIGN="absmiddle" > 登录成功！3 秒后跳转～</SPAN>';
 		$('form1').reset();
-		window.location = '__APP__';
+		window.location = APP;
 	}
-
 }
 function keydown(e){
 	var e = e || event;
@@ -25,16 +24,14 @@ function fleshVerify(){
 }
 //-->
 </SCRIPT>
-<div id="result" class="result">ggggggggggg</div>
+<div id="result" class="result none"></div>
 
   <DIV CLASS="tCenter">
   <DIV CLASS="login tab-pane" ID="loginall"  STYLE="width:450px;">
-    <SCRIPT TYPE="text/javascript">
-tp1 = new WebFXTabPane($( "loginall" ) );
-</SCRIPT>
+    <SCRIPT TYPE="text/javascript">tp1 = new WebFXTabPane($("loginall"));</SCRIPT>
     <DIV CLASS="tab-page" ID="loginform" STYLE="height:140px;">
       <H2 CLASS="tab">用户进入CRM请先登陆</H2>
-      <SCRIPT TYPE="text/javascript">tp1.addTabPage($( "loginform" ) );</SCRIPT>
+      <SCRIPT TYPE="text/javascript">tp1.addTabPage($("loginform"));</SCRIPT>
       <FORM METHOD=POST NAME="login" ID="form1" >
       <TABLE WIDTH="100%"  CELLPADDING=1 CELLSPACING=0 ID="checkList" >
         <TR CLASS="row" HEIGHT="30" >
@@ -57,7 +54,7 @@ tp1 = new WebFXTabPane($( "loginall" ) );
         <TR CLASS="row" >
           <TD CLASS="tRight">语 言：</TD>
           <TD CLASS="tRight"><SELECT NAME="L" CLASS="input" >
-              <OPTION SELECTED>简体中文(默认)</OPTION>
+              <OPTION VALUE="zh-cn" SELECTED>简体中文(默认)</OPTION>
               <OPTION VALUE="en-us" >英语(暂不开放)</OPTION>
               <OPTION VALUE="zh-cn" >简体中文(默认)</OPTION>
               <OPTION VALUE="zh-tw">繁体中文(暂不开放)</OPTION>
@@ -82,9 +79,10 @@ tp1 = new WebFXTabPane($( "loginall" ) );
     </DIV>
     <DIV CLASS="tab-page" ID="logininfo" STYLE="height:140px">
       <H2 CLASS="tab">登陆帮助及使用说明</H2>
-      <SCRIPT TYPE="text/javascript">tp1.addTabPage($( "logininfo" ) );</SCRIPT>
+      <SCRIPT TYPE="text/javascript">tp1.addTabPage($("logininfo"));</SCRIPT>
       <ul><li>请按照密码的样式输入密码!</li></ul>
     </DIV>
   </DIV>
 
-</BODY></HTML>
+</BODY>
+</HTML>

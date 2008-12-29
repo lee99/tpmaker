@@ -63,9 +63,18 @@ class PublicAction extends Action {
 			$this->error('帐号错误！');
 		}elseif (empty($_POST['password'])){
 			$this->error('密码必须！');
-		}elseif ($_SESSION['verify'] != md5($_POST['verify'])){
-			$this->error('验证码错误！');
+		}elseif (empty($_POST['verify'])){
+			$this->error('验证码必须！');
 		}
+		
+		// 登录验证码获取
+		$verifyCodeStr   = $_POST['verify'];
+		$verifyCodeNum   = array_flip($_SESSION['verifyCode']);
+		$len	=	strlen(trim($_POST['verify']));
+		for($i=0; $i<$len; $i++) {
+			$verify .=  $verifyCodeNum[$verifyCodeStr[$i]];
+		} 
+		
         //生成认证条件
         $map            =   array();
         $map["account"]	=	$_POST['account'];
@@ -81,6 +90,9 @@ class PublicAction extends Action {
 			}
             if($authInfo['password'] != md5($_POST['password'])) {
             	$this->error('密码错误！');
+            }
+            if($authInfo['verify'] != $verify) {
+            	$this->error('验证码错误！');
             }
             $_SESSION[C('USER_AUTH_KEY')]	=	$authInfo['id'];
 			$_SESSION['loginUserName']	=	$authInfo['nickname'];

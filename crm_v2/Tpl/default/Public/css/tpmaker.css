@@ -203,7 +203,7 @@ fieldset
 }
 
 
-/*  文字?�? */
+/*  文字?�? */
 .red{color:red}
 .green{color:green}
 .blue{color:blue}
@@ -233,7 +233,7 @@ div.page {
 	text-align:right;
 }
 div.tips{border:1px solid #d4d4d4; background:#FBFAF8 url(../Images/use.gif) no-repeat; background-position:5px 8px; padding:8px 25px; overflow:auto; max-height:250px; margin:8px; line-height:185%; color:#393939; font-weight:bold; float:left; width:250px !important; width:25%; height:85px}
-div.result{border:1px solid #d4d4d4; background:#FFC; padding:2px; margin:1px; color:#393939; font-weight:bold; float:right; clear:both}
+div.result{position:absolute; top:0; right:0; border:1px solid #d4d4d4; background:#FFC; padding:2px; margin:1px; color:#393939; font-weight:bold; clear:both}
 .none{display:none}
 div.message{width:75%; padding:5pt; float:none; margin:15% auto 0% auto; clear:both; text-align:center}
 div.logo{margin:auto; width:85%; font:bold 10pt Tahoma; color:orange}
@@ -309,7 +309,7 @@ form input:focus,
 form select:focus,
 form textarea:focus{background-color:#e9ffe3}
 /*
-关于菜单的样式定�?
+关于菜单的样式定�?
 */
 .ThemeOfficeMenu {
 	PADDING-RIGHT: 0px; PADDING-LEFT: 0px; FONT-SIZE: 12px; PADDING-BOTTOM: 0px; CURSOR: default; PADDING-TOP: 0px; FONT-FAMILY: arial, verdana, sans-serif; WHITE-SPACE: nowrap; HEIGHT: 18px
@@ -481,7 +481,7 @@ TR.ThemeOfficeMainItem TD.ThemeOfficeMainFolderRight {
 }
 
 /*
-关于autocomplete的样式定�?
+关于autocomplete的样式定�?
 */
 
 #description {
