@@ -50,9 +50,11 @@
 	function CheckForm(oForm,target)
 	{
 		var els = oForm.elements;
+		
 		//遍历所有表元素
 		for(var i=0;i<els.length;i++)
 		{
+			
 			//是否需要验证
 			if(els[i].check)
 			{
