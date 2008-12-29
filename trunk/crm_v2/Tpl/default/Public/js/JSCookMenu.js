@@ -3,24 +3,52 @@
 
 	http://jscook.sourceforge.net/JSCookMenu/
 
-	Permission is hereby granted, free of charge, to any person obtaining a
-	copy of this software and associated documentation files (the "Software"),
-	to deal in the Software without restriction, including without limitation
-	the rights to use, copy, modify, merge, publish, distribute, sublicense,
-	and/or sell copies of the Software, and to permit persons to whom the
-	Software is furnished to do so, subject to the following conditions:
-
-	The above copyright notice and this permission notice shall be included
-	in all copies or substantial portions of the Software.
-
-	THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS
-	OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
-	ITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
-	AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
-	LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING
-	FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER
-	DEALINGS IN THE SOFTWARE.
 */
+
+
+/*
+我设置的定义文件
+*/
+var cmThemeOfficeBase = IMG_PATH;
+var cmThemeOffice =
+{
+
+	// HTML code to the left of the folder item
+	mainFolderLeft: '&nbsp;',
+	// HTML code to the right of the folder item
+	mainFolderRight: '&nbsp;',
+	// HTML code to the left of the regular item
+	mainItemLeft: '&nbsp;',
+	// HTML code to the right of the regular item
+	mainItemRight: '&nbsp;',
+
+	// sub menu display attributes
+
+	// 0, HTML code to the left of the folder item
+	folderLeft: '<img alt="" src="' + cmThemeOfficeBase + 'spacer.gif">',
+	// HTML code to the right of the folder item
+	folderRight: '<img alt="" src="' + cmThemeOfficeBase + 'arrow.gif">',
+	// HTML code to the left of the regular item
+	itemLeft: '<img alt="" src="' + cmThemeOfficeBase + 'spacer.gif">',
+	// HTML code to the right of the regular item
+	itemRight: '<img alt="" src="' + cmThemeOfficeBase + 'blank.gif">',
+	// 4, cell spacing for main menu
+	mainSpacing: 0,
+	// 5, cell spacing for sub menus
+	subSpacing: 0,
+	// 6, auto dispear time for submenus in milli-seconds
+	delay: 500
+};
+
+// for horizontal menu split
+var cmThemeOfficeHSplit = [_cmNoAction, '<td class="ThemeOfficeMenuItemLeft"></td><td colspan="2"><div class="ThemeOfficeMenuSplit"></div></td>'];
+var cmThemeOfficeMainHSplit = [_cmNoAction, '<td class="ThemeOfficeMainItemLeft"></td><td colspan="2"><div class="ThemeOfficeMenuSplit"></div></td>'];
+var cmThemeOfficeMainVSplit = [_cmNoAction, '&nbsp;'];
+
+/*
+//我设置的定义文件结束
+*/
+
 
 // default node properties
 var _cmNodeProperties =
@@ -94,7 +122,7 @@ var _cmNodeProperties =
 
 	// act on click to open sub menu
 	// not yet implemented
-	// 0 : use default behavior///lee99Ĭ�ϵ�
+	// 0 : use default behavior///lee99Ĭ�ϵ�
 	// 1 : hover open in all cases
 	// 2 : click on main, hover on sub
 	// 3 : click open in all cases (illegal as of 1.5)
