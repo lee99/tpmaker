@@ -4,29 +4,17 @@
 |                         Created by Erik Arvidsson                           |
 |                  (http://webfx.eae.net/contact.html#erik)                   |
 |                      For WebFX (http://webfx.eae.net/)                      |
-|-----------------------------------------------------------------------------|
-|                Copyright (c) 2002, 2003, 2006 Erik Arvidsson                |
-|-----------------------------------------------------------------------------|
-| Licensed under the Apache License, Version 2.0 (the "License"); you may not |
-| use this file except in compliance with the License.  You may obtain a copy |
-| of the License at http://www.apache.org/licenses/LICENSE-2.0                |
-| - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - |
-| Unless  required  by  applicable law or  agreed  to  in  writing,  software |
-| distributed under the License is distributed on an  "AS IS" BASIS,  WITHOUT |
-| WARRANTIES OR  CONDITIONS OF ANY KIND,  either express or implied.  See the |
-| License  for the  specific language  governing permissions  and limitations |
-| under the License.                                                          |
-|-----------------------------------------------------------------------------|
-| 2002-01-?? | First working version                                          |
-| 2002-02-17 | Cleaned up for 1.0 public version                              |
-| 2003-02-18 | Changed from javascript uri for anchors to return false        |
-| 2003-03-03 | Added dispose methods to release IE memory                     |
-| 2006-05-28 | Changed license to Apache Software License 2.0.                |
-|-----------------------------------------------------------------------------|
-| Dependencies: *.css           a css file to define the layout               |
-|-----------------------------------------------------------------------------|
-| Created 2002-01-?? | All changes are in the log above. | Updated 2006-05-28 |
 \----------------------------------------------------------------------------*/
+
+/*方法1
+tp1 = new WebFXTabPane($("mytp"));
+tp1.addTabPage($("mytp1"));
+tp1.addTabPage($("mytp2"));
+*/
+/*方法2
+setupAllTabs();
+*/
+//用了最新的方法2,但最新的方法必为以"tab"为前的CSS
 
 // This function is used to define if the browser supports the needed
 // features
@@ -218,6 +206,7 @@ function WebFXTabPage( el, tabPane, nIndex ) {
 	// hook up events, using DOM0
 	var oThis = this;
 	this.tab.onclick = function () { oThis.select(); };
+	this.tab.ondblclick = function () { oThis.remove(oThis); };//lee99加上双击事件
 	this.tab.onmouseover = function () { WebFXTabPage.tabOver( oThis ); };
 	this.tab.onmouseout = function () { WebFXTabPage.tabOut( oThis ); };
 }
@@ -242,6 +231,19 @@ WebFXTabPage.prototype.hide = function () {
 	
 WebFXTabPage.prototype.select = function () {
 	this.tabPane.setSelectedIndex( this.index );
+};
+
+WebFXTabPage.prototype.remove = function (tabpage) {
+
+	var b = tabpage.tab;
+	var c = b.parentNode;
+	var n=this.index;
+	//alert(this.pages[n]);
+	
+	//c.removeChild(this.pages[ n ]);
+	c.removeChild(b);
+	setupAllTabs;
+	this.tabPane.setSelectedIndex(0);
 };
 	
 WebFXTabPage.prototype.dispose = function () {

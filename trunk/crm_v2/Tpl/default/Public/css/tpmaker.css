@@ -246,6 +246,7 @@ mid[id]{display:table-cell;left:0;vertical-align:middle;position:static}
 box{position:relative;top:-50%;left:-50%;z-index:9999;width:300px}
 box[id]{left:0;margin:0 auto;}
 div.boxstyle{border:2px solid #000;text-align:center;padding:5px;}
+div.pagecoltrol{padding:1px;margin:1px;}
 
 table.list {
 	padding:0px;
@@ -529,6 +530,7 @@ div{
 	 font-weight:bold;
 	 height:26px;
 }
+
 .bg_image{
 	background: url(../images/manage_r2_c14.jpg) no-repeat top left;
 	cursor:pointer;
