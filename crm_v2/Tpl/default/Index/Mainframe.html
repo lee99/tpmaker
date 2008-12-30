@@ -1,0 +1,51 @@
+<tagLib name="html,mkrtags" />
+<include file="../Public/header" />
+<div class="pagecoltrol">
+  <div id="mytp" class="tab-pane">
+    <div id="mytp1" class="tab-page">
+      <h2 class="tab">系统自定义数据表aaaaa</h2>
+      fff
+    </div>
+    <div id="mytp2" class="tab-page">
+      <h2 class="tab">系统自定义数据表</h2>
+      fff
+    </div>
+  </div>
+</div>
+<input type="button" onclick="myadd('mytp','kkkkkk');"  value="add"/>
+<input type="button" onclick="mydel('mytp1');"  value="del"/>
+<script type="text/javascript">
+//用户了最新的方法,但最新的方法必为以"tab"为前的CSS
+setupAllTabs();
+</script>
+<script language="javascript">
+//创建DIV
+function myadd(toobj,text)
+{
+	var obj = $(toobj);
+	var i=new Date().getTime();
+    var div = document.createElement("div");
+    div.innerHTML = text;
+	div.className= "tab-page";
+	div.id= "mytp"+i;
+    obj.appendChild(div);
+	$(toobj+i).innerHTML="<h2 class='tab'>系统自定义数据</h2>ffkkkkkkkkkkkkkkf";
+	setupAllTabs();
+	
+}
+function mydel(toobj)
+{
+	var b = $(toobj);
+	//obj.removeNode(); 
+	//var b = document.getElementById("b");
+	var c = b.parentNode;
+	c.removeChild(b);
+	setupAllTabs();
+}
+</script>
+<script type="text/javascript">
+//重新定义高度
+var thisheight=window.screen.availHeight-190;
+//document.write('<style type=\'text/css\'>.dynamic-tab-pane-control .tab-page {height:'+thisheight+'px;overflow:auto;}</' + "style>");
+</script>
+<include file="../Public/footer" /> 

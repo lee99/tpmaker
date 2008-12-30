@@ -1,5 +1,19 @@
-function $(obj){
-    return reobj=(typeof(obj)=="object") ? obj : document.getElementById(obj);
+function $(objectId){
+    return reobj=(typeof(objectId)=="object") ? objectId : document.getElementById(objectId);
+    /*
+    if(document.getElementById && document.getElementById(objectId)) {
+	// W3C DOM
+	return document.getElementById(objectId);
+    } else if (document.all && document.all(objectId)) {
+	// MSIE 4 DOM
+	return document.all(objectId);
+    } else if (document.layers && document.layers[objectId]) {
+	// NN 4 DOM.. note: this won't find nested layers
+	return document.layers[objectId];
+    } else {
+	return false;
+    }
+    */
 }
 
 
