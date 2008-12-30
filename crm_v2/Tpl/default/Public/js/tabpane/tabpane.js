@@ -6,15 +6,33 @@
 |                      For WebFX (http://webfx.eae.net/)                      |
 \----------------------------------------------------------------------------*/
 
-/*·½·¨1
+/*æ–¹æ³•1
 tp1 = new WebFXTabPane($("mytp"));
 tp1.addTabPage($("mytp1"));
 tp1.addTabPage($("mytp2"));
 */
-/*·½·¨2
+/*æ–¹æ³•2
 setupAllTabs();
 */
-//ÓÃÁË×îĞÂµÄ·½·¨2,µ«×îĞÂµÄ·½·¨±ØÎªÒÔ"tab"ÎªÇ°µÄCSS
+//ç”¨äº†æœ€æ–°çš„æ–¹æ³•2,ä½†æœ€æ–°çš„æ–¹æ³•å¿…ä¸ºä»¥"tab"ä¸ºå‰çš„CSS
+
+/*åŠ¨æ€åˆ›å»ºæ–°çš„tabs//tabsadd(å½“å‰tabid,æ ‡é¢˜,å†…å®¹,ç±»å‹)*/
+function TabPaneadd(toobj,title,text,type)
+{
+	var obj = $(toobj);
+	var i=new Date().getTime();//ç”Ÿæˆæ–°çš„åå­—//å¯ä»¥éšä¾¿èµ·
+    var div = document.createElement("div");
+	div.className= "tab-page";
+	div.id= toobj+i;
+    obj.appendChild(div);
+    if(type==1){
+    	text="<iframe frameborder='0' height='100%' width='100%' src='"+text+"'></iframe>";
+    }
+	$(toobj+i).innerHTML="<h2 class='tab' title='åŒå‡»å…³é—­æ ‡ç­¾'>"+title+"</h2>"+text;
+	setupAllTabs();
+	
+}
+
 
 // This function is used to define if the browser supports the needed
 // features
@@ -58,7 +76,7 @@ function WebFXTabPane( el, bUseCookie ) {
 	this.selectedIndex = null;
 	this.useCookie = false;
 	this.useCookie = bUseCookie != null ? bUseCookie : true;
-	/////lee99Èç¹ûÏëÒªCOOKIE¾Í°ÑÉÏÃæµÄÁ½ĞĞ¶Ô»»¾Í¿ÉÒÔÁË
+	/////lee99å¦‚æœæƒ³è¦COOKIEå°±æŠŠä¸Šé¢çš„ä¸¤è¡Œå¯¹æ¢å°±å¯ä»¥äº†
 	
 	// add class name tag to class name
 	this.element.className = this.classNameTag + " " + this.element.className;
@@ -93,10 +111,22 @@ WebFXTabPane.prototype.setSelectedIndex = function ( n ) {
 		if (this.selectedIndex != null && this.pages[ this.selectedIndex ] != null )
 			this.pages[ this.selectedIndex ].hide();
 		this.selectedIndex = n;
+		//alert(this.pages[ this.selectedIndex ]);
 		this.pages[ this.selectedIndex ].show();
 		
 		if ( this.useCookie )
 			WebFXTabPane.setCookie( "webfxtab_" + this.element.id, n );	// session cookie
+	}
+};
+
+
+WebFXTabPane.prototype.removeIndex = function ( n ) {
+	if (this.selectedIndex != 0) {
+		this.selectedIndex = n;
+		//alert(this.pages[ this.selectedIndex ]);
+		this.pages[ this.selectedIndex ].removetab();
+	}else{
+		alert('ç¬¬ä¸€ä¸ªæ ‡ç­¾ä¸å…è®¸åˆ é™¤!');
 	}
 };
 	
@@ -206,7 +236,7 @@ function WebFXTabPage( el, tabPane, nIndex ) {
 	// hook up events, using DOM0
 	var oThis = this;
 	this.tab.onclick = function () { oThis.select(); };
-	this.tab.ondblclick = function () { oThis.remove(oThis); };//lee99¼ÓÉÏË«»÷ÊÂ¼ş
+	this.tab.ondblclick = function () { oThis.remove(oThis); };//lee99åŠ ä¸ŠåŒå‡»äº‹ä»¶
 	this.tab.onmouseover = function () { WebFXTabPage.tabOver( oThis ); };
 	this.tab.onmouseout = function () { WebFXTabPage.tabOut( oThis ); };
 }
@@ -218,6 +248,14 @@ WebFXTabPage.prototype.show = function () {
 	el.className = s;
 	
 	this.element.style.display = "block";
+};
+
+
+WebFXTabPage.prototype.removetab = function () {
+	var el = this.tab;
+	var te = this.element;
+	el.parentNode.removeChild(el);
+	te.parentNode.removeChild(te);
 };
 
 WebFXTabPage.prototype.hide = function () {
@@ -233,15 +271,8 @@ WebFXTabPage.prototype.select = function () {
 	this.tabPane.setSelectedIndex( this.index );
 };
 
-WebFXTabPage.prototype.remove = function (tabpage) {
-
-	var b = tabpage.tab;
-	var c = b.parentNode;
-	var n=this.index;
-	//alert(this.pages[n]);
-	
-	//c.removeChild(this.pages[ n ]);
-	c.removeChild(b);
+WebFXTabPage.prototype.remove = function () {
+	this.tabPane.removeIndex( this.index );
 	setupAllTabs;
 	this.tabPane.setSelectedIndex(0);
 };

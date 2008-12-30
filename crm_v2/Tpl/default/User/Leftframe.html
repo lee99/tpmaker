@@ -1,0 +1,68 @@
+<tagLib name="html,mkrtags" />
+<include file="../Public/header" />
+
+<div id="left_info">
+<include file="../Public/userheader" />
+<div id="left_nav">
+	     <div id="left_nav_left"></div>
+		 <div id="left_nav_right"></div>
+</div>
+<script type="text/javascript">
+var thisheight=window.screen.availHeight-230;
+$("left_nav_right").style.height=thisheight+'px';
+</script>
+</div>
+<script type="text/javascript">
+ // 导航栏配置文件
+var outlookbar=new outlook();
+var t;
+t=outlookbar.addtitle('用户列表','user',1,0,'');
+outlookbar.additem('查看个人资料',t,'profile.html');;
+outlookbar.additem('修改个人资料',t,'reset_info.php');
+outlookbar.additem('更改登录密码',t,'chanagepass.html');
+outlookbar.additem('修改个人资料',t,'reset_info.php');
+outlookbar.additem('更改登录密码',t,'chanagepass.html');
+outlookbar.additem('修改个人资料',t,'reset_info.php');
+outlookbar.additem('更改登录密码',t,'chanagepass.html');
+outlookbar.additem('修改个人资料',t,'reset_info.php');
+outlookbar.additem('更改登录密码',t,'chanagepass.html');
+outlookbar.additem('修改个人资料',t,'reset_info.php');
+outlookbar.additem('更改登录密码',t,'chanagepass.html');
+outlookbar.additem('修改个人资料',t,'reset_info.php');
+outlookbar.additem('更改登录密码',t,'chanagepass.html');
+outlookbar.additem('更改登录密码',t,'chanagepass.html');
+outlookbar.additem('修改个人资料',t,'reset_info.php');
+outlookbar.additem('更改登录密码',t,'chanagepass.html');
+outlookbar.additem('修改个人资料',t,'reset_info.php');
+outlookbar.additem('更改登录密码',t,'chanagepass.html');
+outlookbar.additem('修改个人资料',t,'reset_info.php');
+outlookbar.additem('更改登录密码',t,'chanagepass.html');
+outlookbar.additem('修改个人资料',t,'reset_info.php');
+outlookbar.additem('更改登录密码',t,'chanagepass.html');
+outlookbar.additem('修改个人资料',t,'reset_info.php');
+outlookbar.additem('更改登录密码',t,'chanagepass.html');
+
+
+d=outlookbar.addtitle('用户记录管理','user',1,0,'');
+outlookbar.additem('用户登陆记录(总体)',d,'#');
+outlookbar.additem('用户拷贝信息记录(总体)',d,'mailto:pobear@newmail.dlmu.edu.cn');
+
+t=outlookbar.addtitle('用户授权管理','user',1,0,'');
+outlookbar.additem('新建用户',t,'Node/index/');
+outlookbar.additem('节点管理',t,'Node/index/');
+outlookbar.additem('权限管理',t,'Group/index/');
+outlookbar.additem('用户角色管理',t,'modify.php');
+
+t=outlookbar.addtitle('用户其它属性设置','user',1,0,'');
+outlookbar.additem('登陆锁定设置',t,'un_pass.php');
+outlookbar.additem('用户注销管理',t,'al_pass.php');
+outlookbar.additem('用户数据转移(open)',t,'modify.php');
+outlookbar.additem('用户数据删除',t,'modify.php');
+
+//initinav('系统设置');;
+list_sub_nav('user');
+
+
+
+</script>
+<include file="../Public/footer" />

@@ -130,11 +130,8 @@ function list_sub_nav(sortname){
     }
 
     function changeframe(item, sortname, src){
-        if (item != "" && sortname != "") {
-            window.top.frames['mainFrame'].$('show_text').innerHTML = sortname + "&nbsp;&nbsp;<img src=images/slide.gif broder=0 />&nbsp;&nbsp;" + item
-        }
         if (src != "") {
-            window.top.frames['mainFrame'].location = src
+            window.top.frames['mainFrame'].TabPaneadd('user_tab',item,src,1);
         }
     }
 
