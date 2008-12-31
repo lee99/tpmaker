@@ -72,11 +72,11 @@
 					{
 						alert(els[i].warning);
 					}else {
-						$(target).style.display='block';
-						$(target).innerHTML	=	'<div style="font-weight:bold;color:red">'+els[i].warning+'</div>';
+						$byid(target).style.display='block';
+						$byid(target).innerHTML	=	'<div style="font-weight:bold;color:red">'+els[i].warning+'</div>';
 						this.intval = window.setTimeout(function (){
 							//var myFx = new Fx.Style(target, 'opacity',{duration:1000}).custom(1,0);
-							$(target).style.display='none';$(target).innerHTML='';
+							$byid(target).style.display='none';$byid(target).innerHTML='';
 							},3000);
 					}
 

@@ -7,9 +7,9 @@
 \----------------------------------------------------------------------------*/
 
 /*方法1
-tp1 = new WebFXTabPane($("mytp"));
-tp1.addTabPage($("mytp1"));
-tp1.addTabPage($("mytp2"));
+tp1 = new WebFXTabPane($byid("mytp"));
+tp1.addTabPage($byid("mytp1"));
+tp1.addTabPage($byid("mytp2"));
 */
 /*方法2
 setupAllTabs();
@@ -19,7 +19,7 @@ setupAllTabs();
 /*动态创建新的tabs//tabsadd(当前tabid,标题,内容,类型)*/
 function TabPaneadd(toobj,title,text,type)
 {
-	var obj = $(toobj);
+	var obj = $byid(toobj);
 	var i=new Date().getTime();//生成新的名字//可以随便起
     var div = document.createElement("div");
 	div.className= "tab-page";
@@ -28,7 +28,7 @@ function TabPaneadd(toobj,title,text,type)
     if(type==1){
     	text="<iframe frameborder='0' height='100%' width='100%' src='"+text+"'></iframe>";
     }
-	$(toobj+i).innerHTML="<h2 class='tab' title='双击关闭标签'>"+title+"</h2>"+text;
+	$byid(toobj+i).innerHTML="<h2 class='tab' title='双击关闭标签'>"+title+"</h2>"+text;
 	setupAllTabs();
 	
 }

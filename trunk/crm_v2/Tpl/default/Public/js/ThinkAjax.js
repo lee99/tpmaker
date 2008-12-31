@@ -92,26 +92,26 @@ var ThinkAjax = {
 		return this;
 	},
 	loading:function (target,tips,effect){
-		if ($(target))
+		if ($byid(target))
 		{
 			//var arrayPageSize = getPageSize();
 			var arrayPageScroll = getPageScroll();
-			$(target).style.display = 'block';
-			$(target).style.top = (arrayPageScroll[1] +  'px');
-			$(target).style.right = '0px';
+			$byid(target).style.display = 'block';
+			$byid(target).style.top = (arrayPageScroll[1] +  'px');
+			$byid(target).style.right = '0px';
 			// 显示正在更新
-			if ($('loader'))
+			if ($byid('loader'))
 			{
-				$('loader').style.display = 'none';
+				$byid('loader').style.display = 'none';
 			}
 			if ('' != this.image[0])
 			{
-				$(target).innerHTML = '<IMG SRC="'+this.image[0]+'"  BORDER="0" ALT="loading..." align="absmiddle"> '+tips;
+				$byid(target).innerHTML = '<IMG SRC="'+this.image[0]+'"  BORDER="0" ALT="loading..." align="absmiddle"> '+tips;
 			}else{
-				$(target).innerHTML = tips;
+				$byid(target).innerHTML = tips;
 			}
 			//使用更新效果
-			//var myEffect = $(target).effects();
+			//var myEffect = $byid(target).effects();
 			//myEffect.custom(effect);
 		}
 	},
@@ -150,7 +150,7 @@ var ThinkAjax = {
 			try	{ (response).apply(this,[this.data,this.status,this.info]);}
 			catch (e){}
 		}
-		if ($(target))
+		if ($byid(target))
 		{
 			// 显示提示信息
 			if (this.showTip && this.info!= undefined && this.info!=''){
@@ -158,17 +158,17 @@ var ThinkAjax = {
 				{
 					if ('' != this.image[1])
 					{
-						$(target).innerHTML	= '<IMG SRC="'+this.image[1]+'"  BORDER="0" ALT="success..." align="absmiddle"> <span style="color:blue">'+this.info+'</span>';
+						$byid(target).innerHTML	= '<IMG SRC="'+this.image[1]+'"  BORDER="0" ALT="success..." align="absmiddle"> <span style="color:blue">'+this.info+'</span>';
 					}else{
-						$(target).innerHTML	= '<span style="color:blue">'+this.info+'</span>';
+						$byid(target).innerHTML	= '<span style="color:blue">'+this.info+'</span>';
 					}
 					
 				}else{
 					if ('' != this.image[2])
 					{
-						$(target).innerHTML	= '<IMG SRC="'+this.image[2]+'"  BORDER="0" ALT="error..." align="absmiddle"> <span style="color:red">'+this.info+'</span>';
+						$byid(target).innerHTML	= '<IMG SRC="'+this.image[2]+'"  BORDER="0" ALT="error..." align="absmiddle"> <span style="color:red">'+this.info+'</span>';
 					}else{
-						$(target).innerHTML	= '<span style="color:red">'+this.info+'</span>';
+						$byid(target).innerHTML	= '<span style="color:red">'+this.info+'</span>';
 					}
 				}
 			}
@@ -177,7 +177,7 @@ var ThinkAjax = {
 			if (this.showTip)
 			this.intval = window.setTimeout(function (){
 				//var myFx = new Fx.Style(target, 'opacity',{duration:1000}).custom(1,0);
-				$(target).style.display='none';
+				$byid(target).style.display='none';
 				},3000);
 				
 		}
@@ -246,7 +246,7 @@ var ThinkAjax = {
 	bind:function(source,event,url,vars,response,target,tips,effect)
 	{
 		var _self = this;
-	   $(source).addEvent(event,function (){_self.send(url,vars,response,target,tips,effect)});
+	   $byid(source).addEvent(event,function (){_self.send(url,vars,response,target,tips,effect)});
 	},
 	// 页面加载完成后执行Ajax操作
 	load:function(url,vars,response,target,tips,effect)
@@ -276,8 +276,8 @@ var ThinkAjax = {
 		var checkboxvalue="";
 		var radioname="";
 		var radiovalue="";
-		for(var i=0; i<$(obj).elements.length; i++){
-			elem = $(obj).elements[i];
+		for(var i=0; i<$byid(obj).elements.length; i++){
+			elem = $byid(obj).elements[i];
 			if (elem.type=="checkbox") {
 				if (elem.checked) {
 					var checkboxname=elem.name;

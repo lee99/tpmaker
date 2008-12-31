@@ -9,10 +9,10 @@ function list_sub_nav(sortname){
 
     function list_sub_detail(Id, item){
         if (preClassName != "") {
-            $(preClassName).className = "left_back"
+            $byid(preClassName).className = "left_back"
         }
-        if ($(Id).className == "left_back") {
-            $(Id).className = "left_back_onclick";
+        if ($byid(Id).className == "left_back") {
+            $byid(Id).className = "left_back_onclick";
             outlookbar.getbyitem(item);
             preClassName = Id;
         }
@@ -84,7 +84,7 @@ function list_sub_nav(sortname){
 				output += "</div>";
             }
         }
-        $('left_nav_right').innerHTML = output
+        $byid('left_nav_right').innerHTML = output
 
 		if(idvalue!=''  && showdefault==true){
 			list_sub_detail(idvalue,titlevalue);//lee99加上默认第一组数据
@@ -101,7 +101,7 @@ function list_sub_nav(sortname){
         }
 
         output += "</ul>";
-        $('left_nav_left').innerHTML = output
+        $byid('left_nav_left').innerHTML = output
 
     }
 
@@ -126,7 +126,7 @@ function list_sub_nav(sortname){
 				output += "</div>"
             }
         }
-        $('left_nav_right').innerHTML = output
+        $byid('left_nav_right').innerHTML = output
     }
 
     function changeframe(item, sortname, src){
@@ -137,13 +137,13 @@ function list_sub_nav(sortname){
 
     function hideorshow(divid){
         subsortid = "sub_sort_" + divid.substring(11);
-        if ($(divid).style.display == "none") {
-            $(divid).style.display = "block";
-            $(subsortid).className = "list_tilte"
+        if ($byid(divid).style.display == "none") {
+            $byid(divid).style.display = "block";
+            $byid(subsortid).className = "list_tilte"
         }
         else {
-            $(divid).style.display = "none";
-            $(subsortid).className = "list_tilte_onclick"
+            $byid(divid).style.display = "none";
+            $byid(subsortid).className = "list_tilte_onclick"
         }
     }
 

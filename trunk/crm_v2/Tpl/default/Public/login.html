@@ -6,8 +6,8 @@ ThinkAjax.updateTip	=	'<IMG SRC="../Public/images/ajaxloading.gif" WIDTH="16" HE
 function loginHandle(data,status){
 	if (status==1)
 	{
-		$('result').innerHTML	='<SPAN STYLE="color:blue"><IMG SRC="../Public/images/ok.gif" WIDTH="20" HEIGHT="20" BORDER="0" ALT="" ALIGN="absmiddle" > 登录成功！3 秒后跳转～</SPAN>';
-		$('form1').reset();
+		$byid('result').innerHTML	='<SPAN STYLE="color:blue"><IMG SRC="../Public/images/ok.gif" WIDTH="20" HEIGHT="20" BORDER="0" ALT="" ALIGN="absmiddle" > 登录成功！3 秒后跳转～</SPAN>';
+		$byid('form1').reset();
 		window.location = APP;
 	}
 }
@@ -20,10 +20,10 @@ function keydown(e){
 function fleshVerify(){
 	//重载验证码
 	var timenow = new Date().getTime();
-	$('verifyImg').src= '__URL__/verify/'+timenow;
+	$byid('verifyImg').src= '__URL__/verify/'+timenow;
 }
 function dologin(obj){
-	var v=$(obj);
+	var v=$byid(obj);
 	if(CheckForm(v,'result')==true){
 		ThinkAjax.sendForm(obj,'__URL__/checkLogin/',loginHandle,'result');
 	}
@@ -35,10 +35,10 @@ function dologin(obj){
 
   <DIV CLASS="tCenter">
   <DIV CLASS="login tab-pane" ID="loginall"  STYLE="width:450px;">
-    <SCRIPT TYPE="text/javascript">tp1 = new WebFXTabPane($("loginall"));</SCRIPT>
+    <SCRIPT TYPE="text/javascript">tp1 = new WebFXTabPane($byid("loginall"));</SCRIPT>
     <DIV CLASS="tab-page" ID="loginform" STYLE="height:140px;">
       <H2 CLASS="tab">用户进入CRM请先登陆</H2>
-      <SCRIPT TYPE="text/javascript">tp1.addTabPage($("loginform"));</SCRIPT>
+      <SCRIPT TYPE="text/javascript">tp1.addTabPage($byid("loginform"));</SCRIPT>
       <FORM METHOD=POST NAME="login" ID="form1" >
       <TABLE WIDTH="100%"  CELLPADDING=1 CELLSPACING=0 ID="checkList" >
         <TR CLASS="row" HEIGHT="30" >
@@ -88,7 +88,7 @@ function dologin(obj){
     </DIV>
     <DIV CLASS="tab-page" ID="logininfo" STYLE="height:140px">
       <H2 CLASS="tab">登陆帮助及使用说明</H2>
-      <SCRIPT TYPE="text/javascript">tp1.addTabPage($("logininfo"));</SCRIPT>
+      <SCRIPT TYPE="text/javascript">tp1.addTabPage($byid("logininfo"));</SCRIPT>
       <ul><li>请按照密码的样式输入密码!</li></ul>
     </DIV>
   </DIV>
