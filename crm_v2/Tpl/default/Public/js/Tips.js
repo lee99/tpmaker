@@ -85,8 +85,8 @@ Event：关闭触发事件。(默认click=document.onmousedown,blur=Element.onbl
 	function popHint(obj, msg, initValues) {
 	var
 	_obj = obj,
-	_objHint = $("popHint"),
-	_objHintIframe = $("popHintIframe"),
+	_objHint = $byid("popHint"),
+	_objHintIframe = $byid("popHintIframe"),
 	_msg = msg,
 	_init = initValues;
 	// 初始化失败...
@@ -100,8 +100,8 @@ Event：关闭触发事件。(默认click=document.onmousedown,blur=Element.onbl
 	_event = null,
 	_place = getCoords(_obj),
 	_marTop = null,
-	_objText = $("popHintText"),
-	_objHintIframe = $("popHintIframe"),
+	_objText = $byid("popHintText"),
+	_objHintIframe = $byid("popHintIframe"),
 	// 初始化
 	init = function() {
 		var _hint = _obj.getAttribute("hint");
@@ -122,12 +122,12 @@ Event：关闭触发事件。(默认click=document.onmousedown,blur=Element.onbl
 		if(_objHint==null) {
 			_objHint = appendElement("div", {"id" : "popHint"}, _Html, document.body);
 			_objHint.style.display = "none";
-			_objText = $("popHintText");
+			_objText = $byid("popHintText");
 		}
 		if(_objHintIframe==null) {
 			try{	//IE
 			document.body.appendChild(document.createElement("<iframe id='popHintIframe'></iframe>"));
-			_objHintIframe = $("popHintIframe");
+			_objHintIframe = $byid("popHintIframe");
 		}catch(e)
 		{}
 		}
@@ -148,8 +148,8 @@ Event：关闭触发事件。(默认click=document.onmousedown,blur=Element.onbl
 			_objHintIframe.style.left=_place.x +"px";
 			_objHintIframe.style.zIndex=9;
 			_objHintIframe.style.top = (_place.y-_marTop+8) +"px";
-			_objHintIframe.style.width=$("popHintText").offsetWidth+"px";
-			_objHintIframe.style.height=$("popHintText").offsetHeight+"px";
+			_objHintIframe.style.width=$byid("popHintText").offsetWidth+"px";
+			_objHintIframe.style.height=$byid("popHintText").offsetHeight+"px";
 			_objHintIframe.style.position="absolute";
 			_objHintIframe.style.display="";
 		}

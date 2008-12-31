@@ -36,11 +36,11 @@ function notice(name){
 	}
 }
 function uploadComplete(id,name){
-	$('photo').innerHTML	=	'<IMG SRC="__PUBLIC__/Images/girl/'+name+'" class="shadow" style="border:1pt solid gray" BORDER="0" width="130" height="179" ALT="" align="absmiddle">';
+	$byid('photo').innerHTML	=	'<IMG SRC="__PUBLIC__/Images/girl/'+name+'" class="shadow" style="border:1pt solid gray" BORDER="0" width="130" height="179" ALT="" align="absmiddle">';
 }
 function uploading(msg){
-	$('result').style.display = 'block';
-	$('result').innerHTML	=	'<IMG SRC="../Public/images/ajaxloading.gif" WIDTH="16" HEIGHT="16" BORDER="0" ALT="" align="absmiddle"> 文件上传中～';
+	$byid('result').style.display = 'block';
+	$byid('result').innerHTML	=	'<IMG SRC="../Public/images/ajaxloading.gif" WIDTH="16" HEIGHT="16" BORDER="0" ALT="" align="absmiddle"> 文件上传中～';
 	return true;
 }
 //-->

@@ -1,4 +1,4 @@
-function $(objectId){
+function $byid(objectId){
     return reobj=(typeof(objectId)=="object") ? objectId : document.getElementById(objectId);
     /*
     if(document.getElementById && document.getElementById(objectId)) {
@@ -79,7 +79,7 @@ function del(id){
 	}
 }
 function doDelete(){
-		var Table = $('checkList');
+		var Table = $byid('checkList');
 		var len	=	selectRowIndex.length;
 		for (var i=len-1;i>=0;i-- )
 		{
@@ -104,11 +104,11 @@ function doDelete(){
 
 	if (window.confirm('确实要删除选择项吗？'))
 	{
-		$('result').style.display = 'block';
+		$byid('result').style.display = 'block';
 		ThinkAjax.send(URL+"/delAttach/","id="+keyValue+'&_AJAX_SUBMIT_=1');
 		if (showId != undefined)
 		{
-			$(showId).innerHTML = '';
+			$byid(showId).innerHTML = '';
 		}
 	}
 }
