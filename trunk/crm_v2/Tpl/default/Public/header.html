@@ -11,45 +11,36 @@ var JS_PATH ="../public/js/";
 var IMG_PATH ="../public/images/";
 var URL = '__URL__';
 var APP	 =	 '__APP__';
-var PUBLIC = '__PUBLIC__';
+var PUBLIC = '../Public/';
 var REQUEST_URI = '{$_SERVER.REQUEST_URI}';
 </script>
-<script type="text/javascript" src="../public/js/Common.js"></script>
-<script type="text/javascript" src="../public/js/Base.js"></script>
-<script type="text/javascript" src="../public/js/ThinkAjax.js"></script>
-<script type="text/javascript" src="../public/js/CheckForm.js"></script>
-<script type="text/javascript" src="../public/js/leftnav.js"></script>
-<script type="text/javascript" src="../public/js/Tips.js"></script>
-<script type="text/javascript" src="../public/js/dtree.js"></script>
-<script type="text/javascript" src="../public/js/JSCookMenu.js"></script>
-<script type="text/javascript" src="../public/js/tabpane/tabpane.js"></script>
+<script type="text/javascript" src="../Public/js/Common.js"></script>
+<script type="text/javascript" src="../Public/js/Base.js"></script>
+<script type="text/javascript" src="../Public/js/ThinkAjax.js"></script>
+<script type="text/javascript" src="../Public/js/CheckForm.js"></script>
+<script type="text/javascript" src="../Public/js/leftnav.js"></script>
+<script type="text/javascript" src="../Public/js/Tips.js"></script>
+<script type="text/javascript" src="../Public/js/dtree.js"></script>
+<script type="text/javascript" src="../Public/js/JSCookMenu.js"></script>
+<script type="text/javascript" src="../Public/js/tabpane/tabpane.js"></script>
 
-<script type="text/javascript" src="../public/jqGrid/jquery.js"></script>
-<script type="text/javascript" src="../public/jqGrid/jquery.jqGrid.js"></script>
-<script type="text/javascript" src="../public/jqGrid/js/jqModal.js"></script>
-<script type="text/javascript" src="../public/jqGrid/js/jqDnR.js"></script>
-<script type="text/javascript" src="../public/jqGrid/js/ui.datepicker.js"></script>
+<script type="text/javascript" src="../Public/jqGrid/js/jquery.js"></script>
+<script type="text/javascript" src="../Public/jqGrid/js/jquery.jqGrid.js"></script>
+<script type="text/javascript" src="../Public/jqGrid/js/jqModal.js"></script>
+<script type="text/javascript" src="../Public/jqGrid/js/jqDnR.js"></script>
+<script type="text/javascript" src="../Public/jqGrid/js/ui.datepicker.js"></script>
 
-<link type="text/css" rel="StyleSheet" href="../public/js/tabpane/tab.webfx.css" />
-
+<link type="text/css" rel="StyleSheet" href="../Public/js/tabpane/tab.webfx.css" />
+<link rel="stylesheet" type="text/css" media="screen" href="../Public/jqGrid/themes/tpmaker/grid.css" />
+<link rel="stylesheet" type="text/css" media="screen" href="../Public/jqGrid/themes/jqModal.css" />
 
 <SCRIPT LANGUAGE="JavaScript">
 <!--
 ThinkAjax.updateTip = '<IMG SRC="../Public/images/loading2.gif" WIDTH="16" HEIGHT="16" BORDER="0" ALT="loading..." align="absmiddle"> 数据处理中...';
 
-function upbtn(){
-	ThinkAjax.sendForm('form_update','__URL__/updateform/',complete,'result');
-}
-function addbtn(){
-	ThinkAjax.sendForm('form_add','__URL__/addform/',complete,'result');
-}
 function complete(data,status){
-	if (status==1)
-	{
-		location.href=REQUEST_URI;
-	}
+	if (status==1){location.href=REQUEST_URI;}
 }
-
 //-->
  </SCRIPT>
 </head>
