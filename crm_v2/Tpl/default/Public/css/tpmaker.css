@@ -132,7 +132,6 @@ th
 }
 tr
 {
-	height: 20px;
 	color:#blue;
 }
 body
@@ -342,7 +341,6 @@ div{
 .header_content {
 	margin: 0 auto;
 	padding:0px;
-	width: 100%;
 }
 .header_content .logo {
 	width: 200px;
@@ -356,6 +354,7 @@ div{
 	color: #99CC00;
 }
 .header_content .right_nav {
+	
 	float: right;
 	width: 80%;
 }
