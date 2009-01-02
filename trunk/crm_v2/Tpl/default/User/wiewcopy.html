@@ -5,10 +5,7 @@
 var thisheight=window.screen.availHeight-200;
 document.write('<style type=\'text/css\'>.dynamic-tab-pane-control .tab-page {height:'+thisheight+'px;overflow:auto;}</' + "style>");
 </script>
-<div class="pagecoltrol">
-  <div id="user_tab" class="tab-pane">
-    <div id="user_tab1" class="tab-page">
-      <h2 class="tab">系统所有用户列表</h2>
+
 			<script type="text/javascript">
 			jQuery(document).ready(function(){
 			jQuery(listid).jqGrid({
@@ -24,7 +21,7 @@ document.write('<style type=\'text/css\'>.dynamic-tab-pane-control .tab-page {he
 			    viewrecords: true,
 			    height:thisheight-70,
 			    sortorder: "desc",
-			    caption: "CRM系统所有用户列表"
+			    caption: "用户拷贝信息记录"
 			})
 			.navGrid('#pager2',
 			{edit:false,add:false,del:false,search:true,refresh:true}
@@ -32,7 +29,7 @@ document.write('<style type=\'text/css\'>.dynamic-tab-pane-control .tab-page {he
 			});
 			</script>
 			<script type="text/javascript">
-			var listid="#list2";
+			var listid="#wiewcopy";
 			var colvar=['ID号','用户名','对外用户名', '昵称', '验证码', '备注', '上次登陆IP', '上次登陆时间', '状态'];
 			var colmod=[
 			        {name:'id',index:'id', width:40},
@@ -47,14 +44,10 @@ document.write('<style type=\'text/css\'>.dynamic-tab-pane-control .tab-page {he
 					];
 			
 			</script>
-			<table id="list2" class="scroll" cellpadding="0" cellspacing="0"></table>
+			<table id="wiewcopy" class="scroll" cellpadding="0" cellspacing="0"></table>
 			<div id="pager2" class="scroll" style="text-align:right;"></div>
-    </div>
-  </div>
-</div>
-<script type="text/javascript">
-//用户了最新的方法,但最新的方法必为以"tab"为前的CSS
-setupAllTabs();
-</script>
+
+
+
 
 <include file="../Public/footer" /> 

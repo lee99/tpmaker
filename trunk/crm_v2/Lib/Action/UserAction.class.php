@@ -26,13 +26,33 @@ class UserAction extends PublicAction{
 	}
 
 	public function Leftframe(){
+		$user=D('User');
+		$userlist=$user->findAll();
+		$this->assign('userlist',$userlist);
 		$this->display();
 	}
 
-	public function Mainframe(){
+	public function mainframe(){
 		//前台说明
 		$this->display();
 	}
- 
+	
+	public function wiewcopy(){
+		//前台说明
+		$this->display();
+	}
+	
+	
+	public function viewlog(){
+		//前台说明
+		$this->display();
+	}
+		
+ 	public function jq_json(){
+		$col=array('id','account','outname','nickname','verify','remark','lastloginip','lastlogintime','status');
+		$this->jqjson('id',$col);
+	}	
+	
+
 } 
 ?>

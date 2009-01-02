@@ -74,8 +74,9 @@ function WebFXTabPane( el, bUseCookie ) {
 	this.element.tabPane = this;
 	this.pages = [];
 	this.selectedIndex = null;
-	this.useCookie = false;
 	this.useCookie = bUseCookie != null ? bUseCookie : true;
+	this.useCookie = false;
+	
 	/////lee99如果想要COOKIE就把上面的两行对换就可以了
 	
 	// add class name tag to class name
