@@ -169,19 +169,24 @@ class sys_fieldsAction extends AdminAction{
 	public function copy(){
 		$list=D('sys_tables');
 		$listdata=$list->getByid($_REQUEST['oldid']);
+		//dump($listdata);
+			$listdata['id']='';
 			$listdata['pid']=$_REQUEST['newpid'];
-			$listdata['caption']=$_REQUEST['newtitle'];
+			if($_REQUEST['newtitle']!=''){
+				$listdata['caption']=$_REQUEST['newtitle'];
+			}
 			$list->create($listdata);
 			$list->add();
 		$listnewid=$list->getLastInsID();
 		$newfield=D('sys_fields');
 		$newfielddate=$newfield->findall('pid='.$_REQUEST['oldid']);
 		foreach ($newfielddate as $creatdb){
+			$creatdb['id']='';
 			$creatdb['pid']=$listnewid;
 			$newfield->create($creatdb);
 			$newfield->add();
 		}
-		redirect(__APP__."/sys_projects/index");
+		msg('已经拷贝数据表成功');
 	}
 }
 
