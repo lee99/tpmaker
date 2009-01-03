@@ -1,0 +1,32 @@
+<tagLib name="html,mkrtags" />
+<include file="../Public/header" />
+
+<div id="left_info">
+<include file="../Public/userheader" />
+<div id="left_nav">
+	     <div id="left_nav_left"></div>
+		 <div id="left_nav_right"></div>
+</div>
+<script type="text/javascript">
+var thisheight=window.screen.availHeight-230;
+$byid("left_nav_right").style.height=thisheight+'px';
+</script>
+</div>
+<script type="text/javascript">
+ // 导航栏配置文件
+var outlookbar=new outlook();
+var t;
+t=outlookbar.addtitle('最近到期的事情','user',1,0,'');
+<volist name="userlist" id="userlist">
+outlookbar.additem('查看:{$userlist.nickname}[{$userlist.account}]',t,'view/{$userlist.id}');
+</volist>
+
+d=outlookbar.addtitle('行事历分类','user',1,0,'');
+outlookbar.additem('系统分类[任务通知]',d,'wiewcopy/');
+outlookbar.additem('系统分类[系统消息]',d,'wiewcopy/');
+outlookbar.additem('个人的分类',d,'viewlog/');
+
+//initinav('系统设置');;
+list_sub_nav('user');
+</script>
+<include file="../Public/footer" />
