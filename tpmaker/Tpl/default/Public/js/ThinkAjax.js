@@ -42,13 +42,28 @@ var ThinkAjax = {
 	debug:false,
 	activeRequestCount:0,
 	// Ajax连接初始化
-	getTransport: function() {
-		return Try.these(
-		 function() {return new XMLHttpRequest()},
-		  function() {return new ActiveXObject('Msxml2.XMLHTTP')},
-		  function() {return new ActiveXObject('Microsoft.XMLHTTP')}
-		 
-		) || false;
+	getTransport: function() {//lee99
+		http_request=false;
+		if(window.XMLHttpRequest){//Mozilla浏览器
+			http_request=new XMLHttpRequest();
+			if (http_request.overrideMimeType){//设置MIME类别
+				http_request.overrideMimeType("text/xml");
+			}
+		} else if(window.ActiveXObject){//IE浏览器
+			var versions = ['Microsoft.XMLHTTP', 'MSXML.XMLHTTP', 'Microsoft.XMLHTTP', 'Msxml2.XMLHTTP.7.0', 'Msxml2.XMLHTTP.6.0', 'Msxml2.XMLHTTP.5.0', 'Msxml2.XMLHTTP.4.0', 'MSXML2.XMLHTTP.3.0', 'MSXML2.XMLHTTP'];
+			for (var i=0; i<versions.length; i++) {
+				try {
+					http_request = new ActiveXObject(versions[i]);//alert (versions[i]);
+				} catch(e) {
+					//alert(e.message);
+				}
+			}
+		}
+		if(!http_request){//异常，创建对象实例失败
+			window.alert("创建XMLHttp对象失败！");
+			return false;
+		}
+		return http_request;
 	},
 	// 连贯操作方法支持
 	// ThinkAjax.url(...).params(...).tip(...).target(...).effect(...).response(...).send()
@@ -96,8 +111,8 @@ var ThinkAjax = {
 				$(target).innerHTML = tips;
 			}
 			//使用更新效果
-			var myEffect = $(target).effects();
-			myEffect.custom(effect);
+			//var myEffect = $(target).effects();
+			//myEffect.custom(effect);
 		}
 	},
 
@@ -158,11 +173,13 @@ var ThinkAjax = {
 				}
 			}
 			// 提示信息停留5秒
+
 			if (this.showTip)
 			this.intval = window.setTimeout(function (){
-				var myFx = new Fx.Style(target, 'opacity',{duration:1000}).custom(1,0);
+				//var myFx = new Fx.Style(target, 'opacity',{duration:1000}).custom(1,0);
 				$(target).style.display='none';
 				},3000);
+				
 		}
 	},
 	// 发送Ajax请求
@@ -220,7 +237,7 @@ var ThinkAjax = {
 	// 发送表单Ajax操作，暂时不支持附件上传
 	sendForm:function(formId,url,response,target,tips,effect)
 	{
-		vars = Form.serialize(formId);
+		vars = this.serialize(formId);//lee99
 		this.send(url,vars,response,target,tips,effect);
 	},
 	// 绑定Ajax到HTML元素和事件
@@ -249,5 +266,49 @@ var ThinkAjax = {
 		var _self = this;
 		_self.send(url,vars,response,target,effect);
 		myTimer = window.setInterval(function (){_self.send(url,vars,response,target,tips,effect)},intervals);
+	},
+	// 定制执行serialize操作//lee99
+	serialize:function(obj)
+	{
+		var info = '';
+		var elem = '';
+		var checkboxname="";
+		var checkboxvalue="";
+		var radioname="";
+		var radiovalue="";
+		for(var i=0; i<$(obj).elements.length; i++){
+			elem = $(obj).elements[i];
+			if (elem.type=="checkbox") {
+				if (elem.checked) {
+					var checkboxname=elem.name;
+					if (checkboxvalue != '') {
+						checkboxvalue += ','+elem.value;
+					} else {checkboxvalue = elem.value;}
+					//alert(checkboxvalue);
+				}
+			} else if (checkboxname !='') {
+				info += "&"+checkboxname+"="+checkboxvalue;
+				checkboxname='';checkboxvalue='';
+			}
+			if (elem.type=="radio") {
+				if (elem.checked) {
+					var radioname=elem.name;
+					if (radiovalue != '') {
+						radiovalue += ','+elem.value;
+					} else {radiovalue = elem.value;}
+					//alert(radiovalue);
+				}
+			} else if (radioname !='') {
+				info += "&"+radioname+"="+radiovalue;
+				radioname='';radiovalue='';
+			}
+			if (elem.type!="checkbox" && elem.type!="radio") {
+				if (info != ''){
+					info += '&';
+				}
+				info += elem.name+"="+elem.value;
+			}
+		}
+		return info;
 	}
 }

@@ -14,7 +14,7 @@ function checkboxvalue(inid,outid){
 function hideW(){
 	var myFx = new Fx.Style('msg_tip', 'height',{duration:600}).custom(200,0);
 	var myFx = new Fx.Style('msg_tip', 'opacity',{duration:600}).custom(1,0);
-	//$('msg_tip').style.display = 'none';	
+	//$('msg_tip').style.display = 'none';
 }
 function openMsg(id){
 	hideW();
@@ -45,7 +45,7 @@ function prepareIE(height, overflow){
 
 	htm = document.getElementsByTagName('html')[0];
 	htm.style.height = height;
-	//htm.style.overflow = overflow; 
+	//htm.style.overflow = overflow;
 }
 
 function hideSelects(visibility){
@@ -87,7 +87,7 @@ function WriteTo(id){
 	{
 	case 'EXCEL':WriteToExcel(id);break;
 	case 'WORD':WriteToWord(id);break;
-	
+
 	}
 	return ;
 }
@@ -326,60 +326,60 @@ function getSelectCheckboxValues(){
 	return result.substring(0, result.length-1);
 }
 
- function   change()   
-  {   
-	  var   oObj   =   event.srcElement;   
-	  if(oObj.tagName.toLowerCase()   ==   "td")   
-	  {   
+ function   change()
+  {
+	  var   oObj   =   event.srcElement;
+	  if(oObj.tagName.toLowerCase()   ==   "td")
+	  {
 		  	  /*
-	  var   oTable   =   oObj.parentNode.parentNode;   
-	  for(var   i=1;   i<oTable.rows.length;   i++)   
-	  {   
-	  oTable.rows[i].className   =   "out";   
-	  oTable.rows[i].tag   =   false;   
+	  var   oTable   =   oObj.parentNode.parentNode;
+	  for(var   i=1;   i<oTable.rows.length;   i++)
+	  {
+	  oTable.rows[i].className   =   "out";
+	  oTable.rows[i].tag   =   false;
 	  }   */
 	var obj= document.getElementById('checkList').getElementsByTagName("input");
-	  var   oTr   =   oObj.parentNode; 
+	  var   oTr   =   oObj.parentNode;
 	  var row = oObj.parentElement.rowIndex-1;
 	  if (oTr.className == 'down')
 	  {
-		  	oTr.className   =   'out';   
+		  	oTr.className   =   'out';
 			obj[row].checked = false;
-		    oTr.tag   =   true;  
+		    oTr.tag   =   true;
 	  }else {
-			oTr.className   =   'down';   
+			oTr.className   =   'down';
 			obj[row].checked = true;
-		    oTr.tag   =   true;  
+		    oTr.tag   =   true;
 	  }
- 	  }   
-  }   
-    
-  function   out()   
-  {   
-  var   oObj   =   event.srcElement;   
-  if(oObj.tagName.toLowerCase()   ==   "td")   
-  {   
-  var   oTr   =   oObj.parentNode;   
-  if(!oTr.tag)   
-  oTr.className   =   "out";   
-  }   
-  }   
-    
-  function   over()   
-  {   
-  var   oObj   =   event.srcElement;   
-  if(oObj.tagName.toLowerCase()   ==   "td")   
-  {   
-  var   oTr   =   oObj.parentNode;   
-  if(!oTr.tag)   
-  oTr.className   =   "over";   
-  }   
-  }   
+ 	  }
+  }
+
+  function   out()
+  {
+  var   oObj   =   event.srcElement;
+  if(oObj.tagName.toLowerCase()   ==   "td")
+  {
+  var   oTr   =   oObj.parentNode;
+  if(!oTr.tag)
+  oTr.className   =   "out";
+  }
+  }
+
+  function   over()
+  {
+  var   oObj   =   event.srcElement;
+  if(oObj.tagName.toLowerCase()   ==   "td")
+  {
+  var   oTr   =   oObj.parentNode;
+  if(!oTr.tag)
+  oTr.className   =   "over";
+  }
+  }
 
 
 //---------------------------------------------------------------------
 // 多选改进方法 by Liu21st at 2005-11-29
-// 
+//
 //
 //-------------------------begin---------------------------------------
 
@@ -404,7 +404,7 @@ function delItem(){
 	for(i=0;i<selectTarget.length;i++)
 		if(selectTarget[i].selected){
 		selectSource.add(new Option(selectTarget[i].text,selectTarget[i].value));
-		
+
 		}
 		for(i=0;i<selectSource.length;i++)
 			for(j=0;j<selectTarget.length;j++)
@@ -414,14 +414,14 @@ function delItem(){
 function delAllItem(){
 	for(i=0;i<selectTarget.length;i++){
 		selectSource.add(new Option(selectTarget[i].text,selectTarget[i].value));
-		
+
 	}
 	selectTarget.length=0;
 }
 function addAllItem(){
 	for(i=0;i<selectSource.length;i++){
 		selectTarget.add(new Option(selectSource[i].text,selectSource[i].value));
-		
+
 	}
 	selectSource.length=0;
 }
@@ -441,7 +441,7 @@ function loadBar(fl)
     x = self.innerWidth;
     y = self.innerHeight;
   }
-  else 
+  else
   if (document.documentElement && document.documentElement.clientHeight)
   {// Explorer 6 Strict Mode
    x = document.documentElement.clientWidth;

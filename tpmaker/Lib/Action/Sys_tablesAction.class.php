@@ -15,7 +15,7 @@ class sys_tablesAction extends AdminAction{
 		$projecturl=$pro['proname'];
 		$this->assign('projecturl',$projecturl);//当前操作的项目路径
 		$this->assign('projectname',$pro['caption']);//当前操作的数据库
-		$wherevalue='issystem=0 and pid='.$_REQUEST[pid];//过滤条件
+		$wherevalue='ismodel=0 and issystem=0 and pid='.$_REQUEST[pid];//过滤条件
 		$list=D('sys_tables');
 		$count= $list->count($wherevalue);
 		
@@ -36,7 +36,26 @@ class sys_tablesAction extends AdminAction{
 
 	public function Adv(){
 
-	$this->Index();
+		$pro=D('sys_projects');
+		$pro=$pro->getByid($_REQUEST[pid]);
+		$projecturl=$pro['proname'];
+		$this->assign('projecturl',$projecturl);//当前操作的项目路径
+		$this->assign('projectname',$pro['caption']);//当前操作的数据库
+		$wherevalue='issystem=0 and pid='.$_REQUEST[pid];//过滤条件
+		$list=D('sys_tables');
+		$count= $list->count($wherevalue);
+		
+		if(!empty($_REQUEST['order'])) { $order = $_REQUEST['order']; }else{ $order='seqNo'; } //排序表单
+		if(empty($_REQUEST['sort']) ) { $sortd = 'asc'; }else{ $sortd=$_REQUEST['sort']; } //排序方向
+		$orderBy=$order.' '.$sortd;//排序
+
+		$p=$this->tpPage($count,20,'page');
+
+		$list=$list->findAll($wherevalue,'*',$orderBy,$p['firstRow'].','.$p['listRows']);
+
+		//dump($list);
+		$this->assign('list',$list);
+		$this->display();
 
 	}
 	
