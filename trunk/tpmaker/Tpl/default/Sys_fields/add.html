@@ -18,25 +18,25 @@
 
 </tr>
 <tr >
-<myhtml:labelinput  name="islist" label="是否列表" action="makeselect('islist'#'sub_yesno'#1)"  />
-<myhtml:labelinput  name="iswrap" label="是否排序" action="makeselect('iswrap'#'sub_yesno'#1)"  />
+<myhtml:labelinput  name="islist" label="是否列表" action="makeselect('islist'#'sub_yesno'#1#null#'title'#'tid')"  />
+<myhtml:labelinput  name="iswrap" label="是否排序" action="makeselect('iswrap'#'sub_yesno'#1#null#'title'#'tid')"  />
 <myhtml:labelinput  name="indexvar" label="默认值" value="" type="text" />
 <myhtml:labelinput  name="autotype" label="填充形式" action="makeselect('autotype'#'sub_auto'#'0')"  />
 
 </tr>
 <tr>
 <myhtml:labelinput  name="validate" label="验证形式" action="makeselect('validate'#'sub_validate'#1)"  />
-<myhtml:labelinput  name="request" label="必填" action="makeselect('request'#'sub_yesno'#1)"  />
+<myhtml:labelinput  name="request" label="必填" action="makeselect('request'#'sub_yesno'#1#null#'title'#'tid')"  />
 <myhtml:labelinput  name="validate_tex" label="错误提示" value="" type="text" />
 <myhtml:labelinput  name="validate_reg" label="正则验证" value="" type="text" />
 
 </tr>
 <tr >
 <myhtml:labelinput  name="issearch" label="搜索形式" action="makeselect('searchtype'#'sub_searchtype'#1)"  />
-<myhtml:labelinput  name="issearch" label="是否搜索" action="makeselect('issearch'#'sub_yesno'#1)"  />
+<myhtml:labelinput  name="issearch" label="是否搜索" action="makeselect('issearch'#'sub_yesno'#1#null#'title'#'tid')"  />
 </tr>
 <tr >
-<myhtml:labelinput  name="outkeyis" label="是否外键" action="makeselect('outkeyis'#'sub_yesno'#1)"  />
+<myhtml:labelinput  name="outkeyis" label="是否外键" action="makeselect('outkeyis'#'sub_yesno'#1#null#'title'#'tid')"  />
 <myhtml:labelinput  name="outkey" label="外键表" value="" type="text" />
 <myhtml:labelinput  name="outkeyid" label="外键表ID" value="id" type="text" />
 <myhtml:labelinput  name="outkeyf" label="外键表栏目" value="" type="text" />
