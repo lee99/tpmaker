@@ -1,4 +1,7 @@
 <?php
+//+---------------------------------------------------
+//|	tpmaker1.05 tpl:tpmaker_jquery
+//+---------------------------------------------------
 class IndexAction extends PublicAction{
 
 	public function index(){
