@@ -10,7 +10,7 @@ if (!defined('THINK_PATH')){
 		'DB_PWD'=>		'{dbpassword}',		//mysql密码
 		'DB_PORT'=>		'3306',				//端口
 		'DB_PREFIX'=>	'{tbpre}',			//数据表的前缀
-		'PROject_NAME'=>'{caption}',		//本项目的名字
+		'P_NAME'=>		'{caption}',		//本项目的名字
 	);
 
 ?>

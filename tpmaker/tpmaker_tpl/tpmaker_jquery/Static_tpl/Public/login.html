@@ -42,7 +42,7 @@ function dologin(obj){
       <FORM METHOD=POST NAME="login" ID="form1" >
       <TABLE WIDTH="100%"  CELLPADDING=1 CELLSPACING=0 ID="checkList" >
         <TR CLASS="row" HEIGHT="20" >
-          <TH  COLSPAN="4" CLASS="tCenter space" >{$Think.config.WEB_TITLE}</TH>
+          <TH  COLSPAN="4" CLASS="tCenter space" >{$Think.config.P_NAME}</TH>
         </TR>
         <TR STYLE="height:5px" >
           <TD COLSPAN="4"></TD>
@@ -75,10 +75,7 @@ function dologin(obj){
           <TD COLSPAN="4"></TD>
         </TR>
         <TR CLASS="row" >
-          <TD CLASS="tCenter" ALIGN="justify" COLSPAN="4"><INPUT TYPE="hidden" NAME="ajax" VALUE="1">
-            <INPUT TYPE="button" CLASS="button1" VALUE="确定登录进入CRM系统" ONCLICK="dologin('form1');">
-            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-            <INPUT TYPE="reset" CLASS="button1"  VALUE="重置当前表单" ></TD>
+          <TD  ALIGN="left" COLSPAN="4"><INPUT TYPE="hidden" NAME="ajax" VALUE="1"><INPUT TYPE="button" CLASS="button1" VALUE="确定登录进入CRM系统" ONCLICK="dologin('form1');">&nbsp;&nbsp;<INPUT TYPE="reset" CLASS="button1"  VALUE="重置当前表单" ></TD>
         </TR>
         <TR STYLE="height:5px" >
           <TD COLSPAN="4"></TD>
