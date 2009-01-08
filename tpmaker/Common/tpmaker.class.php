@@ -162,7 +162,7 @@ class tpmaker extends Action
 		copyfile(APP_PATH.'/tpmaker_tpl/tphtmltags/TagLib/TagLibMyhtml.class.php',THINK_PATH.'/Lib/Think/Template/TagLib/TagLibMyhtml.class.php');//安装标签
 		copyfile(APP_PATH.'/tpmaker_tpl/tphtmltags/Tags/mkrtags.xml',THINK_PATH.'/Lib/Think/Template/Tags/mkrtags.xml');//安装标签
 		copyfile(APP_PATH.'/tpmaker_tpl/tphtmltags/Tags/myhtml.xml',THINK_PATH.'/Lib/Think/Template/Tags/myhtml.xml');//安装标签
-		
+
 	}
 
 	/**
@@ -324,14 +324,14 @@ class tpmaker extends Action
 
 		//index()的ACTION生成
 		if($data['list']==1 || $data['search']==1){
-		$index_act[0]['modelname']=$name;
-		$fields=$this->getfieldsbytbid($id);
-		$list_fields=$this->makerows($fields,'islist');
-		$index_act[0]['list_fields']=$list_fields;
-		$search_fields=$this->makerows($fields,'issearch');
-		$index_act[0]['search_fields']=$search_fields;
-		$search_ser_c=$this->makerows($fields,'issearch','$ser_c');
-		$index_act[0]['search_ser_c']=$search_ser_c;
+			$index_act[0]['modelname']=$name;
+			$fields=$this->getfieldsbytbid($id);
+			$list_fields=$this->makerows($fields,'islist');
+			$index_act[0]['list_fields']=$list_fields;
+			$search_fields=$this->makerows($fields,'issearch');
+			$index_act[0]['search_fields']=$search_fields;
+			$search_ser_c=$this->makerows($fields,'issearch','$ser_c');
+			$index_act[0]['search_ser_c']=$search_ser_c;
 		}
 
 
@@ -393,55 +393,55 @@ class tpmaker extends Action
 
 		//生成INDEX.HMTL包括LIST及SEARCH的
 		if($data['list']==1 || $data['search']==1){
-		$filename=$app_path.'/Tpl/default/'.$name.'/index.html';//生成的模板文件名
-		$tpl=new tpl($tpl_path.'/Html_tpl/index.html');//源模板文件名
-		$fields=$this->getfieldsbytbid($id);
-		//$filename=$this->tplchecktable($data,$filename);
-		$listshowsort=$this->makerowslistsort($fields,'islist');
-		$listshowtd=$this->makerowslisttd($fields,'islist');
-		$tpl->tplsign('listshowsort',$listshowsort);//替换
-		$tpl->tplsign('listshowtd',$listshowtd);//替换
-		$tpl->tplsign('tablecaption',$caption);//替换
-		$filecontent=$tpl->tplreturn();
-		writefile($filename,$filecontent);
+			$filename=$app_path.'/Tpl/default/'.$name.'/index.html';//生成的模板文件名
+			$tpl=new tpl($tpl_path.'/Html_tpl/index.html');//源模板文件名
+			$fields=$this->getfieldsbytbid($id);
+			//$filename=$this->tplchecktable($data,$filename);
+			$listshowsort=$this->makerowslistsort($fields,'islist');
+			$listshowtd=$this->makerowslisttd($fields,'islist');
+			$tpl->tplsign('listshowsort',$listshowsort);//替换
+			$tpl->tplsign('listshowtd',$listshowtd);//替换
+			$tpl->tplsign('tablecaption',$caption);//替换
+			$filecontent=$tpl->tplreturn();
+			writefile($filename,$filecontent);
 		}
-		
+
 
 		//生成Add.HMTL
 		if($data['add']==1){
-		$filename=$app_path.'/Tpl/default/'.$name.'/add.html';//生成的模板文件名
-		$tpl=new tpl($tpl_path.'/Html_tpl/add.html');//源模板文件名
-		$fields=$this->getfieldsbytbid($id);
-		$rowscontent=$this->makerowscontent($fields,'addtype','rows.tpl');
-		$tpl->tplsign('tablecaption',$caption);//替换
-		$tpl->tplsign('rowscontent',$rowscontent);//替换
-		$filecontent=$tpl->tplreturn();
-		writefile($filename,$filecontent);
+			$filename=$app_path.'/Tpl/default/'.$name.'/add.html';//生成的模板文件名
+			$tpl=new tpl($tpl_path.'/Html_tpl/add.html');//源模板文件名
+			$fields=$this->getfieldsbytbid($id);
+			$rowscontent=$this->makerowscontent($fields,'addtype','rows.tpl');
+			$tpl->tplsign('tablecaption',$caption);//替换
+			$tpl->tplsign('rowscontent',$rowscontent);//替换
+			$filecontent=$tpl->tplreturn();
+			writefile($filename,$filecontent);
 		}
 
 		//生成Edit.HMTL
 		if($data['edit']==1){
-		$filename=$app_path.'/Tpl/default/'.$name.'/edit.html';//生成的模板文件名
-		$tpl=new tpl($tpl_path.'/Html_tpl/edit.html');//源模板文件名
-		$fields=$this->getfieldsbytbid($id);
-		$rowscontent=$this->makerowscontent($fields,'edittype','rows.tpl');
-		$tpl->tplsign('tablecaption',$caption);//替换
-		$tpl->tplsign('rowscontent',$rowscontent);//替换
-		$filecontent=$tpl->tplreturn();
-		writefile($filename,$filecontent);
+			$filename=$app_path.'/Tpl/default/'.$name.'/edit.html';//生成的模板文件名
+			$tpl=new tpl($tpl_path.'/Html_tpl/edit.html');//源模板文件名
+			$fields=$this->getfieldsbytbid($id);
+			$rowscontent=$this->makerowscontent($fields,'edittype','rows.tpl');
+			$tpl->tplsign('tablecaption',$caption);//替换
+			$tpl->tplsign('rowscontent',$rowscontent);//替换
+			$filecontent=$tpl->tplreturn();
+			writefile($filename,$filecontent);
 		}
 
 
 		//生成Veiw.HMTL
 		if($data['view']==1){
-		$filename=$app_path.'/Tpl/default/'.$name.'/view.html';//生成的模板文件名
-		$tpl=new tpl($tpl_path.'/Html_tpl/view.html');//源模板文件名
-		$fields=$this->getfieldsbytbid($id);
-		$rowscontent=$this->makerowscontent($fields,'viewtype','rows.tpl');
-		$tpl->tplsign('tablecaption',$caption);//替换
-		$tpl->tplsign('rowscontent',$rowscontent);//替换
-		$filecontent=$tpl->tplreturn();
-		writefile($filename,$filecontent);
+			$filename=$app_path.'/Tpl/default/'.$name.'/view.html';//生成的模板文件名
+			$tpl=new tpl($tpl_path.'/Html_tpl/view.html');//源模板文件名
+			$fields=$this->getfieldsbytbid($id);
+			$rowscontent=$this->makerowscontent($fields,'viewtype','rows.tpl');
+			$tpl->tplsign('tablecaption',$caption);//替换
+			$tpl->tplsign('rowscontent',$rowscontent);//替换
+			$filecontent=$tpl->tplreturn();
+			writefile($filename,$filecontent);
 		}
 	}
 
