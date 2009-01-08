@@ -150,7 +150,7 @@ class tpmaker extends Action
 		tpmk_dir($app_path.'/Temp/');//生成Temp目录
 		tpmk_dir($app_path.'/Tpl/default/Public/');//生成Tpl目录
 		copyfile($tpl_path.'/common.php',$app_path.'/Common/common.php');////common.php文件
-		copyfile($tpl_path.'/PublicAction.class.php',$app_path.'/Lib/Action/PublicAction.class.php');
+		copyfile($tpl_path.'/Action_tpl/PublicAction.class.php',$app_path.'/Lib/Action/PublicAction.class.php');
 		////PublicAction.class.php文件
 		copydir($tpl_path.'/Static_tpl',$app_path.'/Tpl/default');////common.php文件
 		$this->installtags();//安装标签
