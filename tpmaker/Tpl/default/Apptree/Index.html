@@ -10,12 +10,6 @@
 	<tr>
 	<th>模块标题</th>
 	<td><input name="title"></td>
-	<th>是否链接</th>
-	<td>
-	<select name="type">
-	<option value="0" selected>应用模块类别</option>
-	<option value="1">应用模块链接[对应表]</option>
-	</select>
 	<myhtml:labelinput  name="type" label="是否链接" type="checkbox" value='0'  />
 	</td>
 	<myhtml:labelinput  name="tid" label="所属表" action="makeselect('tid'#'sys_tables'#null#'pid='.$_SESSION[workingprojectid]#'caption'#'id')"  />
@@ -29,24 +23,28 @@
 </fieldset>
 <fieldset>
     <!-- 列表显示区域  -->
-    <myhtml:editlist id="checkList" name="list" checkbox="true" datasource="list" style="list" show="
-	 id|hidden|1:ID,
-	 title|20:项目标题,
-	 type|checkbox:是否链接,
-	 pid|select|makeselect('pid'#'apptree'#null#'type=0 and projectid='.$_SESSION[workingprojectid]#'title'#'id'):上级表,
-	 tid|select|makeselect('tid'#'sys_tables'#null#'pid='.$_SESSION[workingprojectid]#'caption'#'id'):所属表
-	"
-	 createform="true" />
- <!--  分页显示区域 -->
-    <div class="page">
-        <table width="100%">
-            <tr>
-                <td align="left">
-                    <input type="button" onclick="upbtn();" class="button1" value="更新本页数据">
-                    <input type="button" name="delete" onclick="del()" class="button1" value="删除数据">
-                </td>
-            </tr>
-        </table>
-    </div>
+<script type="text/javascript">
+<!--
+
+	apptree = new dTree('apptree');
+	apptree.add('tree0',-1,'[默认的应用分类]','__URL__/index/id/',null,'self',IMG_PATH+'b_import.png',IMG_PATH+'b_import.png');	
+	<volist name="list" id="list">
+	<php>
+	if($list[type]==0){
+	</php>
+	apptree.add('tree{$list.id}','tree{$list.pid}','{$list.title}','__URL__/index/id/{$list.id}',null,'_self',IMG_PATH+'b_import.png',IMG_PATH+'b_import.png');
+	<php>
+	}else{
+	</php>
+	apptree.add('tree{$list.id}','tree{$list.pid}','标题:{$list.title},模块:{$list.tid}','__URL__/index/id/{$list.id}',null,'_self',IMG_PATH+'imgfolder1.gif',IMG_PATH+'imgfolder1.gif');
+	<php>
+	}
+	</php>
+	</volist>
+	
+	document.write(apptree);
+		//-->	
+</script>
+
 </fieldset>
 <include file="../Public/footer" />
