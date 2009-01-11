@@ -16,6 +16,7 @@
 	<option value="0" selected>应用模块类别</option>
 	<option value="1">应用模块链接[对应表]</option>
 	</select>
+	<myhtml:labelinput  name="type" label="是否链接" type="checkbox" value='0'  />
 	</td>
 	<myhtml:labelinput  name="tid" label="所属表" action="makeselect('tid'#'sys_tables'#null#'pid='.$_SESSION[workingprojectid]#'caption'#'id')"  />
 	<myhtml:labelinput  name="pid" label="上级表" action="makeselect('pid'#'apptree'#null#'type=0 and projectid='.$_SESSION[workingprojectid]#'title'#'id')"  />

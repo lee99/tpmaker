@@ -99,13 +99,9 @@ Class TagLibMyhtml extends TagLib
 			//显示定义的列表字段
 			$parseStr   .=  '<TD>
 			';
-
 			$property = explode('|',$field[0]);
 			//生成表单
-
 			$parseStr .='{$'.trim($name).'.'.trim($property[0]).'}';
-
-
 			$parseStr .= '
 			</TD>';
 		}
@@ -373,7 +369,20 @@ Class TagLibMyhtml extends TagLib
 
 		if($type=='text') {
 			$parseStr   = '<th>'.$label.'</th><td><INPUT TYPE="'.$type.'" id="'.$id.'" name="'.$name.'" value="'.$value.'" ></td>';
-		}else {
+		}elseif ($type=='checkbox'){
+			$parseStr   = '<th>'.$label.'</th>';
+			$parseStr .='<td>';
+			if($value==1){
+				$checked="checked=checked";
+			}else{
+				$checked="";
+			}
+			$parseStr .='
+			<input  type="checkbox" onclick="checkboxvalue(\'cb_'.$name.'\',\'ch_'.$name.'\');" id="cb_'.$name.'" '.$checked.' />
+			<input id="ch_'.$name.'"  name="ch_'.$name.'" type="hidden" value="'.$value.'">';
+			$parseStr .='</td>';
+		}
+		else {
 			$thispro=str_replace('#',',',trim($action));
 			$parseStr   = '<th>'.$label.'</th><td>{:'.$thispro.'}</td>';
 		}
