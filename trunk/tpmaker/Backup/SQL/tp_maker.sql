@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 2.11.4
+-- version 2.11.6
 -- http://www.phpmyadmin.net
 --
 -- 主机: localhost
--- 生成日期: 2009 年 01 月 04 日 02:56
--- 服务器版本: 5.0.51
--- PHP 版本: 5.2.5
+-- 生成日期: 2009 年 01 月 12 日 00:52
+-- 服务器版本: 5.0.41
+-- PHP 版本: 5.2.2
 
 SET SQL_MODE="NO_AUTO_VALUE_ON_ZERO";
 
@@ -16,9 +16,27 @@ SET SQL_MODE="NO_AUTO_VALUE_ON_ZERO";
 -- --------------------------------------------------------
 
 --
+-- 表的结构 `tp_apptree`
+--
+
+DROP TABLE IF EXISTS `tp_apptree`;
+CREATE TABLE IF NOT EXISTS `tp_apptree` (
+  `id` int(11) NOT NULL auto_increment,
+  `title` varchar(40) NOT NULL COMMENT '标题',
+  `projectid` int(11) NOT NULL COMMENT '项目ID',
+  `type` int(11) NOT NULL COMMENT '类型',
+  `pid` int(11) NOT NULL default '0' COMMENT '上级ID',
+  `tid` int(11) NOT NULL COMMENT '数据表ID',
+  PRIMARY KEY  (`id`)
+) ENGINE=MyISAM  DEFAULT CHARSET=utf8 AUTO_INCREMENT=11 ;
+
+-- --------------------------------------------------------
+
+--
 -- 表的结构 `tp_con_tree`
 --
 
+DROP TABLE IF EXISTS `tp_con_tree`;
 CREATE TABLE IF NOT EXISTS `tp_con_tree` (
   `id` int(11) NOT NULL auto_increment,
   `tid` int(11) NOT NULL,
@@ -37,6 +55,7 @@ CREATE TABLE IF NOT EXISTS `tp_con_tree` (
 -- 表的结构 `tp_designer`
 --
 
+DROP TABLE IF EXISTS `tp_designer`;
 CREATE TABLE IF NOT EXISTS `tp_designer` (
   `id` int(11) NOT NULL auto_increment,
   `master_pid` int(11) NOT NULL,
@@ -54,6 +73,7 @@ CREATE TABLE IF NOT EXISTS `tp_designer` (
 -- 表的结构 `tp_designer_coords`
 --
 
+DROP TABLE IF EXISTS `tp_designer_coords`;
 CREATE TABLE IF NOT EXISTS `tp_designer_coords` (
   `id` int(11) NOT NULL auto_increment,
   `projectid` int(11) NOT NULL,
@@ -71,6 +91,7 @@ CREATE TABLE IF NOT EXISTS `tp_designer_coords` (
 -- 表的结构 `tp_pro_templete`
 --
 
+DROP TABLE IF EXISTS `tp_pro_templete`;
 CREATE TABLE IF NOT EXISTS `tp_pro_templete` (
   `id` int(11) NOT NULL auto_increment COMMENT 'ID',
   `title` varchar(200) default NULL COMMENT '标题',
@@ -86,6 +107,7 @@ CREATE TABLE IF NOT EXISTS `tp_pro_templete` (
 -- 表的结构 `tp_relation`
 --
 
+DROP TABLE IF EXISTS `tp_relation`;
 CREATE TABLE IF NOT EXISTS `tp_relation` (
   `master_db` varchar(64) collate utf8_bin NOT NULL default '',
   `master_table` varchar(64) collate utf8_bin NOT NULL default '',
@@ -103,6 +125,7 @@ CREATE TABLE IF NOT EXISTS `tp_relation` (
 -- 表的结构 `tp_sub_addtype`
 --
 
+DROP TABLE IF EXISTS `tp_sub_addtype`;
 CREATE TABLE IF NOT EXISTS `tp_sub_addtype` (
   `id` int(11) NOT NULL auto_increment COMMENT 'ID',
   `title` varchar(200) default NULL COMMENT '标题',
@@ -132,6 +155,7 @@ CREATE TABLE IF NOT EXISTS `tp_sub_addtype` (
 -- 表的结构 `tp_sub_auto`
 --
 
+DROP TABLE IF EXISTS `tp_sub_auto`;
 CREATE TABLE IF NOT EXISTS `tp_sub_auto` (
   `id` int(11) NOT NULL auto_increment COMMENT 'ID',
   `title` varchar(200) default NULL COMMENT '标题',
@@ -141,7 +165,7 @@ CREATE TABLE IF NOT EXISTS `tp_sub_auto` (
   `condition` varchar(40) default NULL COMMENT '填充条件',
   `regular` varchar(40) default NULL COMMENT '附加规则',
   PRIMARY KEY  (`id`)
-) ENGINE=MyISAM  DEFAULT CHARSET=utf8 COMMENT='自动填充设定' AUTO_INCREMENT=4 ;
+) ENGINE=MyISAM  DEFAULT CHARSET=utf8 COMMENT='自动填充设定' AUTO_INCREMENT=5 ;
 
 -- --------------------------------------------------------
 
@@ -149,6 +173,7 @@ CREATE TABLE IF NOT EXISTS `tp_sub_auto` (
 -- 表的结构 `tp_sub_auto_con`
 --
 
+DROP TABLE IF EXISTS `tp_sub_auto_con`;
 CREATE TABLE IF NOT EXISTS `tp_sub_auto_con` (
   `id` int(11) NOT NULL auto_increment COMMENT 'ID',
   `title` varchar(200) default NULL COMMENT '标题',
@@ -164,6 +189,7 @@ CREATE TABLE IF NOT EXISTS `tp_sub_auto_con` (
 -- 表的结构 `tp_sub_auto_reg`
 --
 
+DROP TABLE IF EXISTS `tp_sub_auto_reg`;
 CREATE TABLE IF NOT EXISTS `tp_sub_auto_reg` (
   `id` int(11) NOT NULL auto_increment COMMENT 'ID',
   `title` varchar(200) default NULL COMMENT '标题',
@@ -179,6 +205,7 @@ CREATE TABLE IF NOT EXISTS `tp_sub_auto_reg` (
 -- 表的结构 `tp_sub_color`
 --
 
+DROP TABLE IF EXISTS `tp_sub_color`;
 CREATE TABLE IF NOT EXISTS `tp_sub_color` (
   `id` int(11) NOT NULL auto_increment COMMENT 'ID',
   `title` varchar(200) default NULL COMMENT '标题',
@@ -186,7 +213,7 @@ CREATE TABLE IF NOT EXISTS `tp_sub_color` (
   `color` int(11) default NULL,
   `othervar` varchar(200) default NULL COMMENT '其它属性',
   PRIMARY KEY  (`id`)
-) ENGINE=MyISAM  DEFAULT CHARSET=utf8 COMMENT='查看类型设定' AUTO_INCREMENT=21 ;
+) ENGINE=MyISAM  DEFAULT CHARSET=utf8 COMMENT='查看类型设定' AUTO_INCREMENT=22 ;
 
 -- --------------------------------------------------------
 
@@ -194,6 +221,7 @@ CREATE TABLE IF NOT EXISTS `tp_sub_color` (
 -- 表的结构 `tp_sub_edittype`
 --
 
+DROP TABLE IF EXISTS `tp_sub_edittype`;
 CREATE TABLE IF NOT EXISTS `tp_sub_edittype` (
   `id` int(11) NOT NULL auto_increment COMMENT 'ID',
   `title` varchar(200) default NULL COMMENT '标题',
@@ -223,6 +251,7 @@ CREATE TABLE IF NOT EXISTS `tp_sub_edittype` (
 -- 表的结构 `tp_sub_fieldtype`
 --
 
+DROP TABLE IF EXISTS `tp_sub_fieldtype`;
 CREATE TABLE IF NOT EXISTS `tp_sub_fieldtype` (
   `id` int(11) NOT NULL auto_increment COMMENT 'ID',
   `title` varchar(200) default NULL COMMENT '标题',
@@ -244,6 +273,7 @@ CREATE TABLE IF NOT EXISTS `tp_sub_fieldtype` (
 -- 表的结构 `tp_sub_htmltags`
 --
 
+DROP TABLE IF EXISTS `tp_sub_htmltags`;
 CREATE TABLE IF NOT EXISTS `tp_sub_htmltags` (
   `id` int(11) NOT NULL auto_increment COMMENT 'ID',
   `title` varchar(200) default NULL COMMENT '标题',
@@ -260,6 +290,7 @@ CREATE TABLE IF NOT EXISTS `tp_sub_htmltags` (
 -- 表的结构 `tp_sub_htmlusetype`
 --
 
+DROP TABLE IF EXISTS `tp_sub_htmlusetype`;
 CREATE TABLE IF NOT EXISTS `tp_sub_htmlusetype` (
   `id` int(11) NOT NULL auto_increment COMMENT 'ID',
   `title` varchar(200) default NULL COMMENT '标题',
@@ -275,6 +306,7 @@ CREATE TABLE IF NOT EXISTS `tp_sub_htmlusetype` (
 -- 表的结构 `tp_sub_issystem`
 --
 
+DROP TABLE IF EXISTS `tp_sub_issystem`;
 CREATE TABLE IF NOT EXISTS `tp_sub_issystem` (
   `id` int(11) NOT NULL auto_increment COMMENT 'ID',
   `title` varchar(200) default NULL COMMENT '标题',
@@ -290,6 +322,7 @@ CREATE TABLE IF NOT EXISTS `tp_sub_issystem` (
 -- 表的结构 `tp_sub_searchtype`
 --
 
+DROP TABLE IF EXISTS `tp_sub_searchtype`;
 CREATE TABLE IF NOT EXISTS `tp_sub_searchtype` (
   `id` int(11) NOT NULL auto_increment COMMENT 'ID',
   `title` varchar(200) default NULL COMMENT '标题',
@@ -305,6 +338,7 @@ CREATE TABLE IF NOT EXISTS `tp_sub_searchtype` (
 -- 表的结构 `tp_sub_validate`
 --
 
+DROP TABLE IF EXISTS `tp_sub_validate`;
 CREATE TABLE IF NOT EXISTS `tp_sub_validate` (
   `id` int(11) NOT NULL auto_increment COMMENT 'ID',
   `title` varchar(200) default NULL COMMENT '标题',
@@ -324,6 +358,7 @@ CREATE TABLE IF NOT EXISTS `tp_sub_validate` (
 -- 表的结构 `tp_sub_validate_arag`
 --
 
+DROP TABLE IF EXISTS `tp_sub_validate_arag`;
 CREATE TABLE IF NOT EXISTS `tp_sub_validate_arag` (
   `id` int(11) NOT NULL auto_increment COMMENT 'ID',
   `title` varchar(200) default NULL COMMENT '标题',
@@ -339,6 +374,7 @@ CREATE TABLE IF NOT EXISTS `tp_sub_validate_arag` (
 -- 表的结构 `tp_sub_validate_vcon`
 --
 
+DROP TABLE IF EXISTS `tp_sub_validate_vcon`;
 CREATE TABLE IF NOT EXISTS `tp_sub_validate_vcon` (
   `id` int(11) NOT NULL auto_increment COMMENT 'ID',
   `title` varchar(200) default NULL COMMENT '标题',
@@ -346,7 +382,7 @@ CREATE TABLE IF NOT EXISTS `tp_sub_validate_vcon` (
   `color` int(11) default NULL,
   `othervar` varchar(200) default NULL COMMENT '其它属性',
   PRIMARY KEY  (`id`)
-) ENGINE=MyISAM  DEFAULT CHARSET=utf8 COMMENT='验证条件' AUTO_INCREMENT=3 ;
+) ENGINE=MyISAM  DEFAULT CHARSET=utf8 COMMENT='验证条件' AUTO_INCREMENT=4 ;
 
 -- --------------------------------------------------------
 
@@ -354,6 +390,7 @@ CREATE TABLE IF NOT EXISTS `tp_sub_validate_vcon` (
 -- 表的结构 `tp_sub_viewtype`
 --
 
+DROP TABLE IF EXISTS `tp_sub_viewtype`;
 CREATE TABLE IF NOT EXISTS `tp_sub_viewtype` (
   `id` int(11) NOT NULL auto_increment COMMENT 'ID',
   `title` varchar(200) default NULL COMMENT '标题',
@@ -383,6 +420,7 @@ CREATE TABLE IF NOT EXISTS `tp_sub_viewtype` (
 -- 表的结构 `tp_sub_yesno`
 --
 
+DROP TABLE IF EXISTS `tp_sub_yesno`;
 CREATE TABLE IF NOT EXISTS `tp_sub_yesno` (
   `id` int(11) NOT NULL auto_increment COMMENT 'ID',
   `tid` int(11) NOT NULL,
@@ -399,6 +437,7 @@ CREATE TABLE IF NOT EXISTS `tp_sub_yesno` (
 -- 表的结构 `tp_sys_config`
 --
 
+DROP TABLE IF EXISTS `tp_sys_config`;
 CREATE TABLE IF NOT EXISTS `tp_sys_config` (
   `id` int(11) NOT NULL auto_increment,
   `pid` int(11) default NULL COMMENT '上级',
@@ -416,6 +455,7 @@ CREATE TABLE IF NOT EXISTS `tp_sys_config` (
 -- 表的结构 `tp_sys_configtype`
 --
 
+DROP TABLE IF EXISTS `tp_sys_configtype`;
 CREATE TABLE IF NOT EXISTS `tp_sys_configtype` (
   `id` int(11) NOT NULL auto_increment,
   `title` varchar(200) default NULL,
@@ -430,6 +470,7 @@ CREATE TABLE IF NOT EXISTS `tp_sys_configtype` (
 -- 表的结构 `tp_sys_datatype`
 --
 
+DROP TABLE IF EXISTS `tp_sys_datatype`;
 CREATE TABLE IF NOT EXISTS `tp_sys_datatype` (
   `id` int(11) NOT NULL auto_increment,
   `title` varchar(200) default NULL,
@@ -444,6 +485,7 @@ CREATE TABLE IF NOT EXISTS `tp_sys_datatype` (
 -- 表的结构 `tp_sys_fields`
 --
 
+DROP TABLE IF EXISTS `tp_sys_fields`;
 CREATE TABLE IF NOT EXISTS `tp_sys_fields` (
   `id` int(11) NOT NULL auto_increment,
   `pid` int(11) NOT NULL COMMENT '所属的表',
@@ -487,6 +529,7 @@ CREATE TABLE IF NOT EXISTS `tp_sys_fields` (
 -- 表的结构 `tp_sys_fieldtypesub`
 --
 
+DROP TABLE IF EXISTS `tp_sys_fieldtypesub`;
 CREATE TABLE IF NOT EXISTS `tp_sys_fieldtypesub` (
   `id` int(11) NOT NULL auto_increment,
   `title` varchar(200) default NULL,
@@ -501,6 +544,7 @@ CREATE TABLE IF NOT EXISTS `tp_sys_fieldtypesub` (
 -- 表的结构 `tp_sys_models`
 --
 
+DROP TABLE IF EXISTS `tp_sys_models`;
 CREATE TABLE IF NOT EXISTS `tp_sys_models` (
   `id` int(11) NOT NULL auto_increment,
   `title` varchar(200) default NULL,
@@ -515,6 +559,7 @@ CREATE TABLE IF NOT EXISTS `tp_sys_models` (
 -- 表的结构 `tp_sys_projects`
 --
 
+DROP TABLE IF EXISTS `tp_sys_projects`;
 CREATE TABLE IF NOT EXISTS `tp_sys_projects` (
   `id` int(11) NOT NULL auto_increment,
   `dbname` varchar(200) default NULL,
@@ -538,6 +583,7 @@ CREATE TABLE IF NOT EXISTS `tp_sys_projects` (
 -- 表的结构 `tp_sys_tables`
 --
 
+DROP TABLE IF EXISTS `tp_sys_tables`;
 CREATE TABLE IF NOT EXISTS `tp_sys_tables` (
   `id` int(11) NOT NULL auto_increment,
   `pid` int(11) NOT NULL default '1' COMMENT '项目ID',
@@ -565,6 +611,7 @@ CREATE TABLE IF NOT EXISTS `tp_sys_tables` (
 -- 表的结构 `tp_tab_edittype`
 --
 
+DROP TABLE IF EXISTS `tp_tab_edittype`;
 CREATE TABLE IF NOT EXISTS `tp_tab_edittype` (
   `id` int(11) NOT NULL auto_increment COMMENT 'ID',
   `title` varchar(200) default NULL COMMENT '标题',
@@ -580,6 +627,7 @@ CREATE TABLE IF NOT EXISTS `tp_tab_edittype` (
 -- 表的结构 `tp_tab_searchtype`
 --
 
+DROP TABLE IF EXISTS `tp_tab_searchtype`;
 CREATE TABLE IF NOT EXISTS `tp_tab_searchtype` (
   `id` int(11) NOT NULL auto_increment COMMENT 'ID',
   `title` varchar(200) default NULL COMMENT '标题',
@@ -587,7 +635,7 @@ CREATE TABLE IF NOT EXISTS `tp_tab_searchtype` (
   `color` int(11) default NULL,
   `othervar` varchar(200) default NULL COMMENT '其它属性',
   PRIMARY KEY  (`id`)
-) ENGINE=MyISAM  DEFAULT CHARSET=utf8 COMMENT='搜索形式设定' AUTO_INCREMENT=5 ;
+) ENGINE=MyISAM  DEFAULT CHARSET=utf8 COMMENT='搜索形式设定' AUTO_INCREMENT=7 ;
 
 -- --------------------------------------------------------
 
@@ -595,6 +643,7 @@ CREATE TABLE IF NOT EXISTS `tp_tab_searchtype` (
 -- 表的结构 `tp_test`
 --
 
+DROP TABLE IF EXISTS `tp_test`;
 CREATE TABLE IF NOT EXISTS `tp_test` (
   `id` int(11) NOT NULL auto_increment COMMENT 'ID',
   `title` varchar(200) default NULL COMMENT '标题',
