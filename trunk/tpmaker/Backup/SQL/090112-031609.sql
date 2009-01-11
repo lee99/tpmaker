@@ -25,8 +25,8 @@ INSERT INTO `tp_con_tree` VALUES ('13','13','4','编辑类型设定','tab_editty
 INSERT INTO `tp_con_tree` VALUES ('14','14','4','搜索形式设定','tab_searchtype','index','page.gif','0');
 INSERT INTO `tp_con_tree` VALUES ('15','15','5','所有表大写','','','page.gif','0');
 INSERT INTO `tp_con_tree` VALUES ('16','16','5','所有表首位大写','','','page.gif','0');
-INSERT INTO `tp_con_tree` VALUES ('17','17','2','数据备份工具','dbbackup','index','b_import.png','0');
-INSERT INTO `tp_con_tree` VALUES ('18','18','17','数据备份','dbbackup','export_db','page.gif','0');
+INSERT INTO `tp_con_tree` VALUES ('17','17','2','数据备份管理工具','dbbackup','index','b_import.png','0');
+INSERT INTO `tp_con_tree` VALUES ('18','18','17','备份当前系统数据','dbbackup','export_db','page.gif','0');
 INSERT INTO `tp_con_tree` VALUES ('20','20','2','系统颜色表','sub_color','index','page.gif','0');
 INSERT INTO `tp_con_tree` VALUES ('21','21','2','phpMyadmin','phpMyadmin','index','page.gif','0');
 INSERT INTO `tp_con_tree` VALUES ('1','1','0','系统属性管理','','','b_import.png','0');
@@ -41,6 +41,7 @@ INSERT INTO `tp_con_tree` VALUES ('34','34','3','自动填充设定','sub_auto',
 INSERT INTO `tp_con_tree` VALUES ('35','35','34','附加规则设定','sub_auto_reg','index','page.gif','0');
 INSERT INTO `tp_con_tree` VALUES ('36','36','34','填充条件设定','sub_auto_con','index','page.gif','0');
 INSERT INTO `tp_con_tree` VALUES ('37','37','1','公共HTML标签类型','sub_htmltags','index','b_import.png','0');
+INSERT INTO `tp_con_tree` VALUES ('38','38','17','当前系统数据恢复','dbbackup','inport_db','page.gif','0');
 INSERT INTO `tp_designer` VALUES ('15','26','node','pid','26','sta_infos','id');
 INSERT INTO `tp_designer_coords` VALUES ('557','21','user','616','436','0','1');
 INSERT INTO `tp_designer_coords` VALUES ('556','21','orderlogs','664','153','0','1');

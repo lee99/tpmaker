@@ -80,7 +80,9 @@ class dbbackupAction extends AdminAction{
 	
 	
 
-
+	public function inport_db(){//导入数据库
+		$this->display();
+	}
 
 
 }
