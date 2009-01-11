@@ -38,7 +38,6 @@ function dologin(obj){
     <SCRIPT TYPE="text/javascript">tp1 = new WebFXTabPane($byid("loginall"));</SCRIPT>
     <DIV CLASS="tab-page" ID="loginform" STYLE="height:120px;">
       <H2 CLASS="tab">用户进入CRM请先登陆</H2>
-      <SCRIPT TYPE="text/javascript">tp1.addTabPage($byid("loginform"));</SCRIPT>
       <FORM METHOD=POST NAME="login" ID="form1" >
       <TABLE WIDTH="100%"  CELLPADDING=1 CELLSPACING=0 ID="checkList" >
         <TR CLASS="row" HEIGHT="20" >
@@ -85,10 +84,9 @@ function dologin(obj){
     </DIV>
     <DIV CLASS="tab-page" ID="logininfo" STYLE="height:140px">
       <H2 CLASS="tab">登陆帮助及使用说明</H2>
-      <SCRIPT TYPE="text/javascript">tp1.addTabPage($byid("logininfo"));</SCRIPT>
       <ul><li>请按照密码的样式输入密码!</li></ul>
     </DIV>
   </DIV>
-
+	<script type="text/javascript">setupAllTabs();</script>
 </BODY>
 </HTML>

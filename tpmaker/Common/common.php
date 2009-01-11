@@ -139,8 +139,9 @@ function makeselect($name,$table,$idt='',$where='',$option='title',$f_idvalue='i
 	if($f_idvalue==''){$f_idvalue='id';}
 	$tmp= "	<select name=".$name.">";
 		$thisdao=D($table);
-		$thisdao->Cache(true);
+		//$thisdao->Cache(true);
 		$list=$thisdao->findAll($where);
+		$tmp.= "<option >请选择</option>";
 		foreach ($list as $row) {
 			if ($idt==$row[$f_idvalue] ){$var="selected";}
 			$thiscolor=getcolor($row['id']);
@@ -148,9 +149,8 @@ function makeselect($name,$table,$idt='',$where='',$option='title',$f_idvalue='i
 			$var='';
 			$thiscolor='';
 		}
+		
 		$tmp.= "</select>";
-
-
 	msg($tmp);
 }
 

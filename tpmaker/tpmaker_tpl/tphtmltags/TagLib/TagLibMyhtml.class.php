@@ -2,10 +2,6 @@
 import('Think.Template.TagLib');
 Class TagLibMyhtml extends TagLib
 {
-
-
-
-
 	/**
      +----------------------------------------------------------
      * list标签解析
@@ -380,9 +376,7 @@ Class TagLibMyhtml extends TagLib
 		}else {
 			$thispro=str_replace('#',',',trim($action));
 			$parseStr   = '<th>'.$label.'</th><td>{:'.$thispro.'}</td>';
-
 		}
-
 		return $parseStr;
 	}
 }

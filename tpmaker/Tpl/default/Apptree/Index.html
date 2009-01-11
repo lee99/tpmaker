@@ -1,0 +1,51 @@
+<tagLib name="cx,html,myhtml" />
+<include file="../Public/header" />
+<!-- 主体内容  -->
+
+<fieldset >
+	<legend>应用模块分类设定</legend>
+<!-- 列表显示区域  -->
+<form  action="__URL__/addform">
+<table>
+	<tr>
+	<th>模块标题</th>
+	<td><input name="title"></td>
+	<th>是否链接</th>
+	<td>
+	<select name="type">
+	<option value="0" selected>应用模块类别</option>
+	<option value="1">应用模块链接[对应表]</option>
+	</select>
+	</td>
+	<myhtml:labelinput  name="tid" label="所属表" action="makeselect('tid'#'sys_tables'#null#'pid='.$_SESSION[workingprojectid]#'caption'#'id')"  />
+	<myhtml:labelinput  name="pid" label="上级表" action="makeselect('pid'#'apptree'#null#'type=0 and projectid='.$_SESSION[workingprojectid]#'title'#'id')"  />
+	<td><input name="add" type="submit" class="button1" value="增加数据"></td>
+	</tr>
+</table>
+<input type="hidden" value="{$_SESSION[workingprojectid]}" name="projectid">
+</form>
+
+</fieldset>
+<fieldset>
+    <!-- 列表显示区域  -->
+    <myhtml:editlist id="checkList" name="list" checkbox="true" datasource="list" style="list" show="
+	 id|hidden|1:ID,
+	 title|20:项目标题,
+	 type|checkbox:是否链接,
+	 pid|select|makeselect('pid'#'apptree'#null#'type=0 and projectid='.$_SESSION[workingprojectid]#'title'#'id'):上级表,
+	 tid|select|makeselect('tid'#'sys_tables'#null#'pid='.$_SESSION[workingprojectid]#'caption'#'id'):所属表
+	"
+	 createform="true" />
+ <!--  分页显示区域 -->
+    <div class="page">
+        <table width="100%">
+            <tr>
+                <td align="left">
+                    <input type="button" onclick="upbtn();" class="button1" value="更新本页数据">
+                    <input type="button" name="delete" onclick="del()" class="button1" value="删除数据">
+                </td>
+            </tr>
+        </table>
+    </div>
+</fieldset>
+<include file="../Public/footer" />
