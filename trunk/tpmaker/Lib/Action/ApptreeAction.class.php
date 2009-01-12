@@ -34,32 +34,24 @@ class ApptreeAction extends AdminAction{
 
 	public function updateform(){
 		$list=D('apptree');
-		for ($i = 0; $i < count($_POST['id']); $i++) {
-			foreach (array_keys($_POST) as $key){
-			$var[$key]=	$_POST[$key][$i];//数组转换
-			}
+		$var=	$_REQUEST;//数组转换
 		$dataall=$list->create($var);
-		$list->save();
-		}
+		$list->save($dataall);
+		//dump($var);
 		$this->ajaxReturn('','操作成功！',1);
-
-
-
-//redirect(__URL__."/index");
-		//dump($_REQUEST);
 	}
 
 	public function addform(){
 		$list=D('apptree');
 		$add_date=$_REQUEST;
+		$add_date[id]='';
 		if($_REQUEST[type]==0){
 			$add_date[tid]=0;
 		}
 		$list->create($add_date);
 		$list->add($add_date);
-		redirect(__URL__."/index/");
+		$this->ajaxReturn('','操作成功！',1);
 
-//redirect(__URL__."/index");
 	}
 
 }
