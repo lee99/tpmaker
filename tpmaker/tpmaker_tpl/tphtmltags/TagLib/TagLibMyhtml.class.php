@@ -373,8 +373,7 @@ Class TagLibMyhtml extends TagLib
 			$parseStr   = '<th>'.$label.'</th>';
 			$parseStr .='<td>
 			<php>
-			$value={$value};
-			if($value==1){
+			if('.$value.'==1){
 				$checked="checked=checked";
 			}else{
 				$checked="";
@@ -383,7 +382,7 @@ Class TagLibMyhtml extends TagLib
 			';
 			$parseStr .='
 			<input  type="checkbox" onclick="checkboxvalue(\'cb_'.$name.'\',\'ch_'.$name.'\');" id="cb_'.$name.'" {$checked} />
-			<input id="ch_'.$name.'"  name="'.$name.'" type="hidden" value="'.$value.'">';
+			<input id="ch_'.$name.'"  name="'.$name.'" type="hidden" value="{'.$value.'}">';
 			$parseStr .='</td>';
 		}
 		else {
