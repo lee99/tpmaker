@@ -232,6 +232,7 @@ function makeselect($name,$table,$idt='',$where='',$option='title',$f_idvalue='i
 			copytable('sys_fields',$newid,'pid',$oldid);
 		}
 }
+
 function delbypid($daoname,$inpid,$pidf='pid'){
 	$table=D($daoname);//引入MODEL
 	$tabledata=$table->findall($pidf.'='.$inpid);//找出相应的数据

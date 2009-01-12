@@ -362,23 +362,27 @@ Class TagLibMyhtml extends TagLib
 		$name       = $tag['name'];                //名称
 		$value      = $tag['value'];                //文字
 		$id         = $tag['id'];                //ID
-		$style      = $tag['style'];                //样式名
+		$size      = $tag['size'];                //样式名
 		$action     = $tag['action'];                //点击
 		$label      = $tag['label'];                //点击
 		$type       = $tag['type'];                //按钮类型
 
 		if($type=='text') {
-			$parseStr   = '<th>'.$label.'</th><td><INPUT TYPE="'.$type.'" id="'.$id.'" name="'.$name.'" value="'.$value.'" ></td>';
+			$parseStr   = '<th>'.$label.'</th><td><INPUT TYPE="'.$type.'" size="'.$size.'" id="'.$id.'" name="'.$name.'" value="'.$value.'" ></td>';
 		}elseif ($type=='checkbox'){
 			$parseStr   = '<th>'.$label.'</th>';
-			$parseStr .='<td>';
+			$parseStr .='<td>
+			<php>
+			$value={$value};
 			if($value==1){
 				$checked="checked=checked";
 			}else{
 				$checked="";
 			}
+			</php>
+			';
 			$parseStr .='
-			<input  type="checkbox" onclick="checkboxvalue(\'cb_'.$name.'\',\'ch_'.$name.'\');" id="cb_'.$name.'" '.$checked.' />
+			<input  type="checkbox" onclick="checkboxvalue(\'cb_'.$name.'\',\'ch_'.$name.'\');" id="cb_'.$name.'" {$checked} />
 			<input id="ch_'.$name.'"  name="'.$name.'" type="hidden" value="'.$value.'">';
 			$parseStr .='</td>';
 		}

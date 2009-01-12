@@ -224,10 +224,6 @@ function clean_html($value){
   return nl2br($value);
 }
 
-
-
-
-
 function un_clean_html($value){
   $value = htmlspecialchars_decode($value);
   $value = strtr($value, array(
