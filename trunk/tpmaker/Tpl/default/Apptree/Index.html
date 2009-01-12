@@ -5,16 +5,17 @@
 <fieldset >
 	<legend>应用模块分类设定</legend>
 <!-- 列表显示区域  -->
-<form  action="__URL__/addform">
+<form  id='topform'>
 <table>
 	<tr>
-	<th>模块标题</th>
-	<td><input name="title"></td>
-	<myhtml:labelinput  name="type" label="是否链接" type="checkbox" value='0'  />
+	<myhtml:labelinput  name="title" label="标题" type="text"  size="15" value='{$listtop[title]}'/>
+	<myhtml:labelinput  name="shortname" label="标记"  type="text" size="4" value='{$listtop[shortname]}'/>
+	<myhtml:labelinput  name="type" label="是否链接" type="checkbox" value='{$listtop[type]}' />
+	<myhtml:labelinput  name="tid" label="所属表" action="makeselect('tid'#'sys_tables'#$listtop[tid]#'pid='.$_SESSION[workingprojectid]#'caption'#'id')"  />
+	<myhtml:labelinput  name="pid" label="上级表" action="makeselect('pid'#'apptree'#$listtop[pid]#'type=0 and projectid='.$_SESSION[workingprojectid]#'title'#'id')"  />
+	<td><input type="button" class="button1" value="增加数据"><input type="button" class="button1" value="编辑数据">
+	<input name="id" value="{$listtop[id]}" type="hidden">
 	</td>
-	<myhtml:labelinput  name="tid" label="所属表" action="makeselect('tid'#'sys_tables'#null#'pid='.$_SESSION[workingprojectid]#'caption'#'id')"  />
-	<myhtml:labelinput  name="pid" label="上级表" action="makeselect('pid'#'apptree'#null#'type=0 and projectid='.$_SESSION[workingprojectid]#'title'#'id')"  />
-	<td><input name="add" type="submit" class="button1" value="增加数据"></td>
 	</tr>
 </table>
 <input type="hidden" value="{$_SESSION[workingprojectid]}" name="projectid">
@@ -32,11 +33,11 @@
 	<php>
 	if($list[type]==0){
 	</php>
-	apptree.add('tree{$list.id}','tree{$list.pid}','{$list.title}','__URL__/index/id/{$list.id}',null,'_self',IMG_PATH+'b_import.png',IMG_PATH+'b_import.png');
+	apptree.add('tree{$list.id}','tree{$list.pid}','{$list.title}[{$list.shortname}]','__URL__/index/id/{$list.id}',null,'_self',IMG_PATH+'b_import.png',IMG_PATH+'b_import.png');
 	<php>
 	}else{
 	</php>
-	apptree.add('tree{$list.id}','tree{$list.pid}','标题:{$list.title},模块:{$list.tid}','__URL__/index/id/{$list.id}',null,'_self',IMG_PATH+'imgfolder1.gif',IMG_PATH+'imgfolder1.gif');
+	apptree.add('tree{$list.id}','tree{$list.pid}','[{$list.title}]:{$list.tid}','__URL__/index/id/{$list.id}',null,'_self',IMG_PATH+'imgfolder1.gif',IMG_PATH+'imgfolder1.gif');
 	<php>
 	}
 	</php>

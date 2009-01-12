@@ -10,9 +10,12 @@ class ApptreeAction extends AdminAction{
 
 	public function Index(){
 
-		$list=D('apptree');
-		$list=$list->findAll('projectid='.$_SESSION[workingprojectid],'*');
+		$apptree=D('apptree');
+		$list=$apptree->findAll('projectid='.$_SESSION[workingprojectid],'*');
+		$listtop=$apptree->find('id='.$_GET[id],'*');
 		$this->assign('list',$list);
+		$this->assign('listtop',$listtop);
+		//dump($listtop);
 		$this->display();
 
 	}

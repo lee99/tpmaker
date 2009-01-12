@@ -106,7 +106,7 @@
 <required>false</required>
 </attribute>
 <attribute>
-<name>style</name>
+<name>size</name>
 <required>false</required>
 </attribute>
 <attribute>

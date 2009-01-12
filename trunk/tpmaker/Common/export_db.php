@@ -1,10 +1,8 @@
 <?php
 class export_db {
 
-	
-	// ����Ҫ����ı�
+	// 导出数据表//本类暂时没有用到
 	$tables = list_tables($database);
-	
 	$filename = sprintf($options['filename'], $database);
 	$fp = fopen($filename, 'w');
 	foreach ($tables as $table) {
