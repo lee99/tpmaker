@@ -203,7 +203,7 @@ fieldset
 }
 
 
-/*  文字?�? */
+/*  文字?�? */
 .red{color:red}
 .green{color:green}
 .blue{color:blue}
@@ -287,7 +287,7 @@ table.list td a{
 
 
 /*
-关于菜单的样式定�?
+关于菜单的样式定�?
 */
 .ThemeOfficeMenu {
 	PADDING-RIGHT: 0px; PADDING-LEFT: 0px; FONT-SIZE: 12px; PADDING-BOTTOM: 0px; CURSOR: default; PADDING-TOP: 0px; FONT-FAMILY: arial, verdana, sans-serif; WHITE-SPACE: nowrap; HEIGHT: 18px
@@ -338,10 +338,33 @@ table.list td a{
 	BACKGROUND-COLOR: #b5cde8
 }
 .ThemeOfficeMainItem {
-	BORDER-RIGHT: 0px; PADDING-RIGHT: 1px; BORDER-TOP: 0px; PADDING-LEFT: 1px; PADDING-BOTTOM: 0px; BORDER-LEFT: 0px; PADDING-TOP: 0px; BORDER-BOTTOM: 0px
+/*	
+BORDER-RIGHT: 0px; PADDING-RIGHT: 1px; BORDER-TOP: 0px; PADDING-LEFT: 1px; PADDING-BOTTOM: 0px; BORDER-LEFT: 0px; PADDING-TOP: 0px; BORDER-BOTTOM: 0px
+*/
+	BORDER: #999999 1px solid;
+	FONT-SIZE: 12px;
+	margin: 0px;
+	background-image: url('../images/buttonbg.gif');
+    padding: 0px;
+    width: auto;
+    _width: 0;
+    overflow:visible !ie;
+    cursor: pointer;
 }
 TD.ThemeOfficeMainItemHover {
+/*	
 	BORDER-RIGHT: #30559c 1px solid; PADDING-RIGHT: 0px; BORDER-TOP: #30559c 1px solid; PADDING-LEFT: 0px; PADDING-BOTTOM: 0px; BORDER-LEFT: #30559c 1px solid; PADDING-TOP: 0px
+*/
+	BORDER: #999999 1px solid;
+	FONT-SIZE: 12px;
+	margin: 0px;
+	background-image: url('../images/buttonbg2.gif');
+    padding: 0px;
+    width: auto;
+    _width: 0;
+    overflow:visible !ie;
+    cursor: pointer;
+
 }
 TD.ThemeOfficeMainItemActive {
 	BORDER-RIGHT: #30559c 1px solid; PADDING-RIGHT: 0px; BORDER-TOP: #30559c 1px solid; PADDING-LEFT: 0px; PADDING-BOTTOM: 0px; BORDER-LEFT: #30559c 1px solid; PADDING-TOP: 0px
@@ -459,7 +482,7 @@ TR.ThemeOfficeMainItem TD.ThemeOfficeMainFolderRight {
 }
 
 /*
-关于autocomplete的样式定�?
+关于autocomplete的样式定�?
 */
 
 #description {
