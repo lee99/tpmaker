@@ -2,22 +2,19 @@
 <include file="../Public/header" />
 <!-- 主体内容  -->
 <SCRIPT LANGUAGE="JavaScript">
- <!--
+<!--
+function upbtnthis(){
+	ThinkAjax.sendForm('form_update','__APP__/Sys_tables/updateform/',complete,'result');
+}
 
-
-	function upbtnthis(){
-		ThinkAjax.sendForm('form_update','__APP__/Sys_tables/updateform/',complete,'result');
-	}
-
-	function complete(data,status){
-		if (status==1)
-		{
+function complete(data,status){
+	if (status==1)
+	{
 		location.href=REQUEST_URI;
 		//parent.location.reload();
-		}
 	}
-
- //-->
+}
+//-->
  </SCRIPT>
 <fieldset >
 	<legend>本数据表基本信息</legend>
