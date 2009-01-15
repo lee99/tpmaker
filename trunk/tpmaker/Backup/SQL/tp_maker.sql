@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- 主机: localhost
--- 生成日期: 2009 年 01 月 12 日 09:52
+-- 生成日期: 2009 年 01 月 15 日 10:07
 -- 服务器版本: 5.0.51
 -- PHP 版本: 5.2.5
 
@@ -64,7 +64,7 @@ CREATE TABLE IF NOT EXISTS `tp_designer` (
   `foreign_table` varchar(64) character set utf8 collate utf8_bin NOT NULL default '',
   `foreign_field` varchar(64) character set utf8 collate utf8_bin NOT NULL default '',
   PRIMARY KEY  (`id`)
-) ENGINE=MyISAM  DEFAULT CHARSET=utf8 COMMENT='数据关联' AUTO_INCREMENT=22 ;
+) ENGINE=MyISAM  DEFAULT CHARSET=utf8 COMMENT='数据关联' AUTO_INCREMENT=24 ;
 
 -- --------------------------------------------------------
 
@@ -606,19 +606,3 @@ CREATE TABLE IF NOT EXISTS `tp_tab_searchtype` (
   `othervar` varchar(200) default NULL COMMENT '其它属性',
   PRIMARY KEY  (`id`)
 ) ENGINE=MyISAM  DEFAULT CHARSET=utf8 COMMENT='搜索形式设定' AUTO_INCREMENT=7 ;
-
--- --------------------------------------------------------
-
---
--- 表的结构 `tp_test`
---
-
-CREATE TABLE IF NOT EXISTS `tp_test` (
-  `id` int(11) NOT NULL auto_increment COMMENT 'ID',
-  `title` varchar(200) default NULL COMMENT '标题',
-  `usetype` int(11) default '1' COMMENT '使用范围',
-  `seqNo` int(11) default NULL COMMENT '排序',
-  `color` int(11) default NULL,
-  `othervar` varchar(200) default NULL COMMENT '其它属性',
-  PRIMARY KEY  (`id`)
-) ENGINE=MyISAM  DEFAULT CHARSET=utf8 COMMENT='搜索形式设定' AUTO_INCREMENT=24 ;
