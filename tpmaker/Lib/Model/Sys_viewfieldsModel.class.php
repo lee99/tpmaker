@@ -4,15 +4,15 @@
 // +----------------------------------------------------------------------+
 
 /**
-* Name: sub_htmltagsAction.class.php
+* Name: Sys_viewfieldsAction.class.php
 * Author: lee99.com@gmail.com
 * Description:
-* Date: 2008-3-20 9:01:45
+* Date: 2008-3-20 9:01:19
 * Datetime: 2008-3-20
 **/
 
 
-class testModel extends Model
+class Sys_viewfieldsModel extends Model
 {
 }
 ?>

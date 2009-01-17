@@ -1,14 +1,5 @@
 <?php
 
-function uplower($name) {
-	//第一个字母变成大写,其它变成小写
-		$firstString = substr($name , 0 , 1); 	   //取出NAME中的第一個字元
-		$firstString = strtoupper($firstString);    //取出NAME中的第一個字元
-		$otherString = substr($name , 1); 			//取出NAME中第一個字元以後的全部字元
-		$otherString = strtolower($otherString); 	//取出NAME中第一個字元以後的全部字元
-		$name= $firstString.$otherString;
-		return $name;
-}
 
 
 

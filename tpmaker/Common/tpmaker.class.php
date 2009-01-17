@@ -157,7 +157,9 @@ class tpmaker extends Action
 	}
 
 	function installtags() {
-		//安装自己的标签
+		//安装自己的标签在thinkphp的目录里面
+		//Myhtml这个为thinkmaker专用的
+		//Mkrtags这个为生成后的代码库专用的
 		copyfile(APP_PATH.'/tpmaker_tpl/tphtmltags/TagLib/TagLibMkrtags.class.php',THINK_PATH.'/Lib/Think/Template/TagLib/TagLibMkrtags.class.php');//安装标签
 		copyfile(APP_PATH.'/tpmaker_tpl/tphtmltags/TagLib/TagLibMyhtml.class.php',THINK_PATH.'/Lib/Think/Template/TagLib/TagLibMyhtml.class.php');//安装标签
 		copyfile(APP_PATH.'/tpmaker_tpl/tphtmltags/Tags/mkrtags.xml',THINK_PATH.'/Lib/Think/Template/Tags/mkrtags.xml');//安装标签
@@ -199,14 +201,14 @@ class tpmaker extends Action
 		$app_path=$this->getapppath();//获取生成程序的根目录
 		$tpl_path=$this->gettplpath();//获取程序模板的根目录
 		$filename=$app_path.'/Index.php';
-		$table=D($this->tables);
-		$tabledata=$table->findAll('pid='.$this->projectid.' and ismodel <>1 and isaction =1','*','seqNo ASC');
+		$table=D('apptree');
+		$tabledata=$table->findAll('projectid='.$this->projectid.' and pid =0 ','*','id ASC');
 		foreach ($tabledata as $tb){
-			$leftdate[]=array( 'id' =>$tb['id'],'caption' =>$tb['caption'],'title' =>uplower($tb['title']));
+			$topdate[]=array( 'id' =>$tb['id'],'caption' =>$tb['title'],'title' =>uplower($tb['shortname']));
 		}
 		$tpl=new tpl($tpl_path.'/Action_tpl/IndexAction.class.php');
 		//dump($leftdate);
-		$tpl->tplblocksign("leftdate",$leftdate); //替换
+		$tpl->tplblocksign("topdate",$topdate); //替换
 		$filecontent=$tpl->tplreturn();
 		$filename=$app_path.'/Lib/Action/IndexAction.class.php';
 		writefile($filename,$filecontent);

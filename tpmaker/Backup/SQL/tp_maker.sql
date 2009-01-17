@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 2.11.4
+-- version 2.11.6
 -- http://www.phpmyadmin.net
 --
 -- 主机: localhost
--- 生成日期: 2009 年 01 月 15 日 10:07
--- 服务器版本: 5.0.51
--- PHP 版本: 5.2.5
+-- 生成日期: 2009 年 01 月 18 日 04:46
+-- 服务器版本: 5.0.41
+-- PHP 版本: 5.2.2
 
 SET SQL_MODE="NO_AUTO_VALUE_ON_ZERO";
 
@@ -29,7 +29,7 @@ CREATE TABLE IF NOT EXISTS `tp_apptree` (
   `tid` int(11) NOT NULL COMMENT '数据表ID',
   `seqNo` int(11) NOT NULL,
   PRIMARY KEY  (`id`)
-) ENGINE=MyISAM  DEFAULT CHARSET=utf8 AUTO_INCREMENT=29 ;
+) ENGINE=MyISAM  DEFAULT CHARSET=utf8 AUTO_INCREMENT=31 ;
 
 -- --------------------------------------------------------
 
@@ -576,6 +576,56 @@ CREATE TABLE IF NOT EXISTS `tp_sys_tables` (
   `issystem` int(11) NOT NULL default '0' COMMENT '是否系统保留',
   PRIMARY KEY  (`id`)
 ) ENGINE=MyISAM  DEFAULT CHARSET=utf8 COMMENT='数据表' AUTO_INCREMENT=824 ;
+
+-- --------------------------------------------------------
+
+--
+-- 表的结构 `tp_sys_viewcondition`
+--
+
+CREATE TABLE IF NOT EXISTS `tp_sys_viewcondition` (
+  `id` int(11) NOT NULL auto_increment,
+  `vid` int(11) NOT NULL,
+  `in_tid` int(11) NOT NULL,
+  `in_field` varchar(40) NOT NULL,
+  `out_tid` int(11) NOT NULL,
+  `out_field` varchar(40) NOT NULL,
+  `condition` varchar(20) NOT NULL,
+  PRIMARY KEY  (`id`)
+) ENGINE=MyISAM DEFAULT CHARSET=utf8 COMMENT='视图模型表条件' AUTO_INCREMENT=1 ;
+
+-- --------------------------------------------------------
+
+--
+-- 表的结构 `tp_sys_viewfields`
+--
+
+CREATE TABLE IF NOT EXISTS `tp_sys_viewfields` (
+  `id` int(11) NOT NULL auto_increment COMMENT 'ID',
+  `vid` int(11) NOT NULL COMMENT '视图ID',
+  `caption` varchar(40) NOT NULL COMMENT '标题[cn]',
+  `title` varchar(40) NOT NULL COMMENT '标题[en]',
+  `newtitle` varchar(40) NOT NULL COMMENT '新的名称',
+  `tid` int(11) NOT NULL COMMENT '属所表的ID',
+  `seqNo` int(11) NOT NULL COMMENT '排序',
+  PRIMARY KEY  (`id`)
+) ENGINE=MyISAM DEFAULT CHARSET=utf8 COMMENT='视图模型表字段' AUTO_INCREMENT=1 ;
+
+-- --------------------------------------------------------
+
+--
+-- 表的结构 `tp_sys_viewmodel`
+--
+
+CREATE TABLE IF NOT EXISTS `tp_sys_viewmodel` (
+  `id` int(11) NOT NULL auto_increment COMMENT 'ID',
+  `projectid` int(11) NOT NULL,
+  `title` varchar(40) NOT NULL COMMENT '标题[en]',
+  `caption` varchar(40) NOT NULL COMMENT '标题[cn]',
+  `infos` varchar(240) NOT NULL COMMENT '说明',
+  `seqNo` int(11) NOT NULL COMMENT '排序',
+  PRIMARY KEY  (`id`)
+) ENGINE=MyISAM  DEFAULT CHARSET=utf8 COMMENT='视图模型' AUTO_INCREMENT=8 ;
 
 -- --------------------------------------------------------
 
