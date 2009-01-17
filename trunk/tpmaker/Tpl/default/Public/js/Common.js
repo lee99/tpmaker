@@ -132,7 +132,7 @@ function gourlbyaction(action,id){//通用的URL中转
 
 
 function sortBy (field,sort){
-	location.href = REQUEST_URI+"?order="+field+"&sort="+sort;
+	location.href = clearurl(REQUEST_URI,"/?")+"/?p=1&order="+field+"&sort="+sort;
 }
 
 function forbid(id){
@@ -174,6 +174,21 @@ function module(id){
 
 function user(id){
 	location.href = URL+"/user/id/"+id;
+}
+
+
+
+function clearurl(url,ps){
+	//清除URL里面的元素，主要是因为如果有很多个#的锚点没办法定位
+	//url为输入和地址,ps符号
+
+	var   s=url;
+	var   sarray=new   Array();
+	sarray=s.split(ps);
+	var   sa=sarray[0];
+	// alert(sa);
+	return sa;
+
 }
 
 	//+---------------------------------------------------

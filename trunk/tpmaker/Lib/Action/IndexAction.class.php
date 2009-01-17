@@ -22,8 +22,8 @@ class IndexAction extends AdminAction{
 
 		//生成project的树
 		$projects=D('Sys_projects');
-		$plist=$projects->findAll('id='.$passid);
-		$this->assign('project',$plist);
+		//$plist=$projects->findAll('id='.$passid);
+		//$this->assign('project',$plist);
 
 		$workingproject=$projects->getbyid($passid);//设定现在工作的SESSION
 		Session::set('workingproject',$workingproject);
@@ -45,6 +45,13 @@ class IndexAction extends AdminAction{
 		$wherevalue='issystem=1 and pid='.$passid;//过滤条件
 		$tlist=$ptables->findAll($wherevalue,'*','seqNo');
 		$this->assign('systable',$tlist);
+		//dump($tlist);		
+		
+		//生成系统Sys_viewmodel的树
+		$ptables=D('Sys_viewmodel');
+		$wherevalue='projectid='.$_SESSION['workingprojectid'];//过滤条件
+		$tlist=$ptables->findAll($wherevalue,'*','seqNo');
+		$this->assign('view',$tlist);
 		//dump($tlist);
 
 		$this->display();

@@ -1,5 +1,16 @@
 <?php
 
+function uplower($name) {
+	//第一个字母变成大写,其它变成小写
+		$firstString = substr($name , 0 , 1); 	   //取出NAME中的第一個字元
+		$firstString = strtoupper($firstString);    //取出NAME中的第一個字元
+		$otherString = substr($name , 1); 			//取出NAME中第一個字元以後的全部字元
+		$otherString = strtolower($otherString); 	//取出NAME中第一個字元以後的全部字元
+		$name= $firstString.$otherString;
+		return $name;
+}
+
+
 function getsorttype($talbe,$img=0){
 
 	 if($_REQUEST['order']==$talbe){
@@ -165,7 +176,7 @@ function makeoption($table,$id='id',$where='',$option='title',$order,$outadd){
 	if($order==''){$order='id desc';}
 	if($outadd==''){$outadd='>';}
 		$thisdao=D($table);
-		//$thisdao->Cache(true);
+		$thisdao->Cache(true);
 		$options=explode(',',$option);
 		$list=$thisdao->findAll($where,$option.','.$id,$order);
 		for ($i = 0; $i < count($list); $i++) {

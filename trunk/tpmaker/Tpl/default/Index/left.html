@@ -5,50 +5,54 @@
 <script type="text/javascript">
 <!--
 
-	d = new dTree('d');
+	left = new dTree('left');
 //Node(id, pid, name, url, title, target, icon, iconOpen, open)
 
 
 	
 	//生成project的树形菜单
-	<volist name="project" id="project_vo">
-	d.add('project{$project_vo.id}',-1,'{$project_vo.caption}<font color=red>[查看]</font>','__APP__/Sys_tables/index/pid/{$project_vo.id}',null,'mainFrame',IMG_PATH+'b_import.png',IMG_PATH+'b_import.png');
-	</volist>	
+	left.add('project{$_SESSION['workingprojectid']}',-1,'{$_SESSION['workingproject']['caption']}<font color=red>[查看]</font>','__APP__/Sys_tables/index/pid/{$_SESSION['workingprojectid']}',null,'mainFrame',IMG_PATH+'b_import.png',IMG_PATH+'b_import.png');	
 	
 	//生成model的树形菜单
-	<volist name="project" id="project_vo">
-	d.add('sharemodel{$project_vo.id}','dbbase{$project_vo.id}','公共数据模型',null,null,null,IMG_PATH+'b_import.png',IMG_PATH+'b_import.png');
-	d.add('config{$project_vo.id}','project{$project_vo.id}','项目生成操作',null,null,null,IMG_PATH+'b_import.png',IMG_PATH+'b_import.png');
-	d.add('systemdb{$project_vo.id}','dbmodel{$project_vo.id}','系统保留数据结构',null,null,null,IMG_PATH+'b_import.png',IMG_PATH+'b_import.png');
-	d.add('dbbase{$project_vo.id}','dbmodel{$project_vo.id}','基本数据结构','__APP__/Sys_tables/index/pid/{$project_vo.id}',null,'mainFrame',IMG_PATH+'b_import.png',IMG_PATH+'b_import.png');
-	d.add('dbdesign{$project_vo.id}','dbmodel{$project_vo.id}','扩展数据结构(开发中)',null,null,null,IMG_PATH+'b_relations.png',IMG_PATH+'b_relations.png');
-	d.add('view{$project_vo.id}','dbmodel{$project_vo.id}','视图模型设计',null,null,null,IMG_PATH+'b_relations.png',IMG_PATH+'b_relations.png');
-	d.add('dbdesign01{$project_vo.id}','dbdesign{$project_vo.id}','基本数据模型关系图','__APP__/designer/index/id/{$project_vo.id}',null,'mainFrame');
-	d.add('dbmodel{$project_vo.id}','project{$project_vo.id}','数据模型',null,null,null,IMG_PATH+'b_import.png',IMG_PATH+'b_import.png');
-	d.add('creat{$project_vo.id}','config{$project_vo.id}','项目生成','__APP__/index/buide/id/{$project_vo.id}',null,'mainFrame');
-	d.add('creat{$project_vo.id}1','config{$project_vo.id}','拷贝项目','__APP__/Sys_projects/percopy/id/{$project_vo.id}',null,'mainFrame');
-	d.add('creat{$project_vo.id}2','config{$project_vo.id}','生成数据字典','__APP__/Sys_projects/dic/id/{$project_vo.id}',null,'mainFrame');
-	d.add('creat{$project_vo.id}3','config{$project_vo.id}','导入数据库','__APP__/Sys_projects/perimport/id/{$project_vo.id}',null,'mainFrame');
-	d.add('set{$project_vo.id}','project{$project_vo.id}','项目其它设定',null,null,null,IMG_PATH+'b_import.png',IMG_PATH+'b_import.png');
-	d.add('set{$project_vo.id}1','set{$project_vo.id}','应用模块分类','__APP__/Apptree/index',null,'mainFrame');
-	</volist>
+	left.add('sharemodel{$_SESSION['workingprojectid']}','dbbase{$_SESSION['workingprojectid']}','公共数据模型',null,null,null,IMG_PATH+'b_import.png',IMG_PATH+'b_import.png');
+	left.add('config{$_SESSION['workingprojectid']}','project{$_SESSION['workingprojectid']}','项目生成操作',null,null,null,IMG_PATH+'b_import.png',IMG_PATH+'b_import.png');
+	left.add('systemdb{$_SESSION['workingprojectid']}','dbmodel{$_SESSION['workingprojectid']}','系统保留数据结构',null,null,null,IMG_PATH+'b_import.png',IMG_PATH+'b_import.png');
+	left.add('dbbase{$_SESSION['workingprojectid']}','dbmodel{$_SESSION['workingprojectid']}','基本数据结构','__APP__/Sys_tables/index/pid/{$_SESSION['workingprojectid']}',null,'mainFrame',IMG_PATH+'b_import.png',IMG_PATH+'b_import.png');
+	left.add('dbdesign{$_SESSION['workingprojectid']}','dbmodel{$_SESSION['workingprojectid']}','扩展数据结构(开发中)',null,null,null,IMG_PATH+'b_relations.png',IMG_PATH+'b_relations.png');
+	left.add('dbdesign01{$_SESSION['workingprojectid']}','dbdesign{$_SESSION['workingprojectid']}','基本数据模型关系图','__APP__/designer/index/id/{$_SESSION['workingprojectid']}',null,'mainFrame');
+	left.add('dbmodel{$_SESSION['workingprojectid']}','project{$_SESSION['workingprojectid']}','数据模型',null,null,null,IMG_PATH+'b_import.png',IMG_PATH+'b_import.png');
+	left.add('creat{$_SESSION['workingprojectid']}','config{$_SESSION['workingprojectid']}','项目生成','__APP__/index/buide/id/{$_SESSION['workingprojectid']}',null,'mainFrame');
+	left.add('creat{$_SESSION['workingprojectid']}1','config{$_SESSION['workingprojectid']}','拷贝项目','__APP__/Sys_projects/percopy/id/{$_SESSION['workingprojectid']}',null,'mainFrame');
+	left.add('creat{$_SESSION['workingprojectid']}2','config{$_SESSION['workingprojectid']}','生成数据字典','__APP__/Sys_projects/dic/id/{$_SESSION['workingprojectid']}',null,'mainFrame');
+	left.add('creat{$_SESSION['workingprojectid']}3','config{$_SESSION['workingprojectid']}','导入数据库','__APP__/Sys_projects/perimport/id/{$_SESSION['workingprojectid']}',null,'mainFrame');
+	left.add('set{$_SESSION['workingprojectid']}','project{$_SESSION['workingprojectid']}','项目其它设定',null,null,null,IMG_PATH+'b_import.png',IMG_PATH+'b_import.png');
+	left.add('set{$_SESSION['workingprojectid']}1','set{$_SESSION['workingprojectid']}','应用模块分类','__APP__/Apptree/index',null,'mainFrame');
 	
 	//生成table的树形菜单
 	<volist name="table" id="table_vo">
 	<if condition="$table_vo[ismodel] eq 1">
-	d.add('table{$table_vo.id}','sharemodel{$table_vo.pid}','{$table_vo.caption}','__APP__/sys_fields/index/pid/{$table_vo.id}',null,'mainFrame');	
+	left.add('table{$table_vo.id}','sharemodel{$table_vo.pid}','{$table_vo.caption}','__APP__/sys_fields/index/pid/{$table_vo.id}',null,'mainFrame');	
 	<else/>
-	d.add('table{$table_vo.id}','dbbase{$table_vo.pid}','{$table_vo.caption}','__APP__/sys_fields/index/pid/{$table_vo.id}',null,'mainFrame',IMG_PATH+'imgfolder{$table_vo.isaction}.gif',IMG_PATH+'imgfolder{$table_vo.isaction}.gif');	
+	left.add('table{$table_vo.id}','dbbase{$table_vo.pid}','{$table_vo.caption}','__APP__/sys_fields/index/pid/{$table_vo.id}',null,'mainFrame',IMG_PATH+'imgfolder{$table_vo.isaction}.gif',IMG_PATH+'imgfolder{$table_vo.isaction}.gif');	
 	</if>
 	</volist>
-		
+
+
+	left.add('view{$_SESSION['workingprojectid']}','dbmodel{$_SESSION['workingprojectid']}','视图模型列表','__APP__/sys_viewmodel/index',null,'mainFrame',IMG_PATH+'b_relations.png',IMG_PATH+'b_relations.png');
+	left.add('viewadd','view{$_SESSION['workingprojectid']}','增加视图模型','__APP__/sys_viewmodel/index',null,'mainFrame',IMG_PATH+'b_docsql.png',IMG_PATH+'b_docsql.png');
+	//生成视图的树形菜单
+	<volist name="view" id="view_vo">
+	left.add('viewlist{$view_vo.id}','view{$_SESSION['workingprojectid']}','{$view_vo.caption}','__APP__/sys_viewmodel/index/pid/{$view_vo.id}',null,'mainFrame',IMG_PATH+'page.gif',IMG_PATH+'page.gif');	
+	</volist>
+	 
+	
 	//生成系统保留table的树形菜单
 	<volist name="systable" id="systable_vo">
-	d.add('table{$systable_vo.id}','systemdb{$systable_vo.pid}','{$systable_vo.caption}','__APP__/sys_fields/index/pid/{$systable_vo.id}',null,'mainFrame',IMG_PATH+'imgfolder_l.gif',IMG_PATH+'imgfolder_l.gif');	
+	left.add('table{$systable_vo.id}','systemdb{$systable_vo.pid}','{$systable_vo.caption}','__APP__/sys_fields/index/pid/{$systable_vo.id}',null,'mainFrame',IMG_PATH+'imgfolder_l.gif',IMG_PATH+'imgfolder_l.gif');	
 	</volist>
 	
-		document.write(d);
-		window.open("__APP__/Sys_tables/index/pid/{$project_vo.id}",'mainFrame');
+		document.write(left);
+		window.open("__APP__/Sys_tables/index/pid/{$_SESSION['workingprojectid']}",'mainFrame');
 		//-->
 </script>
 
