@@ -28,6 +28,13 @@ function showTip(data,status){
 	}
 }
 
+function removeElement(elemID) {
+	//删除节点
+    var elem = document.getElementById(elemID);
+    elem.parentNode.removeChild(elem);
+}
+
+
 function sendForm(formId,action,response,target,effect){
 	// Ajax方式提交表单
 	if (CheckForm($(formId),target))//表单数据验证

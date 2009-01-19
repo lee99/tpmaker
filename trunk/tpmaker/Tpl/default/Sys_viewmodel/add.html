@@ -21,7 +21,7 @@ var conditionvar=0;
 var conditiontid=0;//条件
 var conditionHTML='';//写入的内容
 
-function setcon(tid,fid,ft){
+function setcon(tid,fid,ft,id){
 	var showconditon=$("showconditon").innerHTML;
 	if(tid!=conditiontid){
 		if(conditionvar==0){
@@ -33,10 +33,12 @@ function setcon(tid,fid,ft){
 		}else{
 			$("showtips").value="完成视图";
 			$("showtips").className="button_em1";
+
+			ThinkAjax.send("__URL__/addconditon/",'in_tid='+conditiontid+'&in_field='+conditionHTML+'&out_tid='+tid+'&out_field='+ft+'&did='+id+'&type=add');
 			conditionvar=0;	
 			conditiontid=0;	
-			showHTML="<li >"+conditionHTML+"="+ft+" </li>";
-			$("showconditon").innerHTML=showconditon + "<li> "+showHTML+" </li>";
+			showHTML="<li id=allcon"+id+">"+conditionHTML+"="+ft+" <a href='###' onclick='colsecon("+id+");'>删除</a></li>";
+			$("showconditon").innerHTML=showconditon +showHTML;
 		}
 		
 		$("tr"+tid+fid).className="tr1";
@@ -45,6 +47,31 @@ function setcon(tid,fid,ft){
 		alert('你不能在本表内关联!');
 	}
 }
+
+
+
+function colsecon(id){
+	ThinkAjax.send("__URL__/addfields/",'did='+id+'&type=del');
+	removeElement('allcon'+id);
+}
+
+function viewclick(id){
+	var newtitle=$('newtitle'+id).value;
+	var title=$('title'+id).value;
+	var tid=$('tid'+id).value;
+	var caption=$('caption'+id).value;
+	var checkboxid=$('f'+id);
+	var type;
+	if(checkboxid.checked==true){
+		type='del';
+		checkboxid.checked=false;
+	}else{
+		type='add';	
+		checkboxid.checked=true;
+	}
+	ThinkAjax.send("__URL__/addfields/",'newtitle='+newtitle+'&title='+title+'&tid='+tid+'&caption='+caption+'&did='+id+'&type='+type);
+}
+
 
 </script>
 <form method="POST" action="__URL__/insert/" target="_self"  autocomplete='off' >
@@ -81,11 +108,16 @@ function setcon(tid,fid,ft){
 				<th align="right"><a onclick="hideviewmaodel('{$vo.id}');" href="#">×</a></th>
 			</tr>	
 		<volist name="vo['sub']" id="sub">
-			<tr id="tr{$vo.id}{$sub.id}">
-				<td><input type="checkbox"  id="f{$vo.id}{$sub.id}"></td>
-				<td><label for='f{$vo.id}{$sub.id}'>{$sub.caption}[{$sub.name}]</label></td>
-				<td><input size="8" value="{$sub.name}" ></td>
-				<td><a onclick="setcon('{$vo.id}','{$sub.id}','{$vo.title}.{$sub.name}');" href="#" title="设定条件">↓</a></td>
+			<tr id="tr{$vo.id}{$sub.id}" >
+				<td><input type="checkbox"  onclick="viewclick({$vo.id}{$sub.id});" id="f{$vo.id}{$sub.id}"></td>
+				<td onclick="viewclick({$vo.id}{$sub.id});" ><label >{$sub.caption}[{$sub.name}]</td>
+				<td>
+				<input id="newtitle{$vo.id}{$sub.id}" size="8" value="{$sub.name}" onblur="viewclick({$vo.id}{$sub.id});" >{//新的title}
+				<input id="title{$vo.id}{$sub.id}" type="hidden" value="{$sub.name}" >{//旧的title}
+				<input id="caption{$vo.id}{$sub.id}" type="hidden" value="{$sub.caption}" >{//旧的caption}
+				<input id="tid{$vo.id}{$sub.id}" type="hidden" value="{$vo.id}" >{//tid}
+				</td>
+				<td><a onclick="setcon('{$vo.id}','{$sub.id}','{$vo.title}.{$sub.name}','{$vo.id}{$sub.id}');" href="#" title="设定条件">↓</a></td>
 			</tr>
 		</volist>
 		</table>
@@ -98,7 +130,8 @@ function setcon(tid,fid,ft){
 <ul  class="viewcondition" id="showconditon">
 </ul>
 </fieldset>
-</form>
 <input type="submit"  class="button1" value="确定增加数据">
+</form>
+
 
 <include file="../Public/footer" />

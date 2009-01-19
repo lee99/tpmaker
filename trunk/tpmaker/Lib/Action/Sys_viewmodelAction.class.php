@@ -51,8 +51,6 @@ class Sys_viewmodelAction extends AdminAction{
 	}
 
 
-
-
 	public function updateform(){
 		$list=D('Sys_viewmodel');
 		$allcout=count($_REQUEST['id']);
@@ -82,7 +80,40 @@ class Sys_viewmodelAction extends AdminAction{
 		$list->add($date);
 		$this->ajaxReturn('','操作成功！',1);
 	}
-
+	
+	public function insert(){
+		$list=D('Sys_viewmodel');
+		$condition=D('sys_viewcondition');
+		$fields=D('sys_viewfields');
+		if($_REQUEST[title]!=''&& $_REQUEST[caption]!=''){		
+			$date=$_REQUEST;
+			$date['projectid']=$_SESSION['workingprojectid'];
+			$date['title']=uplower($date['title']);
+			$date['title'].="View";
+			$list->create();
+			$vid=$list->add($date);
+			foreach ($_SESSION[condition] as $c){
+				if($c[in_tid]!=''){
+					$c[vid]=$vid;
+					$c[condition]='eqf';
+					$condition->create();
+					$condition->add($c);
+				}
+			}
+			foreach ($_SESSION[fields] as $f){
+				if($f[tid]!=''){
+					$f[vid]=$vid;
+					$fields->create();
+					$fields->add($f);
+				}
+			}
+			$_SESSION[condition]=null;
+			$_SESSION[fields]=null;
+			redirect(__URL__."/index");
+		}else{
+			$this->error('标题及说明不能为空!');
+		}
+	}
 
 
 	public function add(){
@@ -99,8 +130,34 @@ class Sys_viewmodelAction extends AdminAction{
 		//dump($tlist);
 		$this->assign('table',$tlist);
 		$this->assign('table_view',$tlist);
+		$_SESSION[condition]=null;
+		$_SESSION[fields]=null;
 		$this->display();
 	}
+	
+	public function addconditon(){
+		$did=$_POST[did];
+		$type=$_POST[type];
+		if($type=='del'){
+			$_SESSION[condition][$did]='';
+		//dump($_SESSION[condition]);
+		}else{
+			$_SESSION[condition][$did]=$_POST;
+		}
+		$this->ajaxReturn('','操作成功！',1);
+	}
+	
+	public function addfields(){
+		$did=$_POST[did];
+		$type=$_POST[type];
+		if($type=='del'){
+			$_SESSION[fields][$did]='';
+		}else{
+			$_SESSION[fields][$did]=$_POST;	
+		}
+		//dump($_SESSION[condition]);
+		$this->ajaxReturn('','操作成功！',1);
+	}	
 
 }
 
