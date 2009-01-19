@@ -72,6 +72,31 @@ input.button {
     }
 
 
+.viewmodel {
+	font-size:12px;
+	list-style-image:none;
+	list-style-position:inside;
+	list-style-type:none;
+	border:0 none;
+	margin:0;
+	padding:0;
+    }
+
+.viewmodel li{
+	float:left;
+ }
+.viewcondition {
+	font-size:14px;
+	list-style-image:none;
+	list-style-position:inside;
+	list-style-type:none;
+	color:green;
+	border:1px;
+	margin:0;
+	padding:0;
+    }    
+
+
 
 a img {
 border:0 none;
@@ -178,6 +203,32 @@ fieldset
     cursor: pointer;
 }
 
+.button_em0
+{
+	BORDER: #999999 1px solid;
+	FONT-SIZE: 12px;
+	margin: 0px;
+	background-image: url('../images/buttonbg2.gif');
+    padding: 0px;
+    width: auto;
+    _width: 0;
+    overflow:visible !ie;
+    cursor: pointer;
+}
+
+.button_em1
+{
+	BORDER: #999999 1px solid;
+	FONT-SIZE: 12px;
+	margin: 0px;
+	background-image: url('../images/buttonbg.gif');
+    padding: 0px;
+    width: auto;
+    _width: 0;
+    overflow:visible !ie;
+    cursor: pointer;
+}
+
 .btn_small
 {
 	BORDER: #999999 1px solid;
@@ -189,6 +240,8 @@ fieldset
 	margin:0px;
     cursor: pointer;
 }
+
+.tr1{color:white;background-color:#9c0}
 
 #linkpage a
 {

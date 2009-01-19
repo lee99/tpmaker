@@ -86,13 +86,20 @@ class Sys_viewmodelAction extends AdminAction{
 
 
 	public function add(){
+		require_once COMMON_PATH."tpmakerdb.class.php";//引入自定义的类
+		$d=new tpmakerdb();
 		$ptables=D('Sys_tables');
-		$wherevalue='issystem=0 and pid='.$_SESSION['workingprojectid'];//过滤条件
+		$wherevalue='ismodel=0 and pid='.$_SESSION['workingprojectid'];//过滤条件
 		$tlist=$ptables->findAll($wherevalue,'*','seqNo');
-		//dump($list);
+		
+		foreach ($tlist as $key=>$tabid) {
+			$tabsid=$tabid[id];
+			$tlist[$key]['sub']=$d->getfieldsbytbid($tabsid);
+		}
+		//dump($tlist);
 		$this->assign('table',$tlist);
+		$this->assign('table_view',$tlist);
 		$this->display();
-
 	}
 
 }
