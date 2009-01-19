@@ -1,0 +1,33 @@
+<tagLib name="cx,html,myhtml" />
+<include file="../Public/header" />
+<!-- 主体内容  -->
+<form method="POST" action="__URL__/insert/" target="_self">
+<fieldset>
+<legend>增加视图模型数据</legend>
+<table  bgcolor="White">
+<tr >
+<myhtml:labelinput  name="caption" label="标题[中文]" value="" type="text" size='10' />
+<myhtml:labelinput  name="title" label="视图名[英文]" value="" type="text" size='10'/>
+<myhtml:labelinput  name="infos" label="说明" value="" type="text" size='40'/>
+<myhtml:labelinput  name="seqNo" label="排序" value="" type="text" size='2'/>
+</tr>
+</table>
+</fieldset>
+<fieldset>
+<legend>当前数据表</legend>
+<div>
+
+</div>
+</fieldset>
+<fieldset>
+<select id="viewtableid">
+<volist name="table" id="table">
+<option value="{$table.id}">{$table.caption}[{$table.table}]</option>
+</volist>
+</select>
+<input type="button"  class="button1" value="选择数据表">
+<input type="submit"  class="button1" value="确定增加数据">
+</fieldset>
+</form>
+
+<include file="../Public/footer" />

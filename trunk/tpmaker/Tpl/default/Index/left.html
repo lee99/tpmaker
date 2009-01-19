@@ -39,10 +39,10 @@
 
 
 	left.add('view{$_SESSION['workingprojectid']}','dbmodel{$_SESSION['workingprojectid']}','视图模型列表','__APP__/sys_viewmodel/index',null,'mainFrame',IMG_PATH+'b_relations.png',IMG_PATH+'b_relations.png');
-	left.add('viewadd','view{$_SESSION['workingprojectid']}','增加视图模型','__APP__/sys_viewmodel/index',null,'mainFrame',IMG_PATH+'b_docsql.png',IMG_PATH+'b_docsql.png');
+	left.add('viewadd','view{$_SESSION['workingprojectid']}','增加视图模型','__APP__/sys_viewmodel/add',null,'mainFrame',IMG_PATH+'b_docsql.png',IMG_PATH+'b_docsql.png');
 	//生成视图的树形菜单
 	<volist name="view" id="view_vo">
-	left.add('viewlist{$view_vo.id}','view{$_SESSION['workingprojectid']}','{$view_vo.caption}','__APP__/sys_viewmodel/index/pid/{$view_vo.id}',null,'mainFrame',IMG_PATH+'page.gif',IMG_PATH+'page.gif');	
+	left.add('viewlist{$view_vo.id}','view{$_SESSION['workingprojectid']}','{$view_vo.caption}','__APP__/sys_viewmodel/edit/pid/{$view_vo.id}',null,'mainFrame',IMG_PATH+'page.gif',IMG_PATH+'page.gif');	
 	</volist>
 	 
 	
