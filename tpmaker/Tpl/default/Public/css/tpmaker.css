@@ -254,7 +254,19 @@ fieldset
 	margin:0px;
     cursor: pointer;
 }
-
+.ThinkAjax
+{
+	background:#FFFFCC none repeat scroll 0 0;
+	border:1px solid #D4D4D4;
+	clear:both;
+	color:#393939;
+	font-weight:bold;
+	margin:1px;
+	padding:2px;
+	position:absolute;
+	right:0;
+	top:0;
+}
 
 /*  文字?�? */
 .red{color:red}
