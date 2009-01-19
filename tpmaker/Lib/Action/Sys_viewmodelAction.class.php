@@ -84,6 +84,17 @@ class Sys_viewmodelAction extends AdminAction{
 	}
 
 
+
+	public function add(){
+		$ptables=D('Sys_tables');
+		$wherevalue='issystem=0 and pid='.$_SESSION['workingprojectid'];//过滤条件
+		$tlist=$ptables->findAll($wherevalue,'*','seqNo');
+		//dump($list);
+		$this->assign('table',$tlist);
+		$this->display();
+
+	}
+
 }
 
 
