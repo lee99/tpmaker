@@ -8,8 +8,6 @@
 	left = new dTree('left');
 //Node(id, pid, name, url, title, target, icon, iconOpen, open)
 
-
-	
 	//生成project的树形菜单
 	left.add('project{$_SESSION['workingprojectid']}',-1,'{$_SESSION['workingproject']['caption']}<font color=red>[查看]</font>','__APP__/Sys_tables/index/pid/{$_SESSION['workingprojectid']}',null,'mainFrame',IMG_PATH+'b_import.png',IMG_PATH+'b_import.png');	
 	
@@ -18,8 +16,6 @@
 	left.add('config{$_SESSION['workingprojectid']}','project{$_SESSION['workingprojectid']}','项目生成操作',null,null,null,IMG_PATH+'b_import.png',IMG_PATH+'b_import.png');
 	left.add('systemdb{$_SESSION['workingprojectid']}','dbmodel{$_SESSION['workingprojectid']}','系统保留数据结构',null,null,null,IMG_PATH+'b_import.png',IMG_PATH+'b_import.png');
 	left.add('dbbase{$_SESSION['workingprojectid']}','dbmodel{$_SESSION['workingprojectid']}','基本数据结构','__APP__/Sys_tables/index/pid/{$_SESSION['workingprojectid']}',null,'mainFrame',IMG_PATH+'b_import.png',IMG_PATH+'b_import.png');
-	left.add('dbdesign{$_SESSION['workingprojectid']}','dbmodel{$_SESSION['workingprojectid']}','扩展数据结构(开发中)',null,null,null,IMG_PATH+'b_relations.png',IMG_PATH+'b_relations.png');
-	left.add('dbdesign01{$_SESSION['workingprojectid']}','dbdesign{$_SESSION['workingprojectid']}','基本数据模型关系图','__APP__/designer/index/id/{$_SESSION['workingprojectid']}',null,'mainFrame');
 	left.add('dbmodel{$_SESSION['workingprojectid']}','project{$_SESSION['workingprojectid']}','数据模型',null,null,null,IMG_PATH+'b_import.png',IMG_PATH+'b_import.png');
 	left.add('creat{$_SESSION['workingprojectid']}','config{$_SESSION['workingprojectid']}','项目生成','__APP__/index/buide/id/{$_SESSION['workingprojectid']}',null,'mainFrame');
 	left.add('creat{$_SESSION['workingprojectid']}1','config{$_SESSION['workingprojectid']}','拷贝项目','__APP__/Sys_projects/percopy/id/{$_SESSION['workingprojectid']}',null,'mainFrame');
@@ -37,12 +33,15 @@
 	</if>
 	</volist>
 
-
+	left.add('dbdesign{$_SESSION['workingprojectid']}','dbmodel{$_SESSION['workingprojectid']}','扩展数据结构(开发中)',null,null,null,IMG_PATH+'b_relations.png',IMG_PATH+'b_relations.png');
+	left.add('dbdesign01{$_SESSION['workingprojectid']}','dbdesign{$_SESSION['workingprojectid']}','基本数据模型关系图','__APP__/designer/index/id/{$_SESSION['workingprojectid']}',null,'mainFrame');
+	
+	
 	left.add('view{$_SESSION['workingprojectid']}','dbmodel{$_SESSION['workingprojectid']}','视图模型列表','__APP__/sys_viewmodel/index',null,'mainFrame',IMG_PATH+'b_relations.png',IMG_PATH+'b_relations.png');
 	left.add('viewadd','view{$_SESSION['workingprojectid']}','增加视图模型','__APP__/sys_viewmodel/add',null,'mainFrame',IMG_PATH+'b_docsql.png',IMG_PATH+'b_docsql.png');
 	//生成视图的树形菜单
 	<volist name="view" id="view_vo">
-	left.add('viewlist{$view_vo.id}','view{$_SESSION['workingprojectid']}','{$view_vo.caption}','__APP__/sys_viewmodel/edit/pid/{$view_vo.id}',null,'mainFrame',IMG_PATH+'page.gif',IMG_PATH+'page.gif');	
+	left.add('viewlist{$view_vo.id}','view{$_SESSION['workingprojectid']}','{$view_vo.caption}','__APP__/Sys_viewfields/index/vid/{$view_vo.id}',null,'mainFrame',IMG_PATH+'page.gif',IMG_PATH+'page.gif');	
 	</volist>
 	 
 	
