@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 2.11.6
+-- version 2.11.4
 -- http://www.phpmyadmin.net
 --
 -- 主机: localhost
--- 生成日期: 2009 年 01 月 18 日 04:46
--- 服务器版本: 5.0.41
--- PHP 版本: 5.2.2
+-- 生成日期: 2009 年 01 月 20 日 10:22
+-- 服务器版本: 5.0.51
+-- PHP 版本: 5.2.5
 
 SET SQL_MODE="NO_AUTO_VALUE_ON_ZERO";
 
@@ -592,7 +592,7 @@ CREATE TABLE IF NOT EXISTS `tp_sys_viewcondition` (
   `out_field` varchar(40) NOT NULL,
   `condition` varchar(20) NOT NULL,
   PRIMARY KEY  (`id`)
-) ENGINE=MyISAM DEFAULT CHARSET=utf8 COMMENT='视图模型表条件' AUTO_INCREMENT=1 ;
+) ENGINE=MyISAM  DEFAULT CHARSET=utf8 COMMENT='视图模型表条件' AUTO_INCREMENT=7 ;
 
 -- --------------------------------------------------------
 
@@ -608,8 +608,13 @@ CREATE TABLE IF NOT EXISTS `tp_sys_viewfields` (
   `newtitle` varchar(40) NOT NULL COMMENT '新的名称',
   `tid` int(11) NOT NULL COMMENT '属所表的ID',
   `seqNo` int(11) NOT NULL COMMENT '排序',
+  `islist` int(11) NOT NULL COMMENT '是否显示在列表',
+  `iswrap` int(11) NOT NULL COMMENT '是否需要排序筛选',
+  `issearch` int(11) NOT NULL COMMENT '是否需要搜索功能',
+  `searchtype` int(11) NOT NULL COMMENT '一般搜索形式',
+  `advsearchtype` int(11) NOT NULL COMMENT '高级搜索形式',
   PRIMARY KEY  (`id`)
-) ENGINE=MyISAM DEFAULT CHARSET=utf8 COMMENT='视图模型表字段' AUTO_INCREMENT=1 ;
+) ENGINE=MyISAM  DEFAULT CHARSET=utf8 COMMENT='视图模型表字段' AUTO_INCREMENT=34 ;
 
 -- --------------------------------------------------------
 
@@ -625,7 +630,7 @@ CREATE TABLE IF NOT EXISTS `tp_sys_viewmodel` (
   `infos` varchar(240) NOT NULL COMMENT '说明',
   `seqNo` int(11) NOT NULL COMMENT '排序',
   PRIMARY KEY  (`id`)
-) ENGINE=MyISAM  DEFAULT CHARSET=utf8 COMMENT='视图模型' AUTO_INCREMENT=8 ;
+) ENGINE=MyISAM  DEFAULT CHARSET=utf8 COMMENT='视图模型' AUTO_INCREMENT=11 ;
 
 -- --------------------------------------------------------
 
