@@ -42,9 +42,9 @@ class Sys_viewmodelAction extends AdminAction{
 		$listdel->delete($_REQUEST[id]);
 
 		$delis=explode(',',$_REQUEST['id']);
-		//dump($delis);
 		foreach ($delis as $delpid){
-			//delbypid('sys_fields',$delpid,'pid');
+			delbypid('sys_viewfields',$delpid,'vid');
+			delbypid('sys_viewcondition',$delpid,'vid');
 		}
 
 		redirect(__URL__."/index");

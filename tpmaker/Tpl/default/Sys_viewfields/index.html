@@ -1,0 +1,89 @@
+<tagLib name="cx,html,myhtml" />
+<include file="../Public/header" />
+<SCRIPT LANGUAGE="JavaScript">
+ <!--
+
+
+function outkeyseting(id){ //设定外键
+ //location.href  = URL+"/outkeyseting/id/"+id;
+ window.open(URL+"/outkeyseting/id/"+id, 'mini');
+}
+
+
+ //-->
+ </SCRIPT>
+<!-- 主体内容  -->
+
+<fieldset >
+	<legend>当前数据表的数据结构: <font class="blue">{$tablename}</font></legend>
+
+<!--  功能操作区域  -->
+<table width="100%"   cellpadding=0 cellspacing=0 >
+	<tr>
+		<td width="70%">
+	<input type="button" onclick="location.href='__URL__/index/vid/{$_GET['vid']}'" class="button1" value="刷新">
+	
+	<input type="button" onclick="del()" class="button1" value="删除数据">
+	<input type="button" class="button1" onclick="upbtn();" value="更新数据">
+		</td>
+		<td align="left">
+		<DIV  id="myMenuID"></DIV>
+		</td>
+		<td align="right" >
+
+
+			<table width="100%" cellpadding=0 cellspacing=0>
+			<tr >
+			<td align="right" id="linkpage">{$page}</td>
+			</tr>
+			</table>
+
+		</td>
+	</tr>
+</table>
+
+<!-- 功能操作区域结束 -->
+</fieldset>
+<fieldset>
+
+<form name="form_update" id="form_update" method="POST">
+<!-- 列表显示区域  -->
+<div class="tab-pane" id="tabPane1">
+
+  <div class="tab-page" id="tabPage10">
+		<h2 class="tab">系统自定义数据表</h2>
+		<myhtml:editlist id="checkList" name="list"  checkbox="true"  datasource="list" style="list"
+		show="
+			id|hidden|1:ID,
+			caption|12:标题,
+			title|text:原表名,
+			newtitle|8:表名[英文],
+			islist|checkbox:列表[是否显示在列表],
+			iswrap|checkbox:排序筛选[是否需要排序筛选],
+			seqNo|1:排序	
+			"
+		/>
+</div>
+<div class="tab-page" id="tabPage11">
+		<h2 class="tab">搜索设定</h2>
+		<myhtml:editlist id="checkList1" name="list"   datasource="list_search" style="list"
+		show="
+			caption|text:标题,
+			issearch|checkbox:搜索[是否需要搜索功能],
+			searchtype|select|makeselect('searchtype[]'#'sub_searchtype'#$list['searchtype']):一般搜索形式,
+			advsearchtype|select|makeselect('advsearchtype[]'#'sub_searchtype'#$list['advsearchtype']):高级搜索形式
+		"
+		/>
+</div>
+
+<input type="hidden" name="vid" value="{$_REQUEST['vid']}">
+
+</form>
+</fieldset>
+<script type="text/javascript">
+//用户了最新的方法,但最新的方法必为以"tab"为前的CSS
+setupAllTabs();
+</script>
+
+
+<include file="../Public/footer" />

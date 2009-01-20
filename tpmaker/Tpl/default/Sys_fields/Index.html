@@ -70,13 +70,10 @@ function setissystem(id){ //系统保留的参数
 <!-- 列表显示区域  -->
 <div class="tab-pane" id="tabPane1">
 
-<script type="text/javascript">
-tp1 = new WebFXTabPane( document.getElementById( "tabPane1" ) );
-</script>
+
 
   <div class="tab-page" id="tabPage10">
 		<h2 class="tab">系统自定义数据表</h2>
-		<script type="text/javascript">tp1.addTabPage( document.getElementById( "tabPage10" ) );</script>
 		<myhtml:editlist id="checkList" name="list"  checkbox="true"  datasource="list" style="list"
 		show="
 			id|hidden|1:ID,
@@ -93,7 +90,6 @@ tp1 = new WebFXTabPane( document.getElementById( "tabPane1" ) );
 </div>
   <div class="tab-page" id="tabPage3" >
 		<h2 class="tab">基本操作和默认值设定</h2>
-		<script type="text/javascript">tp1.addTabPage( document.getElementById( "tabPage3" ) );</script>
 		<myhtml:editlist id="checkList2" name="list"   datasource="list_val" style="list"
 		show="
 			caption|text:标题,
@@ -112,7 +108,6 @@ tp1 = new WebFXTabPane( document.getElementById( "tabPane1" ) );
 
   <div class="tab-page" id="tabPage1">
 		<h2 class="tab">LIST设定</h2>
-		<script type="text/javascript">tp1.addTabPage( document.getElementById( "tabPage1" ) );</script>
 		<myhtml:editlist id="checkList2" name="list"    datasource="list_genneral" style="list"
 		show="
 			caption|text:标题,
@@ -126,7 +121,6 @@ tp1 = new WebFXTabPane( document.getElementById( "tabPane1" ) );
 </div>
   <div class="tab-page" id="tabPage2" >
 		<h2 class="tab">系统验证设定</h2>
-		<script type="text/javascript">tp1.addTabPage( document.getElementById( "tabPage2" ) );</script>
 		<myhtml:editlist id="checkList2" name="list"  datasource="list_val" style="list"
 		show="
 			caption|text:标题,
@@ -141,7 +135,6 @@ tp1 = new WebFXTabPane( document.getElementById( "tabPane1" ) );
 
 <div class="tab-page" id="tabPage4">
 		<h2 class="tab">搜索设定</h2>
-		<script type="text/javascript">tp1.addTabPage( document.getElementById( "tabPage4" ) );</script>
 		<myhtml:editlist id="checkList2" name="list"   datasource="list_search" style="list"
 		show="
 			caption|text:标题,
@@ -153,7 +146,6 @@ tp1 = new WebFXTabPane( document.getElementById( "tabPane1" ) );
 </div>
 <div class="tab-page" id="tabPage5">
 		<h2 class="tab">当前外键属性</h2>
-		<script type="text/javascript">tp1.addTabPage( document.getElementById( "tabPage5" ) );</script>
 		<myhtml:editlist id="checkList2" name="list"   datasource="list_outkey" style="list"
 		show="
 			caption|text:标题,
@@ -174,6 +166,10 @@ tp1 = new WebFXTabPane( document.getElementById( "tabPane1" ) );
 
 </form>
 </fieldset>
+<script type="text/javascript">
+//用户了最新的方法,但最新的方法必为以"tab"为前的CSS
+setupAllTabs();
+</script>
 
 <iframe scrolling="auto"  width="100%" height="200px" name="mini" src="__URL__/Table/id/{$_REQUEST['pid']}"  frameborder="0"></iframe>
 
