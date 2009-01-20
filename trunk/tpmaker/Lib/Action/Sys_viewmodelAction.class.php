@@ -75,7 +75,7 @@ class Sys_viewmodelAction extends AdminAction{
 		$date=$_REQUEST;
 		$date['projectid']=$_SESSION['workingprojectid'];
 		$date['title']=uplower($date['title']);
-		$date['title'].="View";
+		
 		$list->create();
 		$list->add($date);
 		$this->ajaxReturn('','操作成功！',1);
@@ -89,7 +89,7 @@ class Sys_viewmodelAction extends AdminAction{
 			$date=$_REQUEST;
 			$date['projectid']=$_SESSION['workingprojectid'];
 			$date['title']=uplower($date['title']);
-			$date['title'].="View";
+			
 			$list->create();
 			$vid=$list->add($date);
 			foreach ($_SESSION[condition] as $c){
