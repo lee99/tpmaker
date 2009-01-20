@@ -312,6 +312,31 @@ class tpmaker extends Action
 		writefile($filename,$filecontent);
 	}
 
+	function makeproviewmodel($id) {
+		//生成基本MODEL
+		require_once COMMON_PATH."tpl.class.php";//引入自定义的类
+		$app_path=$this->getapppath();//获取生成程序的根目录
+		$tpl_path=$this->gettplpath();//获取程序模板的根目录
+		$tpl=new tpl($tpl_path.'/Model_tpl/viewmodel.tpl');
+
+		
+		$field=D('Sys_viewfields');
+		$field=$field->findall('vid='.$id);
+		
+		$condition=D('Sys_viewcondition');
+		$condition=$condition->findall('vid='.$id);
+		
+		$viewmodel=D('Sys_viewmodel');
+		$viewmodel=$viewmodel->find('id='.$id);
+		
+		$filename=$app_path.'/Lib/Model/'.$viewmodel['title'].'ViewModel.class.php';		
+		$tpl->tplsign("name",$viewmodel['title']); //替换
+		$tpl->tplblocksign("val_var_field",$field); //替换
+		$tpl->tplblocksign("val_var_condition",$condition); //替换
+		
+		$filecontent=$tpl->tplreturn();
+		writefile($filename,$filecontent);
+	}
 
 
 	function makeproaction($id) {

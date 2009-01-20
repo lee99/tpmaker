@@ -197,6 +197,11 @@ class sys_projectsAction extends AdminAction{
 			$t->makeproaction($tb['id']);//生成ACTION
 			$t->makeprotpl($tb['id']);//生成模板HTML文件
 		}
+		$viewmodel=D('sys_viewmodel');
+		$viewmodel=$viewmodel->findAll('projectid='.$buideid);
+		foreach ($viewmodel as $mod){
+			$t->makeproviewmodel($mod['id']);//生成MODEL
+		}
 
 	}
 
