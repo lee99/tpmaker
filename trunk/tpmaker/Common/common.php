@@ -162,7 +162,7 @@ function makeselect($name,$table,$idt='',$where='',$option='title',$f_idvalue='i
 		}
 		
 		$tmp.= "</select>";
-	msg($tmp);
+	return  $tmp;
 }
 
 function makeoption($table,$id='id',$where='',$option='title',$order,$outadd){
