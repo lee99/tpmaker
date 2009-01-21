@@ -313,7 +313,7 @@ class tpmaker extends Action
 	}
 
 	function makeproviewmodel($id) {
-		//生成基本MODEL
+		//生成基本VIEWMODEL
 		require_once COMMON_PATH."tpl.class.php";//引入自定义的类
 		$app_path=$this->getapppath();//获取生成程序的根目录
 		$tpl_path=$this->gettplpath();//获取程序模板的根目录
@@ -321,7 +321,17 @@ class tpmaker extends Action
 
 		
 		$field=D('Sys_viewfields');
-		$field=$field->findall('vid='.$id);
+		$tables=$field->findall('vid='.$id,'distinct `tid`');//查出无序的数据
+		foreach ($tables as $tb){
+			$f=$field->findall("vid=$id and tid=$tb[tid]");
+			$tablename=id_To_EValue('sys_tables','title','id',$tb[tid]);
+			$tablecaption=id_To_EValue('sys_tables','caption','id',$tb[tid]);
+			$tablefield=$this->makeviewfield($f);//生成字段
+			$val_var_field[$i]['tablename']=$tablename;
+			$val_var_field[$i]['caption']=$tablecaption;
+			$val_var_field[$i]['field']=$tablefield;
+			$i++;
+		}
 		
 		$condition=D('Sys_viewcondition');
 		$condition=$condition->findall('vid='.$id);
@@ -331,7 +341,7 @@ class tpmaker extends Action
 		
 		$filename=$app_path.'/Lib/Model/'.$viewmodel['title'].'ViewModel.class.php';		
 		$tpl->tplsign("name",$viewmodel['title']); //替换
-		$tpl->tplblocksign("val_var_field",$field); //替换
+		$tpl->tplblocksign("val_var_field",$val_var_field); //替换
 		$tpl->tplblocksign("val_var_condition",$condition); //替换
 		
 		$filecontent=$tpl->tplreturn();
@@ -590,6 +600,22 @@ class tpmaker extends Action
 			if($data[$datefield]==1){
 				$filecontent=str_replace("[name]",$data['name'],$tplcontent);
 				$filecontent=str_replace("[caption]",$data['caption'],$filecontent);
+				$content.=$filecontent;
+			}
+		}
+
+		return $content;
+	}
+
+	function makeviewfield($datas) {
+		//$datas传过来的数据
+
+		foreach ($datas as $data){
+			if($data[title]!=$data[newtitle]){
+				$filecontent="'".$data[title]."'=>'".$data[newtitle]."',";
+				$content.=$filecontent;
+			}else{
+				$filecontent="'".$data[newtitle]."',";
 				$content.=$filecontent;
 			}
 		}
