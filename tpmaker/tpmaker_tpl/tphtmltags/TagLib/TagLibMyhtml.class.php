@@ -382,11 +382,11 @@ Class TagLibMyhtml extends TagLib
 			';
 			$parseStr .='
 			<input  type="checkbox" onclick="checkboxvalue(\'cb_'.$name.'\',\'ch_'.$name.'\');" id="cb_'.$name.'" {$checked} />
-			<input id="ch_'.$name.'"  name="'.$name.'" type="hidden" value="{'.$value.'}">';
+			<input id="ch_'.$name.'"  name="'.$name.'" type="hidden" value="'.$value.'">';
 			$parseStr .='</td>';
 		}
 		else {
-			$thispro=str_replace('#',',',trim($action));
+			$thispro=str_replace('#',',',$action);
 			$parseStr   = '<th>'.$label.'</th><td>{:'.$thispro.'}</td>';
 		}
 		return $parseStr;
