@@ -12,18 +12,18 @@ class sub_htmltagsAction extends AdminAction{
 
 		$list=D('sub_htmltags');
 		$count= $list->count();
-		
+
 		if(!empty($_REQUEST['order'])) { $order = $_REQUEST['order']; }else{ $order='seqNo'; } //排序表单
 		if(empty($_REQUEST['sort']) ) { $sortd = 'asc'; }else{ $sortd=$_REQUEST['sort']; } //排序方向
 		$orderBy=$order.' '.$sortd;//排序
 
 		$p=$this->tpPage($count,20,'page');
 		$list=$list->findAll('','*',$orderBy,$p['firstRow'].','.$p['listRows']);
-		
+
 		//dump($glist);
-		
+
 		$this->assign('list',$list);
-		
+
 		$this->display();
 
 	}
@@ -32,7 +32,9 @@ class sub_htmltagsAction extends AdminAction{
 
 	public function delete(){
 		$glist=D('sub_htmltags');
-		//$sub_htmltags->find($_REQUEST['id']);
+		if($_REQUEST[id]==""){
+			halt('输入的ID号不能为空');
+		}
 		$glist->delete($_REQUEST['id']);
 		redirect(__URL__."/index");
 	//dump($sub_htmltags);
@@ -62,7 +64,7 @@ class sub_htmltagsAction extends AdminAction{
 
 	public function json(){
 		$col=array('id','title','othervar','seqNo','usetype','color','color');
-		$this->jqjson('id',$col);	
+		$this->jqjson('id',$col);
 	}
 
 }

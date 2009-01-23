@@ -20,14 +20,14 @@ class Sys_configAction extends AdminAction{
 		if($_REQUEST['pid']!='') { $thiswhere = 'pid='.$_REQUEST['pid']; }else{ $thiswhere = ''; } //排序方向
 		$orderBy=$order.' '.$sortd;//排序
 		$count= $list->count($thiswhere);
-		
+
 
 		$p=$this->tpPage($count,20,'page');
 		//$list->Cache(true);
 		$list=$list->findAll($thiswhere,'*',$orderBy,$p['firstRow'].','.$p['listRows']);
 
 		//dump($list);
-		
+
 		$this->assign('list',$list);
 		$this->display();
 
@@ -37,6 +37,9 @@ class Sys_configAction extends AdminAction{
 
 	public function delete(){
 		$list=D('Sys_config');
+		if($_REQUEST[id]==""){
+			halt('输入的ID号不能为空');
+		}
 		$listd=$list->findall('id in ('.$_REQUEST[id].')');
 		$pid=$listd[0]['pid'];
 

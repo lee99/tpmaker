@@ -29,6 +29,9 @@ class sys_projectsAction extends AdminAction{
 
 	public function delete(){
 		$list=D('sys_projects');
+		if($_REQUEST[id]==""){
+			halt('输入的ID号不能为空');
+		}
 		require_once COMMON_PATH."tp_common.php";//引入自定义的类
 		require_once COMMON_PATH."tpmaker.class.php";//引入自定义的类
 		$buideid=$_REQUEST['id'];
@@ -147,8 +150,8 @@ class sys_projectsAction extends AdminAction{
 		}else{
 			//如果有传数据库名则以数据库名为参数
 			$dbi->projectid=$_GET['pid'];
-			$dbname=$_GET['dbname'];	
-			$dbi->perword=$_GET['perword'];	
+			$dbname=$_GET['dbname'];
+			$dbi->perword=$_GET['perword'];
 		}
 
 		$dbi->importdb_name=$dbname;
@@ -159,14 +162,14 @@ class sys_projectsAction extends AdminAction{
 			$newid=$tb_name['newid'];//表id名
 			$field=$dbi->getallField($tbname);//获得所有的字段
 			$dbi->field2table($field,$newid);//导入所有的字段
-			
+
 			//dump($fe);//所有表的字段
 			//exit;
 		}
-		
+
 	}
 
-	
+
 	public function buidedb(){//导入数据库
 		require_once COMMON_PATH."tpmakerdb.class.php";//引入自定义的类
 		$list=D('sys_projects');

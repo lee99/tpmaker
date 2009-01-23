@@ -12,7 +12,7 @@ class sys_fieldtypesubAction extends AdminAction{
 
 		$list=D('sys_fieldtypesub');
 		$count= $list->count();
-		
+
 		if(!empty($_REQUEST['order'])) { $order = $_REQUEST['order']; }else{ $order='seqNo'; } //排序表单
 		if(empty($_REQUEST['sort']) ) { $sortd = 'asc'; }else{ $sortd=$_REQUEST['sort']; } //排序方向
 		$orderBy=$order.' '.$sortd;//排序
@@ -29,7 +29,9 @@ class sys_fieldtypesubAction extends AdminAction{
 
 	public function delete(){
 		$list=D('sys_fieldtypesub');
-		//$sys_fieldtypesub->find($_REQUEST['id']);
+		if($_REQUEST[id]==""){
+			halt('输入的ID号不能为空');
+		}
 		$list->delete($_REQUEST['id']);
 		redirect(__URL__."/index");
 	//dump($sys_fieldtypesub);
