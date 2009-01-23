@@ -13,13 +13,14 @@ class sys_fieldsAction extends AdminAction{
 		$pro=D('sys_tables');
 		$pro=$pro->getByid($_REQUEST[pid]);
 		$this->assign('tablename',$pro['caption']);//当前操作的数据表
+		$this->assign('titlename',$pro['title']);//当前操作的数据表
 
 		$list=D('sys_fields');
 		$count= $list->count('pid='.$_REQUEST[pid]);
 		if(!empty($_REQUEST['order'])) { $order = $_REQUEST['order']; }else{ $order='seqNo'; } //排序表单
 		if(empty($_REQUEST['sort']) ) { $sortd = 'asc'; }else{ $sortd=$_REQUEST['sort']; } //排序方向
 		$orderBy=$order.' '.$sortd;//排序
-		$p=$this->tpPage($count,10,'page');
+		$p=$this->tpPage($count,20,'page');
 		$list=$list->findAll('pid='.$_REQUEST[pid],'*',$orderBy,$p['firstRow'].','.$p['listRows']);
 		$list_val=$list;//验证的设定
 		$list_genneral=$list;//一般属性设定
@@ -63,6 +64,9 @@ class sys_fieldsAction extends AdminAction{
 		$this->display();
 
 	}
+	
+
+	
 
 	public function outkeyseting(){
 

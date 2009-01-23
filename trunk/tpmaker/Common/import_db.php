@@ -101,7 +101,7 @@ class importdb extends Action
 
 	function table2project($data){
 		//所有表的信息写入tpmaker
-		$list=D('sys_tables');
+		$list=D('Sys_tables');
 		for ($i = 0; $i <count($data); $i++) {
 		//for ($i = 0; $i <2; $i++) {
 			$title=ereg_replace("^".$this->perword,'',$data[$i]['tablename']);
@@ -183,7 +183,7 @@ class importdb extends Action
 	function field2table($data,$newid){
 		//所有字段的信息写入tpmaker
 		//$newid新表的id
-		$list=D('sys_fields');
+		$list=D('Sys_fields');
 		for ($i = 0; $i <count($data); $i++) {
 			$dt=$data[$i];
 			$mytypeid=$this->checkinputdata($dt);//字属性

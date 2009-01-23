@@ -29,3 +29,18 @@ DROP TABLE `webcal_asst` ,
 `webcal_reminder_log` ,
 `webcal_report` ;
 
+
+ALTER TABLE `bas_company` DROP `tmp_ser` ,
+DROP `modstyle` ;
+
+ALTER TABLE `bas_company` DROP `doc_cn` ,
+DROP `o_files` ,
+DROP `doc_sim` ,
+DROP `doc_detail` ;
+
+
+ALTER TABLE `bas_person` DROP `tmp_ser` ,
+DROP `modstyle` ;
+
+ ALTER TABLE `bas_person` DROP `h_stipend_id`  ;
+ DROP TABLE `msg_count`;
