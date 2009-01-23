@@ -33,7 +33,9 @@ class Sys_viewmodelAction extends AdminAction{
 
 	public function delete(){
 		$list=D('Sys_viewmodel');
-		//$Sys_viewmodel->find($_REQUEST['id']);
+		if($_REQUEST[id]==""){
+			halt('输入的ID号不能为空');
+		}
 		$listd=$list->findall('id in ('.$_REQUEST[id].')');
 		$pid=$listd[0]['pid'];
 
@@ -75,21 +77,21 @@ class Sys_viewmodelAction extends AdminAction{
 		$date=$_REQUEST;
 		$date['projectid']=$_SESSION['workingprojectid'];
 		$date['title']=uplower($date['title']);
-		
+
 		$list->create();
 		$list->add($date);
 		$this->ajaxReturn('','操作成功！',1);
 	}
-	
+
 	public function insert(){
 		$list=D('Sys_viewmodel');
 		$condition=D('sys_viewcondition');
 		$fields=D('sys_viewfields');
-		if($_REQUEST[title]!=''&& $_REQUEST[caption]!=''){		
+		if($_REQUEST[title]!=''&& $_REQUEST[caption]!=''){
 			$date=$_REQUEST;
 			$date['projectid']=$_SESSION['workingprojectid'];
 			$date['title']=uplower($date['title']);
-			
+
 			$list->create();
 			$vid=$list->add($date);
 			foreach ($_SESSION[condition] as $c){
@@ -122,7 +124,7 @@ class Sys_viewmodelAction extends AdminAction{
 		$ptables=D('Sys_tables');
 		$wherevalue='ismodel=0 and pid='.$_SESSION['workingprojectid'];//过滤条件
 		$tlist=$ptables->findAll($wherevalue,'*','seqNo');
-		
+
 		foreach ($tlist as $key=>$tabid) {
 			$tabsid=$tabid[id];
 			$tlist[$key]['sub']=$d->getfieldsbytbid($tabsid);
@@ -134,7 +136,7 @@ class Sys_viewmodelAction extends AdminAction{
 		$_SESSION[fields]=null;
 		$this->display();
 	}
-	
+
 	public function addconditon(){
 		$did=$_POST[did];
 		$type=$_POST[type];
@@ -146,18 +148,18 @@ class Sys_viewmodelAction extends AdminAction{
 		}
 		$this->ajaxReturn('','操作成功！',1);
 	}
-	
+
 	public function addfields(){
 		$did=$_POST[did];
 		$type=$_POST[type];
 		if($type=='del'){
 			$_SESSION[fields][$did]='';
 		}else{
-			$_SESSION[fields][$did]=$_POST;	
+			$_SESSION[fields][$did]=$_POST;
 		}
 		//dump($_SESSION[condition]);
 		$this->ajaxReturn('','操作成功！',1);
-	}	
+	}
 
 }
 

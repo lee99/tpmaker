@@ -35,7 +35,9 @@ class Sys_viewfieldsAction extends AdminAction{
 
 	public function delete(){
 		$list=D('Sys_viewfields');
-		//$sys_tables->find($_REQUEST['id']);
+		if($_REQUEST[id]==""){
+			halt('输入的ID号不能为空');
+		}
 		$list->delete($_REQUEST[id]);
 		$this->success('操作成功！');
 
@@ -58,11 +60,11 @@ class Sys_viewfieldsAction extends AdminAction{
 			$data['iswrap'] =$_REQUEST['iswrap'][$i];
 			$data['issearch'] =$_REQUEST['issearch'][$i];
 			$data['searchtype'] =$_REQUEST['searchtype'][$i];
-			$data['advsearchtype'] =$_REQUEST['advsearchtype'][$i];	
+			$data['advsearchtype'] =$_REQUEST['advsearchtype'][$i];
 			$list->save($data);
 		}
 		//如果不为空白的就加上
-		
+
 		$this->ajaxReturn('','操作成功！',1);
 
 	}

@@ -42,6 +42,9 @@ class sys_fieldsAction extends AdminAction{
 	public function delete(){
 		$list=D('sys_fields');
 		//$sys_fields->find($_REQUEST['id']);
+		if($_REQUEST[id]==""){
+			halt('输入的ID号不能为空');
+		}
 		$listd=$list->findall('id in ('.$_REQUEST[id].')');
 		$pid=$listd[0]['pid'];
 
@@ -64,9 +67,9 @@ class sys_fieldsAction extends AdminAction{
 		$this->display();
 
 	}
-	
 
-	
+
+
 
 	public function outkeyseting(){
 

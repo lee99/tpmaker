@@ -24,7 +24,9 @@ class ApptreeAction extends AdminAction{
 
 	public function delete(){
 		$list=D('apptree');
-		//$apptree->find($_REQUEST['id']);
+		if($_REQUEST[id]==""){
+			halt('输入的ID号不能为空');
+		}
 		$list->delete($_REQUEST['id']);
 		redirect(__URL__."/index");
 	//dump($apptree);

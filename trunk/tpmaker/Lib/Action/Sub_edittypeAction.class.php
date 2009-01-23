@@ -12,7 +12,7 @@ class sub_edittypeAction extends AdminAction{
 
 		$list=D('sub_edittype');
 		$count= $list->count();
-		
+
 		if(!empty($_REQUEST['order'])) { $order = $_REQUEST['order']; }else{ $order='seqNo'; } //排序表单
 		if(empty($_REQUEST['sort']) ) { $sortd = 'asc'; }else{ $sortd=$_REQUEST['sort']; } //排序方向
 		$orderBy=$order.' '.$sortd;//排序
@@ -21,7 +21,7 @@ class sub_edittypeAction extends AdminAction{
 		$list=$list->findAll('','*',$orderBy,$p['firstRow'].','.$p['listRows']);
 
 		//dump($list);
-		
+
 		$this->assign('list',$list);
 		$this->display();
 
@@ -32,7 +32,7 @@ class sub_edittypeAction extends AdminAction{
 
 		$list=D('sub_edittype');
 		$count= $list->count();
-		
+
 		if(!empty($_REQUEST['order'])) { $order = $_REQUEST['order']; }else{ $order='seqNo'; } //排序表单
 		if(empty($_REQUEST['sort']) ) { $sortd = 'asc'; }else{ $sortd=$_REQUEST['sort']; } //排序方向
 		$orderBy=$order.' '.$sortd;//排序
@@ -41,7 +41,7 @@ class sub_edittypeAction extends AdminAction{
 		$list=$list->findAll('','*',$orderBy,$p['firstRow'].','.$p['listRows']);
 
 		//dump($list);
-		
+
 		$this->assign('list',$list);
 		$this->display();
 
@@ -51,7 +51,9 @@ class sub_edittypeAction extends AdminAction{
 
 	public function delete(){
 		$list=D('sub_edittype');
-		//$sub_edittype->find($_REQUEST['id']);
+		if($_REQUEST[id]==""){
+			halt('输入的ID号不能为空');
+		}
 		$list->delete($_REQUEST['id']);
 		redirect(__URL__."/index");
 	//dump($sub_edittype);

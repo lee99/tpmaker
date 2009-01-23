@@ -261,11 +261,11 @@ fieldset
 	clear:both;
 	color:#393939;
 	font-weight:bold;
-	margin:1px;
-	padding:2px;
+	margin:0px;
+	padding:0px;
 	position:absolute;
-	right:0;
-	top:0;
+	right:2px;
+	top:2px;
 }
 
 /*  文字?�? */

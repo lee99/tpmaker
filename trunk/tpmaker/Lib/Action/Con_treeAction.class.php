@@ -12,7 +12,7 @@ class Con_treeAction extends AdminAction{
 
 		$con_tree=D('Con_tree');
 		$count= $con_tree->count();
-		
+
 		if(!empty($_REQUEST['order'])) { $order = $_REQUEST['order']; }else{ $order='id'; } //排序表单
 		if(empty($_REQUEST['sort']) ) { $sortd = 'asc'; }else{ $sortd=$_REQUEST['sort']; } //排序方向
 		$orderBy=$order.' '.$sortd;//排序
@@ -22,7 +22,7 @@ class Con_treeAction extends AdminAction{
 		$list=$con_tree->findAll('id <> 0','*',$orderBy,$p['firstRow'].','.$p['listRows']);
 
 		//dump($list);
-		
+
 		$this->assign('list',$list);
 		$this->display();
 
@@ -32,9 +32,11 @@ class Con_treeAction extends AdminAction{
 
 	public function delete(){
 		$con_tree=D('Con_tree');
-		//$con_tree->find($_REQUEST['id']);
+		if($_REQUEST[id]==""){
+			halt('输入的ID号不能为空');
+		}
 		$con_tree->delete($_REQUEST['id']);
-	 $this->ajaxReturn('','操作成功！',1);
+	    $this->ajaxReturn('','操作成功！',1);
 
 
 	}

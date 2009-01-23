@@ -18,7 +18,7 @@ class sys_tablesAction extends AdminAction{
 		$wherevalue='ismodel=0 and issystem=0 and pid='.$_REQUEST[pid];//过滤条件
 		$list=D('sys_tables');
 		$count= $list->count($wherevalue);
-		
+
 		if(!empty($_REQUEST['order'])) { $order = $_REQUEST['order']; }else{ $order='seqNo'; } //排序表单
 		if(empty($_REQUEST['sort']) ) { $sortd = 'asc'; }else{ $sortd=$_REQUEST['sort']; } //排序方向
 		$orderBy=$order.' '.$sortd;//排序
@@ -44,7 +44,7 @@ class sys_tablesAction extends AdminAction{
 		$wherevalue='issystem=0 and pid='.$_REQUEST[pid];//过滤条件
 		$list=D('sys_tables');
 		$count= $list->count($wherevalue);
-		
+
 		if(!empty($_REQUEST['order'])) { $order = $_REQUEST['order']; }else{ $order='seqNo'; } //排序表单
 		if(empty($_REQUEST['sort']) ) { $sortd = 'asc'; }else{ $sortd=$_REQUEST['sort']; } //排序方向
 		$orderBy=$order.' '.$sortd;//排序
@@ -58,8 +58,8 @@ class sys_tablesAction extends AdminAction{
 		$this->display();
 
 	}
-	
-	
+
+
 	public function System(){
 
 		$pro=D('sys_projects');
@@ -70,7 +70,7 @@ class sys_tablesAction extends AdminAction{
 		$wherevalue='issystem=1 and pid='.$_REQUEST[pid];//过滤条件
 		$list=D('sys_tables');
 		$count= $list->count($wherevalue);
-		
+
 		if(!empty($_REQUEST['order'])) { $order = $_REQUEST['order']; }else{ $order='seqNo'; } //排序表单
 		if(empty($_REQUEST['sort']) ) { $sortd = 'asc'; }else{ $sortd=$_REQUEST['sort']; } //排序方向
 		$orderBy=$order.' '.$sortd;//排序
@@ -80,9 +80,9 @@ class sys_tablesAction extends AdminAction{
 		$list=$list->findAll($wherevalue,'*',$orderBy,$p['firstRow'].','.$p['listRows']);
 
 		//dump($list);
-		
+
 		$this->assign('list',$list);
-		
+
 		$this->display();
 
 	}
@@ -92,6 +92,9 @@ class sys_tablesAction extends AdminAction{
 	public function delete(){
 		$list=D('sys_tables');
 		//$sys_tables->find($_REQUEST['id']);
+		if($_REQUEST[id]==""){
+			halt('输入的ID号不能为空');
+		}
 		$listd=$list->findall('id in ('.$_REQUEST[id].')');
 		$pid=$listd[0]['pid'];
 
@@ -153,7 +156,7 @@ class sys_tablesAction extends AdminAction{
 		$this->ajaxReturn('','操作成功！',1);
 	}
 
-	
+
 }
 
 

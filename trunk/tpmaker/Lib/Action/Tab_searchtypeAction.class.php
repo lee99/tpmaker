@@ -20,7 +20,7 @@ class tab_searchtypeAction extends AdminAction{
 		$list=$list->findAll('','*',$orderBy,$p['firstRow'].','.$p['listRows']);
 
 		//dump($list);
-		
+
 		$this->assign('list',$list);
 		$this->display();
 
@@ -30,7 +30,9 @@ class tab_searchtypeAction extends AdminAction{
 
 	public function delete(){
 		$list=D('tab_searchtype');
-		//$tab_searchtype->find($_REQUEST['id']);
+		if($_REQUEST[id]==""){
+			halt('输入的ID号不能为空');
+		}
 		$list->delete($_REQUEST['id']);
 		redirect(__URL__."/index");
 	//dump($tab_searchtype);
