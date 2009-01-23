@@ -69,6 +69,7 @@ class AdminAction extends Action{
 			$i++;
             }
         }
+        $this->ajaxReturn('','排序操作成功！',1);
     }
 
 

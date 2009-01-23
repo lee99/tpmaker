@@ -9,7 +9,7 @@
 function saveSort(){
 	selectAllOption(document.frm.ObjSelect);
 	getS(document.frm.ObjSelect);
-	sendForm('frm','__APP__/{$thismodel}/saveSort/',complete,'result');
+	sendForm('frm','__APP__/{$thismodel}/saveSort/');
 }
 function reload(){
 	location.href=REQUEST_URI;
@@ -33,7 +33,7 @@ function reload(){
 </tr>
 <tr >
     <td>
-        <select name=SrcSelect  disabled  style="height:140px;" multiple ondblclick="moveLeftOrRight(document.frm.SrcSelect,document.frm.ObjSelect)">
+        <select name=SrcSelect  disabled  style="height:300px;" multiple ondblclick="moveLeftOrRight(document.frm.SrcSelect,document.frm.ObjSelect)">
         
 <voList name="sortList" id="module" >
 <option value="{$module.seqNo}">{$module.caption}.[{$module.seqNo}]</option>
@@ -49,7 +49,7 @@ function reload(){
         <input align="left" style="width:30px" disabled type=button value="<<" onclick="moveLeftOrRightAll(document.frm.ObjSelect,document.frm.SrcSelect)" >
     </td>
     <td>
-        <select name=ObjSelect  class="ecv_autoSizeDropDown" style="height:140px;" multiple ondblclick="moveLeftOrRight(document.frm.ObjSelect,document.frm.SrcSelect)">
+        <select name=ObjSelect  class="ecv_autoSizeDropDown" style="height:300px;" multiple ondblclick="moveLeftOrRight(document.frm.ObjSelect,document.frm.SrcSelect)">
 	
 <voList name="sortList" id="module" >
 <option value="{$module.id}">{$module.caption}.[{$module.seqNo}]</option>

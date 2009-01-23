@@ -203,7 +203,7 @@ function clearurl(url,ps){
 	//+---------------------------------------------------
 	function PopModalWindow(url,width,height)
 	{
-		var result=window.showModalDialog(url,"win","dialogWidth:"+width+"px;dialogHeight:"+height+"px;center:yes;status:no;scroll:no;dialogHide:no;resizable:no;help:no;edge:sunken;");
+		var result=window.showModalDialog(url,"win","dialogWidth:"+width+"px;dialogHeight:"+height+"px;center:yes;status:no;scroll:no;dialogHide:no;resizable:yes;help:no;edge:sunken;");
 		return result;
 	}
 
