@@ -241,6 +241,19 @@ fieldset
     cursor: pointer;
 }
 
+.btn_red
+{
+	BORDER: #999999 1px solid;
+	background-image: url('../images/buttonbg3.gif');
+	padding: 0px;
+	width: auto;
+	color: #666666;
+	text-decoration: none;
+	margin:0px;
+    cursor: pointer;
+}
+
+
 .tr1{color:white;background-color:#9c0}
 
 #linkpage a

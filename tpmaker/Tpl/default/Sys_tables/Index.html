@@ -13,15 +13,15 @@ function viewfields(id){
 <table width="100%"   cellpadding=0 cellspacing=0 >
 	<tr>
 		<td >
-	<input type="button"  onclick="location.href='__URL__/index/pid/{$_GET['pid']}'" class="button1" value="刷新">	
-	<input type="button"  onclick="del()" class="button1" value="删除数据">
+	<input type="button"  onclick="location.href='__URL__/index/pid/{$_GET['pid']}'" class="button1" value="刷新">
+	<input type="button"  onclick="del()" class="btn_red" value="删除数据">
 	<input type="button"  onclick="upbtn()" class="button1" value="更新数据">
-	<input type="button"  onclick="location.href='__URL__/sort/pid/{$_GET['pid']}'" class="button1" value="排序">
+	<input type="button" onclick="PopModalWindow('__URL__/sort/pid/{$_GET['pid']}','700','400');" class="btn_small" value="排序数据">
 	<input type="button"  onclick="location.href='__URL__/adv/pid/{$_GET['pid']}'" class="button1" value="+高级视图模式(包含数据模型)">
 	<input type="button"  onclick="location.href='__URL__/system/pid/{$_GET['pid']}'" class="button1" value="系统保留数据结构">
-	<input type="button"  onclick="location.href='__APP__/index/buide/id/{$_GET['pid']}'" class="button1" value="生成">
-	<input type="button"  onclick="location.href='__APP__/index/crean/id/{$_GET['pid']}'" class="button1" value="清空本表数据">
-	
+	<input type="button"  onclick="location.href='__APP__/index/buide/id/{$_GET['pid']}'" class="btn_small" value="生成">
+	<input type="button"  onclick="location.href='__APP__/index/crean/id/{$_GET['pid']}'" class="btn_small" value="清空本表数据">
+
 		</td>
 		<td align="right" id="linkpage">{$page}</td>
 	</tr>

@@ -19,6 +19,22 @@ class ApptreeAction extends AdminAction{
 		$this->display();
 
 	}
+	
+	
+	public function addsort(){
+
+		$table=D('sys_tables');
+		$apptree=D('apptree');
+		$treelist=$apptree->findAll('type=0 and projectid='.$_SESSION[workingprojectid]);
+		$table=$table->findAll('ismodel<>1 and pid='.$_SESSION[workingprojectid]);
+		$treeselect=$apptree->findAll('type<>0 and pid='.$_GET[pid]);//选中的子项目
+		$this->assign('treelist',$treelist);
+		$this->assign('table',$table);
+		$this->assign('treeselect',$treeselect);
+		//dump($treeselect);
+		$this->display();
+
+	}
 
 
 
