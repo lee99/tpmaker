@@ -35,6 +35,23 @@ class ApptreeAction extends AdminAction{
 		$this->display();
 
 	}
+	
+	
+	public function saveapptree(){
+
+		$list=D('apptree');
+		$tids=explode(',',$_POST['sortvaue']);//数组转换
+		for ($i=0;$i<count($tids);$i++){
+			$adddate[$i][pid]=$_POST[pid];
+			$adddate[$i][tid]=$tids[$i];
+			$adddate[$i][type]=1;
+			$adddate[$i][projectid]=$_SESSION[workingprojectid];
+		}
+		$list->addAll($adddate);
+		$this->ajaxReturn('','操作成功！',1);
+
+
+	}
 
 
 
