@@ -139,7 +139,7 @@ function makecontion($searchField,$searchOper,$searchString){//jqgrid的参数�
 			return $date;
 }
 
-function makeselect($name,$table,$idt='',$where='',$option='title',$f_idvalue='id'){
+function makeselect($name,$table,$idt='',$where='',$option='title',$f_idvalue='id',$iscache=true){
 	//$option外键的说明
 	//$where外键的过滤
 	//$f_idvalue外键的id
@@ -150,7 +150,9 @@ function makeselect($name,$table,$idt='',$where='',$option='title',$f_idvalue='i
 	if($f_idvalue==''){$f_idvalue='id';}
 	$tmp= "	<select name=".$name.">";
 		$thisdao=D($table);
+		if($iscache){
 		$thisdao->Cache(true);
+		}
 		$list=$thisdao->findAll($where);
 		$tmp.= "<option >请选择</option>";
 		foreach ($list as $row) {

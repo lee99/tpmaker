@@ -21,8 +21,8 @@ function buidepro(id){
 		<td width="60%">
 	<input type="button" name="delete" onclick="location.href='__URL__/index/'" class="button1" value="刷新">
 	<input type="button"  onclick="upbtn();" class="button1" value="更新本页数据">
-	<input type="button" onclick="del()" class="button1" value="删除数据">
-	
+	<input type="button" onclick="del()" class="btn_red" value="删除数据">
+
 		</td>
 		<td align="left">
 		<DIV  id="myMenuID"></DIV>
@@ -40,7 +40,7 @@ function buidepro(id){
 			],
 		];
 		cmDraw ('myMenuID', myMenu, 'hbr', cmThemeOffice, 'ThemeOffice');
-		</script> 
+		</script>
 		</td>
 		<td align="right" id="linkpage">{$page}</td>
 	</tr>
