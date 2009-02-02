@@ -166,14 +166,19 @@ class tpmakerdb extends Action
 	}
 
 	function sqlbytpye($id,$caption,$name,$fieldlenght){
+		$filterdatatype=array('TEXT','DATE','DATETIME','TIME','YEAR');//对于一此特殊的数据类型没有长度
 		$list=D('sub_fieldtype');
 		$date=$list->getbyid($id);
 		$thiscaption	=	$caption;//注释
 		$thisname		=	$name;//名称
-		$thistype		=	$date['thistype'];//类型
-
-		$thisleng=(!empty($fieldlenght) or $fieldlenght!=0)?'':"(".$date['leng'].")";
-		$thistype=$date['type'];
+		$thistype		=	$date['type'];//类型
+		
+		if(!in_array($thistype,$filterdatatype)){
+			$thisleng=(!empty($fieldlenght) or $fieldlenght!=0)?"($fieldlenght) ":"(".$date['leng'].") ";
+		}else{
+			$thisleng='';
+		}
+		
 		$thisdefault=$date['default'];//默认值
 		$thisautoInc=($date['autoInc']==1)?'auto_increment':'';//自动增加
 		$thisnotnull=($date['notnull']==1)?"NOT NULL ":"NULL ";//是否为空
