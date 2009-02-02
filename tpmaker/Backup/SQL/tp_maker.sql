@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- 主机: localhost
--- 生成日期: 2009 年 02 月 01 日 22:36
+-- 生成日期: 2009 年 02 月 02 日 20:56
 -- 服务器版本: 5.0.41
 -- PHP 版本: 5.2.2
 
@@ -29,7 +29,7 @@ CREATE TABLE IF NOT EXISTS `tp_apptree` (
   `tid` int(11) NOT NULL COMMENT '数据表ID',
   `seqNo` int(11) NOT NULL,
   PRIMARY KEY  (`id`)
-) ENGINE=MyISAM  DEFAULT CHARSET=utf8 AUTO_INCREMENT=45 ;
+) ENGINE=MyISAM  DEFAULT CHARSET=utf8 AUTO_INCREMENT=128 ;
 
 -- --------------------------------------------------------
 
@@ -254,7 +254,7 @@ CREATE TABLE IF NOT EXISTS `tp_sub_fieldtype` (
   `color` int(11) default NULL,
   `othervar` varchar(200) default NULL COMMENT '其它属性',
   PRIMARY KEY  (`id`)
-) ENGINE=MyISAM  DEFAULT CHARSET=utf8 COMMENT='字属性设定' AUTO_INCREMENT=17 ;
+) ENGINE=MyISAM  DEFAULT CHARSET=utf8 COMMENT='字属性设定' AUTO_INCREMENT=21 ;
 
 -- --------------------------------------------------------
 
@@ -511,7 +511,7 @@ CREATE TABLE IF NOT EXISTS `tp_sys_fieldtypesub` (
   `seqNo` int(11) default NULL,
   `note` varchar(240) NOT NULL COMMENT '注解',
   PRIMARY KEY  (`id`)
-) ENGINE=MyISAM  DEFAULT CHARSET=utf8 COMMENT='默认的数据库类型' AUTO_INCREMENT=5 ;
+) ENGINE=MyISAM  DEFAULT CHARSET=utf8 COMMENT='默认的数据库类型' AUTO_INCREMENT=9 ;
 
 -- --------------------------------------------------------
 
@@ -565,7 +565,7 @@ CREATE TABLE IF NOT EXISTS `tp_sys_tables` (
   `edittype` int(11) default NULL COMMENT '编辑类型',
   `seqNo` int(11) default NULL,
   `ismodel` int(11) NOT NULL default '0' COMMENT '是否数据模板',
-  `datemodelid` int(11) default NULL COMMENT '指定数据模板',
+  `datemodelid` int(11) NOT NULL default '0' COMMENT '指定数据模板',
   `list` int(11) default '1' COMMENT '是否列表',
   `view` int(11) default '1' COMMENT '是否显示详细',
   `add` int(11) default '1',

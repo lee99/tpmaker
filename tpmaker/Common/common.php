@@ -39,10 +39,10 @@ function id_To_EValue($tb,$col,$o_col,$id)
 			return "参数错误";
 		else
 		{
-			$thisdao=D($tb);
-			$thisdao->Cache(true);
-			$list=$thisdao->find($o_col.'='.$id,$col);
-		return $list[$col];
+			$iddao=D($tb);
+			//$iddao->Cache(true);
+			$idlist=$iddao->find($o_col.'='.$id,$col);
+		return $idlist[$col];
 		}
 	}
 

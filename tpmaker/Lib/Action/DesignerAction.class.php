@@ -12,9 +12,6 @@ class DesignerAction extends AdminAction{
 
 		require COMMON_PATH."tpmaker.class.php";//引入自定义的类
 	
-
-	
-	
 	//获取表
 	   $list=D('sys_tables');
 	   $tabledata=$list->findall('ismodel=0 and pid='.$_REQUEST['id']);
