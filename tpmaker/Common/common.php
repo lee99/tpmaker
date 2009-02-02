@@ -148,7 +148,7 @@ function makeselect($name,$table,$idt='',$where='',$option='title',$f_idvalue='i
 	if($where==''){$where='';}
 	if($idt==''){$idt='';}
 	if($f_idvalue==''){$f_idvalue='id';}
-	$tmp= "	<select name=".$name.">";
+	$tmp= "	<select name=".$name." style='width:120px'>";
 		$thisdao=D($table);
 		if($iscache){
 		$thisdao->Cache(true);
