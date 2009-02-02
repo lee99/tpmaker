@@ -88,10 +88,16 @@ class tpmakerdb extends Action
      */
 	function getfieldsbytbid($id){
 		$data=$this->gettables($id);
-		if($data['datemodelid']!=0){$datemodelid=$data['datemodelid'];}
+		if($data['datemodelid']!=0){
+			$datemodelid=$data['datemodelid'];
+			$sqlwhere='pid="'.$id .'" or pid="'.$datemodelid.'"';
+			//如果数据模型不为空的话则取出公用数据模型
+		}else{
+			$sqlwhere='pid="'.$id .'"';
+		}
 		//取出公用的数据模型
 		$fields=D('sys_fields');
-		$fields=$fields->findAll('pid='.$id .' or pid='.$datemodelid ,'*','seqNo ASC');
+		$fields=$fields->findAll($sqlwhere,'*','seqNo ASC');
 		//取出所有表和数据模型表
 		
 		//因为搜索出来的数据可能会因为有公共数据库而引起重复,所以有以下的操作过滤重重的项目.
@@ -165,26 +171,14 @@ class tpmakerdb extends Action
 		$thiscaption	=	$caption;//注释
 		$thisname		=	$name;//名称
 		$thistype		=	$date['thistype'];//类型
-		if(!empty($fieldlenght) or $fieldlenght!=0){
-			$thisleng=$fieldlenght;
-		}else {
-			$thisleng=$date['leng'];//字段长度
-		}
 
-		if($date['notnull']==1){
-			$thisnotnull="NOT NULL ";
-		}else{
-			$thisnotnull="NULL ";
-		}
+		$thisleng=(!empty($fieldlenght) or $fieldlenght!=0)?'':"(".$date['leng'].")";
 		$thistype=$date['type'];
 		$thisdefault=$date['default'];//默认值
-		if($date['autoInc']==1){//自动增加
-			$thisautoInc='auto_increment';
-		}else{
-			$thisautoInc='';
-		}
+		$thisautoInc=($date['autoInc']==1)?'auto_increment':'';//自动增加
+		$thisnotnull=($date['notnull']==1)?"NOT NULL ":"NULL ";//是否为空
 
-		$sql="  `$thisname` $thistype($thisleng) $thisnotnull $thisautoInc COMMENT '$thiscaption',";
+		$sql="  `$thisname` $thistype".$thisleng." $thisnotnull $thisautoInc COMMENT '$thiscaption',";
 		//`pid` int(11) NOT NULL default '0' COMMENT '说明',
 		return $sql;
 		

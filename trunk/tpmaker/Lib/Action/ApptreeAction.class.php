@@ -41,13 +41,24 @@ class ApptreeAction extends AdminAction{
 
 		$list=D('apptree');
 		$tids=explode(',',$_POST['sortvaue']);//数组转换
-		for ($i=0;$i<count($tids);$i++){
-			$adddate[$i][pid]=$_POST[pid];
-			$adddate[$i][tid]=$tids[$i];
-			$adddate[$i][type]=1;
-			$adddate[$i][projectid]=$_SESSION[workingprojectid];
+		$list->delete('type=1 and pid='.$_POST[pid]);
+		for ($i=1;$i<count($tids);$i++){
+			$passshort=id_To_EValue('apptree','shortname','id',$_POST[pid]);
+			$passtitle=id_To_EValue('sys_tables','caption','id',$tids[$i]);
+			$passtitle=substr($passtitle,strpos($passtitle,']')+1);
+			$adddate[$i]['pid']=$_POST[pid];
+			$adddate[$i]['tid']=$tids[$i];
+			$adddate[$i]['title']=$passtitle;
+			$adddate[$i]['shortname']=$passshort.'_'.$i;
+			$adddate[$i]['type']=1;
+			$adddate[$i]['projectid']=$_SESSION[workingprojectid];
+			$adddate[$i]['seqNo']=$i;
+			$list->create($adddate[$i]);
+			$list->add();
 		}
-		$list->addAll($adddate);
+		//dump($adddate);
+		//exit;
+		
 		$this->ajaxReturn('','操作成功！',1);
 
 

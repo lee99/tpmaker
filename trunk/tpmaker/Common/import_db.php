@@ -144,10 +144,16 @@ class importdb extends Action
 				$typeid=3;//[text][]
 				break;
 			case 'datetime':
-				$typeid=17;
+				$typeid=18;
 				break;
 			case 'date':
 				$typeid=17;
+				break;
+			case 'time':
+				$typeid=19;
+				break;
+			case 'year':
+				$typeid=20;
 				break;
 			case 'varchar':
 				if($b>40){
