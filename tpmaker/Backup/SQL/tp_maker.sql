@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 2.11.6
+-- version 2.11.4
 -- http://www.phpmyadmin.net
 --
 -- 主机: localhost
--- 生成日期: 2009 年 02 月 02 日 20:56
--- 服务器版本: 5.0.41
--- PHP 版本: 5.2.2
+-- 生成日期: 2009 年 02 月 03 日 09:58
+-- 服务器版本: 5.0.51
+-- PHP 版本: 5.2.5
 
 SET SQL_MODE="NO_AUTO_VALUE_ON_ZERO";
 
@@ -29,7 +29,7 @@ CREATE TABLE IF NOT EXISTS `tp_apptree` (
   `tid` int(11) NOT NULL COMMENT '数据表ID',
   `seqNo` int(11) NOT NULL,
   PRIMARY KEY  (`id`)
-) ENGINE=MyISAM  DEFAULT CHARSET=utf8 AUTO_INCREMENT=128 ;
+) ENGINE=MyISAM  DEFAULT CHARSET=utf8 AUTO_INCREMENT=136 ;
 
 -- --------------------------------------------------------
 
@@ -471,7 +471,7 @@ CREATE TABLE IF NOT EXISTS `tp_sys_fields` (
   `fieldtype` int(11) default NULL COMMENT '字属性',
   `fieldlenght` int(11) default NULL COMMENT '字符长度',
   `request` int(11) default NULL COMMENT '必填',
-  `validate` int(11) default NULL COMMENT '验证形式',
+  `validate` int(11) NOT NULL default '1' COMMENT '验证形式',
   `validate_tex` varchar(244) default NULL COMMENT '自定义错误',
   `validate_reg` varchar(244) default NULL COMMENT '自定义正则',
   `viewtype` int(11) default NULL COMMENT '查看类型',
@@ -484,7 +484,7 @@ CREATE TABLE IF NOT EXISTS `tp_sys_fields` (
   `islistviewtype` int(11) default '1' COMMENT '列表查看类型',
   `iswrap` int(11) default NULL COMMENT '是否排序',
   `indexvar` varchar(240) NOT NULL COMMENT '默认值',
-  `autotype` int(11) NOT NULL default '0' COMMENT '自动填充类型',
+  `autotype` int(11) NOT NULL default '1' COMMENT '自动填充类型',
   `issystem` int(11) default NULL COMMENT '是否系统保留',
   `outkey` varchar(200) default NULL COMMENT '外键索引',
   `outkeyis` int(11) default '0' COMMENT '是否',
@@ -497,7 +497,7 @@ CREATE TABLE IF NOT EXISTS `tp_sys_fields` (
   `seqNo` int(11) default NULL,
   `modelid` int(11) default '0' COMMENT '数据模版ID',
   PRIMARY KEY  (`id`)
-) ENGINE=MyISAM  DEFAULT CHARSET=utf8 COMMENT='定义每个点' AUTO_INCREMENT=4854 ;
+) ENGINE=MyISAM  DEFAULT CHARSET=utf8 COMMENT='定义每个点' AUTO_INCREMENT=4859 ;
 
 -- --------------------------------------------------------
 
