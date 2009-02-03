@@ -9,7 +9,7 @@
 function saveSort(){
 	selectAllOption(document.frm.ObjSelect);
 	getS(document.frm.ObjSelect);
-	sendForm('frm','__APP__/{$thismodel}/saveSort/');
+	sendForm('frm','__APP__/{$thismodel}/saveSort/',reload);
 }
 function reload(){
 	location.href=REQUEST_URI;
@@ -43,10 +43,10 @@ function reload(){
 
     </td>
     <td width="30px">   
-        <input align="left" style="width:30px" disabled type=button value=">>" onclick="moveLeftOrRightAll(document.frm.SrcSelect,document.frm.ObjSelect)" ><br><br>
-        <input align="left" style="width:30px" disabled type=button value=" > " onclick="moveLeftOrRight(document.frm.SrcSelect,document.frm.ObjSelect)" ><br><br>
-        <input align="left" style="width:30px" disabled type=button value=" < " onclick="moveLeftOrRight(document.frm.ObjSelect,document.frm.SrcSelect)" ><br><br>
-        <input align="left" style="width:30px" disabled type=button value="<<" onclick="moveLeftOrRightAll(document.frm.ObjSelect,document.frm.SrcSelect)" >
+        <input class="button1" style="width:30px"  type=button value=">>" onclick="moveLeftOrRightAll(document.frm.SrcSelect,document.frm.ObjSelect)" ><br><br>
+        <input class="button1" style="width:30px"  type=button value=" > " onclick="moveLeftOrRight(document.frm.SrcSelect,document.frm.ObjSelect)" ><br><br>
+        <input class="button1" style="width:30px"  type=button value=" < " onclick="moveLeftOrRight(document.frm.ObjSelect,document.frm.SrcSelect)" ><br><br>
+        <input class="button1" style="width:30px"  type=button value="<<" onclick="moveLeftOrRightAll(document.frm.ObjSelect,document.frm.SrcSelect)" >
     </td>
     <td>
         <select name=ObjSelect  class="ecv_autoSizeDropDown" style="height:300px;" multiple ondblclick="moveLeftOrRight(document.frm.ObjSelect,document.frm.SrcSelect)">
@@ -58,10 +58,10 @@ function reload(){
 
     </td>
     <td width="30px">
-        <input type=button value="顶层" onclick="moveToTop(document.frm.ObjSelect)" ><br><br>
-        <input type=button value="向上" onclick="moveUp(document.frm.ObjSelect)" ><br><br>
-        <input type=button value="向下" onclick="moveDown(document.frm.ObjSelect)" ><br><br>
-        <input type=button value="底层" onclick="moveToBottom(document.frm.ObjSelect)" >
+        <input type=button class="button1" value="顶层" onclick="moveToTop(document.frm.ObjSelect)" ><br><br>
+        <input type=button class="button1" value="向上" onclick="moveUp(document.frm.ObjSelect)" ><br><br>
+        <input type=button class="button1" value="向下" onclick="moveDown(document.frm.ObjSelect)" ><br><br>
+        <input type=button class="button1" value="底层" onclick="moveToBottom(document.frm.ObjSelect)" >
 
     </td>
 

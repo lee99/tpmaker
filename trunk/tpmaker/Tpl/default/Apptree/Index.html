@@ -45,7 +45,7 @@ function topupdate(){
 	<php>
 	if($list[type]==0 ){
 	</php>
-	apptree.add('tree{$list.id}','tree{$list.pid}','{$list.title}[{$list.shortname}] <a href="javascript:PopModalWindow(\\'__URL__/addsort/pid/{$list.id}\\',\\'700\\',\\'400\\');">[ <img src="'+IMG_PATH+'new_window.gif">编辑子项目]</a>','__URL__/index/id/{$list.id}',null,'_self',IMG_PATH+'b_import.png',IMG_PATH+'b_import.png');
+	apptree.add('tree{$list.id}','tree{$list.pid}','{$list.title}[{$list.shortname}] <a href="###" onclick="PopModalWindow(\\'__URL__/addsort/pid/{$list.id}\\',\\'700\\',\\'400\\');">[ <img src="'+IMG_PATH+'new_window.gif">编辑子项目]</a>','__URL__/index/id/{$list.id}',null,'_self',IMG_PATH+'b_import.png',IMG_PATH+'b_import.png');
 	<php>
 	}else{
 	</php>

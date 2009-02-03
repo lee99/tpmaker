@@ -288,7 +288,7 @@ class tpmaker extends Action
 		////////生成自动填充开始
 		foreach ($fields as $field){
 			
-			if($field['autotype']!=0){//其它填充设置
+			if($field['autotype']!=1 ){//其它填充设置
 				$auto=D('sub_auto');
 				$auto=$auto->getByid($field['autotype']);
 				if($field['indexvar']!=''){$a_text=$field['indexvar'];}else{$a_text=$auto['content'];}
