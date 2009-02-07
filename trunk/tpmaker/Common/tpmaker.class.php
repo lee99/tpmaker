@@ -440,6 +440,7 @@ class tpmaker extends Action
 			$tpl->tplsign('listshowsort',$listshowsort);//替换
 			$tpl->tplsign('listshowtd',$listshowtd);//替换
 			$tpl->tplsign('tablecaption',$caption);//替换
+			$tpl->tplsign('tablelist',$name);//替换表名
 			$filecontent=$tpl->tplreturn();
 			writefile($filename,$filecontent);
 		}

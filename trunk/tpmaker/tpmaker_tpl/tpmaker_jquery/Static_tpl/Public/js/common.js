@@ -164,6 +164,19 @@ function getSelectCheckboxValue(){
 	return false;
 }
 
+//+---------------------------------------------------
+//|	选中所有的checkbox,以进行下一步如删除等操作
+//+---------------------------------------------------
+function CheckAll(strSection)
+	{
+		var i;
+		var	colInputs = document.getElementById(strSection).getElementsByTagName("input");
+		for	(i=1; i < colInputs.length; i++)
+		{
+			colInputs[i].checked=colInputs[0].checked;
+		}
+	}
+
 
 //+---------------------------------------------------
 //|	获得选中Checkbox元素的所有值,以进行下一步如删除等操作
@@ -183,61 +196,99 @@ function getSelectCheckboxValues(){
 	return result.substring(0, result.length-1);
 }
 
-function   change()
-{
-	var   oObj   =   event.srcElement;
-	if(oObj.tagName.toLowerCase()   ==   "td")
-	{
-		/*
-		var   oTable   =   oObj.parentNode.parentNode;
-		for(var   i=1;   i<oTable.rows.length;   i++)
-		{
-		oTable.rows[i].className   =   "out";
-		oTable.rows[i].tag   =   false;
-		}   */
-		var obj= document.getElementById('checkList').getElementsByTagName("input");
-		var   oTr   =   oObj.parentNode;
-		var row = oObj.parentElement.rowIndex-1;
-		if (oTr.className == 'down')
-		{
-			oTr.className   =   'out';
-			obj[row].checked = false;
-			oTr.tag   =   true;
-		}else {
-			oTr.className   =   'down';
-			obj[row].checked = true;
-			oTr.tag   =   true;
+//---------------------------------------------------------------------
+//LIST的效果设定
+//---------------------------------------------------------------------
+
+var lastrowoffset = 0; // footer row
+var usecss = true; // use css
+var rowclass = 'ewTableRow'; // 行的第一样式
+var rowaltclass = 'ewTableAltRow'; // 行的第二样式
+var rowmoverclass = 'ewTableHighlightRow'; // 行鼠标经过的样式
+var rowselectedclass = 'ewTableSelectRow'; // 行鼠标选择的样式
+var roweditclass = 'ewTableEditRow'; // 同步编辑行的样式
+var rowcolor = '#FFFFFF'; // row color
+var rowaltcolor = '#F5F5F5'; // row alternate color
+var rowmovercolor = '#FFCCFF'; // row mouse over color
+var rowselectedcolor = '#CCFFFF'; // row selected color
+var roweditcolor = '#FFFF99'; // row edit color
+
+
+// 行鼠标经过时的样式
+function ew_mouseover(row) {
+	row.mover = true; // mouse over
+	if (!row.selected) {
+		if (usecss)
+			row.className = rowmoverclass;
+		else
+			row.style.backgroundColor = rowmovercolor;
+	}
+}
+
+// 行鼠标经过后的样式
+function ew_mouseout(row) {
+	row.mover = false; // mouse out
+	if (!row.selected) {
+		ew_setcolor(row);
+	}
+}
+
+// 设定行的样式
+function ew_setcolor(row) {
+	if (row.selected) {
+		if (usecss)
+			row.className = rowselectedclass;
+		else
+			row.style.backgroundColor = rowselectedcolor;
+	}
+	else if (row.edit) {
+		if (usecss)
+			row.className = roweditclass;
+		else
+			row.style.backgroundColor = roweditcolor;
+	}
+	else if ((row.rowIndex-firstrowoffset)%2) {
+		if (usecss)
+			row.className = rowaltclass;
+		else
+			row.style.backgroundColor = rowaltcolor;
+	}
+	else {
+		if (usecss)
+			row.className = rowclass;
+		else
+			row.style.backgroundColor = rowcolor;
+	}
+}
+
+// 设定选中的样式
+function ew_click(row) {
+	if (row.deleteclicked)
+		row.deleteclicked = false; // reset delete button/checkbox clicked
+	else {
+		var bselected = row.selected;
+		ew_clearselected(); // clear all other selected rows
+		if (!row.deleterow) row.selected = !bselected; // toggle
+		ew_setcolor(row);
+	}
+}
+
+// 设定选中的样式
+function ew_clearselected() {
+	var table = document.getElementById(tablename);
+	for (var i = firstrowoffset; i < table.rows.length; i++) {
+		var thisrow = table.rows[i];
+		if (thisrow.selected && !thisrow.deleterow) {
+			thisrow.selected = false;
+			ew_setcolor(thisrow);
 		}
 	}
 }
 
-function   out()
-{
-	var   oObj   =   event.srcElement;
-	if(oObj.tagName.toLowerCase()   ==   "td")
-	{
-		var   oTr   =   oObj.parentNode;
-		if(!oTr.tag)
-		oTr.className   =   "out";
-	}
-}
-
-function   over()
-{
-	var   oObj   =   event.srcElement;
-	if(oObj.tagName.toLowerCase()   ==   "td")
-	{
-		var   oTr   =   oObj.parentNode;
-		if(!oTr.tag)
-		oTr.className   =   "over";
-	}
-}
 
 
 //---------------------------------------------------------------------
 // 多选改进方法 by Liu21st at 2005-11-29
-//
-//
 //-------------------------begin---------------------------------------
 
 function searchItem(item){
