@@ -44,15 +44,15 @@
 
 <script type="text/javascript">
 <!--
-var firstrowoffset = 1; // first data row start at
-var tablename = "checkList"; // table name
+var firstrowoffset = 1; // 以第一条数据为起始数据
+var tablename = "{tablelist}_List"; // 表名
 //-->
 </script>
-		<TABLE id="checkList" class="list" >
+		<TABLE id="{tablelist}_List" class="list" >
 		<TR class="row" >
 		
 			<th width="8">
-				<input type="checkbox" id="check" onclick="CheckAll('checkList')">
+				<input type="checkbox" id="check" onclick="CheckAll('{tablelist}_List')">
 			</th>
 			{listshowsort}
 			<th >操作区域</th>
