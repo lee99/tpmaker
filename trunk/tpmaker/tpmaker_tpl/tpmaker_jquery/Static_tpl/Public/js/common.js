@@ -19,6 +19,14 @@ function sortBy (field,sort){
 }
 
 //+---------------------------------------------------
+//|	JS对list数据的排序
+//+---------------------------------------------------
+function AjaxSortBy (model,field,sort,action,obj){
+	ThinkAjax.get(APP+"/"+model+"/"+action+"/","p=1&order="+field+"&sort="+sort,obj);
+}
+
+
+//+---------------------------------------------------
 //|	打开模式窗口，返回新窗口的操作值
 //+---------------------------------------------------
 function PopModalWindow(url,width,height)

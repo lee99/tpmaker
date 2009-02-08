@@ -59,7 +59,11 @@ class {name}Action extends PublicAction{
 	}
 {/index_act}
 
+	public function ajaxlist(){
 
+		$this->index();
+
+	}
 
 
 {insert_act}

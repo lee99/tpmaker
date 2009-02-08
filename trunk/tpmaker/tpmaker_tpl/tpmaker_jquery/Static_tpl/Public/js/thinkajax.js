@@ -133,8 +133,8 @@ var ThinkAjax = {
 		{
 			// 调试模式下面输出eval前的字符串
 			alert(str);
-		}		
-		$return =  eval('(' + str + ')');
+		}
+		//$return =  eval('(' + str + ')');
 		this.status = $return.status;
 		this.info	 =	 $return.info;
 		this.data = $return.data;
@@ -145,7 +145,7 @@ var ThinkAjax = {
 		{
 			try	{(ajaxReturn).apply(this,[this.data,this.status,this.info]);}
 			catch (e){}
-			 
+
 		}else {
 			try	{ (response).apply(this,[this.data,this.status,this.info]);}
 			catch (e){}
@@ -162,7 +162,7 @@ var ThinkAjax = {
 					}else{
 						$byid(target).innerHTML	= '<span style="color:blue">'+this.info+'</span>';
 					}
-					
+
 				}else{
 					if ('' != this.image[2])
 					{
@@ -179,7 +179,7 @@ var ThinkAjax = {
 				//var myFx = new Fx.Style(target, 'opacity',{duration:1000}).custom(1,0);
 				$byid(target).style.display='none';
 				},3000);
-				
+
 		}
 	},
 	// 发送Ajax请求
@@ -234,6 +234,62 @@ var ThinkAjax = {
 		}
 		catch(z) { return false; }
 	},
+
+	// 获取ajax的结果
+	//lee99 2009-2-9
+	//direct为替换的元素
+
+	get:function(url,pars,direct,response,target,tips,effect)
+	{
+		var xmlhttp = this.getTransport();
+		url = (url == undefined)?this.options['url']:url;
+		pars = (pars == undefined)?this.options['var']:pars;
+		if (target == undefined)	{
+			target = (this.options['target'])?this.options['target']:this.tipTarget;
+		}
+		if (effect == undefined)	{
+			effect = (this.options['effect'])?this.options['effect']:this.updateEffect;
+		}
+		if (tips == undefined) {
+			tips = (this.options['tip'])?this.options['tip']: this.updateTip;
+		}
+		if (this.showTip)
+		{
+			this.loading(target,tips,effect);
+		}
+		if (this.intval)
+		{
+			window.clearTimeout(this.intval);
+		}
+		this.activeRequestCount++;
+		this.bComplete = false;
+		try {
+			if (this.method == "GET")
+			{
+				xmlhttp.open(this.method, url+"?"+pars, true);
+				pars = "";
+			}
+			else
+			{
+				xmlhttp.open(this.method, url, true);
+				xmlhttp.setRequestHeader("Method", "POST "+url+" HTTP/1.1");
+				xmlhttp.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
+			}
+			var _self = this;
+			xmlhttp.onreadystatechange = function (){
+				if (xmlhttp.readyState == 4 ){
+					if( xmlhttp.status == 200 && !_self.bComplete)
+					{
+						_self.bComplete = true;
+						_self.activeRequestCount--;
+						$byid(direct).innerHTML=xmlhttp.responseText;//lee99
+					}
+				}
+			}
+			xmlhttp.send(pars);
+		}
+		catch(z) { return false; }
+	},
 	// 发送表单Ajax操作，暂时不支持附件上传
 	sendForm:function(formId,url,response,target,tips,effect)
 	{
@@ -241,7 +297,7 @@ var ThinkAjax = {
 		this.send(url,vars,response,target,tips,effect);
 	},
 	// 绑定Ajax到HTML元素和事件
-	// event 支持根据浏览器的不同 
+	// event 支持根据浏览器的不同
 	// 包括 focus blur mouseover mouseout mousedown mouseup submit click dblclick load change keypress keydown keyup
 	bind:function(source,event,url,vars,response,target,tips,effect)
 	{
