@@ -287,7 +287,7 @@ class tpmaker extends Action
 
 		////////生成自动填充开始
 		foreach ($fields as $field){
-			
+
 			if($field['autotype']!=1 ){//其它填充设置
 				$auto=D('sub_auto');
 				$auto=$auto->getByid($field['autotype']);
@@ -319,7 +319,7 @@ class tpmaker extends Action
 		$tpl_path=$this->gettplpath();//获取程序模板的根目录
 		$tpl=new tpl($tpl_path.'/Model_tpl/viewmodel.tpl');
 
-		
+
 		$field=D('Sys_viewfields');
 		$tables=$field->findall('vid='.$id,'distinct `tid`');//查出无序的数据
 		foreach ($tables as $tb){
@@ -332,18 +332,18 @@ class tpmaker extends Action
 			$val_var_field[$i]['field']=$tablefield;
 			$i++;
 		}
-		
+
 		$condition=D('Sys_viewcondition');
 		$condition=$condition->findall('vid='.$id);
-		
+
 		$viewmodel=D('Sys_viewmodel');
 		$viewmodel=$viewmodel->find('id='.$id);
-		
-		$filename=$app_path.'/Lib/Model/'.$viewmodel['title'].'ViewModel.class.php';		
+
+		$filename=$app_path.'/Lib/Model/'.$viewmodel['title'].'ViewModel.class.php';
 		$tpl->tplsign("name",$viewmodel['title']); //替换
 		$tpl->tplblocksign("val_var_field",$val_var_field); //替换
 		$tpl->tplblocksign("val_var_condition",$condition); //替换
-		
+
 		$filecontent=$tpl->tplreturn();
 		writefile($filename,$filecontent);
 	}
@@ -437,14 +437,31 @@ class tpmaker extends Action
 			//$filename=$this->tplchecktable($data,$filename);
 			$listshowsort=$this->makerowslistsort($fields,'islist');
 			$listshowtd=$this->makerowslisttd($fields,'islist');
-			$tpl->tplsign('listshowsort',$listshowsort);//替换
-			$tpl->tplsign('listshowtd',$listshowtd);//替换
+			$tpl->tplblocksign('listshowsort',$listshowsort);//替换
+			$tpl->tplblocksign('listshowtd',$listshowtd);//替换
 			$tpl->tplsign('tablecaption',$caption);//替换
 			$tpl->tplsign('tablelist',$name);//替换表名
 			$filecontent=$tpl->tplreturn();
 			writefile($filename,$filecontent);
 		}
 
+		//生成ajaxlist.HMTL
+		if($data['list']==1 || $data['search']==1){
+			$filename=$app_path.'/Tpl/default/'.$name.'/ajaxlist.html';//生成的模板文件名
+			$tpl=new tpl($tpl_path.'/Html_tpl/ajaxlist.html');//源模板文件名
+			$fields=$this->getfieldsbytbid($id);
+			//$filename=$this->tplchecktable($data,$filename);
+			$listshowsort=$this->makerowslistsort($fields,'islist');
+			$listshowtd=$this->makerowslisttd($fields,'islist');
+			$tpl->tplblocksign('listshowsort',$listshowsort);//替换
+			$tpl->tplblocksign('listshowtd',$listshowtd);//替换
+			$tpl->tplsign('tablecaption',$caption);//替换
+			$tpl->tplsign('tablelist',$name);//替换表名
+			$filecontent=$tpl->tplreturn();
+			writefile($filename,$filecontent);
+		}
+		
+		
 
 		//生成Add.HMTL
 		if($data['add']==1){
@@ -594,14 +611,48 @@ class tpmaker extends Action
 		//$datas传过来的数据
 		//通过传过来的数据生成LIST相应的项
 		//$datefield为相应的对应的项目
-		$tpl_path=$this->gettplpath();//获取程序模板的根目录
-		$tplcontent=file_get_contents($tpl_path.'/Html_tpl/index_sort.html');//源模板文件名
-
+		/*
+		array(33) {
+		  ["id"] => string(4) "4721"
+		  ["pid"] => string(4) "1001"
+		  ["name"] => string(2) "id"
+		  ["caption"] => string(5) "ID号"
+		  ["islist"] => string(1) "0"
+		  ["fieldtype"] => string(1) "6"
+		  ["fieldlenght"] => string(1) "0"
+		  ["request"] => string(1) "0"
+		  ["validate"] => string(1) "0"
+		  ["validate_tex"] => string(0) ""
+		  ["validate_reg"] => string(0) ""
+		  ["viewtype"] => string(1) "0"
+		  ["isview"] => string(1) "0"
+		  ["edittype"] => string(1) "0"
+		  ["isedit"] => string(1) "0"
+		  ["addtype"] => string(1) "1"
+		  ["isadd"] => string(1) "0"
+		  ["islistwidth"] => string(0) ""
+		  ["islistviewtype"] => string(1) "0"
+		  ["iswrap"] => string(1) "1"
+		  ["indexvar"] => string(0) ""
+		  ["autotype"] => string(1) "1"
+		  ["issystem"] => string(1) "0"
+		  ["outkey"] => string(0) ""
+		  ["outkeyis"] => string(1) "0"
+		  ["outkeyid"] => string(0) ""
+		  ["outkeyf"] => string(0) ""
+		  ["outkeywhere"] => string(0) ""
+		  ["searchtype"] => string(1) "0"
+		  ["advsearchtype"] => string(1) "1"
+		  ["issearch"] => string(1) "0"
+		  ["seqNo"] => string(1) "1"
+		  ["modelid"] => string(1) "0"
+		}
+		*/
 		foreach ($datas as $data){
 			if($data[$datefield]==1){
-				$filecontent=str_replace("[name]",$data['name'],$tplcontent);
-				$filecontent=str_replace("[caption]",$data['caption'],$filecontent);
-				$content.=$filecontent;
+				$content[$i][listshowsort_name]=$data['name'];
+				$content[$i][listshowsort_caption]=$data['caption'];
+				$i++;
 			}
 		}
 
@@ -628,16 +679,53 @@ class tpmaker extends Action
 		//$datas传过来的数据
 		//通过传过来的数据生成LIST相应的项
 		//$datefield为相应的对应的项目
-		$tpl_path=$this->gettplpath();//获取程序模板的根目录
-		$tplcontent=file_get_contents($tpl_path.'/Html_tpl/index_td.html');//源模板文件名
+		/*
+		array(33) {
+		  ["id"] => string(4) "4721"
+		  ["pid"] => string(4) "1001"
+		  ["name"] => string(2) "id"
+		  ["caption"] => string(5) "ID号"
+		  ["islist"] => string(1) "0"
+		  ["fieldtype"] => string(1) "6"
+		  ["fieldlenght"] => string(1) "0"
+		  ["request"] => string(1) "0"
+		  ["validate"] => string(1) "0"
+		  ["validate_tex"] => string(0) ""
+		  ["validate_reg"] => string(0) ""
+		  ["viewtype"] => string(1) "0"
+		  ["isview"] => string(1) "0"
+		  ["edittype"] => string(1) "0"
+		  ["isedit"] => string(1) "0"
+		  ["addtype"] => string(1) "1"
+		  ["isadd"] => string(1) "0"
+		  ["islistwidth"] => string(0) ""
+		  ["islistviewtype"] => string(1) "0"
+		  ["iswrap"] => string(1) "1"
+		  ["indexvar"] => string(0) ""
+		  ["autotype"] => string(1) "1"
+		  ["issystem"] => string(1) "0"
+		  ["outkey"] => string(0) ""
+		  ["outkeyis"] => string(1) "0"
+		  ["outkeyid"] => string(0) ""
+		  ["outkeyf"] => string(0) ""
+		  ["outkeywhere"] => string(0) ""
+		  ["searchtype"] => string(1) "0"
+		  ["advsearchtype"] => string(1) "1"
+		  ["issearch"] => string(1) "0"
+		  ["seqNo"] => string(1) "1"
+		  ["modelid"] => string(1) "0"
+		}
+		*/
 
 		foreach ($datas as $data){
 			if($data[$datefield]==1){
+				//生成标签
 				$viewtags=$this->maketags($data['viewtype'],'viewtype',$data['name'],$data['indexvar'],$data['outkey'],$data['outkeyid'],$data['outkeyf'],$data['outkeywhere']);
-				$filecontent=str_replace("[name]",$data['name'],$tplcontent);
-				$filecontent=str_replace("[caption]",$data['caption'],$filecontent);
-				$filecontent=str_replace("[viewtags]",$viewtags,$filecontent);
-				$content.=$filecontent;
+				
+				$content[$i][listshowtd_name]=$data['name'];
+				$content[$i][listshowtd_caption]=$data['caption'];
+				$content[$i][listshowtd_viewtags]=$viewtags;
+				$i++;
 			}
 		}
 

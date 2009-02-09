@@ -20,8 +20,9 @@ function sortBy (field,sort){
 
 //+---------------------------------------------------
 //|	JS对list数据的排序
+//|	AjaxSortBy (模型,操作,字段,排序,对象)
 //+---------------------------------------------------
-function AjaxSortBy (model,field,sort,action,obj){
+function AjaxSortBy (model,action,field,sort,obj){
 	ThinkAjax.get(APP+"/"+model+"/"+action+"/","p=1&order="+field+"&sort="+sort,obj);
 }
 

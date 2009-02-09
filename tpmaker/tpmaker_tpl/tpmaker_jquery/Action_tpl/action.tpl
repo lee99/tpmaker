@@ -9,12 +9,17 @@
 
 class {name}Action extends PublicAction{
 
-{index_act}
+	
 	public function index(){
+		$this->display();
+	}	
+	
+{index_act}
+	public function ajaxlist(){
 
 		$list=D("{modelname}");
 
-		$order=!empty($_REQUEST["order"])?$_REQUEST["order"]:'id'; //排序字段,默认为"id"
+		$order=!empty($_REQUEST["order"])?$_REQUEST["order"]:$list->getPk(); //排序字段,默认为"Pk"
 		$sortd=!empty($_REQUEST["sort"])?$_REQUEST["sort"]:"asc"; //排序顺序,默认为"asc"
 		$orderBy=$order." ".$sortd;//组合排序条件
 
@@ -59,11 +64,7 @@ class {name}Action extends PublicAction{
 	}
 {/index_act}
 
-	public function ajaxlist(){
 
-		$this->index();
-
-	}
 
 
 {insert_act}
