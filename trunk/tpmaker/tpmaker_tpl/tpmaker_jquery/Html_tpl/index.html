@@ -44,51 +44,10 @@
 <!--
 var firstrowoffset = 1; // 以第一条数据为起始数据
 var tablename = "{tablelist}_List"; // 表名
+AjaxSortBy('{tablelist}','ajaxlist','id','asc','{tablelist}_Grid');
 //-->
 </script>
 <div id="{tablelist}_Grid" >
-
-<!-- Myhtml 系统列表组件开始 -->
-		<TABLE id="{tablelist}_List" class="list" >
-		<TR class="row" >
-		
-			<th width="8">
-				<input type="checkbox" id="check" onclick="CheckAll('{tablelist}_List')">
-			</th>
-			{listshowsort}
-			<th >操作区域</th>
-			</TR>
-		<php> if(isset($list)): </php>
-		<php> $i = 0; </php>
-		<php> if( count($list)==0 ) echo "" </php>
-		<php> foreach($list as $key=>$list): </php>
-		<php> ++$i;</php>
-		<php> $mod = (($i % 2 )==0)</php>
-		<php> if(($key%2)==0){ $tablesclass="ewTableAltRow";} else { $tablesclass="ewTableRow";} </php>
-		<TR class="<php> echo $tablesclass </php>" onmouseover="ew_mouseover(this);" onmouseout="ew_mouseout(this);" onclick="ew_click(this);"  >
-			<td><input type="checkbox" name="key"	value="<php> echo is_array($list)?$list["id"]:$list->id </php>"> </td>
-			{listshowtd}
-			
-			<TD>
-			<A HREF="javascript:edit('<php> echo is_array($list)?$list["id"]:$list->id </php>')">编辑</A> 
-			<A HREF="javascript:del('<php> echo is_array($list)?$list["id"]:$list->id </php>')">删除</A> 
-			<A HREF="javascript:view('<php> echo is_array($list)?$list["id"]:$list->id </php>')">详细</A> 
-				</TD>
-		</TR>
-		<php> endforeach; </php>
-		<php> endif; </php>
-		
-
-		</TABLE>
-<!--Myhtml系统列表组件结束 -->
-
-
-<!--  分页显示区域 -->
-
-<div class="page">
-	<table width="100%"><tr ><td align="left"></td><td align="right">{$page}</td></tr></table>
-</div>
-<!--  分页显示区域结束 -->
 
 </div>
 </fieldset>
