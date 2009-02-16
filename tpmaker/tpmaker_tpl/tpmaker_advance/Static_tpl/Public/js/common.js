@@ -48,7 +48,7 @@ function PopModalWindow(url,width,height)
 //+---------------------------------------------------
 //|	查看当前的数据的详细页面
 //+---------------------------------------------------
-function read(id){
+function view(id){
 	var keyValue;
 	if (id)
 	{
@@ -61,9 +61,17 @@ function read(id){
 		alert('请选择查看详细的项！');
 		return false;
 	}
-	//location.href =  URL+"/read/id/"+keyValue;
-	var ps =  Per_host+URL+"/read/id/"+keyValue;
-	lhgdialog.opendlg( '查看详细的项',ps, 400, 300 );
+	//location.href =  URL+"/view/id/"+keyValue;
+	var ps =  Per_host+URL+"/view/id/"+keyValue;
+	lhgdialog.opendlg( '查看详细的项',ps, 600, 450 );
+}
+
+//+---------------------------------------------------
+//|	增加数据
+//+---------------------------------------------------
+function add(){
+	var ps =  Per_host+URL+"/add/";
+	lhgdialog.opendlg( '增加数据',ps, 600, 450 );
 }
 
 
@@ -85,7 +93,7 @@ function edit(id){
 	}
 	//location.href =  URL+"/edit/id/"+keyValue;
 	var ps =  Per_host+URL+"/edit/id/"+keyValue;
-	lhgdialog.opendlg( '选择编辑的项！',ps, 400, 300 );
+	lhgdialog.opendlg( '选择编辑的项！',ps, 600, 450 );
 }
 
 
