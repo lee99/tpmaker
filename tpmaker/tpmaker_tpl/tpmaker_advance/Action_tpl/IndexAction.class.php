@@ -1,6 +1,6 @@
 <?php
 //+---------------------------------------------------
-//|	tpmaker1.05 tpl:tpmaker_jquery
+//|	tpmaker1.05 tpl:tpmaker_advance
 //+---------------------------------------------------
 class IndexAction extends PublicAction{
 
