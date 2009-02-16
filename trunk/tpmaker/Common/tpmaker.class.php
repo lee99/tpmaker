@@ -52,6 +52,10 @@ class tpmaker extends Action
 	var $tpmaker_template = 'tpmaker_default';
 
 
+	public function tpmaker () {
+		require COMMON_PATH."tpl.class.php";//引入自定义的类
+	}
+	
 	/**
     +----------------------------------------------------------
      * 取得公共的APP路径名
@@ -61,6 +65,8 @@ class tpmaker extends Action
      +----------------------------------------------------------
      */
 	function getapppath(){
+
+		
 		$list=D($this->projecttable);
 		$data=$list->getByid($this->projectid);
 		$app_path='../'.$data['proname'];
@@ -148,11 +154,13 @@ class tpmaker extends Action
 		tpmk_dir($app_path.'/Lang/');//生成Lang目录
 		tpmk_dir($app_path.'/Logs/');//生成Logs目录
 		tpmk_dir($app_path.'/Temp/');//生成Temp目录
+		tpmk_dir($app_path.'/Com/');//生成Com目录
 		tpmk_dir($app_path.'/Tpl/default/Public/');//生成Tpl目录
 		copyfile($tpl_path.'/common.php',$app_path.'/Common/common.php');////common.php文件
 		copyfile($tpl_path.'/Action_tpl/PublicAction.class.php',$app_path.'/Lib/Action/PublicAction.class.php');
 		////PublicAction.class.php文件
 		copydir($tpl_path.'/Static_tpl',$app_path.'/Tpl/default');////common.php文件
+		copydir($tpl_path.'/Com_tpl',$app_path.'/Com');////common.php文件
 		$this->installtags();//安装标签
 	}
 
@@ -176,7 +184,7 @@ class tpmaker extends Action
      +----------------------------------------------------------
      */
 	function makeproindex($id) {
-		require_once COMMON_PATH."tpl.class.php";//引入自定义的类
+		
 		$app_path=$this->getapppath();//获取生成程序的根目录
 		$tpl_path=$this->gettplpath();//获取程序模板的根目录
 		$filename=$app_path.'/index.php';
@@ -197,7 +205,7 @@ class tpmaker extends Action
      +----------------------------------------------------------
      */
 	function makeproindexaction() {
-		require_once COMMON_PATH."tpl.class.php";//引入自定义的类
+		
 		$app_path=$this->getapppath();//获取生成程序的根目录
 		$tpl_path=$this->gettplpath();//获取程序模板的根目录
 		$filename=$app_path.'/Index.php';
@@ -223,7 +231,7 @@ class tpmaker extends Action
      +----------------------------------------------------------
      */
 	function makeproconf($id) {
-		require_once COMMON_PATH."tpl.class.php";//引入自定义的类
+		
 		$app_path=$this->getapppath();//获取生成程序的根目录
 		$tpl_path=$this->gettplpath();//获取程序模板的根目录
 		$data=$this->getprojects();
@@ -241,7 +249,7 @@ class tpmaker extends Action
 
 	function makepromodel($id) {
 		//生成基本MODEL
-		require_once COMMON_PATH."tpl.class.php";//引入自定义的类
+		
 		$app_path=$this->getapppath();//获取生成程序的根目录
 		$tpl_path=$this->gettplpath();//获取程序模板的根目录
 		$data=$this->gettables($id);
@@ -314,7 +322,7 @@ class tpmaker extends Action
 
 	function makeproviewmodel($id) {
 		//生成基本VIEWMODEL
-		require_once COMMON_PATH."tpl.class.php";//引入自定义的类
+		
 		$app_path=$this->getapppath();//获取生成程序的根目录
 		$tpl_path=$this->gettplpath();//获取程序模板的根目录
 		$tpl=new tpl($tpl_path.'/Model_tpl/viewmodel.tpl');
@@ -351,7 +359,7 @@ class tpmaker extends Action
 
 	function makeproaction($id) {
 		//生成基本Action
-		require_once COMMON_PATH."tpl.class.php";//引入自定义的类
+		
 		$app_path=$this->getapppath();//获取生成程序的根目录
 		$tpl_path=$this->gettplpath();//获取程序模板的根目录
 		$data=$this->gettables($id);
@@ -421,7 +429,7 @@ class tpmaker extends Action
 
 	function makeprotpl($id) {
 		//生成基本Action
-		require_once COMMON_PATH."tpl.class.php";//引入自定义的类
+		
 		$app_path=$this->getapppath();//获取生成程序的根目录
 		$tpl_path=$this->gettplpath();//获取程序模板的根目录
 		$data=$this->gettables($id);
@@ -503,7 +511,7 @@ class tpmaker extends Action
 
 
 	function makerowscontent($datas,$actiontype,$tpl) {
-		require_once COMMON_PATH."tpl.class.php";//引入自定义的类
+		
 		$app_path=$this->getapppath();//获取生成程序的根目录
 		$tpl_path=$this->gettplpath();//获取程序模板的根目录
 		//$datas传过来的数据

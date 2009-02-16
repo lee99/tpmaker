@@ -263,6 +263,7 @@ var ThinkAjax = {
 		}
 		this.activeRequestCount++;
 		this.bComplete = false;
+		this.method = "GET";
 		try {
 			if (this.method == "GET")
 			{
@@ -283,6 +284,9 @@ var ThinkAjax = {
 						_self.bComplete = true;
 						_self.activeRequestCount--;
 						$byid(direct).innerHTML=xmlhttp.responseText;//lee99
+						window.setTimeout(function (){
+						$byid(target).style.display='none';
+						},1000);
 					}
 				}
 			}
