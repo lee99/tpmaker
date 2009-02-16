@@ -35,13 +35,13 @@ class ajaxpage extends Page
         $upRow   = $this->nowPage-1;
         $downRow = $this->nowPage+1;
         if ($upRow>0){
-			$upPage="[<a href='###'  onclick=\"AjaxPageBy('$pagemodel','$pageaction','$pagefield','$pagesort','$pagetarge','$upRow');\">".$this->config['prev']."</a>]";
+			$upPage="[<a href='javascript:void(0);'  onclick=\"AjaxPageBy('$pagemodel','$pageaction','$pagefield','$pagesort','$pagetarge','$upRow');\">".$this->config['prev']."</a>]";
         }else{
             $upPage="";
         }
 
         if ($downRow <= $this->totalPages){
-			$downPage="[<a href='###'  onclick=\"AjaxPageBy('$pagemodel','$pageaction','$pagefield','$pagesort','$pagetarge','$downRow');\">".$this->config['next']."</a>]";
+			$downPage="[<a href='javascript:void(0);'  onclick=\"AjaxPageBy('$pagemodel','$pageaction','$pagefield','$pagesort','$pagetarge','$downRow');\">".$this->config['next']."</a>]";
         }else{
             $downPage="";
         }
@@ -52,8 +52,8 @@ class ajaxpage extends Page
         }else{
             $preRow =  $this->nowPage-$this->rollPage;
 
-            $prePage = "[<a href='###'  onclick=\"AjaxPageBy('$pagemodel','$pageaction','$pagefield','$pagesort','$pagetarge','$preRow');\">上".$this->rollPage."页</a>]";
-            $theFirst = "[<a href='###'  onclick=\"AjaxPageBy('$pagemodel','$pageaction','$pagefield','$pagesort','$pagetarge','1');\">".$this->config['first']."</a>]";
+            $prePage = "[<a href='javascript:void(0);'  onclick=\"AjaxPageBy('$pagemodel','$pageaction','$pagefield','$pagesort','$pagetarge','$preRow');\">上".$this->rollPage."页</a>]";
+            $theFirst = "[<a href='javascript:void(0);'  onclick=\"AjaxPageBy('$pagemodel','$pageaction','$pagefield','$pagesort','$pagetarge','1');\">".$this->config['first']."</a>]";
 
         }
         if($nowCoolPage == $this->coolPages){
@@ -63,8 +63,8 @@ class ajaxpage extends Page
             $nextRow = $this->nowPage+$this->rollPage;
             $theEndRow = $this->totalPages;
 
-            $nextPage = "[<a href='###'  onclick=\"AjaxPageBy('$pagemodel','$pageaction','$pagefield','$pagesort','$pagetarge','$nextRow');\">下".$this->rollPage."页</a>]";
-            $theEnd = "[<a href='###'  onclick=\"AjaxPageBy('$pagemodel','$pageaction','$pagefield','$pagesort','$pagetarge','$theEndRow');\">".$this->config['last']."</a>]";
+            $nextPage = "[<a href='javascript:void(0);'  onclick=\"AjaxPageBy('$pagemodel','$pageaction','$pagefield','$pagesort','$pagetarge','$nextRow');\">下".$this->rollPage."页</a>]";
+            $theEnd = "[<a href='javascript:void(0);'  onclick=\"AjaxPageBy('$pagemodel','$pageaction','$pagefield','$pagesort','$pagetarge','$theEndRow');\">".$this->config['last']."</a>]";
 
         }
         // 1 2 3 4 5
@@ -73,7 +73,7 @@ class ajaxpage extends Page
             $page=($nowCoolPage-1)*$this->rollPage+$i;
             if($page!=$this->nowPage){
                 if($page<=$this->totalPages){
-                    $linkPage .= "&nbsp;<a href='###'  onclick=\"AjaxPageBy('$pagemodel','$pageaction','$pagefield','$pagesort','$pagetarge','$page');\">&nbsp;".$page."&nbsp;</a>";
+                    $linkPage .= "&nbsp;<a href='javascript:void(0);'  onclick=\"AjaxPageBy('$pagemodel','$pageaction','$pagefield','$pagesort','$pagetarge','$page');\">&nbsp;".$page."&nbsp;</a>";
                 }else{
                     break;
                 }
