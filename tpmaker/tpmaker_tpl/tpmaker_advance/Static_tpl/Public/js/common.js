@@ -28,6 +28,14 @@ function AjaxSortBy (model,action,field,sort,obj){
 
 
 //+---------------------------------------------------
+//|	JS对list数据的排序
+//|	AjaxSortBy (模型,操作,字段,排序,对象,分页)
+//+---------------------------------------------------
+function AjaxPageBy (model,action,field,sort,obj,page){
+	ThinkAjax.get(APP+"/"+model+"/"+action+"/","p="+page+"&order="+field+"&sort="+sort,obj);
+}
+
+//+---------------------------------------------------
 //|	打开模式窗口，返回新窗口的操作值
 //+---------------------------------------------------
 function PopModalWindow(url,width,height)

@@ -41,10 +41,10 @@ class {name}Action extends PublicAction{
         $condition['{search_fields}']=array({search_ser_c},$searchtype);//模糊搜索关键字全局过滤
     }
 
-		import("ORG.Util.Page");//引用分页类
+		
 		$count= $list->count($condition);//获取分页总数量
-		$p= new Page($count);
-		$page=$p->show();//显示分页
+		$p= new ajaxpage($count);
+		$page=$p->ajaxshow();//显示分页
 		$this->assign("page",$page);//显示分页
 		$limit=$p->firstRow.",".$p->listRows;//设定分面的大小
 
