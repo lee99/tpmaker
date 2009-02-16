@@ -23,7 +23,7 @@ class PublicAction extends Action {
 		}
 		*/
 		import("ORG.Util.Page");//引用分页类
-		import("Com.ajaxpage");//引用ajax分页类
+		import("@.Com.ajaxpage");//引用ajax分页类
 
 	}
 

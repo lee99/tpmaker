@@ -61,7 +61,9 @@ function read(id){
 		alert('请选择查看详细的项！');
 		return false;
 	}
-	location.href =  URL+"/read/id/"+keyValue;
+	//location.href =  URL+"/read/id/"+keyValue;
+	var ps =  Per_host+URL+"/read/id/"+keyValue;
+	lhgdialog.opendlg( '查看详细的项',ps, 400, 300 );
 }
 
 
@@ -81,7 +83,9 @@ function edit(id){
 		alert('请选择编辑的项！');
 		return false;
 	}
-	location.href =  URL+"/edit/id/"+keyValue;
+	//location.href =  URL+"/edit/id/"+keyValue;
+	var ps =  Per_host+URL+"/edit/id/"+keyValue;
+	lhgdialog.opendlg( '选择编辑的项！',ps, 400, 300 );
 }
 
 
@@ -104,7 +108,7 @@ function del(id){
 
 	if (window.confirm('确实要删除选择项吗？'))
 	{
-		location.href =  URL+"/delete/id/"+keyValue;
+		location.href =  Per_host+URL+"/delete/id/"+keyValue;
 		//ThinkAjax.send(URL+"/delete/","id="+keyValue+'&_AJAX_SUBMIT_=1',doDelete);
 	}
 }
