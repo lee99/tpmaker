@@ -168,7 +168,7 @@ Calendar.prototype.draw = function() {
 
 	var mvAry = [];
 	mvAry[mvAry.length] = ' <div name="calendarForm" style="margin: 0px;">';
-	mvAry[mvAry.length] = ' <table width="100%" border="0" cellpadding="0" cellspacing="1">';
+	mvAry[mvAry.length] = ' <table width="100%" border="0" cellpadding="0" cellspacing="0">';
 	mvAry[mvAry.length] = ' <tr>';
 	mvAry[mvAry.length] = ' <td align="left" width="1%"><input style="border: 1px solid ' + calendar.colors["input_border"] + ';background-color:' + calendar.colors["input_bg"] + ';width:16px;height:20px;" name="prevMonth" type="button" id="prevMonth" value="&lt;" /></td>';
 	mvAry[mvAry.length] = ' <td align="center" width="98%" nowrap="nowrap"><select name="calendarYear" id="calendarYear" style="font-size:12px;"></select><select name="calendarMonth" id="calendarMonth" style="font-size:12px;"></select></td>';
@@ -248,41 +248,12 @@ Calendar.prototype.draw = function() {
 		calendar.hide();
 	}
 	this.calendarToday = obj;
-	/**//******** 以上代码由寒羽枫 2006-12-01 添加 **********/
 
-	/**//*
-	//this.form = document.forms["calendarForm"];
-	this.form.prevMonth.onclick = function () {calendar.goPrevMonth(this);}
-	this.form.nextMonth.onclick = function () {calendar.goNextMonth(this);}
-
-	this.form.prevMonth.onblur = function () {calendar.onblur();}
-	this.form.nextMonth.onblur = function () {calendar.onblur();}
-
-	this.form.calendarClear.onclick = function () {calendar.dateControl.value = "";calendar.hide();}
-	this.form.calendarClose.onclick = function () {calendar.hide();}
-	this.form.calendarYear.onchange = function () {calendar.update(this);}
-	this.form.calendarMonth.onchange = function () {calendar.update(this);}
-
-	this.form.calendarYear.onblur = function () {calendar.onblur();}
-	this.form.calendarMonth.onblur = function () {calendar.onblur();}
-
-	this.form.calendarToday.onclick = function () {
-	var today = new Date();
-	calendar.date = today;
-	calendar.year = today.getFullYear();
-	calendar.month = today.getMonth();
-	calendar.changeSelect();
-	calendar.bindData();
-	calendar.dateControl.value = today.format(calendar.dateFormatStyle);
-	calendar.hide();
-	}
-	*/
 }
 
 //年份下拉框绑定数据
 Calendar.prototype.bindYear = function() {
-	//var cy = this.form.calendarYear;
-	var cy = this.calendarYear;//2006-12-01 由寒羽枫修改
+	var cy = this.calendarYear;
 	cy.length = 0;
 	for (var i = this.beginYear; i <= this.endYear; i++){
 		cy.options[cy.length] = new Option(i + Calendar.language["year"][this.lang], i);
@@ -291,8 +262,7 @@ Calendar.prototype.bindYear = function() {
 
 //月份下拉框绑定数据
 Calendar.prototype.bindMonth = function() {
-	//var cm = this.form.calendarMonth;
-	var cm = this.calendarMonth;//2006-12-01 由寒羽枫修改
+	var cm = this.calendarMonth;
 	cm.length = 0;
 	for (var i = 0; i < 12; i++){
 		cm.options[cm.length] = new Option(Calendar.language["months"][this.lang][i], i);
@@ -478,9 +448,6 @@ Calendar.prototype.show = function (dateObj, popControl) {
 	this.panel.style.top = (xy.y + dateObj.offsetHeight) + "px";
 
 	//由寒羽枫 2006-06-25 修改 → 把 visibility 变为 display，并添加失去焦点的事件
-	//this.setDisplayStyle("select", "hidden");
-	//this.panel.style.visibility = "visible";
-	//this.container.style.visibility = "visible";
 	this.panel.style.display = "";
 	this.container.style.display = "";
 
@@ -491,9 +458,6 @@ Calendar.prototype.show = function (dateObj, popControl) {
 
 //隐藏日历
 Calendar.prototype.hide = function() {
-	//this.setDisplayStyle("select", "visible");
-	//this.panel.style.visibility = "hidden";
-	//this.container.style.visibility = "hidden";
 	this.panel.style.display = "none";
 	this.container.style.display = "none";
 	isFocus=false;
@@ -504,23 +468,7 @@ Calendar.prototype.onblur = function() {
 	if(!isFocus){this.hide();}
 }
 
-//以下由寒羽枫 2006-06-25 修改 → 用<iframe> 遮住 IE 的下拉框
-/**//**//**//*
-//设置控件显示或隐藏
-Calendar.prototype.setDisplayStyle = function(tagName, style) {
-var tags = this.getElementsByTagName(null, tagName)
-for(var i = 0; i < tags.length; i++) {
-if (tagName.toLowerCase() == "select" &&
-(tags[i].name == "calendarYear" ||
-tags[i].name == "calendarMonth")){
-continue;
-}
-//tags[i].style.visibility = style;
-tags[i].style.display = style;
-}
-}
-*/
-//document.write('<div id="ContainerPanel" style="visibility:hidden"><div id="calendarPanel" style="position: absolute;visibility: hidden;z-index: 9999;');
+
 document.write('<div id="ContainerPanel" style="display:none"><div id="calendarPanel" style="position: absolute;display: none;z-index: 9999;');
 document.write('background-color: #FFFFFF;border: 1px solid #CCCCCC;width:175px;font-size:12px;"></div>');
 if(document.all)
@@ -531,6 +479,3 @@ if(document.all)
 	document.write('display:expression(this.previousSibling.style.display);" scrolling="no" frameborder="no"></iframe>');
 }
 document.write('</div>');
-//var calendar = new Calendar(); //此句被 寒羽枫注释，否则 IE 将报错
-//调用calendar.show(dateControl, popControl);
-//-->

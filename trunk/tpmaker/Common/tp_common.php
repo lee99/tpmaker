@@ -1,8 +1,5 @@
 <?php
 
-
-
-
 function writefile($name,$content,$cover=1) {
 	//生成文件
 		$filename=$name;
