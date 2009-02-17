@@ -173,6 +173,7 @@ class tpmaker extends Action
 		copyfile(APP_PATH.'/tpmaker_tpl/tphtmltags/TagLib/TagLibMyhtml.class.php',THINK_PATH.'/Lib/Think/Template/TagLib/TagLibMyhtml.class.php');//安装标签
 		copyfile(APP_PATH.'/tpmaker_tpl/tphtmltags/Tags/mkrtags.xml',THINK_PATH.'/Lib/Think/Template/Tags/mkrtags.xml');//安装标签
 		copyfile(APP_PATH.'/tpmaker_tpl/tphtmltags/Tags/myhtml.xml',THINK_PATH.'/Lib/Think/Template/Tags/myhtml.xml');//安装标签
+		copydir(APP_PATH.'/tpmaker_tpl/tphtmltags/Public',THINK_PATH.'/../Public');//安装标签相关js
 
 	}
 
