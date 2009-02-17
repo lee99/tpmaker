@@ -413,23 +413,9 @@ treuval.value=s2;
 		$othervar   = $tag['othervar'];               					//表单[othervar]//没值则
 
 		$parseStr   = '
-<link rel="stylesheet" type="text/css" media="all" href="'.WEB_PUBLIC_URL.'/mkrtagsjs/calendar/calendar-win2k-cold-1.css" title="win2k-1" />
-<script type="text/javascript" src="'.WEB_PUBLIC_URL.'/mkrtagsjs/calendar/calendar.js"></script>
-<script type="text/javascript" src="'.WEB_PUBLIC_URL.'/mkrtagsjs/calendar/lang/calendar-en.js"></script>
-<script type="text/javascript" src="'.WEB_PUBLIC_URL.'/mkrtagsjs/calendar/calendar-setup.js"></script>
+<script type="text/javascript" src="'.WEB_PUBLIC_URL.'/mkrtagsjs/calendar.js"></script>
  		';
-		$parseStr  .= '<INPUT type="text" id="'.$id.'_input" name="'.$name.'" value="'.$value.'"  class="'.$class.'"  style="'.$style.'" '.$othervar.' '. $disabled.' '. $readonly. '>
- 		<input type="button"   value="选择" title="手动选择日期" id="'.$id.'_select" alt="择日" class="'.$class.'" style="cursor:pointer;cursor:hand;" />
-<script type="text/javascript">
-Calendar.setup(
-{
-inputField : "'.$id.'_input", // ID of the input field
-ifFormat : "%Y-%m-%d", // the date format
-button : "'.$id.'_select" // ID of the button
-}
-);
-</script>
- 		';
+		$parseStr  .= '<INPUT type="text" id="'.$id.'_input" name="'.$name.'" value="'.$value.'"  class="'.$class.'"  style="'.$style.'" '.$othervar.' '. $disabled.' '. $readonly. ' onclick="SelectDate(this)" >';
 
 		return $parseStr;
 	}
