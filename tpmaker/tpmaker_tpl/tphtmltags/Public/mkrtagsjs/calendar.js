@@ -4,12 +4,20 @@ var isFocus=false; //是否为焦点
 //以上为 寒羽枫 2006-06-25 添加的变量
 
 //选择日期 → 由 寒羽枫 2006-06-25 添加
-function SelectDate(obj)
+function SelectDate(obj,tFormat)
 {
 	var date = new Date();
 	var by = date.getFullYear()-10; //最小值 → 10 年前
 	var ey = date.getFullYear()+10; //最大值 → 10 年后
-	var strFormat="yyyy-MM-dd";
+
+	
+	if (tFormat != null){
+		this.dateFormatStyle = tFormat;
+		var strFormat=tFormat;
+	}else{
+		this.dateFormatStyle ="yyyy-MM-dd";
+		var strFormat="yyyy-MM-dd";
+	}
 	//cal = new Calendar(by, ey,1,strFormat); //初始化英文版，0 为中文版
 	cal = (cal==null) ? new Calendar(by, ey, 1) : cal; //不用每次都初始化 2006-12-03 修正
 	cal.dateFormatStyle = strFormat;
@@ -23,7 +31,19 @@ function SelectDate(obj)
 */
 //String.prototype.toDate = function(x, p) {
 String.prototype.toDate = function(style) {
-
+	/**//**//**//*
+	if(x == null) x = "-";
+	if(p == null) p = "ymd";
+	var a = this.split(x);
+	var y = parseInt(a[p.indexOf("y")]);
+	//remember to change this next century ;)
+	if(y.toString().length <= 2) y += 2000;
+	if(isNaN(y)) y = new Date().getFullYear();
+	var m = parseInt(a[p.indexOf("m")]) - 1;
+	var d = parseInt(a[p.indexOf("d")]);
+	if(isNaN(d)) d = 1;
+	return new Date(y, m, d);
+	*/
 	var y = this.substring(style.indexOf('y'),style.lastIndexOf('y')+1);//年
 	var m = this.substring(style.indexOf('M'),style.lastIndexOf('M')+1);//月
 	var d = this.substring(style.indexOf('d'),style.lastIndexOf('d')+1);//日
@@ -77,10 +97,10 @@ Date.prototype.format = function(style) {
 * @update
 */
 function Calendar(beginYear, endYear, lang, dateFormatStyle) {
-	this.beginYear = 1970;
+	this.beginYear = 2008;
 	this.endYear = 2020;
 	this.lang = 0; //0(中文) | 1(英文)
-	//this.dateFormatStyle = "yyyy-MM-dd";
+	this.dateFormatStyle = "yyyy-MM-dd";
 
 	if (beginYear != null && endYear != null){
 		this.beginYear = beginYear;
@@ -147,13 +167,12 @@ Calendar.prototype.draw = function() {
 	calendar = this;
 
 	var mvAry = [];
-	//mvAry[mvAry.length] = ' <form name="calendarForm" style="margin: 0px;">'; //因 <form> 不能嵌套， 2006-12-01 由寒羽枫改用 Div
 	mvAry[mvAry.length] = ' <div name="calendarForm" style="margin: 0px;">';
 	mvAry[mvAry.length] = ' <table width="100%" border="0" cellpadding="0" cellspacing="1">';
 	mvAry[mvAry.length] = ' <tr>';
-	mvAry[mvAry.length] = ' <th align="left" width="1%"><input style="border: 1px solid ' + calendar.colors["input_border"] + ';background-color:' + calendar.colors["input_bg"] + ';width:16px;height:20px;" name="prevMonth" type="button" id="prevMonth" value="&lt;" /></th>';
-	mvAry[mvAry.length] = ' <th align="center" width="98%" nowrap="nowrap"><select name="calendarYear" id="calendarYear" style="font-size:12px;"></select><select name="calendarMonth" id="calendarMonth" style="font-size:12px;"></select></th>';
-	mvAry[mvAry.length] = ' <th align="right" width="1%"><input style="border: 1px solid ' + calendar.colors["input_border"] + ';background-color:' + calendar.colors["input_bg"] + ';width:16px;height:20px;" name="nextMonth" type="button" id="nextMonth" value="&gt;" /></th>';
+	mvAry[mvAry.length] = ' <td align="left" width="1%"><input style="border: 1px solid ' + calendar.colors["input_border"] + ';background-color:' + calendar.colors["input_bg"] + ';width:16px;height:20px;" name="prevMonth" type="button" id="prevMonth" value="&lt;" /></td>';
+	mvAry[mvAry.length] = ' <td align="center" width="98%" nowrap="nowrap"><select name="calendarYear" id="calendarYear" style="font-size:12px;"></select><select name="calendarMonth" id="calendarMonth" style="font-size:12px;"></select></td>';
+	mvAry[mvAry.length] = ' <td align="right" width="1%"><input style="border: 1px solid ' + calendar.colors["input_border"] + ';background-color:' + calendar.colors["input_bg"] + ';width:16px;height:20px;" name="nextMonth" type="button" id="nextMonth" value="&gt;" /></td>';
 	mvAry[mvAry.length] = ' </tr>';
 	mvAry[mvAry.length] = ' </table>';
 	mvAry[mvAry.length] = ' <table id="calendarTable" width="100%" style="border:0px solid #CCCCCC;background-color:#FFFFFF" border="0" cellpadding="3" cellspacing="1">';
@@ -176,12 +195,11 @@ Calendar.prototype.draw = function() {
 		mvAry[mvAry.length] = ' </tr>';
 	}
 	mvAry[mvAry.length] = ' <tr style="background-color:' + calendar.colors["input_bg"] + ';">';
-	mvAry[mvAry.length] = ' <th colspan="2"><input name="calendarClear" type="button" id="calendarClear" value="' + Calendar.language["clear"][this.lang] + '" style="border: 1px solid ' + calendar.colors["input_border"] + ';background-color:' + calendar.colors["input_bg"] + ';width:100%;height:20px;font-size:12px;"/></th>';
-	mvAry[mvAry.length] = ' <th colspan="3"><input name="calendarToday" type="button" id="calendarToday" value="' + Calendar.language["today"][this.lang] + '" style="border: 1px solid ' + calendar.colors["input_border"] + ';background-color:' + calendar.colors["input_bg"] + ';width:100%;height:20px;font-size:12px;"/></th>';
-	mvAry[mvAry.length] = ' <th colspan="2"><input name="calendarClose" type="button" id="calendarClose" value="' + Calendar.language["close"][this.lang] + '" style="border: 1px solid ' + calendar.colors["input_border"] + ';background-color:' + calendar.colors["input_bg"] + ';width:100%;height:20px;font-size:12px;"/></th>';
+	mvAry[mvAry.length] = ' <td colspan="2"><input name="calendarClear" type="button" id="calendarClear" value="' + Calendar.language["clear"][this.lang] + '" style="border: 1px solid ' + calendar.colors["input_border"] + ';background-color:' + calendar.colors["input_bg"] + ';width:100%;height:20px;font-size:12px;"/></td>';
+	mvAry[mvAry.length] = ' <td colspan="3"><input name="calendarToday" type="button" id="calendarToday" value="' + Calendar.language["today"][this.lang] + '" style="border: 1px solid ' + calendar.colors["input_border"] + ';background-color:' + calendar.colors["input_bg"] + ';width:100%;height:20px;font-size:12px;"/></td>';
+	mvAry[mvAry.length] = ' <td colspan="2"><input name="calendarClose" type="button" id="calendarClose" value="' + Calendar.language["close"][this.lang] + '" style="border: 1px solid ' + calendar.colors["input_border"] + ';background-color:' + calendar.colors["input_bg"] + ';width:100%;height:20px;font-size:12px;"/></td>';
 	mvAry[mvAry.length] = ' </tr>';
 	mvAry[mvAry.length] = ' </table>';
-	//mvAry[mvAry.length] = ' </from>';
 	mvAry[mvAry.length] = ' </div>';
 	this.panel.innerHTML = mvAry.join("");
 
