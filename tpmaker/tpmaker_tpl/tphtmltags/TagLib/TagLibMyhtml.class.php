@@ -317,7 +317,7 @@ Class TagLibMyhtml extends TagLib
 			$parseStr=$parseStr.$headvar;//写入头
 			$parseStr	.= '
 
-        <TR><td><img src="../public/images/right_up.gif" border=0></td>';
+        <TR><td><img src="../Public/images/right_up.gif" border=0></td>';
 
 			foreach($fields as $field) {
 				//显示定义的列表字段

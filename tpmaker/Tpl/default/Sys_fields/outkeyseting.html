@@ -1,7 +1,7 @@
 <tagLib name="cx,html,myhtml,mkrtags" />
 <include file="../Public/header" />
 <!-- 主体内容  -->
-<html:link type='js' href='../public/js/autocomplete.js' />
+<html:link type='js' href='../Public/js/autocomplete.js' />
 <SCRIPT LANGUAGE="JavaScript">
  <!--
 
@@ -25,7 +25,7 @@
 		new Ajax.Autocompleter('out','autocomplete','__URL__/ajaxauto',{});
 	}
 	function showresult(){
-		
+
 		new Ajax.Updater('description','__URL__/showresult',{method:'post',	postBody:'tag='+$F('outkeyid')});
 		new Effect.Appear('description');
 		}
