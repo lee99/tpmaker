@@ -53,7 +53,6 @@ function copydir($source, $destination)
 	$handle = opendir($source);//取得目录的句柄
 	while(($file = readdir($handle)) !== false){
 		if($file != '.' && $file != '..'){
-			//DIRECTORY_SEPARATOR
 			$src = $source . "/" . $file;		//源文件路径
 			$dtn = $destination . "/" . $file;	//目标文件路径
 			if(is_dir($src)){

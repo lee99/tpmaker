@@ -74,6 +74,7 @@ class tpmaker extends Action
 		$tpl=$tpl->getByid($data['tplid']);
 		$this->tpmaker_template=$tpl[tplname];
 		return $app_path;
+		
 	}
 
 
@@ -100,9 +101,11 @@ class tpmaker extends Action
      +----------------------------------------------------------
      */
 	function getprojects(){
+		
 		$list=D($this->projecttable);
 		$data=$list->getByid($this->projectid);
 		return $data;
+		
 	}
 	/**
     +----------------------------------------------------------
