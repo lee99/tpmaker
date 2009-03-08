@@ -149,6 +149,31 @@ class sys_fieldsAction extends AdminAction{
 
 	}
 
+	/*生成本表程序*/
+	function buidetable(){
+		require_once COMMON_PATH."tp_common.php";//引入自定义的类
+		require_once COMMON_PATH."tpmaker.class.php";//引入自定义的类
+		$buideid=$_SESSION['workingprojectid'];
+		$t=new tpmaker();
+		$t->projectid=$buideid;
+		$t->makeproindexaction();//生成项面INDEX的面页和相应的列表数据
+		$table=D('sys_tables');
+		$tabledata=$table->findAll('id='.$_GET['pid'].' and ismodel <>1');
+		foreach ($tabledata as $tb){
+			$t->makepromodel($tb['id']);//生成MODEL
+			$t->makeproaction($tb['id']);//生成ACTION
+			$t->makeprotpl($tb['id']);//生成模板HTML文件
+		}
+		$viewmodel=D('sys_viewmodel');
+		$viewmodel=$viewmodel->findAll('id='.$_GET['pid']);
+		foreach ($viewmodel as $mod){
+			$t->makeproviewmodel($mod['id']);//生成MODEL
+		}
+		
+		echo "<a  href='/".$_SESSION['workingproject']['proname']."/index.php/".$tb['title']."'>浏览结果</a>";
+
+	}
+
 	function showresult(){
 		$tagname=$_POST['tag'];
 		$f=D('sys_fields');

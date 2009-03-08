@@ -274,7 +274,7 @@ class tpmaker extends Action
 				'v_note'=>$field['caption'].",条件:必填",
 				);
 			}
-			if($field['validate']!=1){//其它验证设置
+			if($field['validate']!=1 && $field['validate']!=''&& $field['validate']!=0){//其它验证设置
 				$validate=D('sub_validate');
 				$validate=$validate->getByid($field['validate']);
 				if($field['validate_tex']!=''){
@@ -577,11 +577,24 @@ class tpmaker extends Action
 		if(!empty($class)){	$htmltages.=' class="'.$class.'"';}
 		if(!empty($style)){	$htmltages.=' style="'.$style.'"'; }
 		if(!empty($disabled)){	$htmltages.=' disabled="'.$disabled.'"';}
+		switch ($actiontype){
+			case 'viewtype':
+				$htmltages.=' value="$list.'.$name.'"';
+				break;
+			case 'edittype':
+				$htmltages.=' value="$list.'.$name.'"';
+				break;
+			case 'addtype':
+				$htmltages.=' value="'.$value.'"';
+				break;
+		}
+		/*
 		if($tag['usetype']==2){
 			if(empty($value)){	$htmltages.=' value="'.$name.'"';}//查看形式的标签是不同的
 		}else{
-			if(empty($value)){	$htmltages.=' value="{$list.'.$name.'}"';}
+			if(empty($value)){	$htmltages.=' value="$list.'.$name.'"';}
 		}
+		*/
 
 		if(!empty($readonly)){	$htmltages.=' readonly="'.$readonly.'"';}
 		if(!empty($othervar)){	$htmltages.=' othervar="'.$othervar.'"';}
