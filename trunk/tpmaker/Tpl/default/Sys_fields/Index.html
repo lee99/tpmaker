@@ -50,6 +50,7 @@ function setissystem(id){ //系统保留的参数
 				['+', '拷贝本表生成新数据表', '__URL__/copyselect/pid/{$_GET['pid']}', 'mini', '拷贝本表生成新数据表'],
 				['+', '基于本数据表生成视图', '', null, '基于本数据表生成视图'],
 				['+', '检查本数据表合理性', '', null, '检查本数据表合理性'],
+				['+', '生成本表程序', '__URL__/buidetable/pid/{$_GET['pid']}', 'blank', '生成本表程序'],
 			],
 		];
 		cmDraw ('myMenuID', myMenu, 'hbr', cmThemeOffice, 'ThemeOffice');

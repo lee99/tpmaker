@@ -1,5 +1,31 @@
 <tagLib name="cx,html,mkrtags" />
 
+<!--  功能操作区域  -->
+
+<table width="100%"   cellpadding=0 cellspacing=0 >
+	<tr>
+		<td width="60%">
+	<input type="button"  onclick="add()" class="button1" title="增加数据" value="增" >
+	<input type="button"  onclick="edit()" class="button1" title="编辑数据" value="编" >
+	<input type="button"  onclick="view()" class="button1" title="查看详细数据" value="详" >
+	<input type="button"  onclick="del()" class="button1" title="删除数据" value="删" >
+		</td>
+		<FORM METHOD="GET" ACTION="{$searchurl}">
+		<td align="right">
+			<table cellpadding=0 cellspacing=1>
+				<tr>
+					<td><INPUT id="searchkey" TYPE="text"  NAME="searchkey"  value="{$searchkey}"></td>
+					<td><input type="submit"   class="button1" value="搜索"></td>
+					<td><input type="button" name="delete" onclick="location.href='__URL__/index/'" class="button1" value="清空"></td><td><mkrtags:radio id="searchtype" name="searchtype"  outtable="Array" value="$searchtype" outfield="AND,OR" outkey="AND,OR" /></td>
+				</tr>
+			</table>
+		</td>
+		</FORM>
+	</tr>
+</table>
+
+<!-- 功能操作区域结束 -->
+
 <!-- Myhtml 系统列表组件开始 -->
 		<TABLE id="{tablelist}_List" class="list" >
 		<TR class="row" >
@@ -31,9 +57,9 @@
 			
 			{/listshowtd}
 			<TD>
-			<A HREF="javascript:edit('{$list.id}')">编辑</A> 
-			<A HREF="javascript:del('{$list.id}')">删除</A> 
-			<A HREF="javascript:view('{$list.id}')">详细</A> 
+			<A HREF="javascript:edit('{$list.id}')" title="编辑">编</A> 
+			<A HREF="javascript:del('{$list.id}')" title="删除">删</A> 
+			<A HREF="javascript:view('{$list.id}')" title="详细">详</A> 
 				</TD>
 		</TR>
 		<php> endforeach; </php>

@@ -7,9 +7,9 @@ class {name}Model extends Model{
     protected $_validate     =     array(
 
 	//必填信息
-{val_var_req}        array('{v_name}','{v_rag}','{v_caption}','{v_time}'),	//{v_note}{/val_var_req}
+{val_var_req}        array('{v_name}','{v_rag}','{v_caption}','{v_time}'),		//{v_note}{/val_var_req}
 	//其它验证信息
-{val_var_val}        array('{v_name}','{v_rag}','{v_con}','{a_reg}','{v_caption}','{v_time}'), 	//{v_note}
+{val_var_val}        array('{v_name}','{v_rag}','{v_con}','{a_reg}','{v_caption}','{v_time}'),		//{v_note}
 {/val_var_val}
 
 		);

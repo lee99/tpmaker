@@ -205,7 +205,8 @@ class sys_projectsAction extends AdminAction{
 		foreach ($viewmodel as $mod){
 			$t->makeproviewmodel($mod['id']);//生成MODEL
 		}
-
+		
+		echo "<a target='_blank' href='/".$_SESSION['workingproject']['proname']."/index.php/'>浏览生成的项目结果</a>";
 	}
 
 	public function zippro(){//打包项目

@@ -9,7 +9,8 @@ Class TagLibMkrtags extends TagLib
 		$tag        = $this->parseXmlAttr($attr,'input');
 		$name       = $tag['name']; 									//表单名称[name]
 		$id       	= !empty($tag['id'])?$tag['id']:$tag['name']; 		//表单ID[id]//没值则用NAME为值
-		$value      = $tag['value'];									//表单[value]//没值则
+		$tagvalue      =!empty($tag['value'])?$tag['value']:''; 		//$tagvalue//没值则
+		$value      =(strpos($tagvalue,'$')===false )?$tagvalue:'{'.$tagvalue.'}';		//表单[value]//没值则
 		$class      = $tag['class']; 			//表单class//没值则用NAME为值
 		$style      = $tag['style']; 			//表单[style]//没值则
 		$disabled   = $tag['disabled']==1?'disabled':'';                //表单[disabled]//没值则
@@ -27,7 +28,8 @@ Class TagLibMkrtags extends TagLib
 		$tag        = $this->parseXmlAttr($attr,'files');
 		$name       = $tag['name']; 									//表单名称[name]
 		$id       	= !empty($tag['id'])?$tag['id']:$tag['name']; 		//表单ID[id]//没值则用NAME为值
-		$value      = $tag['value'];									//表单[value]//没值则
+		$tagvalue      =!empty($tag['value'])?$tag['value']:''; 		//$tagvalue//没值则
+		$value      =(strpos($tagvalue,'$')===false )?$tagvalue:'{'.$tagvalue.'}';		//表单[value]//没值则
 		$class      = empty($tag['class'])?$tag['class']:''; 			//表单class//没值则用NAME为值
 		$style      = empty($tag['style'])?$tag['style']:''; 			//表单[style]//没值则
 		$disabled   = $tag['disabled']==1?'disabled':'';                //表单[disabled]//没值则
@@ -44,7 +46,7 @@ Class TagLibMkrtags extends TagLib
 		$tag        = $this->parseXmlAttr($attr,'select');
 		$name       = $tag['name']; 									//表单名称[name]
 		$id       	= !empty($tag['id'])?$tag['id']:$tag['name']; 		//表单ID[id]//没值则用NAME为值
-		$value      = substr($tag['value'],1,-1);						//表单[value]//没值则
+		$value      =(strpos($tag['value'],'$')===false )?'"'.$tag['value'].'"':$tag['value'];		//值和变量
 		$class      = empty($tag['class'])?$tag['class']:''; 			//表单class//没值则用NAME为值
 		$style      = empty($tag['style'])?$tag['style']:''; 			//表单[style]//没值则
 		$disabled   = $tag['disabled']==1?'disabled':'';                //表单[disabled]//没值则
@@ -65,15 +67,18 @@ Class TagLibMkrtags extends TagLib
 				}else{
 					$options=$optionval;
 				}
-				$parseStr   = '<?php  $options=array(';
+				$parseStr   = '<php>  $options=array(';
 
 				foreach($options as $key=>$val){
-					$parseStr   .= '"'.$key.'" => "'.$val.'", ';
+					$selectoption[]  = '"'.$key.'" => "'.$val.'"';
 				}
-				$parseStr .= '); ?>';
+				$parseStr .=join(',',$selectoption);
+				$parseStr .= '); </php>';
 			}else{
 				$options=makeoption($outtable,$outkey,$outcondition,$outfield,$outorder,$outadd);
-				$parseStr   .= '<?php  $options=makeoption("'.$outtable.'","'.$outkey.'","'.$outcondition.'","'.$outfield.'","'.$outorder.'","'.$outadd.'"); ?>';
+				$parseStr   .= '
+				<php>  $options=makeoption("'.$outtable.'","'.$outkey.'","'.$outcondition.'","'.$outfield.'","'.$outorder.'","'.$outadd.'"); </php>
+				';
 			}
 		}
 
@@ -81,24 +86,17 @@ Class TagLibMkrtags extends TagLib
 		$parseStr .= '<select id="'.$id.'" name="'.$name.'" class="'.$class.'"  style="'.$style.'" >';
 
 		if(!empty($options)) {
-			$parseStr   .= '<?php  foreach($options as $key=>$val) { ?>';
+			$parseStr   .= '<php>  foreach($options as $key=>$val) { </php>';
 			if(!empty($value)) {
-				if(substr($value,0,1)=="$"){//如果是变量
-					$tempvalue=explode('.',$value);
-					if(count($tempvalue)>1){//如果是数组
-						$value=$tempvalue[0].'["'.$tempvalue[1].'"]';
-					}
-				}else{
-					$value='"'.$value.'"';
-				}
-				$parseStr   .='<?php if('.$value.'== $key) { ?>';
-				$parseStr   .= '<option selected="selected" value="<?php echo $key ?>"><?php echo $val ?></option>';
-				$parseStr   .= '<?php }else { ?><option value="<?php echo $key ?>"><?php echo $val ?></option>';
-				$parseStr   .= '<?php } ?>';
+				$parseStr   .='<php> if('.$value.'== $key) { </php>';
+				$parseStr   .= '<option selected="selected" value="<php> echo $key </php>"><php> echo $val </php></option>';
+				$parseStr   .= '<php> }else { </php>';
+				$parseStr   .= '<option value="<php> echo $key </php>"><php> echo $val </php></option>';
+				$parseStr   .= '<php> } </php>';
 			}else {
-				$parseStr   .= '<option value="<?php echo $key ?>"><?php echo $val ?></option>';
+				$parseStr   .= '<option value="<php> echo $key </php>"><php> echo $val </php></option>';
 			}
-			$parseStr   .= '<?php } ?>';
+			$parseStr   .= '<php> } </php>';
 		}
 		$parseStr   .= '</select>';
 		return $parseStr;
@@ -109,7 +107,8 @@ Class TagLibMkrtags extends TagLib
 		$tag        = $this->parseXmlAttr($attr,'outtable');
 		$name       = $tag['name']; 									//表单名称[name]
 		$id       	= !empty($tag['id'])?$tag['id']:$tag['name']; 		//表单ID[id]//没值则用NAME为值
-		$value      = substr($tag['value'],1,-1);									//表单[value]//没值则
+		$tagvalue      =!empty($tag['value'])?$tag['value']:''; 		//$tagvalue//没值则
+		$value      =(strpos($tagvalue,'$')===false )?'"'.$tagvalue.'"':$tagvalue;		//表单[value]//没值则
 		$class      = empty($tag['class'])?$tag['class']:''; 			//表单class//没值则用NAME为值
 		$style      = empty($tag['style'])?$tag['style']:''; 			//表单[style]//没值则
 		$disabled   = $tag['disabled']==1?'disabled':'';                //表单[disabled]//没值则
@@ -130,37 +129,34 @@ Class TagLibMkrtags extends TagLib
 				}else{
 					$options=$optionval;
 				}
-				$parseStr   = '<?php  $options=array(';
+				$parseStr   = '<php>  $options=array(';
 
 				foreach($options as $key=>$val){
-					$parseStr   .= '"'.$key.'" => "'.$val.'", ';
+					$selectoption[]  = '"'.$key.'" => "'.$val.'"';
 				}
-				$parseStr .= '); ?>';
+				$parseStr .=join(',',$selectoption);
+				$parseStr .= '); </php>';
 			}else{
 				$options=makeoption($outtable,$outkey,$outcondition,$outfield,$outorder,$outadd);
-				$parseStr   .= '<?php  $options=makeoption("'.$outtable.'","'.$outkey.'","'.$outcondition.'","'.$outfield.'","'.$outorder.'","'.$outadd.'"); ?>';
+				$parseStr   .= '<php>  $options=makeoption("'.$outtable.'","'.$outkey.'","'.$outcondition.'","'.$outfield.'","'.$outorder.'","'.$outadd.'"); </php>';
 			}
 		}
 
 
 		if(!empty($options)) {
-			$parseStr   .= '<?php  foreach($options as $key=>$val) { ?>';
-			if(!empty($value)) {
+			$parseStr   .= '<php>  foreach($options as $key=>$val) { </php>';
 				if(substr($value,0,1)=="$"){//如果是变量
 					$tempvalue=explode('.',$value);
 					if(count($tempvalue)>1){//如果是数组
 						$value=$tempvalue[0].'["'.$tempvalue[1].'"]';
 					}
 				}else{
-					$value='"'.$value.'"';
+					$value=$value;
 				}
-				$parseStr   .='<?php if('.$value.'== $key) { ?>';
-				$parseStr   .= '<?php echo $val ?>';
-				$parseStr   .= '<?php } ?>';
-			}else {
-				$parseStr   .= '<?php echo $val ?>';
-			}
-			$parseStr   .= '<?php } ?>';
+				$parseStr   .='<php> if('.$value.'== $key) { </php>';
+				$parseStr   .= '<php> echo $val </php>';
+				$parseStr   .= '<php> } </php>';
+			$parseStr   .= '<php> } </php>';
 		}
 		return $parseStr;
 	}
@@ -172,7 +168,8 @@ Class TagLibMkrtags extends TagLib
 		$tag        = $this->parseXmlAttr($attr,'selectmultiple');
 		$name       = $tag['name']; 									//表单名称[name]
 		$id       	= !empty($tag['id'])?$tag['id']:$tag['name']; 		//表单ID[id]//没值则用NAME为值
-		$value      = $tag['value'];									//表单[value]//没值则
+		$tagvalue      =!empty($tag['value'])?$tag['value']:''; 		//$tagvalue//没值则
+		$value      =(strpos($tagvalue,'$')===false )?$tagvalue:'{'.$tagvalue.'}';		//表单[value]//没值则
 		$class      = empty($tag['class'])?$tag['class']:''; 			//表单class//没值则用NAME为值
 		$style      = empty($tag['style'])?$tag['style']:''; 			//表单[style]//没值则
 		$disabled   = $tag['disabled']==1?'disabled':'';                //表单[disabled]//没值则
@@ -193,22 +190,22 @@ Class TagLibMkrtags extends TagLib
 				}else{
 					$options=$optionval;
 				}
-				$parseStr   = '<?php  $options=array(';
+				$parseStr   = '<php>  $options=array(';
 
 				foreach($options as $key=>$val){
 					$parseStr   .= '"'.$key.'" => "'.$val.'", ';
 				}
-				$parseStr .= '); ?>';
+				$parseStr .= '); </php>';
 			}else{
 				$options=makeoption($outtable,$outkey,$outcondition,$outfield,$outorder,$outadd);
-				$parseStr   .= '<?php  $options=makeoption("'.$outtable.'","'.$outkey.'","'.$outcondition.'","'.$outfield.'","'.$outorder.'","'.$outadd.'"); ?>';
+				$parseStr   .= '<php>  $options=makeoption("'.$outtable.'","'.$outkey.'","'.$outcondition.'","'.$outfield.'","'.$outorder.'","'.$outadd.'"); </php>';
 			}
 		}
 		$parseStr   = '<script language="JavaScript" src="'.WEB_PUBLIC_URL.'/mkrtagsjs/selectmultiple.js"></script>';
-		$parseStr   .= '<?php
+		$parseStr   .= '<php>
 		 $value="'.$value.'";//写入相应的值
 		 $tmpvale=explode(",",$value);//看看是不是多选的值,以","号为分隔
-		if(count($tmpvale)>1){ $value=$tmpvale; }else{ $value=$value; } ?>';
+		if(count($tmpvale)>1){ $value=$tmpvale; }else{ $value=$value; } </php>';
 
 		$parseStr   .= '
   <table border="0" width="400">
@@ -220,16 +217,16 @@ Class TagLibMkrtags extends TagLib
     <tr>
       <td width="40%"><select style="width:100%;" multiple name="'.$name.'left" id="'.$name.'left" size="8"  ondblclick="moveSelected(document.all.'.$name.'left,document.all.'.$name.'right);" >';
 		if(!empty($options)) {
-			$parseStr   .= '<?php  foreach($options as $key=>$val) { ?>';
+			$parseStr   .= '<php>  foreach($options as $key=>$val) { </php>';
 			if(!empty($value)) {
-				$parseStr   .='<?php if($value== $key  || in_array($key,$value) ) { ?>';
+				$parseStr   .='<php> if($value== $key  || in_array($key,$value) ) { </php>';
 				$parseStr   .= ' ';
-				$parseStr   .= '<?php }else { ?><option value="<?php echo $key ?>"><?php echo $val ?></option>';
-				$parseStr   .= '<?php } ?>';
+				$parseStr   .= '<php> }else { </php><option value="<php> echo $key </php>"><php> echo $val </php></option>';
+				$parseStr   .= '<php> } </php>';
 			}else {
-				$parseStr   .= '<option value="<?php echo $key ?>"><?php echo $val ?></option>';
+				$parseStr   .= '<option value="<php> echo $key </php>"><php> echo $val </php></option>';
 			}
-			$parseStr   .= '<?php } ?>';
+			$parseStr   .= '<php> } </php>';
 		}
 		$parseStr   .= '
         </select>
@@ -245,15 +242,15 @@ Class TagLibMkrtags extends TagLib
       </td>
       <td width="40%"><select style="width:100%;" multiple name="'.$name.'right"  id="'.$name.'right" size="8"  ondblclick="moveSelected(document.all.'.$name.'right,document.all.'.$name.'left);">';
 		if(!empty($options)) {
-			$parseStr   .= '<?php  foreach($options as $key=>$val) { ?>';
+			$parseStr   .= '<php>  foreach($options as $key=>$val) { </php>';
 			if(!empty($value)) {
-				$parseStr   .='<?php if($value== $key  || in_array($key,$value) ) { ?>';
-				$parseStr   .= '<option selected="selected" value="<?php echo $key ?>"><?php echo $val ?></option>';
-				$parseStr   .= '<?php }?>';
+				$parseStr   .='<php> if($value== $key  || in_array($key,$value) ) { </php>';
+				$parseStr   .= '<option selected="selected" value="<php> echo $key </php>"><php> echo $val </php></option>';
+				$parseStr   .= '<php> }</php>';
 			}else {
-				$parseStr   .= '<option value="<?php echo $key ?>"><?php echo $val ?></option>';
+				$parseStr   .= '<option value="<php> echo $key </php>"><php> echo $val </php></option>';
 			}
-			$parseStr   .= '<?php } ?>';
+			$parseStr   .= '<php> } </php>';
 		}
 		$parseStr   .= '
 
@@ -272,7 +269,7 @@ Class TagLibMkrtags extends TagLib
 		$tag        = $this->parseXmlAttr($attr,'radio');
 		$name       = $tag['name']; 									//表单名称[name]
 		$id       	= !empty($tag['id'])?$tag['id']:$tag['name']; 		//表单ID[id]//没值则用NAME为值
-		$value      = $tag['value'];									//表单[value]//没值则
+		$value      =(strpos($tag['value'],'$')===false )?'"'.$tag['value'].'"':$tag['value'];		//值和变量
 		$class      = empty($tag['class'])?$tag['class']:''; 			//表单class//没值则用NAME为值
 		$style      = empty($tag['style'])?$tag['style']:''; 			//表单[style]//没值则
 		$disabled   = $tag['disabled']==1?'disabled':'';                //表单[disabled]//没值则
@@ -293,31 +290,40 @@ Class TagLibMkrtags extends TagLib
 				}else{
 					$options=$optionval;
 				}
-				$parseStr   = '<?php  $options=array(';
+				$parseStr   = '<php>  $options=array(';
 
 				foreach($options as $key=>$val){
-					$parseStr   .= '"'.$key.'" => "'.$val.'", ';
+					$radiooption[]  = '"'.$key.'" => "'.$val.'"';
 				}
-				$parseStr .= '); ?>';
+				$parseStr .=join(',',$radiooption);
+				$parseStr .= '); </php>';
 			}else{
 				$options=makeoption($outtable,$outkey,$outcondition,$outfield,$outorder,$outadd);
-				$parseStr   .= '<?php  $options=makeoption("'.$outtable.'","'.$outkey.'","'.$outcondition.'","'.$outfield.'","'.$outorder.'","'.$outadd.'"); ?>';
+				$parseStr   .= '<php>
+				 $options=makeoption("'.$outtable.'","'.$outkey.'","'.$outcondition.'","'.$outfield.'","'.$outorder.'","'.$outadd.'");
+				 </php>';
 			}
 		}
 
 
 
 		if(!empty($options)) {
-			$parseStr   .= '<?php  foreach($options as $key=>$val) { ?>';
+				if(substr($value,0,1)=="$"){//如果是变量
+					$tempvalue=explode('.',$value);
+					if(count($tempvalue)>1){//如果是数组
+						$value=$tempvalue[0].'["'.$tempvalue[1].'"]';
+					}
+				}
+			$parseStr   .= '<php>  foreach($options as $key=>$val) { </php>';
 			if(!empty($value)) {
-				$parseStr   .='<?php if("'.$value.'"== $key) { ?>';
-				$parseStr   .= '<label><input id="'.$id.'" name="'.$name.'" type="radio"  value="<?php echo $key ?>" checked="checked" /><?php echo $val ?></label> ';
-				$parseStr   .= '<?php }else { ?><label><input id="'.$id.'" name="'.$name.'" type="radio"  value="<?php echo $key ?>" /><?php echo $val ?></label> ';
-				$parseStr   .= '<?php } ?>';
+				$parseStr   .='<php> if('.$value.'== $key) { </php>';
+				$parseStr   .= '<label><input id="'.$id.'" name="'.$name.'" type="radio"  value="<php> echo $key </php>" checked="checked" /><php> echo $val </php></label> ';
+				$parseStr   .= '<php> }else { </php><label><input id="'.$id.'" name="'.$name.'" type="radio"  value="<php> echo $key </php>" /><php> echo $val </php></label> ';
+				$parseStr   .= '<php> } </php>';
 			}else {
-				$parseStr   .= '<label><input id="'.$id.'" name="'.$name.'" type="radio"  value="<?php echo $key ?>" /><?php echo $val ?></label>';
+				$parseStr   .= '<label><input id="'.$id.'" name="'.$name.'" type="radio"  value="<php> echo $key </php>" /><php> echo $val </php></label>';
 			}
-			$parseStr   .= '<?php } ?>';
+			$parseStr   .= '<php> } </php>';
 		}
 
 		return $parseStr;
@@ -329,7 +335,8 @@ Class TagLibMkrtags extends TagLib
 		$tag        = $this->parseXmlAttr($attr,'checkboxGroup');
 		$name       = $tag['name']; 									//表单名称[name]
 		$id       	= !empty($tag['id'])?$tag['id']:$tag['name']; 		//表单ID[id]//没值则用NAME为值
-		$value      = $tag['value'];									//表单[value]//没值则
+		$tagvalue      =!empty($tag['value'])?$tag['value']:''; 		//$tagvalue//没值则
+		$value      =(strpos($tagvalue,'$')===false )?$tagvalue:'{'.$tagvalue.'}';		//表单[value]//没值则
 		$class      = empty($tag['class'])?$tag['class']:''; 			//表单class//没值则用NAME为值
 		$style      = empty($tag['style'])?$tag['style']:''; 			//表单[style]//没值则
 		$disabled   = $tag['disabled']==1?'disabled':'';                //表单[disabled]//没值则
@@ -350,33 +357,33 @@ Class TagLibMkrtags extends TagLib
 				}else{
 					$options=$optionval;
 				}
-				$parseStr   = '<?php  $options=array(';
+				$parseStr   = '<php>  $options=array(';
 
 				foreach($options as $key=>$val){
 					$parseStr   .= '"'.$key.'" => "'.$val.'", ';
 				}
-				$parseStr .= '); ?>';
+				$parseStr .= '); </php>';
 			}else{
 				$options=makeoption($outtable,$outkey,$outcondition,$outfield,$outorder,$outadd);
-				$parseStr   .= '<?php  $options=makeoption("'.$outtable.'","'.$outkey.'","'.$outcondition.'","'.$outfield.'","'.$outorder.'","'.$outadd.'"); ?>';
+				$parseStr   .= '<php>  $options=makeoption("'.$outtable.'","'.$outkey.'","'.$outcondition.'","'.$outfield.'","'.$outorder.'","'.$outadd.'"); </php>';
 			}
 		}
 
-		$parseStr   .= '<?php
+		$parseStr   .= '<php>
 		 $value="'.$value.'";//写入相应的值
 		 $tmpvale=explode(",",$value);//看看是不是多选的值,以","号为分隔
-		if(count($tmpvale)>1){ $value=$tmpvale; }else{ $value=$value; } ?>';
+		if(count($tmpvale)>1){ $value=$tmpvale; }else{ $value=$value; } </php>';
 		if(!empty($options)) {
-			$parseStr   .= '<?php  foreach($options as $key=>$val) { ?>';
+			$parseStr   .= '<php>  foreach($options as $key=>$val) { </php>';
 			if(!empty($value)) {
-				$parseStr   .='<?php if($value== $key  || in_array($key,$value) ) { ?>';
-				$parseStr   .= '<label><input id="'.$id.'_tmpval" name="'.$name.'_tmpval" type="checkbox"  value="<?php echo $key ?>" checked="checked" onchange="'.$name.'updatevalue();" /><?php echo $val ?></label> ';
-				$parseStr   .= '<?php }else { ?><label><input id="'.$id.'_tmpval" name="'.$name.'_tmpval" type="checkbox"  value="<?php echo $key ?>"  onchange="'.$name.'updatevalue();" /><?php echo $val ?></label> ';
-				$parseStr   .= '<?php } ?>';
+				$parseStr   .='<php> if($value== $key  || in_array($key,$value) ) { </php>';
+				$parseStr   .= '<label><input id="'.$id.'_tmpval" name="'.$name.'_tmpval" type="checkbox"  value="<php> echo $key </php>" checked="checked" onchange="'.$name.'updatevalue();" /><php> echo $val </php></label> ';
+				$parseStr   .= '<php> }else { </php><label><input id="'.$id.'_tmpval" name="'.$name.'_tmpval" type="checkbox"  value="<php> echo $key </php>"  onchange="'.$name.'updatevalue();" /><php> echo $val </php></label> ';
+				$parseStr   .= '<php> } </php>';
 			}else {
-				$parseStr   .= '<label><input id="'.$id.'_tmpval" name="'.$name.'_tmpval" type="checkbox"  value="<?php echo $key ?>"  onchange="'.$name.'updatevalue();" /><?php echo $val ?></label>';
+				$parseStr   .= '<label><input id="'.$id.'_tmpval" name="'.$name.'_tmpval" type="checkbox"  value="<php> echo $key </php>"  onchange="'.$name.'updatevalue();" /><php> echo $val </php></label>';
 			}
-			$parseStr   .= '<?php } ?>';
+			$parseStr   .= '<php> } </php>';
 		}
 		$parseStr   .= '
 	 <input type="hidden" value="'.$value.'"  id="'.$id.'" name="'.$name.'">
@@ -426,7 +433,8 @@ treuval.value=s2;
 		$tag        = $this->parseXmlAttr($attr,'textarea');
 		$name       = $tag['name']; 									//表单名称[name]
 		$id       	= !empty($tag['id'])?$tag['id']:$tag['name']; 		//表单ID[id]//没值则用NAME为值
-		$value      = $tag['value'];									//表单[value]//没值则
+		$tagvalue      =!empty($tag['value'])?$tag['value']:''; 		//$tagvalue//没值则
+		$value      =(strpos($tagvalue,'$')===false )?$tagvalue:'{'.$tagvalue.'}';		//表单[value]//没值则
 		$class      = empty($tag['class'])?$tag['class']:''; 			//表单class//没值则用NAME为值
 		$style      = empty($tag['style'])?$tag['style']:''; 			//表单[style]//没值则
 		$disabled   = $tag['disabled']==1?'disabled':'';                //表单[disabled]//没值则
@@ -444,7 +452,8 @@ treuval.value=s2;
 		$tag        = $this->parseXmlAttr($attr,'word');
 		$name       = $tag['name']; 									//表单名称[name]
 		$id       	= !empty($tag['id'])?$tag['id']:'_editor'; 		//表单ID[id]//没值则用NAME为值
-		$value      = $tag['value'];									//表单[value]//没值则
+		$tagvalue      =!empty($tag['value'])?$tag['value']:''; 		//$tagvalue//没值则
+		$value      =(strpos($tagvalue,'$')===false )?$tagvalue:'{'.$tagvalue.'}';		//表单[value]//没值则
 		$class      = empty($tag['class'])?$tag['class']:''; 			//表单class//没值则用NAME为值
 		$style      = empty($tag['style'])?$tag['style']:''; 			//表单[style]//没值则
 		$disabled   = $tag['disabled']==1?'disabled':'';                //表单[disabled]//没值则
@@ -469,7 +478,8 @@ treuval.value=s2;
 		$tag        = $this->parseXmlAttr($attr,'hidden');
 		$name       = $tag['name']; 									//表单名称[name]
 		$id       	= !empty($tag['id'])?$tag['id']:$tag['name']; 		//表单ID[id]//没值则用NAME为值
-		$value      = $tag['value'];									//表单[value]//没值则
+		$tagvalue      =!empty($tag['value'])?$tag['value']:''; 		//$tagvalue//没值则
+		$value      =(strpos($tagvalue,'$')===false )?$tagvalue:'{'.$tagvalue.'}';		//表单[value]//没值则
 		$othervar   = $tag['othervar'];               					//表单[othervar]//没值则
 
 		$parseStr   = '<INPUT type="hidden" id="'.$id.'" name="'.$name.'" value="'.$value.'" '.$othervar.' >';
@@ -482,7 +492,8 @@ treuval.value=s2;
 		$tag        = $this->parseXmlAttr($attr,'password');
 		$name       = $tag['name']; 									//表单名称[name]
 		$id       	= !empty($tag['id'])?$tag['id']:$tag['name']; 		//表单ID[id]//没值则用NAME为值
-		$value      = $tag['value'];									//表单[value]//没值则
+		$tagvalue      =!empty($tag['value'])?$tag['value']:''; 		//$tagvalue//没值则
+		$value      =(strpos($tagvalue,'$')===false )?$tagvalue:'{'.$tagvalue.'}';		//表单[value]//没值则
 		$class      = empty($tag['class'])?$tag['class']:''; 			//表单class//没值则用NAME为值
 		$style      = empty($tag['style'])?$tag['style']:''; 			//表单[style]//没值则
 		$disabled   = $tag['disabled']==1?'disabled':'';                //表单[disabled]//没值则
@@ -635,9 +646,9 @@ var tablename = "'.$id.'"; // table name
 					if(count($b)>1) {
 						$c = explode('|',$a[0]);
 						if(count($c)>1) {
-							$parseStr .= '<A HREF="javascript:'.$c[1].'(\'{$'.$name.'.'.$pk.'}\')"><?php if(0== (is_array($'.$name.')?$'.$name.'["status"]:$'.$name.'->status)){ ?>'.$b[1].'<?php } ?></A><A HREF="javascript:'.$c[0].'({$'.$name.'.'.$pk.'})"><?php if(1== (is_array($'.$name.')?$'.$name.'["status"]:$'.$name.'->status)){ ?>'.$b[0].'<?php } ?></A> ';
+							$parseStr .= '<A HREF="javascript:'.$c[1].'(\'{$'.$name.'.'.$pk.'}\')"><php> if(0== (is_array($'.$name.')?$'.$name.'["status"]:$'.$name.'->status)){ </php>'.$b[1].'<php> } </php></A><A HREF="javascript:'.$c[0].'({$'.$name.'.'.$pk.'})"><php> if(1== (is_array($'.$name.')?$'.$name.'["status"]:$'.$name.'->status)){ </php>'.$b[0].'<php> } </php></A> ';
 						}else {
-							$parseStr .= '<A HREF="javascript:'.$a[0].'(\'{$'.$name.'.'.$pk.'}\')"><?php if(0== (is_array($'.$name.')?$'.$name.'["status"]:$'.$name.'->status)){ ?>'.$b[1].'<?php } ?><?php if(1== (is_array($'.$name.')?$'.$name.'["status"]:$'.$name.'->status)){ ?>'.$b[0].'<?php } ?></A> ';
+							$parseStr .= '<A HREF="javascript:'.$a[0].'(\'{$'.$name.'.'.$pk.'}\')"><php> if(0== (is_array($'.$name.')?$'.$name.'["status"]:$'.$name.'->status)){ </php>'.$b[1].'<php> } </php><php> if(1== (is_array($'.$name.')?$'.$name.'["status"]:$'.$name.'->status)){ </php>'.$b[0].'<php> } </php></A> ';
 						}
 
 					}else {
@@ -674,12 +685,18 @@ var tablename = "'.$id.'"; // table name
 		$tag        = $this->parseXmlAttr($attr,'text');
 		$name       = $tag['name']; 									//表单名称[name]
 		$id       	= !empty($tag['id'])?$tag['id']:$tag['name']; 		//表单ID[id]//没值则用NAME为值
-		$value      = substr($tag['value'],2,-1);									//表单[value]//没值则
+		$tagvalue      =!empty($tag['value'])?$tag['value']:''; 		//$tagvalue//没值则
+		$value      =(strpos($tagvalue,'$')===false )?$tagvalue:'{'.$tagvalue.'}';		//表单[value]//没值则
 		$class      = empty($tag['class'])?$tag['class']:''; 			//表单class//没值则用NAME为值
 		$style      = empty($tag['style'])?$tag['style']:''; 			//表单[style]//没值则
 		$othervar   = $tag['othervar'];               					//表单[othervar]//没值则
 
-		$parseStr   = '<span    class="'.$class.'"  style="'.$style.'" >{$'.$value.'|auto_charset|clean_html'.$othervar.' }<input type="hidden" id="'.$id.'" name="'.$name.'" value="{$'.$value.'|auto_charset|clean_html'.$othervar.' }" ></span>';
+		if(strpos($tag['value'],'$')===false){
+			$parseStr   = '<span    class="'.$class.'"  style="'.$style.'" >'.$value.'<input type="hidden" id="'.$id.'" name="'.$name.'" value="'.$value.'" ></span>';
+		}else{
+			$value=substr($tag['value'],1);
+			$parseStr   = '<span    class="'.$class.'"  style="'.$style.'" >{$'.$value.'|auto_charset|un_clean_html'.$othervar.' }<input type="hidden" id="'.$id.'" name="'.$name.'" value="{$'.$value.'|auto_charset|clean_html'.$othervar.' }" ></span>';
+		}
 
 		return $parseStr;
 
@@ -690,12 +707,19 @@ var tablename = "'.$id.'"; // table name
 		$tag        = $this->parseXmlAttr($attr,'htmltext');
 		$name       = $tag['name']; 									//表单名称[name]
 		$id       	= !empty($tag['id'])?$tag['id']:$tag['name']; 		//表单ID[id]//没值则用NAME为值
-		$value      = substr($tag['value'],2,-1);									//表单[value]//没值则
+		$tagvalue      =!empty($tag['value'])?$tag['value']:''; 		//$tagvalue//没值则
+		$value      =(strpos($tagvalue,'$')===false )?$tagvalue:'{'.$tagvalue.'}';		//表单[value]//没值则
 		$class      = empty($tag['class'])?$tag['class']:''; 			//表单class//没值则用NAME为值
 		$style      = empty($tag['style'])?$tag['style']:''; 			//表单[style]//没值则
 		$othervar   = $tag['othervar'];               					//表单[othervar]//没值则
 
-		$parseStr   = '<span    class="'.$class.'"  style="'.$style.'" >{$'.$value.'|auto_charset|un_clean_html'.$othervar.' }<input type="hidden" id="'.$id.'" name="'.$name.'" value="{$'.$value.'|auto_charset|clean_html'.$othervar.' }" ></span>';
+
+		if(strpos($tag['value'],'$')===false){
+			$parseStr   = '<span    class="'.$class.'"  style="'.$style.'" >'.$value.'<input type="hidden" id="'.$id.'" name="'.$name.'" value="'.$value.'" ></span>';
+		}else{
+			$value=substr($tag['value'],1);
+			$parseStr   = '<span    class="'.$class.'"  style="'.$style.'" >{$'.$value.'|auto_charset|un_clean_html'.$othervar.' }<input type="hidden" id="'.$id.'" name="'.$name.'" value="{$'.$value.'|auto_charset|clean_html'.$othervar.' }" ></span>';
+		}
 
 		return $parseStr;
 
@@ -707,12 +731,17 @@ var tablename = "'.$id.'"; // table name
 		$tag        = $this->parseXmlAttr($attr,'time');
 		$name       = $tag['name']; 									//表单名称[name]
 		$id       	= !empty($tag['id'])?$tag['id']:$tag['name']; 		//表单ID[id]//没值则用NAME为值
-		$value      = substr($tag['value'],2,-1);									//表单[value]//没值则
+		$tagvalue      =!empty($tag['value'])?$tag['value']:''; 		//$tagvalue//没值则
+		$value      =(strpos($tagvalue,'$')===false )?$tagvalue:'{'.$tagvalue.'}';		//表单[value]//没值则
 		$class      = empty($tag['class'])?$tag['class']:''; 			//表单class//没值则用NAME为值
 		$style      = empty($tag['style'])?$tag['style']:''; 			//表单[style]//没值则
 		$othervar   = $tag['othervar'];               					//表单[othervar]//没值则
-
-		$parseStr   = '<span    class="'.$class.'"  style="'.$style.'" >{$'.$value.'|toDate|auto_charset'.$othervar.' }</span>';
+		if(strpos($tag['value'],'$')===false){
+			$parseStr   = '<span    class="'.$class.'"  style="'.$style.'" >'.$value.'</span>';
+		}else{
+			$value=substr($tag['value'],1);
+			$parseStr   = '<span    class="'.$class.'"  style="'.$style.'" >{$'.$value.'|toDate|auto_charset'.$othervar.' }</span>';
+		}
 		return $parseStr;
 
 	}
@@ -724,7 +753,8 @@ var tablename = "'.$id.'"; // table name
 		$tag        = $this->parseXmlAttr($attr,'time');
 		$name       = $tag['name']; 									//表单名称[name]
 		$id       	= !empty($tag['id'])?$tag['id']:$tag['name']; 		//表单ID[id]//没值则用NAME为值
-		$value      = substr($tag['value'],2,-1);									//表单[value]//没值则
+		$tagvalue      =!empty($tag['value'])?$tag['value']:''; 		//$tagvalue//没值则
+		$value      =(strpos($tagvalue,'$')===false )?$tagvalue:'{'.$tagvalue.'}';		//表单[value]//没值则
 		$class      = empty($tag['class'])?$tag['class']:''; 			//表单class//没值则用NAME为值
 		$style      = empty($tag['style'])?$tag['style']:''; 			//表单[style]//没值则
 		$othervar   = $tag['othervar'];               					//表单[othervar]//没值则
@@ -740,7 +770,8 @@ var tablename = "'.$id.'"; // table name
 		$tag        = $this->parseXmlAttr($attr,'time');
 		$name       = $tag['name']; 									//表单名称[name]
 		$id       	= !empty($tag['id'])?$tag['id']:$tag['name']; 		//表单ID[id]//没值则用NAME为值
-		$value      = substr($tag['value'],2,-1);									//表单[value]//没值则
+		$tagvalue      =!empty($tag['value'])?$tag['value']:''; 		//$tagvalue//没值则
+		$value      =(strpos($tagvalue,'$')===false )?$tagvalue:'{'.$tagvalue.'}';		//表单[value]//没值则
 		$class      = empty($tag['class'])?$tag['class']:''; 			//表单class//没值则用NAME为值
 		$style      = empty($tag['style'])?$tag['style']:''; 			//表单[style]//没值则
 		$othervar   = $tag['othervar'];               					//表单[othervar]//没值则
@@ -755,7 +786,8 @@ var tablename = "'.$id.'"; // table name
 		$tag        = $this->parseXmlAttr($attr,'input');
 		$name       = $tag['name']; 									//表单名称[name]
 		$id       	= !empty($tag['id'])?$tag['id']:$tag['name']; 		//表单ID[id]//没值则用NAME为值
-		$value      = $tag['value'];									//表单[value]//没值则
+		$tagvalue      =!empty($tag['value'])?$tag['value']:''; 		//$tagvalue//没值则
+		$value      =(strpos($tagvalue,'$')===false )?$tagvalue:'{'.$tagvalue.'}';		//表单[value]//没值则
 		$class      = empty($tag['class'])?$tag['class']:''; 			//表单class//没值则用NAME为值
 		$style      = empty($tag['style'])?$tag['style']:''; 			//表单[style]//没值则
 		$disabled   = $tag['disabled']==1?'disabled':'';                //表单[disabled]//没值则
