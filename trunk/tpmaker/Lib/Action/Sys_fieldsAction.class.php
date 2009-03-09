@@ -67,14 +67,40 @@ class sys_fieldsAction extends AdminAction{
 		$this->display();
 
 	}
+	
+	public function ajaxTable(){
+
+		$list=D('sys_tables');
+		if($_SESSION['workingprojectid']=""){
+			halt('参数错误,请刷新!');
+		}
+		$key=$_REQUEST['key'];
+		$list=$list->findAll("(title like '%$key%' or caption like '%$key%')",'*');
+		$this->assign('list',$list);
+		$this->display();
+
+	}
+	
+	public function ajaxFields(){
+
+		$fields=D('sys_fields');
+		$key=$_REQUEST['id'];
+		$pid=id_To_EValue('sys_tables','datemodelid','id',$key);
+		if($pid!=0){
+			$sqlwhere="pid ='$key' or pid='$pid'";
+		}else{
+			$sqlwhere="pid ='$key' ";
+		}
+		$list=$fields->findAll($sqlwhere,'*','seqNO asc');
+		$this->assign('list',$list);
+		$this->display();
+	}
 
 
-
-
-	public function outkeyseting(){
+	public function outkey(){
 
 		$list=D('sys_fields');
-		$list=$list->findAll('id='.$_REQUEST[id],'*');
+		$list=$list->find('id='.$_REQUEST[id]);
 		$this->assign("list",$list);
 		//dump($list);
 		$this->display();
