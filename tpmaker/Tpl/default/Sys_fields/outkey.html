@@ -1,0 +1,76 @@
+<tagLib name="cx,html,myhtml" />
+<include file="../Public/header" />
+<!-- 主体内容  -->
+<SCRIPT LANGUAGE="JavaScript">
+ <!--
+
+
+	function upbtnthis(){
+		ThinkAjax.sendForm('form_update','__APP__/Sys_tables/updateform/',complete,'result');
+	}
+
+	function gettable(){
+		var key=$('key').value;
+		if(key==''){
+			alert('请输入关键词!');
+			return false;
+		}else{
+			ThinkAjax.get('__URL__/ajaxTable/',"key="+key,'showtables');
+		}
+	}
+
+	function showdetail(id){
+		if(id==''){
+			alert('请输入关键词!');
+			return false;
+		}else{
+			ThinkAjax.get('__URL__/ajaxFields/',"id="+id,'showfields');
+		}
+	}
+	
+
+ //-->
+ </SCRIPT>
+
+<fieldset >
+	<legend>设定本字段的外键信息</legend>
+<input type="button"  onclick="upoutkey();" class="button1" value="更新本页数据">
+<table>
+	<tr>
+		<th>
+		是否启用外键
+		</th>
+		<td>
+		<select name="outkeyis" >
+		 <option value="1" <eq name="list['outkeyis']" value="1">selected</eq>  >是 </option>
+		 <option value="0" <eq name="list['outkeyis']" value="0">selected</eq>  >否</option>
+		</select>
+		</td>
+		<th>
+		关键词:
+		</th>
+		<td>
+		<input name="out" type="text" id="key" size="40" value="{$list['outkey']}" />
+		<input type="button"  value="获取表相关信息" class="button1"  onclick="gettable();"/>
+		</td>
+	</tr>
+</table>
+</fieldset>
+
+<fieldset >
+	<legend>候选表</legend>
+	<div id='showtables'></div>
+</fieldset>
+
+<fieldset >
+	<legend>候选字段详细信息</legend>
+	<div id='showfields'></div>
+</fieldset>
+
+<fieldset>
+<legend>说明</legend>
+	<ul>
+		<li>test</li>
+	</ul>
+</fieldset>
+<include file="../Public/footer" />

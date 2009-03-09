@@ -234,6 +234,62 @@ var ThinkAjax = {
 		}
 		catch(z) { return false; }
 	},
+	get:function(url,pars,direct,response,target,tips,effect)
+	{
+		var xmlhttp = this.getTransport();
+		url = (url == undefined)?this.options['url']:url;
+		pars = (pars == undefined)?this.options['var']:pars;
+		if (target == undefined)	{
+			target = (this.options['target'])?this.options['target']:this.tipTarget;
+		}
+		if (effect == undefined)	{
+			effect = (this.options['effect'])?this.options['effect']:this.updateEffect;
+		}
+		if (tips == undefined) {
+			tips = (this.options['tip'])?this.options['tip']: this.updateTip;
+		}
+		if (this.showTip)
+		{
+			this.loading(target,tips,effect);
+		}
+		if (this.intval)
+		{
+			window.clearTimeout(this.intval);
+		}
+		this.activeRequestCount++;
+		this.bComplete = false;
+		this.method = "GET";
+		try {
+			if (this.method == "GET")
+			{
+				xmlhttp.open(this.method, url+"?"+pars, true);
+				pars = "";
+			}
+			else
+			{
+				xmlhttp.open(this.method, url, true);
+				xmlhttp.setRequestHeader("Method", "POST "+url+" HTTP/1.1");
+				xmlhttp.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
+			}
+			var _self = this;
+			xmlhttp.onreadystatechange = function (){
+				if (xmlhttp.readyState == 4 ){
+					if( xmlhttp.status == 200 && !_self.bComplete)
+					{
+						_self.bComplete = true;
+						_self.activeRequestCount--;
+						$(direct).innerHTML=xmlhttp.responseText;//lee99
+						window.setTimeout(function (){
+						$(target).style.display='none';
+						},1000);
+					}
+				}
+			}
+			xmlhttp.send(pars);
+		}
+		catch(z) { return false; }
+	},
+	
 	// 发送表单Ajax操作，暂时不支持附件上传
 	sendForm:function(formId,url,response,target,tips,effect)
 	{

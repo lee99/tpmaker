@@ -1,0 +1,20 @@
+<tagLib name="cx,html,myhtml" />
+<table class="list">
+	<tr>
+		<th>主键</th>
+		<th>外键</th>
+		<th>描术</th>
+		<th>数据表名</th>
+		<th></th>
+	</tr>
+<volist name="list" id="list" key="k">
+	<tr>
+	<td><input type="radio" name="key" value="{$list.name}"></td>
+	<td><input type="checkbox" name="title" value="{$list.name}"></td>
+	<td>{$list.caption}</td>
+	<td>{$list.name}</td>
+	<td>
+	</td>
+	</tr>
+</volist>	
+</table>
