@@ -389,18 +389,18 @@ Class TagLibMkrtags extends TagLib
 	 <input type="hidden" value="'.$value.'"  id="'.$id.'" name="'.$name.'">
 	 <script  type="text/javascript">
 function '.$name.'updatevalue(){
-var s = document.getElementsByName("'.$name.'_tmpval");
-var treuval = document.getElementsByName("'.$name.'");
-var s2 = "";
-for( var i = 0; i < s.length; i++ )
-{
-if ( s[i].checked ){
-s2 += s[i].value+",";
-}
-}
-s2 = s2.substr(0,s2.length-1);
-treuval.value=s2;
-//alert(treuval.value);
+	var s = document.getElementsByName("'.$name.'_tmpval");
+	var checkboxvar = document.getElementById("'.$name.'");
+	var s2 = "";
+	for( var i = 0; i < s.length; i++ )
+	{
+		if ( s[i].checked ){
+		s2 += s[i].value+",";
+		}
+	}
+	s2 = s2.substr(0,s2.length-1);
+	checkboxvar.value=s2;
+	//alert(treuval.value);
 }
 </script>';
 		return $parseStr;
