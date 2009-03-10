@@ -71,11 +71,12 @@ class sys_fieldsAction extends AdminAction{
 	public function ajaxTable(){
 
 		$list=D('sys_tables');
-		if($_SESSION['workingprojectid']=""){
-			halt('参数错误,请刷新!');
+		if($_SESSION['workingprojectid']==""){
+			echo('参数错误,请刷新!');
+			exit;
 		}
 		$key=$_REQUEST['key'];
-		$list=$list->findAll("(title like '%$key%' or caption like '%$key%')",'*');
+		$list=$list->findAll("(title like '%$key%' or caption like '%$key%') and pid=".$_SESSION['workingprojectid'],'*');
 		$this->assign('list',$list);
 		$this->display();
 
@@ -108,7 +109,7 @@ class sys_fieldsAction extends AdminAction{
 	}
 
 	public function outkeysave(){
-
+		//保存条件到相应的表里面
 		$list=D('sys_fields');
 		$date['id']=$_REQUEST['id'];
 		$date['outkeyis']=$_REQUEST['outkeyis'];

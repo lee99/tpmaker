@@ -5,9 +5,13 @@
  <!--
 
 
-	function upbtnthis(){
-		ThinkAjax.sendForm('form_update','__APP__/Sys_tables/updateform/',complete,'result');
+	function upoutkey(){
+		ThinkAjax.sendForm('form','__URL__/outkeysave/');
+		window.opener.location.reload();
+		alert('操作已成功,本页面将会刷新!');
+		window.close();
 	}
+
 
 	function gettable(){
 		var key=$('key').value;
@@ -34,18 +38,9 @@
 
 <fieldset >
 	<legend>设定本字段的外键信息</legend>
-<input type="button"  onclick="upoutkey();" class="button1" value="更新本页数据">
+
 <table>
 	<tr>
-		<th>
-		是否启用外键
-		</th>
-		<td>
-		<select name="outkeyis" >
-		 <option value="1" <eq name="list['outkeyis']" value="1">selected</eq>  >是 </option>
-		 <option value="0" <eq name="list['outkeyis']" value="0">selected</eq>  >否</option>
-		</select>
-		</td>
 		<th>
 		关键词:
 		</th>
@@ -66,11 +61,44 @@
 	<legend>候选字段详细信息</legend>
 	<div id='showfields'></div>
 </fieldset>
+<script type="text/javascript">
+function updatecheckbox(){
+	var s = document.getElementsByName("title_tmpval");
+	var checkboxvar = document.getElementById("outkeyf");
+	var s2 = "";
+	for( var i = 0; i < s.length; i++ )
+	{
+		if ( s[i].checked ){
+		s2 += s[i].value+",";
+		}
+	}
+	s2 = s2.substr(0,s2.length-1);
+	checkboxvar.value=s2;
+	//alert(treuval.value);
+}
 
+function updateradio(d){
+	var checkboxvar = document.getElementById("outkeyid");
+	checkboxvar.value=d;
+	//alert(treuval.value);
+}
+
+</script>
+<form id='form'>
 <fieldset>
-<legend>说明</legend>
-	<ul>
-		<li>test</li>
-	</ul>
+<legend>结果</legend>
+启用外键:
+		<select name="outkeyis" >
+		 <option value="1" <eq name="list['outkeyis']" value="1">selected</eq>  >是 </option>
+		 <option value="0" <eq name="list['outkeyis']" value="0">selected</eq>  >否</option>
+		</select>
+外键表:<input id='outkey' name="outkey" value="{$list['outkey']}"> 
+主键:<input id='outkeyid' name="outkeyid" value="{$list['outkeyid']}"> 
+<br>
+外键:<input id="outkeyf" name="outkeyf" value="{$list['outkeyf']}" size="60">
+<br>
+<input type="hidden" name="id" value="{$list['id']}">
+<input type="button"  onclick="upoutkey();" class="button1" value="确定数据数据">
 </fieldset>
+</form>
 <include file="../Public/footer" />
