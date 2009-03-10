@@ -16,10 +16,18 @@ class dbbackupAction extends AdminAction{
 	}
 
 	public function export_db(){
+		$this->display();
+	}
+
+
+	public function export_db_go(){
+		dump($_REQUEST);
+		exit;
 		require COMMON_PATH."tp_common.php";//引入自定义的类
 		import("Think.Db.Db");	//D('');也可以
 	   	$db	=	DB::getInstance();
 		$tables = $db->getTables();
+		msg('正在备份表数据',1);
 		foreach ($tables as $tbname){
 			$coumt=$db->getFields($tbname);
 			$modelname=str_replace(C('DB_PREFIX'),'',$tbname);
@@ -37,10 +45,12 @@ class dbbackupAction extends AdminAction{
 		    	$sql .= ");\n";
 		    $tempsql.= $sql;
 		    $sql='';
+		    msg('备份表:'.$tbname.'成功.');
 		    }
 		   
 		}
-		 writefile('./Backup/SQL/'.date('ymd-His').'.sql',$tempsql);
+		 writefile('./Backup/SQL/tpmaker_'.date('Ymd-His').'.sql',$tempsql);
+		 msg('备份表数据成功.',1);
 
 	}
 

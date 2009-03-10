@@ -23,11 +23,12 @@
 		}
 	}
 
-	function showdetail(id){
+	function showdetail(id,table){
 		if(id==''){
 			alert('请输入关键词!');
 			return false;
 		}else{
+			$('outkey').value=table;
 			ThinkAjax.get('__URL__/ajaxFields/',"id="+id,'showfields');
 		}
 	}
@@ -86,19 +87,22 @@ function updateradio(d){
 </script>
 <form id='form'>
 <fieldset>
-<legend>结果</legend>
-启用外键:
+<legend>外键选择的结果</legend>
+外键:
 		<select name="outkeyis" >
 		 <option value="1" <eq name="list['outkeyis']" value="1">selected</eq>  >是 </option>
 		 <option value="0" <eq name="list['outkeyis']" value="0">selected</eq>  >否</option>
 		</select>
 外键表:<input id='outkey' name="outkey" value="{$list['outkey']}"> 
-主键:<input id='outkeyid' name="outkeyid" value="{$list['outkeyid']}"> 
-<br>
-外键:<input id="outkeyf" name="outkeyf" value="{$list['outkeyf']}" size="60">
+
+<input type="button"  onclick="$('outkey').value='Array';" class="btn_small" value="固定数据">
+<input type="button"  onclick="upoutkey();" class="button1" value="确定保存选定的外键数据">
 <br>
 <input type="hidden" name="id" value="{$list['id']}">
-<input type="button"  onclick="upoutkey();" class="button1" value="确定数据数据">
+主键:<input id='outkeyid' name="outkeyid" value="{$list['outkeyid']}" style="width:80%"> 
+<br>
+外键:<input id="outkeyf" name="outkeyf" value="{$list['outkeyf']}" style="width:80%">
+
 </fieldset>
 </form>
 <include file="../Public/footer" />
