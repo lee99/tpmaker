@@ -1,17 +1,6 @@
 <?php
 class export_db {
 
-	// 导出数据表//本类暂时没有用到
-	$tables = list_tables($database);
-	$filename = sprintf($options['filename'], $database);
-	$fp = fopen($filename, 'w');
-	foreach ($tables as $table) {
-	    dump_table($table, $fp);
-	}
-	fclose($fp);
-	mysql_close();
-	msg("done.\n");
-	exit;
 	
 	
 	
