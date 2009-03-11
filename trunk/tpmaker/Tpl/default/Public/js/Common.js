@@ -2,6 +2,10 @@ function $(obj){
     return reobj=(typeof(obj)=="object") ? obj : document.getElementById(obj);
 }
 
+function notice(content){
+	if(!confirm(content)) return false;
+}
+
 function checkboxvalue(inid,outid){
 	if($(inid).checked==true){
 		$(outid).value=1;
