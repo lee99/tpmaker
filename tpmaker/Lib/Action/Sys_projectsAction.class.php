@@ -185,9 +185,10 @@ class sys_projectsAction extends AdminAction{
 
 	public function buidepro(){//生成项目
 		require_once COMMON_PATH."tp_common.php";//引入自定义的类
-		require_once COMMON_PATH."tpmaker.class.php";//引入自定义的类
+		$makerpath=$this->getmakerpath();//引入自定义的类
+		require_once $makerpath;//引入自定义的类
 		$buideid=$_REQUEST['id'];
-		$t=new tpmaker();
+		$t=new maker();
 		$t->projectid=$buideid;
 		$t->makeprodir();
 		$t->makeproindex();//生成index.php

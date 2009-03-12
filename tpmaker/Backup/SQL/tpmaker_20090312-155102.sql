@@ -2444,16 +2444,16 @@ CREATE TABLE `tp_sys_projects` (
   `ison` int(11) default NULL COMMENT '是否生成',
   `creattime` int(11) default NULL COMMENT '生成日期',
   `think_pach` varchar(200) default NULL,
-  `tplid` tinyint(2) NOT NULL default '1' COMMENT '模板ID',
+  `tplname` varchar(40) NOT NULL COMMENT '模板ID',
   `isaction` int(11) NOT NULL default '1' COMMENT '是否活动状态',
   PRIMARY KEY  (`id`)
 ) ENGINE=MyISAM AUTO_INCREMENT=42 DEFAULT CHARSET=utf8 COMMENT='生成项目说明';
 
-INSERT INTO `tp_sys_projects` VALUES ('1','crmv2','CRM第二版','crm2','root','crm_','123456','0','1','0','../ThinkPHP','1','0');
-INSERT INTO `tp_sys_projects` VALUES ('8','pershow','个人网站','pershow','root','lp_','123456','0','1','0','../ThinkPHP','1','0');
-INSERT INTO `tp_sys_projects` VALUES ('20','ns_website','NS网站新版','website','root','web_','123456','0','1','0','../ThinkPHP','1','0');
-INSERT INTO `tp_sys_projects` VALUES ('26','crm_v2_tp','Nstarts CRM 系统 (备份)','crmv2','root','ns_','123456','0','1','0','../ThinkPHP','2','0');
-INSERT INTO `tp_sys_projects` VALUES ('41','crm_v2_tp','Nstarts CRM 系统 V2.1','crmv2','root','ns_','123456','0','1','0','../ThinkPHP','2','1');
+INSERT INTO `tp_sys_projects` VALUES ('1','crmv2','CRM第二版','crm2','root','crm_','123456','0','1','0','../ThinkPHP','tpmaker_default','0');
+INSERT INTO `tp_sys_projects` VALUES ('8','pershow','个人网站','pershow','root','lp_','123456','0','1','0','../ThinkPHP','tpmaker_default','0');
+INSERT INTO `tp_sys_projects` VALUES ('20','ns_website','NS网站新版','website','root','web_','123456','0','1','0','../ThinkPHP','tpmaker_default','0');
+INSERT INTO `tp_sys_projects` VALUES ('26','crm_v2_tp','Nstarts CRM 系统 (备份)','crmv2','root','ns_','123456','0','1','0','../ThinkPHP','tpmaker_advance','0');
+INSERT INTO `tp_sys_projects` VALUES ('41','crm_v2_tp','Nstarts CRM 系统 V2.1','crmv2','root','ns_','123456','0','1','0','../ThinkPHP','tpmaker_advance','1');
 DROP TABLE `tp_sys_tables`;
 CREATE TABLE `tp_sys_tables` (
   `id` int(11) NOT NULL auto_increment,
@@ -5280,16 +5280,16 @@ CREATE TABLE `tp_sys_projects` (
   `ison` int(11) default NULL COMMENT '是否生成',
   `creattime` int(11) default NULL COMMENT '生成日期',
   `think_pach` varchar(200) default NULL,
-  `tplid` tinyint(2) NOT NULL default '1' COMMENT '模板ID',
+  `tplname` varchar(40) NOT NULL COMMENT '模板ID',
   `isaction` int(11) NOT NULL default '1' COMMENT '是否活动状态',
   PRIMARY KEY  (`id`)
 ) ENGINE=MyISAM AUTO_INCREMENT=42 DEFAULT CHARSET=utf8 COMMENT='生成项目说明';
 
-INSERT INTO `tp_sys_projects` VALUES ('1','crmv2','CRM第二版','crm2','root','crm_','123456','0','1','0','../ThinkPHP','1','0');
-INSERT INTO `tp_sys_projects` VALUES ('8','pershow','个人网站','pershow','root','lp_','123456','0','1','0','../ThinkPHP','1','0');
-INSERT INTO `tp_sys_projects` VALUES ('20','ns_website','NS网站新版','website','root','web_','123456','0','1','0','../ThinkPHP','1','0');
-INSERT INTO `tp_sys_projects` VALUES ('26','crm_v2_tp','Nstarts CRM 系统 (备份)','crmv2','root','ns_','123456','0','1','0','../ThinkPHP','2','0');
-INSERT INTO `tp_sys_projects` VALUES ('41','crm_v2_tp','Nstarts CRM 系统 V2.1','crmv2','root','ns_','123456','0','1','0','../ThinkPHP','2','1');
+INSERT INTO `tp_sys_projects` VALUES ('1','crmv2','CRM第二版','crm2','root','crm_','123456','0','1','0','../ThinkPHP','tpmaker_default','0');
+INSERT INTO `tp_sys_projects` VALUES ('8','pershow','个人网站','pershow','root','lp_','123456','0','1','0','../ThinkPHP','tpmaker_default','0');
+INSERT INTO `tp_sys_projects` VALUES ('20','ns_website','NS网站新版','website','root','web_','123456','0','1','0','../ThinkPHP','tpmaker_default','0');
+INSERT INTO `tp_sys_projects` VALUES ('26','crm_v2_tp','Nstarts CRM 系统 (备份)','crmv2','root','ns_','123456','0','1','0','../ThinkPHP','tpmaker_advance','0');
+INSERT INTO `tp_sys_projects` VALUES ('41','crm_v2_tp','Nstarts CRM 系统 V2.1','crmv2','root','ns_','123456','0','1','0','../ThinkPHP','tpmaker_advance','1');
 DROP TABLE `tp_sys_tables`;
 CREATE TABLE `tp_sys_tables` (
   `id` int(11) NOT NULL auto_increment,

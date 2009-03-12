@@ -99,7 +99,12 @@ class dbbackupAction extends AdminAction{
 		$db->addConnect($db_config,1);
 		$db->switchConnect(1);
 		$content=file_get_contents($sqlfile);
-		$db->query($content);
+		$sqls=explode(';',$content);
+		foreach ($sqls as $v=>$sql){
+			$db->query($sql);
+			msg($v.' SQL:'.substr($sql,0,80).'......,成功!<br>');
+		}
+		
 		$db->switchConnect(0);
 		msg('导入数据库'.$sqlfile.'操作成功!',0);
 	}
