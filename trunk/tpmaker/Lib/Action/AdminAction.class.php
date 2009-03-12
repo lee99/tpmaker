@@ -89,6 +89,20 @@ class AdminAction extends Action{
         $this->assign($pageid,$page['linkPages']);
         return $r;
     }
+    
+    /**
+     +----------------------------------------------------------
+     * 自定分页
+     +----------------------------------------------------------
+     */
+    function getmakerpath()
+    {
+    	if($_SESSION['workingproject']!='' || $_SESSION['workingproject']['tplname']!=''){
+    		return APP_PATH.'/tpmaker_tpl/'.$_SESSION['workingproject']['tplname'].'/maker.class.php';
+    	}else{
+    		halt('参数错误,请重新刷新或设定项目的横板!');
+    	}
+    }  
 
 }
 
