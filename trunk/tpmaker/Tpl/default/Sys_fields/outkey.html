@@ -84,6 +84,19 @@ function updateradio(d){
 	//alert(treuval.value);
 }
 
+function defvalue(id){
+	if(id==1){
+		$('outkey').value='Array';
+		$('outkeyid').value='1,0';
+		$('outkeyf').value='是,否';
+	}
+	if(id==0){
+		$('outkey').value='Array';
+		$('outkeyid').value='';
+		$('outkeyf').value='';
+	}
+}
+
 </script>
 <form id='form'>
 <fieldset>
@@ -95,8 +108,10 @@ function updateradio(d){
 		</select>
 外键表:<input id='outkey' name="outkey" value="{$list['outkey']}"> 
 
-<input type="button"  onclick="$('outkey').value='Array';" class="btn_small" value="固定数据">
-<input type="button"  onclick="upoutkey();" class="button1" value="确定保存选定的外键数据">
+
+<span  onclick="upoutkey();" class="button1" >确定保存选定的外键数据</span>
+<span  onclick="defvalue(0);" class="btn_small" title="常用设置:固定数据" >固定</span>
+<span  onclick="defvalue(1);" class="btn_small" title="常用设置:是否" >是否</span>
 <br>
 <input type="hidden" name="id" value="{$list['id']}">
 主键:<input id='outkeyid' name="outkeyid" value="{$list['outkeyid']}" style="width:80%"> 
