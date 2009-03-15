@@ -5,6 +5,13 @@
 function viewfields(id){
  location.href  ="__APP__/sys_fields/index/pid/"+id;
 }
+
+function cleartable(){
+	var notes='操作提示：\r\r如果清空本表数据，当前的本的数据前不可恢复，\n确定要清空本表数据吗？';
+	if(notice(notes)){
+		location.href='__APP__/index/crean/id/{$_GET['pid']}'
+	}
+}
 </script>
 <fieldset >
 	<legend>当前项目的数据表: <font class="blue">{$projectname}</font></legend>
@@ -20,7 +27,7 @@ function viewfields(id){
 	<input type="button"  onclick="location.href='__URL__/adv/pid/{$_GET['pid']}'" class="button1" value="+高级视图模式(包含数据模型)">
 	<input type="button"  onclick="location.href='__URL__/system/pid/{$_GET['pid']}'" class="button1" value="系统保留数据结构">
 	<input type="button"  onclick="location.href='__APP__/index/buide/id/{$_GET['pid']}'" class="btn_small" value="生成">
-	<input type="button"  onclick="location.href='__APP__/index/crean/id/{$_GET['pid']}'" class="btn_small" value="清空本表数据">
+	<input type="button"  onclick="cleartable();" class="btn_red" value="清空本表数据">
 
 		</td>
 		<td align="right" id="linkpage">{$page}</td>
