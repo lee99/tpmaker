@@ -183,6 +183,24 @@ class sys_projectsAction extends AdminAction{
 
 	}
 
+
+	
+	
+	public function buidedic(){//数据字典
+		require_once COMMON_PATH."tpmakerdb.class.php";//引入自定义的类
+		msg('正在生成数据字典.....',0);
+		exit;
+		$list=D('sys_projects');
+		$data=$list->getByid($_REQUEST['id']);
+		if($data['dbname']!=''){
+			$t=new tpmakerdb();
+			$t->projectid=$data['id'];
+			$t->dropcheck=false;
+			$t->buideall();
+		}
+
+	}
+
 	public function buidepro(){//生成项目
 		require_once COMMON_PATH."tp_common.php";//引入自定义的类
 		$makerpath=$this->getmakerpath();//引入自定义的类
