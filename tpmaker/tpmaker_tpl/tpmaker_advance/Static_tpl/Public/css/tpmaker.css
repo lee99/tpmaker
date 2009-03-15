@@ -387,14 +387,16 @@ div{
 	display: inline;
 }
 #left_info {
-	clear: both;
-	width: 199px;
+	clear:both;
+	margin:1px 0 0 1px;
+	width:199px;
 }
 #left_info #user_info {
-	background-image: url(../images/manage_r2_c1.jpg);
-	background-repeat: no-repeat;
+	border:1px solid #B4C9C6;
 	height: 55px;
-	padding: 10px 0 0 55px;
+	padding: 10px 0px 0px 55px;
+	margin:1px 0px 5px 0px;
+
 }
 #left_info #user_info a{
     color:#0099CC;
