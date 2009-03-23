@@ -16,12 +16,19 @@
   </table>
   <!-- 功能操作区域结束 -->
 </fieldset>
-<form method=post id="form_update" >
+<form method="POST" id="form_update" >
   <fieldset >
     <div id="result" class="result none"></div>
     <!--  功能操作区域  -->
     <table width="100%"  class="ewTable">
-      {rowscontent}
+  <!--  字段显示区域  -->
+{rows_contents}
+	<tr>
+		<td class="ewTableHeader" >{rows_caption}</td>
+		<td class="ewTableAltRow" >{rows_name}</td>
+	</tr>
+{/rows_contents}
+  <!--  字段显示区域 结束  -->
     </table>
     <!-- 功能操作区域结束 -->
   </fieldset>
