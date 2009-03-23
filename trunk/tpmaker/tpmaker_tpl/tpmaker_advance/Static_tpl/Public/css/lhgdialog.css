@@ -33,7 +33,7 @@ body
 
 .dlgtit
 {
-	height: 30px;
+	height: 20px;
 	_padding-right: 5px;
 	_padding-left: 5px;
 }
@@ -51,13 +51,13 @@ body
 
 #tl, #tc, #tr, #bl, #bc, #br
 {
-    position: absolute;
-	top: 0;
-	background-image: url(../images/d_bg.gif);
+	background-color:#83C326;
+	position:absolute;
+	top:0;
 }
 
-#tl, #tc, #tr{ cursor: move; height: 30px; }
-#bl, #bc, #br{ height: 32px; }
+#tl, #tc, #tr{ cursor: move; height: 20px; }
+#bl, #bc, #br{ height: 22px; }
 
 #tl, #tr, #bl, #br
 {
@@ -103,27 +103,26 @@ body
 
 #tc span
 {
-    position: relative;
-    top: 7px !important;
-	top: 9px;
-    left: 10px;
-	color: #fff;
-	font-size: 13px;
-	font-weight: bold;
+	color:#FFFFFF;
+	font-size:12px;
+	font-weight:bold;
+	left:6px;
+	position:relative;
+	top:2px !important;
 }
 
 .dlginner
 {
 	background-color: #eff5fc;
-	border-left: 1px solid #005195;
-	border-right: 1px solid #005195;
+	border-left: 1px solid #83C326;
+	border-right: 1px solid #83C326;
 }
 
 #xbtn
 {
 	position: absolute;
 	top: 0px;
-	right: 15px;
+	right: 10px;
 	width: 43px;
 	height: 19px;
 	background-image: url(../images/cbtn.gif);
@@ -134,7 +133,7 @@ body
 #obtn, #cbtn
 {
     position: absolute;
-	top: 6px;
+	top: 0px;
 	width: 60px;
 	height: 21px;
 	cursor: default;
@@ -144,7 +143,7 @@ body
 	background-position: 0 0;
 }
 
-#cbtn{ right: 20px; }
+#cbtn{ right: 10px; }
 #obtn{ right: 85px; }
 
 #obtn span, #cbtn span

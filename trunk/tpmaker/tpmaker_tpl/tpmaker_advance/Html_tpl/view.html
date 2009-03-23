@@ -1,39 +1,29 @@
-<tagLib name="cx,html,mkrtags" />
+<taglib name="cx,html,mkrtags" />
 <!--
 //+---------------------------------------------------
 //|	tpmaker1.05 tpl:tpmaker_advance
 //+---------------------------------------------------
 -->
+
 <include file="../Public/header" />
 <fieldset >
-	<legend>增加信息:{tablecaption}</legend>
-<!--  功能操作区域  -->
-<table width="100%"   cellpadding=0 cellspacing=0 >
-	<tr>
-	<td >
-	<INPUT TYPE="button" value="编辑数据" onclick="location.href='__URL__/edit/id/{$id}';" class="button1">
-	</td>
-
-	</tr>
-</table>
-
-<!-- 功能操作区域结束 -->
+  <legend>增加信息:{tablecaption}</legend>
+  <!--  功能操作区域  -->
+  <table width="100%"   cellpadding=0 cellspacing=0 >
+    <tr>
+      <td ><input type="button" value="编辑数据" onclick="location.href='__URL__/edit/id/{$id}';" class="button1"></td>
+    </tr>
+  </table>
+  <!-- 功能操作区域结束 -->
 </fieldset>
-<FORM METHOD=POST id="form_update" >
-<fieldset >
-<div id="result" class="result none"></div>
-<!--  功能操作区域  -->
-<table width="100%"  class="ewTable">
-
-{rowscontent}
-
-
-</TABLE>
-
-<!-- 功能操作区域结束 -->
-
-
-</fieldset>
-
-</FORM>
+<form method=post id="form_update" >
+  <fieldset >
+    <div id="result" class="result none"></div>
+    <!--  功能操作区域  -->
+    <table width="100%"  class="ewTable">
+      {rowscontent}
+    </table>
+    <!-- 功能操作区域结束 -->
+  </fieldset>
+</form>
 <include file="../Public/footer" />
