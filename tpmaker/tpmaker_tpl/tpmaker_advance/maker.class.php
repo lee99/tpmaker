@@ -330,9 +330,16 @@ class maker extends tpmaker
 			$filename=$app_path.'/Tpl/default/'.$name.'/add.html';//生成的模板文件名
 			$tpl=new tpl($tpl_path.'/Html_tpl/add.html');//源模板文件名
 			$fields=$this->getfieldsbytbid($id);
-			$rowscontent=$this->makerowscontent($fields,'addtype','rows.tpl');
+			if(count($fields)>0){
+				foreach ($fields as $data){
+					$vartype=$data['addtype'];
+					$varname=$this->maketags($data['addtype'],'addtype',$data['name'],$data['indexvar'],$data['outkey'],$data['outkeyid'],$data['outkeyf'],$data['outkeywhere']);
+					$varcaption=$data['caption'];
+					$rows_contents[]=array("rows_type"=>$vartype,"rows_name"=>$varname,"rows_caption"=>$varcaption);//替换方式
+				}
+			}
+			$tpl->tplblocksign('rows_contents',$rows_contents);
 			$tpl->tplsign('tablecaption',$caption);//替换
-			$tpl->tplsign('rowscontent',$rowscontent);//替换
 			$filecontent=$tpl->tplreturn();
 			writefile($filename,$filecontent);
 		}
@@ -342,9 +349,16 @@ class maker extends tpmaker
 			$filename=$app_path.'/Tpl/default/'.$name.'/edit.html';//生成的模板文件名
 			$tpl=new tpl($tpl_path.'/Html_tpl/edit.html');//源模板文件名
 			$fields=$this->getfieldsbytbid($id);
-			$rowscontent=$this->makerowscontent($fields,'edittype','rows.tpl');
+			if(count($fields)>0){
+				foreach ($fields as $data){
+					$vartype=$data['edittype'];
+					$varname=$this->maketags($data['edittype'],'edittype',$data['name'],$data['indexvar'],$data['outkey'],$data['outkeyid'],$data['outkeyf'],$data['outkeywhere']);
+					$varcaption=$data['caption'];
+					$rows_contents[]=array("rows_type"=>$vartype,"rows_name"=>$varname,"rows_caption"=>$varcaption);//替换方式
+				}
+			}
+			$tpl->tplblocksign('rows_contents',$rows_contents);
 			$tpl->tplsign('tablecaption',$caption);//替换
-			$tpl->tplsign('rowscontent',$rowscontent);//替换
 			$filecontent=$tpl->tplreturn();
 			writefile($filename,$filecontent);
 		}
@@ -355,38 +369,22 @@ class maker extends tpmaker
 			$filename=$app_path.'/Tpl/default/'.$name.'/view.html';//生成的模板文件名
 			$tpl=new tpl($tpl_path.'/Html_tpl/view.html');//源模板文件名
 			$fields=$this->getfieldsbytbid($id);
-			$rowscontent=$this->makerowscontent($fields,'viewtype','rows.tpl');
+			if(count($fields)>0){
+				foreach ($fields as $data){
+					$vartype=$data['viewtype'];
+					$varname=$this->maketags($data['viewtype'],'viewtype',$data['name'],$data['indexvar'],$data['outkey'],$data['outkeyid'],$data['outkeyf'],$data['outkeywhere']);
+					$varcaption=$data['caption'];
+					$rows_contents[]=array("rows_type"=>$vartype,"rows_name"=>$varname,"rows_caption"=>$varcaption);//替换方式
+				}
+			}
+			$tpl->tplblocksign('rows_contents',$rows_contents);
 			$tpl->tplsign('tablecaption',$caption);//替换
-			$tpl->tplsign('rowscontent',$rowscontent);//替换
 			$filecontent=$tpl->tplreturn();
 			writefile($filename,$filecontent);
 		}
 	}
 
 
-	function makerowscontent($datas,$actiontype,$tpl) {
-		
-		$app_path=$this->getapppath();//获取生成程序的根目录
-		$tpl_path=$this->gettplpath();//获取程序模板的根目录
-		//$datas传过来的数据
-		//类型的
-		//相应判定的模板文件
-		$tpl=new tpl($tpl_path.'/Html_tpl/'.$tpl);//源模板文件名
-		if(count($datas)>0){
-			foreach ($datas as $data){
-				$vartype=$data[$actiontype];
-				//$varname=$data['name'];
-				$varname=$this->maketags($data[$actiontype],$actiontype,$data['name'],$data['indexvar'],$data['outkey'],$data['outkeyid'],$data['outkeyf'],$data['outkeywhere']);
-				$varcaption=$data['caption'];
-				$contents[]=array("vartype"=>$vartype,"varname"=>$varname,"varcaption"=>$varcaption);//替换方式
-
-			}
-
-		}
-		$tpl->tplblocksign('contents',$contents);
-		$filecontent=$tpl->tplreturn();
-		return $filecontent;
-	}
 
 
 
