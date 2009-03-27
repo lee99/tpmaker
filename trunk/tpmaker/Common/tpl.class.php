@@ -27,8 +27,7 @@ class tpl
 	function tplblocksign($block_name,$values)
 	{
 		//获得替换块的子模板
-		if(is_array($values))
-		{
+		if(is_array($values)){
 			ereg("{".$block_name."}.*{/".$block_name."}",$this->content,$regs);
 			$str_block=substr($regs[0],2+strlen($block_name),-(strlen($block_name)+3));
 
@@ -45,9 +44,29 @@ class tpl
 				$block_replace.=$str_replace;
 			}
 			$this->content=ereg_replace ("{".$block_name."}.*{/".$block_name."}",$block_replace,$this->content);
+		}else{
+			$this->content=ereg_replace ("{".$block_name."}.*{/".$block_name."}",$this->contentnull,$this->content);
 		}
-		else
-		$this->content=ereg_replace ("{".$block_name."}.*{/".$block_name."}",$this->contentnull,$this->content);
+	}
+
+	//替换果否形式的标志块内容
+	function tplissign($block_name,$values)
+	{
+		//获得替换块的子模板
+		//不完善,还需要对多个相同的标签替换
+		//以后再完成
+		$arrayconents=explode("{".$block_name."}",$this->content);
+		foreach ($arrayconents as $arrayconent){
+				$arrayconent="{".$block_name."}".$arrayconent;
+				ereg("{".$block_name."}.*{/".$block_name."}",$arrayconent,$regs);
+				$str_block=substr($regs[0],2+strlen($block_name),-(strlen($block_name)+3));
+			if($values){
+				$this->content=str_replace ("{".$block_name."}".$str_block."{/".$block_name."}",$str_block,$this->content);
+			}else{
+				$this->content=str_replace ("{".$block_name."}".$str_block."{/".$block_name."}",$this->contentnull,$this->content);
+			}
+			unset($regs);
+		}
 	}
 
 	//输出模板内容
