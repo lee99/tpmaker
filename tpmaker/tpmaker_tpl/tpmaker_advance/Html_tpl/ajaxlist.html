@@ -3,11 +3,15 @@
 
 <table width="100%"   cellpadding="0" cellspacing="0" >
   <tr>
-    <td width="60%"><input type="button"  onclick="add()" class="button1" title="增加数据" value="增" />
-      <input type="button"  onclick="edit()" class="button1" title="编辑数据" value="编" />
-      <input type="button"  onclick="view()" class="button1" title="查看详细数据" value="详" />
-      <input type="button"  onclick="del()" class="button1" title="删除数据" value="删" /></td>
-    <td align="right"><form method="GET" action="{$searchurl}">
+    <td width="60%">
+	    {isadd}<input type="button"  onclick="add()" class="button1" title="增加数据" value="增" />{/isadd}
+	    {isedit}<input type="button"  onclick="edit()" class="button1" title="编辑数据" value="编" />{/isedit}
+	    {isview}<input type="button"  onclick="view()" class="button1" title="查看详细数据" value="详" />{/isview}
+	    {isdel}<input type="button"  onclick="del()" class="button1" title="删除数据" value="删" />{/isdel}
+    </td>
+    <td align="right">
+    {issearch}
+    <form method="GET" action="{$searchurl}">
         <table cellpadding="0" cellspacing="1">
           <tr>
             <td><INPUT id="searchkey" TYPE="text"  NAME="searchkey"  value="{$searchkey}" /></td>
@@ -16,7 +20,9 @@
             <td><mkrtags:radio id="searchtype" name="searchtype"  outtable="Array" value="$searchtype" outfield="AND,OR" outkey="AND,OR" /></td>
           </tr>
         </table>
-      </form></td>
+      </form>
+      {/issearch}
+      </td>
   </tr>
 </table>
 <!-- 功能操作区域结束 -->
@@ -44,7 +50,11 @@
     {listshowtd}
     <td title="{listshowtd_caption}"> {listshowtd_viewtags} </td>
     {/listshowtd}
-    <td><a href="javascript:edit('{$list.id}')" title="编辑">编</a> <a href="javascript:del('{$list.id}')" title="删除">删</a> <a href="javascript:view('{$list.id}')" title="详细">详</a></td>
+    <td>
+    	{isedit}<a href="javascript:edit('{$list.id}')" title="编辑">编</a>{/isedit}
+     	{isdel}<a href="javascript:del('{$list.id}')" title="删除">删</a>{/isdel} 
+     	{isview}<a href="javascript:view('{$list.id}')" title="详细">详</a>{/isview}
+    </td>
   </tr>
   <php> endforeach; </php>
   <php> endif; </php>

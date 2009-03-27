@@ -287,38 +287,46 @@ class maker extends tpmaker
 		$app_path=$this->getapppath();//获取生成程序的根目录
 		$tpl_path=$this->gettplpath();//获取程序模板的根目录
 		$data=$this->gettables($id);
-		$name=uplower($data['title']);//第一个字母变成大写,其它变成小写
+		$tablename=uplower($data['title']);//第一个字母变成大写,其它变成小写
 		$caption=$data['caption'];
-		tpmk_dir($app_path.'/Tpl/default/'.$name.'/');//生成目录
-
+		$fields=$this->getfieldsbytbid($id);
+		tpmk_dir($app_path.'/Tpl/default/'.$tablename.'/');//生成目录
+		
+		$islist=($data['list']==1)?true:false;	//是否列表
+		$issearch=($data['search']==1)?true:false;	//issearch
+		$isadd=($data['add']==1)?true:false;	//是否增加
+		$isedit=($data['edit']==1)?true:false;	//是否允许编辑
+		$isview=($data['view']==1)?true:false;	//是否允许查看详细
+		$isdel=($data['del']==1)?true:false;	//是否允许删除数据
+		
+		
 		//生成INDEX.HMTL包括LIST及SEARCH的
-		if($data['list']==1 || $data['search']==1){
-			$filename=$app_path.'/Tpl/default/'.$name.'/index.html';//生成的模板文件名
+		if($islist){
+			$filename=$app_path.'/Tpl/default/'.$tablename.'/index.html';//生成的模板文件名
 			$tpl=new tpl($tpl_path.'/Html_tpl/index.html');//源模板文件名
-			$fields=$this->getfieldsbytbid($id);
-			//$filename=$this->tplchecktable($data,$filename);
-			$listshowsort=$this->makerowslistsort($fields,'islist');
-			$listshowtd=$this->makerowslisttd($fields,'islist');
-			$tpl->tplblocksign('listshowsort',$listshowsort);//替换
-			$tpl->tplblocksign('listshowtd',$listshowtd);//替换
 			$tpl->tplsign('tablecaption',$caption);//替换
-			$tpl->tplsign('tablelist',$name);//替换表名
+			$tpl->tplsign('tablelist',$tablename);//替换表名
 			$filecontent=$tpl->tplreturn();
 			writefile($filename,$filecontent);
 		}
 
 		//生成ajaxlist.HMTL
-		if($data['list']==1 || $data['search']==1){
-			$filename=$app_path.'/Tpl/default/'.$name.'/ajaxlist.html';//生成的模板文件名
+		if($islist || $issearch){
+			$filename=$app_path.'/Tpl/default/'.$tablename.'/ajaxlist.html';//生成的模板文件名
 			$tpl=new tpl($tpl_path.'/Html_tpl/ajaxlist.html');//源模板文件名
-			$fields=$this->getfieldsbytbid($id);
-			//$filename=$this->tplchecktable($data,$filename);
 			$listshowsort=$this->makerowslistsort($fields,'islist');
 			$listshowtd=$this->makerowslisttd($fields,'islist');
 			$tpl->tplblocksign('listshowsort',$listshowsort);//替换
 			$tpl->tplblocksign('listshowtd',$listshowtd);//替换
+			
+			$tpl->tplissign('issearch',$issearch);//替换是否搜索
+			$tpl->tplissign('isadd',$isadd);//替换是否增加
+			$tpl->tplissign('isedit',$isedit);//替换是否编辑
+			$tpl->tplissign('isview',$isview);//替换查看详细
+			$tpl->tplissign('isdel',$isdel);//替换删除数据
+			
 			$tpl->tplsign('tablecaption',$caption);//替换
-			$tpl->tplsign('tablelist',$name);//替换表名
+			$tpl->tplsign('tablelist',$tablename);//替换表名
 			$filecontent=$tpl->tplreturn();
 			writefile($filename,$filecontent);
 		}
@@ -326,62 +334,67 @@ class maker extends tpmaker
 		
 
 		//生成Add.HMTL
-		if($data['add']==1){
-			$filename=$app_path.'/Tpl/default/'.$name.'/add.html';//生成的模板文件名
+		if($isadd){
+			$filename=$app_path.'/Tpl/default/'.$tablename.'/add.html';//生成的模板文件名
 			$tpl=new tpl($tpl_path.'/Html_tpl/add.html');//源模板文件名
-			$fields=$this->getfieldsbytbid($id);
 			if(count($fields)>0){
-				foreach ($fields as $data){
-					$vartype=$data['addtype'];
-					$varname=$this->maketags($data['addtype'],'addtype',$data['name'],$data['indexvar'],$data['outkey'],$data['outkeyid'],$data['outkeyf'],$data['outkeywhere']);
-					$varcaption=$data['caption'];
+				foreach ($fields as $field){
+					$vartype=$field['addtype'];
+					$varname=$this->maketags($field['addtype'],'addtype',$field['name'],$field['indexvar'],$field['outkey'],$field['outkeyid'],$field['outkeyf'],$field['outkeywhere']);
+					$varcaption=$field['caption'];
 					$rows_contents[]=array("rows_type"=>$vartype,"rows_name"=>$varname,"rows_caption"=>$varcaption);//替换方式
 				}
 			}
 			$tpl->tplblocksign('rows_contents',$rows_contents);
 			$tpl->tplsign('tablecaption',$caption);//替换
+			$tpl->tplsign('tablename',$tablename);//替换表名
 			$filecontent=$tpl->tplreturn();
 			writefile($filename,$filecontent);
+			unset($rows_contents);
 		}
 
 		//生成Edit.HMTL
-		if($data['edit']==1){
-			$filename=$app_path.'/Tpl/default/'.$name.'/edit.html';//生成的模板文件名
+		if($isedit){
+			$filename=$app_path.'/Tpl/default/'.$tablename.'/edit.html';//生成的模板文件名
 			$tpl=new tpl($tpl_path.'/Html_tpl/edit.html');//源模板文件名
-			$fields=$this->getfieldsbytbid($id);
 			if(count($fields)>0){
-				foreach ($fields as $data){
-					$vartype=$data['edittype'];
-					$varname=$this->maketags($data['edittype'],'edittype',$data['name'],$data['indexvar'],$data['outkey'],$data['outkeyid'],$data['outkeyf'],$data['outkeywhere']);
-					$varcaption=$data['caption'];
+				foreach ($fields as $field){
+					$vartype=$field['edittype'];
+					$varname=$this->maketags($field['edittype'],'edittype',$field['name'],$field['indexvar'],$field['outkey'],$field['outkeyid'],$field['outkeyf'],$field['outkeywhere']);
+					$varcaption=$field['caption'];
 					$rows_contents[]=array("rows_type"=>$vartype,"rows_name"=>$varname,"rows_caption"=>$varcaption);//替换方式
 				}
 			}
 			$tpl->tplblocksign('rows_contents',$rows_contents);
 			$tpl->tplsign('tablecaption',$caption);//替换
+			$tpl->tplsign('tablename',$tablename);//替换表名
 			$filecontent=$tpl->tplreturn();
 			writefile($filename,$filecontent);
+			unset($rows_contents);
 		}
 
 
 		//生成Veiw.HMTL
-		if($data['view']==1){
-			$filename=$app_path.'/Tpl/default/'.$name.'/view.html';//生成的模板文件名
+		if($isview){
+			$filename=$app_path.'/Tpl/default/'.$tablename.'/view.html';//生成的模板文件名
 			$tpl=new tpl($tpl_path.'/Html_tpl/view.html');//源模板文件名
-			$fields=$this->getfieldsbytbid($id);
 			if(count($fields)>0){
-				foreach ($fields as $data){
-					$vartype=$data['viewtype'];
-					$varname=$this->maketags($data['viewtype'],'viewtype',$data['name'],$data['indexvar'],$data['outkey'],$data['outkeyid'],$data['outkeyf'],$data['outkeywhere']);
-					$varcaption=$data['caption'];
+				foreach ($fields as $field){
+					$vartype=$field['viewtype'];
+					$varname=$this->maketags($field['viewtype'],'viewtype',$field['name'],$field['indexvar'],$field['outkey'],$field['outkeyid'],$field['outkeyf'],$field['outkeywhere']);
+					$varcaption=$field['caption'];
 					$rows_contents[]=array("rows_type"=>$vartype,"rows_name"=>$varname,"rows_caption"=>$varcaption);//替换方式
 				}
 			}
 			$tpl->tplblocksign('rows_contents',$rows_contents);
 			$tpl->tplsign('tablecaption',$caption);//替换
+			$tpl->tplsign('tablename',$tablename);//替换表名
 			$filecontent=$tpl->tplreturn();
 			writefile($filename,$filecontent);
+			unset($rows_contents);
 		}
+		
+		unset($data);
 	}
 
 

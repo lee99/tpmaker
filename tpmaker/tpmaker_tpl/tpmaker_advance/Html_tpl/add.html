@@ -11,12 +11,12 @@
   <!--  功能操作区域  -->
   <table width="100%"   cellpadding=0 cellspacing=0 >
     <tr>
-      <td ><input type="button" value="确认增加数据" onclick="$byid('form_add').submit();" class="button1" /></td>
+      <td ><input type="button" value="确认增加数据" onclick="$byid('{tablename}_add').submit();" class="button1" /></td>
     </tr>
   </table>
   <!-- 功能操作区域结束 -->
 </fieldset>
-<form method="POST"  action="__URL__/insert/" />
+<form id="{tablename}_add" name="{tablename}_add"  method="POST"  action="__URL__/insert/"/>
 
 <fieldset >
   <!--  功能操作区域  -->
