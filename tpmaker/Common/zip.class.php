@@ -296,7 +296,7 @@ $filesize=@filesize($zipfile);
 $fp=@fopen($zipfile,rb);
 $zipfilecontent=Array($filename,@fread($fp,$filesize));
 @fclose($fp);
-$zip->Add($zipfilecontent,1);  //可以多次执行 $zip->Add 来添加多个文件
+$zip->Add($zipfilecontent,1);  //  $zip->Add 来添加多个文件
 
 if(@fputs(@fopen($key,"wb"),$zip->get_file())) //写入文件
 msg("文件压缩成功!!");

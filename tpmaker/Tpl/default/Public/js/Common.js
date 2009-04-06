@@ -3,7 +3,11 @@ function $(obj){
 }
 
 function notice(content){
-	if(!confirm(content)) return false;
+	if(!confirm(content)){
+		return false;
+	}else{
+		return true;
+	}
 }
 
 function checkboxvalue(inid,outid){

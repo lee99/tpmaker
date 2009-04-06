@@ -527,8 +527,6 @@ div{
 	width: 6px;
 	cursor:pointer;
 	clear: both;
-	vertical-align: bottom;
-	margin-top: 220px;
 }
 #nav {
 	width:99%;
