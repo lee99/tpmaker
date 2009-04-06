@@ -212,6 +212,7 @@ class sys_projectsAction extends AdminAction{
 		$t->makeproindex();//生成index.php
 		$t->makeproconf();//生成config.php
 		$t->makeproindexaction();//生成项面INDEX的面页和相应的列表数据
+		$t->makeprotectmodel();//生成保留MODEL
 		$table=D('sys_tables');
 		$tabledata=$table->findAll('pid='.$buideid.' and ismodel <>1 and isaction =1');
 		foreach ($tabledata as $tb){

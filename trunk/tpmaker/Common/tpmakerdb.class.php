@@ -191,6 +191,7 @@ class tpmakerdb extends Action
 
 	function buideall(){
 		$this->creatdb();
+		$this->creatpretecttable();
 		$list=D($this->tables);
 		$date=$list->findall('ismodel=0 and pid='.$this->projectid);
 		foreach ($date as $gdate){
@@ -198,6 +199,8 @@ class tpmakerdb extends Action
 		}
 	}
 
+	
+	/*生成库*/
 	function creatdb(){
 		$date=$this->getprojects();
 		$project_caption = $date['caption'];//项目名称
@@ -211,6 +214,45 @@ class tpmakerdb extends Action
 
 		$sql_infoherd="CREATE DATABASE `".$project_dbname."` DEFAULT CHARACTER SET utf8 COLLATE utf8_general_ci;";
 		$this->dosql($sql_infoherd,'生成数据库:['.$project_proname.']<br>');
+	}
+	
+	
+	/*生成保留的数据表*/
+	function creatpretecttable(){
+		$date=$this->getprojects();
+		$project_tbpre = $date['tbpre'];//数据库前辍
+		$project_id = $date['id'];//数据库名
+
+		$apptree=D('apptree');
+		$leftdate=$apptree->findAll('projectid ='.$project_id);
+
+		$sql_infoherd="
+		CREATE TABLE `".$project_tbpre."apptree` (
+ `id` int(11) NOT NULL auto_increment,
+  `title` varchar(40) NOT NULL COMMENT '标题',
+  `shortname` varchar(24) NOT NULL,
+  `type` int(11) NOT NULL COMMENT '类型',
+  `pid` int(11) NOT NULL default '0' COMMENT '上级ID',
+  `appmodel` varchar(40) default NULL COMMENT '数据表',
+  `seqNo` int(11) NOT NULL,
+  PRIMARY KEY  (`id`)
+) ENGINE=MyISAM  DEFAULT CHARSET=utf8;";
+		
+		//填充导入数据
+		foreach ($leftdate as $d){
+			if($d['tid']>0){
+				//$gettables=id_To_EValue('sys_tables','name');//获得相应的模块
+				$gettables=$this->gettables($d['tid']);//获得相应的模块
+				$tablename=$gettables['title'];
+			}
+			$insql[]="('".$d['id']."', '".$d['title']."', '".$d['shortname']."','".$d['type']."','".$d['pid']."','".$tablename."','".$d['seqNo']."')";
+		}
+		$insertsql=join(',',$insql);
+		$insertsql="INSERT INTO `".$project_tbpre."apptree` (`id`, `title`, `shortname`, `type`, `pid`, `appmodel`, `seqNo`) VALUES $insertsql ;";
+		
+		$this->dosql($sql_infoherd,'生成数据库保留的数据库:[apptree]');
+		$this->dosql($insertsql,'填充保留的数据库:[apptree]');
+		
 	}
 
 

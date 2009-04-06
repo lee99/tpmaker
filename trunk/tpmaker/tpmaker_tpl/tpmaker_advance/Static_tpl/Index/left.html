@@ -1,0 +1,38 @@
+<tagLib name="html,mkrtags" />
+<include file="../Public/header" />
+
+<div id="left_info">
+
+<div id="left_nav">
+	     <div id="left_nav_left"></div>
+		 <div id="left_nav_right"></div>
+</div>
+<script type="text/javascript">
+var thisheight=window.screen.availHeight-174;
+$byid("left_nav_right").style.height=thisheight+'px';
+</script>
+</div>
+<script type="text/javascript">
+ // 导航栏配置文件
+var outlookbar=new outlook();
+var t;
+
+<volist name="left" id="leftlist">
+t=outlookbar.addtitle('{$leftlist.title}','thinkmaker',1,0,'');
+
+<sublist name="leftlist['subapp']" id="sub">
+outlookbar.additem('{$sub.title}',t,'__APP__/{$sub.appmodel}');
+
+</sublist>
+</volist>
+
+
+
+
+//initinav('系统设置');
+list_sub_nav('thinkmaker');
+
+
+
+</script>
+<include file="../Public/footer" />
