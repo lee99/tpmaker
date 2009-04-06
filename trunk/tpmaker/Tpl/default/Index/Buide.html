@@ -3,11 +3,17 @@
 <!-- 主体内容  -->
 <script LANGUAGE="JavaScript">
     function buidthis(id){ //生成本项目
-        window.open("__APP__/Sys_projects/buidepro/id/" + id, 'mini');
+		var notes='操作提示：\r\r本操作会删除你当前已生成的程序，当前经过修改的程序不可恢复，\n确定要进行下一步操作吗？';
+		if(notice(notes)){
+			window.open("__APP__/Sys_projects/buidepro/id/" + id, 'mini');
+		}
     }   
 
     function buidedb(id){ //生成本项目
-        window.open("__APP__/Sys_projects/buidedb/id/" + id, 'mini');
+		var notes='操作提示：\r\r本操作会删除你当前已生成的数据库，当前已生成的数据库及数据将不可恢复，\n确定要进行下一步操作吗？';
+		if(notice(notes)){
+			window.open("__APP__/Sys_projects/buidedb/id/" + id, 'mini');
+		}
     }
 
     function viewthis(id){ //浏览项目
