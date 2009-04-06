@@ -113,9 +113,10 @@ function zipdir($zippath){
 		while (false !== ($file = readdir($dh))) {
 			if($file!="." && $file!="..") {
 				if(is_dir($filepath."/".$file)){
-					$_SESSION['zipdir'][]=$filepath.'/'.$file;
-					if(filterzipdir($filepath.'/'.$file)){
-						zipdir($filepath."/".$file);
+					$dirpath=$filepath.'/'.$file;
+					$_SESSION['zipdir'][]=$dirpath;
+					if(!filterzipdir($dirpath)){
+						zipdir($dirpath);
 					}
 				}else{
 					$_SESSION['zipfile'][]=$filepath.'/'.$file;
@@ -129,11 +130,12 @@ function filterzipdir($sources){
 	$sources=$sources."/";
 	$locks=array('/Cache/','/Data/','/Temp/','/.svn/');
 	foreach ($locks as $lock){
+		 $lock=strtolower($lock);
+		 $sources=strtolower($sources);	
 		if(strpos($sources,$lock)=== true){
 			return false;
 		}
 	}
-	return true;
 }
 
 ?>
