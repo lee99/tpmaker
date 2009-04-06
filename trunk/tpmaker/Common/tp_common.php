@@ -106,5 +106,34 @@ function deldir($sdir){
 }
 
 
+//所有子目录
+function zipdir($zippath){
+		$filepath=$zippath;
+		$dh = opendir($zippath);
+		while (false !== ($file = readdir($dh))) {
+			if($file!="." && $file!="..") {
+				if(is_dir($filepath."/".$file)){
+					$_SESSION['zipdir'][]=$filepath.'/'.$file;
+					if(filterzipdir($filepath.'/'.$file)){
+						zipdir($filepath."/".$file);
+					}
+				}else{
+					$_SESSION['zipfile'][]=$filepath.'/'.$file;
+				}
+			}
+		}
+	closedir($dh);
+}
+
+function filterzipdir($sources){
+	$sources=$sources."/";
+	$locks=array('/Cache/','/Data/','/Temp/','/.svn/');
+	foreach ($locks as $lock){
+		if(strpos($sources,$lock)=== true){
+			return false;
+		}
+	}
+	return true;
+}
 
 ?>

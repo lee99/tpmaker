@@ -242,33 +242,28 @@ class sys_projectsAction extends AdminAction{
 
 		$z = new PHPZip();
 		$filesize=@filesize($filename);
-		$path = opendir($zippath);
-		while (false !== ($file = readdir($path))) {
-			if($file!="." && $file!="..") {
-				if(is_file($dir."/".$file)){
-					$files[]=$file;
-				} else {
-					$dirs[]=$dir."/".$file;
-				}
-			}
-		}
+		$_SESSION['zipdir']='';//所有子目录
+		$_SESSION['zipfile']='';//所有子目录
+		
+		zipdir($zippath);
+		$dirs=$_SESSION['zipdir'];//所有子目录
+		$files=$_SESSION['zipfile'];//所有文件
+
 		if($dirs) {
-			natcasesort($dirs);
 			foreach($dirs as $dir) {
-				$dirname=substr($dir,1);
-				$z ->add_dir($dirname); //添加指定目录
+				$z ->add_dir($dir); //添加指定目录
 				msg($dir."...添加目录成功!<br>");
 				//read_dir($dir);
 			}
 		}
 		if($files) {
-			natcasesort($files);
-			foreach ($files as $file)
+			foreach ($files as $file){
 			$fp=@fopen($file,rb);
-			$zipfilecontent=Array($filename,@fread($fp,$filesize));
+			$zipfilecontent=Array($file,@fread($fp,$filesize));
 			@fclose($fp);
-			$zip->Add($zipfilecontent,1);  //可以多次执行 $zip->Add 来添加多个文件
+			$z->Add($zipfilecontent,1);  //可以多次执行 $zip->Add 来添加多个文件
 			msg($file."...添加文件成功!<br>");
+			}
 		}
 		closedir($path);
 
