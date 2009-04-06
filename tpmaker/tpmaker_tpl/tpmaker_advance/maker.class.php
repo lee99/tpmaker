@@ -63,11 +63,6 @@ class maker extends tpmaker
 		$app_path=$this->getapppath();//获取生成程序的根目录
 		$tpl_path=$this->gettplpath();//获取程序模板的根目录
 		$filename=$app_path.'/Index.php';
-		$table=D('apptree');
-		$tabledata=$table->findAll('projectid='.$this->projectid.' and pid =0 ','*','id ASC');
-		foreach ($tabledata as $tb){
-			$topdate[]=array( 'id' =>$tb['id'],'caption' =>$tb['title'],'title' =>uplower($tb['shortname']));
-		}
 		$tpl=new tpl($tpl_path.'/Action_tpl/IndexAction.class.php');
 		//dump($leftdate);
 		$tpl->tplblocksign("topdate",$topdate); //替换
@@ -174,6 +169,22 @@ class maker extends tpmaker
 		writefile($filename,$filecontent);
 	}
 
+	function makeprotectmodel() {
+		//生成保留MODEL
+		$app_path=$this->getapppath();//获取生成程序的根目录
+		$tpl_path=$this->gettplpath();//获取程序模板的根目录
+		$name='apptree';
+		$filename=$app_path.'/Lib/Model/'.$name.'Model.class.php';
+		$tpl=new tpl($tpl_path.'/Model_tpl/model.tpl');
+		$tpl->tplsign("name",$name); //替换
+		$tpl->tplblocksign("val_var_req",null); //替换
+		$tpl->tplblocksign("val_var_val",null); //替换
+		$tpl->tplblocksign("val_var_auto",null); //替换
+		$filecontent=$tpl->tplreturn();
+		writefile($filename,$filecontent);
+	}
+	
+	
 	function makeproviewmodel($id) {
 		//生成基本VIEWMODEL
 		
@@ -346,6 +357,13 @@ class maker extends tpmaker
 				}
 			}
 			$tpl->tplblocksign('rows_contents',$rows_contents);
+			
+			$tpl->tplissign('issearch',$issearch);//替换是否搜索
+			$tpl->tplissign('isadd',$isadd);//替换是否增加
+			$tpl->tplissign('isedit',$isedit);//替换是否编辑
+			$tpl->tplissign('isview',$isview);//替换查看详细
+			$tpl->tplissign('isdel',$isdel);//替换删除数据
+			
 			$tpl->tplsign('tablecaption',$caption);//替换
 			$tpl->tplsign('tablename',$tablename);//替换表名
 			$filecontent=$tpl->tplreturn();
@@ -366,6 +384,13 @@ class maker extends tpmaker
 				}
 			}
 			$tpl->tplblocksign('rows_contents',$rows_contents);
+			
+			$tpl->tplissign('issearch',$issearch);//替换是否搜索
+			$tpl->tplissign('isadd',$isadd);//替换是否增加
+			$tpl->tplissign('isedit',$isedit);//替换是否编辑
+			$tpl->tplissign('isview',$isview);//替换查看详细
+			$tpl->tplissign('isdel',$isdel);//替换删除数据
+			
 			$tpl->tplsign('tablecaption',$caption);//替换
 			$tpl->tplsign('tablename',$tablename);//替换表名
 			$filecontent=$tpl->tplreturn();
@@ -387,6 +412,13 @@ class maker extends tpmaker
 				}
 			}
 			$tpl->tplblocksign('rows_contents',$rows_contents);
+			
+			$tpl->tplissign('issearch',$issearch);//替换是否搜索
+			$tpl->tplissign('isadd',$isadd);//替换是否增加
+			$tpl->tplissign('isedit',$isedit);//替换是否编辑
+			$tpl->tplissign('isview',$isview);//替换查看详细
+			$tpl->tplissign('isdel',$isdel);//替换删除数据
+			
 			$tpl->tplsign('tablecaption',$caption);//替换
 			$tpl->tplsign('tablename',$tablename);//替换表名
 			$filecontent=$tpl->tplreturn();

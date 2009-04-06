@@ -173,6 +173,17 @@ fieldset
 
 }
 
+
+.searchbox
+{
+	background-color:#999999;
+	color:#333333;
+	font-size:12px;
+	margin-top:1px;
+	position:absolute;
+}
+
+
 .button1
 {
 	BORDER: #999999 1px solid;
@@ -240,8 +251,8 @@ div.page {
 	line-height:180%;
 	text-align:right;
 }
-div.tips{border:1px solid #d4d4d4; background:#FBFAF8 url(../Images/use.gif) no-repeat; background-position:5px 8px; padding:8px 25px; overflow:auto; max-height:250px; margin:8px; line-height:185%; color:#393939; font-weight:bold; float:left; width:250px !important; width:25%; height:85px}
-div.result{position:absolute; top:0; right:0; border:1px solid #d4d4d4; background:#FFC; padding:2px; margin:1px; color:#393939; font-weight:bold; clear:both}
+div.tips{border:0px solid #d4d4d4; background:#FBFAF8 url(../Images/use.gif) no-repeat; background-position:5px 8px; padding:8px 25px; overflow:auto; max-height:250px; margin:8px; line-height:185%; color:#393939; font-weight:bold; float:left; width:250px !important; width:25%; height:85px}
+div.result{position:absolute; top:0; right:0; border:0px solid #d4d4d4; background:#FFC; padding:2px; margin:1px; color:#393939; font-weight:bold; clear:both}
 .none{display:none}
 div.message{width:75%; padding:5pt; float:none; margin:15% auto 0% auto; clear:both; text-align:center}
 div.logo{margin:auto; width:85%; font:bold 10pt Tahoma; color:orange}
@@ -341,8 +352,13 @@ div{
 	padding:0;
 }
 .header_content {
-	margin: 0 auto;
-	padding:0px;
+	background-color:#999999;
+	background-image:none;
+	background-position:0 0;
+	background-repeat:repeat;
+	height:24px;
+	margin:0 auto;
+	padding:0;
 }
 .header_content .logo {
 	width: 200px;
@@ -362,10 +378,10 @@ div{
 }
 
 .right_nav .text_left {
-	float: left;
-	width: 20%;
-	padding: 4px 0 0 0;
-	color: #CC3300;
+	color:#CC3300;
+	float:left;
+	padding:1px 0 0;
+	width:20%;
 }
 .right_nav .text_right {
 	float: right;
@@ -635,7 +651,7 @@ thinkphp的样式设定
 .ThinkAjax
 {
 	background:#FFFFCC none repeat scroll 0 0;
-	border:1px solid #D4D4D4;
+	border:0px solid #D4D4D4;
 	clear:both;
 	color:#393939;
 	font-weight:bold;

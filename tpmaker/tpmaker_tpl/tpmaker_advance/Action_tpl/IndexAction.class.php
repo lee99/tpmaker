@@ -10,7 +10,20 @@ class IndexAction extends PublicAction{
 	}
 
 	public function leftframe(){
-		//左边的
+		//左边的默认首页
+		$this->display();
+	}
+	
+	public function left(){
+		//子模板的左边页面
+		$table=D('apptree');
+		$pid=$_GET['apptreeid'];
+		$leftdate=$table->findAll("type='0' and pid ='$pid'");
+		foreach($leftdate as $k=>$v){
+			$leftdate[$k]['subapp']=$table->findAll(' pid ='.$v[id],'*','seqNO ASC');
+		}
+		$this->assign('left',$leftdate);
+		//dump($leftdate);
 		$this->display();
 	}
 
@@ -22,10 +35,8 @@ class IndexAction extends PublicAction{
 	public function topframe(){
 		//顶部的
 		//生成table的树
-		$topdate=array(
-{topdate}			array( 'id' =>'{id}','caption' =>'{caption}','name' =>'{title}'),
-{/topdate}
-);
+		$table=D('apptree');
+		$topdate=$table->findAll('pid =0 ','*','id ASC');
 		$this->assign('top',$topdate);
 		//dump($leftdate);
 		$this->display();

@@ -12,6 +12,18 @@ function $byid(objectId){
 }
 
 //+---------------------------------------------------
+//|	显示或隐藏一个对象
+//+---------------------------------------------------
+function display(objectId){
+	
+		if($byid(objectId).style.display=='none'){
+			$byid(objectId).style.display='block';
+		}else{
+			$byid(objectId).style.display='none';
+		}
+}
+
+//+---------------------------------------------------
 //|	JS对list数据的排序
 //+---------------------------------------------------
 function sortBy (field,sort){

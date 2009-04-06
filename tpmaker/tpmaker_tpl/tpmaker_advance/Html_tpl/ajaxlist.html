@@ -4,25 +4,34 @@
 <table width="100%"   cellpadding="0" cellspacing="0" >
   <tr>
     <td width="60%">
-	    {isadd}<input type="button"  onclick="add()" class="button1" title="增加数据" value="增" />{/isadd}
-	    {isedit}<input type="button"  onclick="edit()" class="button1" title="编辑数据" value="编" />{/isedit}
-	    {isview}<input type="button"  onclick="view()" class="button1" title="查看详细数据" value="详" />{/isview}
-	    {isdel}<input type="button"  onclick="del()" class="button1" title="删除数据" value="删" />{/isdel}
+	    {isadd}<span><input type="button"  onclick="add()" class="button1" title="增加数据" value="增加数据" /> </span>{/isadd}
+	    {isedit}<span><input type="button"  onclick="edit()" class="button1" title="编辑数据" value="编辑数据" /> </span>{/isedit}
+	    {isview}<span><input type="button"  onclick="view()" class="button1" title="查看详细数据" value="查看详细" /> </span>{/isview}
+	    {isdel}<span><input type="button"  onclick="del()" class="button1" title="删除数据" value="删除数据" /> </span>{/isdel}
+	    {issearch}
+		    <span>
+			    <input type="button"  onclick="display('searchbox')" class="button1" title="搜索数据" value="搜索数据▼" />
+			    <div class="searchbox" id="searchbox" style="display:none">
+			        <table cellpadding="0" cellspacing="0">
+			          <tr>
+			            <td class="ewTableHeader">关键词:</td>
+			            <td class="ewTableAltRow"><input id="searchkey" type="text"  name="searchkey"  value="{$searchkey}" /></td>
+			          </tr>
+			          <tr>
+			          	<td class="ewTableHeader">条件:</td>
+			            <td class="ewTableAltRow"><mkrtags:radio id="searchtype" name="searchtype"  outtable="Array" value="$searchtype" outfield="AND,OR" outkey="AND,OR" /></td>   	
+			          </tr>
+			          <tr>
+			            <td colspan="2"  class="ewTableAltRow">
+			            <input type="submit"   class="button1" value="搜索" />
+			            <input type="button" name="delete" onclick="location.href='__URL__/index/'" class="button1" value="清空" />
+			            </td>
+			          </tr>
+			        </table>
+			    </div>
+		    </span>
+	    {/issearch}
     </td>
-    <td align="right">
-    {issearch}
-    <form method="GET" action="{$searchurl}">
-        <table cellpadding="0" cellspacing="1">
-          <tr>
-            <td><INPUT id="searchkey" TYPE="text"  NAME="searchkey"  value="{$searchkey}" /></td>
-            <td><input type="submit"   class="button1" value="搜索" /></td>
-            <td><input type="button" name="delete" onclick="location.href='__URL__/index/'" class="button1" value="清空" /></td>
-            <td><mkrtags:radio id="searchtype" name="searchtype"  outtable="Array" value="$searchtype" outfield="AND,OR" outkey="AND,OR" /></td>
-          </tr>
-        </table>
-      </form>
-      {/issearch}
-      </td>
   </tr>
 </table>
 <!-- 功能操作区域结束 -->
@@ -51,9 +60,9 @@
     <td title="{listshowtd_caption}"> {listshowtd_viewtags} </td>
     {/listshowtd}
     <td>
-    	{isedit}<a href="javascript:edit('{$list.id}')" title="编辑">编</a>{/isedit}
-     	{isdel}<a href="javascript:del('{$list.id}')" title="删除">删</a>{/isdel} 
-     	{isview}<a href="javascript:view('{$list.id}')" title="详细">详</a>{/isview}
+    	{isedit}<a href="javascript:edit('{$list.id}')" title="编辑本信息">编辑</a>{/isedit}
+     	{isdel}<a href="javascript:del('{$list.id}')" title="删除本信息">删除</a>{/isdel} 
+     	{isview}<a href="javascript:view('{$list.id}')" title="查看详细信息">详细</a>{/isview}
     </td>
   </tr>
   <php> endforeach; </php>

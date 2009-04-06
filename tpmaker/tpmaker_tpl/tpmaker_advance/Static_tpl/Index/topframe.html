@@ -2,16 +2,15 @@
 <include file="../Public/header" />
 <div class="header_content"  style="background-color:#E1FFB5">
      <div class="logo">{$Think.config.P_NAME}</div>
-	 <div class="right_nav">
+	<div class="right_nav">
 	    <div class="text_left">
-	    <ul class="nav_list">
-		   	 <li>最新信息</li>
-	    </ul>
+		<include file="../Public/userheader" />
 	    </div>
 		<div class="text_right">
 		<ul class="nav_return">
+			<li>[<a href="__APP__/Index/leftframe" target="leftFrame">CRM系统首页</a>]</li>
 		<volist name="top" id="top_vo">
-			<li>[<a href="__APP__/{$top_vo.name}/" target="leftFrame">{$top_vo.caption}</a>]</li>
+			<li>[<a href="__APP__/Index/left/apptreeid/{$top_vo.id}/" target="leftFrame">{$top_vo.title}</a>]</li>
 		</volist>
 		</ul>
 		</div>
