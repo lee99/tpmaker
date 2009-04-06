@@ -272,7 +272,8 @@ class sys_projectsAction extends AdminAction{
 		}else{
 			msg("文件压缩失败!!",0);
 		}
-		//$z -> Zip($zippath, './Backup/ZIP/'.$zipname['proname'].".zip"); //添加指定目录
+		
+		echo "<a href='$filename' traget='_blank'>下载本文件:$filename</a>";
 
 
 	}
