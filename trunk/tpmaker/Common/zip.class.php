@@ -270,7 +270,8 @@ class PHPZip extends Action
 }
 
 /*
-[复制到剪切板]CODE:
+
+zip文件解压
 <?
 $zipfile="a.zip"; //zip 文件名
 $i=1;             //这个是zip->get_list的时候文件对应的 [index] 号(必须是文件，也就是说 [folder]=0 的才可以)
@@ -281,10 +282,9 @@ $zip = new Zip;
 if ($zip->Extract($zipfile,$path,$i)) msg("ok"); else msg("error");
 
 ?>
+
+
 压缩文件
-
-
-[复制到剪切板]CODE:
 <?
 include("zip.class.php");
 $zip = new Zip;
@@ -303,10 +303,9 @@ msg("文件压缩成功!!");
 else
 msg("文件压缩失败!!",0));
 ?>
+
+
 浏览zip文件
-
-
-[复制到剪切板]CODE:
 <?
 $zipfile="a.zip";  //要浏览的zip文件名
 include("zip.class.php");
