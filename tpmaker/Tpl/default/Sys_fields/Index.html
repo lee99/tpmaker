@@ -3,7 +3,6 @@
 <SCRIPT LANGUAGE="JavaScript">
 <!--
 
-
 function outkeyseting(id){ //设定外键
 	//location.href  = URL+"/outkeyseting/id/"+id;
 	var jslink=URL+"/outkey/id/"+id;
@@ -12,8 +11,12 @@ function outkeyseting(id){ //设定外键
 
 
 function setissystem(id){ //系统保留的参数
-	//location.href  = URL+"/outkeyseting/id/"+id;
-	window.open(URL+"/setissystem/id/"+id, 'mini');
+	PopModalWindow(URL+"/setissystem/id/"+id,'600','300');
+}
+
+
+function copyselect(){ //拷贝本表生成新数据表
+	PopModalWindow('__URL__/copyselect/pid/{$_GET['pid']}','600','300');
 }
 
 //-->
@@ -48,7 +51,7 @@ function setissystem(id){ //系统保留的参数
       [
 	      ['▼','本数据表高级操作列表',null,null,'高级操作列表',
 		      ['+', '删除本数据表', '__APP__/Sys_tables/delete/id/{$_GET['pid']}', null,'删除本数据表'],
-		      ['+', '拷贝本表生成新数据表', '__URL__/copyselect/pid/{$_GET['pid']}', 'mini', '拷贝本表生成新数据表'],
+		      ['+', '拷贝本表生成新数据表', 'javascript:copyselect();', null, '拷贝本表生成新数据表'],
 		      ['+', '基于本数据表生成视图', '', null, '基于本数据表生成视图'],
 		      ['+', '检查本数据表合理性', '', null, '检查本数据表合理性'],
 		      ['+', '生成本表程序', '__URL__/buidetable/pid/{$_GET['pid']}', 'blank', '生成本表程序'],
