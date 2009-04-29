@@ -9,7 +9,7 @@ class PublicAction extends Action {
 	public function _initialize() {
 		import('ORG.RBAC.RBAC');
 
-		/* 检查认证
+		/* 检查认证*/
 		if(!RBAC::checkAccess()) {
 			//检查认证识别号
 			if(!$_SESSION[C('USER_AUTH_KEY')]) {
@@ -21,7 +21,7 @@ class PublicAction extends Action {
 				$this->error('没有权限！');
 			}
 		}
-		*/
+		
 		import("ORG.Util.Page");//引用分页类
 		import("@.Com.ajaxpage");//引用ajax分页类
 
