@@ -16,35 +16,17 @@ $byid("left_nav_right").style.height=thisheight+'px';
  // 导航栏配置文件
 var outlookbar=new outlook();
 var t;
-t=outlookbar.addtitle('用户列表','user',1,0,'')
-outlookbar.additem('查看个人资料',t,'profile.html')
+<volist name="left" id="leftlist">
+t=outlookbar.addtitle('{$leftlist.title}','thinkmaker',1,0,'');
 
+<sublist name="leftlist['subapp']" id="sub">
+outlookbar.additem('{$sub.title}',t,'__APP__/{$sub.appmodel}');
 
-
-d=outlookbar.addtitle('广告设置','user',1,0,'')
-outlookbar.additem('登录文学论坛',d,'#')
-outlookbar.additem('发出电子邮件',d,'#')
-
-t=outlookbar.addtitle('新闻设置','user',1,0,'')
-outlookbar.additem('尚未通过文章',t,'un_pass.php')
-outlookbar.additem('已经通过文章',t,'al_pass.php')
-outlookbar.additem('修改现有文章',t,'modify.php')
-outlookbar.additem('撰写最新文章',t,'sub_new.php')
-outlookbar.additem('投稿给文学报',t,'#')
-
-
-
-t=outlookbar.addtitle('新闻设置','user',1,0,'')
-outlookbar.additem('尚未通过文章',t,'un_pass.php')
-outlookbar.additem('已经通过文章',t,'al_pass.php')
-outlookbar.additem('修改现有文章',t,'modify.php')
-outlookbar.additem('撰写最新文章',t,'sub_new.php')
-outlookbar.additem('投稿给文学报',t,'#')
-
-
+</sublist>
+</volist>
 
 //initinav('系统设置');
-list_sub_nav('user');
+list_sub_nav('thinkmaker');
 
 
 

@@ -11,6 +11,14 @@ class IndexAction extends PublicAction{
 
 	public function leftframe(){
 		//左边的默认首页
+		$table=D('apptree');
+		$pid=$_GET['apptreeid'];
+		$leftdate=$table->findAll("type='0' and pid ='$pid'");
+		foreach($leftdate as $k=>$v){
+			$leftdate[$k]['subapp']=$table->findAll(' pid ='.$v[id],'*','seqNO ASC');
+		}
+		$this->assign('left',$leftdate);
+		//dump($leftdate);
 		$this->display();
 	}
 	
