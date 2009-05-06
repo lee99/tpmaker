@@ -134,7 +134,7 @@ var ThinkAjax = {
 			// 调试模式下面输出eval前的字符串
 			alert(str);
 		}
-		//$return =  eval('(' + str + ')');
+		$return =  eval('(' + str + ')');
 		this.status = $return.status;
 		this.info	 =	 $return.info;
 		this.data = $return.data;
