@@ -29,8 +29,16 @@ function TabPaneadd(toobj,title,text,type)
     	text="<iframe frameborder='0' height='100%' width='100%' src='"+text+"'></iframe>";
     }
 	$byid(toobj+i).innerHTML="<h2 class='tab' title='双击关闭标签'>"+title+"</h2>"+text;
+	//alert(toobj+i);
+
 	setupAllTabs();
+	//alert(toobj+i);
+	//alert(WebFXTabPane.selectedIndex);
 	
+	var allcs = obj.childNodes.length-2;
+	//因为最少有两个子对象(一个是显示内容,一个是默认标签)在里面,所以我减去2.
+	//alert(allcs);
+	obj.tabPane.setSelectedIndex(allcs);
 }
 
 
@@ -126,9 +134,11 @@ WebFXTabPane.prototype.removeIndex = function ( n ) {
 		this.selectedIndex = n;
 		//alert(this.pages[ this.selectedIndex ]);
 		this.pages[ this.selectedIndex ].removetab();
+
 	}else{
 		alert('第一个标签不允许删除!');
 	}
+
 };
 	
 WebFXTabPane.prototype.getSelectedIndex = function () {
@@ -275,6 +285,11 @@ WebFXTabPage.prototype.select = function () {
 WebFXTabPage.prototype.remove = function () {
 	this.tabPane.removeIndex( this.index );
 	setupAllTabs;
+
+	//显示最后一个
+	//var bn = this.element.parentNode.childNodes.length-1;
+	//因为最少有两个子对象(一个是显示内容,一个是默认标签)在里面,所以我减去2.
+	//alert(this.tabPane.childNodes.length);
 	this.tabPane.setSelectedIndex(0);
 };
 	
@@ -324,16 +339,22 @@ function setupAllTabs() {
 		if ( cn == "" ) continue;
 		
 		// uninitiated tab pane
-		if ( tabPaneRe.test( cn ) && !el.tabPane )
+		if ( tabPaneRe.test( cn ) && !el.tabPane ){
 			new WebFXTabPane( el );
-	
+			//alert("对象:"+el.id);
+			//取得对象的名称
+		}
 		// unitiated tab page wit a valid tab pane parent
 		else if ( tabPageRe.test( cn ) && !el.tabPage &&
 					tabPaneRe.test( el.parentNode.className ) ) {
 			el.parentNode.tabPane.addTabPage( el );			
 		}
 	}
+	
 }
+
+
+
 
 function disposeAllTabs() {
 	if ( !hasSupport() ) return;
