@@ -21,7 +21,7 @@ class IndexAction extends PublicAction{
 		//dump($leftdate);
 		$this->display();
 	}
-	
+
 	public function left(){
 		//子模板的左边页面
 		$table=D('apptree');
@@ -32,6 +32,7 @@ class IndexAction extends PublicAction{
 		}
 		$this->assign('left',$leftdate);
 		//dump($leftdate);
+		//exit;
 		$this->display();
 	}
 

@@ -191,12 +191,13 @@ class tpmakerdb extends Action
 
 	function buideall(){
 		$this->creatdb();
-		$this->creatpretecttable();
+		
 		$list=D($this->tables);
 		$date=$list->findall('ismodel=0 and pid='.$this->projectid);
 		foreach ($date as $gdate){
 			$this->creattable($gdate['id']);
 		}
+		$this->creatpretecttable();
 	}
 
 	
@@ -234,6 +235,7 @@ class tpmakerdb extends Action
   `type` int(11) NOT NULL COMMENT '类型',
   `pid` int(11) NOT NULL default '0' COMMENT '上级ID',
   `appmodel` varchar(40) default NULL COMMENT '数据表',
+  `link` varchar(240) default NULL COMMENT '链接',
   `seqNo` int(11) NOT NULL,
   PRIMARY KEY  (`id`)
 ) ENGINE=MyISAM  DEFAULT CHARSET=utf8;";
@@ -245,13 +247,18 @@ class tpmakerdb extends Action
 				$gettables=$this->gettables($d['tid']);//获得相应的模块
 				$tablename=$gettables['title'];
 			}
-			$insql[]="('".$d['id']."', '".$d['title']."', '".$d['shortname']."','".$d['type']."','".$d['pid']."','".$tablename."','".$d['seqNo']."')";
+			$insql[]="('".$d['id']."', '".$d['title']."', '".$d['shortname']."','".$d['type']."','".$d['pid']."','".$tablename."','".$d['link']."','".$d['seqNo']."')";
 		}
 		$insertsql=join(',',$insql);
-		$insertsql="INSERT INTO `".$project_tbpre."apptree` (`id`, `title`, `shortname`, `type`, `pid`, `appmodel`, `seqNo`) VALUES $insertsql ;";
+		$insertsql="INSERT INTO `".$project_tbpre."apptree` (`id`, `title`, `shortname`, `type`, `pid`, `appmodel`, `link`, `seqNo`) VALUES $insertsql ;";
 		
 		$this->dosql($sql_infoherd,'生成数据库保留的数据库:[apptree]');
 		$this->dosql($insertsql,'填充保留的数据库:[apptree]');
+		
+		$insertsql="INSERT INTO `".$project_tbpre."user` (`account`, `nickname`, `password`, `verify`, `remark`, `status`) VALUES ('admin', '管理员', '21232f297a57a5a743894a0e4a801fc3', '8888', '系统管理员', 1 );";
+		
+		$this->dosql($insertsql,'写入默认的用户[admin]');
+		
 		
 	}
 

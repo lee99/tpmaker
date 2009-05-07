@@ -41,7 +41,7 @@ class ApptreeAction extends AdminAction{
 
 		$list=D('apptree');
 		$tids=explode(',',$_POST['sortvaue']);//数组转换
-		$list->delete('type=1 and pid='.$_POST[pid]);
+		$list->delete('type=1 and link ="" and pid='.$_POST[pid]);
 		for ($i=0;$i<count($tids);$i++){
 			$passshort=id_To_EValue('apptree','shortname','id',$_POST[pid]);
 			$passtitle=id_To_EValue('sys_tables','caption','id',$tids[$i]);
