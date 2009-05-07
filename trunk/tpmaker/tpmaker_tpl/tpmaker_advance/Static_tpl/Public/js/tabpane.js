@@ -25,8 +25,9 @@ function TabPaneadd(toobj,title,text,type)
 	div.className= "tab-page";
 	div.id= toobj+i;
     obj.appendChild(div);
+
     if(type==1){
-    	text="<iframe frameborder='0' height='100%' width='100%' src='"+text+"'></iframe>";
+    	text="<iframe frameborder='0' height='100%' width='100%' src='"+text+"'id='if_"+toobj+i+"'></iframe>";
     }
 	$byid(toobj+i).innerHTML="<h2 class='tab' title='双击关闭标签'>"+title+"</h2>"+text;
 	//alert(toobj+i);
@@ -35,10 +36,11 @@ function TabPaneadd(toobj,title,text,type)
 	//alert(toobj+i);
 	//alert(WebFXTabPane.selectedIndex);
 	
-	var allcs = obj.childNodes.length-2;
+	var allcs =  obj.getElementsByTagName('h2').length-1;
 	//因为最少有两个子对象(一个是显示内容,一个是默认标签)在里面,所以我减去2.
 	//alert(allcs);
-	obj.tabPane.setSelectedIndex(allcs);
+	//obj.tabPane.setSelectedIndex(allcs);
+	//有不兼容的现象,先关了.
 }
 
 
@@ -117,14 +119,17 @@ WebFXTabPane.prototype.classNameTag = "dynamic-tab-pane-control";
 
 WebFXTabPane.prototype.setSelectedIndex = function ( n ) {
 	if (this.selectedIndex != n) {
-		if (this.selectedIndex != null && this.pages[ this.selectedIndex ] != null )
+		if (this.selectedIndex != null && this.pages[ this.selectedIndex ] != null ){
 			this.pages[ this.selectedIndex ].hide();
+		}		
 		this.selectedIndex = n;
 		//alert(this.pages[ this.selectedIndex ]);
 		this.pages[ this.selectedIndex ].show();
-		
-		if ( this.useCookie )
+
+
+		if ( this.useCookie ){
 			WebFXTabPane.setCookie( "webfxtab_" + this.element.id, n );	// session cookie
+		}
 	}
 };
 
@@ -267,6 +272,7 @@ WebFXTabPage.prototype.removetab = function () {
 	var te = this.element;
 	el.parentNode.removeChild(el);
 	te.parentNode.removeChild(te);
+	//alert(te.id);
 };
 
 WebFXTabPage.prototype.hide = function () {
@@ -284,12 +290,7 @@ WebFXTabPage.prototype.select = function () {
 
 WebFXTabPage.prototype.remove = function () {
 	this.tabPane.removeIndex( this.index );
-	setupAllTabs;
-
-	//显示最后一个
-	//var bn = this.element.parentNode.childNodes.length-1;
-	//因为最少有两个子对象(一个是显示内容,一个是默认标签)在里面,所以我减去2.
-	//alert(this.tabPane.childNodes.length);
+	setupAllTabs();
 	this.tabPane.setSelectedIndex(0);
 };
 	

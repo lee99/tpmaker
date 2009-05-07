@@ -1,60 +1,122 @@
-INSERT INTO `tp_apptree` VALUES ('17','系统权限组别管理','','26','1','9','272','0');
-INSERT INTO `tp_apptree` VALUES ('6','客户管理系统','sys_com','26','0','0','0','0');
-INSERT INTO `tp_apptree` VALUES ('8','办公自动化系统','sys_oa','26','0','0','0','0');
-INSERT INTO `tp_apptree` VALUES ('9','用户管理','sys_user','26','0','12','0','0');
-INSERT INTO `tp_apptree` VALUES ('10','职位管理系统','sys_post','26','0','0','0','0');
-INSERT INTO `tp_apptree` VALUES ('11','个人信息管理','sys_per','26','0','0','0','0');
-INSERT INTO `tp_apptree` VALUES ('12','系统属性管理系统','sys_adm','26','0','0','0','0');
-INSERT INTO `tp_apptree` VALUES ('13','用户管理','','26','1','9','276','0');
-INSERT INTO `tp_apptree` VALUES ('14','查看用户登陆记录','','26','1','30','808','0');
-INSERT INTO `tp_apptree` VALUES ('15','查看用户拷贝数据记录','','26','1','30','809','0');
-INSERT INTO `tp_apptree` VALUES ('16','人才面试管理系统','sys_view','26','0','0','0','0');
-INSERT INTO `tp_apptree` VALUES ('18','人才设定','conf_per','26','0','12','0','0');
-INSERT INTO `tp_apptree` VALUES ('19','企业设定','conf_com','26','0','12','0','0');
-INSERT INTO `tp_apptree` VALUES ('20','企业年薪类型','','26','1','19','820','0');
-INSERT INTO `tp_apptree` VALUES ('21','人才到岗时间设定','','26','1','18','816','0');
-INSERT INTO `tp_apptree` VALUES ('22','公共设定','conf_pub','26','0','12','0','0');
-INSERT INTO `tp_apptree` VALUES ('23','企业电话类型','','26','1','19','822','0');
-INSERT INTO `tp_apptree` VALUES ('24','公共招聘途径','','26','1','19','819','0');
-INSERT INTO `tp_apptree` VALUES ('25','职位设定','conf_post','26','0','12','0','0');
-INSERT INTO `tp_apptree` VALUES ('26','职位分类表','','26','1','25','821','0');
-INSERT INTO `tp_apptree` VALUES ('27','企业福利设定','','26','1','19','817','0');
-INSERT INTO `tp_apptree` VALUES ('28','行业汇总表','','26','1','22','818','0');
-INSERT INTO `tp_apptree` VALUES ('29','安全统计系统','sys_log','26','0','0','0','0');
-INSERT INTO `tp_apptree` VALUES ('30','用户安全统计','user_log','26','0','29','0','0');
-INSERT INTO `tp_apptree` VALUES ('31','客户管理系统','sys_com','41','0','0','0','0');
-INSERT INTO `tp_apptree` VALUES ('32','人才管理系统','sys_per','41','0','0','0','0');
-INSERT INTO `tp_apptree` VALUES ('33','NS办公系统','sys_oa','41','0','0','0','0');
-INSERT INTO `tp_apptree` VALUES ('34','系统设置管理','sys_conf','41','0','0','0','0');
-INSERT INTO `tp_apptree` VALUES ('35','系统人才设置','sys_conf_per','41','0','34','0','0');
-INSERT INTO `tp_apptree` VALUES ('36','公共办公应用','sys_oa1','41','0','33','0','0');
-INSERT INTO `tp_apptree` VALUES ('130','人才电话管理表','sys_oa_3','41','1','33','980','3');
-INSERT INTO `tp_apptree` VALUES ('129','企业其它空位','sys_oa_2','41','1','33','982','2');
-INSERT INTO `tp_apptree` VALUES ('128','人才推荐状态','sys_oa_1','41','1','33','985','1');
-INSERT INTO `tp_apptree` VALUES ('131','订单状态管理','sys_oa_4','41','1','33','976','4');
-INSERT INTO `tp_apptree` VALUES ('132','系统UBG管理','sys_oa_5','41','1','33','950','5');
-INSERT INTO `tp_apptree` VALUES ('133','大类职位表','sys_oa_6','41','1','33','983','6');
-INSERT INTO `tp_apptree` VALUES ('134','人才电话管理表','sys_oa_7','41','1','33','980','7');
-INSERT INTO `tp_apptree` VALUES ('135','系统UBG管理','sys_oa_8','41','1','33','950','8');
-INSERT INTO `tp_apptree` VALUES ('136','用户管理','sys_user','42','0','142','0','0');
-INSERT INTO `tp_apptree` VALUES ('137','用户管理','sys_user_0','42','1','136','1032','0');
-INSERT INTO `tp_apptree` VALUES ('138','系统权限表','sys_user_1','42','1','136','1033','1');
-INSERT INTO `tp_apptree` VALUES ('139','权限组别用户','sys_user_2','42','1','136','1034','2');
-INSERT INTO `tp_apptree` VALUES ('140','权限节点','sys_user_3','42','1','136','1035','3');
-INSERT INTO `tp_apptree` VALUES ('141','权限组别','sys_user_4','42','1','136','1036','4');
-INSERT INTO `tp_apptree` VALUES ('142','统计设定','sys_conf','42','0','0','0','0');
-INSERT INTO `tp_apptree` VALUES ('143','流量分析','sys_ip','42','0','0','0','0');
-INSERT INTO `tp_apptree` VALUES ('144','广告分析','sys_ad','42','0','0','0','0');
-INSERT INTO `tp_apptree` VALUES ('145','业务分析','sys_biz','42','0','0','0','0');
-INSERT INTO `tp_apptree` VALUES ('146','回头客','st_return','42','0','143','0','0');
-INSERT INTO `tp_apptree` VALUES ('147','国家','st_country','42','0','143','0','0');
-INSERT INTO `tp_apptree` VALUES ('148','工具条','st_alexa','42','0','143','0','0');
-INSERT INTO `tp_apptree` VALUES ('149','受访页面','st_page','42','0','143','0','0');
-INSERT INTO `tp_apptree` VALUES ('150','省份','st_province','42','0','143','0','0');
-INSERT INTO `tp_apptree` VALUES ('151','城市','st_city','42','0','143','0','0');
-INSERT INTO `tp_apptree` VALUES ('152','语言','st_language','42','0','143','0','0');
-INSERT INTO `tp_apptree` VALUES ('153','屏幕','st_screen','42','0','143','0','0');
-INSERT INTO `tp_apptree` VALUES ('154','浏览器','st_soft','42','0','143','0','0');
+DROP TABLE `tp_apptree`;
+CREATE TABLE `tp_apptree` (
+  `id` int(11) NOT NULL auto_increment,
+  `title` varchar(40) NOT NULL COMMENT '标题',
+  `shortname` varchar(24) NOT NULL,
+  `projectid` int(11) NOT NULL COMMENT '项目ID',
+  `type` int(11) NOT NULL COMMENT '类型',
+  `pid` int(11) NOT NULL default '0' COMMENT '上级ID',
+  `tid` int(11) NOT NULL COMMENT '数据表ID',
+  `seqNo` int(11) NOT NULL,
+  `link` varchar(255) NOT NULL,
+  PRIMARY KEY  (`id`)
+) ENGINE=MyISAM AUTO_INCREMENT=205 DEFAULT CHARSET=utf8;
+
+INSERT INTO `tp_apptree` VALUES ('17','系统权限组别管理','','26','1','9','272','0','');
+INSERT INTO `tp_apptree` VALUES ('6','客户管理系统','sys_com','26','0','0','0','0','');
+INSERT INTO `tp_apptree` VALUES ('8','办公自动化系统','sys_oa','26','0','0','0','0','');
+INSERT INTO `tp_apptree` VALUES ('9','用户管理','sys_user','26','0','12','0','0','');
+INSERT INTO `tp_apptree` VALUES ('10','职位管理系统','sys_post','26','0','0','0','0','');
+INSERT INTO `tp_apptree` VALUES ('11','个人信息管理','sys_per','26','0','0','0','0','');
+INSERT INTO `tp_apptree` VALUES ('12','系统属性管理系统','sys_adm','26','0','0','0','0','');
+INSERT INTO `tp_apptree` VALUES ('13','用户管理','','26','1','9','276','0','');
+INSERT INTO `tp_apptree` VALUES ('14','查看用户登陆记录','','26','1','30','808','0','');
+INSERT INTO `tp_apptree` VALUES ('15','查看用户拷贝数据记录','','26','1','30','809','0','');
+INSERT INTO `tp_apptree` VALUES ('16','人才面试管理系统','sys_view','26','0','0','0','0','');
+INSERT INTO `tp_apptree` VALUES ('18','人才设定','conf_per','26','0','12','0','0','');
+INSERT INTO `tp_apptree` VALUES ('19','企业设定','conf_com','26','0','12','0','0','');
+INSERT INTO `tp_apptree` VALUES ('20','企业年薪类型','','26','1','19','820','0','');
+INSERT INTO `tp_apptree` VALUES ('21','人才到岗时间设定','','26','1','18','816','0','');
+INSERT INTO `tp_apptree` VALUES ('22','公共设定','conf_pub','26','0','12','0','0','');
+INSERT INTO `tp_apptree` VALUES ('23','企业电话类型','','26','1','19','822','0','');
+INSERT INTO `tp_apptree` VALUES ('24','公共招聘途径','','26','1','19','819','0','');
+INSERT INTO `tp_apptree` VALUES ('25','职位设定','conf_post','26','0','12','0','0','');
+INSERT INTO `tp_apptree` VALUES ('26','职位分类表','','26','1','25','821','0','');
+INSERT INTO `tp_apptree` VALUES ('27','企业福利设定','','26','1','19','817','0','');
+INSERT INTO `tp_apptree` VALUES ('28','行业汇总表','','26','1','22','818','0','');
+INSERT INTO `tp_apptree` VALUES ('29','安全统计系统','sys_log','26','0','0','0','0','');
+INSERT INTO `tp_apptree` VALUES ('30','用户安全统计','user_log','26','0','29','0','0','');
+INSERT INTO `tp_apptree` VALUES ('31','客户管理系统','sys_com','41','0','0','0','0','');
+INSERT INTO `tp_apptree` VALUES ('32','人才管理系统','sys_per','41','0','0','0','0','');
+INSERT INTO `tp_apptree` VALUES ('33','NS办公系统','sys_oa','41','0','0','0','0','');
+INSERT INTO `tp_apptree` VALUES ('34','系统设置管理','sys_conf','41','0','0','0','0','');
+INSERT INTO `tp_apptree` VALUES ('35','系统人才设置','sys_conf_per','41','0','34','0','0','');
+INSERT INTO `tp_apptree` VALUES ('36','公共办公应用','sys_oa1','41','0','33','0','0','');
+INSERT INTO `tp_apptree` VALUES ('130','人才电话管理表','sys_oa_3','41','1','33','980','3','');
+INSERT INTO `tp_apptree` VALUES ('129','企业其它空位','sys_oa_2','41','1','33','982','2','');
+INSERT INTO `tp_apptree` VALUES ('128','人才推荐状态','sys_oa_1','41','1','33','985','1','');
+INSERT INTO `tp_apptree` VALUES ('131','订单状态管理','sys_oa_4','41','1','33','976','4','');
+INSERT INTO `tp_apptree` VALUES ('132','系统UBG管理','sys_oa_5','41','1','33','950','5','');
+INSERT INTO `tp_apptree` VALUES ('133','大类职位表','sys_oa_6','41','1','33','983','6','');
+INSERT INTO `tp_apptree` VALUES ('134','人才电话管理表','sys_oa_7','41','1','33','980','7','');
+INSERT INTO `tp_apptree` VALUES ('135','系统UBG管理','sys_oa_8','41','1','33','950','8','');
+INSERT INTO `tp_apptree` VALUES ('136','用户管理','sys_user','42','0','142','0','0','');
+INSERT INTO `tp_apptree` VALUES ('137','用户管理','sys_user_0','42','1','136','0','0','');
+INSERT INTO `tp_apptree` VALUES ('138','系统权限表','sys_user_1','42','1','136','0','1','');
+INSERT INTO `tp_apptree` VALUES ('139','权限组别用户','sys_user_2','42','1','136','0','2','');
+INSERT INTO `tp_apptree` VALUES ('140','权限节点','sys_user_3','42','1','136','0','3','');
+INSERT INTO `tp_apptree` VALUES ('141','权限组别','sys_user_4','42','1','136','0','4','');
+INSERT INTO `tp_apptree` VALUES ('142','统计设定','sys_conf','42','0','0','0','0','');
+INSERT INTO `tp_apptree` VALUES ('143','流量分析','sys_ip','42','0','0','0','0','');
+INSERT INTO `tp_apptree` VALUES ('144','广告分析','sys_ad','42','0','0','0','0','');
+INSERT INTO `tp_apptree` VALUES ('145','业务分析','sys_biz','42','0','0','0','0','');
+INSERT INTO `tp_apptree` VALUES ('146','基础流量分析','st_count','42','0','143','0','0','');
+INSERT INTO `tp_apptree` VALUES ('147','今日详情','st_today','42','0','143','0','0','');
+INSERT INTO `tp_apptree` VALUES ('148','昨日详情','st_yestoday','42','0','143','0','0','');
+INSERT INTO `tp_apptree` VALUES ('149','所有详情','st_all','42','0','143','0','0','');
+INSERT INTO `tp_apptree` VALUES ('150','工具条分析','st_tool','42','0','143','0','0','');
+INSERT INTO `tp_apptree` VALUES ('155','概况','','42','1','146','0','0','http://192.168.1.108:81/count/main.php');
+INSERT INTO `tp_apptree` VALUES ('156','时段分析','','42','1','146','0','0','http://192.168.1.108:81/count/stat_day.php');
+INSERT INTO `tp_apptree` VALUES ('157','日段分析','','42','1','146','0','0','http://192.168.1.108:81/count/stat_month.php');
+INSERT INTO `tp_apptree` VALUES ('158','月分析','','42','1','146','0','0','http://192.168.1.108:81/count/stat_year.php');
+INSERT INTO `tp_apptree` VALUES ('159','Alexa工具条分析','','42','1','150','0','0','http://192.168.1.108:81/count/stat_alexa.php');
+INSERT INTO `tp_apptree` VALUES ('160','明细访问','','42','1','146','0','0','http://192.168.1.108:81/count/show_today.php');
+INSERT INTO `tp_apptree` VALUES ('161','关键字统计','今日-关键字统计','42','1','147','0','0','http://192.168.1.108:81/count/keyword.php');
+INSERT INTO `tp_apptree` VALUES ('162','来源统计','今日-来源统计','42','1','147','0','0','http://192.168.1.108:81/count/referer.php');
+INSERT INTO `tp_apptree` VALUES ('163','回头客','今日-回头客','42','1','147','0','0','http://192.168.1.108:81/count/return.php');
+INSERT INTO `tp_apptree` VALUES ('164','受访页面','今日-受访页面','42','1','147','0','0','http://192.168.1.108:81/count/page.php');
+INSERT INTO `tp_apptree` VALUES ('165','地区统计','今日-地区统计','42','1','147','0','0','http://192.168.1.108:81/count/province.php');
+INSERT INTO `tp_apptree` VALUES ('166','语言统计','今日-语言统计','42','1','147','0','0','http://192.168.1.108:81/count/language.php');
+INSERT INTO `tp_apptree` VALUES ('167','时区统计','今日-时区统计','42','1','147','0','0','http://192.168.1.108:81/count/timezone.php');
+INSERT INTO `tp_apptree` VALUES ('168','屏幕统计','今日-屏幕统计','42','1','147','0','0','http://192.168.1.108:81/count/screen.php');
+INSERT INTO `tp_apptree` VALUES ('169','浏览器统计','今日-浏览器统计','42','1','147','0','0','http://192.168.1.108:81/count/soft.php');
+INSERT INTO `tp_apptree` VALUES ('170','浏览器统计','昨日-浏览器统计','42','1','148','0','0','http://192.168.1.108:81/count/soft.php?type=2');
+INSERT INTO `tp_apptree` VALUES ('171','屏幕统计','昨日-屏幕统计','42','1','148','0','0','http://192.168.1.108:81/count/screen.php?type=2');
+INSERT INTO `tp_apptree` VALUES ('172','时区统计','昨日-时区统计','42','1','148','0','0','http://192.168.1.108:81/count/timezone.php?type=2');
+INSERT INTO `tp_apptree` VALUES ('173','语言统计','昨日-语言统计','42','1','148','0','0','http://192.168.1.108:81/count/language.php?type=2');
+INSERT INTO `tp_apptree` VALUES ('174','地区统计','昨日-地区统计','42','1','148','0','0','http://192.168.1.108:81/count/timezone.php?type=2');
+INSERT INTO `tp_apptree` VALUES ('175','受访页面','昨日-受访页面','42','1','148','0','0','http://192.168.1.108:81/count/page.php?type=2');
+INSERT INTO `tp_apptree` VALUES ('176','回头客','昨日-回头客','42','1','148','0','0','http://192.168.1.108:81/count/return.php?type=2');
+INSERT INTO `tp_apptree` VALUES ('177','来源统计','昨日-来源统计','42','1','148','0','0','http://192.168.1.108:81/count/referer.php?type=2');
+INSERT INTO `tp_apptree` VALUES ('179','浏览器统计','所有-浏览器统计','42','1','149','0','0','http://192.168.1.108:81/count/soft.php?type=0');
+INSERT INTO `tp_apptree` VALUES ('180','屏幕统计','所有-屏幕统计','42','1','149','0','0','http://192.168.1.108:81/count/screen.php?type=0');
+INSERT INTO `tp_apptree` VALUES ('181','时区统计','所有-时区统计','42','1','149','0','0','http://192.168.1.108:81/count/timezone.php?type=0');
+INSERT INTO `tp_apptree` VALUES ('182','语言统计','所有-语言统计','42','1','149','0','0','http://192.168.1.108:81/count/language.php?type=0');
+INSERT INTO `tp_apptree` VALUES ('183','地区统计','所有-地区统计','42','1','149','0','0','http://192.168.1.108:81/count/province.php?type=0');
+INSERT INTO `tp_apptree` VALUES ('197','关键字统计','昨日-关键字统计','42','1','148','0','0','http://192.168.1.108:81/count/referer.php?type=2');
+INSERT INTO `tp_apptree` VALUES ('202','最近7日屏幕数据','','42','1','199','0','0','http://192.168.1.108:81/count/click_list.php?day=7');
+INSERT INTO `tp_apptree` VALUES ('201','昨日屏幕数据','','42','1','199','0','0','http://192.168.1.108:81/count/click_list.php?day=1');
+INSERT INTO `tp_apptree` VALUES ('200','今日屏幕数据','','42','1','199','0','0','http://192.168.1.108:81/count/click_list.php?day=0');
+INSERT INTO `tp_apptree` VALUES ('199','屏幕轨迹记录','st_creen','42','0','143','0','0','');
+INSERT INTO `tp_apptree` VALUES ('198','受访页面','所有-受访页面','42','1','149','0','0','http://192.168.1.108:81/count/page.php?type=0');
+INSERT INTO `tp_apptree` VALUES ('194','回头客','所有-回头客','42','1','149','0','0','http://192.168.1.108:81/count/return.php?type=0');
+INSERT INTO `tp_apptree` VALUES ('195','来源统计','所有-来源统计','42','1','149','0','0','http://192.168.1.108:81/count/referer.php?type=0');
+INSERT INTO `tp_apptree` VALUES ('196','关键字统计','所有-关键字统计','42','1','149','0','0','http://192.168.1.108:81/count/keyword.php?type=0');
+INSERT INTO `tp_apptree` VALUES ('203','最近30日屏幕数据','','42','1','199','0','0','http://192.168.1.108:81/count/click_list.php?day=30');
+INSERT INTO `tp_apptree` VALUES ('204','所有屏幕数据','','42','1','199','0','0','http://192.168.1.108:81/count/click_list.php?day=all');
+DROP TABLE `tp_con_tree`;
+CREATE TABLE `tp_con_tree` (
+  `id` int(11) NOT NULL auto_increment,
+  `tid` int(11) NOT NULL,
+  `pid` int(11) NOT NULL default '0',
+  `title` varchar(240) NOT NULL,
+  `model` varchar(240) NOT NULL,
+  `action` varchar(240) NOT NULL,
+  `icon` varchar(240) NOT NULL,
+  `seqNo` int(11) default NULL,
+  PRIMARY KEY  (`id`)
+) ENGINE=MyISAM AUTO_INCREMENT=39 DEFAULT CHARSET=utf8 COMMENT='左边的树';
+
 INSERT INTO `tp_con_tree` VALUES ('19','0','0','[根目录]其它属性设定','','','b_import.png','0');
 INSERT INTO `tp_con_tree` VALUES ('2','2','0','其它小工具','','','b_import.png','0');
 INSERT INTO `tp_con_tree` VALUES ('3','3','1','[字段]设定','','','b_import.png','0');
@@ -88,9 +150,33 @@ INSERT INTO `tp_con_tree` VALUES ('35','35','34','附加规则设定','sub_auto_
 INSERT INTO `tp_con_tree` VALUES ('36','36','34','填充条件设定','sub_auto_con','index','page.gif','0');
 INSERT INTO `tp_con_tree` VALUES ('37','37','1','公共HTML标签类型','sub_htmltags','index','b_import.png','0');
 INSERT INTO `tp_con_tree` VALUES ('38','38','17','当前系统数据恢复','dbbackup','inport_db','page.gif','0');
+DROP TABLE `tp_designer`;
+CREATE TABLE `tp_designer` (
+  `id` int(11) NOT NULL auto_increment,
+  `master_pid` int(11) NOT NULL,
+  `master_table` varchar(64) character set utf8 collate utf8_bin NOT NULL default '',
+  `master_field` varchar(64) character set utf8 collate utf8_bin NOT NULL default '',
+  `foreign_pid` int(11) NOT NULL,
+  `foreign_table` varchar(64) character set utf8 collate utf8_bin NOT NULL default '',
+  `foreign_field` varchar(64) character set utf8 collate utf8_bin NOT NULL default '',
+  PRIMARY KEY  (`id`)
+) ENGINE=MyISAM AUTO_INCREMENT=24 DEFAULT CHARSET=utf8 COMMENT='数据关联';
+
 INSERT INTO `tp_designer` VALUES ('15','26','node','pid','26','sta_infos','id');
 INSERT INTO `tp_designer` VALUES ('22','26','attach','uploadTime','26','Interview','id');
 INSERT INTO `tp_designer` VALUES ('23','26','Interview','update_on','26','node','id');
+DROP TABLE `tp_designer_coords`;
+CREATE TABLE `tp_designer_coords` (
+  `id` int(11) NOT NULL auto_increment,
+  `projectid` int(11) NOT NULL,
+  `table_name` varchar(64) NOT NULL default '',
+  `x` int(11) default NULL,
+  `y` int(11) default NULL,
+  `v` tinyint(4) default NULL,
+  `h` tinyint(4) default NULL,
+  PRIMARY KEY  (`id`)
+) ENGINE=MyISAM AUTO_INCREMENT=631 DEFAULT CHARSET=utf8 COMMENT='坐标定位';
+
 INSERT INTO `tp_designer_coords` VALUES ('557','21','user','616','436','0','1');
 INSERT INTO `tp_designer_coords` VALUES ('556','21','orderlogs','664','153','0','1');
 INSERT INTO `tp_designer_coords` VALUES ('555','21','order','776','105','0','1');
@@ -144,14 +230,60 @@ INSERT INTO `tp_designer_coords` VALUES ('617','1','Order','430','382','1','1');
 INSERT INTO `tp_designer_coords` VALUES ('616','1','Company','513','40','1','1');
 INSERT INTO `tp_designer_coords` VALUES ('615','1','Person','66','54','1','1');
 INSERT INTO `tp_designer_coords` VALUES ('630','1','Com2com','777','32','1','1');
+DROP TABLE `tp_pro_templete`;
+CREATE TABLE `tp_pro_templete` (
+  `id` int(11) NOT NULL auto_increment COMMENT 'ID',
+  `title` varchar(200) default NULL COMMENT '标题',
+  `seqNo` int(11) default NULL COMMENT '排序',
+  `color` int(11) default NULL,
+  `tplname` varchar(200) default NULL COMMENT '模板的文件夹',
+  PRIMARY KEY  (`id`)
+) ENGINE=MyISAM AUTO_INCREMENT=3 DEFAULT CHARSET=utf8 COMMENT='项目模板风格设定';
+
 INSERT INTO `tp_pro_templete` VALUES ('1','[默认]TP-maker风格','0','1','tpmaker_default');
 INSERT INTO `tp_pro_templete` VALUES ('2','[高级]TP-advance风格','0','2','tpmaker_advance');
+DROP TABLE `tp_relation`;
+CREATE TABLE `tp_relation` (
+  `master_db` varchar(64) collate utf8_bin NOT NULL default '',
+  `master_table` varchar(64) collate utf8_bin NOT NULL default '',
+  `master_field` varchar(64) collate utf8_bin NOT NULL default '',
+  `foreign_db` varchar(64) collate utf8_bin NOT NULL default '',
+  `foreign_table` varchar(64) collate utf8_bin NOT NULL default '',
+  `foreign_field` varchar(64) collate utf8_bin NOT NULL default '',
+  PRIMARY KEY  (`master_db`,`master_table`,`master_field`),
+  KEY `foreign_field` (`foreign_db`,`foreign_table`)
+) ENGINE=MyISAM DEFAULT CHARSET=utf8 COLLATE=utf8_bin COMMENT='Relation table';
+
 INSERT INTO `tp_relation` VALUES ('my_cal','','','my_cal','','');
 INSERT INTO `tp_relation` VALUES ('my_cal','sys_user','id','my_cal','sys_cal_type','id');
 INSERT INTO `tp_relation` VALUES ('my_cal','sys_cal_info','id','my_cal','sys_user','id');
 INSERT INTO `tp_relation` VALUES ('my_cal','sys_cal_info','start_y','my_cal','sys_user','id');
 INSERT INTO `tp_relation` VALUES ('my_cal','sys_cal_info','content','my_cal','sys_user','id');
 INSERT INTO `tp_relation` VALUES ('my_cal','sys_cal_info','end_d','my_cal','sys_user','id');
+DROP TABLE `tp_sub_addtype`;
+CREATE TABLE `tp_sub_addtype` (
+  `id` int(11) NOT NULL auto_increment COMMENT 'ID',
+  `title` varchar(200) default NULL COMMENT '标题',
+  `htmltype` varchar(160) default NULL COMMENT '类型',
+  `htmlname` varchar(160) default NULL COMMENT '名称[name]',
+  `htmlid` varchar(160) default NULL COMMENT 'ID[ID]',
+  `htmlvar` varchar(160) default NULL COMMENT '默认值',
+  `htmlstyle` varchar(160) default NULL COMMENT '格式[style]',
+  `htmlclass` varchar(160) default NULL COMMENT 'class',
+  `isdisabled` int(11) default '0' COMMENT 'disabled',
+  `isreadonly` int(11) default '0' COMMENT 'readonly',
+  `outtable` varchar(160) default NULL COMMENT '外表',
+  `outkey` varchar(160) default NULL COMMENT '外表ID',
+  `outfield` varchar(160) default NULL COMMENT '展示',
+  `outcondition` varchar(160) default NULL COMMENT '条件',
+  `outorder` varchar(160) default NULL COMMENT '外表排序',
+  `outadd` varchar(160) default NULL COMMENT '连接符',
+  `seqNo` int(11) default NULL COMMENT '排序',
+  `color` int(11) default NULL,
+  `othervar` varchar(200) default NULL COMMENT '其它属性',
+  PRIMARY KEY  (`id`)
+) ENGINE=MyISAM AUTO_INCREMENT=18 DEFAULT CHARSET=utf8 COMMENT='编辑类型设定';
+
 INSERT INTO `tp_sub_addtype` VALUES ('1','[默认]input','input','','','','width:300px','input','0','0','','','','','','','0','1','');
 INSERT INTO `tp_sub_addtype` VALUES ('2','单选[select]','select','','','','','','0','0','','','','','','','1','2','');
 INSERT INTO `tp_sub_addtype` VALUES ('3','是否&不定','radio','','','','','','0','0','','','','','','','2','3','');
@@ -169,16 +301,58 @@ INSERT INTO `tp_sub_addtype` VALUES ('14','时间[YMDHIS]','calendar','','','','
 INSERT INTO `tp_sub_addtype` VALUES ('15','只读[HTML]','htmltext','','','','','','0','0','','','','','','','0','14','');
 INSERT INTO `tp_sub_addtype` VALUES ('16','只读[TEXT]','text','','','','','','0','0','','','','','','','0','14','');
 INSERT INTO `tp_sub_addtype` VALUES ('17','只读[tIme]','time','','','','','','0','0','','','','','','','0','14','');
+DROP TABLE `tp_sub_auto`;
+CREATE TABLE `tp_sub_auto` (
+  `id` int(11) NOT NULL auto_increment COMMENT 'ID',
+  `title` varchar(200) default NULL COMMENT '标题',
+  `content` varchar(40) default NULL COMMENT '填充内容',
+  `seqNo` int(11) default NULL COMMENT '排序',
+  `color` int(11) default NULL,
+  `condition` varchar(40) default NULL COMMENT '填充条件',
+  `regular` varchar(40) default NULL COMMENT '附加规则',
+  PRIMARY KEY  (`id`)
+) ENGINE=MyISAM AUTO_INCREMENT=4 DEFAULT CHARSET=utf8 COMMENT='自动填充设定';
+
 INSERT INTO `tp_sub_auto` VALUES ('1','无填充','','0','1','ADD','function');
 INSERT INTO `tp_sub_auto` VALUES ('2','time_update','time','0','1','UPDATE','function');
 INSERT INTO `tp_sub_auto` VALUES ('3','time','time','0','1','ADD','function');
+DROP TABLE `tp_sub_auto_con`;
+CREATE TABLE `tp_sub_auto_con` (
+  `id` int(11) NOT NULL auto_increment COMMENT 'ID',
+  `title` varchar(200) default NULL COMMENT '标题',
+  `seqNo` int(11) default NULL COMMENT '排序',
+  `color` int(11) default NULL,
+  `othervar` varchar(200) default NULL COMMENT '其它属性',
+  PRIMARY KEY  (`id`)
+) ENGINE=MyISAM AUTO_INCREMENT=4 DEFAULT CHARSET=utf8 COMMENT='填充条件';
+
 INSERT INTO `tp_sub_auto_con` VALUES ('1','ADD','0','1','新增数据的时候处理（默认方式）');
 INSERT INTO `tp_sub_auto_con` VALUES ('2','UPDATE','0','2','更新数据的时候处理');
 INSERT INTO `tp_sub_auto_con` VALUES ('3','ALL ','0','3','所有情况下都进行处理 ');
+DROP TABLE `tp_sub_auto_reg`;
+CREATE TABLE `tp_sub_auto_reg` (
+  `id` int(11) NOT NULL auto_increment COMMENT 'ID',
+  `title` varchar(200) default NULL COMMENT '标题',
+  `seqNo` int(11) default NULL COMMENT '排序',
+  `color` int(11) default NULL,
+  `othervar` varchar(200) default NULL COMMENT '其它属性',
+  PRIMARY KEY  (`id`)
+) ENGINE=MyISAM AUTO_INCREMENT=5 DEFAULT CHARSET=utf8 COMMENT='附加规则';
+
 INSERT INTO `tp_sub_auto_reg` VALUES ('1','string','0','8','字符串（默认方式）');
 INSERT INTO `tp_sub_auto_reg` VALUES ('2','field ','0','3','用其它字段填充');
 INSERT INTO `tp_sub_auto_reg` VALUES ('3','function','0','6','使用函数');
 INSERT INTO `tp_sub_auto_reg` VALUES ('4','callback ','0','7','回调方法');
+DROP TABLE `tp_sub_color`;
+CREATE TABLE `tp_sub_color` (
+  `id` int(11) NOT NULL auto_increment COMMENT 'ID',
+  `title` varchar(200) default NULL COMMENT '标题',
+  `seqNo` int(11) default NULL COMMENT '排序',
+  `color` int(11) default NULL,
+  `othervar` varchar(200) default NULL COMMENT '其它属性',
+  PRIMARY KEY  (`id`)
+) ENGINE=MyISAM AUTO_INCREMENT=22 DEFAULT CHARSET=utf8 COMMENT='查看类型设定';
+
 INSERT INTO `tp_sub_color` VALUES ('1','gray','1','1','');
 INSERT INTO `tp_sub_color` VALUES ('2','salmon','2','2','');
 INSERT INTO `tp_sub_color` VALUES ('3','copper','3','3','');
@@ -199,6 +373,30 @@ INSERT INTO `tp_sub_color` VALUES ('17','blueviolet','17','17','');
 INSERT INTO `tp_sub_color` VALUES ('18','red','18','18','');
 INSERT INTO `tp_sub_color` VALUES ('19','deeppink','19','19','');
 INSERT INTO `tp_sub_color` VALUES ('21','White','0','19','');
+DROP TABLE `tp_sub_edittype`;
+CREATE TABLE `tp_sub_edittype` (
+  `id` int(11) NOT NULL auto_increment COMMENT 'ID',
+  `title` varchar(200) default NULL COMMENT '标题',
+  `htmltype` varchar(160) default NULL COMMENT '类型',
+  `htmlname` varchar(160) default NULL COMMENT '名称[name]',
+  `htmlid` varchar(160) default NULL COMMENT 'ID[ID]',
+  `htmlvar` varchar(160) default NULL COMMENT '默认值',
+  `htmlstyle` varchar(160) default NULL COMMENT '格式[style]',
+  `htmlclass` varchar(160) default NULL COMMENT 'class',
+  `isdisabled` int(11) default '0' COMMENT 'disabled',
+  `isreadonly` int(11) default '0' COMMENT 'readonly',
+  `outtable` varchar(160) default NULL COMMENT '外表',
+  `outkey` varchar(160) default NULL COMMENT '外表ID',
+  `outfield` varchar(160) default NULL COMMENT '展示',
+  `outcondition` varchar(160) default NULL COMMENT '条件',
+  `outorder` varchar(160) default NULL COMMENT '外表排序',
+  `outadd` varchar(160) default NULL COMMENT '连接符',
+  `seqNo` int(11) default NULL COMMENT '排序',
+  `color` int(11) default NULL,
+  `othervar` varchar(200) default NULL COMMENT '其它属性',
+  PRIMARY KEY  (`id`)
+) ENGINE=MyISAM AUTO_INCREMENT=18 DEFAULT CHARSET=utf8 COMMENT='编辑类型设定';
+
 INSERT INTO `tp_sub_edittype` VALUES ('1','[默认]input','input','','','','width:300px','input','0','0','','','','','','','0','1','');
 INSERT INTO `tp_sub_edittype` VALUES ('2','单选[select]','select','','','','','','0','0','','','','','','','1','2','');
 INSERT INTO `tp_sub_edittype` VALUES ('3','是否&不定','radio','','','','','','0','0','','','','','','','2','3','');
@@ -216,6 +414,22 @@ INSERT INTO `tp_sub_edittype` VALUES ('14','时间[YMDHIS]','calendar','','','',
 INSERT INTO `tp_sub_edittype` VALUES ('15','只读[HTML]','htmltext','','','','','','0','0','','','','','','','0','14','');
 INSERT INTO `tp_sub_edittype` VALUES ('16','只读[TEXT]','text','','','','','','0','0','','','','','','','0','14','');
 INSERT INTO `tp_sub_edittype` VALUES ('17','只读[tIme]','time','','','','','','0','0','','','','','','','0','14','');
+DROP TABLE `tp_sub_fieldtype`;
+CREATE TABLE `tp_sub_fieldtype` (
+  `id` int(11) NOT NULL auto_increment COMMENT 'ID',
+  `title` varchar(200) default NULL COMMENT '标题',
+  `seqNo` int(11) default NULL COMMENT '排序',
+  `type` varchar(240) NOT NULL COMMENT '类型',
+  `notnull` int(11) NOT NULL COMMENT '是否为空',
+  `default` varchar(240) NOT NULL COMMENT '默认值',
+  `primary` int(11) NOT NULL COMMENT '是否主键',
+  `autoInc` int(11) NOT NULL COMMENT '自动增加',
+  `leng` int(11) NOT NULL COMMENT '长度',
+  `color` int(11) default NULL,
+  `othervar` varchar(200) default NULL COMMENT '其它属性',
+  PRIMARY KEY  (`id`)
+) ENGINE=MyISAM AUTO_INCREMENT=22 DEFAULT CHARSET=utf8 COMMENT='字属性设定';
+
 INSERT INTO `tp_sub_fieldtype` VALUES ('1','[varchar][40]','1','VARCHAR','0','','0','0','40','5','');
 INSERT INTO `tp_sub_fieldtype` VALUES ('2','[INT][11]','2','INT','0','','0','0','11','3','');
 INSERT INTO `tp_sub_fieldtype` VALUES ('3','[text]','3','TEXT','0','','0','0','0','1','');
@@ -227,6 +441,17 @@ INSERT INTO `tp_sub_fieldtype` VALUES ('18','[datetime][0000-00-00 00:00:00]','8
 INSERT INTO `tp_sub_fieldtype` VALUES ('19','[time][00:00:00]','9','TIME','0','','0','0','0','14','');
 INSERT INTO `tp_sub_fieldtype` VALUES ('20','[year][0000]','10','YEAR','0','','0','0','0','15','');
 INSERT INTO `tp_sub_fieldtype` VALUES ('21','[bigint][20]','11','BIGINT','0','','0','0','20','15','');
+DROP TABLE `tp_sub_htmltags`;
+CREATE TABLE `tp_sub_htmltags` (
+  `id` int(11) NOT NULL auto_increment COMMENT 'ID',
+  `title` varchar(200) default NULL COMMENT '标题',
+  `usetype` int(11) default '1' COMMENT '使用范围',
+  `seqNo` int(11) default NULL COMMENT '排序',
+  `color` int(11) default NULL,
+  `othervar` varchar(200) default NULL COMMENT '其它属性',
+  PRIMARY KEY  (`id`)
+) ENGINE=MyISAM AUTO_INCREMENT=22 DEFAULT CHARSET=utf8 COMMENT='搜索形式设定';
+
 INSERT INTO `tp_sub_htmltags` VALUES ('1','input','1','0','1','OK');
 INSERT INTO `tp_sub_htmltags` VALUES ('2','password','1','0','2','OK');
 INSERT INTO `tp_sub_htmltags` VALUES ('3','textarea','1','0','3','OK');
@@ -247,12 +472,42 @@ INSERT INTO `tp_sub_htmltags` VALUES ('17','icon','2','0','16','');
 INSERT INTO `tp_sub_htmltags` VALUES ('18','link','2','0','19','');
 INSERT INTO `tp_sub_htmltags` VALUES ('20','outtable','2','0','19','OK');
 INSERT INTO `tp_sub_htmltags` VALUES ('21','filedown','2','0','8','OK');
+DROP TABLE `tp_sub_htmlusetype`;
+CREATE TABLE `tp_sub_htmlusetype` (
+  `id` int(11) NOT NULL auto_increment COMMENT 'ID',
+  `title` varchar(200) default NULL COMMENT '标题',
+  `seqNo` int(11) default NULL COMMENT '排序',
+  `color` int(11) default NULL,
+  `othervar` varchar(200) default NULL COMMENT '其它属性',
+  PRIMARY KEY  (`id`)
+) ENGINE=MyISAM AUTO_INCREMENT=4 DEFAULT CHARSET=utf8 COMMENT='HTMLtag使用范围';
+
 INSERT INTO `tp_sub_htmlusetype` VALUES ('1','编辑时使用','0','1','');
 INSERT INTO `tp_sub_htmlusetype` VALUES ('2','查看时使用','0','2','');
 INSERT INTO `tp_sub_htmlusetype` VALUES ('3','全局使用','0','3','');
+DROP TABLE `tp_sub_issystem`;
+CREATE TABLE `tp_sub_issystem` (
+  `id` int(11) NOT NULL auto_increment COMMENT 'ID',
+  `title` varchar(200) default NULL COMMENT '标题',
+  `seqNo` int(11) default NULL COMMENT '排序',
+  `color` int(11) default NULL,
+  `othervar` text COMMENT '其它属性',
+  PRIMARY KEY  (`id`)
+) ENGINE=MyISAM AUTO_INCREMENT=4 DEFAULT CHARSET=utf8 COMMENT='系统保留设定';
+
 INSERT INTO `tp_sub_issystem` VALUES ('1','非保留','1','1','none');
 INSERT INTO `tp_sub_issystem` VALUES ('2','文件上传','2','2','file');
 INSERT INTO `tp_sub_issystem` VALUES ('3','自定[权限]','3','3','right');
+DROP TABLE `tp_sub_searchtype`;
+CREATE TABLE `tp_sub_searchtype` (
+  `id` int(11) NOT NULL auto_increment COMMENT 'ID',
+  `title` varchar(200) default NULL COMMENT '标题',
+  `seqNo` int(11) default NULL COMMENT '排序',
+  `color` int(11) default NULL,
+  `othervar` varchar(200) default NULL COMMENT '其它属性',
+  PRIMARY KEY  (`id`)
+) ENGINE=MyISAM AUTO_INCREMENT=8 DEFAULT CHARSET=utf8 COMMENT='搜索形式设定';
+
 INSERT INTO `tp_sub_searchtype` VALUES ('1','[默认]形式','0','1','');
 INSERT INTO `tp_sub_searchtype` VALUES ('2','是否存在','1','2','');
 INSERT INTO `tp_sub_searchtype` VALUES ('3','时间跨度','2','3','');
@@ -260,6 +515,20 @@ INSERT INTO `tp_sub_searchtype` VALUES ('4','可选比较','3','4','');
 INSERT INTO `tp_sub_searchtype` VALUES ('5','包含[like]','4','5','');
 INSERT INTO `tp_sub_searchtype` VALUES ('6','多搜[ID]','5','6','');
 INSERT INTO `tp_sub_searchtype` VALUES ('7','是否&不定','1','7','');
+DROP TABLE `tp_sub_validate`;
+CREATE TABLE `tp_sub_validate` (
+  `id` int(11) NOT NULL auto_increment COMMENT 'ID',
+  `title` varchar(200) default NULL COMMENT '标题',
+  `seqNo` int(11) default NULL COMMENT '排序',
+  `color` int(11) default NULL,
+  `v_note` varchar(200) default NULL COMMENT '默认提示信息',
+  `v_rag` varchar(40) default NULL COMMENT '验证规则',
+  `v_con` varchar(40) default NULL COMMENT '验证条件',
+  `a_reg` varchar(40) default NULL COMMENT '附加规则',
+  `v_time` varchar(40) default NULL COMMENT '验证时间',
+  PRIMARY KEY  (`id`)
+) ENGINE=MyISAM AUTO_INCREMENT=11 DEFAULT CHARSET=utf8 COMMENT='搜索形式设定';
+
 INSERT INTO `tp_sub_validate` VALUES ('1','[默认]无','0','1','','','0','regex','ALL');
 INSERT INTO `tp_sub_validate` VALUES ('2','EMAIL','1','2','请输入正确的EMAIL地址!','email','2','regex','ALL');
 INSERT INTO `tp_sub_validate` VALUES ('3','纯数字','2','3','输入项须为纯数字!','number','0','regex','ALL');
@@ -270,6 +539,16 @@ INSERT INTO `tp_sub_validate` VALUES ('7','网址','7','8','输入项须为网�
 INSERT INTO `tp_sub_validate` VALUES ('8','货币格式','8','7','输入项须为货币格式!','currency','2','regex','ALL');
 INSERT INTO `tp_sub_validate` VALUES ('9','长整数字格式','9','10','输入项须为长整数字格式!','integer','2','regex','ALL');
 INSERT INTO `tp_sub_validate` VALUES ('10','QQ号码','10','11','输入项须为QQ号码格式!','qq','2','regex','ALL');
+DROP TABLE `tp_sub_validate_arag`;
+CREATE TABLE `tp_sub_validate_arag` (
+  `id` int(11) NOT NULL auto_increment COMMENT 'ID',
+  `title` varchar(200) default NULL COMMENT '标题',
+  `seqNo` int(11) default NULL COMMENT '排序',
+  `color` int(11) default NULL,
+  `othervar` varchar(200) default NULL COMMENT '其它属性',
+  PRIMARY KEY  (`id`)
+) ENGINE=MyISAM AUTO_INCREMENT=8 DEFAULT CHARSET=utf8 COMMENT='附加规则';
+
 INSERT INTO `tp_sub_validate_arag` VALUES ('1','regex','0','1','使用正则进行验证，表示前面定义的验证规则是一个正则表达式（默认）');
 INSERT INTO `tp_sub_validate_arag` VALUES ('2','function','0','1','使用函数验证，前面定义的验证规则是一个函数名 ');
 INSERT INTO `tp_sub_validate_arag` VALUES ('3','callback','0','1','使用方法验证，前面定义的验证规则是一个当前 Model类的方法');
@@ -277,9 +556,43 @@ INSERT INTO `tp_sub_validate_arag` VALUES ('4','confirm ','0','1','验证表单�
 INSERT INTO `tp_sub_validate_arag` VALUES ('5','equal ','0','1','验证是否等于某个值，该值由前面的验证规则定义');
 INSERT INTO `tp_sub_validate_arag` VALUES ('6','in','0','1','验证是否在某个范围内，前面定义的验证规则必须是一个数组');
 INSERT INTO `tp_sub_validate_arag` VALUES ('7','unique','0','1','验证是否唯一，系统会根据字段目前的值查询数据库来判断是否存在相同的值 ');
+DROP TABLE `tp_sub_validate_vcon`;
+CREATE TABLE `tp_sub_validate_vcon` (
+  `id` int(11) NOT NULL auto_increment COMMENT 'ID',
+  `title` varchar(200) default NULL COMMENT '标题',
+  `seqNo` int(11) default NULL COMMENT '排序',
+  `color` int(11) default NULL,
+  `othervar` varchar(200) default NULL COMMENT '其它属性',
+  PRIMARY KEY  (`id`)
+) ENGINE=MyISAM AUTO_INCREMENT=4 DEFAULT CHARSET=utf8 COMMENT='验证条件';
+
 INSERT INTO `tp_sub_validate_vcon` VALUES ('3','存在字段就验证（默认）','0','0','');
 INSERT INTO `tp_sub_validate_vcon` VALUES ('1','必须验证','0','0','');
 INSERT INTO `tp_sub_validate_vcon` VALUES ('2','值不为空的时候验证','0','0','');
+DROP TABLE `tp_sub_viewtype`;
+CREATE TABLE `tp_sub_viewtype` (
+  `id` int(11) NOT NULL auto_increment COMMENT 'ID',
+  `title` varchar(200) default NULL COMMENT '标题',
+  `htmltype` varchar(160) default NULL COMMENT '类型',
+  `htmlname` varchar(160) default NULL COMMENT '名称[name]',
+  `htmlid` varchar(160) default NULL COMMENT 'ID[ID]',
+  `htmlvar` varchar(160) default NULL COMMENT '默认值',
+  `htmlstyle` varchar(160) default NULL COMMENT '格式[style]',
+  `htmlclass` varchar(160) default NULL COMMENT 'class',
+  `isdisabled` int(11) default '0' COMMENT 'disabled',
+  `isreadonly` int(11) default '0' COMMENT 'readonly',
+  `outtable` varchar(160) default NULL COMMENT '外表',
+  `outkey` varchar(160) default NULL COMMENT '外表ID',
+  `outfield` varchar(160) default NULL COMMENT '展示',
+  `outcondition` varchar(160) default NULL COMMENT '条件',
+  `outorder` varchar(160) default NULL COMMENT '外表排序',
+  `outadd` varchar(160) default NULL COMMENT '连接符',
+  `seqNo` int(11) default NULL COMMENT '排序',
+  `color` int(11) default NULL,
+  `othervar` varchar(200) default NULL COMMENT '其它属性',
+  PRIMARY KEY  (`id`)
+) ENGINE=MyISAM AUTO_INCREMENT=11 DEFAULT CHARSET=utf8 COMMENT='查看类型设定';
+
 INSERT INTO `tp_sub_viewtype` VALUES ('1','[默认]text','text','','','','','','0','0','','','','','','','0','1','');
 INSERT INTO `tp_sub_viewtype` VALUES ('2','引用外表','outtable','','','','','','0','0','','','','','','','1','2','');
 INSERT INTO `tp_sub_viewtype` VALUES ('3','图标显示','icon','','','','','','0','0','','','','','','','2','3','');
@@ -290,8 +603,31 @@ INSERT INTO `tp_sub_viewtype` VALUES ('7','时间[YMD]','time','','','','','','0
 INSERT INTO `tp_sub_viewtype` VALUES ('8','时间[全]','time','','','','','','0','0','','','','','','','7','8','');
 INSERT INTO `tp_sub_viewtype` VALUES ('9','1对多','text','','','','','','0','0','','','','','','','8','9','');
 INSERT INTO `tp_sub_viewtype` VALUES ('10','HTML','htmltext','','','','','','0','0','','','','','','','0','8','');
+DROP TABLE `tp_sub_yesno`;
+CREATE TABLE `tp_sub_yesno` (
+  `id` int(11) NOT NULL auto_increment COMMENT 'ID',
+  `tid` int(11) NOT NULL,
+  `title` varchar(200) default NULL COMMENT '标题',
+  `seqNo` int(11) default NULL COMMENT '排序',
+  `color` int(11) default NULL,
+  `othervar` varchar(200) default NULL COMMENT '其它属性',
+  PRIMARY KEY  (`id`)
+) ENGINE=MyISAM AUTO_INCREMENT=3 DEFAULT CHARSET=utf8 COMMENT='查看类型设定';
+
 INSERT INTO `tp_sub_yesno` VALUES ('2','0','否','1','1','');
 INSERT INTO `tp_sub_yesno` VALUES ('1','1','是','2','8','');
+DROP TABLE `tp_sys_config`;
+CREATE TABLE `tp_sys_config` (
+  `id` int(11) NOT NULL auto_increment,
+  `pid` int(11) default NULL COMMENT '上级',
+  `type` int(11) default NULL COMMENT '值的类型',
+  `title` varchar(200) default NULL,
+  `value` varchar(200) default NULL,
+  `note` varchar(240) default NULL COMMENT '注解',
+  `seqNo` int(11) default NULL,
+  PRIMARY KEY  (`id`)
+) ENGINE=MyISAM AUTO_INCREMENT=100 DEFAULT CHARSET=utf8 COMMENT='默认的系统参数';
+
 INSERT INTO `tp_sys_config` VALUES ('1','1','1','DISPATCH_ON','true','是否启用Dispatcher','0');
 INSERT INTO `tp_sys_config` VALUES ('2','1','3','DISPATCH_NAME','Think','默认的Dispatcher名称','0');
 INSERT INTO `tp_sys_config` VALUES ('3','1','2','URL_MODEL','0','// URL模式： 0 普通模式 1 PATHINFO 2 REWRITE','0');
@@ -391,6 +727,15 @@ INSERT INTO `tp_sys_config` VALUES ('96','21','3','AUTO_LOAD_PATH','Think.Util.'
 INSERT INTO `tp_sys_config` VALUES ('97','21','3','CALLBACK_LOAD_PATH','','反序列化对象时自动加载的路径设置','0');
 INSERT INTO `tp_sys_config` VALUES ('98','21','3','UPLOAD_FILE_RULE','uniqid','文件上传命名规则 例如 time uniqid com_create_guid 等 支持自定义函数 仅适用于内置的UploadFile类','0');
 INSERT INTO `tp_sys_config` VALUES ('99','21','3','LIKE_MATCH_FIELDS','','数据库查询的时候需要进行模糊匹配的字段','0');
+DROP TABLE `tp_sys_configtype`;
+CREATE TABLE `tp_sys_configtype` (
+  `id` int(11) NOT NULL auto_increment,
+  `title` varchar(200) default NULL,
+  `note` varchar(240) default NULL COMMENT '注解',
+  `seqNo` int(11) default NULL,
+  PRIMARY KEY  (`id`)
+) ENGINE=MyISAM AUTO_INCREMENT=22 DEFAULT CHARSET=utf8 COMMENT='默认的系统参数';
+
 INSERT INTO `tp_sys_configtype` VALUES ('1','Dispatch设置','','0');
 INSERT INTO `tp_sys_configtype` VALUES ('2','日志设置','','0');
 INSERT INTO `tp_sys_configtype` VALUES ('3','插件设置','','0');
@@ -412,9 +757,56 @@ INSERT INTO `tp_sys_configtype` VALUES ('18','Cookie设置','','0');
 INSERT INTO `tp_sys_configtype` VALUES ('19','分页设置','','0');
 INSERT INTO `tp_sys_configtype` VALUES ('20','数据格式设置','','0');
 INSERT INTO `tp_sys_configtype` VALUES ('21','其它设置','','0');
+DROP TABLE `tp_sys_datatype`;
+CREATE TABLE `tp_sys_datatype` (
+  `id` int(11) NOT NULL auto_increment,
+  `title` varchar(200) default NULL,
+  `seqNo` int(11) default NULL,
+  `note` varchar(240) NOT NULL COMMENT '注解',
+  PRIMARY KEY  (`id`)
+) ENGINE=MyISAM AUTO_INCREMENT=4 DEFAULT CHARSET=utf8 COMMENT='默认的数据库类型';
+
 INSERT INTO `tp_sys_datatype` VALUES ('1','布尔值','111','qqq');
 INSERT INTO `tp_sys_datatype` VALUES ('2','数字值','222','www');
 INSERT INTO `tp_sys_datatype` VALUES ('3','文本值','333','eee');
+DROP TABLE `tp_sys_fields`;
+CREATE TABLE `tp_sys_fields` (
+  `id` int(11) NOT NULL auto_increment,
+  `pid` int(11) NOT NULL COMMENT '所属的表',
+  `name` varchar(200) NOT NULL COMMENT '英文',
+  `caption` varchar(200) NOT NULL,
+  `islist` int(11) default '1' COMMENT '是否列表',
+  `fieldtype` int(11) default NULL COMMENT '字属性',
+  `fieldlenght` int(11) default NULL COMMENT '字符长度',
+  `request` int(11) default NULL COMMENT '必填',
+  `validate` int(11) NOT NULL default '1' COMMENT '验证形式',
+  `validate_tex` varchar(244) default NULL COMMENT '自定义错误',
+  `validate_reg` varchar(244) default NULL COMMENT '自定义正则',
+  `viewtype` int(11) default NULL COMMENT '查看类型',
+  `isview` smallint(2) NOT NULL default '1' COMMENT '是否列表',
+  `edittype` int(11) default NULL COMMENT '编辑类型',
+  `isedit` smallint(2) NOT NULL default '1' COMMENT '是否编辑',
+  `addtype` int(11) default NULL COMMENT '增加类型',
+  `isadd` smallint(2) NOT NULL default '1' COMMENT '是否增加',
+  `islistwidth` varchar(40) default NULL COMMENT '列表长度',
+  `islistviewtype` int(11) default '1' COMMENT '列表查看类型',
+  `iswrap` int(11) default NULL COMMENT '是否排序',
+  `indexvar` varchar(240) NOT NULL COMMENT '默认值',
+  `autotype` int(11) NOT NULL default '1' COMMENT '自动填充类型',
+  `issystem` int(11) default NULL COMMENT '是否系统保留',
+  `outkey` varchar(200) default NULL COMMENT '外键索引',
+  `outkeyis` int(11) default '0' COMMENT '是否',
+  `outkeyid` varchar(20) default NULL COMMENT '外键ID',
+  `outkeyf` varchar(200) default NULL COMMENT '外键值',
+  `outkeywhere` varchar(240) default NULL COMMENT '外键条件',
+  `searchtype` int(11) default NULL COMMENT '搜索形式',
+  `advsearchtype` int(11) NOT NULL default '1' COMMENT '高级搜索形式',
+  `issearch` int(11) default '0' COMMENT '是否搜索',
+  `seqNo` int(11) default NULL,
+  `modelid` int(11) default '0' COMMENT '数据模版ID',
+  PRIMARY KEY  (`id`)
+) ENGINE=MyISAM AUTO_INCREMENT=5017 DEFAULT CHARSET=utf8 COMMENT='定义每个点';
+
 INSERT INTO `tp_sys_fields` VALUES ('4923','131','groupId','权限组','0','2','0','0','1','','','1','1','1','1','1','1','','1','0','','1','1','','0','','','','1','1','0','1','0');
 INSERT INTO `tp_sys_fields` VALUES ('556','125','content_en','内容[英文]','0','3','0','1','1','','','10','1','9','1','9','1','','1','0','','1','1','','0','','','','1','1','1','4','0');
 INSERT INTO `tp_sys_fields` VALUES ('555','125','content_cn','内容[中文]','0','3','0','1','1','','','10','1','9','1','9','1','','1','0','','1','1','','0','','','','1','1','1','3','0');
@@ -2155,6 +2547,15 @@ INSERT INTO `tp_sys_fields` VALUES ('5013','1041','browser','客户端浏览器'
 INSERT INTO `tp_sys_fields` VALUES ('5014','1041','todayfirst','todayfirst','1','2','0','0','1','','','1','1','1','1','0','1','','1','1','','0','1','','0','','','','1','1','1','0','0');
 INSERT INTO `tp_sys_fields` VALUES ('5015','1041','return','回头客','1','2','0','0','1','','','1','1','1','1','0','1','','1','1','','0','1','','0','','','','1','1','1','0','0');
 INSERT INTO `tp_sys_fields` VALUES ('5016','1041','ismark','是否处理','1','5','0','0','1','','','1','1','1','1','0','1','','1','1','','0','1','','0','','','','1','1','1','0','0');
+DROP TABLE `tp_sys_fieldtypesub`;
+CREATE TABLE `tp_sys_fieldtypesub` (
+  `id` int(11) NOT NULL auto_increment,
+  `title` varchar(200) default NULL,
+  `seqNo` int(11) default NULL,
+  `note` varchar(240) NOT NULL COMMENT '注解',
+  PRIMARY KEY  (`id`)
+) ENGINE=MyISAM AUTO_INCREMENT=10 DEFAULT CHARSET=utf8 COMMENT='默认的数据库类型';
+
 INSERT INTO `tp_sys_fieldtypesub` VALUES ('1','VARCHAR','0','VARCHAR数据类型');
 INSERT INTO `tp_sys_fieldtypesub` VALUES ('2','INT','0','INT,需要定义长度');
 INSERT INTO `tp_sys_fieldtypesub` VALUES ('3','TEXT','0','TEXT不需要定义长度');
@@ -2164,12 +2565,61 @@ INSERT INTO `tp_sys_fieldtypesub` VALUES ('6','DATETIME','0','日期加时间(00
 INSERT INTO `tp_sys_fieldtypesub` VALUES ('7','TIME','0','时间(00:00:00)');
 INSERT INTO `tp_sys_fieldtypesub` VALUES ('8','YEAR','0','年(0000)');
 INSERT INTO `tp_sys_fieldtypesub` VALUES ('9','BIGINT','0','BIGINT需要定义长度');
+DROP TABLE `tp_sys_models`;
+CREATE TABLE `tp_sys_models` (
+  `id` int(11) NOT NULL auto_increment,
+  `title` varchar(200) default NULL,
+  `caption` varchar(200) default NULL,
+  `seqNo` int(11) default NULL,
+  PRIMARY KEY  (`id`)
+) ENGINE=MyISAM DEFAULT CHARSET=utf8 COMMENT='数据模型';
+
+DROP TABLE `tp_sys_projects`;
+CREATE TABLE `tp_sys_projects` (
+  `id` int(11) NOT NULL auto_increment,
+  `dbname` varchar(200) default NULL,
+  `caption` varchar(200) default NULL,
+  `proname` varchar(40) default NULL COMMENT '项目名称',
+  `dbuser` varchar(200) default NULL,
+  `tbpre` varchar(40) default NULL COMMENT '数据表前缀',
+  `dbpassword` varchar(200) default NULL,
+  `seqNo` int(11) default NULL,
+  `ison` int(11) default NULL COMMENT '是否生成',
+  `creattime` int(11) default NULL COMMENT '生成日期',
+  `think_pach` varchar(200) default NULL,
+  `tplname` varchar(40) NOT NULL COMMENT '模板ID',
+  `isaction` int(11) NOT NULL default '1' COMMENT '是否活动状态',
+  PRIMARY KEY  (`id`)
+) ENGINE=MyISAM AUTO_INCREMENT=43 DEFAULT CHARSET=utf8 COMMENT='生成项目说明';
+
 INSERT INTO `tp_sys_projects` VALUES ('1','crmv2','CRM第二版','crm2','root','crm_','123456','0','1','0','../ThinkPHP','tpmaker_default','0');
 INSERT INTO `tp_sys_projects` VALUES ('8','pershow','个人网站','pershow','root','lp_','123456','0','1','0','../ThinkPHP','tpmaker_default','0');
 INSERT INTO `tp_sys_projects` VALUES ('20','ns_website','NS网站新版','website','root','web_','123456','0','1','0','../ThinkPHP','tpmaker_default','0');
 INSERT INTO `tp_sys_projects` VALUES ('26','crm_v2_tp','Nstarts CRM 系统 (备份)','crmv2','root','ns_','123456','0','1','0','../ThinkPHP','tpmaker_advance','0');
 INSERT INTO `tp_sys_projects` VALUES ('41','crm_v2_tp','Nstarts CRM 系统 V2.1','crmv2','root','ns_','123456','0','1','0','../ThinkPHP','tpmaker_advance','0');
-INSERT INTO `tp_sys_projects` VALUES ('42','hbss_stat','HBSS决策支持系统','hbssstat','root','hb_','123456','0','','','../ThinkPHP','tpmaker_advance','1');
+INSERT INTO `tp_sys_projects` VALUES ('42','hbss_stat2','HBSS决策支持系统','hbssstat2','root','hb_','123456','0','','','../ThinkPHP','tpmaker_advance','1');
+DROP TABLE `tp_sys_tables`;
+CREATE TABLE `tp_sys_tables` (
+  `id` int(11) NOT NULL auto_increment,
+  `pid` int(11) NOT NULL default '1' COMMENT '项目ID',
+  `caption` varchar(200) NOT NULL,
+  `title` varchar(200) NOT NULL,
+  `searchtype` int(11) default NULL COMMENT '探索形式',
+  `edittype` int(11) default NULL COMMENT '编辑类型',
+  `seqNo` int(11) default NULL,
+  `ismodel` int(11) NOT NULL default '0' COMMENT '是否数据模板',
+  `datemodelid` int(11) NOT NULL default '0' COMMENT '指定数据模板',
+  `list` int(11) default '1' COMMENT '是否列表',
+  `view` int(11) default '1' COMMENT '是否显示详细',
+  `add` int(11) default '1',
+  `del` int(11) default '1',
+  `edit` int(11) default '1',
+  `search` int(11) default '1',
+  `isaction` int(11) NOT NULL default '1' COMMENT '是否活动',
+  `issystem` int(11) NOT NULL default '0' COMMENT '是否系统保留',
+  PRIMARY KEY  (`id`)
+) ENGINE=MyISAM AUTO_INCREMENT=1042 DEFAULT CHARSET=utf8 COMMENT='数据表';
+
 INSERT INTO `tp_sys_tables` VALUES ('1','1','人才管理系统','Person','2','2','1','0','935','1','1','1','1','1','1','1','0');
 INSERT INTO `tp_sys_tables` VALUES ('2','1','企业管理系统','Company','2','1','2','0','935','1','1','1','1','1','1','1','0');
 INSERT INTO `tp_sys_tables` VALUES ('3','1','订单管理系统','Order','2','1','3','0','935','1','1','1','1','1','1','1','0');
@@ -2472,70 +2922,192 @@ INSERT INTO `tp_sys_tables` VALUES ('1038','42','统计标识管理','labels','0
 INSERT INTO `tp_sys_tables` VALUES ('1039','42','IP详细记录[工作]','ipdatas_work','0','0','0','0','1031','1','1','1','1','1','1','1','0');
 INSERT INTO `tp_sys_tables` VALUES ('1040','42','IP对照记录表','ip2area','0','0','0','0','1031','1','1','1','1','1','1','1','0');
 INSERT INTO `tp_sys_tables` VALUES ('1041','42','IP详细记录[备份]','workipdatas_backup','0','0','0','0','1031','1','1','1','1','1','1','1','0');
+DROP TABLE `tp_sys_viewcondition`;
+CREATE TABLE `tp_sys_viewcondition` (
+  `id` int(11) NOT NULL auto_increment,
+  `vid` int(11) NOT NULL,
+  `in_tid` int(11) NOT NULL,
+  `in_field` varchar(40) NOT NULL,
+  `out_tid` int(11) NOT NULL,
+  `out_field` varchar(40) NOT NULL,
+  `condition` varchar(20) NOT NULL,
+  PRIMARY KEY  (`id`)
+) ENGINE=MyISAM DEFAULT CHARSET=utf8 COMMENT='视图模型表条件';
+
+DROP TABLE `tp_sys_viewfields`;
+CREATE TABLE `tp_sys_viewfields` (
+  `id` int(11) NOT NULL auto_increment COMMENT 'ID',
+  `vid` int(11) NOT NULL COMMENT '视图ID',
+  `caption` varchar(40) NOT NULL COMMENT '标题[cn]',
+  `title` varchar(40) NOT NULL COMMENT '标题[en]',
+  `newtitle` varchar(40) NOT NULL COMMENT '新的名称',
+  `tid` int(11) NOT NULL COMMENT '属所表的ID',
+  `seqNo` int(11) NOT NULL COMMENT '排序',
+  `islist` int(11) NOT NULL COMMENT '是否显示在列表',
+  `iswrap` int(11) NOT NULL COMMENT '是否需要排序筛选',
+  `issearch` int(11) NOT NULL COMMENT '是否需要搜索功能',
+  `searchtype` int(11) NOT NULL COMMENT '一般搜索形式',
+  `advsearchtype` int(11) NOT NULL COMMENT '高级搜索形式',
+  PRIMARY KEY  (`id`)
+) ENGINE=MyISAM DEFAULT CHARSET=utf8 COMMENT='视图模型表字段';
+
+DROP TABLE `tp_sys_viewmodel`;
+CREATE TABLE `tp_sys_viewmodel` (
+  `id` int(11) NOT NULL auto_increment COMMENT 'ID',
+  `projectid` int(11) NOT NULL,
+  `title` varchar(40) NOT NULL COMMENT '标题[en]',
+  `caption` varchar(40) NOT NULL COMMENT '标题[cn]',
+  `infos` varchar(240) NOT NULL COMMENT '说明',
+  `seqNo` int(11) NOT NULL COMMENT '排序',
+  PRIMARY KEY  (`id`)
+) ENGINE=MyISAM DEFAULT CHARSET=utf8 COMMENT='视图模型';
+
+DROP TABLE `tp_tab_edittype`;
+CREATE TABLE `tp_tab_edittype` (
+  `id` int(11) NOT NULL auto_increment COMMENT 'ID',
+  `title` varchar(200) default NULL COMMENT '标题',
+  `seqNo` int(11) default NULL COMMENT '排序',
+  `color` int(11) default NULL,
+  `othervar` varchar(200) default NULL COMMENT '其它属性',
+  PRIMARY KEY  (`id`)
+) ENGINE=MyISAM AUTO_INCREMENT=3 DEFAULT CHARSET=utf8 COMMENT='编辑类型设定';
+
 INSERT INTO `tp_tab_edittype` VALUES ('1','[默认]一般形式','0','1','');
 INSERT INTO `tp_tab_edittype` VALUES ('2','快速编辑形式','1','2','');
+DROP TABLE `tp_tab_searchtype`;
+CREATE TABLE `tp_tab_searchtype` (
+  `id` int(11) NOT NULL auto_increment COMMENT 'ID',
+  `title` varchar(200) default NULL COMMENT '标题',
+  `seqNo` int(11) default NULL COMMENT '排序',
+  `color` int(11) default NULL,
+  `othervar` varchar(200) default NULL COMMENT '其它属性',
+  PRIMARY KEY  (`id`)
+) ENGINE=MyISAM AUTO_INCREMENT=5 DEFAULT CHARSET=utf8 COMMENT='搜索形式设定';
+
 INSERT INTO `tp_tab_searchtype` VALUES ('1','[默认]简单搜索','0','1','');
 INSERT INTO `tp_tab_searchtype` VALUES ('2','简单+高级搜索','1','7','');
 INSERT INTO `tp_tab_searchtype` VALUES ('3','不需要搜索功能','0','2','');
 INSERT INTO `tp_tab_searchtype` VALUES ('4','仅搜索功能','0','9','');
 
-INSERT INTO `tp_apptree` VALUES ('17','系统权限组别管理','','26','1','9','272','0');
-INSERT INTO `tp_apptree` VALUES ('6','客户管理系统','sys_com','26','0','0','0','0');
-INSERT INTO `tp_apptree` VALUES ('8','办公自动化系统','sys_oa','26','0','0','0','0');
-INSERT INTO `tp_apptree` VALUES ('9','用户管理','sys_user','26','0','12','0','0');
-INSERT INTO `tp_apptree` VALUES ('10','职位管理系统','sys_post','26','0','0','0','0');
-INSERT INTO `tp_apptree` VALUES ('11','个人信息管理','sys_per','26','0','0','0','0');
-INSERT INTO `tp_apptree` VALUES ('12','系统属性管理系统','sys_adm','26','0','0','0','0');
-INSERT INTO `tp_apptree` VALUES ('13','用户管理','','26','1','9','276','0');
-INSERT INTO `tp_apptree` VALUES ('14','查看用户登陆记录','','26','1','30','808','0');
-INSERT INTO `tp_apptree` VALUES ('15','查看用户拷贝数据记录','','26','1','30','809','0');
-INSERT INTO `tp_apptree` VALUES ('16','人才面试管理系统','sys_view','26','0','0','0','0');
-INSERT INTO `tp_apptree` VALUES ('18','人才设定','conf_per','26','0','12','0','0');
-INSERT INTO `tp_apptree` VALUES ('19','企业设定','conf_com','26','0','12','0','0');
-INSERT INTO `tp_apptree` VALUES ('20','企业年薪类型','','26','1','19','820','0');
-INSERT INTO `tp_apptree` VALUES ('21','人才到岗时间设定','','26','1','18','816','0');
-INSERT INTO `tp_apptree` VALUES ('22','公共设定','conf_pub','26','0','12','0','0');
-INSERT INTO `tp_apptree` VALUES ('23','企业电话类型','','26','1','19','822','0');
-INSERT INTO `tp_apptree` VALUES ('24','公共招聘途径','','26','1','19','819','0');
-INSERT INTO `tp_apptree` VALUES ('25','职位设定','conf_post','26','0','12','0','0');
-INSERT INTO `tp_apptree` VALUES ('26','职位分类表','','26','1','25','821','0');
-INSERT INTO `tp_apptree` VALUES ('27','企业福利设定','','26','1','19','817','0');
-INSERT INTO `tp_apptree` VALUES ('28','行业汇总表','','26','1','22','818','0');
-INSERT INTO `tp_apptree` VALUES ('29','安全统计系统','sys_log','26','0','0','0','0');
-INSERT INTO `tp_apptree` VALUES ('30','用户安全统计','user_log','26','0','29','0','0');
-INSERT INTO `tp_apptree` VALUES ('31','客户管理系统','sys_com','41','0','0','0','0');
-INSERT INTO `tp_apptree` VALUES ('32','人才管理系统','sys_per','41','0','0','0','0');
-INSERT INTO `tp_apptree` VALUES ('33','NS办公系统','sys_oa','41','0','0','0','0');
-INSERT INTO `tp_apptree` VALUES ('34','系统设置管理','sys_conf','41','0','0','0','0');
-INSERT INTO `tp_apptree` VALUES ('35','系统人才设置','sys_conf_per','41','0','34','0','0');
-INSERT INTO `tp_apptree` VALUES ('36','公共办公应用','sys_oa1','41','0','33','0','0');
-INSERT INTO `tp_apptree` VALUES ('130','人才电话管理表','sys_oa_3','41','1','33','980','3');
-INSERT INTO `tp_apptree` VALUES ('129','企业其它空位','sys_oa_2','41','1','33','982','2');
-INSERT INTO `tp_apptree` VALUES ('128','人才推荐状态','sys_oa_1','41','1','33','985','1');
-INSERT INTO `tp_apptree` VALUES ('131','订单状态管理','sys_oa_4','41','1','33','976','4');
-INSERT INTO `tp_apptree` VALUES ('132','系统UBG管理','sys_oa_5','41','1','33','950','5');
-INSERT INTO `tp_apptree` VALUES ('133','大类职位表','sys_oa_6','41','1','33','983','6');
-INSERT INTO `tp_apptree` VALUES ('134','人才电话管理表','sys_oa_7','41','1','33','980','7');
-INSERT INTO `tp_apptree` VALUES ('135','系统UBG管理','sys_oa_8','41','1','33','950','8');
-INSERT INTO `tp_apptree` VALUES ('136','用户管理','sys_user','42','0','142','0','0');
-INSERT INTO `tp_apptree` VALUES ('137','用户管理','sys_user_0','42','1','136','1032','0');
-INSERT INTO `tp_apptree` VALUES ('138','系统权限表','sys_user_1','42','1','136','1033','1');
-INSERT INTO `tp_apptree` VALUES ('139','权限组别用户','sys_user_2','42','1','136','1034','2');
-INSERT INTO `tp_apptree` VALUES ('140','权限节点','sys_user_3','42','1','136','1035','3');
-INSERT INTO `tp_apptree` VALUES ('141','权限组别','sys_user_4','42','1','136','1036','4');
-INSERT INTO `tp_apptree` VALUES ('142','统计设定','sys_conf','42','0','0','0','0');
-INSERT INTO `tp_apptree` VALUES ('143','流量分析','sys_ip','42','0','0','0','0');
-INSERT INTO `tp_apptree` VALUES ('144','广告分析','sys_ad','42','0','0','0','0');
-INSERT INTO `tp_apptree` VALUES ('145','业务分析','sys_biz','42','0','0','0','0');
-INSERT INTO `tp_apptree` VALUES ('146','回头客','st_return','42','0','143','0','0');
-INSERT INTO `tp_apptree` VALUES ('147','国家','st_country','42','0','143','0','0');
-INSERT INTO `tp_apptree` VALUES ('148','工具条','st_alexa','42','0','143','0','0');
-INSERT INTO `tp_apptree` VALUES ('149','受访页面','st_page','42','0','143','0','0');
-INSERT INTO `tp_apptree` VALUES ('150','省份','st_province','42','0','143','0','0');
-INSERT INTO `tp_apptree` VALUES ('151','城市','st_city','42','0','143','0','0');
-INSERT INTO `tp_apptree` VALUES ('152','语言','st_language','42','0','143','0','0');
-INSERT INTO `tp_apptree` VALUES ('153','屏幕','st_screen','42','0','143','0','0');
-INSERT INTO `tp_apptree` VALUES ('154','浏览器','st_soft','42','0','143','0','0');
+DROP TABLE `tp_apptree`;
+CREATE TABLE `tp_apptree` (
+  `id` int(11) NOT NULL auto_increment,
+  `title` varchar(40) NOT NULL COMMENT '标题',
+  `shortname` varchar(24) NOT NULL,
+  `projectid` int(11) NOT NULL COMMENT '项目ID',
+  `type` int(11) NOT NULL COMMENT '类型',
+  `pid` int(11) NOT NULL default '0' COMMENT '上级ID',
+  `tid` int(11) NOT NULL COMMENT '数据表ID',
+  `seqNo` int(11) NOT NULL,
+  `link` varchar(255) NOT NULL,
+  PRIMARY KEY  (`id`)
+) ENGINE=MyISAM AUTO_INCREMENT=205 DEFAULT CHARSET=utf8;
+
+INSERT INTO `tp_apptree` VALUES ('17','系统权限组别管理','','26','1','9','272','0','');
+INSERT INTO `tp_apptree` VALUES ('6','客户管理系统','sys_com','26','0','0','0','0','');
+INSERT INTO `tp_apptree` VALUES ('8','办公自动化系统','sys_oa','26','0','0','0','0','');
+INSERT INTO `tp_apptree` VALUES ('9','用户管理','sys_user','26','0','12','0','0','');
+INSERT INTO `tp_apptree` VALUES ('10','职位管理系统','sys_post','26','0','0','0','0','');
+INSERT INTO `tp_apptree` VALUES ('11','个人信息管理','sys_per','26','0','0','0','0','');
+INSERT INTO `tp_apptree` VALUES ('12','系统属性管理系统','sys_adm','26','0','0','0','0','');
+INSERT INTO `tp_apptree` VALUES ('13','用户管理','','26','1','9','276','0','');
+INSERT INTO `tp_apptree` VALUES ('14','查看用户登陆记录','','26','1','30','808','0','');
+INSERT INTO `tp_apptree` VALUES ('15','查看用户拷贝数据记录','','26','1','30','809','0','');
+INSERT INTO `tp_apptree` VALUES ('16','人才面试管理系统','sys_view','26','0','0','0','0','');
+INSERT INTO `tp_apptree` VALUES ('18','人才设定','conf_per','26','0','12','0','0','');
+INSERT INTO `tp_apptree` VALUES ('19','企业设定','conf_com','26','0','12','0','0','');
+INSERT INTO `tp_apptree` VALUES ('20','企业年薪类型','','26','1','19','820','0','');
+INSERT INTO `tp_apptree` VALUES ('21','人才到岗时间设定','','26','1','18','816','0','');
+INSERT INTO `tp_apptree` VALUES ('22','公共设定','conf_pub','26','0','12','0','0','');
+INSERT INTO `tp_apptree` VALUES ('23','企业电话类型','','26','1','19','822','0','');
+INSERT INTO `tp_apptree` VALUES ('24','公共招聘途径','','26','1','19','819','0','');
+INSERT INTO `tp_apptree` VALUES ('25','职位设定','conf_post','26','0','12','0','0','');
+INSERT INTO `tp_apptree` VALUES ('26','职位分类表','','26','1','25','821','0','');
+INSERT INTO `tp_apptree` VALUES ('27','企业福利设定','','26','1','19','817','0','');
+INSERT INTO `tp_apptree` VALUES ('28','行业汇总表','','26','1','22','818','0','');
+INSERT INTO `tp_apptree` VALUES ('29','安全统计系统','sys_log','26','0','0','0','0','');
+INSERT INTO `tp_apptree` VALUES ('30','用户安全统计','user_log','26','0','29','0','0','');
+INSERT INTO `tp_apptree` VALUES ('31','客户管理系统','sys_com','41','0','0','0','0','');
+INSERT INTO `tp_apptree` VALUES ('32','人才管理系统','sys_per','41','0','0','0','0','');
+INSERT INTO `tp_apptree` VALUES ('33','NS办公系统','sys_oa','41','0','0','0','0','');
+INSERT INTO `tp_apptree` VALUES ('34','系统设置管理','sys_conf','41','0','0','0','0','');
+INSERT INTO `tp_apptree` VALUES ('35','系统人才设置','sys_conf_per','41','0','34','0','0','');
+INSERT INTO `tp_apptree` VALUES ('36','公共办公应用','sys_oa1','41','0','33','0','0','');
+INSERT INTO `tp_apptree` VALUES ('130','人才电话管理表','sys_oa_3','41','1','33','980','3','');
+INSERT INTO `tp_apptree` VALUES ('129','企业其它空位','sys_oa_2','41','1','33','982','2','');
+INSERT INTO `tp_apptree` VALUES ('128','人才推荐状态','sys_oa_1','41','1','33','985','1','');
+INSERT INTO `tp_apptree` VALUES ('131','订单状态管理','sys_oa_4','41','1','33','976','4','');
+INSERT INTO `tp_apptree` VALUES ('132','系统UBG管理','sys_oa_5','41','1','33','950','5','');
+INSERT INTO `tp_apptree` VALUES ('133','大类职位表','sys_oa_6','41','1','33','983','6','');
+INSERT INTO `tp_apptree` VALUES ('134','人才电话管理表','sys_oa_7','41','1','33','980','7','');
+INSERT INTO `tp_apptree` VALUES ('135','系统UBG管理','sys_oa_8','41','1','33','950','8','');
+INSERT INTO `tp_apptree` VALUES ('136','用户管理','sys_user','42','0','142','0','0','');
+INSERT INTO `tp_apptree` VALUES ('137','用户管理','sys_user_0','42','1','136','0','0','');
+INSERT INTO `tp_apptree` VALUES ('138','系统权限表','sys_user_1','42','1','136','0','1','');
+INSERT INTO `tp_apptree` VALUES ('139','权限组别用户','sys_user_2','42','1','136','0','2','');
+INSERT INTO `tp_apptree` VALUES ('140','权限节点','sys_user_3','42','1','136','0','3','');
+INSERT INTO `tp_apptree` VALUES ('141','权限组别','sys_user_4','42','1','136','0','4','');
+INSERT INTO `tp_apptree` VALUES ('142','统计设定','sys_conf','42','0','0','0','0','');
+INSERT INTO `tp_apptree` VALUES ('143','流量分析','sys_ip','42','0','0','0','0','');
+INSERT INTO `tp_apptree` VALUES ('144','广告分析','sys_ad','42','0','0','0','0','');
+INSERT INTO `tp_apptree` VALUES ('145','业务分析','sys_biz','42','0','0','0','0','');
+INSERT INTO `tp_apptree` VALUES ('146','基础流量分析','st_count','42','0','143','0','0','');
+INSERT INTO `tp_apptree` VALUES ('147','今日详情','st_today','42','0','143','0','0','');
+INSERT INTO `tp_apptree` VALUES ('148','昨日详情','st_yestoday','42','0','143','0','0','');
+INSERT INTO `tp_apptree` VALUES ('149','所有详情','st_all','42','0','143','0','0','');
+INSERT INTO `tp_apptree` VALUES ('150','工具条分析','st_tool','42','0','143','0','0','');
+INSERT INTO `tp_apptree` VALUES ('155','概况','','42','1','146','0','0','http://192.168.1.108:81/count/main.php');
+INSERT INTO `tp_apptree` VALUES ('156','时段分析','','42','1','146','0','0','http://192.168.1.108:81/count/stat_day.php');
+INSERT INTO `tp_apptree` VALUES ('157','日段分析','','42','1','146','0','0','http://192.168.1.108:81/count/stat_month.php');
+INSERT INTO `tp_apptree` VALUES ('158','月分析','','42','1','146','0','0','http://192.168.1.108:81/count/stat_year.php');
+INSERT INTO `tp_apptree` VALUES ('159','Alexa工具条分析','','42','1','150','0','0','http://192.168.1.108:81/count/stat_alexa.php');
+INSERT INTO `tp_apptree` VALUES ('160','明细访问','','42','1','146','0','0','http://192.168.1.108:81/count/show_today.php');
+INSERT INTO `tp_apptree` VALUES ('161','关键字统计','今日-关键字统计','42','1','147','0','0','http://192.168.1.108:81/count/keyword.php');
+INSERT INTO `tp_apptree` VALUES ('162','来源统计','今日-来源统计','42','1','147','0','0','http://192.168.1.108:81/count/referer.php');
+INSERT INTO `tp_apptree` VALUES ('163','回头客','今日-回头客','42','1','147','0','0','http://192.168.1.108:81/count/return.php');
+INSERT INTO `tp_apptree` VALUES ('164','受访页面','今日-受访页面','42','1','147','0','0','http://192.168.1.108:81/count/page.php');
+INSERT INTO `tp_apptree` VALUES ('165','地区统计','今日-地区统计','42','1','147','0','0','http://192.168.1.108:81/count/province.php');
+INSERT INTO `tp_apptree` VALUES ('166','语言统计','今日-语言统计','42','1','147','0','0','http://192.168.1.108:81/count/language.php');
+INSERT INTO `tp_apptree` VALUES ('167','时区统计','今日-时区统计','42','1','147','0','0','http://192.168.1.108:81/count/timezone.php');
+INSERT INTO `tp_apptree` VALUES ('168','屏幕统计','今日-屏幕统计','42','1','147','0','0','http://192.168.1.108:81/count/screen.php');
+INSERT INTO `tp_apptree` VALUES ('169','浏览器统计','今日-浏览器统计','42','1','147','0','0','http://192.168.1.108:81/count/soft.php');
+INSERT INTO `tp_apptree` VALUES ('170','浏览器统计','昨日-浏览器统计','42','1','148','0','0','http://192.168.1.108:81/count/soft.php?type=2');
+INSERT INTO `tp_apptree` VALUES ('171','屏幕统计','昨日-屏幕统计','42','1','148','0','0','http://192.168.1.108:81/count/screen.php?type=2');
+INSERT INTO `tp_apptree` VALUES ('172','时区统计','昨日-时区统计','42','1','148','0','0','http://192.168.1.108:81/count/timezone.php?type=2');
+INSERT INTO `tp_apptree` VALUES ('173','语言统计','昨日-语言统计','42','1','148','0','0','http://192.168.1.108:81/count/language.php?type=2');
+INSERT INTO `tp_apptree` VALUES ('174','地区统计','昨日-地区统计','42','1','148','0','0','http://192.168.1.108:81/count/timezone.php?type=2');
+INSERT INTO `tp_apptree` VALUES ('175','受访页面','昨日-受访页面','42','1','148','0','0','http://192.168.1.108:81/count/page.php?type=2');
+INSERT INTO `tp_apptree` VALUES ('176','回头客','昨日-回头客','42','1','148','0','0','http://192.168.1.108:81/count/return.php?type=2');
+INSERT INTO `tp_apptree` VALUES ('177','来源统计','昨日-来源统计','42','1','148','0','0','http://192.168.1.108:81/count/referer.php?type=2');
+INSERT INTO `tp_apptree` VALUES ('179','浏览器统计','所有-浏览器统计','42','1','149','0','0','http://192.168.1.108:81/count/soft.php?type=0');
+INSERT INTO `tp_apptree` VALUES ('180','屏幕统计','所有-屏幕统计','42','1','149','0','0','http://192.168.1.108:81/count/screen.php?type=0');
+INSERT INTO `tp_apptree` VALUES ('181','时区统计','所有-时区统计','42','1','149','0','0','http://192.168.1.108:81/count/timezone.php?type=0');
+INSERT INTO `tp_apptree` VALUES ('182','语言统计','所有-语言统计','42','1','149','0','0','http://192.168.1.108:81/count/language.php?type=0');
+INSERT INTO `tp_apptree` VALUES ('183','地区统计','所有-地区统计','42','1','149','0','0','http://192.168.1.108:81/count/province.php?type=0');
+INSERT INTO `tp_apptree` VALUES ('197','关键字统计','昨日-关键字统计','42','1','148','0','0','http://192.168.1.108:81/count/referer.php?type=2');
+INSERT INTO `tp_apptree` VALUES ('202','最近7日屏幕数据','','42','1','199','0','0','http://192.168.1.108:81/count/click_list.php?day=7');
+INSERT INTO `tp_apptree` VALUES ('201','昨日屏幕数据','','42','1','199','0','0','http://192.168.1.108:81/count/click_list.php?day=1');
+INSERT INTO `tp_apptree` VALUES ('200','今日屏幕数据','','42','1','199','0','0','http://192.168.1.108:81/count/click_list.php?day=0');
+INSERT INTO `tp_apptree` VALUES ('199','屏幕轨迹记录','st_creen','42','0','143','0','0','');
+INSERT INTO `tp_apptree` VALUES ('198','受访页面','所有-受访页面','42','1','149','0','0','http://192.168.1.108:81/count/page.php?type=0');
+INSERT INTO `tp_apptree` VALUES ('194','回头客','所有-回头客','42','1','149','0','0','http://192.168.1.108:81/count/return.php?type=0');
+INSERT INTO `tp_apptree` VALUES ('195','来源统计','所有-来源统计','42','1','149','0','0','http://192.168.1.108:81/count/referer.php?type=0');
+INSERT INTO `tp_apptree` VALUES ('196','关键字统计','所有-关键字统计','42','1','149','0','0','http://192.168.1.108:81/count/keyword.php?type=0');
+INSERT INTO `tp_apptree` VALUES ('203','最近30日屏幕数据','','42','1','199','0','0','http://192.168.1.108:81/count/click_list.php?day=30');
+INSERT INTO `tp_apptree` VALUES ('204','所有屏幕数据','','42','1','199','0','0','http://192.168.1.108:81/count/click_list.php?day=all');
+DROP TABLE `tp_con_tree`;
+CREATE TABLE `tp_con_tree` (
+  `id` int(11) NOT NULL auto_increment,
+  `tid` int(11) NOT NULL,
+  `pid` int(11) NOT NULL default '0',
+  `title` varchar(240) NOT NULL,
+  `model` varchar(240) NOT NULL,
+  `action` varchar(240) NOT NULL,
+  `icon` varchar(240) NOT NULL,
+  `seqNo` int(11) default NULL,
+  PRIMARY KEY  (`id`)
+) ENGINE=MyISAM AUTO_INCREMENT=39 DEFAULT CHARSET=utf8 COMMENT='左边的树';
+
 INSERT INTO `tp_con_tree` VALUES ('19','0','0','[根目录]其它属性设定','','','b_import.png','0');
 INSERT INTO `tp_con_tree` VALUES ('2','2','0','其它小工具','','','b_import.png','0');
 INSERT INTO `tp_con_tree` VALUES ('3','3','1','[字段]设定','','','b_import.png','0');
@@ -2569,9 +3141,33 @@ INSERT INTO `tp_con_tree` VALUES ('35','35','34','附加规则设定','sub_auto_
 INSERT INTO `tp_con_tree` VALUES ('36','36','34','填充条件设定','sub_auto_con','index','page.gif','0');
 INSERT INTO `tp_con_tree` VALUES ('37','37','1','公共HTML标签类型','sub_htmltags','index','b_import.png','0');
 INSERT INTO `tp_con_tree` VALUES ('38','38','17','当前系统数据恢复','dbbackup','inport_db','page.gif','0');
+DROP TABLE `tp_designer`;
+CREATE TABLE `tp_designer` (
+  `id` int(11) NOT NULL auto_increment,
+  `master_pid` int(11) NOT NULL,
+  `master_table` varchar(64) character set utf8 collate utf8_bin NOT NULL default '',
+  `master_field` varchar(64) character set utf8 collate utf8_bin NOT NULL default '',
+  `foreign_pid` int(11) NOT NULL,
+  `foreign_table` varchar(64) character set utf8 collate utf8_bin NOT NULL default '',
+  `foreign_field` varchar(64) character set utf8 collate utf8_bin NOT NULL default '',
+  PRIMARY KEY  (`id`)
+) ENGINE=MyISAM AUTO_INCREMENT=24 DEFAULT CHARSET=utf8 COMMENT='数据关联';
+
 INSERT INTO `tp_designer` VALUES ('15','26','node','pid','26','sta_infos','id');
 INSERT INTO `tp_designer` VALUES ('22','26','attach','uploadTime','26','Interview','id');
 INSERT INTO `tp_designer` VALUES ('23','26','Interview','update_on','26','node','id');
+DROP TABLE `tp_designer_coords`;
+CREATE TABLE `tp_designer_coords` (
+  `id` int(11) NOT NULL auto_increment,
+  `projectid` int(11) NOT NULL,
+  `table_name` varchar(64) NOT NULL default '',
+  `x` int(11) default NULL,
+  `y` int(11) default NULL,
+  `v` tinyint(4) default NULL,
+  `h` tinyint(4) default NULL,
+  PRIMARY KEY  (`id`)
+) ENGINE=MyISAM AUTO_INCREMENT=631 DEFAULT CHARSET=utf8 COMMENT='坐标定位';
+
 INSERT INTO `tp_designer_coords` VALUES ('557','21','user','616','436','0','1');
 INSERT INTO `tp_designer_coords` VALUES ('556','21','orderlogs','664','153','0','1');
 INSERT INTO `tp_designer_coords` VALUES ('555','21','order','776','105','0','1');
@@ -2625,14 +3221,60 @@ INSERT INTO `tp_designer_coords` VALUES ('617','1','Order','430','382','1','1');
 INSERT INTO `tp_designer_coords` VALUES ('616','1','Company','513','40','1','1');
 INSERT INTO `tp_designer_coords` VALUES ('615','1','Person','66','54','1','1');
 INSERT INTO `tp_designer_coords` VALUES ('630','1','Com2com','777','32','1','1');
+DROP TABLE `tp_pro_templete`;
+CREATE TABLE `tp_pro_templete` (
+  `id` int(11) NOT NULL auto_increment COMMENT 'ID',
+  `title` varchar(200) default NULL COMMENT '标题',
+  `seqNo` int(11) default NULL COMMENT '排序',
+  `color` int(11) default NULL,
+  `tplname` varchar(200) default NULL COMMENT '模板的文件夹',
+  PRIMARY KEY  (`id`)
+) ENGINE=MyISAM AUTO_INCREMENT=3 DEFAULT CHARSET=utf8 COMMENT='项目模板风格设定';
+
 INSERT INTO `tp_pro_templete` VALUES ('1','[默认]TP-maker风格','0','1','tpmaker_default');
 INSERT INTO `tp_pro_templete` VALUES ('2','[高级]TP-advance风格','0','2','tpmaker_advance');
+DROP TABLE `tp_relation`;
+CREATE TABLE `tp_relation` (
+  `master_db` varchar(64) collate utf8_bin NOT NULL default '',
+  `master_table` varchar(64) collate utf8_bin NOT NULL default '',
+  `master_field` varchar(64) collate utf8_bin NOT NULL default '',
+  `foreign_db` varchar(64) collate utf8_bin NOT NULL default '',
+  `foreign_table` varchar(64) collate utf8_bin NOT NULL default '',
+  `foreign_field` varchar(64) collate utf8_bin NOT NULL default '',
+  PRIMARY KEY  (`master_db`,`master_table`,`master_field`),
+  KEY `foreign_field` (`foreign_db`,`foreign_table`)
+) ENGINE=MyISAM DEFAULT CHARSET=utf8 COLLATE=utf8_bin COMMENT='Relation table';
+
 INSERT INTO `tp_relation` VALUES ('my_cal','','','my_cal','','');
 INSERT INTO `tp_relation` VALUES ('my_cal','sys_user','id','my_cal','sys_cal_type','id');
 INSERT INTO `tp_relation` VALUES ('my_cal','sys_cal_info','id','my_cal','sys_user','id');
 INSERT INTO `tp_relation` VALUES ('my_cal','sys_cal_info','start_y','my_cal','sys_user','id');
 INSERT INTO `tp_relation` VALUES ('my_cal','sys_cal_info','content','my_cal','sys_user','id');
 INSERT INTO `tp_relation` VALUES ('my_cal','sys_cal_info','end_d','my_cal','sys_user','id');
+DROP TABLE `tp_sub_addtype`;
+CREATE TABLE `tp_sub_addtype` (
+  `id` int(11) NOT NULL auto_increment COMMENT 'ID',
+  `title` varchar(200) default NULL COMMENT '标题',
+  `htmltype` varchar(160) default NULL COMMENT '类型',
+  `htmlname` varchar(160) default NULL COMMENT '名称[name]',
+  `htmlid` varchar(160) default NULL COMMENT 'ID[ID]',
+  `htmlvar` varchar(160) default NULL COMMENT '默认值',
+  `htmlstyle` varchar(160) default NULL COMMENT '格式[style]',
+  `htmlclass` varchar(160) default NULL COMMENT 'class',
+  `isdisabled` int(11) default '0' COMMENT 'disabled',
+  `isreadonly` int(11) default '0' COMMENT 'readonly',
+  `outtable` varchar(160) default NULL COMMENT '外表',
+  `outkey` varchar(160) default NULL COMMENT '外表ID',
+  `outfield` varchar(160) default NULL COMMENT '展示',
+  `outcondition` varchar(160) default NULL COMMENT '条件',
+  `outorder` varchar(160) default NULL COMMENT '外表排序',
+  `outadd` varchar(160) default NULL COMMENT '连接符',
+  `seqNo` int(11) default NULL COMMENT '排序',
+  `color` int(11) default NULL,
+  `othervar` varchar(200) default NULL COMMENT '其它属性',
+  PRIMARY KEY  (`id`)
+) ENGINE=MyISAM AUTO_INCREMENT=18 DEFAULT CHARSET=utf8 COMMENT='编辑类型设定';
+
 INSERT INTO `tp_sub_addtype` VALUES ('1','[默认]input','input','','','','width:300px','input','0','0','','','','','','','0','1','');
 INSERT INTO `tp_sub_addtype` VALUES ('2','单选[select]','select','','','','','','0','0','','','','','','','1','2','');
 INSERT INTO `tp_sub_addtype` VALUES ('3','是否&不定','radio','','','','','','0','0','','','','','','','2','3','');
@@ -2650,16 +3292,58 @@ INSERT INTO `tp_sub_addtype` VALUES ('14','时间[YMDHIS]','calendar','','','','
 INSERT INTO `tp_sub_addtype` VALUES ('15','只读[HTML]','htmltext','','','','','','0','0','','','','','','','0','14','');
 INSERT INTO `tp_sub_addtype` VALUES ('16','只读[TEXT]','text','','','','','','0','0','','','','','','','0','14','');
 INSERT INTO `tp_sub_addtype` VALUES ('17','只读[tIme]','time','','','','','','0','0','','','','','','','0','14','');
+DROP TABLE `tp_sub_auto`;
+CREATE TABLE `tp_sub_auto` (
+  `id` int(11) NOT NULL auto_increment COMMENT 'ID',
+  `title` varchar(200) default NULL COMMENT '标题',
+  `content` varchar(40) default NULL COMMENT '填充内容',
+  `seqNo` int(11) default NULL COMMENT '排序',
+  `color` int(11) default NULL,
+  `condition` varchar(40) default NULL COMMENT '填充条件',
+  `regular` varchar(40) default NULL COMMENT '附加规则',
+  PRIMARY KEY  (`id`)
+) ENGINE=MyISAM AUTO_INCREMENT=4 DEFAULT CHARSET=utf8 COMMENT='自动填充设定';
+
 INSERT INTO `tp_sub_auto` VALUES ('1','无填充','','0','1','ADD','function');
 INSERT INTO `tp_sub_auto` VALUES ('2','time_update','time','0','1','UPDATE','function');
 INSERT INTO `tp_sub_auto` VALUES ('3','time','time','0','1','ADD','function');
+DROP TABLE `tp_sub_auto_con`;
+CREATE TABLE `tp_sub_auto_con` (
+  `id` int(11) NOT NULL auto_increment COMMENT 'ID',
+  `title` varchar(200) default NULL COMMENT '标题',
+  `seqNo` int(11) default NULL COMMENT '排序',
+  `color` int(11) default NULL,
+  `othervar` varchar(200) default NULL COMMENT '其它属性',
+  PRIMARY KEY  (`id`)
+) ENGINE=MyISAM AUTO_INCREMENT=4 DEFAULT CHARSET=utf8 COMMENT='填充条件';
+
 INSERT INTO `tp_sub_auto_con` VALUES ('1','ADD','0','1','新增数据的时候处理（默认方式）');
 INSERT INTO `tp_sub_auto_con` VALUES ('2','UPDATE','0','2','更新数据的时候处理');
 INSERT INTO `tp_sub_auto_con` VALUES ('3','ALL ','0','3','所有情况下都进行处理 ');
+DROP TABLE `tp_sub_auto_reg`;
+CREATE TABLE `tp_sub_auto_reg` (
+  `id` int(11) NOT NULL auto_increment COMMENT 'ID',
+  `title` varchar(200) default NULL COMMENT '标题',
+  `seqNo` int(11) default NULL COMMENT '排序',
+  `color` int(11) default NULL,
+  `othervar` varchar(200) default NULL COMMENT '其它属性',
+  PRIMARY KEY  (`id`)
+) ENGINE=MyISAM AUTO_INCREMENT=5 DEFAULT CHARSET=utf8 COMMENT='附加规则';
+
 INSERT INTO `tp_sub_auto_reg` VALUES ('1','string','0','8','字符串（默认方式）');
 INSERT INTO `tp_sub_auto_reg` VALUES ('2','field ','0','3','用其它字段填充');
 INSERT INTO `tp_sub_auto_reg` VALUES ('3','function','0','6','使用函数');
 INSERT INTO `tp_sub_auto_reg` VALUES ('4','callback ','0','7','回调方法');
+DROP TABLE `tp_sub_color`;
+CREATE TABLE `tp_sub_color` (
+  `id` int(11) NOT NULL auto_increment COMMENT 'ID',
+  `title` varchar(200) default NULL COMMENT '标题',
+  `seqNo` int(11) default NULL COMMENT '排序',
+  `color` int(11) default NULL,
+  `othervar` varchar(200) default NULL COMMENT '其它属性',
+  PRIMARY KEY  (`id`)
+) ENGINE=MyISAM AUTO_INCREMENT=22 DEFAULT CHARSET=utf8 COMMENT='查看类型设定';
+
 INSERT INTO `tp_sub_color` VALUES ('1','gray','1','1','');
 INSERT INTO `tp_sub_color` VALUES ('2','salmon','2','2','');
 INSERT INTO `tp_sub_color` VALUES ('3','copper','3','3','');
@@ -2680,6 +3364,30 @@ INSERT INTO `tp_sub_color` VALUES ('17','blueviolet','17','17','');
 INSERT INTO `tp_sub_color` VALUES ('18','red','18','18','');
 INSERT INTO `tp_sub_color` VALUES ('19','deeppink','19','19','');
 INSERT INTO `tp_sub_color` VALUES ('21','White','0','19','');
+DROP TABLE `tp_sub_edittype`;
+CREATE TABLE `tp_sub_edittype` (
+  `id` int(11) NOT NULL auto_increment COMMENT 'ID',
+  `title` varchar(200) default NULL COMMENT '标题',
+  `htmltype` varchar(160) default NULL COMMENT '类型',
+  `htmlname` varchar(160) default NULL COMMENT '名称[name]',
+  `htmlid` varchar(160) default NULL COMMENT 'ID[ID]',
+  `htmlvar` varchar(160) default NULL COMMENT '默认值',
+  `htmlstyle` varchar(160) default NULL COMMENT '格式[style]',
+  `htmlclass` varchar(160) default NULL COMMENT 'class',
+  `isdisabled` int(11) default '0' COMMENT 'disabled',
+  `isreadonly` int(11) default '0' COMMENT 'readonly',
+  `outtable` varchar(160) default NULL COMMENT '外表',
+  `outkey` varchar(160) default NULL COMMENT '外表ID',
+  `outfield` varchar(160) default NULL COMMENT '展示',
+  `outcondition` varchar(160) default NULL COMMENT '条件',
+  `outorder` varchar(160) default NULL COMMENT '外表排序',
+  `outadd` varchar(160) default NULL COMMENT '连接符',
+  `seqNo` int(11) default NULL COMMENT '排序',
+  `color` int(11) default NULL,
+  `othervar` varchar(200) default NULL COMMENT '其它属性',
+  PRIMARY KEY  (`id`)
+) ENGINE=MyISAM AUTO_INCREMENT=18 DEFAULT CHARSET=utf8 COMMENT='编辑类型设定';
+
 INSERT INTO `tp_sub_edittype` VALUES ('1','[默认]input','input','','','','width:300px','input','0','0','','','','','','','0','1','');
 INSERT INTO `tp_sub_edittype` VALUES ('2','单选[select]','select','','','','','','0','0','','','','','','','1','2','');
 INSERT INTO `tp_sub_edittype` VALUES ('3','是否&不定','radio','','','','','','0','0','','','','','','','2','3','');
@@ -2697,6 +3405,22 @@ INSERT INTO `tp_sub_edittype` VALUES ('14','时间[YMDHIS]','calendar','','','',
 INSERT INTO `tp_sub_edittype` VALUES ('15','只读[HTML]','htmltext','','','','','','0','0','','','','','','','0','14','');
 INSERT INTO `tp_sub_edittype` VALUES ('16','只读[TEXT]','text','','','','','','0','0','','','','','','','0','14','');
 INSERT INTO `tp_sub_edittype` VALUES ('17','只读[tIme]','time','','','','','','0','0','','','','','','','0','14','');
+DROP TABLE `tp_sub_fieldtype`;
+CREATE TABLE `tp_sub_fieldtype` (
+  `id` int(11) NOT NULL auto_increment COMMENT 'ID',
+  `title` varchar(200) default NULL COMMENT '标题',
+  `seqNo` int(11) default NULL COMMENT '排序',
+  `type` varchar(240) NOT NULL COMMENT '类型',
+  `notnull` int(11) NOT NULL COMMENT '是否为空',
+  `default` varchar(240) NOT NULL COMMENT '默认值',
+  `primary` int(11) NOT NULL COMMENT '是否主键',
+  `autoInc` int(11) NOT NULL COMMENT '自动增加',
+  `leng` int(11) NOT NULL COMMENT '长度',
+  `color` int(11) default NULL,
+  `othervar` varchar(200) default NULL COMMENT '其它属性',
+  PRIMARY KEY  (`id`)
+) ENGINE=MyISAM AUTO_INCREMENT=22 DEFAULT CHARSET=utf8 COMMENT='字属性设定';
+
 INSERT INTO `tp_sub_fieldtype` VALUES ('1','[varchar][40]','1','VARCHAR','0','','0','0','40','5','');
 INSERT INTO `tp_sub_fieldtype` VALUES ('2','[INT][11]','2','INT','0','','0','0','11','3','');
 INSERT INTO `tp_sub_fieldtype` VALUES ('3','[text]','3','TEXT','0','','0','0','0','1','');
@@ -2708,6 +3432,17 @@ INSERT INTO `tp_sub_fieldtype` VALUES ('18','[datetime][0000-00-00 00:00:00]','8
 INSERT INTO `tp_sub_fieldtype` VALUES ('19','[time][00:00:00]','9','TIME','0','','0','0','0','14','');
 INSERT INTO `tp_sub_fieldtype` VALUES ('20','[year][0000]','10','YEAR','0','','0','0','0','15','');
 INSERT INTO `tp_sub_fieldtype` VALUES ('21','[bigint][20]','11','BIGINT','0','','0','0','20','15','');
+DROP TABLE `tp_sub_htmltags`;
+CREATE TABLE `tp_sub_htmltags` (
+  `id` int(11) NOT NULL auto_increment COMMENT 'ID',
+  `title` varchar(200) default NULL COMMENT '标题',
+  `usetype` int(11) default '1' COMMENT '使用范围',
+  `seqNo` int(11) default NULL COMMENT '排序',
+  `color` int(11) default NULL,
+  `othervar` varchar(200) default NULL COMMENT '其它属性',
+  PRIMARY KEY  (`id`)
+) ENGINE=MyISAM AUTO_INCREMENT=22 DEFAULT CHARSET=utf8 COMMENT='搜索形式设定';
+
 INSERT INTO `tp_sub_htmltags` VALUES ('1','input','1','0','1','OK');
 INSERT INTO `tp_sub_htmltags` VALUES ('2','password','1','0','2','OK');
 INSERT INTO `tp_sub_htmltags` VALUES ('3','textarea','1','0','3','OK');
@@ -2728,12 +3463,42 @@ INSERT INTO `tp_sub_htmltags` VALUES ('17','icon','2','0','16','');
 INSERT INTO `tp_sub_htmltags` VALUES ('18','link','2','0','19','');
 INSERT INTO `tp_sub_htmltags` VALUES ('20','outtable','2','0','19','OK');
 INSERT INTO `tp_sub_htmltags` VALUES ('21','filedown','2','0','8','OK');
+DROP TABLE `tp_sub_htmlusetype`;
+CREATE TABLE `tp_sub_htmlusetype` (
+  `id` int(11) NOT NULL auto_increment COMMENT 'ID',
+  `title` varchar(200) default NULL COMMENT '标题',
+  `seqNo` int(11) default NULL COMMENT '排序',
+  `color` int(11) default NULL,
+  `othervar` varchar(200) default NULL COMMENT '其它属性',
+  PRIMARY KEY  (`id`)
+) ENGINE=MyISAM AUTO_INCREMENT=4 DEFAULT CHARSET=utf8 COMMENT='HTMLtag使用范围';
+
 INSERT INTO `tp_sub_htmlusetype` VALUES ('1','编辑时使用','0','1','');
 INSERT INTO `tp_sub_htmlusetype` VALUES ('2','查看时使用','0','2','');
 INSERT INTO `tp_sub_htmlusetype` VALUES ('3','全局使用','0','3','');
+DROP TABLE `tp_sub_issystem`;
+CREATE TABLE `tp_sub_issystem` (
+  `id` int(11) NOT NULL auto_increment COMMENT 'ID',
+  `title` varchar(200) default NULL COMMENT '标题',
+  `seqNo` int(11) default NULL COMMENT '排序',
+  `color` int(11) default NULL,
+  `othervar` text COMMENT '其它属性',
+  PRIMARY KEY  (`id`)
+) ENGINE=MyISAM AUTO_INCREMENT=4 DEFAULT CHARSET=utf8 COMMENT='系统保留设定';
+
 INSERT INTO `tp_sub_issystem` VALUES ('1','非保留','1','1','none');
 INSERT INTO `tp_sub_issystem` VALUES ('2','文件上传','2','2','file');
 INSERT INTO `tp_sub_issystem` VALUES ('3','自定[权限]','3','3','right');
+DROP TABLE `tp_sub_searchtype`;
+CREATE TABLE `tp_sub_searchtype` (
+  `id` int(11) NOT NULL auto_increment COMMENT 'ID',
+  `title` varchar(200) default NULL COMMENT '标题',
+  `seqNo` int(11) default NULL COMMENT '排序',
+  `color` int(11) default NULL,
+  `othervar` varchar(200) default NULL COMMENT '其它属性',
+  PRIMARY KEY  (`id`)
+) ENGINE=MyISAM AUTO_INCREMENT=8 DEFAULT CHARSET=utf8 COMMENT='搜索形式设定';
+
 INSERT INTO `tp_sub_searchtype` VALUES ('1','[默认]形式','0','1','');
 INSERT INTO `tp_sub_searchtype` VALUES ('2','是否存在','1','2','');
 INSERT INTO `tp_sub_searchtype` VALUES ('3','时间跨度','2','3','');
@@ -2741,6 +3506,20 @@ INSERT INTO `tp_sub_searchtype` VALUES ('4','可选比较','3','4','');
 INSERT INTO `tp_sub_searchtype` VALUES ('5','包含[like]','4','5','');
 INSERT INTO `tp_sub_searchtype` VALUES ('6','多搜[ID]','5','6','');
 INSERT INTO `tp_sub_searchtype` VALUES ('7','是否&不定','1','7','');
+DROP TABLE `tp_sub_validate`;
+CREATE TABLE `tp_sub_validate` (
+  `id` int(11) NOT NULL auto_increment COMMENT 'ID',
+  `title` varchar(200) default NULL COMMENT '标题',
+  `seqNo` int(11) default NULL COMMENT '排序',
+  `color` int(11) default NULL,
+  `v_note` varchar(200) default NULL COMMENT '默认提示信息',
+  `v_rag` varchar(40) default NULL COMMENT '验证规则',
+  `v_con` varchar(40) default NULL COMMENT '验证条件',
+  `a_reg` varchar(40) default NULL COMMENT '附加规则',
+  `v_time` varchar(40) default NULL COMMENT '验证时间',
+  PRIMARY KEY  (`id`)
+) ENGINE=MyISAM AUTO_INCREMENT=11 DEFAULT CHARSET=utf8 COMMENT='搜索形式设定';
+
 INSERT INTO `tp_sub_validate` VALUES ('1','[默认]无','0','1','','','0','regex','ALL');
 INSERT INTO `tp_sub_validate` VALUES ('2','EMAIL','1','2','请输入正确的EMAIL地址!','email','2','regex','ALL');
 INSERT INTO `tp_sub_validate` VALUES ('3','纯数字','2','3','输入项须为纯数字!','number','0','regex','ALL');
@@ -2751,6 +3530,16 @@ INSERT INTO `tp_sub_validate` VALUES ('7','网址','7','8','输入项须为网�
 INSERT INTO `tp_sub_validate` VALUES ('8','货币格式','8','7','输入项须为货币格式!','currency','2','regex','ALL');
 INSERT INTO `tp_sub_validate` VALUES ('9','长整数字格式','9','10','输入项须为长整数字格式!','integer','2','regex','ALL');
 INSERT INTO `tp_sub_validate` VALUES ('10','QQ号码','10','11','输入项须为QQ号码格式!','qq','2','regex','ALL');
+DROP TABLE `tp_sub_validate_arag`;
+CREATE TABLE `tp_sub_validate_arag` (
+  `id` int(11) NOT NULL auto_increment COMMENT 'ID',
+  `title` varchar(200) default NULL COMMENT '标题',
+  `seqNo` int(11) default NULL COMMENT '排序',
+  `color` int(11) default NULL,
+  `othervar` varchar(200) default NULL COMMENT '其它属性',
+  PRIMARY KEY  (`id`)
+) ENGINE=MyISAM AUTO_INCREMENT=8 DEFAULT CHARSET=utf8 COMMENT='附加规则';
+
 INSERT INTO `tp_sub_validate_arag` VALUES ('1','regex','0','1','使用正则进行验证，表示前面定义的验证规则是一个正则表达式（默认）');
 INSERT INTO `tp_sub_validate_arag` VALUES ('2','function','0','1','使用函数验证，前面定义的验证规则是一个函数名 ');
 INSERT INTO `tp_sub_validate_arag` VALUES ('3','callback','0','1','使用方法验证，前面定义的验证规则是一个当前 Model类的方法');
@@ -2758,9 +3547,43 @@ INSERT INTO `tp_sub_validate_arag` VALUES ('4','confirm ','0','1','验证表单�
 INSERT INTO `tp_sub_validate_arag` VALUES ('5','equal ','0','1','验证是否等于某个值，该值由前面的验证规则定义');
 INSERT INTO `tp_sub_validate_arag` VALUES ('6','in','0','1','验证是否在某个范围内，前面定义的验证规则必须是一个数组');
 INSERT INTO `tp_sub_validate_arag` VALUES ('7','unique','0','1','验证是否唯一，系统会根据字段目前的值查询数据库来判断是否存在相同的值 ');
+DROP TABLE `tp_sub_validate_vcon`;
+CREATE TABLE `tp_sub_validate_vcon` (
+  `id` int(11) NOT NULL auto_increment COMMENT 'ID',
+  `title` varchar(200) default NULL COMMENT '标题',
+  `seqNo` int(11) default NULL COMMENT '排序',
+  `color` int(11) default NULL,
+  `othervar` varchar(200) default NULL COMMENT '其它属性',
+  PRIMARY KEY  (`id`)
+) ENGINE=MyISAM AUTO_INCREMENT=4 DEFAULT CHARSET=utf8 COMMENT='验证条件';
+
 INSERT INTO `tp_sub_validate_vcon` VALUES ('3','存在字段就验证（默认）','0','0','');
 INSERT INTO `tp_sub_validate_vcon` VALUES ('1','必须验证','0','0','');
 INSERT INTO `tp_sub_validate_vcon` VALUES ('2','值不为空的时候验证','0','0','');
+DROP TABLE `tp_sub_viewtype`;
+CREATE TABLE `tp_sub_viewtype` (
+  `id` int(11) NOT NULL auto_increment COMMENT 'ID',
+  `title` varchar(200) default NULL COMMENT '标题',
+  `htmltype` varchar(160) default NULL COMMENT '类型',
+  `htmlname` varchar(160) default NULL COMMENT '名称[name]',
+  `htmlid` varchar(160) default NULL COMMENT 'ID[ID]',
+  `htmlvar` varchar(160) default NULL COMMENT '默认值',
+  `htmlstyle` varchar(160) default NULL COMMENT '格式[style]',
+  `htmlclass` varchar(160) default NULL COMMENT 'class',
+  `isdisabled` int(11) default '0' COMMENT 'disabled',
+  `isreadonly` int(11) default '0' COMMENT 'readonly',
+  `outtable` varchar(160) default NULL COMMENT '外表',
+  `outkey` varchar(160) default NULL COMMENT '外表ID',
+  `outfield` varchar(160) default NULL COMMENT '展示',
+  `outcondition` varchar(160) default NULL COMMENT '条件',
+  `outorder` varchar(160) default NULL COMMENT '外表排序',
+  `outadd` varchar(160) default NULL COMMENT '连接符',
+  `seqNo` int(11) default NULL COMMENT '排序',
+  `color` int(11) default NULL,
+  `othervar` varchar(200) default NULL COMMENT '其它属性',
+  PRIMARY KEY  (`id`)
+) ENGINE=MyISAM AUTO_INCREMENT=11 DEFAULT CHARSET=utf8 COMMENT='查看类型设定';
+
 INSERT INTO `tp_sub_viewtype` VALUES ('1','[默认]text','text','','','','','','0','0','','','','','','','0','1','');
 INSERT INTO `tp_sub_viewtype` VALUES ('2','引用外表','outtable','','','','','','0','0','','','','','','','1','2','');
 INSERT INTO `tp_sub_viewtype` VALUES ('3','图标显示','icon','','','','','','0','0','','','','','','','2','3','');
@@ -2771,8 +3594,31 @@ INSERT INTO `tp_sub_viewtype` VALUES ('7','时间[YMD]','time','','','','','','0
 INSERT INTO `tp_sub_viewtype` VALUES ('8','时间[全]','time','','','','','','0','0','','','','','','','7','8','');
 INSERT INTO `tp_sub_viewtype` VALUES ('9','1对多','text','','','','','','0','0','','','','','','','8','9','');
 INSERT INTO `tp_sub_viewtype` VALUES ('10','HTML','htmltext','','','','','','0','0','','','','','','','0','8','');
+DROP TABLE `tp_sub_yesno`;
+CREATE TABLE `tp_sub_yesno` (
+  `id` int(11) NOT NULL auto_increment COMMENT 'ID',
+  `tid` int(11) NOT NULL,
+  `title` varchar(200) default NULL COMMENT '标题',
+  `seqNo` int(11) default NULL COMMENT '排序',
+  `color` int(11) default NULL,
+  `othervar` varchar(200) default NULL COMMENT '其它属性',
+  PRIMARY KEY  (`id`)
+) ENGINE=MyISAM AUTO_INCREMENT=3 DEFAULT CHARSET=utf8 COMMENT='查看类型设定';
+
 INSERT INTO `tp_sub_yesno` VALUES ('2','0','否','1','1','');
 INSERT INTO `tp_sub_yesno` VALUES ('1','1','是','2','8','');
+DROP TABLE `tp_sys_config`;
+CREATE TABLE `tp_sys_config` (
+  `id` int(11) NOT NULL auto_increment,
+  `pid` int(11) default NULL COMMENT '上级',
+  `type` int(11) default NULL COMMENT '值的类型',
+  `title` varchar(200) default NULL,
+  `value` varchar(200) default NULL,
+  `note` varchar(240) default NULL COMMENT '注解',
+  `seqNo` int(11) default NULL,
+  PRIMARY KEY  (`id`)
+) ENGINE=MyISAM AUTO_INCREMENT=100 DEFAULT CHARSET=utf8 COMMENT='默认的系统参数';
+
 INSERT INTO `tp_sys_config` VALUES ('1','1','1','DISPATCH_ON','true','是否启用Dispatcher','0');
 INSERT INTO `tp_sys_config` VALUES ('2','1','3','DISPATCH_NAME','Think','默认的Dispatcher名称','0');
 INSERT INTO `tp_sys_config` VALUES ('3','1','2','URL_MODEL','0','// URL模式： 0 普通模式 1 PATHINFO 2 REWRITE','0');
@@ -2872,6 +3718,15 @@ INSERT INTO `tp_sys_config` VALUES ('96','21','3','AUTO_LOAD_PATH','Think.Util.'
 INSERT INTO `tp_sys_config` VALUES ('97','21','3','CALLBACK_LOAD_PATH','','反序列化对象时自动加载的路径设置','0');
 INSERT INTO `tp_sys_config` VALUES ('98','21','3','UPLOAD_FILE_RULE','uniqid','文件上传命名规则 例如 time uniqid com_create_guid 等 支持自定义函数 仅适用于内置的UploadFile类','0');
 INSERT INTO `tp_sys_config` VALUES ('99','21','3','LIKE_MATCH_FIELDS','','数据库查询的时候需要进行模糊匹配的字段','0');
+DROP TABLE `tp_sys_configtype`;
+CREATE TABLE `tp_sys_configtype` (
+  `id` int(11) NOT NULL auto_increment,
+  `title` varchar(200) default NULL,
+  `note` varchar(240) default NULL COMMENT '注解',
+  `seqNo` int(11) default NULL,
+  PRIMARY KEY  (`id`)
+) ENGINE=MyISAM AUTO_INCREMENT=22 DEFAULT CHARSET=utf8 COMMENT='默认的系统参数';
+
 INSERT INTO `tp_sys_configtype` VALUES ('1','Dispatch设置','','0');
 INSERT INTO `tp_sys_configtype` VALUES ('2','日志设置','','0');
 INSERT INTO `tp_sys_configtype` VALUES ('3','插件设置','','0');
@@ -2893,9 +3748,56 @@ INSERT INTO `tp_sys_configtype` VALUES ('18','Cookie设置','','0');
 INSERT INTO `tp_sys_configtype` VALUES ('19','分页设置','','0');
 INSERT INTO `tp_sys_configtype` VALUES ('20','数据格式设置','','0');
 INSERT INTO `tp_sys_configtype` VALUES ('21','其它设置','','0');
+DROP TABLE `tp_sys_datatype`;
+CREATE TABLE `tp_sys_datatype` (
+  `id` int(11) NOT NULL auto_increment,
+  `title` varchar(200) default NULL,
+  `seqNo` int(11) default NULL,
+  `note` varchar(240) NOT NULL COMMENT '注解',
+  PRIMARY KEY  (`id`)
+) ENGINE=MyISAM AUTO_INCREMENT=4 DEFAULT CHARSET=utf8 COMMENT='默认的数据库类型';
+
 INSERT INTO `tp_sys_datatype` VALUES ('1','布尔值','111','qqq');
 INSERT INTO `tp_sys_datatype` VALUES ('2','数字值','222','www');
 INSERT INTO `tp_sys_datatype` VALUES ('3','文本值','333','eee');
+DROP TABLE `tp_sys_fields`;
+CREATE TABLE `tp_sys_fields` (
+  `id` int(11) NOT NULL auto_increment,
+  `pid` int(11) NOT NULL COMMENT '所属的表',
+  `name` varchar(200) NOT NULL COMMENT '英文',
+  `caption` varchar(200) NOT NULL,
+  `islist` int(11) default '1' COMMENT '是否列表',
+  `fieldtype` int(11) default NULL COMMENT '字属性',
+  `fieldlenght` int(11) default NULL COMMENT '字符长度',
+  `request` int(11) default NULL COMMENT '必填',
+  `validate` int(11) NOT NULL default '1' COMMENT '验证形式',
+  `validate_tex` varchar(244) default NULL COMMENT '自定义错误',
+  `validate_reg` varchar(244) default NULL COMMENT '自定义正则',
+  `viewtype` int(11) default NULL COMMENT '查看类型',
+  `isview` smallint(2) NOT NULL default '1' COMMENT '是否列表',
+  `edittype` int(11) default NULL COMMENT '编辑类型',
+  `isedit` smallint(2) NOT NULL default '1' COMMENT '是否编辑',
+  `addtype` int(11) default NULL COMMENT '增加类型',
+  `isadd` smallint(2) NOT NULL default '1' COMMENT '是否增加',
+  `islistwidth` varchar(40) default NULL COMMENT '列表长度',
+  `islistviewtype` int(11) default '1' COMMENT '列表查看类型',
+  `iswrap` int(11) default NULL COMMENT '是否排序',
+  `indexvar` varchar(240) NOT NULL COMMENT '默认值',
+  `autotype` int(11) NOT NULL default '1' COMMENT '自动填充类型',
+  `issystem` int(11) default NULL COMMENT '是否系统保留',
+  `outkey` varchar(200) default NULL COMMENT '外键索引',
+  `outkeyis` int(11) default '0' COMMENT '是否',
+  `outkeyid` varchar(20) default NULL COMMENT '外键ID',
+  `outkeyf` varchar(200) default NULL COMMENT '外键值',
+  `outkeywhere` varchar(240) default NULL COMMENT '外键条件',
+  `searchtype` int(11) default NULL COMMENT '搜索形式',
+  `advsearchtype` int(11) NOT NULL default '1' COMMENT '高级搜索形式',
+  `issearch` int(11) default '0' COMMENT '是否搜索',
+  `seqNo` int(11) default NULL,
+  `modelid` int(11) default '0' COMMENT '数据模版ID',
+  PRIMARY KEY  (`id`)
+) ENGINE=MyISAM AUTO_INCREMENT=5017 DEFAULT CHARSET=utf8 COMMENT='定义每个点';
+
 INSERT INTO `tp_sys_fields` VALUES ('4923','131','groupId','权限组','0','2','0','0','1','','','1','1','1','1','1','1','','1','0','','1','1','','0','','','','1','1','0','1','0');
 INSERT INTO `tp_sys_fields` VALUES ('556','125','content_en','内容[英文]','0','3','0','1','1','','','10','1','9','1','9','1','','1','0','','1','1','','0','','','','1','1','1','4','0');
 INSERT INTO `tp_sys_fields` VALUES ('555','125','content_cn','内容[中文]','0','3','0','1','1','','','10','1','9','1','9','1','','1','0','','1','1','','0','','','','1','1','1','3','0');
@@ -4636,6 +5538,15 @@ INSERT INTO `tp_sys_fields` VALUES ('5013','1041','browser','客户端浏览器'
 INSERT INTO `tp_sys_fields` VALUES ('5014','1041','todayfirst','todayfirst','1','2','0','0','1','','','1','1','1','1','0','1','','1','1','','0','1','','0','','','','1','1','1','0','0');
 INSERT INTO `tp_sys_fields` VALUES ('5015','1041','return','回头客','1','2','0','0','1','','','1','1','1','1','0','1','','1','1','','0','1','','0','','','','1','1','1','0','0');
 INSERT INTO `tp_sys_fields` VALUES ('5016','1041','ismark','是否处理','1','5','0','0','1','','','1','1','1','1','0','1','','1','1','','0','1','','0','','','','1','1','1','0','0');
+DROP TABLE `tp_sys_fieldtypesub`;
+CREATE TABLE `tp_sys_fieldtypesub` (
+  `id` int(11) NOT NULL auto_increment,
+  `title` varchar(200) default NULL,
+  `seqNo` int(11) default NULL,
+  `note` varchar(240) NOT NULL COMMENT '注解',
+  PRIMARY KEY  (`id`)
+) ENGINE=MyISAM AUTO_INCREMENT=10 DEFAULT CHARSET=utf8 COMMENT='默认的数据库类型';
+
 INSERT INTO `tp_sys_fieldtypesub` VALUES ('1','VARCHAR','0','VARCHAR数据类型');
 INSERT INTO `tp_sys_fieldtypesub` VALUES ('2','INT','0','INT,需要定义长度');
 INSERT INTO `tp_sys_fieldtypesub` VALUES ('3','TEXT','0','TEXT不需要定义长度');
@@ -4645,12 +5556,61 @@ INSERT INTO `tp_sys_fieldtypesub` VALUES ('6','DATETIME','0','日期加时间(00
 INSERT INTO `tp_sys_fieldtypesub` VALUES ('7','TIME','0','时间(00:00:00)');
 INSERT INTO `tp_sys_fieldtypesub` VALUES ('8','YEAR','0','年(0000)');
 INSERT INTO `tp_sys_fieldtypesub` VALUES ('9','BIGINT','0','BIGINT需要定义长度');
+DROP TABLE `tp_sys_models`;
+CREATE TABLE `tp_sys_models` (
+  `id` int(11) NOT NULL auto_increment,
+  `title` varchar(200) default NULL,
+  `caption` varchar(200) default NULL,
+  `seqNo` int(11) default NULL,
+  PRIMARY KEY  (`id`)
+) ENGINE=MyISAM DEFAULT CHARSET=utf8 COMMENT='数据模型';
+
+DROP TABLE `tp_sys_projects`;
+CREATE TABLE `tp_sys_projects` (
+  `id` int(11) NOT NULL auto_increment,
+  `dbname` varchar(200) default NULL,
+  `caption` varchar(200) default NULL,
+  `proname` varchar(40) default NULL COMMENT '项目名称',
+  `dbuser` varchar(200) default NULL,
+  `tbpre` varchar(40) default NULL COMMENT '数据表前缀',
+  `dbpassword` varchar(200) default NULL,
+  `seqNo` int(11) default NULL,
+  `ison` int(11) default NULL COMMENT '是否生成',
+  `creattime` int(11) default NULL COMMENT '生成日期',
+  `think_pach` varchar(200) default NULL,
+  `tplname` varchar(40) NOT NULL COMMENT '模板ID',
+  `isaction` int(11) NOT NULL default '1' COMMENT '是否活动状态',
+  PRIMARY KEY  (`id`)
+) ENGINE=MyISAM AUTO_INCREMENT=43 DEFAULT CHARSET=utf8 COMMENT='生成项目说明';
+
 INSERT INTO `tp_sys_projects` VALUES ('1','crmv2','CRM第二版','crm2','root','crm_','123456','0','1','0','../ThinkPHP','tpmaker_default','0');
 INSERT INTO `tp_sys_projects` VALUES ('8','pershow','个人网站','pershow','root','lp_','123456','0','1','0','../ThinkPHP','tpmaker_default','0');
 INSERT INTO `tp_sys_projects` VALUES ('20','ns_website','NS网站新版','website','root','web_','123456','0','1','0','../ThinkPHP','tpmaker_default','0');
 INSERT INTO `tp_sys_projects` VALUES ('26','crm_v2_tp','Nstarts CRM 系统 (备份)','crmv2','root','ns_','123456','0','1','0','../ThinkPHP','tpmaker_advance','0');
 INSERT INTO `tp_sys_projects` VALUES ('41','crm_v2_tp','Nstarts CRM 系统 V2.1','crmv2','root','ns_','123456','0','1','0','../ThinkPHP','tpmaker_advance','0');
-INSERT INTO `tp_sys_projects` VALUES ('42','hbss_stat','HBSS决策支持系统','hbssstat','root','hb_','123456','0','','','../ThinkPHP','tpmaker_advance','1');
+INSERT INTO `tp_sys_projects` VALUES ('42','hbss_stat2','HBSS决策支持系统','hbssstat2','root','hb_','123456','0','','','../ThinkPHP','tpmaker_advance','1');
+DROP TABLE `tp_sys_tables`;
+CREATE TABLE `tp_sys_tables` (
+  `id` int(11) NOT NULL auto_increment,
+  `pid` int(11) NOT NULL default '1' COMMENT '项目ID',
+  `caption` varchar(200) NOT NULL,
+  `title` varchar(200) NOT NULL,
+  `searchtype` int(11) default NULL COMMENT '探索形式',
+  `edittype` int(11) default NULL COMMENT '编辑类型',
+  `seqNo` int(11) default NULL,
+  `ismodel` int(11) NOT NULL default '0' COMMENT '是否数据模板',
+  `datemodelid` int(11) NOT NULL default '0' COMMENT '指定数据模板',
+  `list` int(11) default '1' COMMENT '是否列表',
+  `view` int(11) default '1' COMMENT '是否显示详细',
+  `add` int(11) default '1',
+  `del` int(11) default '1',
+  `edit` int(11) default '1',
+  `search` int(11) default '1',
+  `isaction` int(11) NOT NULL default '1' COMMENT '是否活动',
+  `issystem` int(11) NOT NULL default '0' COMMENT '是否系统保留',
+  PRIMARY KEY  (`id`)
+) ENGINE=MyISAM AUTO_INCREMENT=1042 DEFAULT CHARSET=utf8 COMMENT='数据表';
+
 INSERT INTO `tp_sys_tables` VALUES ('1','1','人才管理系统','Person','2','2','1','0','935','1','1','1','1','1','1','1','0');
 INSERT INTO `tp_sys_tables` VALUES ('2','1','企业管理系统','Company','2','1','2','0','935','1','1','1','1','1','1','1','0');
 INSERT INTO `tp_sys_tables` VALUES ('3','1','订单管理系统','Order','2','1','3','0','935','1','1','1','1','1','1','1','0');
@@ -4953,8 +5913,68 @@ INSERT INTO `tp_sys_tables` VALUES ('1038','42','统计标识管理','labels','0
 INSERT INTO `tp_sys_tables` VALUES ('1039','42','IP详细记录[工作]','ipdatas_work','0','0','0','0','1031','1','1','1','1','1','1','1','0');
 INSERT INTO `tp_sys_tables` VALUES ('1040','42','IP对照记录表','ip2area','0','0','0','0','1031','1','1','1','1','1','1','1','0');
 INSERT INTO `tp_sys_tables` VALUES ('1041','42','IP详细记录[备份]','workipdatas_backup','0','0','0','0','1031','1','1','1','1','1','1','1','0');
+DROP TABLE `tp_sys_viewcondition`;
+CREATE TABLE `tp_sys_viewcondition` (
+  `id` int(11) NOT NULL auto_increment,
+  `vid` int(11) NOT NULL,
+  `in_tid` int(11) NOT NULL,
+  `in_field` varchar(40) NOT NULL,
+  `out_tid` int(11) NOT NULL,
+  `out_field` varchar(40) NOT NULL,
+  `condition` varchar(20) NOT NULL,
+  PRIMARY KEY  (`id`)
+) ENGINE=MyISAM DEFAULT CHARSET=utf8 COMMENT='视图模型表条件';
+
+DROP TABLE `tp_sys_viewfields`;
+CREATE TABLE `tp_sys_viewfields` (
+  `id` int(11) NOT NULL auto_increment COMMENT 'ID',
+  `vid` int(11) NOT NULL COMMENT '视图ID',
+  `caption` varchar(40) NOT NULL COMMENT '标题[cn]',
+  `title` varchar(40) NOT NULL COMMENT '标题[en]',
+  `newtitle` varchar(40) NOT NULL COMMENT '新的名称',
+  `tid` int(11) NOT NULL COMMENT '属所表的ID',
+  `seqNo` int(11) NOT NULL COMMENT '排序',
+  `islist` int(11) NOT NULL COMMENT '是否显示在列表',
+  `iswrap` int(11) NOT NULL COMMENT '是否需要排序筛选',
+  `issearch` int(11) NOT NULL COMMENT '是否需要搜索功能',
+  `searchtype` int(11) NOT NULL COMMENT '一般搜索形式',
+  `advsearchtype` int(11) NOT NULL COMMENT '高级搜索形式',
+  PRIMARY KEY  (`id`)
+) ENGINE=MyISAM DEFAULT CHARSET=utf8 COMMENT='视图模型表字段';
+
+DROP TABLE `tp_sys_viewmodel`;
+CREATE TABLE `tp_sys_viewmodel` (
+  `id` int(11) NOT NULL auto_increment COMMENT 'ID',
+  `projectid` int(11) NOT NULL,
+  `title` varchar(40) NOT NULL COMMENT '标题[en]',
+  `caption` varchar(40) NOT NULL COMMENT '标题[cn]',
+  `infos` varchar(240) NOT NULL COMMENT '说明',
+  `seqNo` int(11) NOT NULL COMMENT '排序',
+  PRIMARY KEY  (`id`)
+) ENGINE=MyISAM DEFAULT CHARSET=utf8 COMMENT='视图模型';
+
+DROP TABLE `tp_tab_edittype`;
+CREATE TABLE `tp_tab_edittype` (
+  `id` int(11) NOT NULL auto_increment COMMENT 'ID',
+  `title` varchar(200) default NULL COMMENT '标题',
+  `seqNo` int(11) default NULL COMMENT '排序',
+  `color` int(11) default NULL,
+  `othervar` varchar(200) default NULL COMMENT '其它属性',
+  PRIMARY KEY  (`id`)
+) ENGINE=MyISAM AUTO_INCREMENT=3 DEFAULT CHARSET=utf8 COMMENT='编辑类型设定';
+
 INSERT INTO `tp_tab_edittype` VALUES ('1','[默认]一般形式','0','1','');
 INSERT INTO `tp_tab_edittype` VALUES ('2','快速编辑形式','1','2','');
+DROP TABLE `tp_tab_searchtype`;
+CREATE TABLE `tp_tab_searchtype` (
+  `id` int(11) NOT NULL auto_increment COMMENT 'ID',
+  `title` varchar(200) default NULL COMMENT '标题',
+  `seqNo` int(11) default NULL COMMENT '排序',
+  `color` int(11) default NULL,
+  `othervar` varchar(200) default NULL COMMENT '其它属性',
+  PRIMARY KEY  (`id`)
+) ENGINE=MyISAM AUTO_INCREMENT=5 DEFAULT CHARSET=utf8 COMMENT='搜索形式设定';
+
 INSERT INTO `tp_tab_searchtype` VALUES ('1','[默认]简单搜索','0','1','');
 INSERT INTO `tp_tab_searchtype` VALUES ('2','简单+高级搜索','1','7','');
 INSERT INTO `tp_tab_searchtype` VALUES ('3','不需要搜索功能','0','2','');
