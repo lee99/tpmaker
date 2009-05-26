@@ -13,7 +13,7 @@ class DesignerAction extends AdminAction{
 		require COMMON_PATH."tpmaker.class.php";//引入自定义的类
 
 	//获取表
-	   $list=D('sys_tables');
+	   $list=D('Sys_tables');
 	   $tabledata=$list->findall('ismodel=0 and pid='.$_REQUEST['id']);
 	   $this->assign('tables',$tabledata);
 		//dump($data);
@@ -70,7 +70,7 @@ class DesignerAction extends AdminAction{
     $this->assign('script_contr',$script_contr);
 
     //查出位置
-    	$d=D('designer_coords');
+    	$d=D('Designer_coords');
 		$ds=$d->findall("projectid=".$_REQUEST['id']);
 		foreach ($ds as $date){
 			//$tab_pos[$date['table_name']]=$date['table_name'];
@@ -89,7 +89,7 @@ class DesignerAction extends AdminAction{
 
 
 
-	public function relation_new (){
+	public function Relation_new (){
 		$list=D('Designer');
 		//$Designer->find($_REQUEST['id']);
 		$list->master_pid=$_REQUEST['db'];
@@ -101,7 +101,7 @@ class DesignerAction extends AdminAction{
 		if($list->add()){
 			header("Content-Type: text/xml; charset=utf-8");//utf-8 .$_GLOBALS['charset']
 		    header("Cache-Control: no-cache");
-		    die('<root act="relation_new" return="strInternalRelationAdded" b="1"
+		    die('<root act="Relation_new" return="strInternalRelationAdded" b="1"
 		    DB1="'.urlencode($_REQUEST['db']).
 		    '" T1="'.urlencode($_REQUEST['T1']).
 		    '" F1="'.urlencode($_REQUEST['F1']).
@@ -112,7 +112,7 @@ class DesignerAction extends AdminAction{
 		}else {
 			header("Content-Type: text/xml; charset=utf-8");//utf-8 .$_GLOBALS['charset']
 		    header("Cache-Control: no-cache");
-		    die('<root act="relation_new" return="strErrorRelationAdded" b="0"
+		    die('<root act="Relation_new" return="strErrorRelationAdded" b="0"
 		    DB1="'.urlencode($_REQUEST['db']).
 		    '" T1="'.urlencode($_REQUEST['T1']).
 		    '" F1="'.urlencode($_REQUEST['F1']).
@@ -125,7 +125,7 @@ class DesignerAction extends AdminAction{
 	}
 
 
-	public function relation_upd(){
+	public function Relation_upd(){
 
 		$list=D('Designer');
 
@@ -144,7 +144,7 @@ class DesignerAction extends AdminAction{
 		if($list->delete($condition)){
 		  header("Content-Type: text/xml; charset=utf-8");
 		  header("Cache-Control: no-cache");
-			echo('<root act="relation_upd" return="strRelationDeleted" b="1" K="'.$_REQUEST['K'].'"></root>');
+			echo('<root act="Relation_upd" return="strRelationDeleted" b="1" K="'.$_REQUEST['K'].'"></root>');
 		}
 
 	//dump($Designer);
@@ -152,7 +152,7 @@ class DesignerAction extends AdminAction{
 
 
 	public function save_pos(){
-		$list=D('designer_coords');
+		$list=D('Designer_coords');
 		$list->delete("projectid=".$_REQUEST['db']);
 		//$t_x=$_REQUEST['t_x'];
 		//dump($t_x);

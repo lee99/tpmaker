@@ -49,7 +49,7 @@ function id_To_EValue($tb,$col,$o_col,$id)
 function getcolor($id)
 	{
 		if(S('color'.$id)==""){
-			$thisdao=D('sub_color');
+			$thisdao=D('Sub_color');
 			$list=$thisdao->find('id='.$id,'title');
 			S('color'.$id,$list['title']);
 			return $list['title'];
@@ -62,7 +62,7 @@ function getcolor($id)
 
 function getfielddetail($datetype)
 	{
-	$field=D('sub_fieldtype');
+	$field=D('Sub_fieldtype');
 	$fielddate=$field->getbyid($datetype);
 
 		if($fielddate['primary']==1){
@@ -162,7 +162,7 @@ function makeselect($name,$table,$idt='',$where='',$option='title',$f_idvalue='i
 			$var='';
 			$thiscolor='';
 		}
-		
+
 		$tmp.= "</select>";
 	return  $tmp;
 }
@@ -212,9 +212,9 @@ function makeoption($table,$id='id',$where='',$option='title',$order,$outadd){
 			$table->create($creatdb);
 			$table->add();
 			$newid=$table->getLastInsID();
-			copytable('sys_fields',$newid,'pid',$oldid);
+			copytable('Sys_fields',$newid,'pid',$oldid);
 		}
-		
+
 }
 
 
@@ -223,7 +223,7 @@ function delbypid($daoname,$inpid,$pidf='pid'){
 	$tabledata=$table->findall($pidf.'='.$inpid);//找出相应的数据
 	foreach ($tabledata as $creatdb){
 		$oldid=$creatdb['id'];
-		delbypid('sys_fields',$oldid,'pid');
+		delbypid('Sys_fields',$oldid,'pid');
 	}
 	$table->deleteAll('pid='.$inpid);
 }
@@ -247,7 +247,7 @@ function un_clean_html($value){
 }
 
 
-	
+
 function remover($string, $sep1, $sep2)
 {
 	//获得两个字符串里的值
@@ -274,17 +274,17 @@ function toDate($time,$format='Y年m月d日 H:i:s')
 
 
 function msg($info,$isok=1)
-{	
+{
 	$msgtime=microtime();
 	if($isok==1){
 	echo "<font style='font-size:12px'>".$info."</font>";
 	}else{
-	echo "<font style='font-size:12px;color:red'>".$info."</font>";		
+	echo "<font style='font-size:12px;color:red'>".$info."</font>";
 	}
-	echo "<a name='".$msgtime."'></a>";	
-	echo "<script language='JavaScript'>document.location.href='#".$msgtime."';</script>";	
-	 ob_flush();      
-	 flush();  
+	echo "<a name='".$msgtime."'></a>";
+	echo "<script language='JavaScript'>document.location.href='#".$msgtime."';</script>";
+	 ob_flush();
+	 flush();
 }
 
 function tpmk_dir($dir, $mode = 0755)
@@ -294,7 +294,7 @@ function tpmk_dir($dir, $mode = 0755)
   return @mkdir($dir,$mode);
 }
 
-function tpmkdirs($dirs,$mode=0777) 
+function tpmkdirs($dirs,$mode=0777)
 {//tp的生成缓存经常没法完全加载,所以改了
     if(is_string($dirs)) {
         $dirs  = explode(',',$dirs);

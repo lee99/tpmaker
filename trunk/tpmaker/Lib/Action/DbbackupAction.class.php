@@ -4,9 +4,9 @@
 //+----------------------------------------------------------
 //* 说明
 //+----------------------------------------------------------
-//* D:\xampp\htdocs\sample_verson\mytp\Lib\Action\sys_projectsAction.class.php
+//* D:\xampp\htdocs\sample_verson\mytp\Lib\Action\Sys_projectsAction.class.php
 /////////////////////////////////////////////////////////////////////////////
-class dbbackupAction extends AdminAction{
+class DbbackupAction extends AdminAction{
 
 	public function index(){
 
@@ -73,7 +73,7 @@ class dbbackupAction extends AdminAction{
 
 
 	public function importdb(){//导入数据库
-		$list=D('sys_projects');
+		$list=D('Sys_projects');
 		$data=$list->getByid($_REQUEST['id']);
 		$db_config = 'mysql://'.C('DB_USER').':'.C('DB_PWD').'@'.C('DB_HOST').':'.C('DB_PORT').'/'.$data['dbname'];
 		$db	=	DB::getInstance();

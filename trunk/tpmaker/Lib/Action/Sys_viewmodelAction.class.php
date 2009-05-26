@@ -45,7 +45,7 @@ class Sys_viewmodelAction extends AdminAction{
 
 		$delis=explode(',',$_REQUEST['id']);
 		foreach ($delis as $delpid){
-			delbypid('sys_viewfields',$delpid,'vid');
+			delbypid('Sys_viewfields',$delpid,'vid');
 			delbypid('sys_viewcondition',$delpid,'vid');
 		}
 
@@ -86,7 +86,7 @@ class Sys_viewmodelAction extends AdminAction{
 	public function insert(){
 		$list=D('Sys_viewmodel');
 		$condition=D('sys_viewcondition');
-		$fields=D('sys_viewfields');
+		$fields=D('Sys_viewfields');
 		if($_REQUEST[title]!=''&& $_REQUEST[caption]!=''){
 			$date=$_REQUEST;
 			$date['projectid']=$_SESSION['workingprojectid'];

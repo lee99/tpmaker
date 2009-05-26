@@ -4,13 +4,13 @@
 //+----------------------------------------------------------
 //* 说明
 //+----------------------------------------------------------
-//* D:\xampp\htdocs\sample_verson\mytp\Lib\Action\tab_searchtypeAction.class.php
+//* D:\xampp\htdocs\sample_verson\mytp\Lib\Action\Tab_searchtypeAction.class.php
 /////////////////////////////////////////////////////////////////////////////
-class tab_searchtypeAction extends AdminAction{
+class Tab_searchtypeAction extends AdminAction{
 
 	public function index(){
 
-		$list=D('tab_searchtype');
+		$list=D('Tab_searchtype');
 		$count= $list->count();
 		if(!empty($_REQUEST['order'])) { $order = $_REQUEST['order']; }else{ $order='seqNo'; } //排序表单
 		if(empty($_REQUEST['sort']) ) { $sortd = 'asc'; }else{ $sortd=$_REQUEST['sort']; } //排序方向
@@ -29,19 +29,19 @@ class tab_searchtypeAction extends AdminAction{
 
 
 	public function delete(){
-		$list=D('tab_searchtype');
+		$list=D('Tab_searchtype');
 		if($_REQUEST[id]==""){
 			halt('输入的ID号不能为空');
 		}
 		$list->delete($_REQUEST['id']);
 		redirect(__URL__."/index");
-	//dump($tab_searchtype);
+	//dump($Tab_searchtype);
 	}
 
 
 
 	public function updateform(){
-		$list=D('tab_searchtype');
+		$list=D('Tab_searchtype');
 		for ($i = 0; $i < count($_POST['id']); $i++) {
 			foreach (array_keys($_POST) as $key){
 			$var[$key]=	$_POST[$key][$i];//数组转换
@@ -58,7 +58,7 @@ class tab_searchtypeAction extends AdminAction{
 	}
 
 	public function addform(){
-		$list=D('tab_searchtype');
+		$list=D('Tab_searchtype');
 		$add_date=$_REQUEST;
 		$list->create($add_date);
 		$list->add($add_date);

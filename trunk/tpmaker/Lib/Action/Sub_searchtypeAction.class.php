@@ -4,13 +4,13 @@
 //+----------------------------------------------------------
 //* 说明
 //+----------------------------------------------------------
-//* D:\xampp\htdocs\sample_verson\mytp\Lib\Action\sub_searchtypeAction.class.php
+//* D:\xampp\htdocs\sample_verson\mytp\Lib\Action\Sub_searchtypeAction.class.php
 /////////////////////////////////////////////////////////////////////////////
-class sub_searchtypeAction extends AdminAction{
+class Sub_searchtypeAction extends AdminAction{
 
 	public function index(){
 
-		$list=D('sub_searchtype');
+		$list=D('Sub_searchtype');
 		$count= $list->count();
 
 		if(!empty($_REQUEST['order'])) { $order = $_REQUEST['order']; }else{ $order='seqNo'; } //排序表单
@@ -30,19 +30,19 @@ class sub_searchtypeAction extends AdminAction{
 
 
 	public function delete(){
-		$list=D('sub_searchtype');
+		$list=D('Sub_searchtype');
 		if($_REQUEST[id]==""){
 			halt('输入的ID号不能为空');
 		}
 		$list->delete($_REQUEST['id']);
 		redirect(__URL__."/index");
-	//dump($sub_searchtype);
+	//dump($Sub_searchtype);
 	}
 
 
 
 	public function updateform(){
-		$list=D('sub_searchtype');
+		$list=D('Sub_searchtype');
 		for ($i = 0; $i < count($_POST['id']); $i++) {
 			foreach (array_keys($_POST) as $key){
 				$var[$key]=	$_POST[$key][$i];//数组转换
@@ -59,7 +59,7 @@ class sub_searchtypeAction extends AdminAction{
 	}
 
 	public function addform(){
-		$list=D('sub_searchtype');
+		$list=D('Sub_searchtype');
 		$add_date=$_REQUEST;
 		$list->create($add_date);
 		$list->add($add_date);

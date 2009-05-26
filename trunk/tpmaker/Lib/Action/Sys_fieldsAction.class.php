@@ -4,18 +4,18 @@
 //+----------------------------------------------------------
 //* 说明
 //+----------------------------------------------------------
-//* D:\xampp\htdocs\sample_verson\mytp\Lib\Action\sys_fieldsAction.class.php
+//* D:\xampp\htdocs\sample_verson\mytp\Lib\Action\Sys_fieldsAction.class.php
 /////////////////////////////////////////////////////////////////////////////
-class sys_fieldsAction extends AdminAction{
+class Sys_fieldsAction extends AdminAction{
 
 	public function index(){
 
-		$pro=D('sys_tables');
+		$pro=D('Sys_tables');
 		$pro=$pro->getByid($_REQUEST[pid]);
 		$this->assign('tablename',$pro['caption']);//当前操作的数据表
 		$this->assign('titlename',$pro['title']);//当前操作的数据表
 
-		$list=D('sys_fields');
+		$list=D('Sys_fields');
 		$count= $list->count('pid='.$_REQUEST[pid]);
 		if(!empty($_REQUEST['order'])) { $order = $_REQUEST['order']; }else{ $order='seqNo'; } //排序表单
 		if(empty($_REQUEST['sort']) ) { $sortd = 'asc'; }else{ $sortd=$_REQUEST['sort']; } //排序方向
@@ -40,15 +40,15 @@ class sys_fieldsAction extends AdminAction{
 
 
 	public function delete(){
-		$list=D('sys_fields');
-		//$sys_fields->find($_REQUEST['id']);
+		$list=D('Sys_fields');
+		//$Sys_fields->find($_REQUEST['id']);
 		if($_REQUEST[id]==""){
 			halt('输入的ID号不能为空');
 		}
 		$listd=$list->findall('id in ('.$_REQUEST[id].')');
 		$pid=$listd[0]['pid'];
 
-		$listdel=D('sys_fields');
+		$listdel=D('Sys_fields');
 		$listdel->delete($_REQUEST[id]);
 	  //$this->ajaxReturn('','操作成功！',1);
 	  redirect(__URL__."/index/pid/".$pid);
@@ -59,7 +59,7 @@ class sys_fieldsAction extends AdminAction{
 
 	public function Table(){
 
-		$list=D('sys_tables');
+		$list=D('Sys_tables');
 		$list=$list->findAll('id='.$_REQUEST[id],'*');
 		$list2=$list;
 		$this->assign('list',$list);
@@ -70,7 +70,7 @@ class sys_fieldsAction extends AdminAction{
 
 	public function ajaxTable(){
 
-		$list=D('sys_tables');
+		$list=D('Sys_tables');
 		if($_SESSION['workingprojectid']==""){
 			echo('参数错误,请刷新!');
 			exit;
@@ -84,9 +84,9 @@ class sys_fieldsAction extends AdminAction{
 
 	public function ajaxFields(){
 
-		$fields=D('sys_fields');
+		$fields=D('Sys_fields');
 		$key=$_REQUEST['id'];
-		$pid=id_To_EValue('sys_tables','datemodelid','id',$key);
+		$pid=id_To_EValue('Sys_tables','datemodelid','id',$key);
 		if($pid!=0){
 			$sqlwhere="pid ='$key' or pid='$pid'";
 		}else{
@@ -100,7 +100,7 @@ class sys_fieldsAction extends AdminAction{
 
 	public function outkey(){
 
-		$list=D('sys_fields');
+		$list=D('Sys_fields');
 		$list=$list->find('id='.$_REQUEST[id]);
 		$this->assign("list",$list);
 		//dump($list);
@@ -110,7 +110,7 @@ class sys_fieldsAction extends AdminAction{
 
 	public function outkeysave(){
 		//保存条件到相应的表里面
-		$list=D('sys_fields');
+		$list=D('Sys_fields');
 		$date['id']=$_REQUEST['id'];
 		$date['outkeyis']=$_REQUEST['outkeyis'];
 		$date['outkey']=$_REQUEST['outkey'];
@@ -122,7 +122,7 @@ class sys_fieldsAction extends AdminAction{
 	}
 
 	public function updateform(){
-		$list=D('sys_fields');
+		$list=D('Sys_fields');
 
 		for ($i = 0; $i < count($_POST['id']); $i++) {
 			foreach (array_keys($_POST) as $key){
@@ -145,7 +145,7 @@ class sys_fieldsAction extends AdminAction{
 	}
 
 	public function insert(){
-		$list=D('sys_fields');
+		$list=D('Sys_fields');
 		$list->create();
 		$list->add();
 		$this->success('操作成功！');
@@ -159,7 +159,7 @@ class sys_fieldsAction extends AdminAction{
 
 	public function setissystem(){//系统保留信息
 
-		$list=D('sys_fields');
+		$list=D('Sys_fields');
 		$list=$list->findAll('id='.$_REQUEST[id],'*');
 		$this->assign("list",$list);
 		//dump($list);
@@ -168,7 +168,7 @@ class sys_fieldsAction extends AdminAction{
 
 
 	function ajaxauto(){
-		$dao=D('sys_tables');
+		$dao=D('Sys_tables');
 		$tagname=$_POST['out'];
 		$r=$dao->findAll("title like '%$tagname%'","*",'seqNo','0,15');
 		$this->assign('list',$r);
@@ -184,14 +184,14 @@ class sys_fieldsAction extends AdminAction{
 		$t=new tpmaker();
 		$t->projectid=$buideid;
 		$t->makeproindexaction();//生成项面INDEX的面页和相应的列表数据
-		$table=D('sys_tables');
+		$table=D('Sys_tables');
 		$tabledata=$table->findAll('id='.$_GET['pid'].' and ismodel <>1');
 		foreach ($tabledata as $tb){
 			$t->makepromodel($tb['id']);//生成MODEL
 			$t->makeproaction($tb['id']);//生成ACTION
 			$t->makeprotpl($tb['id']);//生成模板HTML文件
 		}
-		$viewmodel=D('sys_viewmodel');
+		$viewmodel=D('Sys_viewmodel');
 		$viewmodel=$viewmodel->findAll('id='.$_GET['pid']);
 		foreach ($viewmodel as $mod){
 			$t->makeproviewmodel($mod['id']);//生成MODEL
@@ -203,8 +203,8 @@ class sys_fieldsAction extends AdminAction{
 
 	function showresult(){
 		$tagname=$_POST['tag'];
-		$f=D('sys_fields');
-		$t=D('sys_tables');
+		$f=D('Sys_fields');
+		$t=D('Sys_tables');
 		$model=$t->getbyid($tagname);
 		$modid=$model['datemodelid'];
 		//dump($modid);
@@ -226,7 +226,7 @@ class sys_fieldsAction extends AdminAction{
 
 
 	public function copy(){
-		$list=D('sys_tables');
+		$list=D('Sys_tables');
 		$listdata=$list->getByid($_REQUEST['oldid']);
 		//dump($listdata);
 			$listdata['id']='';
@@ -237,7 +237,7 @@ class sys_fieldsAction extends AdminAction{
 			$list->create($listdata);
 			$list->add();
 		$listnewid=$list->getLastInsID();
-		$newfield=D('sys_fields');
+		$newfield=D('Sys_fields');
 		$newfielddate=$newfield->findall('pid='.$_REQUEST['oldid']);
 		foreach ($newfielddate as $creatdb){
 			$creatdb['id']='';

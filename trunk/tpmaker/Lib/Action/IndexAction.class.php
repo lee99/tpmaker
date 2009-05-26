@@ -96,8 +96,8 @@ class IndexAction extends AdminAction{
 	}
 	public function sys(){
 		//生成其它的树
-		$con_tree=D('con_tree');
-		$list=$con_tree->findAll('tid <> 0');
+		$Con_tree=D('Con_tree');
+		$list=$Con_tree->findAll('tid <> 0');
 		//dump($list);
 		$this->assign('tree',$list);
 		$this->display();

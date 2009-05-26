@@ -130,9 +130,9 @@ class importdb extends Action
 			'tablename'=>$true_title,
 			'newid'=>$insertId
 			);
-			dump($d);
-			dump($t);
-			exit;
+			//dump($d);
+			//dump($t);
+			//exit;
 			msg("创建表:".$title.",操作成功!<br>");
 		}
 		return $t;

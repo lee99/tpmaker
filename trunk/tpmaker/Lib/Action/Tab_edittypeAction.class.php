@@ -4,13 +4,13 @@
 //+----------------------------------------------------------
 //* 说明
 //+----------------------------------------------------------
-//* D:\xampp\htdocs\sample_verson\mytp\Lib\Action\tab_edittypeAction.class.php
+//* D:\xampp\htdocs\sample_verson\mytp\Lib\Action\Tab_edittypeAction.class.php
 /////////////////////////////////////////////////////////////////////////////
-class tab_edittypeAction extends AdminAction{
+class Tab_edittypeAction extends AdminAction{
 
 	public function index(){
 
-		$list=D('tab_edittype');
+		$list=D('Tab_edittype');
 		$count= $list->count();
 		import("ORG.Util.Page");
 		if(!empty($_REQUEST['order'])) { $order = $_REQUEST['order']; }else{ $order='seqNo'; } //排序表单
@@ -29,19 +29,19 @@ class tab_edittypeAction extends AdminAction{
 
 
 	public function delete(){
-		$list=D('tab_edittype');
-		//$tab_edittype->find($_REQUEST['id']);
+		$list=D('Tab_edittype');
+		//$Tab_edittype->find($_REQUEST['id']);
 		if($_REQUEST[id]==""){
 			halt('输入的ID号不能为空');
 		}
 		$list->delete($_REQUEST['id']);
 		redirect(__URL__."/index");
-	//dump($tab_edittype);
+	//dump($Tab_edittype);
 	}
 
 
 	public function updateform(){
-		$list=D('tab_edittype');
+		$list=D('Tab_edittype');
 		for ($i = 0; $i < count($_POST['id']); $i++) {
 			foreach (array_keys($_POST) as $key){
 			$var[$key]=	$_POST[$key][$i];//数组转换
@@ -58,7 +58,7 @@ class tab_edittypeAction extends AdminAction{
 	}
 
 	public function addform(){
-		$list=D('tab_edittype');
+		$list=D('Tab_edittype');
 		$add_date=$_REQUEST;
 		$list->create($add_date);
 		$list->add($add_date);

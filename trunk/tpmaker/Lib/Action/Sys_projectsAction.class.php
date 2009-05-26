@@ -4,13 +4,13 @@
 //+----------------------------------------------------------
 //* 说明
 //+----------------------------------------------------------
-//* D:\xampp\htdocs\sample_verson\mytp\Lib\Action\sys_projectsAction.class.php
+//* D:\xampp\htdocs\sample_verson\mytp\Lib\Action\Sys_projectsAction.class.php
 /////////////////////////////////////////////////////////////////////////////
-class sys_projectsAction extends AdminAction{
+class Sys_projectsAction extends AdminAction{
 
 	public function index(){
 
-		$list=D('sys_projects');
+		$list=D('Sys_projects');
 		$count= $list->count();
 		if(!empty($_REQUEST['order'])) { $order = $_REQUEST['order']; }else{ $order='seqNo'; } //排序表单
 		if(empty($_REQUEST['sort']) ) { $sortd = 'asc'; }else{ $sortd=$_REQUEST['sort']; } //排序方向
@@ -28,7 +28,7 @@ class sys_projectsAction extends AdminAction{
 
 
 	public function delete(){
-		$list=D('sys_projects');
+		$list=D('Sys_projects');
 		if($_REQUEST[id]==""){
 			halt('输入的ID号不能为空');
 		}
@@ -40,7 +40,7 @@ class sys_projectsAction extends AdminAction{
 		$app_path=$t->getapppath();
 		if(deldir($app_path)){
 			msg("成功!");
-			delbypid(sys_tables,$_REQUEST['id'],$pidf='pid');
+			delbypid(Sys_tables,$_REQUEST['id'],$pidf='pid');
 			$list->delete($_REQUEST['id']);
 		}else {
 			msg("失败!",0);
@@ -53,7 +53,7 @@ class sys_projectsAction extends AdminAction{
 
 
 	public function updateform(){
-		$list=D('sys_projects');
+		$list=D('Sys_projects');
 		for ($i = 0; $i < count($_POST['id']); $i++) {
 			foreach (array_keys($_POST) as $key){
 				$var[$key]=	$_POST[$key][$i];//数组转换
@@ -66,7 +66,7 @@ class sys_projectsAction extends AdminAction{
 	}
 
 	public function addform(){
-		$list=D('sys_projects');
+		$list=D('Sys_projects');
 		$list->create();
 		$list->add();
 		$this->ajaxReturn('','操作成功！',1);
@@ -91,7 +91,7 @@ class sys_projectsAction extends AdminAction{
 
 	public function copy(){
 		if(!empty($_REQUEST['id'])){
-			$project=D('sys_projects');
+			$project=D('Sys_projects');
 			$projectdate=$project->getByid($_REQUEST['id']);
 			if($projectdate['caption']==''){
 				$this->error('请检查参数是否正确!');
@@ -104,10 +104,10 @@ class sys_projectsAction extends AdminAction{
 			$project->add();
 
 			$projectid=$project->getLastInsID();//取得最新的ID
-			copytable('sys_tables',$projectid,'pid',$_REQUEST['id']);//拷贝本项目下的表及字段
+			copytable('Sys_tables',$projectid,'pid',$_REQUEST['id']);//拷贝本项目下的表及字段
 
 			//防止新生成的公共数据模型不配对
-			$tables=D('sys_tables');
+			$tables=D('Sys_tables');
 			$tabledate=$tables->findall('pid='.$_REQUEST['id'].' and ismodel=1');
 			//找出旧的公共模型
 			//dump($tabledate,true,'旧的数据PID');
@@ -139,7 +139,7 @@ class sys_projectsAction extends AdminAction{
 	public function importdb(){//导入数据库
 		//没完成
 		require_once COMMON_PATH."import_db.php";//引入自定义的类
-		$list=D('sys_projects');
+		$list=D('Sys_projects');
 		$dbi=new importdb();
 		if($_GET['dbname']==''){
 			//如果没有传数据库名则以默认设置为参数
@@ -172,7 +172,7 @@ class sys_projectsAction extends AdminAction{
 
 	public function buidedb(){//导入数据库
 		require_once COMMON_PATH."tpmakerdb.class.php";//引入自定义的类
-		$list=D('sys_projects');
+		$list=D('Sys_projects');
 		$data=$list->getByid($_REQUEST['id']);
 		if($data['dbname']!=''){
 			$t=new tpmakerdb();
@@ -190,7 +190,7 @@ class sys_projectsAction extends AdminAction{
 		require_once COMMON_PATH."tpmakerdb.class.php";//引入自定义的类
 		msg('正在生成数据字典.....',0);
 		exit;
-		$list=D('sys_projects');
+		$list=D('Sys_projects');
 		$data=$list->getByid($_REQUEST['id']);
 		if($data['dbname']!=''){
 			$t=new tpmakerdb();
@@ -213,14 +213,14 @@ class sys_projectsAction extends AdminAction{
 		$t->makeproconf();//生成config.php
 		$t->makeproindexaction();//生成项面INDEX的面页和相应的列表数据
 		$t->makeprotectmodel();//生成保留MODEL
-		$table=D('sys_tables');
+		$table=D('Sys_tables');
 		$tabledata=$table->findAll('pid='.$buideid.' and ismodel <>1 and isaction =1');
 		foreach ($tabledata as $tb){
 			$t->makepromodel($tb['id']);//生成MODEL
 			$t->makeproaction($tb['id']);//生成ACTION
 			$t->makeprotpl($tb['id']);//生成模板HTML文件
 		}
-		$viewmodel=D('sys_viewmodel');
+		$viewmodel=D('Sys_viewmodel');
 		$viewmodel=$viewmodel->findAll('projectid='.$buideid);
 		foreach ($viewmodel as $mod){
 			$t->makeproviewmodel($mod['id']);//生成MODEL
