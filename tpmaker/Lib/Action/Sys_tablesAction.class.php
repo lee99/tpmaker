@@ -4,19 +4,19 @@
 //+----------------------------------------------------------
 //* 说明
 //+----------------------------------------------------------
-//* D:\xampp\htdocs\sample_verson\mytp\Lib\Action\sys_tablesAction.class.php
+//* D:\xampp\htdocs\sample_verson\mytp\Lib\Action\Sys_tablesAction.class.php
 /////////////////////////////////////////////////////////////////////////////
-class sys_tablesAction extends AdminAction{
+class Sys_tablesAction extends AdminAction{
 
 	public function index(){
 
-		$pro=D('sys_projects');
+		$pro=D('Sys_projects');
 		$pro=$pro->getByid($_REQUEST[pid]);
 		$projecturl=$pro['proname'];
 		$this->assign('projecturl',$projecturl);//当前操作的项目路径
 		$this->assign('projectname',$pro['caption']);//当前操作的数据库
 		$wherevalue='ismodel=0 and issystem=0 and pid='.$_REQUEST[pid];//过滤条件
-		$list=D('sys_tables');
+		$list=D('Sys_tables');
 		$count= $list->count($wherevalue);
 
 		if(!empty($_REQUEST['order'])) { $order = $_REQUEST['order']; }else{ $order='seqNo'; } //排序表单
@@ -36,13 +36,13 @@ class sys_tablesAction extends AdminAction{
 
 	public function Adv(){
 
-		$pro=D('sys_projects');
+		$pro=D('Sys_projects');
 		$pro=$pro->getByid($_REQUEST[pid]);
 		$projecturl=$pro['proname'];
 		$this->assign('projecturl',$projecturl);//当前操作的项目路径
 		$this->assign('projectname',$pro['caption']);//当前操作的数据库
 		$wherevalue='issystem=0 and pid='.$_REQUEST[pid];//过滤条件
-		$list=D('sys_tables');
+		$list=D('Sys_tables');
 		$count= $list->count($wherevalue);
 
 		if(!empty($_REQUEST['order'])) { $order = $_REQUEST['order']; }else{ $order='seqNo'; } //排序表单
@@ -62,13 +62,13 @@ class sys_tablesAction extends AdminAction{
 
 	public function System(){
 
-		$pro=D('sys_projects');
+		$pro=D('Sys_projects');
 		$pro=$pro->getByid($_REQUEST[pid]);
 		$projecturl=$pro['proname'];
 		$this->assign('projecturl',$projecturl);//当前操作的项目路径
 		$this->assign('projectname',$pro['caption']);//当前操作的数据库
 		$wherevalue='issystem=1 and pid='.$_REQUEST[pid];//过滤条件
-		$list=D('sys_tables');
+		$list=D('Sys_tables');
 		$count= $list->count($wherevalue);
 
 		if(!empty($_REQUEST['order'])) { $order = $_REQUEST['order']; }else{ $order='seqNo'; } //排序表单
@@ -90,8 +90,8 @@ class sys_tablesAction extends AdminAction{
 
 
 	public function delete(){
-		$list=D('sys_tables');
-		//$sys_tables->find($_REQUEST['id']);
+		$list=D('Sys_tables');
+		//$Sys_tables->find($_REQUEST['id']);
 		if($_REQUEST[id]==""){
 			halt('输入的ID号不能为空');
 		}
@@ -99,13 +99,13 @@ class sys_tablesAction extends AdminAction{
 		$pid=$listd[0]['pid'];
 
 
-		$listdel=D('sys_tables');
+		$listdel=D('Sys_tables');
 		$listdel->delete($_REQUEST[id]);
 
 		$delis=explode(',',$_REQUEST['id']);
 		//dump($delis);
 		foreach ($delis as $delpid){
-			delbypid('sys_fields',$delpid,'pid');
+			delbypid('Sys_fields',$delpid,'pid');
 		}
 
 
@@ -121,7 +121,7 @@ class sys_tablesAction extends AdminAction{
 
 
 	public function updateform(){
-		$list=D('sys_tables');
+		$list=D('Sys_tables');
 		$allcout=count($_REQUEST['id']);
 		for ($i = 0; $i <$allcout; $i++) {
 
@@ -148,7 +148,7 @@ class sys_tablesAction extends AdminAction{
 
 
 	public function addform(){
-		$list=D('sys_tables');
+		$list=D('Sys_tables');
 		$date=$_REQUEST;
 		$date['pid']=$_SESSION['workingproject']['id'];
 		$list->create();

@@ -4,7 +4,7 @@
 //+----------------------------------------------------------
 //* 说明
 //+----------------------------------------------------------
-//* D:\xampp\htdocs\sample_verson\mytp\Lib\Action\sub_searchtypeAction.class.php
+//* D:\xampp\htdocs\sample_verson\mytp\Lib\Action\Sub_searchtypeAction.class.php
 /////////////////////////////////////////////////////////////////////////////
 
 class AdminAction extends Action{
@@ -22,7 +22,7 @@ class AdminAction extends Action{
      * @throws FcsException
      +----------------------------------------------------------
      */
-	
+
 
     function sort()
     {
@@ -65,7 +65,7 @@ class AdminAction extends Action{
             foreach($col as $val) {
 			$data['id'] =$val;
 			$data['seqNo'] =$i;
-			$list->save($data); 
+			$list->save($data);
 			$i++;
             }
         }
@@ -89,7 +89,7 @@ class AdminAction extends Action{
         $this->assign($pageid,$page['linkPages']);
         return $r;
     }
-    
+
     /**
      +----------------------------------------------------------
      * 自定分页
@@ -102,7 +102,7 @@ class AdminAction extends Action{
     	}else{
     		halt('参数错误,请重新刷新或设定项目的横板!');
     	}
-    }  
+    }
 
 }
 

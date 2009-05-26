@@ -10,7 +10,7 @@ class tpmaker extends Action
      * @access protected
      +----------------------------------------------------------
      */
-	var $projecttable = 'sys_projects';
+	var $projecttable = 'Sys_projects';
 	/**
     +----------------------------------------------------------
      * 标签库定义项目ID
@@ -29,7 +29,7 @@ class tpmaker extends Action
      * @access protected
      +----------------------------------------------------------
      */
-	var $tables = 'sys_tables';
+	var $tables = 'Sys_tables';
 	/**
     +----------------------------------------------------------
      * 标签库定义项目ID
@@ -130,7 +130,7 @@ class tpmaker extends Action
 	function getfieldsbytbid($id){
 		$data=$this->gettables($id);
 		if($data['datemodelid']!=0){$datemodelid=$data['datemodelid'];}//取出公用的数据模型
-		$fields=D('sys_fields');
+		$fields=D('Sys_fields');
 		$fields=$fields->findAll('pid='.$id .' or pid='.$datemodelid ,'*','seqNo ASC');//取出所有表和数据模型表
 		return $fields;
 	}

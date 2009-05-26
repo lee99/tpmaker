@@ -4,13 +4,13 @@
 //+----------------------------------------------------------
 //* 说明
 //+----------------------------------------------------------
-//* D:\xampp\htdocs\sample_verson\mytp\Lib\Action\sys_fieldtypesubAction.class.php
+//* D:\xampp\htdocs\sample_verson\mytp\Lib\Action\Sys_fieldtypesubAction.class.php
 /////////////////////////////////////////////////////////////////////////////
-class sys_fieldtypesubAction extends AdminAction{
+class Sys_fieldtypesubAction extends AdminAction{
 
 	public function index(){
 
-		$list=D('sys_fieldtypesub');
+		$list=D('Sys_fieldtypesub');
 		$count= $list->count();
 
 		if(!empty($_REQUEST['order'])) { $order = $_REQUEST['order']; }else{ $order='seqNo'; } //排序表单
@@ -28,18 +28,18 @@ class sys_fieldtypesubAction extends AdminAction{
 
 
 	public function delete(){
-		$list=D('sys_fieldtypesub');
+		$list=D('Sys_fieldtypesub');
 		if($_REQUEST[id]==""){
 			halt('输入的ID号不能为空');
 		}
 		$list->delete($_REQUEST['id']);
 		redirect(__URL__."/index");
-	//dump($sys_fieldtypesub);
+	//dump($Sys_fieldtypesub);
 	}
 
 
 	public function updateform(){
-		$list=D('sys_fieldtypesub');
+		$list=D('Sys_fieldtypesub');
 		for ($i = 0; $i < count($_POST['id']); $i++) {
 			foreach (array_keys($_POST) as $key){
 				$var[$key]=	$_POST[$key][$i];//数组转换
@@ -56,7 +56,7 @@ class sys_fieldtypesubAction extends AdminAction{
 	}
 
 	public function addform(){
-		$list=D('sys_fieldtypesub');
+		$list=D('Sys_fieldtypesub');
 		$add_date=$_REQUEST;
 		$list->create($add_date);
 		$list->add($add_date);

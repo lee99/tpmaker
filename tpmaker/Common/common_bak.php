@@ -169,26 +169,26 @@ function id_To_EValue($tb,$col,$o_col,$id)
 		else
 		{
 			$thisdao=D($tb);
-			$thisdao->Cache(true); 
+			$thisdao->Cache(true);
 			$list=$thisdao->find($o_col.'='.$id,$col);
 		return $list[$col];
-		}	
+		}
 	}
 
 function getcolor($id)
 	{
 		if(S('color'.$id)==""){
-			$thisdao=D('sub_color');
+			$thisdao=D('Sub_color');
 			$list=$thisdao->find('id='.$id,'title');
 			S('color'.$id,$list['title']);
 			return $list['title'];
-		}		
+		}
 		else
 		{
 			return S('color'.$id);
-		}	
+		}
 	}
-	
+
 function makeselect($name,$table,$idt='',$where='',$option='title',$f_idvalue='id'){
 	//$option外键的说明
 	//$where外键的过滤
@@ -200,12 +200,12 @@ function makeselect($name,$table,$idt='',$where='',$option='title',$f_idvalue='i
 	if($f_idvalue==''){$f_idvalue='id';}
 	$tmp= "	<select name=".$name.">";
 		$thisdao=D($table);
-		$thisdao->Cache(true); 
+		$thisdao->Cache(true);
 		$list=$thisdao->findAll($where);
 		foreach ($list as $row) {
 			if ($idt==$row[$f_idvalue] ){$var="selected";}
 			$thiscolor=getcolor($row['id']);
-			$tmp.="<option value='".$row[$f_idvalue]."'  ".$var."  style='background:".$thiscolor.";' title='参数:".$row[$f_idvalue]."标题:".$row[$option]."'>".$row[$option]."</option>";	
+			$tmp.="<option value='".$row[$f_idvalue]."'  ".$var."  style='background:".$thiscolor.";' title='参数:".$row[$f_idvalue]."标题:".$row[$option]."'>".$row[$option]."</option>";
 			$var='';
 			$thiscolor='';
 		}
@@ -220,7 +220,7 @@ function makeselect($name,$table,$idt='',$where='',$option='title',$f_idvalue='i
  		 $inpid;//新的上级参数值
  		 $pidf;//上级参数的字[PID]
  		 $inoldid;//原来的上级的值
- 		 
+
 		$table=D($daoname);//引入MODEL
 		$tabledata=$table->findall($pidf.'='.$inoldid);//找出相应的数据
 		foreach ($tabledata as $creatdb){
@@ -229,7 +229,7 @@ function makeselect($name,$table,$idt='',$where='',$option='title',$f_idvalue='i
 			$table->create($creatdb);
 			$table->add();
 			$newid=$table->getLastInsID();
-			copytable('sys_fields',$newid,'pid',$oldid);
+			copytable('Sys_fields',$newid,'pid',$oldid);
 		}
 }
 
@@ -238,7 +238,7 @@ function delbypid($daoname,$inpid,$pidf='pid'){
 	$tabledata=$table->findall($pidf.'='.$inpid);//找出相应的数据
 	foreach ($tabledata as $creatdb){
 		$oldid=$creatdb['id'];
-		delbypid('sys_fields',$oldid,'pid');
+		delbypid('Sys_fields',$oldid,'pid');
 	}
 	$table->deleteAll('pid='.$inpid);
 }

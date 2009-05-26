@@ -4,13 +4,13 @@
 //+----------------------------------------------------------
 //* 说明
 //+----------------------------------------------------------
-//* D:\xampp\htdocs\sample_verson\mytp\Lib\Action\sub_validate_vconAction.class.php
+//* D:\xampp\htdocs\sample_verson\mytp\Lib\Action\Sub_validate_vconAction.class.php
 /////////////////////////////////////////////////////////////////////////////
-class sub_validate_vconAction extends AdminAction{
+class Sub_validate_vconAction extends AdminAction{
 
 	public function index(){
 
-		$list=D('sub_validate_vcon');
+		$list=D('Sub_validate_vcon');
 		$count= $list->count();
 
 		if(!empty($_REQUEST['order'])) { $order = $_REQUEST['order']; }else{ $order='seqNo'; } //排序表单
@@ -30,18 +30,18 @@ class sub_validate_vconAction extends AdminAction{
 
 
 	public function delete(){
-		$list=D('sub_validate_vcon');
+		$list=D('Sub_validate_vcon');
 		if($_REQUEST[id]==""){
 			halt('输入的ID号不能为空');
 		}
 		$list->delete($_REQUEST['id']);
 		redirect(__URL__."/index");
-	//dump($sub_validate_vcon);
+	//dump($Sub_validate_vcon);
 	}
 
 
 	public function updateform(){
-		$list=D('sub_validate_vcon');
+		$list=D('Sub_validate_vcon');
 		for ($i = 0; $i < count($_POST['id']); $i++) {
 			foreach (array_keys($_POST) as $key){
 				$var[$key]=	$_POST[$key][$i];//数组转换
@@ -58,7 +58,7 @@ class sub_validate_vconAction extends AdminAction{
 	}
 
 	public function addform(){
-		$list=D('sub_validate_vcon');
+		$list=D('Sub_validate_vcon');
 		$add_date=$_REQUEST;
 		$list->create($add_date);
 		$list->add($add_date);

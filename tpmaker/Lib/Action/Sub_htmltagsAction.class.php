@@ -4,13 +4,13 @@
 //+----------------------------------------------------------
 //* 说明
 //+----------------------------------------------------------
-//* D:\xampp\htdocs\sample_verson\mytp\Lib\Action\sub_htmltagsAction.class.php
+//* D:\xampp\htdocs\sample_verson\mytp\Lib\Action\Sub_htmltagsAction.class.php
 /////////////////////////////////////////////////////////////////////////////
-class sub_htmltagsAction extends AdminAction{
+class Sub_htmltagsAction extends AdminAction{
 
 	public function index(){
 
-		$list=D('sub_htmltags');
+		$list=D('Sub_htmltags');
 		$count= $list->count();
 
 		if(!empty($_REQUEST['order'])) { $order = $_REQUEST['order']; }else{ $order='seqNo'; } //排序表单
@@ -31,19 +31,19 @@ class sub_htmltagsAction extends AdminAction{
 
 
 	public function delete(){
-		$glist=D('sub_htmltags');
+		$glist=D('Sub_htmltags');
 		if($_REQUEST[id]==""){
 			halt('输入的ID号不能为空');
 		}
 		$glist->delete($_REQUEST['id']);
 		redirect(__URL__."/index");
-	//dump($sub_htmltags);
+	//dump($Sub_htmltags);
 	}
 
 
 
 	public function updateform(){
-		$glist=D('sub_htmltags');
+		$glist=D('Sub_htmltags');
 		for ($i = 0; $i < count($_POST['id']); $i++) {
 			foreach (array_keys($_POST) as $key){
 				$var[$key]=	$_POST[$key][$i];//数组转换
@@ -55,7 +55,7 @@ class sub_htmltagsAction extends AdminAction{
 	}
 
 	public function addform(){
-		$glist=D('sub_htmltags');
+		$glist=D('Sub_htmltags');
 		$add_date=$_REQUEST;
 		$glist->create($add_date);
 		$glist->add($add_date);

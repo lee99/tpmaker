@@ -6,7 +6,7 @@
 //+----------------------------------------------------------
 //* D:\xampp\htdocs\sample_verson\mytp\Lib\Action\Sub_fieldtypeAction.class.php
 /////////////////////////////////////////////////////////////////////////////
-class sub_fieldtypeAction extends AdminAction{
+class Sub_fieldtypeAction extends AdminAction{
 
 	public function index(){
 

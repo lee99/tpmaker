@@ -10,7 +10,7 @@ class tpmakerdb extends Action
      * @access protected
      +----------------------------------------------------------
      */
-	var $projecttable = 'sys_projects';
+	var $projecttable = 'Sys_projects';
 	/**
     +----------------------------------------------------------
      * 标签库定义项目ID
@@ -30,7 +30,7 @@ class tpmakerdb extends Action
      * @access protected
      +----------------------------------------------------------
      */
-	var $tables = 'sys_tables';
+	var $tables = 'Sys_tables';
 	/**
     +----------------------------------------------------------
      * 标签库定义项目ID
@@ -96,10 +96,10 @@ class tpmakerdb extends Action
 			$sqlwhere='pid="'.$id .'"';
 		}
 		//取出公用的数据模型
-		$fields=D('sys_fields');
+		$fields=D('Sys_fields');
 		$fields=$fields->findAll($sqlwhere,'*','seqNo ASC');
 		//取出所有表和数据模型表
-		
+
 		//因为搜索出来的数据可能会因为有公共数据库而引起重复,所以有以下的操作过滤重重的项目.
 		//相同的数据以数据库自己的排序先后为取舍标准
 		foreach ($fields as $date){//
@@ -145,7 +145,7 @@ class tpmakerdb extends Action
 	function getpkname($id){
 		//获得主键的名字
 		$dates=$this->getfieldsbytbid($id);
-		$list=D('sub_fieldtype');
+		$list=D('Sub_fieldtype');
 		foreach ($dates as $date){
 			$r=$list->getbyid($date['fieldtype']);
 			if($r['primary']==1 && $pkname==''){
@@ -167,18 +167,18 @@ class tpmakerdb extends Action
 
 	function sqlbytpye($id,$caption,$name,$fieldlenght){
 		$filterdatatype=array('TEXT','DATE','DATETIME','TIME','YEAR');//对于一此特殊的数据类型没有长度
-		$list=D('sub_fieldtype');
+		$list=D('Sub_fieldtype');
 		$date=$list->getbyid($id);
 		$thiscaption	=	$caption;//注释
 		$thisname		=	$name;//名称
 		$thistype		=	$date['type'];//类型
-		
+
 		if(!in_array($thistype,$filterdatatype)){
 			$thisleng=(!empty($fieldlenght) or $fieldlenght!=0)?"($fieldlenght) ":"(".$date['leng'].") ";
 		}else{
 			$thisleng='';
 		}
-		
+
 		$thisdefault=$date['default'];//默认值
 		$thisautoInc=($date['autoInc']==1)?'auto_increment':'';//自动增加
 		$thisnotnull=($date['notnull']==1)?"NOT NULL ":"NULL ";//是否为空
@@ -186,12 +186,12 @@ class tpmakerdb extends Action
 		$sql="  `$thisname` $thistype".$thisleng." $thisnotnull $thisautoInc COMMENT '$thiscaption',";
 		//`pid` int(11) NOT NULL default '0' COMMENT '说明',
 		return $sql;
-		
+
 	}
 
 	function buideall(){
 		$this->creatdb();
-		
+
 		$list=D($this->tables);
 		$date=$list->findall('ismodel=0 and pid='.$this->projectid);
 		foreach ($date as $gdate){
@@ -200,7 +200,7 @@ class tpmakerdb extends Action
 		$this->creatpretecttable();
 	}
 
-	
+
 	/*生成库*/
 	function creatdb(){
 		$date=$this->getprojects();
@@ -216,8 +216,8 @@ class tpmakerdb extends Action
 		$sql_infoherd="CREATE DATABASE `".$project_dbname."` DEFAULT CHARACTER SET utf8 COLLATE utf8_general_ci;";
 		$this->dosql($sql_infoherd,'生成数据库:['.$project_proname.']<br>');
 	}
-	
-	
+
+
 	/*生成保留的数据表*/
 	function creatpretecttable(){
 		$date=$this->getprojects();
@@ -239,11 +239,11 @@ class tpmakerdb extends Action
   `seqNo` int(11) NOT NULL,
   PRIMARY KEY  (`id`)
 ) ENGINE=MyISAM  DEFAULT CHARSET=utf8;";
-		
+
 		//填充导入数据
 		foreach ($leftdate as $d){
 			if($d['tid']>0){
-				//$gettables=id_To_EValue('sys_tables','name');//获得相应的模块
+				//$gettables=id_To_EValue('Sys_tables','name');//获得相应的模块
 				$gettables=$this->gettables($d['tid']);//获得相应的模块
 				$tablename=$gettables['title'];
 			}
@@ -251,15 +251,15 @@ class tpmakerdb extends Action
 		}
 		$insertsql=join(',',$insql);
 		$insertsql="INSERT INTO `".$project_tbpre."apptree` (`id`, `title`, `shortname`, `type`, `pid`, `appmodel`, `link`, `seqNo`) VALUES $insertsql ;";
-		
+
 		$this->dosql($sql_infoherd,'生成数据库保留的数据库:[apptree]');
 		$this->dosql($insertsql,'填充保留的数据库:[apptree]');
-		
+
 		$insertsql="INSERT INTO `".$project_tbpre."user` (`account`, `nickname`, `password`, `verify`, `remark`, `status`) VALUES ('admin', '管理员', '21232f297a57a5a743894a0e4a801fc3', '8888', '系统管理员', 1 );";
-		
+
 		$this->dosql($insertsql,'写入默认的用户[admin]');
-		
-		
+
+
 	}
 
 

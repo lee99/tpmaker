@@ -10,16 +10,16 @@ class Con_treeAction extends AdminAction{
 
 	public function index(){
 
-		$con_tree=D('Con_tree');
-		$count= $con_tree->count();
+		$Con_tree=D('Con_tree');
+		$count= $Con_tree->count();
 
 		if(!empty($_REQUEST['order'])) { $order = $_REQUEST['order']; }else{ $order='id'; } //排序表单
 		if(empty($_REQUEST['sort']) ) { $sortd = 'asc'; }else{ $sortd=$_REQUEST['sort']; } //排序方向
 		$orderBy=$order.' '.$sortd;//排序
 
 		$p=$this->tpPage($count,20,'page');
-		//$con_tree->Cache(true);
-		$list=$con_tree->findAll('id <> 0','*',$orderBy,$p['firstRow'].','.$p['listRows']);
+		//$Con_tree->Cache(true);
+		$list=$Con_tree->findAll('id <> 0','*',$orderBy,$p['firstRow'].','.$p['listRows']);
 
 		//dump($list);
 
@@ -31,11 +31,11 @@ class Con_treeAction extends AdminAction{
 
 
 	public function delete(){
-		$con_tree=D('Con_tree');
+		$Con_tree=D('Con_tree');
 		if($_REQUEST[id]==""){
 			halt('输入的ID号不能为空');
 		}
-		$con_tree->delete($_REQUEST['id']);
+		$Con_tree->delete($_REQUEST['id']);
 	    $this->ajaxReturn('','操作成功！',1);
 
 
