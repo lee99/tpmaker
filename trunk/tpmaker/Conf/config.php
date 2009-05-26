@@ -10,7 +10,7 @@ return array(
 	'DB_PREFIX'=>'tp_',
 
 	'WEB_TITLE'=>'THINK-MAKER',
-	'DEBUG_MODE'=>true,
+	'DEBUG_MODE'=>false,
 	'WEB_LOG_RECORD'=>false,
 	'WEB_LOG_ERROR'=>false,
 

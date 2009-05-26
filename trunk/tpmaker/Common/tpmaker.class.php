@@ -193,10 +193,10 @@ class tpmaker extends Action
 		if(!empty($disabled)){	$htmltages.=' disabled="'.$disabled.'"';}
 		switch ($actiontype){
 			case 'viewtype':
-				$htmltages.=' value="$list.'.$name.'"';
+				$htmltages.=' value="$list[\''.$name.'\']"';
 				break;
 			case 'edittype':
-				$htmltages.=' value="$list.'.$name.'"';
+				$htmltages.=' value="$list[\''.$name.'\']"';
 				break;
 			case 'addtype':
 				$htmltages.=' value="'.$value.'"';
