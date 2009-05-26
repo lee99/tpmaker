@@ -1,0 +1,49 @@
+<tagLib name="cx,html,myhtml,mkrtags" />
+<include file="../Public/header" />
+<!-- 主体内容  -->
+<html:link type='js' href='../Public/js/autocomplete.js' />
+<SCRIPT LANGUAGE="JavaScript">
+ <!--
+
+
+	function upbtnthis(){
+		ThinkAjax.sendForm('form_update','__APP__/Sys_tables/updateform/',complete,'result');
+	}
+
+	function complete(data,status){
+		if (status==1)
+		{
+		location.href=REQUEST_URI;
+		//parent.location.reload();
+		}
+	}
+
+ //-->
+ </SCRIPT>
+
+<fieldset >
+	<legend>系统保留信息</legend>
+<form  id="form_update" method="POST" name='form_update'>
+<!-- 列表显示区域  -->
+
+<table>
+<tr>
+<th>
+设定保留信息
+</th>
+<td>
+
+</td>
+
+</tr>
+</table>
+
+</form>
+</fieldset>
+<fieldset>
+<legend>说明</legend>
+本功能尚在开发中.
+<br>
+
+</fieldset>
+<include file="../Public/footer" />

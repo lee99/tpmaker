@@ -1,0 +1,59 @@
+<tagLib name="cx,html,myhtml" />
+<include file="../Public/header" />
+<!-- 主体内容  -->
+<SCRIPT LANGUAGE="JavaScript">
+<!--
+function upbtnthis(){
+	ThinkAjax.sendForm('form_update','__APP__/Sys_tables/updateform/',complete,'result');
+}
+
+function complete(data,status){
+	if (status==1)
+	{
+		location.href=REQUEST_URI;
+		//parent.location.reload();
+	}
+}
+//-->
+ </SCRIPT>
+<fieldset >
+	<legend>本数据表基本信息</legend>
+<form  id="form_update" method="POST" name='form_update'>
+<!-- 列表显示区域  -->
+<input type="button"  onclick="upbtnthis();" class="button1" value="更新本页数据">
+<input type="button" onclick="window.open('__URL__/copyselect/pid/{$_GET['id']}', 'mini');" class="button1" value="拷贝生成新表">
+		<myhtml:editlist id="checkList" name="list"   datasource="list" style="list"
+		show="
+			id|hidden|1:ID,
+			caption|20:标题,
+			title|20:表名[英名],
+			
+			ismodel|checkbox:模板,
+			datemodelid|select|makeselect('datemodelid[]'#'sys_tables'#$list['datemodelid']#'ismodel<>0 and pid='.$list['pid']):公用数据模板,
+			seqNo|4:排序
+		"
+		/>
+		<myhtml:editlist id="checkList2" name="list2"   datasource="list2" style="list"
+		show="
+			edittype|select|makeselect('edittype[]'#'tab_edittype'#$list['edittype']):操作模式,
+			list|checkbox:列表,
+			view|checkbox:详细,
+			add|checkbox:增加,
+			del|checkbox:删除,
+			edit|checkbox:编辑,
+			search|checkbox:搜索,
+			searchtype|select|makeselect('searchtype[]'#'tab_searchtype'#$list['searchtype']):搜索形式,
+			isaction|checkbox:活动
+		"
+		/>
+<input type="hidden" name="pid" value="{$_REQUEST['pid']}">
+
+
+</form>
+</fieldset>
+<fieldset>
+<legend>说明</legend>
+如果本表的活动状态为否的话,则本表不生成相应的代码!<br>
+
+</fieldset>
+<include file="../Public/footer" />

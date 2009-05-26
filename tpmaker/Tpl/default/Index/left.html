@@ -1,0 +1,60 @@
+<tagLib name="html" />
+<include file="../Public/header" />
+<div class="dtree">
+
+<script type="text/javascript">
+<!--
+
+	left = new dTree('left');
+//Node(id, pid, name, url, title, target, icon, iconOpen, open)
+
+	//生成project的树形菜单
+	left.add('project{$_SESSION['workingprojectid']}',-1,'{$_SESSION['workingproject']['caption']}<font color=red>[查看]</font>','__APP__/Sys_tables/index/pid/{$_SESSION['workingprojectid']}',null,'mainFrame',IMG_PATH+'b_import.png',IMG_PATH+'b_import.png');
+
+	//生成model的树形菜单
+	left.add('sharemodel{$_SESSION['workingprojectid']}','dbbase{$_SESSION['workingprojectid']}','公共数据模型',null,null,null,IMG_PATH+'b_import.png',IMG_PATH+'b_import.png');
+	left.add('config{$_SESSION['workingprojectid']}','project{$_SESSION['workingprojectid']}','项目生成操作',null,null,null,IMG_PATH+'b_import.png',IMG_PATH+'b_import.png');
+	left.add('systemdb{$_SESSION['workingprojectid']}','dbmodel{$_SESSION['workingprojectid']}','系统保留数据结构',null,null,null,IMG_PATH+'b_import.png',IMG_PATH+'b_import.png');
+	left.add('dbbase{$_SESSION['workingprojectid']}','dbmodel{$_SESSION['workingprojectid']}','查看所有基本数据表','__APP__/Sys_tables/index/pid/{$_SESSION['workingprojectid']}',null,'mainFrame',IMG_PATH+'b_import.png',IMG_PATH+'b_import.png');
+	left.add('dbmodel{$_SESSION['workingprojectid']}','project{$_SESSION['workingprojectid']}','数据模型[项目数据表]','__APP__/Sys_tables/index/pid/{$_SESSION['workingprojectid']}',null,'mainFrame',IMG_PATH+'b_import.png',IMG_PATH+'b_import.png');
+	left.add('creat{$_SESSION['workingprojectid']}','config{$_SESSION['workingprojectid']}','项目生成','__APP__/Index/buide/id/{$_SESSION['workingprojectid']}',null,'mainFrame');
+	left.add('creat{$_SESSION['workingprojectid']}1','config{$_SESSION['workingprojectid']}','拷贝项目','__APP__/Sys_projects/percopy/id/{$_SESSION['workingprojectid']}',null,'mainFrame');
+	left.add('creat{$_SESSION['workingprojectid']}2','config{$_SESSION['workingprojectid']}','生成数据字典','__APP__/Sys_projects/dic/id/{$_SESSION['workingprojectid']}',null,'mainFrame');
+	left.add('creat{$_SESSION['workingprojectid']}3','config{$_SESSION['workingprojectid']}','导入数据库','__APP__/Sys_projects/perimport/id/{$_SESSION['workingprojectid']}',null,'mainFrame');
+	left.add('set{$_SESSION['workingprojectid']}','project{$_SESSION['workingprojectid']}','项目其它设定',null,null,null,IMG_PATH+'b_import.png',IMG_PATH+'b_import.png');
+	left.add('set{$_SESSION['workingprojectid']}1','set{$_SESSION['workingprojectid']}','应用模块分类','__APP__/Apptree/index',null,'mainFrame');
+
+	//生成table的树形菜单
+	<volist name="table" id="table_vo">
+	<if condition="$table_vo[ismodel] eq 1">
+	left.add('table{$table_vo.id}','sharemodel{$table_vo.pid}','{$table_vo.caption}','__APP__/sys_fields/index/pid/{$table_vo.id}',null,'mainFrame');
+	<else/>
+	left.add('table{$table_vo.id}','dbbase{$table_vo.pid}','{$table_vo.caption}','__APP__/sys_fields/index/pid/{$table_vo.id}',null,'mainFrame',IMG_PATH+'imgfolder{$table_vo.isaction}.gif',IMG_PATH+'imgfolder{$table_vo.isaction}.gif');
+	</if>
+	</volist>
+
+	left.add('dbdesign{$_SESSION['workingprojectid']}','dbmodel{$_SESSION['workingprojectid']}','扩展数据结构(开发中)',null,null,null,IMG_PATH+'b_relations.png',IMG_PATH+'b_relations.png');
+	left.add('dbdesign01{$_SESSION['workingprojectid']}','dbdesign{$_SESSION['workingprojectid']}','基本数据模型关系图','__APP__/designer/index/id/{$_SESSION['workingprojectid']}',null,'mainFrame');
+
+
+	left.add('view{$_SESSION['workingprojectid']}','dbmodel{$_SESSION['workingprojectid']}','视图模型数据结构','__APP__/sys_viewmodel/index',null,'mainFrame',IMG_PATH+'b_relations.png',IMG_PATH+'b_relations.png');
+	left.add('viewadd','view{$_SESSION['workingprojectid']}','增加视图模型','__APP__/sys_viewmodel/add',null,'mainFrame',IMG_PATH+'b_docsql.png',IMG_PATH+'b_docsql.png');
+	//生成视图的树形菜单
+	<volist name="view" id="view_vo">
+	left.add('viewlist{$view_vo.id}','view{$_SESSION['workingprojectid']}','{$view_vo.caption}','__APP__/Sys_viewfields/index/vid/{$view_vo.id}',null,'mainFrame',IMG_PATH+'page.gif',IMG_PATH+'page.gif');
+	</volist>
+
+
+	//生成系统保留table的树形菜单
+	<volist name="systable" id="systable_vo">
+	left.add('table{$systable_vo.id}','systemdb{$systable_vo.pid}','{$systable_vo.caption}','__APP__/sys_fields/index/pid/{$systable_vo.id}',null,'mainFrame',IMG_PATH+'imgfolder_l.gif',IMG_PATH+'imgfolder_l.gif');
+	</volist>
+
+		document.write(left);
+		window.open("__APP__/Sys_tables/index/pid/{$_SESSION['workingprojectid']}",'mainFrame');
+		//-->
+</script>
+
+</div>
+
+<include file="../Public/footer" />
