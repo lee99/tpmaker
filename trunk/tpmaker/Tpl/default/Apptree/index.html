@@ -1,0 +1,75 @@
+<tagLib name="cx,html,myhtml" />
+<include file="../Public/header" />
+<!-- 主体内容  -->
+<SCRIPT LANGUAGE="JavaScript">
+<!--
+
+function topadd(){
+	ThinkAjax.sendForm('topform','__URL__/addform/',complete,'result');
+}
+function topupdate(){
+	ThinkAjax.sendForm('topform','__URL__/updateform/',complete,'result');
+}
+//-->
+ </SCRIPT>
+<fieldset >
+	<legend>应用模块分类设定</legend>
+<!-- 列表显示区域  -->
+<form  id='topform'>
+<table>
+	<tr>
+	<myhtml:labelinput  name="title" label="标题" type="text"  size="20" value='{$listtop[title]}'/>
+	<myhtml:labelinput  name="shortname" label="标记"  type="text" size="20" value='{$listtop[shortname]}'/>
+	<myhtml:labelinput  name="type" label="是否链接" type="checkbox" value='$listtop[type]' />
+	<myhtml:labelinput  name="link" label="链接" type="text"  size="30" value='{$listtop[link]}'/>
+	<td>
+	</tr>
+	<tr>
+	<myhtml:labelinput  name="tid" label="所属表" action="makeselect('tid'#'sys_tables'#$listtop[tid]#'pid='.$_SESSION[workingprojectid]#'caption'#'id')"  />
+	<myhtml:labelinput  name="pid" label="上级表" action="makeselect('pid'#'apptree'#$listtop[pid]#'type=0 and projectid='.$_SESSION[workingprojectid]#'title'#'id'#false)"  />
+	<td colspan="3">
+	<input type="button" class="button1" value="增加数据" onclick="topadd()">
+	<input type="button" class="button1" value="编辑数据" onclick="topupdate()">
+	<input name="id" value="{$listtop[id]}" type="hidden">
+	</td>
+	</tr>
+</table>
+<input type="hidden" value="{$_SESSION[workingprojectid]}" name="projectid">
+</form>
+
+</fieldset>
+<fieldset>
+<div  style="height:500px;overflow-y:scroll;">
+    <!-- 列表显示区域  -->
+<script type="text/javascript">
+<!--
+
+	apptree = new dTree('apptree');
+	apptree.add('tree0',-1,'[默认的应用分类]','__URL__/index/id/',null,'self',IMG_PATH+'b_import.png',IMG_PATH+'b_import.png');	
+	<volist name="list" id="list">
+	<php>
+	if($list[type]==0 ){
+	</php>
+	apptree.add('tree{$list.id}','tree{$list.pid}','{$list.title}[{$list.shortname}] <a href="###" onclick="PopModalWindow(\\'__URL__/addsort/pid/{$list.id}\\',\\'700\\',\\'400\\');">[ <img src="'+IMG_PATH+'new_window.gif">编辑子项目]</a>','__URL__/index/id/{$list.id}',null,'_self',IMG_PATH+'b_import.png',IMG_PATH+'b_import.png');
+	<php>
+	}else{
+		if($list[link]!=''){
+	</php>
+		apptree.add('tree{$list.id}','tree{$list.pid}','{$list.title}:[{$list.link}] ','__URL__/index/id/{$list.id}',null,'_self',IMG_PATH+'imgfolder1.gif',IMG_PATH+'imgfolder1.gif');
+	<php>
+		}else{
+	</php>
+		apptree.add('tree{$list.id}','tree{$list.pid}','{$list.title}:[{$list.tid}] <a href="###"  title="编辑数据表:{$list.title}" onclick="PopModalWindow(\\'__APP__/sys_fields/index/pid/{$list.tid}\\',\\'800\\',\\'500\\');">[编辑表]</a>','__URL__/index/id/{$list.id}',null,'_self',IMG_PATH+'imgfolder1.gif',IMG_PATH+'imgfolder1.gif');
+	<php>		
+		}
+	}
+	</php>
+	</volist>
+	
+	document.write(apptree);
+	apptree.openAll();
+		//-->	
+</script>
+</div>
+</fieldset>
+<include file="../Public/footer" />

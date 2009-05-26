@@ -1,0 +1,52 @@
+<tagLib name="cx,html,myhtml" />
+<include file="../Public/header" />
+<!-- 主体内容  -->
+<fieldset >
+	<legend>字段属性设定</legend>
+<!--  功能操作区域  -->
+<table width="100%"   cellpadding=0 cellspacing=0 >
+	<tr>
+		<td width="60%">
+	<input type="button"  onclick="upbtn();" class="button1" value="更新本页数据">
+	<input type="button" name="delete" onclick="del()" class="btn_red" value="删除数据">
+	<input type="button" name="delete" onclick="location.href='__URL__/index/'" class="button1" value="清空条件">
+		</td>
+		<td align="right"></td>
+	</tr>
+</table>
+<!-- 功能操作区域结束 -->
+</fieldset>
+<fieldset>
+<!-- 列表显示区域  -->
+		<myhtml:editlist id="checkList" name="list"  checkbox="true"  datasource="list" style="list"
+		show="
+			id|1:ID,
+			title|20:标题,
+			seqNo|1:排序,
+			type|select|makeselect('type[]'#'sys_fieldtypesub'#$list['type']#''#null#'title'):数据类型,
+			leng|1:长度,
+			notnull|checkbox:NULL[是否为空的字段],
+			default|8:默认值,
+			primary|checkbox:主键[是否为主键的字段],
+			autoInc|checkbox:自增[是否自动增长的字段],
+			othervar|30:其它属性,
+			color|select|makeselect('color[]'#'Sub_color'#$list['color']):颜色
+		"
+		action="false"
+		createform="true"
+		quickadd="true"
+		actionlist=""
+		/>
+
+<!--  分页显示区域 -->
+<div class="page">
+
+<table width="100%">
+<tr >
+<td align="left"></td>
+<td align="right" id="linkpage">{$page}</td>
+</tr>
+</table>
+</div>
+</fieldset>
+<include file="../Public/footer" />

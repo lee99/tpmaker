@@ -1,0 +1,137 @@
+<tagLib name="cx,html,myhtml" />
+<include file="../Public/header" />
+<!-- 主体内容  -->
+<script >
+
+function showviewmaodel(){
+	var tbid=$('viewtableid').value;
+	$('view'+tbid).style.display='block';
+}
+
+function hideviewmaodel(id){
+	if(id==''){
+		var tbid=$('viewtableid').value;
+	}else{
+		var tbid=id;
+	}
+	$('view'+tbid).style.display='none';
+}
+
+var conditionvar=0;
+var conditiontid=0;//条件
+var conditionHTML='';//写入的内容
+
+function setcon(tid,fid,ft,id){
+	var showconditon=$("showconditon").innerHTML;
+	if(tid!=conditiontid){
+		if(conditionvar==0){
+			$("showtips").value="请选择另一个表的表应的表";
+			$("showtips").className="button_em0";
+			conditionvar=fid;
+			conditiontid=tid;
+			conditionHTML=ft;
+		}else{
+			$("showtips").value="完成视图";
+			$("showtips").className="button_em1";
+
+			ThinkAjax.send("__URL__/addconditon/",'in_tid='+conditiontid+'&in_field='+conditionHTML+'&out_tid='+tid+'&out_field='+ft+'&did='+id+'&type=add');
+			conditionvar=0;	
+			conditiontid=0;	
+			showHTML="<li id=allcon"+id+">"+conditionHTML+"="+ft+" <a href='###' onclick='colsecon("+id+");'>删除</a></li>";
+			$("showconditon").innerHTML=showconditon +showHTML;
+		}
+		
+		$("tr"+tid+fid).className="tr1";
+		
+	}else{
+		alert('你不能在本表内关联!');
+	}
+}
+
+
+
+function colsecon(id){
+	ThinkAjax.send("__URL__/addfields/",'did='+id+'&type=del');
+	removeElement('allcon'+id);
+}
+
+function viewclick(id){
+	var newtitle=$('newtitle'+id).value;
+	var title=$('title'+id).value;
+	var tid=$('tid'+id).value;
+	var caption=$('caption'+id).value;
+	var checkboxid=$('f'+id);
+	var type;
+	if(checkboxid.checked==true){
+		type='del';
+		checkboxid.checked=false;
+	}else{
+		type='add';	
+		checkboxid.checked=true;
+	}
+	ThinkAjax.send("__URL__/addfields/",'newtitle='+newtitle+'&title='+title+'&tid='+tid+'&caption='+caption+'&did='+id+'&type='+type);
+}
+
+
+</script>
+<form method="POST" action="__URL__/insert/" target="_self"  autocomplete='off' >
+<fieldset>
+<legend>增加视图模型数据</legend>
+<table  bgcolor="White">
+<tr >
+<myhtml:labelinput  name="caption" label="标题[中文]" value="" type="text" size='10' />
+<myhtml:labelinput  name="title" label="视图名[英文]" value="" type="text" size='10'/>
+<myhtml:labelinput  name="infos" label="说明" value="" type="text" size='40'/>
+<myhtml:labelinput  name="seqNo" label="排序" value="" type="text" size='2'/>
+</tr>
+</table>
+</fieldset>
+<fieldset>
+<select id="viewtableid">
+<volist name="table" id="table">
+<option value="{$table.id}">{$table.caption}[{$table.title}]</option>
+</volist>
+</select>
+<input type="button"  onclick="showviewmaodel();" class="button1" value="显示数据表">
+<input type="button"  onclick="hideviewmaodel('');" class="button1" value="隐藏数据表">
+<input type="button"  id='showtips'  value="提示" class="button_em1">
+</fieldset>
+<fieldset>
+<legend>当前数据表</legend>
+<ul  class="viewmodel">
+<volist name="table_view" id="vo">
+	<li id="view{$vo.id}" style="display:none;margin:1px;" >
+		<table border="0" cellpadding="0" cellspacing="0"  class="list">
+			<tr >
+				<th colspan="2"  align="left">{$vo.caption}[{$vo.title}]</th>
+				<th >名称</th>
+				<th align="right"><a onclick="hideviewmaodel('{$vo.id}');" href="#">×</a></th>
+			</tr>	
+		<volist name="vo['sub']" id="sub">
+			<tr id="tr{$vo.id}{$sub.id}" >
+				<td><input type="checkbox"  onclick="viewclick({$vo.id}{$sub.id});" id="f{$vo.id}{$sub.id}"></td>
+				<td onclick="viewclick({$vo.id}{$sub.id});" ><label >{$sub.caption}[{$sub.name}]</td>
+				<td>
+				<input id="newtitle{$vo.id}{$sub.id}" size="8" value="{$sub.name}" onblur="viewclick({$vo.id}{$sub.id});" >{//新的title}
+				<input id="title{$vo.id}{$sub.id}" type="hidden" value="{$sub.name}" >{//旧的title}
+				<input id="caption{$vo.id}{$sub.id}" type="hidden" value="{$sub.caption}" >{//旧的caption}
+				<input id="tid{$vo.id}{$sub.id}" type="hidden" value="{$vo.id}" >{//tid}
+				</td>
+				<td><a onclick="setcon('{$vo.id}','{$sub.id}','{$vo.title}.{$sub.name}','{$vo.id}{$sub.id}');" href="#" title="设定条件">↓</a></td>
+			</tr>
+		</volist>
+		</table>
+	</li>
+</volist>
+</ul>
+</fieldset>
+<fieldset>
+<legend>当前视图的条件</legend>
+<ul  class="viewcondition" id="showconditon">
+</ul>
+</fieldset>
+<input type="submit"  class="button1" value="确定增加数据,增加后只能进行简单的修改">
+</form>
+
+
+<include file="../Public/footer" />

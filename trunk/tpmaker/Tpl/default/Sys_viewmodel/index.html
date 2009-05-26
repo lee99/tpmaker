@@ -1,0 +1,49 @@
+<tagLib name="cx,html,myhtml" />
+<include file="../Public/header" />
+<!-- 主体内容  -->
+<script LANGUAGE="JavaScript">
+function viewfields(id){
+ location.href  ="__APP__/Sys_viewfields/index/vid/"+id;
+}
+</script>
+<fieldset >
+	<legend>当前项目的视图列表: <font class="blue">{$projectname}</font></legend>
+
+<!--  功能操作区域  -->
+<table width="100%"   cellpadding=0 cellspacing=0 >
+	<tr>
+		<td >
+	<input type="button"  onclick="location.href='__URL__/index/pid/{$_GET['pid']}'" class="button1" value="刷新">
+	<input type="button"  onclick="location.href='__URL__/add/'" class="button1" value="增加视图模型">
+	<input type="button"  onclick="del()" class="btn_red" value="删除数据">
+	<input type="button"  onclick="upbtn()" class="button1" value="更新数据">
+	<input type="button"  onclick="location.href='__URL__/sort/pid/{$_GET['pid']}'" class="button1" value="排序">
+
+
+
+		</td>
+		<td align="right" id="linkpage">{$page}</td>
+	</tr>
+</table>
+
+<!-- 功能操作区域结束 -->
+</fieldset>
+<fieldset>
+
+<!-- 列表显示区域  -->
+		<myhtml:editlist id="checkList" name="list"  checkbox="true"  datasource="list" style="list"
+		show="
+			id|hidden|1:ID,
+			caption|20:视图标题,
+			title|20:视图表名(英名),
+			infos|50:相关说明,
+			seqNo|1:排序
+		"
+		action="false"
+		createform="true"
+		actionlist="viewfields:查看视图"
+		/>
+<input type="hidden" name="projectid" value="{$_SESSION['workingprojectid']}">
+<!--  分页显示区域 -->
+</fieldset>
+<include file="../Public/footer" />
