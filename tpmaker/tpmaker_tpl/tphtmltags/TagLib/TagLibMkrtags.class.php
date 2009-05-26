@@ -776,7 +776,7 @@ var tablename = "'.$id.'"; // table name
 		$style      = empty($tag['style'])?$tag['style']:''; 			//表单[style]//没值则
 		$othervar   = $tag['othervar'];               					//表单[othervar]//没值则
 
-		$parseStr   = '<span    class="'.$class.'"  style="'.$style.'" ><a href="__ROOT__/Public/Uploads/{$'.$value.'}" target="_blank"  >查看或下载文件</a></span>';
+		$parseStr   = '<span    class="'.$class.'"  style="'.$style.'" ><a href="__ROOT__/Public/Uploads/'.$value.'" target="_blank"  >查看或下载文件</a></span>';
 		return $parseStr;
 
 	}
