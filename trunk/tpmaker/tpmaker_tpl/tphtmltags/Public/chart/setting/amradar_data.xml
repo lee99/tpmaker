@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<chart>
+  <!--<message><![CDATA[You can broadcast any message to chart from data XML file]]></message> -->
+	<axes>
+		<axis xid="0" fill_color="#0066CC">东1</axis>
+		<axis xid="1">东2</axis>
+		<axis xid="2">东3</axis>
+		<axis xid="3" fill_color="#CC3333">东4</axis>
+		<axis xid="4" fill_color="#CC3333">东5</axis>
+		<axis xid="5">东6</axis>
+    <axis xid="6">东7</axis>
+    <axis xid="7" fill_color="#0066CC">东8</axis> 		
+	</axes>
+	<graphs>
+		<graph gid="1" color="#FFCC00" fill_alpha="60" bullet="round"> 
+			<value xid="0">8</value>
+			<value xid="1">9</value>
+			<value xid="2">4.5</value>
+			<value xid="3">3.5</value>
+			<value xid="4">9.2</value>
+			<value xid="5">8.4</value>
+			<value xid="6">11.1</value>                                                                                                 
+    </graph> 
+		<graph gid="2"  fill_alpha="60" bullet="round"> 
+			<value xid="0">5</value>
+			<value xid="1">8</value>
+			<value xid="2">9.5</value>
+			<value xid="3">7.5</value>
+			<value xid="4">2.2</value>
+			<value xid="5">2.4</value>
+			<value xid="6">2.1</value>                                                                                                 
+    </graph> 
+  </graphs>
+
+  <labels>                                                    <!-- LABELS -->
+    <label>
+      <x>0</x>                                                <!-- [0] (Number / Number% / !Number) -->
+      <y>25</y>                                               <!-- [0] (Number / Number% / !Number) -->
+      <width></width>
+	  <rotate>false</rotate> 
+      <align>center</align>
+      <text_color></text_color>                               <!-- [text_color] (hex color code) button text color -->
+      <text_size></text_size>                                 <!-- [text_size](Number) button text size -->
+      <text>                                                  <!-- [] (text)(supports <b>, <i>, <u>, <font>, <a href="">, <br/> -->
+        <![CDATA[<b>移动首批TD深度定制手机”的消息仍然不胫而走</b>]]>
+      </text>
+    </label>
+  </labels> 
+</chart>

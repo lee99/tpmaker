@@ -1,0 +1,91 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<chart>
+	<series>
+		<value xid="0">2007 07 01</value>
+		<value xid="1">2007 07 02</value>
+		<value xid="2">2007 07 03</value>
+		<value xid="3">2007 07 04</value>
+		<value xid="4">2007 07 05</value>
+		<value xid="5">2007 07 06</value>
+		<value xid="6">2007 07 07</value>
+		<value xid="7">2007 07 08</value>
+		<value xid="8">2007 07 09</value>
+		<value xid="9">2007 07 10</value>
+		<value xid="10">2007 07 01</value>
+		<value xid="11">2007 07 02</value>
+		<value xid="12">2007 07 03</value>
+		<value xid="13">2007 07 04</value>
+		<value xid="14">2007 07 05</value>
+		<value xid="15">2007 07 06</value>
+		<value xid="16">2007 07 07</value>
+		<value xid="17">2007 07 08</value>
+		<value xid="18">2007 07 09</value>
+		<value xid="19">2007 07 10</value>
+		<value xid="0">2007 07 01</value>
+		<value xid="1">2007 07 02</value>
+		<value xid="2">2007 07 03</value>
+		<value xid="3">2007 07 04</value>
+		<value xid="4">2007 07 05</value>
+		<value xid="5">2007 07 06</value>
+		<value xid="6">2007 07 07</value>
+		<value xid="7">2007 07 08</value>
+		<value xid="8">2007 07 09</value>
+		<value xid="9">2007 07 10</value>
+		<value xid="10">2007 07 01</value>
+		<value xid="11">2007 07 02</value>
+		<value xid="12">2007 07 03</value>
+		<value xid="13">2007 07 04</value>
+		<value xid="14">2007 07 05</value>
+		<value xid="15">2007 07 06</value>
+		<value xid="16">2007 07 07</value>
+		<value xid="17">2007 07 08</value>
+		<value xid="18">2007 07 09</value>
+		<value xid="19">2007 07 10</value>
+	</series>
+	<graphs>
+		<graph title="One"  line_width="1" bullet="round" vertical_lines="true">
+			<value xid="0">5</value>
+			<value xid="1">5.2</value>
+			<value xid="2">4.9</value>
+			<value xid="3">6.3</value>
+			<value xid="4">6.5</value>
+			<value xid="5">7.1</value>
+			<value xid="6">7.8</value>
+			<value xid="7">8.6</value>
+			<value xid="8">8.2</value>
+			<value xid="9">8</value>
+			<value xid="10">8</value>
+			<value xid="11">5.2</value>
+			<value xid="12">4.9</value>
+			<value xid="13">6.3</value>
+			<value xid="14">6.5</value>
+			<value xid="15">7.1</value>
+			<value xid="16">7.8</value>
+			<value xid="17">8.6</value>
+			<value xid="18">8.2</value>
+			<value xid="19">8</value>
+			<value xid="20">8</value>
+			<value xid="0">5</value>
+			<value xid="1">5.2</value>
+			<value xid="2">4.9</value>
+			<value xid="3">6.3</value>
+			<value xid="4">6.5</value>
+			<value xid="5">7.1</value>
+			<value xid="6">7.8</value>
+			<value xid="7">8.6</value>
+			<value xid="8">8.2</value>
+			<value xid="9">8</value>
+			<value xid="10">8</value>
+			<value xid="11">5.2</value>
+			<value xid="12">4.9</value>
+			<value xid="13">6.3</value>
+			<value xid="14">6.5</value>
+			<value xid="15">7.1</value>
+			<value xid="16">7.8</value>
+			<value xid="17">8.6</value>
+			<value xid="18">8.2</value>
+			<value xid="19">8</value>
+			<value xid="20">8</value>
+		</graph>
+	</graphs>
+</chart>

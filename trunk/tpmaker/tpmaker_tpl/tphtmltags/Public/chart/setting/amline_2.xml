@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<settings>
+  <data_type>xml</data_type>                                     <!-- [xml] (xml / csv) -->
+  <axes>                                                      <!-- axes -->
+    <x>                                                       <!-- X axis -->
+      <color></color>                                         <!-- [#000000] (hex color code) -->
+      <alpha></alpha>                                         <!-- [100] (0 - 100) -->
+      <width></width>                                         <!-- [2] (Number) line width, 0 for hairline -->
+      <tick_length></tick_length>                             <!-- [7] (Number) -->
+    </x>
+    <y_left>                                                  <!-- Y left axis, visible only if at least one graph is assigned to this axis -->
+      <type>stacked</type>                                    <!-- [line] (line, stacked, 100% stacked) -->
+      <color></color>                                         <!-- [#000000] (hex color code) -->
+      <alpha></alpha>                                         <!-- [100] (0 - 100) -->
+      <width></width>                                         <!-- [2] (Number) line width, 0 for hairline -->
+      <tick_length></tick_length>                             <!-- [7] (Number) -->
+      <logarithmic></logarithmic>                             <!-- [false] (true / false) If set to true, this axis will use logarithmic scale instead of linear -->
+    </y_left>
+    <y_right>                                                 <!-- Y right axis, visible only if at least one graph is assigned to this axis -->
+      <type>stacked</type>                                           <!-- [line] (line, stacked, 100% stacked) -->
+      <color></color>                                         <!-- [#000000] (hex color code) -->
+      <alpha></alpha>                                         <!-- [100] (0 - 100) -->
+      <width></width>                                         <!-- [2] (Number) line width, 0 for hairline -->
+      <tick_length></tick_length>                             <!-- [7] (Number) -->
+      <logarithmic></logarithmic>                             <!-- [false] (true / false) If set to true, this axis will use logarithmic scale instead of linear -->
+    </y_right>
+  </axes>
+
+  <export_as_image>
+    <file>../chart/export.php</file>
+    <alpha>100</alpha>
+  </export_as_image>
+
+  <context_menu>
+     <default_items>
+       <zoom>true</zoom>
+       <print>true</print>
+     </default_items>
+  </context_menu>
+
+</settings>

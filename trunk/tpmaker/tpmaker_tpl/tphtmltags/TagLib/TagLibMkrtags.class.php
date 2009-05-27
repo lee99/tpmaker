@@ -781,6 +781,38 @@ var tablename = "'.$id.'"; // table name
 
 	}
 
+	public function _chart($attr)
+	{
+		$tag        = $this->parseXmlAttr($attr,'chart');
+		$name       = $tag['name']; 									//表单名称[name]
+		$id       	= !empty($tag['id'])?$tag['id']:$tag['name']; 		//表单ID[id]//没值则用NAME为值
+		$type       =$tag['type'];  		//$type图表的类型
+		$width       =empty($tag['width'])?'540':$tag['width'];  		//$width//flash的宽和高
+		$hight       =empty($tag['hight'])?'400':$tag['hight'];  		//$hight//flash的宽和高
+		$bgcolor     =empty($tag['bgcolor'])?'#FFFFFF':$tag['bgcolor'];  		//$bgcolor//flash的背景色
+		$settings_file       =$tag['settings_file'];  		//设定的文件
+		$data_file       =$tag['data_file'];  		//$data_file//数据的文件
+		$preloader_color       =empty($tag['preloader_color'])?'#cccccc':$tag['preloader_color'];  		//$preloader_color//加载时的色
+
+
+		$parseStr   = '<script type="text/javascript" src="'.WEB_PUBLIC_URL.'/chart/js/swfobject.js"></script>
+    <div id="'.$name.'">
+        <strong>你需要更新你的FLASH播放器,或联系管理员!</strong>
+    </div>
+    <script type="text/javascript">
+        // <![CDATA[
+        var so_'.$name.' = new SWFObject("'.WEB_PUBLIC_URL.'/chart/chart/'.$type.'.swf", "'.$type.'", "'.$width.'", "'.$hight.'", "'.$padding.'", "'.$bgcolor.'");
+        so_'.$name.'.addVariable("settings_file", encodeURIComponent("'.$settings_file.'"));
+        so_'.$name.'.addVariable("data_file", encodeURIComponent("'.$data_file.'"));
+        so_'.$name.'.addVariable("preloader_color", "'.$preloader_color.'");
+        so_'.$name.'.write("'.$name.'");
+        // ]]>
+    </script>';
+
+		return $parseStr;
+
+	}
+
 	public function _temp($attr)
 	{
 		$tag        = $this->parseXmlAttr($attr,'input');
