@@ -789,6 +789,7 @@ var tablename = "'.$id.'"; // table name
 		$type       =$tag['type'];  		//$type图表的类型
 		$width       =empty($tag['width'])?'540':$tag['width'];  		//$width//flash的宽和高
 		$hight       =empty($tag['hight'])?'400':$tag['hight'];  		//$hight//flash的宽和高
+		$padding       =empty($tag['padding'])?'8':$tag['padding'];  		//$hight//flash的宽和高
 		$bgcolor     =empty($tag['bgcolor'])?'#FFFFFF':$tag['bgcolor'];  		//$bgcolor//flash的背景色
 		$settings_file       =$tag['settings_file'];  		//设定的文件
 		$data_file       =$tag['data_file'];  		//$data_file//数据的文件
