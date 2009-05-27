@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<chart>
+	<series>
+		<value xid="2003">2003</value>
+		<value xid="2004">2003</value>
+		<value xid="2005">2003</value>
+		<value xid="2006">2003</value>
+		<value xid="2007">2003</value>
+	</series>
+	<graphs>
+		<graph gid="Equities" title="中国">
+			<value xid="2003">2.5</value>
+			<value xid="2004">2.7</value>
+			<value xid="2005">2.8</value>
+			<value xid="2006">4</value>
+			<value xid="2007">2.8</value>
+		</graph>
+	</graphs>
+  <labels>                                                    <!-- LABELS -->
+    <label lid="0">
+      <x>0</x>                                                <!-- [0] (Number / Number% / !Number) -->
+      <y>25</y>                                               <!-- [0] (Number / Number% / !Number) -->
+      <width></width>
+      <align>center</align>
+      <text_color></text_color>                               <!-- [text_color] (hex color code) button text color -->
+      <text_size></text_size>                                 <!-- [text_size](Number) button text size -->
+      <text>                                                  <!-- [] (text)(supports <b>, <i>, <u>, <font>, <a href="">, <br/> -->
+        <![CDATA[<b>移动首批TD深度定制手机”的消息仍然不胫而走</b>]]>
+      </text>
+    </label>
+
+</chart>

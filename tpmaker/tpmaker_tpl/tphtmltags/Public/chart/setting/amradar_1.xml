@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<settings> 
+ 
+  <radar>
+    <type>stacked</type>
+    <x></x>                                                   <!-- [50%](Number / Number% / !Number) -->
+    <y></y>                                                   <!-- [50%](Number / Number% / !Number) -->
+    <radius></radius>                                         <!-- [30%] (Number / Number%) -->
+    <grow_time>2</grow_time>                                  <!-- [0] (Number) grow time in seconds. Leave 0 to appear instantly -->
+    <grow_effect></grow_effect>                               <!-- [elastic] (elastic, regular, strong) -->    
+    <sequenced_grow>true</sequenced_grow>                     <!-- [false] (true / false) whether graphs should grow at the same time or one after another -->    
+  </radar>
+  
+  
+  <grid>
+    <type>circles</type>                                      <!-- [lines] (lines / circles) If you set this to "circles" the grid lines will be circles. The chart might be called "Polar chart" in this case.-->
+    <color></color>                                           <!-- [#000000] (hex color code) grid color -->
+    <alpha></alpha>                                           <!-- [10] (0 - 100) opacity of a grid -->                                           
+    <approx_count></approx_count>                             <!-- [8] (Number) the approximate number of grid lines -->
+    <fill_color>#000000</fill_color>                          <!-- [#FFFFFF] (hex color code) every second area between gridlines will be filled with this color (you will need to set fill_alpha > 0) -->
+    <fill_alpha>5</fill_alpha>                                <!-- [0] (0 - 100) opacity of fill -->
+    <dashed></dashed>                                         <!-- [false] (true / false) The grid lines can be dashed (the circle grid lines can not be dashed) -->
+    <dash_length></dash_length>                               <!-- [5] (Number) -->   
+  </grid>
+  
+  <values>
+    <enabled></enabled>                                       <!-- [true] (true / false) -->
+    <position></position>                                     <!-- [left] (left / right) postion of the values -->
+    <min></min>                                               <!-- [] (Number) minimum value of this axis. If empty, this value will be calculated automatically. -->
+    <max></max>                                               <!-- [] (Number) maximum value of this axis. If empty, this value will be calculated automatically -->
+    <strict_min_max></strict_min_max>                         <!-- [false] (true / false) by default, if your values are bigger then defined max (or smaller then defined min), max and min is changed so that all the chart would fit to chart area. If you don't want this, set this option to true. -->
+    <frequency></frequency>                                   <!-- [1] (Number) how often values should be placed, 1 - near every gridline, 2 - near every second gridline... -->
+    <skip_first></skip_first>                                 <!-- [true] (true / false) to skip or not first value -->
+    <skip_last>true</skip_last>                               <!-- [false] (true / false) to skip or not last value -->
+    <color></color>                                           <!-- [text_color] (hex color code) --> 
+    <text_size></text_size>                                   <!-- [text_size] (Number) -->
+    <integers_only></integers_only>                           <!-- [false] (true / false) if set to true, values with decimals will be omitted -->
+    <unit></unit>                                             <!-- [] (text) -->
+    <unit_position></unit_position>                           <!-- [right] (right / left) -->    
+  </values>
+  
+  
+    
+  <legend>                                                    <!-- LEGEND -->
+    <enabled>false</enabled>                                  <!-- [true] (true / false) -->
+  </legend>  
+  
+  <export_as_image>
+    <file>../chart/export.php</file>
+    <alpha>100</alpha>
+  </export_as_image>
+
+  <context_menu>
+     <default_items>
+       <zoom>true</zoom>
+       <print>true</print>
+     </default_items>
+  </context_menu>
+
+</settings>

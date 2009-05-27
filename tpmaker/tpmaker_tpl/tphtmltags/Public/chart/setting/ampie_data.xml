@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<pie>
+  <slice title="Asia">44.579</slice>
+  <slice title="Africa">30.065</slice>
+  <slice title="North America">24.256</slice>
+  <slice title="South America" pull_out="true" color="#FCD202">17.819</slice>
+  <slice title="Antarctica">13.209</slice>
+  <slice title="Europe">9.938</slice>
+  <slice title="Australia">7.687</slice>
+
+  <labels>                                                    <!-- LABELS -->
+    <label lid="0">
+      <x>0</x>                                                <!-- [0] (Number / Number% / !Number) -->
+      <y>25</y>                                               <!-- [0] (Number / Number% / !Number) -->
+      <width></width>                                        
+      <align>center</align>                                  
+      <text_color></text_color>                               <!-- [text_color] (hex color code) button text color -->
+      <text_size></text_size>                                 <!-- [text_size](Number) button text size -->
+      <text>                                                  <!-- [] (text)(supports <b>, <i>, <u>, <font>, <a href="">, <br/> -->
+        <![CDATA[<b>移动首批TD深度定制手机”的消息仍然不胫而走</b>]]>
+      </text>        
+    </label>
+ </labels>
+</pie>

@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<settings>
+  <data_type>xml</data_type>                                     <!-- [xml] (xml / csv) -->
+  <export_as_image>
+    <file>../chart/export.php</file>
+    <alpha>100</alpha>
+  </export_as_image>
+
+  <context_menu>
+     <default_items>
+       <zoom>true</zoom>
+       <print>true</print>
+     </default_items>
+  </context_menu>
+
+</settings>
