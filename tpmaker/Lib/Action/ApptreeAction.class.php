@@ -11,8 +11,8 @@ class ApptreeAction extends AdminAction{
 	public function index(){
 
 		$apptree=D('apptree');
-		$list=$apptree->findAll('projectid='.$_SESSION[workingprojectid],'*');
-		$listtop=$apptree->find('id='.$_GET[id],'*');
+		$list=$apptree->where('projectid='.$_SESSION[workingprojectid])->findall();
+		$listtop=$apptree->where('id='.$_GET[id])->find();
 		$this->assign('list',$list);
 		$this->assign('listtop',$listtop);
 		//dump($listtop);
@@ -25,9 +25,10 @@ class ApptreeAction extends AdminAction{
 
 		$table=D('Sys_tables');
 		$apptree=D('apptree');
-		$treelist=$apptree->findAll('type=0 and projectid='.$_SESSION[workingprojectid]);
-		$table=$table->findAll('ismodel<>1 and pid='.$_SESSION[workingprojectid]);
-		$treeselect=$apptree->findAll('type<>0 and pid='.$_GET[pid]);//选中的子项目
+
+		$treelist=$apptree->where('type=0 and projectid='.$_SESSION[workingprojectid])->findall();
+		$table=$table->where('ismodel<>1 and pid='.$_SESSION[workingprojectid])->findall();
+		$treeselect=$apptree->where('type<>0 and pid='.$_GET[pid])->findall();//选中的子项目
 		$this->assign('treelist',$treelist);
 		$this->assign('table',$table);
 		$this->assign('treeselect',$treeselect);

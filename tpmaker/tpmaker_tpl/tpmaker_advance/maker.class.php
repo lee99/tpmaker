@@ -38,7 +38,7 @@ class maker extends tpmaker
      +----------------------------------------------------------
      */
 	function makeproindex($id) {
-		
+
 		$app_path=$this->getapppath();//获取生成程序的根目录
 		$tpl_path=$this->gettplpath();//获取程序模板的根目录
 		$filename=$app_path.'/index.php';
@@ -59,7 +59,7 @@ class maker extends tpmaker
      +----------------------------------------------------------
      */
 	function makeproindexaction() {
-		
+
 		$app_path=$this->getapppath();//获取生成程序的根目录
 		$tpl_path=$this->gettplpath();//获取程序模板的根目录
 		$filename=$app_path.'/Index.php';
@@ -80,7 +80,7 @@ class maker extends tpmaker
      +----------------------------------------------------------
      */
 	function makeproconf($id) {
-		
+
 		$app_path=$this->getapppath();//获取生成程序的根目录
 		$tpl_path=$this->gettplpath();//获取程序模板的根目录
 		$data=$this->getprojects();
@@ -98,14 +98,14 @@ class maker extends tpmaker
 
 	function makepromodel($id) {
 		//生成基本MODEL
-		
+
 		$app_path=$this->getapppath();//获取生成程序的根目录
 		$tpl_path=$this->gettplpath();//获取程序模板的根目录
 		$data=$this->gettables($id);
 		$name=uplower($data['title']);//第一个字母变成大写,其它变成小写
 		if($data['datemodelid']!=0){$datemodelid=$data['datemodelid'];}//取出公用的数据模型
 		$fields=D('sys_fields');
-		$fields=$fields->findAll('pid='.$id .' or pid='.$datemodelid ,'*','seqNo ASC');//取出所有表和数据模型表
+		$fields=$fields->where('pid='.$id .' or pid='.$datemodelid )->field('*')->order('seqNo ASC')->findall();//取出所有表和数据模型表
 		$filename=$app_path.'/Lib/Model/'.$name.'Model.class.php';
 
 		foreach ($fields as $field){
@@ -183,18 +183,18 @@ class maker extends tpmaker
 		$filecontent=$tpl->tplreturn();
 		writefile($filename,$filecontent);
 	}
-	
-	
+
+
 	function makeproviewmodel($id) {
 		//生成基本VIEWMODEL
-		
+
 		$app_path=$this->getapppath();//获取生成程序的根目录
 		$tpl_path=$this->gettplpath();//获取程序模板的根目录
 		$tpl=new tpl($tpl_path.'/Model_tpl/viewmodel.tpl');
 
 
 		$field=D('Sys_viewfields');
-		$tables=$field->findall('vid='.$id,'distinct `tid`');//查出无序的数据
+		$tables=$field->where('vid='.$id,'distinct `tid`')->findall();//查出无序的数据
 		foreach ($tables as $tb){
 			$f=$field->findall("vid=$id and tid=$tb[tid]");
 			$tablename=id_To_EValue('sys_tables','title','id',$tb[tid]);
@@ -207,10 +207,10 @@ class maker extends tpmaker
 		}
 
 		$condition=D('Sys_viewcondition');
-		$condition=$condition->findall('vid='.$id);
+		$condition=$condition->where('vid='.$id)->findall();
 
 		$viewmodel=D('Sys_viewmodel');
-		$viewmodel=$viewmodel->find('id='.$id);
+		$viewmodel=$viewmodel->where('id='.$id)->find();
 
 		$filename=$app_path.'/Lib/Model/'.$viewmodel['title'].'ViewModel.class.php';
 		$tpl->tplsign("name",$viewmodel['title']); //替换
@@ -224,7 +224,7 @@ class maker extends tpmaker
 
 	function makeproaction($id) {
 		//生成基本Action
-		
+
 		$app_path=$this->getapppath();//获取生成程序的根目录
 		$tpl_path=$this->gettplpath();//获取程序模板的根目录
 		$data=$this->gettables($id);
@@ -294,7 +294,7 @@ class maker extends tpmaker
 
 	function makeprotpl($id) {
 		//生成基本Action
-		
+
 		$app_path=$this->getapppath();//获取生成程序的根目录
 		$tpl_path=$this->gettplpath();//获取程序模板的根目录
 		$data=$this->gettables($id);
@@ -302,15 +302,15 @@ class maker extends tpmaker
 		$caption=$data['caption'];
 		$fields=$this->getfieldsbytbid($id);
 		tpmk_dir($app_path.'/Tpl/default/'.$tablename.'/');//生成目录
-		
+
 		$islist=($data['list']==1)?true:false;	//是否列表
 		$issearch=($data['search']==1)?true:false;	//issearch
 		$isadd=($data['add']==1)?true:false;	//是否增加
 		$isedit=($data['edit']==1)?true:false;	//是否允许编辑
 		$isview=($data['view']==1)?true:false;	//是否允许查看详细
 		$isdel=($data['del']==1)?true:false;	//是否允许删除数据
-		
-		
+
+
 		//生成INDEX.HMTL包括LIST及SEARCH的
 		if($islist){
 			$filename=$app_path.'/Tpl/default/'.$tablename.'/index.html';//生成的模板文件名
@@ -329,20 +329,20 @@ class maker extends tpmaker
 			$listshowtd=$this->makerowslisttd($fields,'islist');
 			$tpl->tplblocksign('listshowsort',$listshowsort);//替换
 			$tpl->tplblocksign('listshowtd',$listshowtd);//替换
-			
+
 			$tpl->tplissign('issearch',$issearch);//替换是否搜索
 			$tpl->tplissign('isadd',$isadd);//替换是否增加
 			$tpl->tplissign('isedit',$isedit);//替换是否编辑
 			$tpl->tplissign('isview',$isview);//替换查看详细
 			$tpl->tplissign('isdel',$isdel);//替换删除数据
-			
+
 			$tpl->tplsign('tablecaption',$caption);//替换
 			$tpl->tplsign('tablelist',$tablename);//替换表名
 			$filecontent=$tpl->tplreturn();
 			writefile($filename,$filecontent);
 		}
-		
-		
+
+
 
 		//生成Add.HMTL
 		if($isadd){
@@ -357,13 +357,13 @@ class maker extends tpmaker
 				}
 			}
 			$tpl->tplblocksign('rows_contents',$rows_contents);
-			
+
 			$tpl->tplissign('issearch',$issearch);//替换是否搜索
 			$tpl->tplissign('isadd',$isadd);//替换是否增加
 			$tpl->tplissign('isedit',$isedit);//替换是否编辑
 			$tpl->tplissign('isview',$isview);//替换查看详细
 			$tpl->tplissign('isdel',$isdel);//替换删除数据
-			
+
 			$tpl->tplsign('tablecaption',$caption);//替换
 			$tpl->tplsign('tablename',$tablename);//替换表名
 			$filecontent=$tpl->tplreturn();
@@ -384,13 +384,13 @@ class maker extends tpmaker
 				}
 			}
 			$tpl->tplblocksign('rows_contents',$rows_contents);
-			
+
 			$tpl->tplissign('issearch',$issearch);//替换是否搜索
 			$tpl->tplissign('isadd',$isadd);//替换是否增加
 			$tpl->tplissign('isedit',$isedit);//替换是否编辑
 			$tpl->tplissign('isview',$isview);//替换查看详细
 			$tpl->tplissign('isdel',$isdel);//替换删除数据
-			
+
 			$tpl->tplsign('tablecaption',$caption);//替换
 			$tpl->tplsign('tablename',$tablename);//替换表名
 			$filecontent=$tpl->tplreturn();
@@ -412,20 +412,20 @@ class maker extends tpmaker
 				}
 			}
 			$tpl->tplblocksign('rows_contents',$rows_contents);
-			
+
 			$tpl->tplissign('issearch',$issearch);//替换是否搜索
 			$tpl->tplissign('isadd',$isadd);//替换是否增加
 			$tpl->tplissign('isedit',$isedit);//替换是否编辑
 			$tpl->tplissign('isview',$isview);//替换查看详细
 			$tpl->tplissign('isdel',$isdel);//替换删除数据
-			
+
 			$tpl->tplsign('tablecaption',$caption);//替换
 			$tpl->tplsign('tablename',$tablename);//替换表名
 			$filecontent=$tpl->tplreturn();
 			writefile($filename,$filecontent);
 			unset($rows_contents);
 		}
-		
+
 		unset($data);
 	}
 
@@ -572,7 +572,7 @@ class maker extends tpmaker
 			if($data[$datefield]==1){
 				//生成标签
 				$viewtags=$this->maketags($data['viewtype'],'viewtype',$data['name'],$data['indexvar'],$data['outkey'],$data['outkeyid'],$data['outkeyf'],$data['outkeywhere']);
-				
+
 				$content[$i][listshowtd_name]=$data['name'];
 				$content[$i][listshowtd_caption]=$data['caption'];
 				$content[$i][listshowtd_viewtags]=$viewtags;

@@ -20,7 +20,7 @@ class Sys_viewmodelAction extends AdminAction{
 
 		$p=$this->tpPage($count,20,'page');
 
-		$list=$list->findAll($wherevalue,'*',$orderBy,$p['firstRow'].','.$p['listRows']);
+		$list=$list->field('*')->where($wherevalue)->order($orderBy)->limit($p['firstRow'].','.$p['listRows'])-
 
 		//dump($list);
 		$this->assign('list',$list);
@@ -36,7 +36,7 @@ class Sys_viewmodelAction extends AdminAction{
 		if($_REQUEST[id]==""){
 			halt('输入的ID号不能为空');
 		}
-		$listd=$list->findall('id in ('.$_REQUEST[id].')');
+		$listd=$list->where('id in ('.$_REQUEST[id].')')->findall();
 		$pid=$listd[0]['pid'];
 
 

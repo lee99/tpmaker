@@ -20,7 +20,8 @@ class Sys_viewfieldsAction extends AdminAction{
 
 		$p=$this->tpPage($count,30,'page');
 
-		$list=$list->findAll($wherevalue,'*',$orderBy,$p['firstRow'].','.$p['listRows']);
+		//$list=$list->field('*')->where($wherevalue)->order($orderBy)->limit($p['firstRow'].','.$p['listRows'])-
+		$list=$list->field('*')->where($wherevalue)->order($orderBy)->limit($p['firstRow'].','.$p['listRows'])->findall();
 
 		//dump($list);
 		$this->assign('list',$list);

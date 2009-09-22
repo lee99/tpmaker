@@ -131,7 +131,7 @@ class tpmaker extends Action
 		$data=$this->gettables($id);
 		if($data['datemodelid']!=0){$datemodelid=$data['datemodelid'];}//取出公用的数据模型
 		$fields=D('Sys_fields');
-		$fields=$fields->findAll('pid='.$id .' or pid='.$datemodelid ,'*','seqNo ASC');//取出所有表和数据模型表
+		$fields=$fields->where('pid='.$id .' or pid='.$datemodelid )->field('*')->order('seqNo ASC')->findall();//取出所有表和数据模型表
 		return $fields;
 	}
 

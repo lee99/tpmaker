@@ -17,7 +17,8 @@ class Sys_projectsAction extends AdminAction{
 		$orderBy=$order.' '.$sortd;//排序
 
 		$p=$this->tpPage($count,10,'page');
-		$list=$list->findAll('','*',$orderBy,$p['firstRow'].','.$p['listRows']);
+		//$list=$list->field('*')->order($orderBy)->limit($p['firstRow'].','.$p['listRows'])->findall();
+		$list=$list->field('*')->order($orderBy)->limit($p['firstRow'].','.$p['listRows'])->findall();
 
 		//dump($list);
 		$this->assign('list',$list);
@@ -108,20 +109,20 @@ class Sys_projectsAction extends AdminAction{
 
 			//防止新生成的公共数据模型不配对
 			$tables=D('Sys_tables');
-			$tabledate=$tables->findall('pid='.$_REQUEST['id'].' and ismodel=1');
+			$tabledate=$tables->where('pid='.$_REQUEST['id'].' and ismodel=1')->findall();
 			//找出旧的公共模型
 			//dump($tabledate,true,'旧的数据PID');
 			foreach ($tabledate as $old_table){
 				$new_caption=$old_table['caption'];
 				$new_title=$old_table['title'];
 				$old_id=$old_table['id'];
-				$tabledate2=$tables->findall("caption='$new_caption' and title='$new_title' and pid=$projectid and ismodel=1");
+				$tabledate2=$tables->where("caption='$new_caption' and title='$new_title' and pid=$projectid and ismodel=1")->findall();
 				//找出新的公共MODEL
 				//前提是这两个参数的组合是唯一的
 				//dump($tabledate2,true,'新的数据PID');
 				foreach ($tabledate2 as $new_tables){
 					$new_id=$new_tables['id'];//找出了新公共模型的ID
-					$updatetables=$tables->findall("datemodelid=$old_id and pid=$projectid");
+					$updatetables=$tables->where("datemodelid=$old_id and pid=$projectid")->findall();
 					$updatetables['datemodelid']=$new_id;
 					$updatevar=$tables->create($updatetables);
 					$tables->save();
@@ -214,14 +215,14 @@ class Sys_projectsAction extends AdminAction{
 		$t->makeproindexaction();//生成项面INDEX的面页和相应的列表数据
 		$t->makeprotectmodel();//生成保留MODEL
 		$table=D('Sys_tables');
-		$tabledata=$table->findAll('pid='.$buideid.' and ismodel <>1 and isaction =1');
+		$tabledata=$table->where('pid='.$buideid.' and ismodel <>1 and isaction =1')->findall();
 		foreach ($tabledata as $tb){
 			$t->makepromodel($tb['id']);//生成MODEL
 			$t->makeproaction($tb['id']);//生成ACTION
 			$t->makeprotpl($tb['id']);//生成模板HTML文件
 		}
 		$viewmodel=D('Sys_viewmodel');
-		$viewmodel=$viewmodel->findAll('projectid='.$buideid);
+		$viewmodel=$viewmodel->where('projectid='.$buideid)->findall();
 		foreach ($viewmodel as $mod){
 			$t->makeproviewmodel($mod['id']);//生成MODEL
 		}

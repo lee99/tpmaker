@@ -13,7 +13,7 @@ function toDate($time,$format='Y年m月d日 H:i:s')
 function getPluginNameUri($pluginId)
 {
     $dao = D("PlugIn");
-    $vo  = $dao->find('id="'.$pluginId.'"','','id,uri,name');
+    $vo  = $dao->where('id="'.$pluginId.'"')->field('id,uri,name')->find();
     $uri  =  '<a href="'.$vo->uri.'" target="_blank" >'.$vo->name.'</a>';
     return $uri;
 }
@@ -25,7 +25,7 @@ function getUserType($typeId)
 		return $type[$typeId];
 	}
 	$dao	=	D("UserType");
-	$typeList	=	$dao->findAll('','','id,name,status');
+	$typeList	=	$dao->field('id,name,status')->findAll();
 	$type	=	$typeList->getCol('id,name');
 	$name	=	$type[$typeId];
 	Session::set('userType',$type);
@@ -45,7 +45,7 @@ function getGroupName($id)
 		return $name[$id];
 	}
 	$dao	=	D("Group");
-	$list	=	$dao->findAll('','','id,name');
+	$list	=	$dao->field('id,name')->findAll();
 	$nameList	=	$list->getCol('id,name');
 	$name	=	$nameList[$id];
 	Session::set('groupName',$nameList);
@@ -63,7 +63,7 @@ function getUserName($userId)
 		return $name[$userId];
 	}
 	$dao	=	D("User");
-	$list	=	$dao->findAll('','','id,nickname');
+	$list	=	$dao->field('id,nickname')->findAll();
 	$nameList	=	$list->getCol('id,nickname');
 	$name	=	$nameList[$userId];
 	Session::set('userName',$nameList);
@@ -116,7 +116,7 @@ function getUser($id)
 	}
 	import('@.Dao.UserDao');
 	$dao	=	new UserDao();
-	$userList	=	$dao->findAll('','','id,name,nickname');
+	$userList	=	$dao->field('id,name,nickname')->findAll();
 	$user	=	$userList->getCol('id,name');
 	$name	=	$user[$id];
 	Session::set('user',$user);
@@ -126,7 +126,7 @@ function getUser($id)
 function getMenu() {
 
 	$dao=D("Node");
-	$vo	=$dao->findAll('menulevel=0');
+	$vo	=$dao->where('menulevel=0')->findAll();
 	//$uri=$vo->$id;
 	//$tablist=
 	//dump($vo);
@@ -179,7 +179,7 @@ function getcolor($id)
 	{
 		if(S('color'.$id)==""){
 			$thisdao=D('Sub_color');
-			$list=$thisdao->find('id='.$id,'title');
+			$list=$thisdao->where('id='.$id)->field('title')->find();
 			S('color'.$id,$list['title']);
 			return $list['title'];
 		}

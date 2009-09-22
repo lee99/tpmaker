@@ -21,7 +21,7 @@ class PublicAction extends Action {
 				$this->error('没有权限！');
 			}
 		}
-		
+
 		import("ORG.Util.Page");//引用分页类
 		import("@.Com.ajaxpage");//引用ajax分页类
 
@@ -303,9 +303,9 @@ class PublicAction extends Action {
 		$thismodel=$this->name;
 		$list      =   D($thismodel);
 		if(!$_REQUEST['pid']){
-			$sortList  =   $list->findAll('','*','seqNo asc');
+			$sortList  =   $list->order('seqNo asc')->findall();
 		}else{
-			$sortList  =   $list->findAll('pid='.$_REQUEST['pid'],'*','seqNo asc');
+			$sortList  =   $list->where('pid='.$_REQUEST['pid'])->field('*')->order('seqNo asc')->findall();
 		}
 		//dump($sortList);
 		$this->assign("thismodel",$thismodel);

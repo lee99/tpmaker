@@ -13,8 +13,9 @@ function uplower($name) {
 
 function getsorttype($talbe,$img=0){
 
-	 if($_REQUEST['order']==$talbe){
-           if($_REQUEST['sort']=="desc"){
+	$reqs[]=$_REQUEST;
+	 if($reqs['order']==$talbe){
+           if($reqs['sort']=="desc"){
             		$sorttype="asc";
             }else{
             		$sorttype="desc";
@@ -50,7 +51,7 @@ function getcolor($id)
 	{
 		if(S('color'.$id)==""){
 			$thisdao=D('Sub_color');
-			$list=$thisdao->find('id='.$id,'title');
+			$list=$thisdao->where('id='.$id)->field('title')->find();
 			S('color'.$id,$list['title']);
 			return $list['title'];
 		}
@@ -139,7 +140,7 @@ function makecontion($searchField,$searchOper,$searchString){//jqgrid的参数�
 			return $date;
 }
 
-function makeselect($name,$table,$idt='',$where='',$option='title',$f_idvalue='id',$iscache=true){
+function makeselect($name,$table,$idt='',$where='',$option='title',$f_idvalue='id',$iscache=false){
 	//$option外键的说明
 	//$where外键的过滤
 	//$f_idvalue外键的id
@@ -153,7 +154,7 @@ function makeselect($name,$table,$idt='',$where='',$option='title',$f_idvalue='i
 		if($iscache){
 		$thisdao->Cache(true);
 		}
-		$list=$thisdao->findAll($where);
+		$list=$thisdao->where($where)->findAll();
 		$tmp.= "<option >请选择</option>";
 		foreach ($list as $row) {
 			if ($idt==$row[$f_idvalue] ){$var="selected";}
@@ -178,9 +179,9 @@ function makeoption($table,$id='id',$where='',$option='title',$order,$outadd){
 	if($order==''){$order='id desc';}
 	if($outadd==''){$outadd='>';}
 		$thisdao=D($table);
-		$thisdao->Cache(true);
+		//$thisdao->Cache(true);
 		$options=explode(',',$option);
-		$list=$thisdao->findAll($where,$option.','.$id,$order);
+		$list=$thisdao->where($where)->field($option.','.$id)->order($order)->findAll();
 		for ($i = 0; $i < count($list); $i++) {
 				$optionkey[]=$list[$i][$id];
 				foreach($options as $optionlist){
@@ -202,7 +203,7 @@ function makeoption($table,$id='id',$where='',$option='title',$order,$outadd){
  		 $inoldid;//原来的上级的值
 
 		$table=D($daoname);//引入MODEL
-		$tabledata=$table->findall("$pidf=$inoldid");
+		$tabledata=$table->where("$pidf=$inoldid")->findall();
 
 
 		foreach ($tabledata as $creatdb){
@@ -220,7 +221,7 @@ function makeoption($table,$id='id',$where='',$option='title',$order,$outadd){
 
 function delbypid($daoname,$inpid,$pidf='pid'){
 	$table=D($daoname);//引入MODEL
-	$tabledata=$table->findall($pidf.'='.$inpid);//找出相应的数据
+	$tabledata=$table->where($pidf.'='.$inpid)->findall();//找出相应的数据
 	foreach ($tabledata as $creatdb){
 		$oldid=$creatdb['id'];
 		delbypid('Sys_fields',$oldid,'pid');

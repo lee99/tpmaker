@@ -14,7 +14,7 @@ class DesignerAction extends AdminAction{
 
 	//获取表
 	   $list=D('Sys_tables');
-	   $tabledata=$list->findall('ismodel=0 and pid='.$_REQUEST['id']);
+	   $tabledata=$list->field('*')->where('ismodel=0 and pid='.$_REQUEST['id'])->findall();
 	   $this->assign('tables',$tabledata);
 		//dump($data);
 		$t=new tpmaker();
@@ -39,7 +39,7 @@ class DesignerAction extends AdminAction{
 
 	//查出关联JS
 	$Designer=D('Designer');
-	$condate=$Designer->findall('master_pid='.$_REQUEST['id']);
+	$condate=$Designer->where('master_pid='.$_REQUEST['id'])->findall();
     $ti = 0;
     $script_contr =
         '<script type="text/javascript">' . "\n" .
@@ -71,7 +71,7 @@ class DesignerAction extends AdminAction{
 
     //查出位置
     	$d=D('Designer_coords');
-		$ds=$d->findall("projectid=".$_REQUEST['id']);
+		$ds=$d->where("projectid=".$_REQUEST['id'])->findall();
 		foreach ($ds as $date){
 			//$tab_pos[$date['table_name']]=$date['table_name'];
 			$tab_pos[$date['table_name']]["X"]=$date['x'];
