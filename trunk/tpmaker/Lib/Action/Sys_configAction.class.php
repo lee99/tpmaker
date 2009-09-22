@@ -24,7 +24,8 @@ class Sys_configAction extends AdminAction{
 
 		$p=$this->tpPage($count,20,'page');
 		//$list->Cache(true);
-		$list=$list->findAll($thiswhere,'*',$orderBy,$p['firstRow'].','.$p['listRows']);
+		//$list=$list->findAll($thiswhere,'*',$orderBy,$p['firstRow'].','.$p['listRows']);
+		$list=$list->field('*')->where($wherevalue)->order($orderBy)->limit($p['firstRow'].','.$p['listRows'])->findall();
 
 		//dump($list);
 
@@ -40,7 +41,8 @@ class Sys_configAction extends AdminAction{
 		if($_REQUEST[id]==""){
 			halt('输入的ID号不能为空');
 		}
-		$listd=$list->findall('id in ('.$_REQUEST[id].')');
+		//$listd=$list->findall('id in ('.$_REQUEST[id].')');
+		$listd=$list->where('id in ('.$_REQUEST[id].')')->findall();
 		$pid=$listd[0]['pid'];
 
 		$listdel=D('Sys_config');

@@ -17,7 +17,8 @@ class Tab_searchtypeAction extends AdminAction{
 		$orderBy=$order.' '.$sortd;//排序
 
 		$p=$this->tpPage($count,20,'page');
-		$list=$list->findAll('','*',$orderBy,$p['firstRow'].','.$p['listRows']);
+		//$list=$list->field('*')->order($orderBy)->limit($p['firstRow'].','.$p['listRows'])->findall();
+		$list=$list->field('*')->order($orderBy)->limit($p['firstRow'].','.$p['listRows'])->findall();
 
 		//dump($list);
 

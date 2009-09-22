@@ -19,7 +19,8 @@ class Con_treeAction extends AdminAction{
 
 		$p=$this->tpPage($count,20,'page');
 		//$Con_tree->Cache(true);
-		$list=$Con_tree->findAll('id <> 0','*',$orderBy,$p['firstRow'].','.$p['listRows']);
+		//$list=$Con_tree->findAll('id <> 0','*',$orderBy,$p['firstRow'].','.$p['listRows']);
+		$list=$Con_tree->field('*')->where('id <> 0')->order($orderBy)->limit($p['firstRow'].','.$p['listRows'])->findall();
 
 		//dump($list);
 

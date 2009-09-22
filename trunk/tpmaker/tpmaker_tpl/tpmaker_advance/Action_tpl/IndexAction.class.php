@@ -15,7 +15,7 @@ class IndexAction extends PublicAction{
 		$pid=$_GET['apptreeid'];
 		$leftdate=$table->findAll("type='0' and pid ='$pid'");
 		foreach($leftdate as $k=>$v){
-			$leftdate[$k]['subapp']=$table->findAll(' pid ='.$v[id],'*','seqNO ASC');
+			$leftdate[$k]['subapp']=where(' pid ='.$v[id])->field('*')->order('seqNO ASC')->findall();
 		}
 		$this->assign('left',$leftdate);
 		//dump($leftdate);
@@ -26,9 +26,9 @@ class IndexAction extends PublicAction{
 		//子模板的左边页面
 		$table=D('apptree');
 		$pid=$_GET['apptreeid'];
-		$leftdate=$table->findAll("type='0' and pid ='$pid'");
+		$leftdate=$table->where("type='0' and pid ='$pid'")->findall();
 		foreach($leftdate as $k=>$v){
-			$leftdate[$k]['subapp']=$table->findAll(' pid ='.$v[id],'*','seqNO ASC');
+			$leftdate[$k]['subapp']=$table->where(' pid ='.$v[id])->field('*')->order('seqNO ASC')->findall();
 		}
 		$this->assign('left',$leftdate);
 		//dump($leftdate);
@@ -45,7 +45,7 @@ class IndexAction extends PublicAction{
 		//顶部的
 		//生成table的树
 		$table=D('apptree');
-		$topdate=$table->findAll('pid =0 ','*','id ASC');
+		$topdate=$table->where('pid =0 ')->field('*')->order('id ASC')->findall();
 		$this->assign('top',$topdate);
 		//dump($leftdate);
 		$this->display();

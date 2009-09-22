@@ -193,7 +193,7 @@ class tpmakerdb extends Action
 		$this->creatdb();
 
 		$list=D($this->tables);
-		$date=$list->findall('ismodel=0 and pid='.$this->projectid);
+		$date=$list->where('ismodel=0 and pid='.$this->projectid)->findall();
 		foreach ($date as $gdate){
 			$this->creattable($gdate['id']);
 		}
@@ -225,7 +225,7 @@ class tpmakerdb extends Action
 		$project_id = $date['id'];//数据库名
 
 		$apptree=D('apptree');
-		$leftdate=$apptree->findAll('projectid ='.$project_id);
+		$leftdate=$apptree->where("projectid=".$project_id)->findall();
 
 		$sql_infoherd="
 		CREATE TABLE `".$project_tbpre."apptree` (
