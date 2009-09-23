@@ -1,4 +1,4 @@
-<tagLib name="cx,html,myhtml" />
+<tagLib name="myhtml" />
 <include file="../Public/header" />
 
 <div id="main" class="main" >
@@ -29,12 +29,12 @@ function reload(){
 	<th width="30px" align="center">操作</th>
 	<th align="center">排序结果</th>
 	<th width="30px" align="center">操作</th>
-	
+
 </tr>
 <tr >
     <td>
         <select name=SrcSelect  disabled  style="height:300px;" multiple ondblclick="moveLeftOrRight(document.frm.SrcSelect,document.frm.ObjSelect)">
-        
+
 <voList name="sortList" id="module" >
 <option value="{$module.seqNo}">{$module.caption}.[{$module.seqNo}]</option>
 </voList>
@@ -42,7 +42,7 @@ function reload(){
         </select>
 
     </td>
-    <td width="30px">   
+    <td width="30px">
         <input class="button1" style="width:30px"  type=button value=">>" onclick="moveLeftOrRightAll(document.frm.SrcSelect,document.frm.ObjSelect)" ><br><br>
         <input class="button1" style="width:30px"  type=button value=" > " onclick="moveLeftOrRight(document.frm.SrcSelect,document.frm.ObjSelect)" ><br><br>
         <input class="button1" style="width:30px"  type=button value=" < " onclick="moveLeftOrRight(document.frm.ObjSelect,document.frm.SrcSelect)" ><br><br>
@@ -50,7 +50,7 @@ function reload(){
     </td>
     <td>
         <select name=ObjSelect  class="ecv_autoSizeDropDown" style="height:300px;" multiple ondblclick="moveLeftOrRight(document.frm.ObjSelect,document.frm.SrcSelect)">
-	
+
 <voList name="sortList" id="module" >
 <option value="{$module.id}">{$module.caption}.[{$module.seqNo}]</option>
 </voList>

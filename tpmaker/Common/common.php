@@ -226,7 +226,8 @@ function delbypid($daoname,$inpid,$pidf='pid'){
 		$oldid=$creatdb['id'];
 		delbypid('Sys_fields',$oldid,'pid');
 	}
-	$table->deleteAll('pid='.$inpid);
+	//$table->deleteAll('pid='.$inpid);
+	$table->where('pid='.$inpid)->delete();
 }
 
 function clean_html($value){

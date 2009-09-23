@@ -1,4 +1,4 @@
-<tagLib name="cx,html,myhtml" />
+<tagLib name="myhtml" />
 <include file="../Public/header" />
 
 <div id="main" class="main" >
@@ -29,12 +29,12 @@ function reload(){
 	<th width="30px" align="center">操作</th>
 	<th align="center">选定数据模型</th>
 	<th align="center">排序操作</th>
-	
+
 </tr>
 <tr >
     <td>
         <select name=SrcSelect  style="height:300px;" multiple ondblclick="moveLeftOrRight(document.frm.SrcSelect,document.frm.ObjSelect)">
-        
+
 <voList name="table" id="table" >
 <option value="{$table.id}">{$table.caption}.[{$table.title}]</option>
 </voList>
@@ -42,7 +42,7 @@ function reload(){
         </select>
 
     </td>
-    <td width="30px">   
+    <td width="30px">
         <input class="button1" style="width:30px"  type=button value=">>" onclick="moveLeftOrRightAll(document.frm.SrcSelect,document.frm.ObjSelect)" ><br><br>
         <input class="button1" style="width:30px"  type=button value=" > " onclick="moveLeftOrRight(document.frm.SrcSelect,document.frm.ObjSelect)" ><br><br>
         <input class="button1" style="width:30px"  type=button value=" < " onclick="moveLeftOrRight(document.frm.ObjSelect,document.frm.SrcSelect)" ><br><br>
@@ -50,7 +50,7 @@ function reload(){
     </td>
     <td>
         <select name=ObjSelect  class="ecv_autoSizeDropDown" style="height:300px;" multiple ondblclick="moveLeftOrRight(document.frm.ObjSelect,document.frm.SrcSelect)">
-	
+
 <voList name="treeselect" id="treeselect" >
 <option value="{$treeselect.tid}">{$treeselect.title}.[{$treeselect.shortname}]</option>
 </voList>
@@ -69,7 +69,7 @@ function reload(){
 <tr>
     <td colspan="4" ><label>绑定分类</label>
         <select name=pid  >
-	
+
 <voList name="treelist" id="treelist" >
 <option value="{$treelist.id}" <eq name="treelist[id]" value="$_GET[pid]">selected</eq> >{$treelist.title}.[{$treelist.shortname}]</option>
 </voList>

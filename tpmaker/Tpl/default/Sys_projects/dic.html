@@ -1,10 +1,9 @@
-<tagLib name="html" />
 <include file="../Public/header" />
 <!-- 主体内容  -->
 <script LANGUAGE="JavaScript">
     function dic(id){ //生成本项目
         window.open("__APP__/Sys_projects/buidedic/id/" + id, 'mini');
-    }   
+    }
 
 </script>
 <fieldset>
@@ -16,7 +15,7 @@
         <tr>
             <td width="60%">
                 <input type="button"  onclick="dic({$_GET['id']})" class="button1" value="生成数据字典" >
-              
+
             </td>
         </tr>
     </table><!-- 功能操作区域结束 -->

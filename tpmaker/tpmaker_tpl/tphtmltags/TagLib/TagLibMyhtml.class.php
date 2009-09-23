@@ -4,8 +4,8 @@ Class TagLibMyhtml extends TagLib
 {
 	/**
      +----------------------------------------------------------
-     * list标签解析
-     * 格式： <html:list datasource="" show="" />
+     * simlist标签解析
+     * 格式： <myhtml:simlist datasource="" show="" />
      *
      +----------------------------------------------------------
      * @access public

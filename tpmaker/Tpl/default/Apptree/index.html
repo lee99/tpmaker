@@ -1,4 +1,4 @@
-<tagLib name="cx,html,myhtml" />
+<tagLib name="myhtml" />
 <include file="../Public/header" />
 <!-- 主体内容  -->
 <SCRIPT LANGUAGE="JavaScript">
@@ -45,7 +45,7 @@ function topupdate(){
 <!--
 
 	apptree = new dTree('apptree');
-	apptree.add('tree0',-1,'[默认的应用分类]','__URL__/index/id/',null,'self',IMG_PATH+'b_import.png',IMG_PATH+'b_import.png');	
+	apptree.add('tree0',-1,'[默认的应用分类]','__URL__/index/id/',null,'self',IMG_PATH+'b_import.png',IMG_PATH+'b_import.png');
 	<volist name="list" id="list">
 	<php>
 	if($list[type]==0 ){
@@ -60,15 +60,15 @@ function topupdate(){
 		}else{
 	</php>
 		apptree.add('tree{$list.id}','tree{$list.pid}','{$list.title}:[{$list.tid}] <a href="###"  title="编辑数据表:{$list.title}" onclick="PopModalWindow(\\'__APP__/sys_fields/index/pid/{$list.tid}\\',\\'800\\',\\'500\\');">[编辑表]</a>','__URL__/index/id/{$list.id}',null,'_self',IMG_PATH+'imgfolder1.gif',IMG_PATH+'imgfolder1.gif');
-	<php>		
+	<php>
 		}
 	}
 	</php>
 	</volist>
-	
+
 	document.write(apptree);
 	apptree.openAll();
-		//-->	
+		//-->
 </script>
 </div>
 </fieldset>
