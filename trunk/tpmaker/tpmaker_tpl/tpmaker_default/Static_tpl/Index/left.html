@@ -1,4 +1,3 @@
-<tagLib name="html" />
 <include file="../Public/header" />
 <div class="dtree">
 
@@ -17,9 +16,9 @@
 
 	//生成model的树形菜单
 	<volist name="left" id="left_vo">
-	
+
 	d.add('config{$left_vo.id}','project','{$left_vo.caption}','__APP__/{$left_vo.name}/index',null,'mainFrame');
-	
+
 	</volist>
 
 

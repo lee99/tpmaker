@@ -1,4 +1,4 @@
-<tagLib name="cx,html,mkrtags" />
+<tagLib name="mkrtags" />
 <!--  功能操作区域  -->
 
 <table width="100%"   cellpadding="0" cellspacing="0" >
@@ -19,7 +19,7 @@
 			          </tr>
 			          <tr>
 			          	<td class="ewTableHeader">条件:</td>
-			            <td class="ewTableAltRow"><mkrtags:radio id="searchtype" name="searchtype"  outtable="Array" value="$searchtype" outfield="AND,OR" outkey="AND,OR" /></td>   	
+			            <td class="ewTableAltRow"><mkrtags:radio id="searchtype" name="searchtype"  outtable="Array" value="$searchtype" outfield="AND,OR" outkey="AND,OR" /></td>
 			          </tr>
 			          <tr>
 			            <td colspan="2"  class="ewTableAltRow">
@@ -61,7 +61,7 @@
     {/listshowtd}
     <td>
     	{isedit}<a href="javascript:edit('{$list.id}')" title="编辑本信息">编辑</a>{/isedit}
-     	{isdel}<a href="javascript:del('{$list.id}')" title="删除本信息">删除</a>{/isdel} 
+     	{isdel}<a href="javascript:del('{$list.id}')" title="删除本信息">删除</a>{/isdel}
      	{isview}<a href="javascript:view('{$list.id}')" title="查看详细信息">详细</a>{/isview}
     </td>
   </tr>

@@ -1,4 +1,4 @@
-<tagLib name="cx,html,myhtml" />
+<tagLib name="myhtml" />
 <include file="../Public/header" />
 <!-- 主体内容  -->
 <script >
@@ -35,14 +35,14 @@ function setcon(tid,fid,ft,id){
 			$("showtips").className="button_em1";
 
 			ThinkAjax.send("__URL__/addconditon/",'in_tid='+conditiontid+'&in_field='+conditionHTML+'&out_tid='+tid+'&out_field='+ft+'&did='+id+'&type=add');
-			conditionvar=0;	
-			conditiontid=0;	
+			conditionvar=0;
+			conditiontid=0;
 			showHTML="<li id=allcon"+id+">"+conditionHTML+"="+ft+" <a href='###' onclick='colsecon("+id+");'>删除</a></li>";
 			$("showconditon").innerHTML=showconditon +showHTML;
 		}
-		
+
 		$("tr"+tid+fid).className="tr1";
-		
+
 	}else{
 		alert('你不能在本表内关联!');
 	}
@@ -66,7 +66,7 @@ function viewclick(id){
 		type='del';
 		checkboxid.checked=false;
 	}else{
-		type='add';	
+		type='add';
 		checkboxid.checked=true;
 	}
 	ThinkAjax.send("__URL__/addfields/",'newtitle='+newtitle+'&title='+title+'&tid='+tid+'&caption='+caption+'&did='+id+'&type='+type);
@@ -106,7 +106,7 @@ function viewclick(id){
 				<th colspan="2"  align="left">{$vo.caption}[{$vo.title}]</th>
 				<th >名称</th>
 				<th align="right"><a onclick="hideviewmaodel('{$vo.id}');" href="#">×</a></th>
-			</tr>	
+			</tr>
 		<volist name="vo['sub']" id="sub">
 			<tr id="tr{$vo.id}{$sub.id}" >
 				<td><input type="checkbox"  onclick="viewclick({$vo.id}{$sub.id});" id="f{$vo.id}{$sub.id}"></td>

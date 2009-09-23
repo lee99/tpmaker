@@ -1,4 +1,4 @@
-<tagLib name="cx,html,myhtml" />
+<tagLib name="myhtml" />
 <include file="../Public/header" />
 <!-- 主体内容  -->
 <SCRIPT LANGUAGE="JavaScript">
@@ -27,7 +27,7 @@ function complete(data,status){
 			id|hidden|1:ID,
 			caption|20:标题,
 			title|20:表名[英名],
-			
+
 			ismodel|checkbox:模板,
 			datemodelid|select|makeselect('datemodelid[]'#'sys_tables'#$list['datemodelid']#'ismodel<>0 and pid='.$list['pid']):公用数据模板,
 			seqNo|4:排序

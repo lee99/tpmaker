@@ -1,4 +1,4 @@
-<tagLib name="cx,html,myhtml" />
+<tagLib name="myhtml" />
 <include file="../Public/header" />
 <!-- 主体内容  -->
 <SCRIPT LANGUAGE="JavaScript">
@@ -32,7 +32,7 @@
 			ThinkAjax.get('__URL__/ajaxFields/',"id="+id,'showfields');
 		}
 	}
-	
+
 
  //-->
  </SCRIPT>
@@ -106,7 +106,7 @@ function defvalue(id){
 		 <option value="1" <eq name="list['outkeyis']" value="1">selected</eq>  >是 </option>
 		 <option value="0" <eq name="list['outkeyis']" value="0">selected</eq>  >否</option>
 		</select>
-外键表:<input id='outkey' name="outkey" value="{$list['outkey']}"> 
+外键表:<input id='outkey' name="outkey" value="{$list['outkey']}">
 
 
 <span  onclick="upoutkey();" class="button1" >确定保存选定的外键数据</span>
@@ -114,7 +114,7 @@ function defvalue(id){
 <span  onclick="defvalue(1);" class="btn_small" title="常用设置:是否" >是否</span>
 <br>
 <input type="hidden" name="id" value="{$list['id']}">
-主键:<input id='outkeyid' name="outkeyid" value="{$list['outkeyid']}" style="width:80%"> 
+主键:<input id='outkeyid' name="outkeyid" value="{$list['outkeyid']}" style="width:80%">
 <br>
 外键:<input id="outkeyf" name="outkeyf" value="{$list['outkeyf']}" style="width:80%">
 

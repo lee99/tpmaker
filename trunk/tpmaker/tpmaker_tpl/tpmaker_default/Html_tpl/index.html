@@ -1,4 +1,4 @@
-<tagLib name="cx,html,mkrtags" />
+<tagLib name="mkrtags" />
 <include file="../Public/header" />
 <!-- 主体内容  -->
 
@@ -45,7 +45,7 @@ var tablename = "checkList"; // table name
 </script>
 		<TABLE id="checkList" class="list" >
 		<TR class="row" >
-		
+
 			<th width="8">
 				<input type="checkbox" id="check" onclick="CheckAll('checkList')">
 			</th>
@@ -62,16 +62,16 @@ var tablename = "checkList"; // table name
 		<TR class="<php> echo $tablesclass </php>" onmouseover="ew_mouseover(this);" onmouseout="ew_mouseout(this);" onclick="ew_click(this);"  >
 			<td><input type="checkbox" name="key"	value="<php> echo is_array($list)?$list["id"]:$list->id </php>"> </td>
 			{listshowtd}
-			
+
 			<TD>
-			<A HREF="javascript:edit('<php> echo is_array($list)?$list["id"]:$list->id </php>')">编辑</A> 
-			<A HREF="javascript:del('<php> echo is_array($list)?$list["id"]:$list->id </php>')">删除</A> 
-			<A HREF="javascript:view('<php> echo is_array($list)?$list["id"]:$list->id </php>')">详细</A> 
+			<A HREF="javascript:edit('<php> echo is_array($list)?$list["id"]:$list->id </php>')">编辑</A>
+			<A HREF="javascript:del('<php> echo is_array($list)?$list["id"]:$list->id </php>')">删除</A>
+			<A HREF="javascript:view('<php> echo is_array($list)?$list["id"]:$list->id </php>')">详细</A>
 				</TD>
 		</TR>
 		<php> endforeach; </php>
 		<php> endif; </php>
-		
+
 
 		</TABLE>
 <!--Myhtml系统列表组件结束 -->

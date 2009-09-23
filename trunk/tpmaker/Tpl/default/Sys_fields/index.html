@@ -1,4 +1,4 @@
-<tagLib name="cx,html,myhtml" />
+<tagLib name="myhtml" />
 <include file="../Public/header" />
 <SCRIPT LANGUAGE="JavaScript">
 <!--
@@ -39,7 +39,7 @@ function copyselect(){ //拷贝本表生成新数据表
 	<input type="button" onclick="location.href='__URL__/index/pid/{$_GET['pid']}'" class="button1" value="刷新">
 	<input type="button" onclick="del()" class="btn_red" value="删除数据">
 	<input type="button" class="button1" onclick="upbtn();" value="更新数据">
-	
+
 	<input type="button" onclick="PopModalWindow('__URL__/add/pid/{$_GET['pid']}','700','400');" class="btn_small" value="增加数据">
 	<input type="button" onclick="PopModalWindow('__URL__/table/id/{$_GET['pid']}','700','400');" class="btn_small" value="查看表信息">
 	<input type="button" onclick="PopModalWindow('__URL__/sort/pid/{$_GET['pid']}','700','400');" class="btn_small" value="排序数据">
@@ -58,7 +58,7 @@ function copyselect(){ //拷贝本表生成新数据表
 	      ],
       ];
       cmDraw ('myMenuID', myMenu, 'hbr', cmThemeOffice, 'ThemeOffice');
-		</script> 
+		</script>
 		</td>
 		<td align="right" >
 
@@ -98,7 +98,7 @@ function copyselect(){ //拷贝本表生成新数据表
 		action="false"
 		actionlist="setissystem:设定保留信息"
 		/>
-		
+
 </div>
   <div class="tab-page" id="tabPage3" >
 		<h2 class="tab">基本操作和默认值设定</h2>
@@ -113,7 +113,7 @@ function copyselect(){ //拷贝本表生成新数据表
 			addtype|select|makeselect('addtype[]'#'sub_addtype'#$list['addtype']):增加形式,
 			indexvar|10:默认值[支持函数],
 			autotype|select|makeselect('autotype[]'#'Sub_auto'#$list['autotype']):自动填充
-			
+
 		"
 		/>
 </div>
@@ -136,7 +136,7 @@ function copyselect(){ //拷贝本表生成新数据表
 		<myhtml:editlist id="checkList2" name="list"  datasource="list_val" style="list"
 		show="
 			caption|text:标题,
-			
+
 			request|checkbox:必填[是否为必填项],
 			validate|select|makeselect('validate[]'#'sub_validate'#$list['validate']):验证形式,
 			validate_tex|40:错误提示[不填为默认],
@@ -161,7 +161,7 @@ function copyselect(){ //拷贝本表生成新数据表
 		<myhtml:editlist id="checkList2" name="list"   datasource="list_outkey" style="list"
 		show="
 			caption|text:标题,
-			
+
 			outkeyis|checkbox:是否[外键],
 			outkey|8:外键表,
 			outkeyid|6:外键表ID,
